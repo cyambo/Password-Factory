@@ -7,6 +7,7 @@
 //
 
 #import "MasterViewController.h"
+#import "BBPasswordStrength.h"
 
 static NSString* symbols;
 static NSString* upperCase;
@@ -23,6 +24,8 @@ static NSString* nonAmbiguousLowerCase;
 @property (weak) IBOutlet NSButton *avoidAmbiguous;
 @property (weak) IBOutlet NSSlider *passwordLengthSlider;
 @property (weak) IBOutlet NSTextField *passwordLengthLabel;
+@property (weak) IBOutlet NSTextField *passwordStrengthLabel;
+@property (weak) IBOutlet NSLevelIndicator *passwordStrengthLevel;
 
 @end
 
@@ -57,7 +60,30 @@ static NSString* nonAmbiguousLowerCase;
     
 }
 - (void)generatePassword {
-    [self.passwordField setStringValue:[self generateRandom]];
+    NSString *password = [self generateRandom];
+    [self.passwordField setStringValue: password];
+    [self setPasswordStrength:password];
+    
+    
+}
+- (void)setPasswordStrength:(NSString *)password {
+    BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:password];
+    double ct = strength.crackTime;
+    //[10**2, 10**4, 10**6, 10**8, Infinity].
+    int i;
+    for (i=0;i<11; i++){
+        ct = ct/10.0;
+        
+        if(ct <=1){
+            NSLog(@"%0.2f",ct);
+            break;
+        }
+        
+    }
+    i--;
+    if (i<0) { i = 0;}
+    [self.passwordStrengthLabel setStringValue:[NSString stringWithFormat:@"%0.2f,,%i",ct,i]];
+    [self.passwordStrengthLevel setIntegerValue:i];
 }
 - (NSString *)generateRandom {
     [self setCharacterRange];
@@ -69,6 +95,7 @@ static NSString* nonAmbiguousLowerCase;
         
         
     }
+
     return curr;
 
 }

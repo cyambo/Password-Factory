@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40A152541913E8AB0091E264 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152371913E8AB0091E264 /* frequency_lists.json */; };
+		40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152381913E8AB0091E264 /* adjacency_graphs.json */; };
+		40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1523A1913E8AB0091E264 /* BBDateMatcher.m */; };
+		40A152571913E8AB0091E264 /* BBDictionaryMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1523C1913E8AB0091E264 /* BBDictionaryMatcher.m */; };
+		40A152581913E8AB0091E264 /* BBDigitsMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1523E1913E8AB0091E264 /* BBDigitsMatcher.m */; };
+		40A152591913E8AB0091E264 /* BBEntropyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152401913E8AB0091E264 /* BBEntropyCenter.m */; };
+		40A1525A1913E8AB0091E264 /* BBL33tMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152421913E8AB0091E264 /* BBL33tMatcher.m */; };
+		40A1525B1913E8AB0091E264 /* BBPasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152441913E8AB0091E264 /* BBPasswordStrength.m */; };
+		40A1525C1913E8AB0091E264 /* BBPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152461913E8AB0091E264 /* BBPattern.m */; };
+		40A1525D1913E8AB0091E264 /* BBPatternCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152481913E8AB0091E264 /* BBPatternCenter.m */; };
+		40A1525E1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1524B1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m */; };
+		40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1524D1913E8AB0091E264 /* BBRepeatMatcher.m */; };
+		40A152601913E8AB0091E264 /* BBSequenceMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1524F1913E8AB0091E264 /* BBSequenceMatcher.m */; };
+		40A152611913E8AB0091E264 /* BBSpatialMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152511913E8AB0091E264 /* BBSpatialMatcher.m */; };
+		40A152621913E8AB0091E264 /* BBYearMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152531913E8AB0091E264 /* BBYearMatcher.m */; };
 		40BBBE241913BE1800AA5BC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
 		40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */; };
 		40BBBE301913BE1800AA5BC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE2F1913BE1800AA5BC2 /* main.m */; };
@@ -34,6 +49,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40A152371913E8AB0091E264 /* frequency_lists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_lists.json; path = ../ZXCVBN/ZXCVBN/frequency_lists.json; sourceTree = "<group>"; };
+		40A152381913E8AB0091E264 /* adjacency_graphs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = adjacency_graphs.json; path = ../ZXCVBN/ZXCVBN/adjacency_graphs.json; sourceTree = "<group>"; };
+		40A152391913E8AB0091E264 /* BBDateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDateMatcher.h; path = ../ZXCVBN/ZXCVBN/BBDateMatcher.h; sourceTree = "<group>"; };
+		40A1523A1913E8AB0091E264 /* BBDateMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDateMatcher.m; path = ../ZXCVBN/ZXCVBN/BBDateMatcher.m; sourceTree = "<group>"; };
+		40A1523B1913E8AB0091E264 /* BBDictionaryMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDictionaryMatcher.h; path = ../ZXCVBN/ZXCVBN/BBDictionaryMatcher.h; sourceTree = "<group>"; };
+		40A1523C1913E8AB0091E264 /* BBDictionaryMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDictionaryMatcher.m; path = ../ZXCVBN/ZXCVBN/BBDictionaryMatcher.m; sourceTree = "<group>"; };
+		40A1523D1913E8AB0091E264 /* BBDigitsMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDigitsMatcher.h; path = ../ZXCVBN/ZXCVBN/BBDigitsMatcher.h; sourceTree = "<group>"; };
+		40A1523E1913E8AB0091E264 /* BBDigitsMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDigitsMatcher.m; path = ../ZXCVBN/ZXCVBN/BBDigitsMatcher.m; sourceTree = "<group>"; };
+		40A1523F1913E8AB0091E264 /* BBEntropyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBEntropyCenter.h; path = ../ZXCVBN/ZXCVBN/BBEntropyCenter.h; sourceTree = "<group>"; };
+		40A152401913E8AB0091E264 /* BBEntropyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBEntropyCenter.m; path = ../ZXCVBN/ZXCVBN/BBEntropyCenter.m; sourceTree = "<group>"; };
+		40A152411913E8AB0091E264 /* BBL33tMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBL33tMatcher.h; path = ../ZXCVBN/ZXCVBN/BBL33tMatcher.h; sourceTree = "<group>"; };
+		40A152421913E8AB0091E264 /* BBL33tMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBL33tMatcher.m; path = ../ZXCVBN/ZXCVBN/BBL33tMatcher.m; sourceTree = "<group>"; };
+		40A152431913E8AB0091E264 /* BBPasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPasswordStrength.h; path = ../ZXCVBN/ZXCVBN/BBPasswordStrength.h; sourceTree = "<group>"; };
+		40A152441913E8AB0091E264 /* BBPasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPasswordStrength.m; path = ../ZXCVBN/ZXCVBN/BBPasswordStrength.m; sourceTree = "<group>"; };
+		40A152451913E8AB0091E264 /* BBPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPattern.h; path = ../ZXCVBN/ZXCVBN/BBPattern.h; sourceTree = "<group>"; };
+		40A152461913E8AB0091E264 /* BBPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPattern.m; path = ../ZXCVBN/ZXCVBN/BBPattern.m; sourceTree = "<group>"; };
+		40A152471913E8AB0091E264 /* BBPatternCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPatternCenter.h; path = ../ZXCVBN/ZXCVBN/BBPatternCenter.h; sourceTree = "<group>"; };
+		40A152481913E8AB0091E264 /* BBPatternCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPatternCenter.m; path = ../ZXCVBN/ZXCVBN/BBPatternCenter.m; sourceTree = "<group>"; };
+		40A152491913E8AB0091E264 /* BBPatternMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPatternMatcher.h; path = ../ZXCVBN/ZXCVBN/BBPatternMatcher.h; sourceTree = "<group>"; };
+		40A1524A1913E8AB0091E264 /* BBRegularExpressionMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBRegularExpressionMatchHelper.h; path = ../ZXCVBN/ZXCVBN/BBRegularExpressionMatchHelper.h; sourceTree = "<group>"; };
+		40A1524B1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBRegularExpressionMatchHelper.m; path = ../ZXCVBN/ZXCVBN/BBRegularExpressionMatchHelper.m; sourceTree = "<group>"; };
+		40A1524C1913E8AB0091E264 /* BBRepeatMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBRepeatMatcher.h; path = ../ZXCVBN/ZXCVBN/BBRepeatMatcher.h; sourceTree = "<group>"; };
+		40A1524D1913E8AB0091E264 /* BBRepeatMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBRepeatMatcher.m; path = ../ZXCVBN/ZXCVBN/BBRepeatMatcher.m; sourceTree = "<group>"; };
+		40A1524E1913E8AB0091E264 /* BBSequenceMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBSequenceMatcher.h; path = ../ZXCVBN/ZXCVBN/BBSequenceMatcher.h; sourceTree = "<group>"; };
+		40A1524F1913E8AB0091E264 /* BBSequenceMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBSequenceMatcher.m; path = ../ZXCVBN/ZXCVBN/BBSequenceMatcher.m; sourceTree = "<group>"; };
+		40A152501913E8AB0091E264 /* BBSpatialMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBSpatialMatcher.h; path = ../ZXCVBN/ZXCVBN/BBSpatialMatcher.h; sourceTree = "<group>"; };
+		40A152511913E8AB0091E264 /* BBSpatialMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBSpatialMatcher.m; path = ../ZXCVBN/ZXCVBN/BBSpatialMatcher.m; sourceTree = "<group>"; };
+		40A152521913E8AB0091E264 /* BBYearMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBYearMatcher.h; path = ../ZXCVBN/ZXCVBN/BBYearMatcher.h; sourceTree = "<group>"; };
+		40A152531913E8AB0091E264 /* BBYearMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBYearMatcher.m; path = ../ZXCVBN/ZXCVBN/BBYearMatcher.m; sourceTree = "<group>"; };
 		40BBBE201913BE1800AA5BC2 /* Passsword Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Passsword Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BBBE231913BE1800AA5BC2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		40BBBE261913BE1800AA5BC2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -81,9 +125,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40A152361913E8850091E264 /* ZXCVBN */ = {
+			isa = PBXGroup;
+			children = (
+				40A152371913E8AB0091E264 /* frequency_lists.json */,
+				40A152381913E8AB0091E264 /* adjacency_graphs.json */,
+				40A152391913E8AB0091E264 /* BBDateMatcher.h */,
+				40A1523A1913E8AB0091E264 /* BBDateMatcher.m */,
+				40A1523B1913E8AB0091E264 /* BBDictionaryMatcher.h */,
+				40A1523C1913E8AB0091E264 /* BBDictionaryMatcher.m */,
+				40A1523D1913E8AB0091E264 /* BBDigitsMatcher.h */,
+				40A1523E1913E8AB0091E264 /* BBDigitsMatcher.m */,
+				40A1523F1913E8AB0091E264 /* BBEntropyCenter.h */,
+				40A152401913E8AB0091E264 /* BBEntropyCenter.m */,
+				40A152411913E8AB0091E264 /* BBL33tMatcher.h */,
+				40A152421913E8AB0091E264 /* BBL33tMatcher.m */,
+				40A152431913E8AB0091E264 /* BBPasswordStrength.h */,
+				40A152441913E8AB0091E264 /* BBPasswordStrength.m */,
+				40A152451913E8AB0091E264 /* BBPattern.h */,
+				40A152461913E8AB0091E264 /* BBPattern.m */,
+				40A152471913E8AB0091E264 /* BBPatternCenter.h */,
+				40A152481913E8AB0091E264 /* BBPatternCenter.m */,
+				40A152491913E8AB0091E264 /* BBPatternMatcher.h */,
+				40A1524A1913E8AB0091E264 /* BBRegularExpressionMatchHelper.h */,
+				40A1524B1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m */,
+				40A1524C1913E8AB0091E264 /* BBRepeatMatcher.h */,
+				40A1524D1913E8AB0091E264 /* BBRepeatMatcher.m */,
+				40A1524E1913E8AB0091E264 /* BBSequenceMatcher.h */,
+				40A1524F1913E8AB0091E264 /* BBSequenceMatcher.m */,
+				40A152501913E8AB0091E264 /* BBSpatialMatcher.h */,
+				40A152511913E8AB0091E264 /* BBSpatialMatcher.m */,
+				40A152521913E8AB0091E264 /* BBYearMatcher.h */,
+				40A152531913E8AB0091E264 /* BBYearMatcher.m */,
+			);
+			name = ZXCVBN;
+			sourceTree = "<group>";
+		};
 		40BBBE171913BE1800AA5BC2 = {
 			isa = PBXGroup;
 			children = (
+				40A152361913E8850091E264 /* ZXCVBN */,
 				40BBBE291913BE1800AA5BC2 /* Passsword Generator */,
 				40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */,
 				40BBBE221913BE1800AA5BC2 /* Frameworks */,
@@ -261,6 +342,8 @@
 			files = (
 				40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */,
 				40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
+				40A152541913E8AB0091E264 /* frequency_lists.json in Resources */,
+				40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */,
 				40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */,
 				40BBBE341913BE1800AA5BC2 /* Credits.rtf in Resources */,
 				40BBBE3A1913BE1800AA5BC2 /* MainMenu.xib in Resources */,
@@ -282,10 +365,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A152621913E8AB0091E264 /* BBYearMatcher.m in Sources */,
+				40A152571913E8AB0091E264 /* BBDictionaryMatcher.m in Sources */,
+				40A1525C1913E8AB0091E264 /* BBPattern.m in Sources */,
 				40BBBE651913C0CF00AA5BC2 /* PasswordGenerator.m in Sources */,
+				40A152611913E8AB0091E264 /* BBSpatialMatcher.m in Sources */,
+				40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */,
+				40A152591913E8AB0091E264 /* BBEntropyCenter.m in Sources */,
 				40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */,
+				40A1525A1913E8AB0091E264 /* BBL33tMatcher.m in Sources */,
+				40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */,
 				40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */,
+				40A152581913E8AB0091E264 /* BBDigitsMatcher.m in Sources */,
 				40BBBE301913BE1800AA5BC2 /* main.m in Sources */,
+				40A1525B1913E8AB0091E264 /* BBPasswordStrength.m in Sources */,
+				40A1525D1913E8AB0091E264 /* BBPatternCenter.m in Sources */,
+				40A1525E1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m in Sources */,
+				40A152601913E8AB0091E264 /* BBSequenceMatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +594,7 @@
 				40BBBE531913BE1800AA5BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		40BBBE541913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword GeneratorTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +603,7 @@
 				40BBBE561913BE1800AA5BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
