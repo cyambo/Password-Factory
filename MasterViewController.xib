@@ -6,14 +6,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MasterViewController">
             <connections>
-                <outlet property="avoidAmbiguous" destination="z6R-Pg-oy5" id="BgA-I8-nBM"/>
-                <outlet property="mixedCase" destination="hiG-G5-ZPf" id="oSJ-cg-pHk"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
                 <outlet property="passwordLengthLabel" destination="iPo-IR-0L6" id="e2t-Xq-zDC"/>
                 <outlet property="passwordLengthSlider" destination="XgZ-qu-GgE" id="5QV-RN-j6c"/>
                 <outlet property="passwordStrengthLabel" destination="Dby-xr-URO" id="FZL-fc-kBp"/>
                 <outlet property="passwordStrengthLevel" destination="sh2-oy-uhM" id="9uD-Yc-c1q"/>
-                <outlet property="useSymbols" destination="C0y-q6-nnz" id="Rcr-yQ-wMG"/>
+                <outlet property="patternText" destination="Tx1-SO-FyV" id="On6-0L-CeL"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -41,39 +39,6 @@
                     </buttonCell>
                     <connections>
                         <action selector="generateAction:" target="-2" id="uuy-fp-gMk"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0y-q6-nnz">
-                    <rect key="frame" x="18" y="591" width="101" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3n5-Pn-cpC">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="generateAction:" target="-2" id="8Jh-y6-Pka"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hiG-G5-ZPf">
-                    <rect key="frame" x="18" y="571" width="94" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nEw-t6-U5d">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="generateAction:" target="-2" id="rk7-J1-4bb"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-Pg-oy5">
-                    <rect key="frame" x="18" y="551" width="138" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Avoid Ambiguous " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kig-b6-3dc">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="generateAction:" target="-2" id="gmN-5R-evH"/>
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XgZ-qu-GgE">
@@ -108,6 +73,77 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <levelIndicatorCell key="cell" alignment="left" doubleValue="2" maxValue="10" warningValue="2" criticalValue="2" id="ADC-wx-zpZ"/>
                 </levelIndicator>
+                <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D7G-rB-QOb">
+                    <rect key="frame" x="86" y="135" width="398" height="337"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <font key="font" metaFont="system"/>
+                    <tabViewItems>
+                        <tabViewItem label="Random" identifier="1" id="zr5-iB-5I9">
+                            <view key="view" id="TTS-Hg-P6L">
+                                <rect key="frame" x="10" y="33" width="378" height="291"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-Qg-3Sd">
+                                        <rect key="frame" x="60" y="272" width="101" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XDj-Cb-rZ3">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="generateAction:" target="-2" id="Y4K-Ei-RHa"/>
+                                        </connections>
+                                    </button>
+                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAm-zY-Nsw">
+                                        <rect key="frame" x="63" y="240" width="94" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OPh-WO-qZF">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="generateAction:" target="-2" id="QJz-dV-Lhg"/>
+                                        </connections>
+                                    </button>
+                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2y-v2-bIT">
+                                        <rect key="frame" x="60" y="206" width="138" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" title="Avoid Ambiguous " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yrh-pS-CML">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="generateAction:" target="-2" id="zaQ-dP-9NY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="Pattern" identifier="2" id="etA-Qv-795">
+                            <view key="view" ambiguous="YES" id="tNm-qa-FhM">
+                                <rect key="frame" x="10" y="33" width="378" height="291"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-SO-FyV">
+                                        <rect key="frame" x="48" y="247" width="96" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="tER-aD-4v5">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="Pronounceable" identifier="" id="Jox-n0-Kcz">
+                            <view key="view" id="HQx-iP-Ml6">
+                                <rect key="frame" x="10" y="33" width="378" height="291"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                        </tabViewItem>
+                    </tabViewItems>
+                </tabView>
             </subviews>
         </customView>
     </objects>

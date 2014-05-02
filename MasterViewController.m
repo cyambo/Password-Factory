@@ -14,6 +14,20 @@ static NSString* upperCase;
 static NSString* lowerCase;
 static NSString* nonAmbiguousUpperCase;
 static NSString* nonAmbiguousLowerCase;
+static NSDictionary* characterPattern;
+static NSArray* phoeneticSounds;
+
+//characterPattern = @{@"#" : @0, //Number
+//                     @"w" : @1, //Lowercase Word
+//                     @"W" : @2, //capital word
+//                     @"s" : @3, //lowercase short word
+//                     @"S" : @4, //capital short word
+//                     @"!" : @5, //symbol
+//                     @"c" : @6, //random character
+//                     @"C" : @7 //random uppercase char
+//                     };
+
+
 
 @interface MasterViewController ()
 @property (weak) IBOutlet NSTextField *passwordField;
@@ -26,7 +40,9 @@ static NSString* nonAmbiguousLowerCase;
 @property (weak) IBOutlet NSTextField *passwordLengthLabel;
 @property (weak) IBOutlet NSTextField *passwordStrengthLabel;
 @property (weak) IBOutlet NSLevelIndicator *passwordStrengthLevel;
-
+@property (nonatomic, strong) NSArray *englishWords;
+@property (nonatomic, strong) NSArray *shortWords;
+@property (weak) IBOutlet NSTextField *patternText;
 @end
 
 @implementation MasterViewController
@@ -37,12 +53,37 @@ static NSString* nonAmbiguousLowerCase;
     if (self) {
         // Initialization code here.
         
+        [self loadJSONDict];
         [self setStatics];
     }
     return self;
 }
 - (void)awakeFromNib {
     [self getPasswordLength];
+}
+- (void)loadJSONDict {
+    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+    NSDictionary *dicts = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSMutableArray *e = [[NSMutableArray alloc] init];
+    NSMutableArray *es = [[NSMutableArray alloc] init];
+    NSCharacterSet *charSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    for (NSString *w in [dicts objectForKey:@"english"]) {
+
+        if ([w rangeOfCharacterFromSet:charSet].length == 0){
+            if (w.length > 4 && w.length < 10) {
+                [e addObject:w];
+            }
+            if (w.length > 3 && w.length < 6) {
+                [es addObject:w];
+            }
+        }
+        
+    }
+    NSLog(@"WORD COUNT %d",es.count);
+    self.englishWords = [[NSArray alloc] initWithArray:e];
+    self.shortWords = [[NSArray alloc] initWithArray:es];
+
 }
 - (IBAction)changeLength:(id)sender {
     [self getPasswordLength];
@@ -59,8 +100,9 @@ static NSString* nonAmbiguousLowerCase;
     
     
 }
+
 - (void)generatePassword {
-    NSString *password = [self generateRandom];
+    NSString *password = [self generatePattern];
     [self.passwordField setStringValue: password];
     [self setPasswordStrength:password];
     
@@ -118,12 +160,94 @@ static NSString* nonAmbiguousLowerCase;
     }
     self.currentRange = [self removeDuplicateChars:tmp];
 }
+
+- (NSString *)generatePattern {
+    int l = (int)self.englishWords.count;
+    int sl = (int)self.shortWords.count;
+    NSMutableString *s = [[NSMutableString alloc] init];
+    NSString *pattern = self.patternText.stringValue;
+    bool isEscaped = NO;
+    for (int i=0; i< pattern.length; i++) {
+        char c = [pattern characterAtIndex:i];
+        int at = (int)[[characterPattern objectForKey:[NSString stringWithFormat:@"%c",c]] integerValue];
+        NSString *currVal;
+        //dealing with escape - skip to next and place it
+        if (c == '\\') {
+            isEscaped = YES;
+            continue;
+        }
+        if (isEscaped ){
+            [s appendString:[NSString stringWithFormat:@"%c",c]];
+            isEscaped = NO;
+            continue;
+        }
+        switch (at) {
+            case 0:
+                [s appendString:[NSString stringWithFormat:@"%c",c]];
+                break;
+            case 1:
+                [s appendString:[NSString stringWithFormat:@"%d",arc4random()%10]];
+                break;
+            case 2:
+                currVal = [self.englishWords objectAtIndex:arc4random() % l];
+                [s appendString:[currVal lowercaseString]];
+                break;
+            case 3:
+                currVal = [self.englishWords objectAtIndex:arc4random() % l];
+                [s appendString:[currVal uppercaseString]];
+                break;
+            case 4:
+                currVal = [self.shortWords objectAtIndex:arc4random() % sl];
+                [s appendString:[currVal lowercaseString]];
+                break;
+            case 5:
+                currVal = [self.shortWords objectAtIndex:arc4random() % sl];
+                [s appendString:[currVal uppercaseString]];
+            break;
+            case 6:
+                 c = [symbols characterAtIndex:(arc4random() % symbols.length)];
+                 [s appendString:[NSString stringWithFormat:@"%c",c]];
+                 break;
+            case 7:
+                 if ([self.avoidAmbiguous state]) {
+                     c = [nonAmbiguousLowerCase characterAtIndex:(arc4random() % nonAmbiguousLowerCase.length)];
+                 } else {
+                     c = [lowerCase characterAtIndex:(arc4random() % lowerCase.length)];
+                 }
+                 [s appendString:[NSString stringWithFormat:@"%c",c]];
+                 break;
+            case 8:
+                 if ([self.avoidAmbiguous state]) {
+                     c = [nonAmbiguousUpperCase characterAtIndex:(arc4random() % nonAmbiguousUpperCase.length)];
+                 } else {
+                     c = [upperCase characterAtIndex:(arc4random() % upperCase.length)];
+                 }
+                 [s appendString:[NSString stringWithFormat:@"%c",c]];
+                 break;
+                 
+                 
+            
+        }
+    }
+    return s;
+}
+
 - (void)setStatics {
     symbols = @"!@#$%^&*(){}[];:.\"<>?/\\-_+=|\'";
     upperCase = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     lowerCase = @"abcdefghijklmnopqrstuvwxyz";
     nonAmbiguousUpperCase = @"ABCDEFGHJKLMNPQRSTUVWXYZ";
     nonAmbiguousLowerCase = @"abcdefghijkmnpqrstuvwxyz";
+    phoeneticSounds = @[@"BA",@"BE",@"BI",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"DY",@"FA",@"FE",@"FI",@"FO",@"FU",@"FY",@"GA",@"GE",@"GI",@"GO",@"GU",@"GY",@"HA",@"HE",@"HI",@"HO",@"HU",@"HY",@"JA",@"JE",@"JI",@"JO",@"JU",@"JY",@"KA",@"KE",@"KI",@"KO",@"KU",@"KY",@"LA",@"LE",@"LI",@"LO",@"LU",@"LY",@"MA",@"ME",@"MI",@"MO",@"MU",@"MY",@"NA",@"NE",@"NI",@"NO",@"NU",@"NY",@"PA",@"PE",@"PI",@"PO",@"PU",@"PY",@"RA",@"RE",@"RI",@"RO",@"RU",@"RY",@"SA",@"SE",@"SI",@"SO",@"SU",@"SY",@"TA",@"TE",@"TI",@"TO",@"TU",@"TY",@"VA",@"VE",@"VI",@"VO",@"VU",@"VY",@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
+    characterPattern = @{@"#" : @1, //Number
+                         @"w" : @2, //Lowercase Word
+                         @"W" : @3, //capital word
+                         @"s" : @4, //lowercase short word
+                         @"S" : @5, //capital short word
+                         @"!" : @6, //symbol
+                         @"c" : @7, //random character
+                         @"C" : @8 //random uppercase char
+                         };
  
 }
 - (NSMutableString *)removeDuplicateChars:(NSString *)input {
