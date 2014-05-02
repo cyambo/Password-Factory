@@ -18,6 +18,9 @@
 		40BBBE441913BE1800AA5BC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
 		40BBBE4C1913BE1800AA5BC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE4A1913BE1800AA5BC2 /* InfoPlist.strings */; };
 		40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */; };
+		40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */; };
+		40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */; };
+		40BBBE651913C0CF00AA5BC2 /* PasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE641913C0CF00AA5BC2 /* PasswordGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,11 @@
 		40BBBE491913BE1800AA5BC2 /* Passsword GeneratorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Passsword GeneratorTests-Info.plist"; sourceTree = "<group>"; };
 		40BBBE4B1913BE1800AA5BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Passsword_GeneratorTests.m; sourceTree = "<group>"; };
+		40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ../MasterViewController.h; sourceTree = "<group>"; };
+		40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ../MasterViewController.m; sourceTree = "<group>"; };
+		40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MasterViewController.xib; path = ../MasterViewController.xib; sourceTree = "<group>"; };
+		40BBBE631913C0CF00AA5BC2 /* PasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordGenerator.h; sourceTree = "<group>"; };
+		40BBBE641913C0CF00AA5BC2 /* PasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +123,8 @@
 		40BBBE291913BE1800AA5BC2 /* Passsword Generator */ = {
 			isa = PBXGroup;
 			children = (
-				40BBBE351913BE1800AA5BC2 /* AppDelegate.h */,
-				40BBBE361913BE1800AA5BC2 /* AppDelegate.m */,
-				40BBBE381913BE1800AA5BC2 /* MainMenu.xib */,
+				40BBBE661913C0E400AA5BC2 /* Model */,
+				40BBBE671913C0F800AA5BC2 /* GUI */,
 				40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */,
 				40BBBE2A1913BE1800AA5BC2 /* Supporting Files */,
 			);
@@ -152,6 +159,28 @@
 				40BBBE4A1913BE1800AA5BC2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		40BBBE661913C0E400AA5BC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE631913C0CF00AA5BC2 /* PasswordGenerator.h */,
+				40BBBE641913C0CF00AA5BC2 /* PasswordGenerator.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		40BBBE671913C0F800AA5BC2 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */,
+				40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */,
+				40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */,
+				40BBBE351913BE1800AA5BC2 /* AppDelegate.h */,
+				40BBBE361913BE1800AA5BC2 /* AppDelegate.m */,
+				40BBBE381913BE1800AA5BC2 /* MainMenu.xib */,
+			);
+			name = GUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */,
 				40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
 				40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */,
 				40BBBE341913BE1800AA5BC2 /* Credits.rtf in Resources */,
@@ -252,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40BBBE651913C0CF00AA5BC2 /* PasswordGenerator.m in Sources */,
 				40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */,
+				40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */,
 				40BBBE301913BE1800AA5BC2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
