@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40BBBE241913BE1800AA5BC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
+		40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */; };
+		40BBBE301913BE1800AA5BC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE2F1913BE1800AA5BC2 /* main.m */; };
+		40BBBE341913BE1800AA5BC2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE321913BE1800AA5BC2 /* Credits.rtf */; };
+		40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE361913BE1800AA5BC2 /* AppDelegate.m */; };
+		40BBBE3A1913BE1800AA5BC2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE381913BE1800AA5BC2 /* MainMenu.xib */; };
+		40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */; };
+		40BBBE431913BE1800AA5BC2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE421913BE1800AA5BC2 /* XCTest.framework */; };
+		40BBBE441913BE1800AA5BC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
+		40BBBE4C1913BE1800AA5BC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE4A1913BE1800AA5BC2 /* InfoPlist.strings */; };
+		40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		40BBBE451913BE1800AA5BC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40BBBE181913BE1800AA5BC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40BBBE1F1913BE1800AA5BC2;
+			remoteInfo = "Passsword Generator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		40BBBE201913BE1800AA5BC2 /* Passsword Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Passsword Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40BBBE231913BE1800AA5BC2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		40BBBE261913BE1800AA5BC2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		40BBBE271913BE1800AA5BC2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		40BBBE281913BE1800AA5BC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		40BBBE2B1913BE1800AA5BC2 /* Passsword Generator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Passsword Generator-Info.plist"; sourceTree = "<group>"; };
+		40BBBE2D1913BE1800AA5BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		40BBBE2F1913BE1800AA5BC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		40BBBE311913BE1800AA5BC2 /* Passsword Generator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Passsword Generator-Prefix.pch"; sourceTree = "<group>"; };
+		40BBBE331913BE1800AA5BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		40BBBE351913BE1800AA5BC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		40BBBE361913BE1800AA5BC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		40BBBE391913BE1800AA5BC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		40BBBE411913BE1800AA5BC2 /* Passsword GeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Passsword GeneratorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40BBBE421913BE1800AA5BC2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		40BBBE491913BE1800AA5BC2 /* Passsword GeneratorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Passsword GeneratorTests-Info.plist"; sourceTree = "<group>"; };
+		40BBBE4B1913BE1800AA5BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Passsword_GeneratorTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40BBBE1D1913BE1800AA5BC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40BBBE241913BE1800AA5BC2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40BBBE3E1913BE1800AA5BC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40BBBE441913BE1800AA5BC2 /* Cocoa.framework in Frameworks */,
+				40BBBE431913BE1800AA5BC2 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40BBBE171913BE1800AA5BC2 = {
+			isa = PBXGroup;
+			children = (
+				40BBBE291913BE1800AA5BC2 /* Passsword Generator */,
+				40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */,
+				40BBBE221913BE1800AA5BC2 /* Frameworks */,
+				40BBBE211913BE1800AA5BC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40BBBE211913BE1800AA5BC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE201913BE1800AA5BC2 /* Passsword Generator.app */,
+				40BBBE411913BE1800AA5BC2 /* Passsword GeneratorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40BBBE221913BE1800AA5BC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE231913BE1800AA5BC2 /* Cocoa.framework */,
+				40BBBE421913BE1800AA5BC2 /* XCTest.framework */,
+				40BBBE251913BE1800AA5BC2 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		40BBBE251913BE1800AA5BC2 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE261913BE1800AA5BC2 /* AppKit.framework */,
+				40BBBE271913BE1800AA5BC2 /* CoreData.framework */,
+				40BBBE281913BE1800AA5BC2 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		40BBBE291913BE1800AA5BC2 /* Passsword Generator */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE351913BE1800AA5BC2 /* AppDelegate.h */,
+				40BBBE361913BE1800AA5BC2 /* AppDelegate.m */,
+				40BBBE381913BE1800AA5BC2 /* MainMenu.xib */,
+				40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */,
+				40BBBE2A1913BE1800AA5BC2 /* Supporting Files */,
+			);
+			path = "Passsword Generator";
+			sourceTree = "<group>";
+		};
+		40BBBE2A1913BE1800AA5BC2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE2B1913BE1800AA5BC2 /* Passsword Generator-Info.plist */,
+				40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */,
+				40BBBE2F1913BE1800AA5BC2 /* main.m */,
+				40BBBE311913BE1800AA5BC2 /* Passsword Generator-Prefix.pch */,
+				40BBBE321913BE1800AA5BC2 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */,
+				40BBBE481913BE1800AA5BC2 /* Supporting Files */,
+			);
+			path = "Passsword GeneratorTests";
+			sourceTree = "<group>";
+		};
+		40BBBE481913BE1800AA5BC2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE491913BE1800AA5BC2 /* Passsword GeneratorTests-Info.plist */,
+				40BBBE4A1913BE1800AA5BC2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40BBBE1F1913BE1800AA5BC2 /* Passsword Generator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40BBBE511913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword Generator" */;
+			buildPhases = (
+				40BBBE1C1913BE1800AA5BC2 /* Sources */,
+				40BBBE1D1913BE1800AA5BC2 /* Frameworks */,
+				40BBBE1E1913BE1800AA5BC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Passsword Generator";
+			productName = "Passsword Generator";
+			productReference = 40BBBE201913BE1800AA5BC2 /* Passsword Generator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		40BBBE401913BE1800AA5BC2 /* Passsword GeneratorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40BBBE541913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword GeneratorTests" */;
+			buildPhases = (
+				40BBBE3D1913BE1800AA5BC2 /* Sources */,
+				40BBBE3E1913BE1800AA5BC2 /* Frameworks */,
+				40BBBE3F1913BE1800AA5BC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40BBBE461913BE1800AA5BC2 /* PBXTargetDependency */,
+			);
+			name = "Passsword GeneratorTests";
+			productName = "Passsword GeneratorTests";
+			productReference = 40BBBE411913BE1800AA5BC2 /* Passsword GeneratorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40BBBE181913BE1800AA5BC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = c13;
+				TargetAttributes = {
+					40BBBE401913BE1800AA5BC2 = {
+						TestTargetID = 40BBBE1F1913BE1800AA5BC2;
+					};
+				};
+			};
+			buildConfigurationList = 40BBBE1B1913BE1800AA5BC2 /* Build configuration list for PBXProject "Passsword Generator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 40BBBE171913BE1800AA5BC2;
+			productRefGroup = 40BBBE211913BE1800AA5BC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40BBBE1F1913BE1800AA5BC2 /* Passsword Generator */,
+				40BBBE401913BE1800AA5BC2 /* Passsword GeneratorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		40BBBE1E1913BE1800AA5BC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
+				40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */,
+				40BBBE341913BE1800AA5BC2 /* Credits.rtf in Resources */,
+				40BBBE3A1913BE1800AA5BC2 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40BBBE3F1913BE1800AA5BC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40BBBE4C1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40BBBE1C1913BE1800AA5BC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */,
+				40BBBE301913BE1800AA5BC2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40BBBE3D1913BE1800AA5BC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		40BBBE461913BE1800AA5BC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40BBBE1F1913BE1800AA5BC2 /* Passsword Generator */;
+			targetProxy = 40BBBE451913BE1800AA5BC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40BBBE2D1913BE1800AA5BC2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		40BBBE321913BE1800AA5BC2 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40BBBE331913BE1800AA5BC2 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		40BBBE381913BE1800AA5BC2 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40BBBE391913BE1800AA5BC2 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		40BBBE4A1913BE1800AA5BC2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40BBBE4B1913BE1800AA5BC2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		40BBBE4F1913BE1800AA5BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		40BBBE501913BE1800AA5BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		40BBBE521913BE1800AA5BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Generator-Prefix.pch";
+				INFOPLIST_FILE = "Passsword Generator/Passsword Generator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		40BBBE531913BE1800AA5BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Generator-Prefix.pch";
+				INFOPLIST_FILE = "Passsword Generator/Passsword Generator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		40BBBE551913BE1800AA5BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Passsword Generator.app/Contents/MacOS/Passsword Generator";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Generator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Passsword GeneratorTests/Passsword GeneratorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		40BBBE561913BE1800AA5BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Passsword Generator.app/Contents/MacOS/Passsword Generator";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Generator-Prefix.pch";
+				INFOPLIST_FILE = "Passsword GeneratorTests/Passsword GeneratorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40BBBE1B1913BE1800AA5BC2 /* Build configuration list for PBXProject "Passsword Generator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40BBBE4F1913BE1800AA5BC2 /* Debug */,
+				40BBBE501913BE1800AA5BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40BBBE511913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword Generator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40BBBE521913BE1800AA5BC2 /* Debug */,
+				40BBBE531913BE1800AA5BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		40BBBE541913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword GeneratorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40BBBE551913BE1800AA5BC2 /* Debug */,
+				40BBBE561913BE1800AA5BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40BBBE181913BE1800AA5BC2 /* Project object */;
+}
