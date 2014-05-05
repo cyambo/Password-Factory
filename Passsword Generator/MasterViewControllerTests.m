@@ -1,18 +1,18 @@
 //
-//  Passsword_GeneratorTests.m
-//  Passsword GeneratorTests
+//  MasterViewControllerTests.m
+//  Passsword Generator
 //
-//  Created by Cristiana Yambo on 5/2/14.
+//  Created by Cristiana Yambo on 5/5/14.
 //  Copyright (c) 2014 c13. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-
-@interface Passsword_GeneratorTests : XCTestCase
+#import "MasterViewController.h"
+@interface MasterViewControllerTests : XCTestCase
 
 @end
 
-@implementation Passsword_GeneratorTests
+@implementation MasterViewControllerTests
 
 - (void)setUp
 {
@@ -26,9 +26,10 @@
     [super tearDown];
 }
 
-//- (void)testExample
-//{
-//    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-//}
+- (void)testGeneratePronounceable
+{
+    
+    
+}
 
 @end

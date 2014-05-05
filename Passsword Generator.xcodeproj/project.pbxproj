@@ -36,6 +36,7 @@
 		40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */; };
 		40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */; };
 		40BBBE651913C0CF00AA5BC2 /* PasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE641913C0CF00AA5BC2 /* PasswordGenerator.m */; };
+		49F27CE01917EB47008DD7C6 /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MasterViewController.xib; path = ../MasterViewController.xib; sourceTree = "<group>"; };
 		40BBBE631913C0CF00AA5BC2 /* PasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordGenerator.h; sourceTree = "<group>"; };
 		40BBBE641913C0CF00AA5BC2 /* PasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordGenerator.m; sourceTree = "<group>"; };
+		49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewControllerTests.m; path = "../Passsword Generator/MasterViewControllerTests.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */,
+				49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */,
 				40BBBE481913BE1800AA5BC2 /* Supporting Files */,
 			);
 			path = "Passsword GeneratorTests";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F27CE01917EB47008DD7C6 /* MasterViewControllerTests.m in Sources */,
 				40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

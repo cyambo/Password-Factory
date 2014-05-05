@@ -16,6 +16,9 @@ static NSString* nonAmbiguousUpperCase;
 static NSString* nonAmbiguousLowerCase;
 static NSDictionary* characterPattern;
 static NSArray* phoeneticSounds;
+static NSArray* phoeneticSoundsTwo;
+static NSArray* phoeneticSoundsThree;
+static NSDictionary* pronounceableSep;
 
 //characterPattern = @{@"#" : @0, //Number
 //                     @"w" : @1, //Lowercase Word
@@ -30,6 +33,7 @@ static NSArray* phoeneticSounds;
 
 
 @interface MasterViewController ()
+
 @property (weak) IBOutlet NSTextField *passwordField;
 @property (nonatomic, strong) NSMutableString *currentRange;
 @property (nonatomic, assign) NSInteger passwordLength;
@@ -43,6 +47,8 @@ static NSArray* phoeneticSounds;
 @property (nonatomic, strong) NSArray *englishWords;
 @property (nonatomic, strong) NSArray *shortWords;
 @property (weak) IBOutlet NSTextField *patternText;
+@property (weak) IBOutlet NSMatrix *pronounceableSeparatorRadio;
+
 @end
 
 @implementation MasterViewController
@@ -80,11 +86,21 @@ static NSArray* phoeneticSounds;
         }
         
     }
-    NSLog(@"WORD COUNT %d",es.count);
+
     self.englishWords = [[NSArray alloc] initWithArray:e];
     self.shortWords = [[NSArray alloc] initWithArray:es];
 
 }
+- (char)randomFromString:(NSString *)source {
+    return [source characterAtIndex:(arc4random() % source.length)];
+}
+- (id)randomFromArray:(NSArray *)source {
+    return [source objectAtIndex:(arc4random() % source.count)];
+}
+- (IBAction)pressPrononunceableRadio:(id)sender {
+    [self generatePassword];
+}
+
 - (IBAction)changeLength:(id)sender {
     [self getPasswordLength];
 }
@@ -102,7 +118,7 @@ static NSArray* phoeneticSounds;
 }
 
 - (void)generatePassword {
-    NSString *password = [self generatePattern];
+    NSString *password = [self generatePronounceable];
     [self.passwordField setStringValue: password];
     [self setPasswordStrength:password];
     
@@ -126,6 +142,74 @@ static NSArray* phoeneticSounds;
     if (i<0) { i = 0;}
     [self.passwordStrengthLabel setStringValue:[NSString stringWithFormat:@"%0.2f,,%i",ct,i]];
     [self.passwordStrengthLevel setIntegerValue:i];
+}
+
+
+//pronounceableSep = @{
+//                     @"None": @1,
+//                     @"Hyphen" : @2,
+//                     @"Characters" : @3,
+//                     @"Numbers" : @4,
+//                     @"Symbols" : @5
+//                     };
+- (NSString *)generatePronounceable {
+    NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];
+    NSMutableString *p = [[NSMutableString alloc] init];
+    char sep = ' ';
+    switch ((int)[[pronounceableSep objectForKey:selected.title] integerValue]) {
+        case 1:
+            sep = ' ';
+            break;
+        case 2:
+            sep = '-';
+            break;
+        case 3:
+            sep = [self randomFromString:nonAmbiguousUpperCase];
+            break;
+        case 4:
+            sep = [[NSString stringWithFormat:@"%d",arc4random()%10] characterAtIndex:0];
+            break;
+        case 5:
+            sep = [self randomFromString:symbols];
+            break;
+        default:
+            sep = ' ';
+            break;
+    }
+    
+    
+    while (p.length < self.passwordLength) {
+        NSString *append = [[self getPronounceableForLength:(self.passwordLength - (int)p.length)] lowercaseString];
+        if ([append isEqual: @""]) {
+            break;
+        } else {
+            [p appendString:append];
+        }
+        if (p.length < self.passwordLength) {
+            if (sep != ' ') {
+                [p appendString:[NSString stringWithFormat:@"%c",sep]];
+            }
+        }
+        
+    }
+    
+    return p;
+    
+}
+- (NSString *)getPronounceableForLength:(int)length {
+    if (length < 2) {
+        return @"";
+    }
+    else if (length == 2) {
+        return [self randomFromArray:phoeneticSoundsTwo];
+    } else if (length == 3) {
+        return [self randomFromArray:phoeneticSoundsThree];
+    }
+    else {
+        return [self randomFromArray:phoeneticSounds];
+    }
+    return @"";
+    
 }
 - (NSString *)generateRandom {
     [self setCharacterRange];
@@ -238,7 +322,11 @@ static NSArray* phoeneticSounds;
     lowerCase = @"abcdefghijklmnopqrstuvwxyz";
     nonAmbiguousUpperCase = @"ABCDEFGHJKLMNPQRSTUVWXYZ";
     nonAmbiguousLowerCase = @"abcdefghijkmnpqrstuvwxyz";
-    phoeneticSounds = @[@"BA",@"BE",@"BI",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"DY",@"FA",@"FE",@"FI",@"FO",@"FU",@"FY",@"GA",@"GE",@"GI",@"GO",@"GU",@"GY",@"HA",@"HE",@"HI",@"HO",@"HU",@"HY",@"JA",@"JE",@"JI",@"JO",@"JU",@"JY",@"KA",@"KE",@"KI",@"KO",@"KU",@"KY",@"LA",@"LE",@"LI",@"LO",@"LU",@"LY",@"MA",@"ME",@"MI",@"MO",@"MU",@"MY",@"NA",@"NE",@"NI",@"NO",@"NU",@"NY",@"PA",@"PE",@"PI",@"PO",@"PU",@"PY",@"RA",@"RE",@"RI",@"RO",@"RU",@"RY",@"SA",@"SE",@"SI",@"SO",@"SU",@"SY",@"TA",@"TE",@"TI",@"TO",@"TU",@"TY",@"VA",@"VE",@"VI",@"VO",@"VU",@"VY",@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
+    phoeneticSoundsTwo = @[@"BA",@"BE",@"BI",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"DY",@"FA",@"FE",@"FI",@"FO",@"FU",@"FY",@"GA",@"GE",@"GI",@"GO",@"GU",@"GY",@"HA",@"HE",@"HI",@"HO",@"HU",@"HY",@"JA",@"JE",@"JI",@"JO",@"JU",@"JY",@"KA",@"KE",@"KI",@"KO",@"KU",@"KY",@"LA",@"LE",@"LI",@"LO",@"LU",@"LY",@"MA",@"ME",@"MI",@"MO",@"MU",@"MY",@"NA",@"NE",@"NI",@"NO",@"NU",@"NY",@"PA",@"PE",@"PI",@"PO",@"PU",@"PY",@"RA",@"RE",@"RI",@"RO",@"RU",@"RY",@"SA",@"SE",@"SI",@"SO",@"SU",@"SY",@"TA",@"TE",@"TI",@"TO",@"TU",@"TY",@"VA",@"VE",@"VI",@"VO",@"VU",@"VY"];
+    phoeneticSoundsThree = @[@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
+    phoeneticSounds = [phoeneticSoundsTwo arrayByAddingObjectsFromArray:phoeneticSoundsThree];
+    
+
     characterPattern = @{@"#" : @1, //Number
                          @"w" : @2, //Lowercase Word
                          @"W" : @3, //capital word
@@ -247,6 +335,13 @@ static NSArray* phoeneticSounds;
                          @"!" : @6, //symbol
                          @"c" : @7, //random character
                          @"C" : @8 //random uppercase char
+                         };
+    pronounceableSep = @{
+                         @"None": @1,
+                         @"Hyphen" : @2,
+                         @"Characters" : @3,
+                         @"Numbers" : @4,
+                         @"Symbols" : @5
                          };
  
 }

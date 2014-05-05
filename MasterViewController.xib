@@ -6,12 +6,16 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MasterViewController">
             <connections>
+                <outlet property="avoidAmbiguous" destination="q2y-v2-bIT" id="UFp-K2-vzq"/>
+                <outlet property="mixedCase" destination="FAm-zY-Nsw" id="SjC-qo-wk6"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
                 <outlet property="passwordLengthLabel" destination="iPo-IR-0L6" id="e2t-Xq-zDC"/>
                 <outlet property="passwordLengthSlider" destination="XgZ-qu-GgE" id="5QV-RN-j6c"/>
                 <outlet property="passwordStrengthLabel" destination="Dby-xr-URO" id="FZL-fc-kBp"/>
                 <outlet property="passwordStrengthLevel" destination="sh2-oy-uhM" id="9uD-Yc-c1q"/>
                 <outlet property="patternText" destination="Tx1-SO-FyV" id="On6-0L-CeL"/>
+                <outlet property="pronounceableSeparatorRadio" destination="JPH-tB-8uS" id="mzF-4M-Qzf"/>
+                <outlet property="useSymbols" destination="Evx-Qg-3Sd" id="LBw-PH-aCq"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -42,7 +46,7 @@
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XgZ-qu-GgE">
-                    <rect key="frame" x="18" y="522" width="164" height="25"/>
+                    <rect key="frame" x="18" y="522" width="164" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.384615384615385" tickMarkPosition="below" numberOfTickMarks="40" allowsTickMarkValuesOnly="YES" sliderType="linear" id="deP-cO-0Vt">
                         <connections>
@@ -120,7 +124,7 @@
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Pattern" identifier="2" id="etA-Qv-795">
-                            <view key="view" ambiguous="YES" id="tNm-qa-FhM">
+                            <view key="view" id="tNm-qa-FhM">
                                 <rect key="frame" x="10" y="33" width="378" height="291"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -137,9 +141,49 @@
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Pronounceable" identifier="" id="Jox-n0-Kcz">
-                            <view key="view" id="HQx-iP-Ml6">
+                            <view key="view" ambiguous="YES" id="HQx-iP-Ml6">
                                 <rect key="frame" x="10" y="33" width="378" height="291"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPH-tB-8uS">
+                                        <rect key="frame" x="5" y="195" width="183" height="98"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        <size key="cellSize" width="89" height="18"/>
+                                        <size key="intercellSpacing" width="4" height="2"/>
+                                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="EZT-5o-weR">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <cells>
+                                            <column>
+                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="MTM-cn-e23">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" inset="2" id="EXP-sd-JGV">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="Characters" imagePosition="left" alignment="left" inset="2" id="8r4-EK-pG0">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" inset="2" id="IX8-gD-V6D">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" inset="2" id="7bE-bE-J3N">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </column>
+                                        </cells>
+                                        <connections>
+                                            <action selector="pressPrononunceableRadio:" target="-2" id="rFv-Nt-qig"/>
+                                        </connections>
+                                    </matrix>
+                                </subviews>
                             </view>
                         </tabViewItem>
                     </tabViewItems>
