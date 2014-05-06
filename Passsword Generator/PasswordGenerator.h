@@ -14,6 +14,7 @@
 @property (nonatomic, assign) BOOL avoidAmbiguous;
 @property (nonatomic, assign) BOOL mixedCase;
 
+
 - (NSString *)generatePronounceable:(NSString *)selectedTitle;
 - (NSString *)generateRandom;
 - (NSString *)generatePattern: (NSString *)pattern;

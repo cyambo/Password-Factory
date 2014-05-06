@@ -26,10 +26,6 @@
     [super tearDown];
 }
 
-- (void)testGeneratePronounceable
-{
-    
-    
-}
+
 
 @end

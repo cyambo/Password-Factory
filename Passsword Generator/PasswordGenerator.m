@@ -36,6 +36,11 @@ static NSDictionary* pronounceableSep;
         
         [self loadJSONDict];
         [self setStatics];
+        self.useSymbols = YES;
+        self.avoidAmbiguous = YES;
+        self.mixedCase = YES;
+        self.passwordLength = 5;
+        
     }
     return self;
 }
@@ -49,7 +54,7 @@ static NSDictionary* pronounceableSep;
     for (NSString *w in [dicts objectForKey:@"english"]) {
         
         if ([w rangeOfCharacterFromSet:charSet].length == 0){
-            if (w.length > 4 && w.length < 10) {
+            if (w.length > 6) {
                 [e addObject:w];
             }
             if (w.length > 3 && w.length < 6) {

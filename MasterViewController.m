@@ -48,9 +48,10 @@
 }
 - (IBAction)copyToPasteboard:(id)sender {
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-    NSInteger changeCount = [pasteboard clearContents];
+    [pasteboard clearContents];
     NSArray *toPasteboard = @[self.passwordField.stringValue];
     BOOL ok = [pasteboard writeObjects:toPasteboard];
+    if (!ok) { NSLog(@"Write to pasteboard failed");}
     
 }
 - (void)controlTextDidChange:(NSNotification *)obj {
@@ -115,25 +116,9 @@
 }
 - (void)setPasswordStrength:(NSString *)password {
     BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:password];
-    double ct = strength.crackTime;
-    //[10**2, 10**4, 10**6, 10**8, Infinity].
-    int i;
-    ct = ct/100.0;
-    for (i=0;i<11; i++){
-        ct = ct/10.0;
-        if(ct <=1){
-            break;
-        }
-        
-    }
-    i--;
-    if (i<0) { i = 0;}
-    NSLog(@"CT %f",ct);
-    if (ct > 1) {ct = 0;}
-    ct+=i;
-    ct*=10;
-    NSLog(@"I Strength %d",i);
-    NSLog(@"CT2 %f",ct);
+    //playing around with numbers to make a good scale
+    double ct = log10(strength.crackTime/100)*10;
+    if (ct > 100) {ct = 100;}
     [self.passwordStrengthLevel setFloatValue:ct];
 }
 
