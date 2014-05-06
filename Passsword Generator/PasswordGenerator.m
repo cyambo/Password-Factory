@@ -104,7 +104,7 @@ static NSDictionary* pronounceableSep;
     char sep = [self getPronounceableSeparator:selectedTitle];
 
     while (p.length < self.passwordLength) {
-        NSString *append = [[self getPronounceableForLength:(self.passwordLength - (int)p.length)] lowercaseString];
+        NSString *append = [[self getPronounceableForLength:(self.passwordLength - p.length)] lowercaseString];
         if ([append isEqual: @""]) {
             break;
         } else {
@@ -245,7 +245,7 @@ static NSDictionary* pronounceableSep;
     lowerCase = @"abcdefghijklmnopqrstuvwxyz";
     nonAmbiguousUpperCase = @"ABCDEFGHJKLMNPQRSTUVWXYZ";
     nonAmbiguousLowerCase = @"abcdefghijkmnpqrstuvwxyz";
-    phoeneticSoundsTwo = @[@"BA",@"BE",@"BI",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"DY",@"FA",@"FE",@"FI",@"FO",@"FU",@"FY",@"GA",@"GE",@"GI",@"GO",@"GU",@"GY",@"HA",@"HE",@"HI",@"HO",@"HU",@"HY",@"JA",@"JE",@"JI",@"JO",@"JU",@"JY",@"KA",@"KE",@"KI",@"KO",@"KU",@"KY",@"LA",@"LE",@"LI",@"LO",@"LU",@"LY",@"MA",@"ME",@"MI",@"MO",@"MU",@"MY",@"NA",@"NE",@"NI",@"NO",@"NU",@"NY",@"PA",@"PE",@"PI",@"PO",@"PU",@"PY",@"RA",@"RE",@"RI",@"RO",@"RU",@"RY",@"SA",@"SE",@"SI",@"SO",@"SU",@"SY",@"TA",@"TE",@"TI",@"TO",@"TU",@"TY",@"VA",@"VE",@"VI",@"VO",@"VU",@"VY"];
+    phoeneticSoundsTwo = @[@"BA",@"BE",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"FA",@"FE",@"FI",@"FO",@"FU",@"GA",@"GE",@"GI",@"GO",@"GU",@"HA",@"HE",@"HI",@"HO",@"HU",@"JA",@"JE",@"JI",@"JO",@"JU",@"KA",@"KE",@"KI",@"KO",@"KU",@"LA",@"LE",@"LI",@"LO",@"LU",@"MA",@"ME",@"MI",@"MO",@"MU",@"NA",@"NE",@"NI",@"NO",@"NU",@"PA",@"PE",@"PI",@"PO",@"PU",@"RA",@"RE",@"RI",@"RO",@"RU",@"SA",@"SE",@"SI",@"SO",@"SU",@"TA",@"TE",@"TI",@"TO",@"TU",@"VA",@"VE",@"VI",@"VO",@"VU"];
     phoeneticSoundsThree = @[@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
     phoeneticSounds = [phoeneticSoundsTwo arrayByAddingObjectsFromArray:phoeneticSoundsThree];
     

@@ -117,7 +117,23 @@
 - (void)setPasswordStrength:(NSString *)password {
     BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:password];
     //playing around with numbers to make a good scale
-    double ct = log10(strength.crackTime/100)*10;
+    double ct = log10(strength.crackTime);
+    NSLog(@"CT %0.2f",ct);
+    //tweaking output based on password type
+    switch ([self.passwordTypeTab.selectedTabViewItem.identifier intValue]) {
+        case 0: //random
+            ct = (ct/40)*100;
+            break;
+        case 1: //pattern
+            
+            ct = (ct/10)*100;
+            break;
+        case 2: //pronounceable
+            ct = (ct/40)*100;
+            break;
+    }
+    
+    
     if (ct > 100) {ct = 100;}
     [self.passwordStrengthLevel setFloatValue:ct];
 }
