@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface PasswordGenerator : NSObject
-@property (nonatomic, assign) NSInteger passwordLength;
+@property (nonatomic, assign) NSUInteger passwordLength;
 @property (nonatomic, assign) BOOL useSymbols;
 @property (nonatomic, assign) BOOL avoidAmbiguous;
 @property (nonatomic, assign) BOOL mixedCase;

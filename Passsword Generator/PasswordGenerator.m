@@ -74,26 +74,29 @@ static NSDictionary* pronounceableSep;
 - (id)randomFromArray:(NSArray *)source {
     return [source objectAtIndex:(arc4random() % source.count)];
 }
-- (char)getPronounceableSeparator:(NSString *)selectedTitle {
-    char sep = ' ';
+- (NSString *)getPronounceableSeparator:(NSString *)selectedTitle {
+    NSString *sep = @"";
     switch ((int)[[pronounceableSep objectForKey:selectedTitle] integerValue]) {
         case 1:
-            sep = ' ';
+            sep = @"";
             break;
         case 2:
-            sep = '-';
+            sep = @"-";
             break;
         case 3:
-            sep = [self randomFromString:nonAmbiguousUpperCase];
+            sep = [NSString stringWithFormat:@"%c",[self randomFromString:nonAmbiguousUpperCase]];
             break;
         case 4:
-            sep = [[NSString stringWithFormat:@"%d",arc4random()%10] characterAtIndex:0];
+            sep = [NSString stringWithFormat:@"%d",arc4random()%10];
             break;
         case 5:
-            sep = [self randomFromString:symbols];
+            sep = [NSString stringWithFormat:@"%c",[self randomFromString:symbols]];
+            break;
+        case 6:
+            sep = @" ";
             break;
         default:
-            sep = ' ';
+            sep = @"";
             break;
     }
     return sep;
@@ -101,7 +104,7 @@ static NSDictionary* pronounceableSep;
 - (NSString *)generatePronounceable:(NSString *)selectedTitle {
 
     NSMutableString *p = [[NSMutableString alloc] init];
-    char sep = [self getPronounceableSeparator:selectedTitle];
+    NSString *sep = [self getPronounceableSeparator:selectedTitle];
 
     while (p.length < self.passwordLength) {
         NSString *append = [[self getPronounceableForLength:(self.passwordLength - p.length)] lowercaseString];
@@ -111,9 +114,7 @@ static NSDictionary* pronounceableSep;
             [p appendString:append];
         }
         if (p.length < self.passwordLength) {
-            if (sep != ' ') {
-                [p appendString:[NSString stringWithFormat:@"%c",sep]];
-            }
+            [p appendString:sep];
         }
         
     }
@@ -121,7 +122,7 @@ static NSDictionary* pronounceableSep;
     return p;
     
 }
-- (NSString *)getPronounceableForLength:(int)length {
+- (NSString *)getPronounceableForLength:(NSUInteger)length {
     if (length < 2) {
         return @"";
     }
@@ -264,7 +265,8 @@ static NSDictionary* pronounceableSep;
                          @"Hyphen" : @2,
                          @"Characters" : @3,
                          @"Numbers" : @4,
-                         @"Symbols" : @5
+                         @"Symbols" : @5,
+                         @"Spaces"  : @6
                          };
     
 }

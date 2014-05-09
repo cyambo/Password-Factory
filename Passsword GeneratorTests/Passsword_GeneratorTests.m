@@ -57,6 +57,11 @@ const int LONG_PASSWORD_LENGTH = 100;
              generateBlock:^{
                  return [self.pg generatePronounceable:@"Symbols"];
              }];
+    [self regexReplaceTest:@"([a-z]+ ?)+"
+              errorMessage:@"Value of password not valid for generatePronounceable:Spaces"
+             generateBlock:^{
+                 return [self.pg generatePronounceable:@"Spaces"];
+             }];
 
     
 }
