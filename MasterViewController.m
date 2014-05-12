@@ -133,8 +133,4 @@
     [self.passwordStrengthLevel setFloatValue:ct];
 }
 
-
-
-
-
 @end

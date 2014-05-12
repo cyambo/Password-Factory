@@ -165,4 +165,19 @@
     XCTAssertTrue([pbval isEqualToString:[self getPasswordFieldValue]], @"Password not copied to pasteboard");
   
 }
+- (void)testManualChangePasswordField {
+    [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
+    
+    id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
+    [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
+    
+    //testing pattern change
+    [self.mvc.passwordField setStringValue:@"c"];
+    [self.mvc controlTextDidChange:mockNotification];
+    float currStrength = self.mvc.passwordStrengthLevel.floatValue;
+    
+    [self.mvc.passwordField setStringValue:@"!@#$%$#@@#$"];
+    [self.mvc controlTextDidChange:mockNotification];
+    XCTAssertTrue(currStrength != self.mvc.passwordStrengthLevel.floatValue, @"Password strength did not update when passwordField is entered manually");
+}
 @end
