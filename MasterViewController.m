@@ -12,21 +12,8 @@
 
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
-@property (weak) IBOutlet NSTextField *passwordField;
 
-@property (weak) IBOutlet NSButton *useSymbols;
-@property (weak) IBOutlet NSButton *mixedCase;
-@property (weak) IBOutlet NSButton *avoidAmbiguous;
-@property (weak) IBOutlet NSSlider *passwordLengthSliderPrononunceable;
-@property (weak) IBOutlet NSTextField *passwordLengthLabelPronounceable;
-@property (weak) IBOutlet NSSlider *passwordLengthSliderRandom;
-@property (weak) IBOutlet NSTextField *passwordLengthLabelRandom;
-@property (weak) IBOutlet NSLevelIndicator *passwordStrengthLevel;
-@property (weak) IBOutlet NSTabView *passwordTypeTab;
 
-@property (weak) IBOutlet NSTextField *patternText;
-@property (weak) IBOutlet NSMatrix *pronounceableSeparatorRadio;
-@property (nonatomic, strong) PasswordGenerator *pg;
 
 @end
 
@@ -42,8 +29,9 @@
 }
 - (void)awakeFromNib {
     [self getPasswordLength];
-    [[self passwordTypeTab] setDelegate:self];
-    [[self patternText] setDelegate:self];
+    [self.passwordTypeTab setDelegate:self];
+    [self.patternText setDelegate:self];
+    [self.passwordField setDelegate:self];
     
 }
 - (IBAction)copyToPasteboard:(id)sender {
@@ -55,7 +43,14 @@
     
 }
 - (void)controlTextDidChange:(NSNotification *)obj {
-    [self generatePassword];
+    //if the change came from the passwordField, just reset the strength
+    //otherwise generate the password
+    if(obj.object == self.passwordField) {
+        [self setPasswordStrength:[self.passwordField stringValue]];
+    } else {
+        [self generatePassword];
+    }
+    
 }
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
     [self generatePassword];
@@ -119,7 +114,6 @@
     BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:password];
     //playing around with numbers to make a good scale
     double ct = log10(strength.crackTime);
-    NSLog(@"CT %0.2f",ct);
     //tweaking output based on password type
     switch ([self.passwordTypeTab.selectedTabViewItem.identifier intValue]) {
         case 0: //random
