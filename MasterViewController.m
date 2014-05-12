@@ -100,10 +100,51 @@
             passwordValue = [self.pg generatePronounceable:[self getPronounceableRadioSelected]];
             break;
     }
-    [self.passwordField setStringValue: passwordValue];
+    [self updatePasswordField:passwordValue];
     [self setPasswordStrength:passwordValue];
     
     
+}
+- (void)updatePasswordField:(NSString *)passwordValue {
+    NSColor *nColor = [NSColor magentaColor];
+    NSColor *cColor = [NSColor blackColor];
+    NSColor *clColor = [NSColor darkGrayColor];
+    NSColor *sColor = [NSColor purpleColor];
+
+    
+    NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+    NSError *error;
+    NSRegularExpression *charRegex = [[NSRegularExpression alloc] initWithPattern:@"[A-Z]" options:0 error:&error];
+    NSRegularExpression *charlRegex = [[NSRegularExpression alloc] initWithPattern:@"[a-z]" options:0 error:&error];
+    NSRegularExpression *numRegex = [[NSRegularExpression alloc] initWithPattern:@"[0-9]" options:0 error:&error];
+    NSRegularExpression *symRegex = [[NSRegularExpression alloc] initWithPattern:@"[^0-9A-Za-z]" options:0 error:&error];
+    
+    NSRange r = NSMakeRange(0, 1);
+    //colorzing password label
+    [s beginEditing];
+    for (int i=0; i < passwordValue.length ; i++) {
+        NSColor *c = [NSColor blueColor];
+        NSString *at = [NSString stringWithFormat:@"%c",[passwordValue characterAtIndex:i]];
+        NSLog(@"LOOP: %d AT:%@",i,at);
+        if ([charRegex matchesInString:at options:0 range:r].count) {
+            c = cColor;
+        } else if ([charlRegex matchesInString:at options:0 range:r].count){
+            c = clColor;
+        } else if ([numRegex matchesInString:at options:0 range:r].count){
+            c = nColor;
+        } else if ([symRegex matchesInString:at options:0 range:r].count){
+            c = sColor;
+        }
+
+        [s addAttribute:NSForegroundColorAttributeName
+                       value:c
+                       range:NSMakeRange(i, 1)];
+
+
+    }
+    [s endEditing];
+    //    [self.passwordField setStringValue: passwordValue];
+    [self.passwordField setAttributedStringValue:s];
 }
 - (NSString *)getPronounceableRadioSelected {
     NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];

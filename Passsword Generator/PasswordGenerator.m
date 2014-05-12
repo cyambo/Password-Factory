@@ -12,8 +12,10 @@
 static NSString* symbols;
 static NSString* upperCase;
 static NSString* lowerCase;
+static NSString* numbers;
 static NSString* nonAmbiguousUpperCase;
 static NSString* nonAmbiguousLowerCase;
+static NSString* nonAmbiguousNumbers;
 static NSDictionary* characterPattern;
 static NSArray* phoeneticSounds;
 static NSArray* phoeneticSoundsTwo;
@@ -159,8 +161,10 @@ static NSDictionary* pronounceableSep;
     }
     if (self.avoidAmbiguous) {
         [tmp appendString:nonAmbiguousLowerCase];
+        [tmp appendString:nonAmbiguousNumbers];
     } else {
         [tmp appendString:lowerCase];
+        [tmp appendString:numbers];
     }
     if (self.mixedCase) {
         if (self.avoidAmbiguous) {
@@ -247,6 +251,8 @@ static NSDictionary* pronounceableSep;
     lowerCase = @"abcdefghijklmnopqrstuvwxyz";
     nonAmbiguousUpperCase = @"ABCDEFGHJKLMNPQRSTUVWXYZ";
     nonAmbiguousLowerCase = @"abcdefghijkmnpqrstuvwxyz";
+    numbers = @"0123456789";
+    nonAmbiguousNumbers = @"23456789";
     phoeneticSoundsTwo = @[@"BA",@"BE",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"FA",@"FE",@"FI",@"FO",@"FU",@"GA",@"GE",@"GI",@"GO",@"GU",@"HA",@"HE",@"HI",@"HO",@"HU",@"JA",@"JE",@"JI",@"JO",@"JU",@"KA",@"KE",@"KI",@"KO",@"KU",@"LA",@"LE",@"LI",@"LO",@"LU",@"MA",@"ME",@"MI",@"MO",@"MU",@"NA",@"NE",@"NI",@"NO",@"NU",@"PA",@"PE",@"PI",@"PO",@"PU",@"RA",@"RE",@"RI",@"RO",@"RU",@"SA",@"SE",@"SI",@"SO",@"SU",@"TA",@"TE",@"TI",@"TO",@"TU",@"VA",@"VE",@"VI",@"VO",@"VU"];
     phoeneticSoundsThree = @[@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
     phoeneticSounds = [phoeneticSoundsTwo arrayByAddingObjectsFromArray:phoeneticSoundsThree];
