@@ -59,11 +59,11 @@
                     <tabViewItems>
                         <tabViewItem label="Random" identifier="0" id="zr5-iB-5I9">
                             <view key="view" ambiguous="YES" id="TTS-Hg-P6L">
-                                <rect key="frame" x="10" y="33" width="379" height="105"/>
+                                <rect key="frame" x="10" y="33" width="202" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-Qg-3Sd">
-                                        <rect key="frame" x="32" y="54" width="304" height="18"/>
+                                        <rect key="frame" x="32" y="-51" width="304" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XDj-Cb-rZ3">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -74,7 +74,7 @@
                                         </connections>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAm-zY-Nsw">
-                                        <rect key="frame" x="32" y="34" width="304" height="18"/>
+                                        <rect key="frame" x="32" y="-71" width="304" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OPh-WO-qZF">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -85,7 +85,7 @@
                                         </connections>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2y-v2-bIT">
-                                        <rect key="frame" x="32" y="14" width="304" height="18"/>
+                                        <rect key="frame" x="32" y="-91" width="304" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Avoid Ambiguous Characters" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yrh-pS-CML">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -96,7 +96,7 @@
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fc-DjX">
-                                        <rect key="frame" x="32" y="77" width="263" height="25"/>
+                                        <rect key="frame" x="32" y="-28" width="263" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.384615384615385" tickMarkPosition="below" numberOfTickMarks="40" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mGh-qr-LNC">
                                             <connections>
@@ -105,7 +105,7 @@
                                         </sliderCell>
                                     </slider>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqi-Du-606">
-                                        <rect key="frame" x="299" y="82" width="48" height="17"/>
+                                        <rect key="frame" x="299" y="-23" width="48" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="LRQ-wR-Nch">
                                             <font key="font" metaFont="system"/>
@@ -176,29 +176,29 @@ C -Random Uppercase Character</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="MTM-cn-e23">
+                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" inset="2" id="MTM-cn-e23">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" inset="2" id="EXP-sd-JGV">
+                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="1" inset="2" id="EXP-sd-JGV">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Characters                " imagePosition="left" alignment="left" inset="2" id="8r4-EK-pG0">
+                                                <buttonCell type="radio" title="Characters                " imagePosition="left" alignment="left" tag="2" inset="2" id="8r4-EK-pG0">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" inset="2" id="mWc-WT-f7O">
+                                                <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" tag="3" inset="2" id="mWc-WT-f7O">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" inset="2" id="28X-de-1zu">
+                                                <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" tag="4" inset="2" id="28X-de-1zu">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" inset="2" id="CzE-8V-8qc">
+                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="5" inset="2" id="CzE-8V-8qc">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>

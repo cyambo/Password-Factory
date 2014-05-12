@@ -28,4 +28,6 @@
 
 
 - (IBAction)changeLength:(id)sender;
+- (IBAction)pressPrononunceableRadio:(id)sender;
+- (NSString *)getPronounceableRadioSelected;
 @end

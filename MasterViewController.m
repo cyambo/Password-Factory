@@ -107,7 +107,7 @@
 }
 - (NSString *)getPronounceableRadioSelected {
     NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];
-    return [selected.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return [(NSString *)selected.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
 }
 - (void)setPasswordStrength:(NSString *)password {
