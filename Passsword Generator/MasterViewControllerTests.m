@@ -157,4 +157,12 @@
     [self.mvc.generateButton performClick:self.mvc];
     XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Pressing generate button does not regenerate new password");
 }
+- (void)testCopyToPasteboard {
+    [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
+    [self.mvc.pasteboardButton performClick:self.mvc];
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSString *pbval = [pasteboard stringForType:NSPasteboardTypeString];
+    XCTAssertTrue([pbval isEqualToString:[self getPasswordFieldValue]], @"Password not copied to pasteboard");
+  
+}
 @end
