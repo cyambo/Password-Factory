@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		409770E2192091EE00C1A2D5 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
+		409770E5192092E600C1A2D5 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
 		40A152541913E8AB0091E264 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152371913E8AB0091E264 /* frequency_lists.json */; };
 		40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152381913E8AB0091E264 /* adjacency_graphs.json */; };
 		40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1523A1913E8AB0091E264 /* BBDateMatcher.m */; };
@@ -49,7 +51,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		409770E4192092CF00C1A2D5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				409770E5192092E600C1A2D5 /* OCMock.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		409770E1192091EE00C1A2D5 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = ../OCMock.framework; sourceTree = "<group>"; };
 		40A152371913E8AB0091E264 /* frequency_lists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_lists.json; path = ../ZXCVBN/ZXCVBN/frequency_lists.json; sourceTree = "<group>"; };
 		40A152381913E8AB0091E264 /* adjacency_graphs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = adjacency_graphs.json; path = ../ZXCVBN/ZXCVBN/adjacency_graphs.json; sourceTree = "<group>"; };
 		40A152391913E8AB0091E264 /* BBDateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDateMatcher.h; path = ../ZXCVBN/ZXCVBN/BBDateMatcher.h; sourceTree = "<group>"; };
@@ -121,6 +137,7 @@
 			files = (
 				40BBBE441913BE1800AA5BC2 /* Cocoa.framework in Frameworks */,
 				40BBBE431913BE1800AA5BC2 /* XCTest.framework in Frameworks */,
+				409770E2192091EE00C1A2D5 /* OCMock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +203,7 @@
 		40BBBE221913BE1800AA5BC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				409770E1192091EE00C1A2D5 /* OCMock.framework */,
 				40BBBE231913BE1800AA5BC2 /* Cocoa.framework */,
 				40BBBE421913BE1800AA5BC2 /* XCTest.framework */,
 				40BBBE251913BE1800AA5BC2 /* Other Frameworks */,
@@ -292,6 +310,7 @@
 			buildConfigurationList = 40BBBE541913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword GeneratorTests" */;
 			buildPhases = (
 				40BBBE3D1913BE1800AA5BC2 /* Sources */,
+				409770E4192092CF00C1A2D5 /* CopyFiles */,
 				40BBBE3E1913BE1800AA5BC2 /* Frameworks */,
 				40BBBE3F1913BE1800AA5BC2 /* Resources */,
 			);
@@ -518,6 +537,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/OCMock,
+					2.2.4/OSX,
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Generator-Prefix.pch";
 				INFOPLIST_FILE = "Passsword Generator/Passsword Generator-Info.plist";
@@ -531,6 +556,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/OCMock,
+					2.2.4/OSX,
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Generator-Prefix.pch";
 				INFOPLIST_FILE = "Passsword Generator/Passsword Generator-Info.plist";
@@ -547,6 +578,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Passsword",
+					Generator,
+					"$(PROJECT_DIR)",
+					/Users/cristiana/Dropbox/dev/Password,
+					Generator,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Generator-Prefix.pch";
@@ -569,6 +605,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Passsword",
+					Generator,
+					"$(PROJECT_DIR)",
+					/Users/cristiana/Dropbox/dev/Password,
+					Generator,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Generator-Prefix.pch";

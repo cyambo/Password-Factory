@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "MasterViewController.h"
 @interface MasterViewControllerTests : XCTestCase
 @property (nonatomic, strong) MasterViewController *mvc;
@@ -80,5 +81,20 @@
     XCTAssertEqual(22, self.mvc.passwordLengthSliderPrononunceable.intValue, @"Pronounceable length should be equal to random length 22 it is %@",self.mvc.passwordLengthSliderPrononunceable.stringValue);
     XCTAssertEqual(22, self.mvc.passwordLengthLabelPronounceable.intValue, @"Pronounceable length label should be the same as random 22 it is %@",self.mvc.passwordLengthLabelPronounceable);
 }
+- (void)testPattern {
+    [self.mvc.passwordTypeTab selectTabViewItemAtIndex:1];
 
+    id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
+    [[[mockNotification stub] andReturn:self.mvc.patternText] object];
+    
+    //testing pattern change
+    [self.mvc.patternText setStringValue:@"c"];
+    [self.mvc controlTextDidChange:mockNotification];
+    XCTAssertEqual(1, self.mvc.passwordField.stringValue.length, @"Password length should be 1");
+    
+    [self.mvc.patternText setStringValue:@"cC\\C"];
+    [self.mvc controlTextDidChange:mockNotification];
+    XCTAssertEqual(3, self.mvc.passwordField.stringValue.length, @"Password length should be 3");
+
+}
 @end
