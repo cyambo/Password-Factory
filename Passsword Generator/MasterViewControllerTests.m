@@ -28,15 +28,17 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
-
+- (NSString *)getPasswordFieldValue {
+    return self.mvc.passwordField.stringValue;
+}
 - (void)testRandom {
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
     NSArray *checks = @[self.mvc.useSymbols,self.mvc.avoidAmbiguous,self.mvc.mixedCase];
     int i = 0;
     for (NSButton *b in checks){
-        NSString *p = [self.mvc.passwordField stringValue];
+        NSString *p = [self getPasswordFieldValue];
         [b performClick:self];
-        XCTAssertNotEqual(p, [self.mvc.passwordField stringValue], @"Checkbox %@ failed to change value",b.title);
+        XCTAssertNotEqual(p, [self getPasswordFieldValue], @"Checkbox %@ failed to change value",b.title);
         switch (i) {
             case 0:
                 XCTAssertEqual(self.mvc.useSymbols.state, self.mvc.pg.useSymbols, @"useSymbols failed to check");
@@ -56,7 +58,7 @@
     [self.mvc.passwordLengthSliderRandom setIntegerValue:5];
     [self.mvc changeLength:self.mvc.passwordLengthSliderRandom];
     
-    XCTAssertEqual(5, [self.mvc.passwordField stringValue].length, @"Password not changed to 5");
+    XCTAssertEqual(5, [self getPasswordFieldValue].length, @"Password not changed to 5");
     XCTAssertEqual(5, self.mvc.passwordLengthLabelPronounceable.intValue, @"Random password length label not changed to 5 it is %@",self.mvc.passwordLengthLabelPronounceable.stringValue);
     
     //checking random password length setter min
@@ -64,7 +66,7 @@
     [self.mvc.passwordLengthSliderRandom setIntegerValue:4];
     [self.mvc changeLength:self.mvc.passwordLengthSliderRandom];
     ;
-    XCTAssertEqual(5, [self.mvc.passwordField stringValue].length, @"Password not changed to 5");
+    XCTAssertEqual(5, [self getPasswordFieldValue].length, @"Password not changed to 5");
     XCTAssertEqual(5, self.mvc.passwordLengthLabelPronounceable.intValue, @"Random Password length label should be 5 it is %@",self.mvc.passwordLengthLabelPronounceable.stringValue);
     
     //checking random password length setter max
@@ -72,7 +74,7 @@
     [self.mvc.passwordLengthSliderRandom setIntegerValue:41];
     [self.mvc changeLength:self.mvc.passwordLengthSliderRandom];
     ;
-    XCTAssertEqual(40, [self.mvc.passwordField stringValue].length, @"Password not changed to 40");
+    XCTAssertEqual(40, [self getPasswordFieldValue].length, @"Password not changed to 40");
     XCTAssertEqual(40, self.mvc.passwordLengthLabelPronounceable.intValue, @"Random Password length label should be 40 it is %@",self.mvc.passwordLengthLabelPronounceable.stringValue);
     
     //making sure the length gets passed across
@@ -90,11 +92,11 @@
     //testing pattern change
     [self.mvc.patternText setStringValue:@"c"];
     [self.mvc controlTextDidChange:mockNotification];
-    XCTAssertEqual(1, self.mvc.passwordField.stringValue.length, @"Password length should be 1");
+    XCTAssertEqual(1, [self getPasswordFieldValue].length, @"Password length should be 1");
     
     [self.mvc.patternText setStringValue:@"cC\\C"];
     [self.mvc controlTextDidChange:mockNotification];
-    XCTAssertEqual(3, self.mvc.passwordField.stringValue.length, @"Password length should be 3");
+    XCTAssertEqual(3, [self getPasswordFieldValue].length, @"Password length should be 3");
 
 }
 -(BOOL)pronounceableRadioPress:(NSString *)toCompare tag:(int)tag {
@@ -109,11 +111,11 @@
     
     [self.mvc.passwordLengthSliderPrononunceable setIntegerValue:5];
     [self.mvc changeLength:self.mvc.passwordLengthSliderPrononunceable];
-    NSString *currPassword = self.mvc.passwordField.stringValue;
+    NSString *currPassword = [self getPasswordFieldValue];
     [self.mvc.passwordLengthSliderPrononunceable setIntegerValue:10];
     [self.mvc changeLength:self.mvc.passwordLengthSliderPrononunceable];
-    XCTAssertNotEqual(currPassword, self.mvc.passwordField.stringValue, @"Password not changed when pronounceable slider changed");
-    XCTAssertTrue(currPassword.length < self.mvc.passwordField.stringValue.length, @"Pronounceable length 5 not less than length 10");
+    XCTAssertNotEqual(currPassword, [self getPasswordFieldValue], @"Password not changed when pronounceable slider changed");
+    XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Pronounceable length 5 not less than length 10");
     
     //testing radio mappings
     [self pronounceableRadioPress:@"None" tag:1];
@@ -122,17 +124,37 @@
     [self pronounceableRadioPress:@"Symbols" tag:4];
     [self pronounceableRadioPress:@"Spaces" tag:5];
     [self pronounceableRadioPress:@"Hyphen" tag:0];
-    currPassword = self.mvc.passwordField.stringValue;
+    currPassword = [self getPasswordFieldValue];
     //test if password is changed when radio is pressed
     for (int i=0; i<=5; i++) {
         [self.mvc.pronounceableSeparatorRadio selectCellWithTag:i];
         [self.mvc pressPrononunceableRadio:self.mvc.pronounceableSeparatorRadio];
-        XCTAssertTrue([currPassword isNotEqualTo:self.mvc.passwordField.stringValue], @"Password Field not updated when %@ radio is pressed",[self.mvc getPronounceableRadioSelected]);
-        currPassword = self.mvc.passwordField.stringValue;
+        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]], @"Password Field not updated when %@ radio is pressed",[self.mvc getPronounceableRadioSelected]);
+        currPassword = [self getPasswordFieldValue];
+    }
+}
+- (void)testStrengthMeter {
+    [self.mvc setPasswordStrength:@""];
+    float currStrength = self.mvc.passwordStrengthLevel.floatValue;
+    [self.mvc setPasswordStrength:@"!@#$%^&"];
+    XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.floatValue, @"Password strength meter not updated with change");
+}
+
+-(void)testChangeTab {
+    [self.mvc generatePassword];
+    NSString *currPassword = [self getPasswordFieldValue];
+    [self.mvc.passwordTypeTab selectTabViewItemAtIndex:1];
+    for(int i=0;i<3;i++) {
+        [self.mvc.passwordTypeTab selectTabViewItemAtIndex:i];
+        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Password not changed when switched to tab %d",i);
+        currPassword = [self getPasswordFieldValue];
     }
     
-
-    
-    
+}
+- (void)testGenerateButton {
+    [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
+    NSString *currPassword = [self getPasswordFieldValue];
+    [self.mvc.generateButton performClick:self.mvc];
+    XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Pressing generate button does not regenerate new password");
 }
 @end

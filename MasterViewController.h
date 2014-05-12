@@ -26,8 +26,14 @@
 
 @property (nonatomic, strong) PasswordGenerator *pg;
 
+@property (weak) IBOutlet NSButton *generateButton;
+@property (weak) IBOutlet NSButton *pasteboardButton;
 
 - (IBAction)changeLength:(id)sender;
 - (IBAction)pressPrononunceableRadio:(id)sender;
 - (NSString *)getPronounceableRadioSelected;
+
+- (void)setPasswordStrength:(NSString *)password;
+
+- (void)generatePassword;
 @end

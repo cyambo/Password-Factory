@@ -105,7 +105,7 @@ static NSDictionary* pronounceableSep;
 
     NSMutableString *p = [[NSMutableString alloc] init];
     NSString *sep = [self getPronounceableSeparator:selectedTitle];
-
+    int i = 0;
     while (p.length < self.passwordLength) {
         NSString *append = [[self getPronounceableForLength:(self.passwordLength - p.length)] lowercaseString];
         if ([append isEqual: @""]) {
@@ -113,9 +113,10 @@ static NSDictionary* pronounceableSep;
         } else {
             [p appendString:append];
         }
-        if (p.length < self.passwordLength) {
+        if (i%2 == 1 && p.length < self.passwordLength) {
             [p appendString:sep];
         }
+        i++;
         
     }
     

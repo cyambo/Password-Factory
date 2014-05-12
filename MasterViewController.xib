@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MasterViewController">
             <connections>
                 <outlet property="avoidAmbiguous" destination="q2y-v2-bIT" id="UFp-K2-vzq"/>
+                <outlet property="generateButton" destination="TlR-Vl-tPI" id="cn8-gk-yZe"/>
                 <outlet property="mixedCase" destination="FAm-zY-Nsw" id="SjC-qo-wk6"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
                 <outlet property="passwordLengthLabelPronounceable" destination="OTh-3Z-X3k" id="O15-rn-PLD"/>
@@ -15,6 +16,7 @@
                 <outlet property="passwordLengthSliderRandom" destination="4uN-fc-DjX" id="FWq-t3-ssZ"/>
                 <outlet property="passwordStrengthLevel" destination="sh2-oy-uhM" id="9uD-Yc-c1q"/>
                 <outlet property="passwordTypeTab" destination="D7G-rB-QOb" id="rp6-xC-Dol"/>
+                <outlet property="pasteboardButton" destination="xyJ-Ut-Xnd" id="kqR-sI-BAj"/>
                 <outlet property="patternText" destination="Tx1-SO-FyV" id="On6-0L-CeL"/>
                 <outlet property="pronounceableSeparatorRadio" destination="JPH-tB-8uS" id="mzF-4M-Qzf"/>
                 <outlet property="useSymbols" destination="Evx-Qg-3Sd" id="LBw-PH-aCq"/>
