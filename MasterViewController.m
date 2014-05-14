@@ -15,7 +15,9 @@
 
 @property (nonatomic, assign) BOOL colorPasswordText;
 
-@property (nonatomic, strong) NSTimer *clearClipboardTimer;
+@property (nonatomic, strong) id clearClipboardTimer;
+@property (nonatomic, strong) Class timerClass;
+
 @end
 
 @implementation MasterViewController
@@ -25,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.pg = [[PasswordGenerator alloc] init];
+        self.timerClass = [NSTimer class];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
 
@@ -78,7 +81,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     [self updatePasteboard:self.passwordValue];
-    if ([d boolForKey:@"clearClipboard"]) {
+    if (1 || [d boolForKey:@"clearClipboard"]) {
         if ([self.clearClipboardTimer isValid]) {
             [self.clearClipboardTimer invalidate];
         }

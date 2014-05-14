@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
+#import "NSTimer+UnitTest.h"
+#import "NSUSerDefaults+UnitTest.h"
 #import "MasterViewControllerTestClass.h"
 @interface MasterViewControllerTests : XCTestCase
 @property (nonatomic, strong) MasterViewController *mvc;
@@ -161,11 +163,26 @@
     XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Pressing generate button does not regenerate new password");
 }
 - (void)testCopyToPasteboard {
+    id timer = [NSTimer getTimer];
+    NSInteger timerRetval = 3;
+    [[timer expect] scheduledTimerWithTimeInterval:timerRetval
+                                            target:[OCMArg any]
+                                          selector:[OCMArg anySelector]
+                                          userInfo:nil
+                                           repeats:NO];
+    [NSUserDefaults swapMethods];
+    id d = [NSUserDefaults standardUserDefaults];
+
+    [[[d stub] andReturnValue:OCMOCK_VALUE(timerRetval)] integerForKey:@"clearClipboardTime"];
+
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
     [self.mvc.pasteboardButton performClick:self.mvc];
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     NSString *pbval = [pasteboard stringForType:NSPasteboardTypeString];
+
+    XCTAssertNoThrow([timer verify], @"Timer not configured properly");
     XCTAssertTrue([pbval isEqualToString:[self getPasswordFieldValue]], @"Password not copied to pasteboard");
+    [NSUserDefaults swapMethods];
   
 }
 

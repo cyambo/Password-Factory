@@ -10,6 +10,8 @@
 		40135D461923BE9300E91FA9 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D451923BE9300E91FA9 /* PreferencesWindowTestClass.m */; };
 		40135D4D1923BF1C00E91FA9 /* MasterViewControllerTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */; };
 		40135D4F1923C73100E91FA9 /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */; };
+		40135D521923D44D00E91FA9 /* NSTimer+UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D511923D44D00E91FA9 /* NSTimer+UnitTest.m */; };
+		40135D5F1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D5E1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m */; };
 		403BC3831922AFB3005C92D3 /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindow.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
@@ -76,6 +78,10 @@
 		40135D4B1923BF1C00E91FA9 /* MasterViewControllerTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTestClass.h; sourceTree = "<group>"; };
 		40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTestClass.m; sourceTree = "<group>"; };
 		40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindowTests.m; path = ../PreferencesWindowTests.m; sourceTree = "<group>"; };
+		40135D501923D44D00E91FA9 /* NSTimer+UnitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+UnitTest.h"; sourceTree = "<group>"; };
+		40135D511923D44D00E91FA9 /* NSTimer+UnitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+UnitTest.m"; sourceTree = "<group>"; };
+		40135D5D1923F51F00E91FA9 /* NSUserDefaults+UnitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+UnitTest.h"; sourceTree = "<group>"; };
+		40135D5E1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+UnitTest.m"; sourceTree = "<group>"; };
 		403BC3811922AFB3005C92D3 /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		403BC3821922AFB3005C92D3 /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -169,6 +175,17 @@
 				40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		40135D561923E91D00E91FA9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				40135D501923D44D00E91FA9 /* NSTimer+UnitTest.h */,
+				40135D511923D44D00E91FA9 /* NSTimer+UnitTest.m */,
+				40135D5D1923F51F00E91FA9 /* NSUserDefaults+UnitTest.h */,
+				40135D5E1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		40A152361913E8850091E264 /* ZXCVBN */ = {
@@ -275,6 +292,7 @@
 		40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */ = {
 			isa = PBXGroup;
 			children = (
+				40135D561923E91D00E91FA9 /* Categories */,
 				40135D471923BEA100E91FA9 /* Classes */,
 				40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */,
 				40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */,
@@ -448,9 +466,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40135D521923D44D00E91FA9 /* NSTimer+UnitTest.m in Sources */,
 				40135D4D1923BF1C00E91FA9 /* MasterViewControllerTestClass.m in Sources */,
 				40135D461923BE9300E91FA9 /* PreferencesWindowTestClass.m in Sources */,
 				49F27CE01917EB47008DD7C6 /* MasterViewControllerTests.m in Sources */,
+				40135D5F1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m in Sources */,
 				40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */,
 				40135D4F1923C73100E91FA9 /* PreferencesWindowTests.m in Sources */,
 			);

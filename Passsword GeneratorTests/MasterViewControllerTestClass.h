@@ -7,7 +7,7 @@
 //
 
 #import "MasterViewController.h"
-
+#import "NSTimer+UnitTest.h"¨
 @interface MasterViewControllerTestClass : MasterViewController
 
 @end
