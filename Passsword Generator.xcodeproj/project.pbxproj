@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40135D461923BE9300E91FA9 /* PreferencesWindowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D451923BE9300E91FA9 /* PreferencesWindowTest.m */; };
-		40135D4D1923BF1C00E91FA9 /* MasterViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4C1923BF1C00E91FA9 /* MasterViewControllerTest.m */; };
+		40135D461923BE9300E91FA9 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D451923BE9300E91FA9 /* PreferencesWindowTestClass.m */; };
+		40135D4D1923BF1C00E91FA9 /* MasterViewControllerTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */; };
+		40135D4F1923C73100E91FA9 /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */; };
 		403BC3831922AFB3005C92D3 /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindow.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
-		4092E61919230393008072ED /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E61819230393008072ED /* PreferencesWindow.m */; };
 		409770E2192091EE00C1A2D5 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
 		409770E5192092E600C1A2D5 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
 		40A152541913E8AB0091E264 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152371913E8AB0091E264 /* frequency_lists.json */; };
@@ -71,16 +71,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		40135D441923BE9300E91FA9 /* PreferencesWindowTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowTest.h; sourceTree = "<group>"; };
-		40135D451923BE9300E91FA9 /* PreferencesWindowTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowTest.m; sourceTree = "<group>"; };
-		40135D4B1923BF1C00E91FA9 /* MasterViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTest.h; sourceTree = "<group>"; };
-		40135D4C1923BF1C00E91FA9 /* MasterViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTest.m; sourceTree = "<group>"; };
+		40135D441923BE9300E91FA9 /* PreferencesWindowTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowTestClass.h; sourceTree = "<group>"; };
+		40135D451923BE9300E91FA9 /* PreferencesWindowTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowTestClass.m; sourceTree = "<group>"; };
+		40135D4B1923BF1C00E91FA9 /* MasterViewControllerTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTestClass.h; sourceTree = "<group>"; };
+		40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTestClass.m; sourceTree = "<group>"; };
+		40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindowTests.m; path = ../PreferencesWindowTests.m; sourceTree = "<group>"; };
 		403BC3811922AFB3005C92D3 /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		403BC3821922AFB3005C92D3 /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
 		4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
 		4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
-		4092E61819230393008072ED /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		409770E1192091EE00C1A2D5 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = ../OCMock.framework; sourceTree = "<group>"; };
 		40A152371913E8AB0091E264 /* frequency_lists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_lists.json; path = ../ZXCVBN/ZXCVBN/frequency_lists.json; sourceTree = "<group>"; };
 		40A152381913E8AB0091E264 /* adjacency_graphs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = adjacency_graphs.json; path = ../ZXCVBN/ZXCVBN/adjacency_graphs.json; sourceTree = "<group>"; };
@@ -163,10 +163,10 @@
 		40135D471923BEA100E91FA9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				40135D441923BE9300E91FA9 /* PreferencesWindowTest.h */,
-				40135D451923BE9300E91FA9 /* PreferencesWindowTest.m */,
-				40135D4B1923BF1C00E91FA9 /* MasterViewControllerTest.h */,
-				40135D4C1923BF1C00E91FA9 /* MasterViewControllerTest.m */,
+				40135D441923BE9300E91FA9 /* PreferencesWindowTestClass.h */,
+				40135D451923BE9300E91FA9 /* PreferencesWindowTestClass.m */,
+				40135D4B1923BF1C00E91FA9 /* MasterViewControllerTestClass.h */,
+				40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -276,8 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				40135D471923BEA100E91FA9 /* Classes */,
+				40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */,
 				40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */,
-				4092E61819230393008072ED /* PreferencesWindow.m */,
 				49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */,
 				40BBBE481913BE1800AA5BC2 /* Supporting Files */,
 			);
@@ -448,11 +448,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40135D4D1923BF1C00E91FA9 /* MasterViewControllerTest.m in Sources */,
-				40135D461923BE9300E91FA9 /* PreferencesWindowTest.m in Sources */,
+				40135D4D1923BF1C00E91FA9 /* MasterViewControllerTestClass.m in Sources */,
+				40135D461923BE9300E91FA9 /* PreferencesWindowTestClass.m in Sources */,
 				49F27CE01917EB47008DD7C6 /* MasterViewControllerTests.m in Sources */,
 				40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */,
-				4092E61919230393008072ED /* PreferencesWindow.m in Sources */,
+				40135D4F1923C73100E91FA9 /* PreferencesWindowTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
