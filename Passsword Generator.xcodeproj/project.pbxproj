@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		403BC3831922AFB3005C92D3 /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindow.m */; };
+		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
+		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
 		409770E2192091EE00C1A2D5 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
 		409770E5192092E600C1A2D5 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
 		40A152541913E8AB0091E264 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152371913E8AB0091E264 /* frequency_lists.json */; };
@@ -65,6 +68,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		403BC3811922AFB3005C92D3 /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
+		403BC3821922AFB3005C92D3 /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
+		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
+		4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
 		409770E1192091EE00C1A2D5 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = ../OCMock.framework; sourceTree = "<group>"; };
 		40A152371913E8AB0091E264 /* frequency_lists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_lists.json; path = ../ZXCVBN/ZXCVBN/frequency_lists.json; sourceTree = "<group>"; };
 		40A152381913E8AB0091E264 /* adjacency_graphs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = adjacency_graphs.json; path = ../ZXCVBN/ZXCVBN/adjacency_graphs.json; sourceTree = "<group>"; };
@@ -240,6 +248,7 @@
 				40BBBE2F1913BE1800AA5BC2 /* main.m */,
 				40BBBE311913BE1800AA5BC2 /* Passsword Generator-Prefix.pch */,
 				40BBBE321913BE1800AA5BC2 /* Credits.rtf */,
+				403BC3861922B658005C92D3 /* defaults.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -281,6 +290,10 @@
 				40BBBE351913BE1800AA5BC2 /* AppDelegate.h */,
 				40BBBE361913BE1800AA5BC2 /* AppDelegate.m */,
 				40BBBE381913BE1800AA5BC2 /* MainMenu.xib */,
+				403BC3811922AFB3005C92D3 /* PreferencesWindow.h */,
+				403BC3821922AFB3005C92D3 /* PreferencesWindow.m */,
+				4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */,
+				4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -362,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				403BC3871922B658005C92D3 /* defaults.plist in Resources */,
 				40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */,
 				40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
 				40A152541913E8AB0091E264 /* frequency_lists.json in Resources */,
@@ -395,8 +409,10 @@
 				40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */,
 				40A152591913E8AB0091E264 /* BBEntropyCenter.m in Sources */,
 				40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */,
+				403BC3831922AFB3005C92D3 /* PreferencesWindow.m in Sources */,
 				40A1525A1913E8AB0091E264 /* BBL33tMatcher.m in Sources */,
 				40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */,
+				4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */,
 				40A152581913E8AB0091E264 /* BBDigitsMatcher.m in Sources */,
 				40BBBE301913BE1800AA5BC2 /* main.m in Sources */,

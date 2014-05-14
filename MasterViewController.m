@@ -9,12 +9,13 @@
 #import "MasterViewController.h"
 #import "BBPasswordStrength.h"
 #import "PasswordGenerator.h"
-
+#import "PreferencesWindow.h"
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
 
-
-
+@property (nonatomic, assign) BOOL colorPasswordText;
+@property (nonatomic, strong) NSString *passwordValue;
+@property (nonatomic, strong) NSTimer *clearClipboardTimer;
 @end
 
 @implementation MasterViewController
@@ -24,6 +25,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.pg = [[PasswordGenerator alloc] init];
+        NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+        self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
+
+        [self setObservers];
     }
     return self;
 }
@@ -34,19 +39,66 @@
     [self.passwordField setDelegate:self];
     
 }
-- (IBAction)copyToPasteboard:(id)sender {
+//not using the global observer because it does not send what was changed
+- (void)setObservers {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
+    NSDictionary *p = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    //taking plist and filling in defaults if none set
+    for (NSString *k in p) {
+        [d addObserver:self
+            forKeyPath:k
+               options:NSKeyValueObservingOptionNew
+               context:NULL];
+    }
+    
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"colorPasswordText"]) {
+        self.colorPasswordText = [object boolForKey:keyPath];
+        [self updatePasswordField];
+    } else if(
+        [keyPath isEqualToString:@"clearClipboard"] ||
+        [keyPath isEqualToString:@"clearClipboardTime"]) {
+        //do nothing for now
+    } else {
+        if (self.colorPasswordText ) {
+            [self updatePasswordField];
+        }
+    }
+}
+- (void)updatePasteboard:(NSString *)val {
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
-    NSArray *toPasteboard = @[self.passwordField.stringValue];
+    NSArray *toPasteboard = @[val];
     BOOL ok = [pasteboard writeObjects:toPasteboard];
     if (!ok) { NSLog(@"Write to pasteboard failed");}
-    
+}
+- (IBAction)copyToPasteboard:(id)sender {
+
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    [self updatePasteboard:self.passwordValue];
+    if ([d boolForKey:@"clearClipboard"]) {
+        if ([self.clearClipboardTimer isValid]) {
+            [self.clearClipboardTimer invalidate];
+        }
+        self.clearClipboardTimer =
+        [NSTimer scheduledTimerWithTimeInterval:[d integerForKey:@"clearClipboardTime"]
+                                         target:self
+                                       selector:@selector(clearClipboard)
+                                       userInfo:nil
+                                        repeats:NO];
+        
+    }
+}
+- (void)clearClipboard {
+    [self updatePasteboard:@""];
 }
 - (void)controlTextDidChange:(NSNotification *)obj {
     //if the change came from the passwordField, just reset the strength
     //otherwise generate the password
     if(obj.object == self.passwordField) {
-        [self setPasswordStrength:[self.passwordField stringValue]];
+        [self setPasswordStrength];
     } else {
         [self generatePassword];
     }
@@ -87,72 +139,80 @@
 
 - (void)generatePassword {
     NSInteger atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
-    NSString *passwordValue;
     [self getButtonStates];
     switch (atTab) {
         case 0: //random
-            passwordValue = [self.pg generateRandom];
+            self.passwordValue = [self.pg generateRandom];
             break;
         case 1: //pattern
-            passwordValue = [self.pg generatePattern:self.patternText.stringValue];
+            self.passwordValue = [self.pg generatePattern:self.patternText.stringValue];
             break;
         case 2: //pronounceable
-            passwordValue = [self.pg generatePronounceable:[self getPronounceableRadioSelected]];
+            self.passwordValue = [self.pg generatePronounceable:[self getPronounceableRadioSelected]];
             break;
     }
-    [self updatePasswordField:passwordValue];
-    [self setPasswordStrength:passwordValue];
+    [self updatePasswordField];
+    [self setPasswordStrength];
     
     
 }
-- (void)updatePasswordField:(NSString *)passwordValue {
-    NSColor *nColor = [NSColor magentaColor];
-    NSColor *cColor = [NSColor blackColor];
-    NSColor *clColor = [NSColor darkGrayColor];
-    NSColor *sColor = [NSColor purpleColor];
+- (void)updatePasswordField{
 
-    
-    NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
-    NSError *error;
-    NSRegularExpression *charRegex = [[NSRegularExpression alloc] initWithPattern:@"[A-Z]" options:0 error:&error];
-    NSRegularExpression *charlRegex = [[NSRegularExpression alloc] initWithPattern:@"[a-z]" options:0 error:&error];
-    NSRegularExpression *numRegex = [[NSRegularExpression alloc] initWithPattern:@"[0-9]" options:0 error:&error];
-    NSRegularExpression *symRegex = [[NSRegularExpression alloc] initWithPattern:@"[^0-9A-Za-z]" options:0 error:&error];
-    
-    NSRange r = NSMakeRange(0, 1);
-    //colorzing password label
-    [s beginEditing];
-    for (int i=0; i < passwordValue.length ; i++) {
-        NSColor *c = [NSColor blueColor];
-        NSString *at = [NSString stringWithFormat:@"%c",[passwordValue characterAtIndex:i]];
-        NSLog(@"LOOP: %d AT:%@",i,at);
-        if ([charRegex matchesInString:at options:0 range:r].count) {
-            c = cColor;
-        } else if ([charlRegex matchesInString:at options:0 range:r].count){
-            c = clColor;
-        } else if ([numRegex matchesInString:at options:0 range:r].count){
-            c = nColor;
-        } else if ([symRegex matchesInString:at options:0 range:r].count){
-            c = sColor;
+    if (!self.colorPasswordText) {
+        [self.passwordField setStringValue: self.passwordValue];
+    } else {
+        NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+        
+        NSColor *nColor = [PreferencesWindow colorWithHexColorString:[d objectForKey:@"numberTextColor"]];
+        NSColor *cColor = [PreferencesWindow colorWithHexColorString:[d objectForKey:@"upperTextColor"]];
+        NSColor *clColor = [PreferencesWindow colorWithHexColorString:[d objectForKey:@"lowerTextColor"]];
+        NSColor *sColor = [PreferencesWindow colorWithHexColorString:[d objectForKey:@"symbolTextColor"]];
+
+        
+        
+        NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+        NSError *error;
+        NSRegularExpression *charRegex = [[NSRegularExpression alloc] initWithPattern:@"[A-Z]" options:0 error:&error];
+        NSRegularExpression *charlRegex = [[NSRegularExpression alloc] initWithPattern:@"[a-z]" options:0 error:&error];
+        NSRegularExpression *numRegex = [[NSRegularExpression alloc] initWithPattern:@"[0-9]" options:0 error:&error];
+        NSRegularExpression *symRegex = [[NSRegularExpression alloc] initWithPattern:@"[^0-9A-Za-z]" options:0 error:&error];
+        
+        NSRange r = NSMakeRange(0, 1);
+        //colorzing password label
+        [s beginEditing];
+        for (int i=0; i < self.passwordValue.length ; i++) {
+            NSColor *c = [NSColor blueColor];
+            NSString *at = [NSString stringWithFormat:@"%c",[self.passwordValue characterAtIndex:i]];
+            
+            if ([charRegex matchesInString:at options:0 range:r].count) {
+                c = cColor;
+            } else if ([charlRegex matchesInString:at options:0 range:r].count){
+                c = clColor;
+            } else if ([numRegex matchesInString:at options:0 range:r].count){
+                c = nColor;
+            } else if ([symRegex matchesInString:at options:0 range:r].count){
+                c = sColor;
+            }
+            
+            [s addAttribute:NSForegroundColorAttributeName
+                      value:c
+                      range:NSMakeRange(i, 1)];
+            
+            
         }
-
-        [s addAttribute:NSForegroundColorAttributeName
-                       value:c
-                       range:NSMakeRange(i, 1)];
-
-
+        [s endEditing];
+        [self.passwordField setAttributedStringValue:s];
     }
-    [s endEditing];
-    //    [self.passwordField setStringValue: passwordValue];
-    [self.passwordField setAttributedStringValue:s];
+
+    
 }
 - (NSString *)getPronounceableRadioSelected {
     NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];
     return [(NSString *)selected.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
 }
-- (void)setPasswordStrength:(NSString *)password {
-    BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:password];
+- (void)setPasswordStrength {
+    BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:self.passwordValue];
     //playing around with numbers to make a good scale
     double ct = log10(strength.crackTime);
     //tweaking output based on password type

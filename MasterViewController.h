@@ -33,7 +33,7 @@
 - (IBAction)pressPrononunceableRadio:(id)sender;
 - (NSString *)getPronounceableRadioSelected;
 
-- (void)setPasswordStrength:(NSString *)password;
+- (void)setPasswordStrength;
 
 - (void)generatePassword;
 @end

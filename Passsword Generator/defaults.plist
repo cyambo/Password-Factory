@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colorPasswordText</key>
+	<true/>
+	<key>upperTextColor</key>
+	<string>000000</string>
+	<key>lowerTextColor</key>
+	<string>686868</string>
+	<key>symbolTextColor</key>
+	<string>922890</string>
+	<key>numberTextColor</key>
+	<string>FF4CFC</string>
+	<key>clearClipboard</key>
+	<false/>
+	<key>clearClipboardTime</key>
+	<integer>30</integer>
+</dict>
+</plist>
