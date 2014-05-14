@@ -14,7 +14,7 @@
 
 
 @property (nonatomic, assign) BOOL colorPasswordText;
-@property (nonatomic, strong) NSString *passwordValue;
+
 @property (nonatomic, strong) NSTimer *clearClipboardTimer;
 @end
 
@@ -98,6 +98,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     //if the change came from the passwordField, just reset the strength
     //otherwise generate the password
     if(obj.object == self.passwordField) {
+        self.passwordValue = self.passwordField.stringValue;
         [self setPasswordStrength];
     } else {
         [self generatePassword];

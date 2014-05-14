@@ -28,12 +28,16 @@
 
 @property (weak) IBOutlet NSButton *generateButton;
 @property (weak) IBOutlet NSButton *pasteboardButton;
+- (IBAction)copyToPasteboard:(id)sender;
 
 - (IBAction)changeLength:(id)sender;
 - (IBAction)pressPrononunceableRadio:(id)sender;
 - (NSString *)getPronounceableRadioSelected;
 
 - (void)setPasswordStrength;
-
+@property (nonatomic, strong) NSString *passwordValue;
 - (void)generatePassword;
+
+- (void)clearClipboard;
+- (void)updatePasteboard:(NSString *)val;
 @end

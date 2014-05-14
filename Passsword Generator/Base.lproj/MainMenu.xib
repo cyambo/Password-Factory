@@ -273,6 +273,7 @@
                 <outlet property="automaticallyClearClipboard" destination="nU3-R8-Y17" id="2dj-Vh-t8M"/>
                 <outlet property="clearTime" destination="7NJ-Y8-ah1" id="C37-kp-1x3"/>
                 <outlet property="clearTimeLabel" destination="I06-4c-whD" id="EK3-DC-GVV"/>
+                <outlet property="colorPasswordText" destination="qyW-6N-yIj" id="Yzy-ZA-DWi"/>
                 <outlet property="lowercaseTextColor" destination="xSZ-WW-j5O" id="6Q3-F8-lkR"/>
                 <outlet property="numbersColor" destination="LpU-eD-w1M" id="gvZ-MR-09S"/>
                 <outlet property="symbolsColor" destination="QAY-lw-EVJ" id="UW9-x8-UdR"/>

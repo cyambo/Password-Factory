@@ -8,9 +8,10 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "MasterViewController.h"
+#import "MasterViewControllerTest.h"
 @interface MasterViewControllerTests : XCTestCase
 @property (nonatomic, strong) MasterViewController *mvc;
+
 @end
 
 @implementation MasterViewControllerTests
@@ -18,7 +19,7 @@
 - (void)setUp
 {
     [super setUp];
-    self.mvc = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
+    self.mvc = [[MasterViewControllerTest alloc] initWithNibName:@"MasterViewController" bundle:nil];
     [self.mvc view];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
@@ -134,9 +135,11 @@
     }
 }
 - (void)testStrengthMeter {
-    [self.mvc setPasswordStrength:@""];
+    self.mvc.passwordValue = @"1";
+    [self.mvc setPasswordStrength];
     float currStrength = self.mvc.passwordStrengthLevel.floatValue;
-    [self.mvc setPasswordStrength:@"!@#$%^&"];
+    self.mvc.passwordValue = @"!@#$%^&";
+    [self.mvc setPasswordStrength];
     XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.floatValue, @"Password strength meter not updated with change");
 }
 
@@ -164,6 +167,16 @@
     NSString *pbval = [pasteboard stringForType:NSPasteboardTypeString];
     XCTAssertTrue([pbval isEqualToString:[self getPasswordFieldValue]], @"Password not copied to pasteboard");
   
+}
+
+- (void)testClipboardHandling {
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+
+    [self.mvc updatePasteboard:@"TO Copy To"];
+    XCTAssertTrue([[pasteboard stringForType:NSPasteboardTypeString] isEqualToString:@"TO Copy To"], @"Text not copied to pasteboard");
+    [self.mvc clearClipboard];
+    XCTAssertTrue([[pasteboard stringForType:NSPasteboardTypeString] isEqualToString:@""], @"Pasteboard not cleard");
+    
 }
 - (void)testManualChangePasswordField {
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
