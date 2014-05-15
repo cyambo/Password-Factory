@@ -12,6 +12,16 @@
 		40135D4F1923C73100E91FA9 /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */; };
 		40135D521923D44D00E91FA9 /* NSTimer+UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D511923D44D00E91FA9 /* NSTimer+UnitTest.m */; };
 		40135D5F1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D5E1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m */; };
+		40135D6B1925349500E91FA9 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D621925349500E91FA9 /* MASShortcut.m */; };
+		40135D6C1925349500E91FA9 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D621925349500E91FA9 /* MASShortcut.m */; };
+		40135D6D1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */; };
+		40135D6E1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */; };
+		40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */; };
+		40135D701925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */; };
+		40135D711925349500E91FA9 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D681925349500E91FA9 /* MASShortcutView.m */; };
+		40135D721925349500E91FA9 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D681925349500E91FA9 /* MASShortcutView.m */; };
+		40135D731925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
+		40135D741925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
 		403BC3831922AFB3005C92D3 /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindow.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
@@ -82,6 +92,16 @@
 		40135D511923D44D00E91FA9 /* NSTimer+UnitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+UnitTest.m"; sourceTree = "<group>"; };
 		40135D5D1923F51F00E91FA9 /* NSUserDefaults+UnitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+UnitTest.h"; sourceTree = "<group>"; };
 		40135D5E1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+UnitTest.m"; sourceTree = "<group>"; };
+		40135D611925349500E91FA9 /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = ../MASShortcut/MASShortcut.h; sourceTree = "<group>"; };
+		40135D621925349500E91FA9 /* MASShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = ../MASShortcut/MASShortcut.m; sourceTree = "<group>"; };
+		40135D631925349500E91FA9 /* MASShortcut+Monitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcut+Monitoring.h"; path = "../MASShortcut/MASShortcut+Monitoring.h"; sourceTree = "<group>"; };
+		40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcut+Monitoring.m"; path = "../MASShortcut/MASShortcut+Monitoring.m"; sourceTree = "<group>"; };
+		40135D651925349500E91FA9 /* MASShortcut+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcut+UserDefaults.h"; path = "../MASShortcut/MASShortcut+UserDefaults.h"; sourceTree = "<group>"; };
+		40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcut+UserDefaults.m"; path = "../MASShortcut/MASShortcut+UserDefaults.m"; sourceTree = "<group>"; };
+		40135D671925349500E91FA9 /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASShortcutView.h; path = ../MASShortcut/MASShortcutView.h; sourceTree = "<group>"; };
+		40135D681925349500E91FA9 /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = ../MASShortcut/MASShortcutView.m; sourceTree = "<group>"; };
+		40135D691925349500E91FA9 /* MASShortcutView+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+UserDefaults.h"; path = "../MASShortcut/MASShortcutView+UserDefaults.h"; sourceTree = "<group>"; };
+		40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+UserDefaults.m"; path = "../MASShortcut/MASShortcutView+UserDefaults.m"; sourceTree = "<group>"; };
 		403BC3811922AFB3005C92D3 /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		403BC3821922AFB3005C92D3 /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -188,6 +208,39 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		40135D601925347A00E91FA9 /* MASSShortCut */ = {
+			isa = PBXGroup;
+			children = (
+				40135D611925349500E91FA9 /* MASShortcut.h */,
+				40135D621925349500E91FA9 /* MASShortcut.m */,
+				40135D631925349500E91FA9 /* MASShortcut+Monitoring.h */,
+				40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */,
+				40135D651925349500E91FA9 /* MASShortcut+UserDefaults.h */,
+				40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */,
+				40135D671925349500E91FA9 /* MASShortcutView.h */,
+				40135D681925349500E91FA9 /* MASShortcutView.m */,
+				40135D691925349500E91FA9 /* MASShortcutView+UserDefaults.h */,
+				40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */,
+			);
+			name = MASSShortCut;
+			sourceTree = "<group>";
+		};
+		40135D8419256FCB00E91FA9 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE671913C0F800AA5BC2 /* XIBs */,
+				40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */,
+				40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */,
+				40BBBE351913BE1800AA5BC2 /* AppDelegate.h */,
+				40BBBE361913BE1800AA5BC2 /* AppDelegate.m */,
+				403BC3811922AFB3005C92D3 /* PreferencesWindow.h */,
+				403BC3821922AFB3005C92D3 /* PreferencesWindow.m */,
+				4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */,
+				4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
 		40A152361913E8850091E264 /* ZXCVBN */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +280,7 @@
 		40BBBE171913BE1800AA5BC2 = {
 			isa = PBXGroup;
 			children = (
+				40135D601925347A00E91FA9 /* MASSShortCut */,
 				40A152361913E8850091E264 /* ZXCVBN */,
 				40BBBE291913BE1800AA5BC2 /* Passsword Generator */,
 				40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */,
@@ -269,7 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				40BBBE661913C0E400AA5BC2 /* Model */,
-				40BBBE671913C0F800AA5BC2 /* GUI */,
+				40135D8419256FCB00E91FA9 /* GUI */,
 				40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */,
 				40BBBE2A1913BE1800AA5BC2 /* Supporting Files */,
 			);
@@ -320,21 +374,13 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		40BBBE671913C0F800AA5BC2 /* GUI */ = {
+		40BBBE671913C0F800AA5BC2 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */,
-				40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */,
 				40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */,
-				40BBBE351913BE1800AA5BC2 /* AppDelegate.h */,
-				40BBBE361913BE1800AA5BC2 /* AppDelegate.m */,
 				40BBBE381913BE1800AA5BC2 /* MainMenu.xib */,
-				403BC3811922AFB3005C92D3 /* PreferencesWindow.h */,
-				403BC3821922AFB3005C92D3 /* PreferencesWindow.m */,
-				4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */,
-				4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */,
 			);
-			name = GUI;
+			name = XIBs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,15 +487,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				40A152621913E8AB0091E264 /* BBYearMatcher.m in Sources */,
+				40135D6B1925349500E91FA9 /* MASShortcut.m in Sources */,
+				40135D6D1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */,
+				40135D731925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */,
 				40A152571913E8AB0091E264 /* BBDictionaryMatcher.m in Sources */,
 				40A1525C1913E8AB0091E264 /* BBPattern.m in Sources */,
 				40BBBE651913C0CF00AA5BC2 /* PasswordGenerator.m in Sources */,
 				40A152611913E8AB0091E264 /* BBSpatialMatcher.m in Sources */,
 				40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */,
+				40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */,
 				40A152591913E8AB0091E264 /* BBEntropyCenter.m in Sources */,
 				40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */,
 				403BC3831922AFB3005C92D3 /* PreferencesWindow.m in Sources */,
 				40A1525A1913E8AB0091E264 /* BBL33tMatcher.m in Sources */,
+				40135D711925349500E91FA9 /* MASShortcutView.m in Sources */,
 				40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */,
 				4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */,
@@ -468,10 +519,15 @@
 			files = (
 				40135D521923D44D00E91FA9 /* NSTimer+UnitTest.m in Sources */,
 				40135D4D1923BF1C00E91FA9 /* MasterViewControllerTestClass.m in Sources */,
+				40135D6E1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */,
+				40135D741925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */,
 				40135D461923BE9300E91FA9 /* PreferencesWindowTestClass.m in Sources */,
 				49F27CE01917EB47008DD7C6 /* MasterViewControllerTests.m in Sources */,
+				40135D721925349500E91FA9 /* MASShortcutView.m in Sources */,
 				40135D5F1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m in Sources */,
+				40135D6C1925349500E91FA9 /* MASShortcut.m in Sources */,
 				40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */,
+				40135D701925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */,
 				40135D4F1923C73100E91FA9 /* PreferencesWindowTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

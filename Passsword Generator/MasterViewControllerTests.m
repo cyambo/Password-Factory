@@ -12,7 +12,7 @@
 #import "NSUSerDefaults+UnitTest.h"
 #import "MasterViewControllerTestClass.h"
 @interface MasterViewControllerTests : XCTestCase
-@property (nonatomic, strong) MasterViewController *mvc;
+@property (nonatomic, strong) MasterViewControllerTestClass *mvc;
 
 @end
 
@@ -195,10 +195,38 @@
     XCTAssertTrue([[pasteboard stringForType:NSPasteboardTypeString] isEqualToString:@""], @"Pasteboard not cleard");
     
 }
+- (void)testUpdatePasswordField {
+    id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
+    //returning password field for object propery
+    [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
+    
+
+
+    self.mvc.colorPasswordText = NO;
+    [self.mvc.passwordField setStringValue:@"cC#2"];
+    [self.mvc controlTextDidChange:mockNotification];
+    NSAttributedString *attrStr = [self.mvc.passwordField attributedStringValue];
+    //trying to get colors, not sure why I can't 
+    unsigned int length;
+    NSRange effectiveRange;
+    NSColor *attributeValue;
+    NSColor *b = [NSColor blackColor];
+    
+    length = attrStr.length;
+    effectiveRange = NSMakeRange(0, 0);
+    attributeValue =[attrStr attribute:NSForegroundColorAttributeName
+               atIndex:0 effectiveRange:&effectiveRange];
+//    NSLog(@"COLRO %@",attributeValue.colorSpace);
+
+    
+    
+    
+}
 - (void)testManualChangePasswordField {
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
     
     id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
+    //returning password field for object propery
     [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
     
     //testing pattern change

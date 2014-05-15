@@ -7,9 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-
+#import "PreferencesWindow.h"
 @interface PreferencesWindowTests : XCTestCase
-
+@property (nonatomic, strong) PreferencesWindow *pw;
 @end
 
 @implementation PreferencesWindowTests
@@ -17,6 +17,7 @@
 - (void)setUp
 {
     [super setUp];
+    self.pw = [[PreferencesWindow alloc] init];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -28,7 +29,7 @@
 
 - (void)testExample
 {
-//    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    [self.pw changeClearTime:nil];
 }
 
 @end

@@ -13,7 +13,7 @@
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
 
-@property (nonatomic, assign) BOOL colorPasswordText;
+
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) Class timerClass;
@@ -103,6 +103,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     if(obj.object == self.passwordField) {
         self.passwordValue = self.passwordField.stringValue;
         [self setPasswordStrength];
+        [self updatePasswordField];
     } else {
         [self generatePassword];
     }

@@ -40,4 +40,6 @@
 
 - (void)clearClipboard;
 - (void)updatePasteboard:(NSString *)val;
+
+@property (nonatomic,assign) BOOL colorPasswordText;
 @end

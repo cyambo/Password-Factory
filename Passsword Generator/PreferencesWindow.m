@@ -8,6 +8,10 @@
 
 #import "PreferencesWindow.h"
 #import "NSColor+NSColorHexadecimalValue.h"
+#import "MASShortcutView.h"
+#import "MASShortcutView+UserDefaults.h"
+#import "MASShortcut+UserDefaults.h"
+#import "MASShortcut+Monitoring.h"
 @implementation PreferencesWindow
 
 - (void)awakeFromNib {
@@ -16,6 +20,17 @@
 
     [self loadPreferencesFromPlist];
     [self updatePrefsUI];
+    // Think up a preference key to store a global shortcut between launches
+    NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
+    
+    // Assign the preference key and the shortcut view will take care of persistence
+
+    self.shortcutView.associatedUserDefaultsKey = kPreferenceGlobalShortcut;
+    
+    // Execute your block of code automatically when user triggers a shortcut from preferences
+    [MASShortcut registerGlobalShortcutWithUserDefaultsKey:kPreferenceGlobalShortcut handler:^{
+        // Let me know if you find a better or more convenient API.
+    }];
     
 }
 -(void)updatePrefsUI {
@@ -116,5 +131,7 @@
     } else {
         [d setInteger:[self.clearTime intValue] forKey:@"clearClipboardTime"];
     }
+}
+- (IBAction)toggleGlobalHotkey:(id)sender {
 }
 @end

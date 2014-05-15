@@ -121,21 +121,21 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="FP6-89-tUf" customClass="PreferencesWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="163" y="205" width="276" height="263"/>
+            <rect key="contentRect" x="163" y="205" width="276" height="358"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="O1m-TW-I1l">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="263"/>
+                <rect key="frame" x="0.0" y="0.0" width="276" height="358"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Password Display" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="7K6-pZ-1NK">
-                        <rect key="frame" x="17" y="98" width="242" height="154"/>
+                        <rect key="frame" x="17" y="190" width="242" height="157"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="240" height="138"/>
+                            <rect key="frame" x="1" y="1" width="240" height="141"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBX-gg-baj">
-                                    <rect key="frame" x="170" y="86" width="23" height="23"/>
+                                    <rect key="frame" x="170" y="89" width="23" height="23"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
@@ -143,7 +143,7 @@
                                     </connections>
                                 </colorWell>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qyW-6N-yIj">
-                                    <rect key="frame" x="46" y="112" width="149" height="18"/>
+                                    <rect key="frame" x="46" y="115" width="149" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Color Password Text" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="n7q-M9-j6J">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -154,7 +154,7 @@
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPE-zE-Leo">
-                                    <rect key="frame" x="46" y="89" width="116" height="17"/>
+                                    <rect key="frame" x="46" y="92" width="116" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Uppercase Letters" id="XQJ-RD-6aj">
                                         <font key="font" metaFont="system"/>
@@ -163,7 +163,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xSZ-WW-j5O">
-                                    <rect key="frame" x="170" y="61" width="23" height="23"/>
+                                    <rect key="frame" x="170" y="64" width="23" height="23"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="color" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
@@ -171,7 +171,7 @@
                                     </connections>
                                 </colorWell>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eA8-pR-UKA">
-                                    <rect key="frame" x="46" y="64" width="115" height="17"/>
+                                    <rect key="frame" x="46" y="67" width="115" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lowercase Letters" id="sPZ-DV-1tI">
                                         <font key="font" metaFont="system"/>
@@ -180,7 +180,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LpU-eD-w1M">
-                                    <rect key="frame" x="170" y="36" width="23" height="23"/>
+                                    <rect key="frame" x="170" y="39" width="23" height="23"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="color" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
@@ -188,7 +188,7 @@
                                     </connections>
                                 </colorWell>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uK-7E-WJZ">
-                                    <rect key="frame" x="46" y="39" width="61" height="17"/>
+                                    <rect key="frame" x="46" y="42" width="61" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Numbers" id="IBJ-iz-pAF">
                                         <font key="font" metaFont="system"/>
@@ -197,7 +197,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QAY-lw-EVJ">
-                                    <rect key="frame" x="170" y="11" width="23" height="23"/>
+                                    <rect key="frame" x="170" y="14" width="23" height="23"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
@@ -205,7 +205,7 @@
                                     </connections>
                                 </colorWell>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERq-rj-G8J">
-                                    <rect key="frame" x="46" y="14" width="56" height="17"/>
+                                    <rect key="frame" x="46" y="17" width="56" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Symbols" id="ZCb-HB-6QW">
                                         <font key="font" metaFont="system"/>
@@ -219,7 +219,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Clipboard Handling" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="9ol-yB-f5E">
-                        <rect key="frame" x="17" y="11" width="242" height="83"/>
+                        <rect key="frame" x="17" y="103" width="242" height="83"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="240" height="67"/>
@@ -267,6 +267,33 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Generate and Copy Hotkey" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="aQe-lz-RnJ">
+                        <rect key="frame" x="17" y="16" width="242" height="83"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView">
+                            <rect key="frame" x="1" y="1" width="240" height="67"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSS-4P-Who" customClass="MASShortcutView">
+                                    <rect key="frame" x="37" y="16" width="167" height="19"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                </customView>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9RM-Q8-6kp">
+                                    <rect key="frame" x="42" y="41" width="156" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Enable Global Hotkey" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="V77-gq-pqr">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="toggleGlobalHotkey:" target="FP6-89-tUf" id="f4A-SV-2IA"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
                 </subviews>
             </view>
             <connections>
@@ -274,8 +301,10 @@
                 <outlet property="clearTime" destination="7NJ-Y8-ah1" id="C37-kp-1x3"/>
                 <outlet property="clearTimeLabel" destination="I06-4c-whD" id="EK3-DC-GVV"/>
                 <outlet property="colorPasswordText" destination="qyW-6N-yIj" id="Yzy-ZA-DWi"/>
+                <outlet property="enableGlobalHotkey" destination="9RM-Q8-6kp" id="qV7-4b-NKz"/>
                 <outlet property="lowercaseTextColor" destination="xSZ-WW-j5O" id="6Q3-F8-lkR"/>
                 <outlet property="numbersColor" destination="LpU-eD-w1M" id="gvZ-MR-09S"/>
+                <outlet property="shortcutView" destination="sSS-4P-Who" id="L7j-je-ZDN"/>
                 <outlet property="symbolsColor" destination="QAY-lw-EVJ" id="UW9-x8-UdR"/>
                 <outlet property="uppercaseTextColor" destination="bBX-gg-baj" id="SF7-3L-81M"/>
             </connections>
