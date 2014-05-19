@@ -174,18 +174,7 @@ __weak id _constantShortcutMonitor;
     else {
         [MASShortcut unregisterGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut];
     }
-    
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
-//        MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSCommandKeyMask];
-//        _constantShortcutMonitor = [MASShortcut addGlobalHotkeyMonitorWithShortcut:shortcut handler:^{
-//            [[NSAlert alertWithMessageText:NSLocalizedString(@"⌘F2 has been pressed.", @"Alert message for constant shortcut")
-//                             defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on constant shortcut")
-//                           alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
-//        }];
-//    }
-//    else {
-//        [MASShortcut removeGlobalHotkeyMonitor:_constantShortcutMonitor];
-//    }
+
 }
 
 @end
