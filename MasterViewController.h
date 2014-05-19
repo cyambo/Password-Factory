@@ -42,4 +42,5 @@
 - (void)updatePasteboard:(NSString *)val;
 
 @property (nonatomic,assign) BOOL colorPasswordText;
+- (void)generateAndCopy;
 @end

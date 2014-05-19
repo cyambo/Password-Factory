@@ -16,6 +16,7 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASPGConstantShortcu
 #import "MASShortcutView+UserDefaults.h"
 #import "MASShortcut+UserDefaults.h"
 #import "MASShortcut+Monitoring.h"
+#import "AppDelegate.h"
 @implementation PreferencesWindow
 __weak id _constantShortcutMonitor;
 
@@ -166,9 +167,9 @@ __weak id _constantShortcutMonitor;
   
     if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
         [MASShortcut registerGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut handler:^{
-            [[NSAlert alertWithMessageText:NSLocalizedString(@"Global hotkey has been pressed.", @"Alert message for custom shortcut")
-                             defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on custom shortcut")
-                           alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
+
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.masterViewController generateAndCopy];
         }];
     }
     else {

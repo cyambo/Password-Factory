@@ -7,10 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#include "MasterViewController.h"
+
 
 @interface AppDelegate()
-@property (nonatomic, strong) IBOutlet MasterViewController *masterViewController;
+
 @end
 @implementation AppDelegate
 

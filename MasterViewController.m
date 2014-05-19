@@ -10,6 +10,7 @@
 #import "BBPasswordStrength.h"
 #import "PasswordGenerator.h"
 #import "PreferencesWindow.h"
+int const  GenerateAndCopyLoops  = 10;
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
 
@@ -76,6 +77,31 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     NSArray *toPasteboard = @[val];
     BOOL ok = [pasteboard writeObjects:toPasteboard];
     if (!ok) { NSLog(@"Write to pasteboard failed");}
+}
+- (void)generateAndCopy {
+    NSString *pw;
+    float s = -1;
+    for(int i = 0; i < GenerateAndCopyLoops; i++) {
+        [self generatePassword];
+        if (self.passwordStrengthLevel.floatValue  > s) {
+            s = self.passwordStrengthLevel.floatValue;
+            pw = self.passwordValue;
+        }
+    }
+    self.passwordValue = pw;
+    [self updatePasswordField];
+    [self.passwordStrengthLevel setFloatValue:s];
+    [self copyToPasteboard:nil];
+    [self displayCopyNotification];
+}
+- (void)displayCopyNotification {
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    [notification setTitle:@"Password Copied"];
+    [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.floatValue]];
+    [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
+    [notification setSoundName:NSUserNotificationDefaultSoundName];
+    NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+    [center scheduleNotification:notification];
 }
 - (IBAction)copyToPasteboard:(id)sender {
 
