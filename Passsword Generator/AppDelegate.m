@@ -21,5 +21,8 @@
     [self.window.contentView addSubview:self.masterViewController.view];
     self.masterViewController.view.frame = ((NSView *)self.window.contentView).bounds;
 }
-
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+    return YES;
+}
 @end

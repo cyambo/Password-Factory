@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "MASShortcutView.h"
 
+
+
 @interface PreferencesWindow : NSWindow <NSTextFieldDelegate>
 @property (weak) IBOutlet NSButton *colorPasswordText;
 @property (weak) IBOutlet NSColorWell *uppercaseTextColor;
@@ -24,7 +26,8 @@
 
 - (IBAction)autoClearChange:(id)sender;
 + (NSColor*)colorWithHexColorString:(NSString*)inColorString;
-@property (nonatomic,weak) IBOutlet MASShortcutView *shortcutView;
-@property (weak) IBOutlet NSButton *enableGlobalHotkey;
-- (IBAction)toggleGlobalHotkey:(id)sender;
+
+@property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
+
+
 @end

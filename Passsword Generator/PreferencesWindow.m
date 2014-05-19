@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 c13. All rights reserved.
 //
 
+NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
+NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
+NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASPGConstantShortcutEnabled";
+
 #import "PreferencesWindow.h"
 #import "NSColor+NSColorHexadecimalValue.h"
 #import "MASShortcutView.h"
@@ -13,6 +17,7 @@
 #import "MASShortcut+UserDefaults.h"
 #import "MASShortcut+Monitoring.h"
 @implementation PreferencesWindow
+__weak id _constantShortcutMonitor;
 
 - (void)awakeFromNib {
     
@@ -20,19 +25,37 @@
 
     [self loadPreferencesFromPlist];
     [self updatePrefsUI];
-    // Think up a preference key to store a global shortcut between launches
-    NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
+    [self setObservers];
+    [self.shortcutView bind:@"enabled" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
     
-    // Assign the preference key and the shortcut view will take care of persistence
-
-    self.shortcutView.associatedUserDefaultsKey = kPreferenceGlobalShortcut;
+    // Shortcut view will follow and modify user preferences automatically
+    self.shortcutView.associatedUserDefaultsKey = MASPreferenceKeyShortcut;
     
-    // Execute your block of code automatically when user triggers a shortcut from preferences
-    [MASShortcut registerGlobalShortcutWithUserDefaultsKey:kPreferenceGlobalShortcut handler:^{
-        // Let me know if you find a better or more convenient API.
-    }];
+    // Activate the global keyboard shortcut if it was enabled last time
+    [self resetShortcutRegistration];
+    
     
 }
+
+
+
+#pragma mark observers
+-(void)setObservers {
+
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+
+        [d addObserver:self
+            forKeyPath:MASPreferenceKeyShortcutEnabled
+               options:NSKeyValueObservingOptionNew
+               context:NULL];
+    
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:MASPreferenceKeyShortcutEnabled]) {
+        [self resetShortcutRegistration];
+    }
+}
+#pragma mark prefs
 -(void)updatePrefsUI {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     self.colorPasswordText.state = (BOOL)[d objectForKey:@"colorPasswordText"];
@@ -81,6 +104,7 @@
         }
     }
 }
+#pragma mark colors
 // From http://stackoverflow.com/questions/8697205/convert-hex-color-code-to-nscolor
 + (NSColor*)colorWithHexColorString:(NSString*)inColorString
 {
@@ -118,6 +142,7 @@
         [d setBool:(BOOL)self.colorPasswordText.state forKey:@"colorPasswordText"];
     }
 }
+#pragma mark auto clear clipboard
 - (IBAction)changeClearTime:(id)sender {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
@@ -132,6 +157,35 @@
         [d setInteger:[self.clearTime intValue] forKey:@"clearClipboardTime"];
     }
 }
-- (IBAction)toggleGlobalHotkey:(id)sender {
+#pragma mark - Custom shortcut
+
+
+#pragma mark shortcut
+- (void)resetShortcutRegistration
+{
+  
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
+        [MASShortcut registerGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut handler:^{
+            [[NSAlert alertWithMessageText:NSLocalizedString(@"Global hotkey has been pressed.", @"Alert message for custom shortcut")
+                             defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on custom shortcut")
+                           alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
+        }];
+    }
+    else {
+        [MASShortcut unregisterGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut];
+    }
+    
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
+//        MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSCommandKeyMask];
+//        _constantShortcutMonitor = [MASShortcut addGlobalHotkeyMonitorWithShortcut:shortcut handler:^{
+//            [[NSAlert alertWithMessageText:NSLocalizedString(@"⌘F2 has been pressed.", @"Alert message for constant shortcut")
+//                             defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on constant shortcut")
+//                           alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
+//        }];
+//    }
+//    else {
+//        [MASShortcut removeGlobalHotkeyMonitor:_constantShortcutMonitor];
+//    }
 }
+
 @end
