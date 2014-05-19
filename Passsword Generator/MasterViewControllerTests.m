@@ -195,6 +195,7 @@
     XCTAssertTrue([[pasteboard stringForType:NSPasteboardTypeString] isEqualToString:@""], @"Pasteboard not cleard");
     
 }
+//making sure the password field gets updated and is highlghted based on settings
 - (void)testUpdatePasswordField {
     id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
     //returning password field for object propery
@@ -206,20 +207,45 @@
     [self.mvc.passwordField setStringValue:@"cC#2"];
     [self.mvc controlTextDidChange:mockNotification];
     NSAttributedString *attrStr = [self.mvc.passwordField attributedStringValue];
-    //trying to get colors, not sure why I can't 
-    unsigned int length;
-    NSRange effectiveRange;
-    NSColor *attributeValue;
-    NSColor *b = [NSColor blackColor];
-    
-    length = attrStr.length;
-    effectiveRange = NSMakeRange(0, 0);
-    attributeValue =[attrStr attribute:NSForegroundColorAttributeName
-               atIndex:0 effectiveRange:&effectiveRange];
-//    NSLog(@"COLRO %@",attributeValue.colorSpace);
 
+    NSAttributedString *testStr = [[NSAttributedString alloc] initWithString:@"cC#2" attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+
+    BOOL mismatch = NO;
+    for (int i = 0; i < testStr.length ; i++) {
+        NSDictionary *a1, *a2;
+        a1 = [attrStr attributesAtIndex:i effectiveRange:nil];
+        a2 = [testStr attributesAtIndex:i effectiveRange:nil];
+        if (![a1 isEqualTo:a2]) {
+            mismatch = YES;
+            break;
+        }
+    }
+    XCTAssertFalse(mismatch, @"Password field is highlighted when it shouldn't be");
+    //testing highlighted string
+    [NSUserDefaults swapMethods];
+    id d = [NSUserDefaults standardUserDefaults];
+    [[[d stub] andReturnValue:OCMOCK_VALUE(@"111111")] objectForKey:@"numberTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE(@"222222")] objectForKey:@"upperTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE(@"333333")] objectForKey:@"numberTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE(@"444444")] objectForKey:@"lowerTextColor"];
     
+    self.mvc.colorPasswordText = YES;
+    [self.mvc.passwordField setStringValue:@"cC#2"];
+    [self.mvc controlTextDidChange:mockNotification];
+    attrStr = [self.mvc.passwordField attributedStringValue];
     
+    mismatch = YES;
+    for (int i = 0; i < testStr.length ; i++) {
+        NSDictionary *a1, *a2;
+        a1 = [attrStr attributesAtIndex:i effectiveRange:nil];
+        a2 = [testStr attributesAtIndex:i effectiveRange:nil];
+        if ([a1 isEqualTo:a2]) {
+            mismatch = NO;
+            break;
+        }
+    }
+    XCTAssertTrue(mismatch, @"Password field is highlighted when it should be");
+    [NSUserDefaults swapMethods];
     
 }
 - (void)testManualChangePasswordField {

@@ -190,7 +190,8 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 - (void)updatePasswordField{
 
     if (!self.colorPasswordText) {
-        [self.passwordField setStringValue: self.passwordValue];
+        NSAttributedString *s = [[NSAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+        [self.passwordField setAttributedStringValue: s];
     } else {
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         
