@@ -231,14 +231,28 @@
 				40BBBE671913C0F800AA5BC2 /* XIBs */,
 				40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */,
 				40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */,
-				40BBBE351913BE1800AA5BC2 /* AppDelegate.h */,
-				40BBBE361913BE1800AA5BC2 /* AppDelegate.m */,
 				403BC3811922AFB3005C92D3 /* PreferencesWindow.h */,
 				403BC3821922AFB3005C92D3 /* PreferencesWindow.m */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
+		40596E1D192BAE7900A1D0B6 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE351913BE1800AA5BC2 /* AppDelegate.h */,
+				40BBBE361913BE1800AA5BC2 /* AppDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		40596E1E192BAE8800A1D0B6 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
 				4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */,
 				4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */,
 			);
-			name = GUI;
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		40A152361913E8850091E264 /* ZXCVBN */ = {
@@ -322,6 +336,8 @@
 		40BBBE291913BE1800AA5BC2 /* Passsword Generator */ = {
 			isa = PBXGroup;
 			children = (
+				40596E1E192BAE8800A1D0B6 /* Categories */,
+				40596E1D192BAE7900A1D0B6 /* Delegate */,
 				40BBBE661913C0E400AA5BC2 /* Model */,
 				40135D8419256FCB00E91FA9 /* GUI */,
 				40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */,
