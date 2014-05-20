@@ -407,8 +407,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40BBBE541913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword GeneratorTests" */;
 			buildPhases = (
-				40BBBE3D1913BE1800AA5BC2 /* Sources */,
 				409770E4192092CF00C1A2D5 /* CopyFiles */,
+				40BBBE3D1913BE1800AA5BC2 /* Sources */,
 				40BBBE3E1913BE1800AA5BC2 /* Frameworks */,
 				40BBBE3F1913BE1800AA5BC2 /* Resources */,
 			);
