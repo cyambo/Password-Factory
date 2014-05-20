@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -37,6 +37,13 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="2ia-xi-Rdb" name="value" keyPath="values.userPattern" id="QjP-5d-cq1">
+                            <dictionary key="options">
+                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TlR-Vl-tPI">
                     <rect key="frame" x="326" y="195" width="85" height="32"/>
@@ -139,6 +146,13 @@
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <binding destination="2ia-xi-Rdb" name="value" keyPath="values.userPattern" id="z4S-zy-Cvs">
+                                                    <dictionary key="options">
+                                                        <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zKu-mV-rc2">
@@ -249,6 +263,9 @@ C -Random Uppercase Character</string>
                             </view>
                         </tabViewItem>
                     </tabViewItems>
+                    <connections>
+                        <binding destination="2ia-xi-Rdb" name="selectedIdentifier" keyPath="values.selectedTab" id="Da1-UQ-uFm"/>
+                    </connections>
                 </tabView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyJ-Ut-Xnd">
                     <rect key="frame" x="326" y="168" width="85" height="32"/>
@@ -272,5 +289,6 @@ C -Random Uppercase Character</string>
                 </textField>
             </subviews>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="2ia-xi-Rdb"/>
     </objects>
 </document>

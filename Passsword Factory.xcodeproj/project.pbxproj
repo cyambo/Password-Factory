@@ -296,7 +296,7 @@
 			children = (
 				40135D601925347A00E91FA9 /* MASSShortCut */,
 				40A152361913E8850091E264 /* ZXCVBN */,
-				40BBBE291913BE1800AA5BC2 /* Passsword Generator */,
+				40BBBE291913BE1800AA5BC2 /* Passsword Factory */,
 				40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */,
 				40BBBE221913BE1800AA5BC2 /* Frameworks */,
 				40BBBE211913BE1800AA5BC2 /* Products */,
@@ -333,7 +333,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		40BBBE291913BE1800AA5BC2 /* Passsword Generator */ = {
+		40BBBE291913BE1800AA5BC2 /* Passsword Factory */ = {
 			isa = PBXGroup;
 			children = (
 				40596E1E192BAE8800A1D0B6 /* Categories */,
@@ -343,6 +343,7 @@
 				40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */,
 				40BBBE2A1913BE1800AA5BC2 /* Supporting Files */,
 			);
+			name = "Passsword Factory";
 			path = "Passsword Generator";
 			sourceTree = "<group>";
 		};
