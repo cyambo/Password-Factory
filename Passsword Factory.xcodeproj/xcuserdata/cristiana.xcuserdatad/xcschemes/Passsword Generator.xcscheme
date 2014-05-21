@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "40BBBE1F1913BE1800AA5BC2"
-               BuildableName = "Passsword Generator.app"
-               BlueprintName = "Passsword Generator"
-               ReferencedContainer = "container:Passsword Generator.xcodeproj">
+               BuildableName = "Passsword Factory.app"
+               BlueprintName = "Passsword Factory"
+               ReferencedContainer = "container:Passsword Factory.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "40BBBE401913BE1800AA5BC2"
-               BuildableName = "Passsword GeneratorTests.xctest"
-               BlueprintName = "Passsword GeneratorTests"
-               ReferencedContainer = "container:Passsword Generator.xcodeproj">
+               BuildableName = "Passsword FactoryTests.xctest"
+               BlueprintName = "Passsword FactoryTests"
+               ReferencedContainer = "container:Passsword Factory.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "40BBBE1F1913BE1800AA5BC2"
-            BuildableName = "Passsword Generator.app"
-            BlueprintName = "Passsword Generator"
-            ReferencedContainer = "container:Passsword Generator.xcodeproj">
+            BuildableName = "Passsword Factory.app"
+            BlueprintName = "Passsword Factory"
+            ReferencedContainer = "container:Passsword Factory.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "40BBBE1F1913BE1800AA5BC2"
-            BuildableName = "Passsword Generator.app"
-            BlueprintName = "Passsword Generator"
-            ReferencedContainer = "container:Passsword Generator.xcodeproj">
+            BuildableName = "Passsword Factory.app"
+            BlueprintName = "Passsword Factory"
+            ReferencedContainer = "container:Passsword Factory.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "40BBBE1F1913BE1800AA5BC2"
-            BuildableName = "Passsword Generator.app"
-            BlueprintName = "Passsword Generator"
-            ReferencedContainer = "container:Passsword Generator.xcodeproj">
+            BuildableName = "Passsword Factory.app"
+            BlueprintName = "Passsword Factory"
+            ReferencedContainer = "container:Passsword Factory.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
