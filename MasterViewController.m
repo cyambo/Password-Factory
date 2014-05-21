@@ -10,6 +10,7 @@
 #import "BBPasswordStrength.h"
 #import "PasswordGenerator.h"
 #import "PreferencesWindow.h"
+#import "AppDelegate.h"
 int const  GenerateAndCopyLoops  = 10;
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
@@ -92,14 +93,26 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     [self updatePasswordField];
     [self.passwordStrengthLevel setFloatValue:s];
     [self copyToPasteboard:nil];
-    [self displayCopyNotification];
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+
+
+    if ([d boolForKey:@"globalHotkeyShowNotification"]) {
+        [self displayCopyNotification];
+        
+    } else {
+        [[NSSound soundNamed:@"Funk"] play];
+    }
+    
 }
 - (void)displayCopyNotification {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     [notification setTitle:@"Password Copied"];
     [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.floatValue]];
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
-    [notification setSoundName:NSUserNotificationDefaultSoundName];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"globalHotkeyPlaySound"]) {
+        [notification setSoundName:NSUserNotificationDefaultSoundName];
+    }
+    
     NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
     [center scheduleNotification:notification];
 }

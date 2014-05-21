@@ -16,5 +16,9 @@
 	<false/>
 	<key>clearClipboardTime</key>
 	<integer>30</integer>
+	<key>globalHotkeyShowNotification</key>
+	<true/>
+	<key>globalHotkeyPlaySound</key>
+	<false/>
 </dict>
 </plist>
