@@ -264,7 +264,7 @@ C -Random Uppercase Character</string>
                         </tabViewItem>
                     </tabViewItems>
                     <connections>
-                        <binding destination="2ia-xi-Rdb" name="selectedIdentifier" keyPath="values.selectedTab" id="Da1-UQ-uFm"/>
+                        <binding destination="2ia-xi-Rdb" name="selectedIdentifier" keyPath="values.selectedTabIndex" id="K6M-rw-ptX"/>
                     </connections>
                 </tabView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyJ-Ut-Xnd">

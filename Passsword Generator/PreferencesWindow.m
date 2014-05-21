@@ -160,8 +160,6 @@ __weak id _constantShortcutMonitor;
 }
 #pragma mark - Custom shortcut
 
-
-#pragma mark shortcut
 - (void)resetShortcutRegistration
 {
   
