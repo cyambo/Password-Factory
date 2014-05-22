@@ -104,6 +104,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     }
     
 }
+ 
 - (void)displayCopyNotification {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     [notification setTitle:@"Password Copied"];

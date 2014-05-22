@@ -78,6 +78,9 @@
         XCTAssertTrue([cHex isEqualToString: [d objectForKey:k]], @"Color well '%@' not updated",k);
     }
 }
+-(void)testSlider {
+    //put test to test slider to label bindings
+}
 -(void)testBindings {
     [self validateCheckBindings:self.pw.colorPasswordText defaultsKey:@"colorPasswordText" boundTo:@[self.pw.uppercaseTextColor,self.pw.lowercaseTextColor,self.pw.symbolsColor, self.pw.numbersColor] top:nil];
     [self validateCheckBindings:self.pw.enableGlobalHotkey defaultsKey:@"MASPGShortcutEnabled" boundTo:@[self.pw.displayNotification, self.pw.playNotificationSound] top:nil];

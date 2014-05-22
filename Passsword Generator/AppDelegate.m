@@ -10,7 +10,7 @@
 
 
 @interface AppDelegate()
-
+@property (nonatomic, strong) NSStatusItem *statusItem;
 @end
 @implementation AppDelegate
 
@@ -22,6 +22,8 @@
     self.masterViewController.view.frame = ((NSView *)self.window.contentView).bounds;
     
     self.prefsWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
+
+
 }
 - (IBAction)loadPrefrences:(id)sender {
     [self.prefsWindowController showWindow:self];
