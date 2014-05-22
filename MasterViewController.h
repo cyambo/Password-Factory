@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PasswordGenerator.h"
+#import "PreferencesWindowController.h"
 @interface MasterViewController : NSViewController
 @property (weak) IBOutlet NSTextField *passwordField;
 
@@ -43,4 +44,6 @@
 
 @property (nonatomic,assign) BOOL colorPasswordText;
 - (void)generateAndCopy;
+
+@property (nonatomic, weak) PreferencesWindowController *prefsWindow;
 @end

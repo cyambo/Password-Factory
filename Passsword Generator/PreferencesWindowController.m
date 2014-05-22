@@ -19,7 +19,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 #import "AppDelegate.h"
 @implementation PreferencesWindowController
 __weak id _constantShortcutMonitor;
-
+static BOOL loadedPrefs;
 
 
 - (id)initWithWindow:(NSWindow *)window
@@ -33,8 +33,8 @@ __weak id _constantShortcutMonitor;
     return self;
 }
 - (void)awakeFromNib {
-    
-    [self loadPreferencesFromPlist];
+
+    [PreferencesWindowController loadPreferencesFromPlist];
     [self updatePrefsUI];
     [self setObservers];
     
@@ -83,15 +83,22 @@ __weak id _constantShortcutMonitor;
 }
 
 
--(void)loadPreferencesFromPlist {
++(void)loadPreferencesFromPlist {
+    if (!loadedPrefs) {
+        [PreferencesWindowController getPrefsFromPlist];
+        loadedPrefs = YES;
+    }
+
+}
++ (void)getPrefsFromPlist {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
     NSDictionary *p = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     //taking plist and filling in defaults if none set
     for (NSString *k in p) {
         if (![d objectForKey:k]) {
-
-                [d setObject:[p objectForKey:k] forKey:k];
+            
+            [d setObject:[p objectForKey:k] forKey:k];
             
             
         }

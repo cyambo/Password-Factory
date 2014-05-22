@@ -51,7 +51,7 @@
         XCTAssertNil([d objectForKey:k], @"Key '%@' set when it should be nil",k);
 
     }
-    [self.pw loadPreferencesFromPlist];
+    [PreferencesWindowController getPrefsFromPlist];
     
     for (NSString *k in p) {
         

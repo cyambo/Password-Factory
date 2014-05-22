@@ -31,8 +31,11 @@ int const  GenerateAndCopyLoops  = 10;
         self.pg = [[PasswordGenerator alloc] init];
         self.timerClass = [NSTimer class];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-        self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
 
+        self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
+        if (self.colorPasswordText == nil) {
+            NSLog(@"NIL");
+        }
         [self setObservers];
     }
     return self;
@@ -104,7 +107,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     }
     
 }
- 
+
 - (void)displayCopyNotification {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     [notification setTitle:@"Password Copied"];
