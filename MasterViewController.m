@@ -120,7 +120,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     [self updatePasteboard:self.passwordValue];
-    if (1 || [d boolForKey:@"clearClipboard"]) {
+    if ([d boolForKey:@"clearClipboard"]) {
         if ([self.clearClipboardTimer isValid]) {
             [self.clearClipboardTimer invalidate];
         }

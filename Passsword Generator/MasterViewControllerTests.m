@@ -163,6 +163,12 @@
     XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Pressing generate button does not regenerate new password");
 }
 - (void)testCopyToPasteboard {
+    [self copyToPasteboard:NO];
+    [self copyToPasteboard:YES];
+}
+-(void)copyToPasteboard:(BOOL)setTimer {
+    //calling NSTimer+UnitTest category
+    [NSTimer resetTimer];
     id timer = [NSTimer getTimer];
     NSInteger timerRetval = 3;
     [[timer expect] scheduledTimerWithTimeInterval:timerRetval
@@ -171,21 +177,35 @@
                                           userInfo:nil
                                            repeats:NO];
     [NSUserDefaults swapMethods];
+    
     id d = [NSUserDefaults standardUserDefaults];
-
+    
     [[[d stub] andReturnValue:OCMOCK_VALUE(timerRetval)] integerForKey:@"clearClipboardTime"];
+    
+    [[[d stub] andReturnValue:OCMOCK_VALUE(setTimer)] boolForKey:@"clearClipboard"];
+    if ([d boolForKey:@"clearClipboard"]) {
+        NSLog(@"YES %hhd",setTimer);
+    } else {
+        NSLog(@"NO %hhd",setTimer);
+    }
 
+    
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
+    
     [self.mvc.pasteboardButton performClick:self.mvc];
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     NSString *pbval = [pasteboard stringForType:NSPasteboardTypeString];
-
-    XCTAssertNoThrow([timer verify], @"Timer not configured properly");
+    
+    if (setTimer) {
+        XCTAssertNoThrow([timer verify], @"Timer should be triggered");
+    } else {
+        XCTAssertThrows([timer verify], @"Timer should not be triggered");
+    }
+    
     XCTAssertTrue([pbval isEqualToString:[self getPasswordFieldValue]], @"Password not copied to pasteboard");
-    [NSUserDefaults swapMethods];
-  
-}
 
+    [NSUserDefaults swapMethods];
+}
 - (void)testClipboardHandling {
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
 

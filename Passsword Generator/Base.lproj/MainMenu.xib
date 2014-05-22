@@ -151,6 +151,7 @@
                                     </buttonCell>
                                     <connections>
                                         <action selector="changeColor:" target="FP6-89-tUf" id="VvP-zd-Apc"/>
+                                        <binding destination="k1c-IL-jhU" name="value" keyPath="values.colorPasswordText" id="AxP-El-q54"/>
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPE-zE-Leo">
@@ -233,7 +234,7 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="autoClearChange:" target="FP6-89-tUf" id="lCn-J3-BfI"/>
+                                        <binding destination="k1c-IL-jhU" name="value" keyPath="values.clearClipboard" id="0u5-wN-oW2"/>
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lgr-R0-Y0W">
@@ -244,13 +245,22 @@
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
+                                    <connections>
+                                        <binding destination="k1c-IL-jhU" name="enabled" keyPath="values.clearClipboard" id="gMv-eR-Fn5"/>
+                                    </connections>
                                 </textField>
                                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7NJ-Y8-ah1">
                                     <rect key="frame" x="41" y="18" width="86" height="15"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="15" maxValue="99" doubleValue="15" tickMarkPosition="above" sliderType="linear" id="p6b-lA-slH"/>
+                                    <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="15" maxValue="99" doubleValue="15" tickMarkPosition="above" sliderType="linear" id="p6b-lA-slH">
+                                        <connections>
+                                            <binding destination="k1c-IL-jhU" name="value" keyPath="values.clearClipboardTime" id="hpf-rO-Jwg"/>
+                                        </connections>
+                                    </sliderCell>
                                     <connections>
-                                        <action selector="changeClearTime:" target="FP6-89-tUf" id="Kp6-YC-Raf"/>
+                                        <action selector="changeClearTime:" target="FP6-89-tUf" id="MMw-j6-KuP"/>
+                                        <binding destination="k1c-IL-jhU" name="enabled" keyPath="values.clearClipboard" id="iAb-ON-iQ5"/>
+                                        <binding destination="k1c-IL-jhU" name="value" keyPath="values.clearClipboardTime" id="EhY-HQ-1xh"/>
                                     </connections>
                                 </slider>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I06-4c-whD">
@@ -261,6 +271,9 @@
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
+                                    <connections>
+                                        <binding destination="k1c-IL-jhU" name="enabled" keyPath="values.clearClipboard" id="oTw-pf-pxu"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                         </view>

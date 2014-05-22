@@ -19,6 +19,9 @@ static id mockTimer = nil;
     }
     return mockTimer;
 }
++(void)resetTimer {
+    mockTimer = nil;
+}
 +(id)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo {
     return [[self class] getTimer];
 

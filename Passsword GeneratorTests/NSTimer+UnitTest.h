@@ -10,4 +10,5 @@
 
 @interface NSTimer (UnitTest)
 +(NSTimer *)getTimer;
++(void)resetTimer;
 @end

@@ -22,11 +22,10 @@ __weak id _constantShortcutMonitor;
 
 - (void)awakeFromNib {
     
-    
-
     [self loadPreferencesFromPlist];
     [self updatePrefsUI];
     [self setObservers];
+
     [self.shortcutView bind:@"enabled" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
     
     // Shortcut view will follow and modify user preferences automatically
@@ -59,15 +58,7 @@ __weak id _constantShortcutMonitor;
 #pragma mark prefs
 -(void)updatePrefsUI {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    self.colorPasswordText.state = (BOOL)[d objectForKey:@"colorPasswordText"];
-    self.automaticallyClearClipboard.state = (BOOL)[d objectForKey:@"clearClipboard"];
-    
-    if (!self.automaticallyClearClipboard.state) {
-        [self.clearTime setEnabled:NO];
-    }
-    [self endEditingFor:self.clearTime];
 
-    [self.clearTime setIntegerValue:[d integerForKey:@"clearClipboardTime"]];
     [self.clearTimeLabel setIntValue:(int)[d integerForKey:@"clearClipboardTime"]];
 
     [self.uppercaseTextColor setColor: [PreferencesWindow colorWithHexColorString:[d objectForKey:@"upperTextColor"]]];
@@ -78,12 +69,7 @@ __weak id _constantShortcutMonitor;
 
     
 }
-- (void)controlTextDidChange:(NSNotification *)obj {
-    if (obj.object == self.clearTime) {
-        NSUserDefaults  *d = [NSUserDefaults standardUserDefaults];
-        [d setInteger:[self.clearTime intValue] forKey:@"clearClipboardTime"];
-    }
-}
+
 
 -(void)loadPreferencesFromPlist {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
@@ -92,15 +78,9 @@ __weak id _constantShortcutMonitor;
     //taking plist and filling in defaults if none set
     for (NSString *k in p) {
         if (![d objectForKey:k]) {
-            if ([k isEqualToString:@"colorPasswordText"] ||
-                [k isEqualToString:@"clearClipboard"]) {
-                [d setBool:(BOOL)[p objectForKey:k] forKey:k];
-            } else if ([k isEqualToString:@"clearClipboardTime"]){
 
-                [d setInteger:[[p objectForKey:k] intValue]  forKey:k];
-            } else {
                 [d setObject:[p objectForKey:k] forKey:k];
-            }
+            
             
         }
     }
@@ -145,19 +125,19 @@ __weak id _constantShortcutMonitor;
 }
 #pragma mark auto clear clipboard
 - (IBAction)changeClearTime:(id)sender {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
-    [d setInteger:[self.clearTime integerValue] forKey:@"clearClipboardTime"];
-}
 
-- (IBAction)autoClearChange:(id)sender {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    if ([sender isEqualTo: self.automaticallyClearClipboard]) {
-        [d setBool:(BOOL)self.automaticallyClearClipboard.state forKey:@"clearClipboard"];
-    } else {
-        [d setInteger:[self.clearTime intValue] forKey:@"clearClipboardTime"];
-    }
+    [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
+
 }
+//
+//- (IBAction)autoClearChange:(id)sender {
+//    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+//    if ([sender isEqualTo: self.automaticallyClearClipboard]) {
+//        [d setBool:(BOOL)self.automaticallyClearClipboard.state forKey:@"clearClipboard"];
+//    } else {
+//        [d setInteger:[self.clearTime intValue] forKey:@"clearClipboardTime"];
+//    }
+//}
 #pragma mark - Custom shortcut
 
 - (void)resetShortcutRegistration
