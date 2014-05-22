@@ -10,8 +10,11 @@
                 <outlet property="clearTime" destination="cfY-sM-IQE" id="8Mu-K5-b2u"/>
                 <outlet property="clearTimeLabel" destination="WOR-VL-9aO" id="yCW-zs-S7O"/>
                 <outlet property="colorPasswordText" destination="zKT-d0-rYF" id="l06-oB-opP"/>
+                <outlet property="displayNotification" destination="jb8-JE-onG" id="NsK-kK-shD"/>
+                <outlet property="enableGlobalHotkey" destination="QHt-jI-4e2" id="dE2-at-apd"/>
                 <outlet property="lowercaseTextColor" destination="AQp-H3-av2" id="yjW-Qb-29Y"/>
                 <outlet property="numbersColor" destination="gZh-JY-pjQ" id="zu4-bs-5oz"/>
+                <outlet property="playNotificationSound" destination="2u6-HN-b47" id="vdX-9r-qRH"/>
                 <outlet property="shortcutView" destination="kW6-ZI-IKO" id="z8M-EY-HyY"/>
                 <outlet property="symbolsColor" destination="ffN-DS-dp0" id="J1M-ki-NUH"/>
                 <outlet property="uppercaseTextColor" destination="E12-aM-C4D" id="b3d-o2-F4K"/>
@@ -171,12 +174,12 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="15" maxValue="99" doubleValue="15" tickMarkPosition="above" sliderType="linear" id="hOd-l4-h6H">
                                         <connections>
+                                            <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.clearClipboard" id="znC-VK-5h4"/>
                                             <binding destination="gVG-eV-jH6" name="value" keyPath="values.clearClipboardTime" id="Tld-3w-LH0"/>
                                         </connections>
                                     </sliderCell>
                                     <connections>
                                         <action selector="changeClearTime:" target="-2" id="aPp-jK-UFO"/>
-                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.clearClipboard" id="cMw-Ao-9hL"/>
                                     </connections>
                                 </slider>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WOR-VL-9aO">
@@ -233,19 +236,16 @@
                                         <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyPlaySound" id="Jxy-b8-eGQ"/>
                                     </connections>
                                 </button>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lpq-iw-XU5">
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jb8-JE-onG">
                                     <rect key="frame" x="42" y="36" width="145" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Display Notification" bezelStyle="regularSquare" imagePosition="left" inset="2" id="oeR-0Q-PDh">
+                                    <buttonCell key="cell" type="check" title="Display Notification" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cf8-mI-jcZ">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
-                                        <connections>
-                                            <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyShowNotification" id="inf-Cl-jN3"/>
-                                        </connections>
                                     </buttonCell>
                                     <connections>
-                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyDisplayNotification" id="RDP-cW-qeN"/>
-                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.MASPGShortcutEnabled" id="qw4-i5-OmT"/>
+                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.MASPGShortcutEnabled" id="hjX-5D-L7I"/>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyShowNotification" id="MV2-wg-wBz"/>
                                     </connections>
                                 </button>
                             </subviews>

@@ -30,6 +30,9 @@
 + (NSColor*)colorWithHexColorString:(NSString*)inColorString;
 
 @property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
+@property (weak) IBOutlet NSButton *displayNotification;
+@property (weak) IBOutlet NSButton *playNotificationSound;
+@property (weak) IBOutlet NSButton *enableGlobalHotkey;
 
 
 @end
