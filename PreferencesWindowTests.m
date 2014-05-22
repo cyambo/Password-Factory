@@ -7,9 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "PreferencesWindow.h"
+#import "PreferencesWindowController.h"
 @interface PreferencesWindowTests : XCTestCase
-@property (nonatomic, strong) PreferencesWindow *pw;
+@property (nonatomic, strong) PreferencesWindowController *pw;
 @end
 
 @implementation PreferencesWindowTests
@@ -17,8 +17,8 @@
 - (void)setUp
 {
     [super setUp];
-    self.pw = [[PreferencesWindow alloc] init];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.pw = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
+    [self.pw showWindow:self];
 }
 
 - (void)tearDown

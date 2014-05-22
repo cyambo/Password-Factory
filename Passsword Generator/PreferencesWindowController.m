@@ -1,5 +1,5 @@
 //
-//  PreferencesWindow.m
+//  PreferencesWindowController.m
 //  Passsword Generator
 //
 //  Created by Cristiana Yambo on 5/13/14.
@@ -8,24 +8,36 @@
 
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
-NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASPGConstantShortcutEnabled";
 
-#import "PreferencesWindow.h"
+
+#import "PreferencesWindowController.h"
 #import "NSColor+NSColorHexadecimalValue.h"
 #import "MASShortcutView.h"
 #import "MASShortcutView+UserDefaults.h"
 #import "MASShortcut+UserDefaults.h"
 #import "MASShortcut+Monitoring.h"
 #import "AppDelegate.h"
-@implementation PreferencesWindow
+@implementation PreferencesWindowController
 __weak id _constantShortcutMonitor;
 
+
+
+- (id)initWithWindow:(NSWindow *)window
+{
+    self = [super initWithWindow:window];
+    if (self) {
+        // Initialization code here.
+        
+
+    }
+    return self;
+}
 - (void)awakeFromNib {
     
     [self loadPreferencesFromPlist];
     [self updatePrefsUI];
     [self setObservers];
-
+    
     [self.shortcutView bind:@"enabled" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
     
     // Shortcut view will follow and modify user preferences automatically
@@ -61,10 +73,10 @@ __weak id _constantShortcutMonitor;
 
     [self.clearTimeLabel setIntValue:(int)[d integerForKey:@"clearClipboardTime"]];
 
-    [self.uppercaseTextColor setColor: [PreferencesWindow colorWithHexColorString:[d objectForKey:@"upperTextColor"]]];
-    [self.lowercaseTextColor setColor: [PreferencesWindow colorWithHexColorString:[d objectForKey:@"lowerTextColor"]]];
-    [self.symbolsColor setColor: [PreferencesWindow colorWithHexColorString:[d objectForKey:@"symbolTextColor"]]];
-    [self.numbersColor setColor: [PreferencesWindow colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
+    [self.uppercaseTextColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"upperTextColor"]]];
+    [self.lowercaseTextColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"lowerTextColor"]]];
+    [self.symbolsColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]]];
+    [self.numbersColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
     
 
     

@@ -9,7 +9,7 @@
 #import "MasterViewController.h"
 #import "BBPasswordStrength.h"
 #import "PasswordGenerator.h"
-#import "PreferencesWindow.h"
+#import "PreferencesWindowController.h"
 #import "AppDelegate.h"
 int const  GenerateAndCopyLoops  = 10;
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
@@ -99,8 +99,8 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     if ([d boolForKey:@"globalHotkeyShowNotification"]) {
         [self displayCopyNotification];
         
-    } else {
-        [[NSSound soundNamed:@"Funk"] play];
+    } else if ([d boolForKey:@"globalHotkeyPlaySound"]) {
+        [[NSSound soundNamed:@"Hero"] play];
     }
     
 }
@@ -208,10 +208,10 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     } else {
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         
-        NSColor *nColor = [PreferencesWindow colorWithHexColorString:[d objectForKey:@"numberTextColor"]];
-        NSColor *cColor = [PreferencesWindow colorWithHexColorString:[d objectForKey:@"upperTextColor"]];
-        NSColor *clColor = [PreferencesWindow colorWithHexColorString:[d objectForKey:@"lowerTextColor"]];
-        NSColor *sColor = [PreferencesWindow colorWithHexColorString:[d objectForKey:@"symbolTextColor"]];
+        NSColor *nColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"numberTextColor"]];
+        NSColor *cColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"upperTextColor"]];
+        NSColor *clColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"lowerTextColor"]];
+        NSColor *sColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]];
 
         
         

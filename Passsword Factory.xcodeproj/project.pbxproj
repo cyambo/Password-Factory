@@ -22,8 +22,9 @@
 		40135D721925349500E91FA9 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D681925349500E91FA9 /* MASShortcutView.m */; };
 		40135D731925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
 		40135D741925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
-		403BC3831922AFB3005C92D3 /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindow.m */; };
+		403BC3831922AFB3005C92D3 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
+		405B5F50192D86DB00938AFF /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
 		409770E2192091EE00C1A2D5 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
 		409770E5192092E600C1A2D5 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
@@ -102,9 +103,10 @@
 		40135D681925349500E91FA9 /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = ../MASShortcut/MASShortcutView.m; sourceTree = "<group>"; };
 		40135D691925349500E91FA9 /* MASShortcutView+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+UserDefaults.h"; path = "../MASShortcut/MASShortcutView+UserDefaults.h"; sourceTree = "<group>"; };
 		40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+UserDefaults.m"; path = "../MASShortcut/MASShortcutView+UserDefaults.m"; sourceTree = "<group>"; };
-		403BC3811922AFB3005C92D3 /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
-		403BC3821922AFB3005C92D3 /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
+		403BC3811922AFB3005C92D3 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
 		4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
 		4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
 		409770E1192091EE00C1A2D5 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = ../OCMock.framework; sourceTree = "<group>"; };
@@ -231,8 +233,8 @@
 				40BBBE671913C0F800AA5BC2 /* XIBs */,
 				40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */,
 				40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */,
-				403BC3811922AFB3005C92D3 /* PreferencesWindow.h */,
-				403BC3821922AFB3005C92D3 /* PreferencesWindow.m */,
+				403BC3811922AFB3005C92D3 /* PreferencesWindowController.h */,
+				403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -294,10 +296,10 @@
 		40BBBE171913BE1800AA5BC2 = {
 			isa = PBXGroup;
 			children = (
-				40135D601925347A00E91FA9 /* MASSShortCut */,
-				40A152361913E8850091E264 /* ZXCVBN */,
 				40BBBE291913BE1800AA5BC2 /* Passsword Factory */,
 				40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */,
+				40135D601925347A00E91FA9 /* MASSShortCut */,
+				40A152361913E8850091E264 /* ZXCVBN */,
 				40BBBE221913BE1800AA5BC2 /* Frameworks */,
 				40BBBE211913BE1800AA5BC2 /* Products */,
 			);
@@ -394,6 +396,7 @@
 		40BBBE671913C0F800AA5BC2 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */,
 				40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */,
 				40BBBE381913BE1800AA5BC2 /* MainMenu.xib */,
 			);
@@ -477,6 +480,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405B5F50192D86DB00938AFF /* PreferencesWindowController.xib in Resources */,
 				403BC3871922B658005C92D3 /* defaults.plist in Resources */,
 				40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */,
 				40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
@@ -515,7 +519,7 @@
 				40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */,
 				40A152591913E8AB0091E264 /* BBEntropyCenter.m in Sources */,
 				40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */,
-				403BC3831922AFB3005C92D3 /* PreferencesWindow.m in Sources */,
+				403BC3831922AFB3005C92D3 /* PreferencesWindowController.m in Sources */,
 				40A1525A1913E8AB0091E264 /* BBL33tMatcher.m in Sources */,
 				40135D711925349500E91FA9 /* MASShortcutView.m in Sources */,
 				40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */,

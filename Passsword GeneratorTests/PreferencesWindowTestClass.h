@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 c13. All rights reserved.
 //
 
-#import "PreferencesWindow.h"
+#import "PreferencesWindowController.h"
 
-@interface PreferencesWindowTestClass : PreferencesWindow
+@interface PreferencesWindowTestClass : PreferencesWindowController
 
 @end

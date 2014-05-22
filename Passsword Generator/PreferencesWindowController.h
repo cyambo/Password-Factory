@@ -1,5 +1,5 @@
 //
-//  PreferencesWindow.h
+//  PreferencesWindowController.h
 //  Passsword Generator
 //
 //  Created by Cristiana Yambo on 5/13/14.
@@ -11,7 +11,7 @@
 
 
 
-@interface PreferencesWindow : NSWindow <NSTextFieldDelegate>
+@interface PreferencesWindowController : NSWindowController <NSTextFieldDelegate>
 
 @property (weak) IBOutlet NSButton *colorPasswordText;
 @property (weak) IBOutlet NSColorWell *uppercaseTextColor;
