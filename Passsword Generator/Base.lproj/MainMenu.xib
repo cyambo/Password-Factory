@@ -76,7 +76,6 @@
                                     <action selector="undo:" target="-1" id="rO7-XL-YuA"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Redo" keyEquivalent="Z" id="dpp-ur-DFp"/>
                             <menuItem isSeparatorItem="YES" id="w4K-pd-4Ge"/>
                             <menuItem title="Cut" keyEquivalent="x" id="5sM-5y-pVE">
                                 <connections>
@@ -93,7 +92,11 @@
                                     <action selector="paste:" target="-1" id="0Vh-oe-1Sk"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Select All" keyEquivalent="a" id="lp4-FC-bxO"/>
+                            <menuItem title="Select All" keyEquivalent="a" id="lp4-FC-bxO">
+                                <connections>
+                                    <action selector="selectText:" target="-1" id="nRP-wa-gVt"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

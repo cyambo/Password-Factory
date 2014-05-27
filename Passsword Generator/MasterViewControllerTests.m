@@ -226,6 +226,19 @@
     XCTAssertTrue([[pasteboard stringForType:NSPasteboardTypeString] isEqualToString:@""], @"Pasteboard not cleard");
     
 }
+-(void)testFirstResponderActions {
+    
+    return;
+    
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSString *testValue = @"updated password field";
+    [self.mvc.passwordField becomeFirstResponder];
+    [self.mvc.passwordField setStringValue:testValue];
+    [NSApp sendAction:@selector(cut:) to:nil from:self];
+    NSLog(@"STRING %@",[pasteboard stringForType:NSPasteboardTypeString] );
+    XCTAssertTrue([[pasteboard stringForType:NSPasteboardTypeString] isEqualToString:testValue], @"Text not copied to pasteboard");
+    
+}
 //making sure the password field gets updated and is highlghted based on settings
 - (void)testUpdatePasswordField {
     id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
