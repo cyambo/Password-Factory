@@ -67,6 +67,36 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Edit" id="s5i-Ap-AkT">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Edit" id="UEE-1O-4Gf">
+                        <items>
+                            <menuItem title="Undo" keyEquivalent="z" id="fGG-1u-73e">
+                                <connections>
+                                    <action selector="undo:" target="-1" id="rO7-XL-YuA"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Redo" keyEquivalent="Z" id="dpp-ur-DFp"/>
+                            <menuItem isSeparatorItem="YES" id="w4K-pd-4Ge"/>
+                            <menuItem title="Cut" keyEquivalent="x" id="5sM-5y-pVE">
+                                <connections>
+                                    <action selector="cut:" target="-1" id="shS-jJ-yVm"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Copy" keyEquivalent="c" id="MQe-VB-bLF">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="KHr-4b-vo4"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste" keyEquivalent="v" id="FAE-v8-B9B">
+                                <connections>
+                                    <action selector="paste:" target="-1" id="0Vh-oe-1Sk"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select All" keyEquivalent="a" id="lp4-FC-bxO"/>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">

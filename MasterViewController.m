@@ -271,7 +271,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
             break;
         case 1: //pattern
             
-            ct = (ct/10)*100;
+            ct = (ct/20)*100;
             break;
         case 2: //pronounceable
             ct = (ct/40)*100;

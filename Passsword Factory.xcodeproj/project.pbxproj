@@ -24,6 +24,8 @@
 		40135D741925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
 		403BC3831922AFB3005C92D3 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
+		404DE5F4192E449C00210515 /* StatusMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404DE5F3192E449C00210515 /* StatusMenu.xib */; };
+		404DE6381934DA3100210515 /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 404DE6371934DA3100210515 /* TextField.m */; };
 		405B5F50192D86DB00938AFF /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
 		409770E2192091EE00C1A2D5 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
@@ -106,6 +108,9 @@
 		403BC3811922AFB3005C92D3 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		404DE5F3192E449C00210515 /* StatusMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusMenu.xib; sourceTree = "<group>"; };
+		404DE6361934DA3100210515 /* TextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextField.h; sourceTree = "<group>"; };
+		404DE6371934DA3100210515 /* TextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextField.m; sourceTree = "<group>"; };
 		405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
 		4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
 		4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
@@ -239,6 +244,15 @@
 			name = GUI;
 			sourceTree = "<group>";
 		};
+		404DE6351934DA0E00210515 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				404DE6361934DA3100210515 /* TextField.h */,
+				404DE6371934DA3100210515 /* TextField.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		40596E1D192BAE7900A1D0B6 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +310,7 @@
 		40BBBE171913BE1800AA5BC2 = {
 			isa = PBXGroup;
 			children = (
+				404DE5F3192E449C00210515 /* StatusMenu.xib */,
 				40BBBE291913BE1800AA5BC2 /* Passsword Factory */,
 				40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */,
 				40135D601925347A00E91FA9 /* MASSShortCut */,
@@ -338,6 +353,7 @@
 		40BBBE291913BE1800AA5BC2 /* Passsword Factory */ = {
 			isa = PBXGroup;
 			children = (
+				404DE6351934DA0E00210515 /* Classes */,
 				40596E1E192BAE8800A1D0B6 /* Categories */,
 				40596E1D192BAE7900A1D0B6 /* Delegate */,
 				40BBBE661913C0E400AA5BC2 /* Model */,
@@ -486,6 +502,7 @@
 				40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
 				40A152541913E8AB0091E264 /* frequency_lists.json in Resources */,
 				40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */,
+				404DE5F4192E449C00210515 /* StatusMenu.xib in Resources */,
 				40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */,
 				40BBBE341913BE1800AA5BC2 /* Credits.rtf in Resources */,
 				40BBBE3A1913BE1800AA5BC2 /* MainMenu.xib in Resources */,
@@ -529,6 +546,7 @@
 				40BBBE301913BE1800AA5BC2 /* main.m in Sources */,
 				40A1525B1913E8AB0091E264 /* BBPasswordStrength.m in Sources */,
 				40A1525D1913E8AB0091E264 /* BBPatternCenter.m in Sources */,
+				404DE6381934DA3100210515 /* TextField.m in Sources */,
 				40A1525E1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m in Sources */,
 				40A152601913E8AB0091E264 /* BBSequenceMatcher.m in Sources */,
 			);

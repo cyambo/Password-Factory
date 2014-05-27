@@ -11,9 +11,10 @@
 
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
+@property (nonatomic, strong) NSMenu *statusMenu;
 @end
 @implementation AppDelegate
-
+static BOOL isMenu;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [PreferencesWindowController loadPreferencesFromPlist];
@@ -22,10 +23,27 @@
 
     self.masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
     self.masterViewController.prefsWindow = self.prefsWindowController;
-    if (0) {
+    isMenu = NO;
+    if (isMenu) {
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
         self.statusItem.title = @"Test";
         self.statusItem.highlightMode = YES;
+        
+        self.statusMenu = [[NSMenu alloc] initWithTitle:@""];
+        self.statusMenu.autoenablesItems = NO;
+        
+
+        NSMenuItem* statusMenuItem;
+        statusMenuItem = [[NSMenuItem alloc]
+                   initWithTitle:@"Custom Item 1"
+                   action:@selector(menuItem1Action:)
+                   keyEquivalent:@""];
+        [statusMenuItem setView: self.masterViewController.view];
+        [statusMenuItem setTarget:self];
+        [self.statusMenu addItem:statusMenuItem];
+        
+        
+        self.statusItem.menu = self.statusMenu;
         
     } else {
         [self.window.contentView addSubview:self.masterViewController.view];
@@ -36,12 +54,13 @@
     
 
 }
+
 - (IBAction)loadPrefrences:(id)sender {
     [self.prefsWindowController showWindow:self];
     
 }
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
-    return YES;
+    return !isMenu;
 }
 @end

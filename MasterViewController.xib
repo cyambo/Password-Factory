@@ -29,7 +29,7 @@
             <rect key="frame" x="0.0" y="0.0" width="425" height="243"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qet-DJ-02l">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qet-DJ-02l" customClass="TextField">
                     <rect key="frame" x="20" y="201" width="304" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" allowsEditingTextAttributes="YES" id="Myv-Rk-pwt">
@@ -68,11 +68,11 @@
                     <tabViewItems>
                         <tabViewItem label="Random" identifier="0" id="zr5-iB-5I9">
                             <view key="view" ambiguous="YES" id="TTS-Hg-P6L">
-                                <rect key="frame" x="10" y="33" width="379" height="105"/>
+                                <rect key="frame" x="10" y="33" width="202" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-Qg-3Sd">
-                                        <rect key="frame" x="37" y="54" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="-51" width="304" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XDj-Cb-rZ3">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -83,7 +83,7 @@
                                         </connections>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAm-zY-Nsw">
-                                        <rect key="frame" x="37" y="34" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="-71" width="304" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OPh-WO-qZF">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -94,7 +94,7 @@
                                         </connections>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2y-v2-bIT">
-                                        <rect key="frame" x="37" y="14" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="-91" width="304" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Avoid Ambiguous Characters" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yrh-pS-CML">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -105,7 +105,7 @@
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fc-DjX">
-                                        <rect key="frame" x="88" y="80" width="224" height="20"/>
+                                        <rect key="frame" x="88" y="-25" width="224" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mGh-qr-LNC">
                                             <connections>
@@ -114,7 +114,7 @@
                                         </sliderCell>
                                     </slider>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqi-Du-606">
-                                        <rect key="frame" x="316" y="82" width="21" height="17"/>
+                                        <rect key="frame" x="316" y="-23" width="21" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="50" id="LRQ-wR-Nch">
                                             <font key="font" metaFont="system"/>
@@ -123,7 +123,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yhn-Xd-r0K">
-                                        <rect key="frame" x="37" y="82" width="47" height="17"/>
+                                        <rect key="frame" x="37" y="-23" width="47" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="0Xj-5v-hJb">
                                             <font key="font" metaFont="system"/>
@@ -139,7 +139,7 @@
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-SO-FyV">
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-SO-FyV" customClass="TextField">
                                         <rect key="frame" x="21" y="80" width="336" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Pattern" drawsBackground="YES" id="tER-aD-4v5">
