@@ -80,7 +80,7 @@
                             <menuItem isSeparatorItem="YES" id="w4K-pd-4Ge"/>
                             <menuItem title="Cut" keyEquivalent="x" id="5sM-5y-pVE">
                                 <connections>
-                                    <action selector="cut:" target="-1" id="shS-jJ-yVm"/>
+                                    <action selector="cut:" target="-1" id="JJ2-Eq-r1s"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Copy" keyEquivalent="c" id="MQe-VB-bLF">

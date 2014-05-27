@@ -36,7 +36,7 @@ static BOOL isMenu;
         NSMenuItem* statusMenuItem;
         statusMenuItem = [[NSMenuItem alloc]
                    initWithTitle:@"Custom Item 1"
-                   action:@selector(menuItem1Action:)
+                   action:@selector(menuItemAction:)
                    keyEquivalent:@""];
         [statusMenuItem setView: self.masterViewController.view];
         [statusMenuItem setTarget:self];
