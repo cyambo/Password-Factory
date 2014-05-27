@@ -20,5 +20,7 @@
 	<true/>
 	<key>globalHotkeyPlaySound</key>
 	<false/>
+	<key>isMenuApp</key>
+	<false/>
 </dict>
 </plist>

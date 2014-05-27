@@ -24,6 +24,10 @@
 		40135D741925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
 		403BC3831922AFB3005C92D3 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
+		4047839A1935115800971CB1 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 404783981935115800971CB1 /* menu-icon.png */; };
+		4047839B1935115800971CB1 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 404783991935115800971CB1 /* menu-icon@2x.png */; };
+		4047839E19351A8F00971CB1 /* menu-icon-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 4047839C19351A8F00971CB1 /* menu-icon-inv.png */; };
+		4047839F19351A8F00971CB1 /* menu-icon-inv@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4047839D19351A8F00971CB1 /* menu-icon-inv@2x.png */; };
 		404DE5F4192E449C00210515 /* StatusMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404DE5F3192E449C00210515 /* StatusMenu.xib */; };
 		405B5F50192D86DB00938AFF /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
@@ -107,6 +111,10 @@
 		403BC3811922AFB3005C92D3 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		404783981935115800971CB1 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
+		404783991935115800971CB1 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
+		4047839C19351A8F00971CB1 /* menu-icon-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-inv.png"; sourceTree = "<group>"; };
+		4047839D19351A8F00971CB1 /* menu-icon-inv@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-inv@2x.png"; sourceTree = "<group>"; };
 		404DE5F3192E449C00210515 /* StatusMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusMenu.xib; sourceTree = "<group>"; };
 		405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
 		4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
@@ -355,6 +363,10 @@
 		40BBBE2A1913BE1800AA5BC2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4047839C19351A8F00971CB1 /* menu-icon-inv.png */,
+				4047839D19351A8F00971CB1 /* menu-icon-inv@2x.png */,
+				404783981935115800971CB1 /* menu-icon.png */,
+				404783991935115800971CB1 /* menu-icon@2x.png */,
 				40BBBE2B1913BE1800AA5BC2 /* Passsword Factory-Info.plist */,
 				40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */,
 				40BBBE2F1913BE1800AA5BC2 /* main.m */,
@@ -483,6 +495,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4047839E19351A8F00971CB1 /* menu-icon-inv.png in Resources */,
+				4047839A1935115800971CB1 /* menu-icon.png in Resources */,
 				405B5F50192D86DB00938AFF /* PreferencesWindowController.xib in Resources */,
 				403BC3871922B658005C92D3 /* defaults.plist in Resources */,
 				40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */,
@@ -490,6 +504,8 @@
 				40A152541913E8AB0091E264 /* frequency_lists.json in Resources */,
 				40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */,
 				404DE5F4192E449C00210515 /* StatusMenu.xib in Resources */,
+				4047839B1935115800971CB1 /* menu-icon@2x.png in Resources */,
+				4047839F19351A8F00971CB1 /* menu-icon-inv@2x.png in Resources */,
 				40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */,
 				40BBBE341913BE1800AA5BC2 /* Credits.rtf in Resources */,
 				40BBBE3A1913BE1800AA5BC2 /* MainMenu.xib in Resources */,

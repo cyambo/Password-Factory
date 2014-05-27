@@ -23,12 +23,14 @@ static BOOL isMenu;
 
     self.masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
     self.masterViewController.prefsWindow = self.prefsWindowController;
-    isMenu = NO;
-    if (isMenu) {
-        self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-        self.statusItem.title = @"Test";
-        self.statusItem.highlightMode = YES;
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
+        self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+        self.statusItem.title = @"";
         
+        self.statusItem.image = [NSImage imageNamed:@"menu-icon"];
+        self.statusItem.alternateImage = [NSImage imageNamed:@"menu-icon-inv"];
+        self.statusItem.highlightMode = YES;
         self.statusMenu = [[NSMenu alloc] initWithTitle:@""];
         self.statusMenu.autoenablesItems = NO;
         
@@ -36,7 +38,7 @@ static BOOL isMenu;
         NSMenuItem* statusMenuItem;
         statusMenuItem = [[NSMenuItem alloc]
                    initWithTitle:@"Custom Item 1"
-                   action:@selector(menuItemAction:)
+                   action:nil
                    keyEquivalent:@""];
         [statusMenuItem setView: self.masterViewController.view];
         [statusMenuItem setTarget:self];

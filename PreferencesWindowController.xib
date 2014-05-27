@@ -26,14 +26,14 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="277" height="415"/>
+            <rect key="contentRect" x="196" y="240" width="277" height="488"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="277" height="415"/>
+                <rect key="frame" x="0.0" y="0.0" width="277" height="488"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Password Display" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="9Rk-T8-6dg">
-                        <rect key="frame" x="16" y="244" width="242" height="157"/>
+                        <rect key="frame" x="16" y="317" width="242" height="157"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="240" height="141"/>
@@ -140,7 +140,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Clipboard Handling" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="vL5-0M-yIu">
-                        <rect key="frame" x="16.5" y="20" width="242" height="83"/>
+                        <rect key="frame" x="16.5" y="93" width="242" height="83"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="240" height="67"/>
@@ -200,7 +200,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Generate and Copy Hotkey" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-pS-dpl">
-                        <rect key="frame" x="17" y="107" width="242" height="127"/>
+                        <rect key="frame" x="17" y="180" width="242" height="127"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="240" height="111"/>
@@ -246,6 +246,29 @@
                                     <connections>
                                         <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.MASPGShortcutEnabled" id="hjX-5D-L7I"/>
                                         <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyShowNotification" id="MV2-wg-wBz"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Menu Bar" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ej7-u9-CPh">
+                        <rect key="frame" x="16" y="25" width="244" height="64"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView">
+                            <rect key="frame" x="1" y="1" width="242" height="48"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jx-1H-FYb">
+                                    <rect key="frame" x="16" y="17" width="216" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Run in Menu (Requires Restart)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5R4-Vh-n0w">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.isMenuApp" id="RQj-tF-Ucm"/>
                                     </connections>
                                 </button>
                             </subviews>
