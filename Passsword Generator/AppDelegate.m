@@ -37,7 +37,7 @@ static BOOL isMenu;
 
         NSMenuItem* statusMenuItem;
         statusMenuItem = [[NSMenuItem alloc]
-                   initWithTitle:@"Custom Item 1"
+                   initWithTitle:@""
                    action:nil
                    keyEquivalent:@""];
         [statusMenuItem setView: self.masterViewController.view];
@@ -63,6 +63,6 @@ static BOOL isMenu;
 }
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
-    return !isMenu;
+    return ![[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"];
 }
 @end

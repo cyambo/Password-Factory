@@ -33,9 +33,7 @@ int const  GenerateAndCopyLoops  = 10;
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
-        if (self.colorPasswordText == nil) {
-            NSLog(@"NIL");
-        }
+
         [self setObservers];
     }
     return self;
