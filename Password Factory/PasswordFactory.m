@@ -1,12 +1,12 @@
 //
-//  PasswordGenerator.m
-//  Passsword Generator
+//  PasswordFactory.m
+//  Password Factory
 //
 //  Created by Cristiana Yambo on 5/2/14.
 //  Copyright (c) 2014 c13. All rights reserved.
 //
 
-#import "PasswordGenerator.h"
+#import "PasswordFactory.h"
 
 
 static NSString* symbols;
@@ -23,14 +23,14 @@ static NSArray* phoeneticSoundsThree;
 static NSDictionary* pronounceableSep;
 
 
-@interface PasswordGenerator ()
+@interface PasswordFactory ()
 @property (nonatomic, strong) NSMutableString *currentRange;
 
 @property (nonatomic, strong) NSArray *englishWords;
 @property (nonatomic, strong) NSArray *shortWords;
 @end
 
-@implementation PasswordGenerator
+@implementation PasswordFactory
 - (id)init {
     self = [super init];
     if (self) {

@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>Password Factory.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>40BBBE1F1913BE1800AA5BC2</key>
@@ -18,6 +10,21 @@
 			<true/>
 		</dict>
 		<key>40BBBE401913BE1800AA5BC2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>491EACA41940F6730026813C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49597ED41940FCB60078CECF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49C7CC1F1940F3D800E3F807</key>
 		<dict>
 			<key>primary</key>
 			<true/>

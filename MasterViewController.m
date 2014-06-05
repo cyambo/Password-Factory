@@ -1,6 +1,6 @@
 //
 //  MasterViewController.m
-//  Passsword Generator
+//  Password Factory
 //
 //  Created by Cristiana Yambo on 5/2/14.
 //  Copyright (c) 2014 c13. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "MasterViewController.h"
 #import "BBPasswordStrength.h"
-#import "PasswordGenerator.h"
+#import "PasswordFactory.h"
 #import "PreferencesWindowController.h"
 #import "AppDelegate.h"
 int const  GenerateAndCopyLoops  = 10;
@@ -28,7 +28,7 @@ int const  GenerateAndCopyLoops  = 10;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.pg = [[PasswordGenerator alloc] init];
+        self.pg = [[PasswordFactory alloc] init];
         self.timerClass = [NSTimer class];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 

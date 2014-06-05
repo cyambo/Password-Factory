@@ -7,21 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40135D461923BE9300E91FA9 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D451923BE9300E91FA9 /* PreferencesWindowTestClass.m */; };
-		40135D4D1923BF1C00E91FA9 /* MasterViewControllerTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */; };
-		40135D4F1923C73100E91FA9 /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */; };
-		40135D521923D44D00E91FA9 /* NSTimer+UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D511923D44D00E91FA9 /* NSTimer+UnitTest.m */; };
-		40135D5F1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D5E1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m */; };
 		40135D6B1925349500E91FA9 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D621925349500E91FA9 /* MASShortcut.m */; };
-		40135D6C1925349500E91FA9 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D621925349500E91FA9 /* MASShortcut.m */; };
 		40135D6D1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */; };
-		40135D6E1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */; };
 		40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */; };
-		40135D701925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */; };
 		40135D711925349500E91FA9 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D681925349500E91FA9 /* MASShortcutView.m */; };
-		40135D721925349500E91FA9 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D681925349500E91FA9 /* MASShortcutView.m */; };
 		40135D731925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
-		40135D741925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
 		403BC3831922AFB3005C92D3 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
 		4047839A1935115800971CB1 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 404783981935115800971CB1 /* menu-icon.png */; };
@@ -32,8 +22,6 @@
 		404783A61936640400971CB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE381913BE1800AA5BC2 /* MainMenu.xib */; };
 		405B5F50192D86DB00938AFF /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
-		409770E2192091EE00C1A2D5 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
-		409770E5192092E600C1A2D5 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 409770E1192091EE00C1A2D5 /* OCMock.framework */; };
 		40A152541913E8AB0091E264 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152371913E8AB0091E264 /* frequency_lists.json */; };
 		40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152381913E8AB0091E264 /* adjacency_graphs.json */; };
 		40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1523A1913E8AB0091E264 /* BBDateMatcher.m */; };
@@ -55,34 +43,41 @@
 		40BBBE341913BE1800AA5BC2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE321913BE1800AA5BC2 /* Credits.rtf */; };
 		40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE361913BE1800AA5BC2 /* AppDelegate.m */; };
 		40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */; };
-		40BBBE431913BE1800AA5BC2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE421913BE1800AA5BC2 /* XCTest.framework */; };
-		40BBBE441913BE1800AA5BC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
-		40BBBE4C1913BE1800AA5BC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE4A1913BE1800AA5BC2 /* InfoPlist.strings */; };
-		40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */; };
 		40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */; };
 		40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */; };
-		40BBBE651913C0CF00AA5BC2 /* PasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE641913C0CF00AA5BC2 /* PasswordGenerator.m */; };
-		49F27CE01917EB47008DD7C6 /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */; };
+		40BBBE651913C0CF00AA5BC2 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE641913C0CF00AA5BC2 /* PasswordFactory.m */; };
+		49597ED61940FCB70078CECF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE421913BE1800AA5BC2 /* XCTest.framework */; };
+		49597EDC1940FCB70078CECF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49597EDA1940FCB70078CECF /* InfoPlist.strings */; };
+		49597EE51940FCD70078CECF /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */; };
+		49597EE61940FCDB0078CECF /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */; };
+		49597EE71940FCDE0078CECF /* NSUserDefaults+UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D5E1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m */; };
+		49597EE81940FCE00078CECF /* NSTimer+UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D511923D44D00E91FA9 /* NSTimer+UnitTest.m */; };
+		49597EE91940FCEA0078CECF /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C7CC301940F44B00E3F807 /* OCMock.framework */; };
+		49597EEA1940FCED0078CECF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
+		49597EEC1940FCFB0078CECF /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49C7CC301940F44B00E3F807 /* OCMock.framework */; };
+		49597EED1940FD530078CECF /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D451923BE9300E91FA9 /* PreferencesWindowTestClass.m */; };
+		49597EEE1940FD530078CECF /* MasterViewControllerTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */; };
+		49597EF01940FE880078CECF /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49597EEF1940FE880078CECF /* PasswordFactoryTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		40BBBE451913BE1800AA5BC2 /* PBXContainerItemProxy */ = {
+		49597EE01940FCB80078CECF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 40BBBE181913BE1800AA5BC2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 40BBBE1F1913BE1800AA5BC2;
-			remoteInfo = "Passsword Generator";
+			remoteInfo = "Password Factory";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		409770E4192092CF00C1A2D5 /* CopyFiles */ = {
+		49597EEB1940FCF50078CECF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				409770E5192092E600C1A2D5 /* OCMock.framework in CopyFiles */,
+				49597EEC1940FCFB0078CECF /* OCMock.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,11 +110,10 @@
 		404783991935115800971CB1 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 		4047839C19351A8F00971CB1 /* menu-icon-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-inv.png"; sourceTree = "<group>"; };
 		4047839D19351A8F00971CB1 /* menu-icon-inv@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-inv@2x.png"; sourceTree = "<group>"; };
-		404783A01936600500971CB1 /* PasswordFactory.help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PasswordFactory.help; path = "Passsword Generator/PasswordFactory.help"; sourceTree = "<group>"; };
+		404783A01936600500971CB1 /* PasswordFactory.help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PasswordFactory.help; path = "Password Factory/PasswordFactory.help"; sourceTree = "<group>"; };
 		405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
 		4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
 		4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
-		409770E1192091EE00C1A2D5 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = ../OCMock.framework; sourceTree = "<group>"; };
 		40A152371913E8AB0091E264 /* frequency_lists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_lists.json; path = ../ZXCVBN/ZXCVBN/frequency_lists.json; sourceTree = "<group>"; };
 		40A152381913E8AB0091E264 /* adjacency_graphs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = adjacency_graphs.json; path = ../ZXCVBN/ZXCVBN/adjacency_graphs.json; sourceTree = "<group>"; };
 		40A152391913E8AB0091E264 /* BBDateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDateMatcher.h; path = ../ZXCVBN/ZXCVBN/BBDateMatcher.h; sourceTree = "<group>"; };
@@ -149,31 +143,35 @@
 		40A152511913E8AB0091E264 /* BBSpatialMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBSpatialMatcher.m; path = ../ZXCVBN/ZXCVBN/BBSpatialMatcher.m; sourceTree = "<group>"; };
 		40A152521913E8AB0091E264 /* BBYearMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBYearMatcher.h; path = ../ZXCVBN/ZXCVBN/BBYearMatcher.h; sourceTree = "<group>"; };
 		40A152531913E8AB0091E264 /* BBYearMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBYearMatcher.m; path = ../ZXCVBN/ZXCVBN/BBYearMatcher.m; sourceTree = "<group>"; };
-		40BBBE201913BE1800AA5BC2 /* Passsword Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Passsword Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40BBBE201913BE1800AA5BC2 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BBBE231913BE1800AA5BC2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		40BBBE261913BE1800AA5BC2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		40BBBE271913BE1800AA5BC2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		40BBBE281913BE1800AA5BC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		40BBBE2B1913BE1800AA5BC2 /* Passsword Factory-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Passsword Factory-Info.plist"; sourceTree = "<group>"; };
+		40BBBE2B1913BE1800AA5BC2 /* Password Factory-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Password Factory-Info.plist"; sourceTree = "<group>"; };
 		40BBBE2D1913BE1800AA5BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40BBBE2F1913BE1800AA5BC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		40BBBE311913BE1800AA5BC2 /* Passsword Factory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Passsword Factory-Prefix.pch"; sourceTree = "<group>"; };
+		40BBBE311913BE1800AA5BC2 /* Password Factory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Password Factory-Prefix.pch"; sourceTree = "<group>"; };
 		40BBBE331913BE1800AA5BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		40BBBE351913BE1800AA5BC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		40BBBE361913BE1800AA5BC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		40BBBE391913BE1800AA5BC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		40BBBE411913BE1800AA5BC2 /* Passsword FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Passsword FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BBBE421913BE1800AA5BC2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		40BBBE491913BE1800AA5BC2 /* Passsword FactoryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Passsword FactoryTests-Info.plist"; sourceTree = "<group>"; };
+		40BBBE491913BE1800AA5BC2 /* Password FactoryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Password FactoryTests-Info.plist"; sourceTree = "<group>"; };
 		40BBBE4B1913BE1800AA5BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Passsword_GeneratorTests.m; sourceTree = "<group>"; };
 		40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ../MasterViewController.h; sourceTree = "<group>"; };
 		40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ../MasterViewController.m; sourceTree = "<group>"; };
 		40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MasterViewController.xib; path = ../MasterViewController.xib; sourceTree = "<group>"; };
-		40BBBE631913C0CF00AA5BC2 /* PasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordGenerator.h; sourceTree = "<group>"; };
-		40BBBE641913C0CF00AA5BC2 /* PasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordGenerator.m; sourceTree = "<group>"; };
-		49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewControllerTests.m; path = "../Passsword Generator/MasterViewControllerTests.m"; sourceTree = "<group>"; };
+		40BBBE631913C0CF00AA5BC2 /* PasswordFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordFactory.h; sourceTree = "<group>"; };
+		40BBBE641913C0CF00AA5BC2 /* PasswordFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactory.m; sourceTree = "<group>"; };
+		49597ED51940FCB60078CECF /* Password FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49597ED91940FCB70078CECF /* Password FactoryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Password FactoryTests-Info.plist"; sourceTree = "<group>"; };
+		49597EDB1940FCB70078CECF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		49597EDF1940FCB80078CECF /* Password FactoryTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Password FactoryTests-Prefix.pch"; sourceTree = "<group>"; };
+		49597EEF1940FE880078CECF /* PasswordFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactoryTests.m; sourceTree = "<group>"; };
+		49C7CC301940F44B00E3F807 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
+		49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewControllerTests.m; path = "../Password Factory/MasterViewControllerTests.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,13 +183,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40BBBE3E1913BE1800AA5BC2 /* Frameworks */ = {
+		49597ED21940FCB60078CECF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40BBBE441913BE1800AA5BC2 /* Cocoa.framework in Frameworks */,
-				40BBBE431913BE1800AA5BC2 /* XCTest.framework in Frameworks */,
-				409770E2192091EE00C1A2D5 /* OCMock.framework in Frameworks */,
+				49597ED61940FCB70078CECF /* XCTest.framework in Frameworks */,
+				49597EE91940FCEA0078CECF /* OCMock.framework in Frameworks */,
+				49597EEA1940FCED0078CECF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,10 +313,11 @@
 			isa = PBXGroup;
 			children = (
 				404783A21936611500971CB1 /* Resources */,
-				40BBBE291913BE1800AA5BC2 /* Passsword Factory */,
-				40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */,
+				40BBBE291913BE1800AA5BC2 /* Password Factory */,
+				40BBBE471913BE1800AA5BC2 /* Password FactoryTests */,
 				40135D601925347A00E91FA9 /* MASSShortCut */,
 				40A152361913E8850091E264 /* ZXCVBN */,
+				49597ED71940FCB70078CECF /* Password FactoryTests */,
 				40BBBE221913BE1800AA5BC2 /* Frameworks */,
 				40BBBE211913BE1800AA5BC2 /* Products */,
 			);
@@ -327,8 +326,8 @@
 		40BBBE211913BE1800AA5BC2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				40BBBE201913BE1800AA5BC2 /* Passsword Factory.app */,
-				40BBBE411913BE1800AA5BC2 /* Passsword FactoryTests.xctest */,
+				40BBBE201913BE1800AA5BC2 /* Password Factory.app */,
+				49597ED51940FCB60078CECF /* Password FactoryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,7 +335,7 @@
 		40BBBE221913BE1800AA5BC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				409770E1192091EE00C1A2D5 /* OCMock.framework */,
+				49C7CC301940F44B00E3F807 /* OCMock.framework */,
 				40BBBE231913BE1800AA5BC2 /* Cocoa.framework */,
 				40BBBE421913BE1800AA5BC2 /* XCTest.framework */,
 				40BBBE251913BE1800AA5BC2 /* Other Frameworks */,
@@ -354,7 +353,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		40BBBE291913BE1800AA5BC2 /* Passsword Factory */ = {
+		40BBBE291913BE1800AA5BC2 /* Password Factory */ = {
 			isa = PBXGroup;
 			children = (
 				40596E1E192BAE8800A1D0B6 /* Categories */,
@@ -364,8 +363,7 @@
 				40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */,
 				40BBBE2A1913BE1800AA5BC2 /* Supporting Files */,
 			);
-			name = "Passsword Factory";
-			path = "Passsword Generator";
+			path = "Password Factory";
 			sourceTree = "<group>";
 		};
 		40BBBE2A1913BE1800AA5BC2 /* Supporting Files */ = {
@@ -375,33 +373,33 @@
 				4047839D19351A8F00971CB1 /* menu-icon-inv@2x.png */,
 				404783981935115800971CB1 /* menu-icon.png */,
 				404783991935115800971CB1 /* menu-icon@2x.png */,
-				40BBBE2B1913BE1800AA5BC2 /* Passsword Factory-Info.plist */,
+				40BBBE2B1913BE1800AA5BC2 /* Password Factory-Info.plist */,
 				40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */,
 				40BBBE2F1913BE1800AA5BC2 /* main.m */,
-				40BBBE311913BE1800AA5BC2 /* Passsword Factory-Prefix.pch */,
+				40BBBE311913BE1800AA5BC2 /* Password Factory-Prefix.pch */,
 				40BBBE321913BE1800AA5BC2 /* Credits.rtf */,
 				403BC3861922B658005C92D3 /* defaults.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		40BBBE471913BE1800AA5BC2 /* Passsword GeneratorTests */ = {
+		40BBBE471913BE1800AA5BC2 /* Password FactoryTests */ = {
 			isa = PBXGroup;
 			children = (
 				40135D561923E91D00E91FA9 /* Categories */,
 				40135D471923BEA100E91FA9 /* Classes */,
+				49597EEF1940FE880078CECF /* PasswordFactoryTests.m */,
 				40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */,
-				40BBBE4D1913BE1800AA5BC2 /* Passsword_GeneratorTests.m */,
 				49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */,
 				40BBBE481913BE1800AA5BC2 /* Supporting Files */,
 			);
-			path = "Passsword GeneratorTests";
+			path = "Password FactoryTests";
 			sourceTree = "<group>";
 		};
 		40BBBE481913BE1800AA5BC2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				40BBBE491913BE1800AA5BC2 /* Passsword FactoryTests-Info.plist */,
+				40BBBE491913BE1800AA5BC2 /* Password FactoryTests-Info.plist */,
 				40BBBE4A1913BE1800AA5BC2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -410,8 +408,8 @@
 		40BBBE661913C0E400AA5BC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				40BBBE631913C0CF00AA5BC2 /* PasswordGenerator.h */,
-				40BBBE641913C0CF00AA5BC2 /* PasswordGenerator.m */,
+				40BBBE631913C0CF00AA5BC2 /* PasswordFactory.h */,
+				40BBBE641913C0CF00AA5BC2 /* PasswordFactory.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -426,12 +424,30 @@
 			name = XIBs;
 			sourceTree = "<group>";
 		};
+		49597ED71940FCB70078CECF /* Password FactoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				49597ED81940FCB70078CECF /* Supporting Files */,
+			);
+			path = "Password FactoryTests";
+			sourceTree = "<group>";
+		};
+		49597ED81940FCB70078CECF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				49597ED91940FCB70078CECF /* Password FactoryTests-Info.plist */,
+				49597EDA1940FCB70078CECF /* InfoPlist.strings */,
+				49597EDF1940FCB80078CECF /* Password FactoryTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		40BBBE1F1913BE1800AA5BC2 /* Passsword Factory */ = {
+		40BBBE1F1913BE1800AA5BC2 /* Password Factory */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 40BBBE511913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword Factory" */;
+			buildConfigurationList = 40BBBE511913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Password Factory" */;
 			buildPhases = (
 				40BBBE1C1913BE1800AA5BC2 /* Sources */,
 				40BBBE1D1913BE1800AA5BC2 /* Frameworks */,
@@ -441,28 +457,28 @@
 			);
 			dependencies = (
 			);
-			name = "Passsword Factory";
-			productName = "Passsword Generator";
-			productReference = 40BBBE201913BE1800AA5BC2 /* Passsword Factory.app */;
+			name = "Password Factory";
+			productName = "Password Factory";
+			productReference = 40BBBE201913BE1800AA5BC2 /* Password Factory.app */;
 			productType = "com.apple.product-type.application";
 		};
-		40BBBE401913BE1800AA5BC2 /* Passsword FactoryTests */ = {
+		49597ED41940FCB60078CECF /* Password FactoryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 40BBBE541913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword FactoryTests" */;
+			buildConfigurationList = 49597EE21940FCB80078CECF /* Build configuration list for PBXNativeTarget "Password FactoryTests" */;
 			buildPhases = (
-				409770E4192092CF00C1A2D5 /* CopyFiles */,
-				40BBBE3D1913BE1800AA5BC2 /* Sources */,
-				40BBBE3E1913BE1800AA5BC2 /* Frameworks */,
-				40BBBE3F1913BE1800AA5BC2 /* Resources */,
+				49597EEB1940FCF50078CECF /* CopyFiles */,
+				49597ED11940FCB60078CECF /* Sources */,
+				49597ED21940FCB60078CECF /* Frameworks */,
+				49597ED31940FCB60078CECF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				40BBBE461913BE1800AA5BC2 /* PBXTargetDependency */,
+				49597EE11940FCB80078CECF /* PBXTargetDependency */,
 			);
-			name = "Passsword FactoryTests";
-			productName = "Passsword GeneratorTests";
-			productReference = 40BBBE411913BE1800AA5BC2 /* Passsword FactoryTests.xctest */;
+			name = "Password FactoryTests";
+			productName = "Password FactoryTests";
+			productReference = 49597ED51940FCB60078CECF /* Password FactoryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -474,12 +490,12 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = c13;
 				TargetAttributes = {
-					40BBBE401913BE1800AA5BC2 = {
+					49597ED41940FCB60078CECF = {
 						TestTargetID = 40BBBE1F1913BE1800AA5BC2;
 					};
 				};
 			};
-			buildConfigurationList = 40BBBE1B1913BE1800AA5BC2 /* Build configuration list for PBXProject "Passsword Factory" */;
+			buildConfigurationList = 40BBBE1B1913BE1800AA5BC2 /* Build configuration list for PBXProject "Password Factory" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -492,8 +508,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				40BBBE1F1913BE1800AA5BC2 /* Passsword Factory */,
-				40BBBE401913BE1800AA5BC2 /* Passsword FactoryTests */,
+				40BBBE1F1913BE1800AA5BC2 /* Password Factory */,
+				49597ED41940FCB60078CECF /* Password FactoryTests */,
 			);
 		};
 /* End PBXProject section */
@@ -520,11 +536,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40BBBE3F1913BE1800AA5BC2 /* Resources */ = {
+		49597ED31940FCB60078CECF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40BBBE4C1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
+				49597EDC1940FCB70078CECF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +557,7 @@
 				40135D731925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */,
 				40A152571913E8AB0091E264 /* BBDictionaryMatcher.m in Sources */,
 				40A1525C1913E8AB0091E264 /* BBPattern.m in Sources */,
-				40BBBE651913C0CF00AA5BC2 /* PasswordGenerator.m in Sources */,
+				40BBBE651913C0CF00AA5BC2 /* PasswordFactory.m in Sources */,
 				40A152611913E8AB0091E264 /* BBSpatialMatcher.m in Sources */,
 				40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */,
 				40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */,
@@ -562,32 +578,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40BBBE3D1913BE1800AA5BC2 /* Sources */ = {
+		49597ED11940FCB60078CECF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40135D521923D44D00E91FA9 /* NSTimer+UnitTest.m in Sources */,
-				40135D4D1923BF1C00E91FA9 /* MasterViewControllerTestClass.m in Sources */,
-				40135D6E1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */,
-				40135D741925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */,
-				40135D461923BE9300E91FA9 /* PreferencesWindowTestClass.m in Sources */,
-				49F27CE01917EB47008DD7C6 /* MasterViewControllerTests.m in Sources */,
-				40135D721925349500E91FA9 /* MASShortcutView.m in Sources */,
-				40135D5F1923F51F00E91FA9 /* NSUserDefaults+UnitTest.m in Sources */,
-				40135D6C1925349500E91FA9 /* MASShortcut.m in Sources */,
-				40BBBE4E1913BE1800AA5BC2 /* Passsword_GeneratorTests.m in Sources */,
-				40135D701925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */,
-				40135D4F1923C73100E91FA9 /* PreferencesWindowTests.m in Sources */,
+				49597EE81940FCE00078CECF /* NSTimer+UnitTest.m in Sources */,
+				49597EE71940FCDE0078CECF /* NSUserDefaults+UnitTest.m in Sources */,
+				49597EED1940FD530078CECF /* PreferencesWindowTestClass.m in Sources */,
+				49597EEE1940FD530078CECF /* MasterViewControllerTestClass.m in Sources */,
+				49597EE61940FCDB0078CECF /* PreferencesWindowTests.m in Sources */,
+				49597EE51940FCD70078CECF /* MasterViewControllerTests.m in Sources */,
+				49597EF01940FE880078CECF /* PasswordFactoryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		40BBBE461913BE1800AA5BC2 /* PBXTargetDependency */ = {
+		49597EE11940FCB80078CECF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 40BBBE1F1913BE1800AA5BC2 /* Passsword Factory */;
-			targetProxy = 40BBBE451913BE1800AA5BC2 /* PBXContainerItemProxy */;
+			target = 40BBBE1F1913BE1800AA5BC2 /* Password Factory */;
+			targetProxy = 49597EE01940FCB80078CECF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -620,6 +631,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				40BBBE4B1913BE1800AA5BC2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		49597EDA1940FCB70078CECF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49597EDB1940FCB70078CECF /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -709,9 +728,9 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Factory-Prefix.pch";
-				INFOPLIST_FILE = "Passsword Generator/Passsword Factory-Info.plist";
-				PRODUCT_NAME = "Passsword Factory";
+				GCC_PREFIX_HEADER = "Password Factory/Password Factory-Prefix.pch";
+				INFOPLIST_FILE = "Password Factory/Password Factory-Info.plist";
+				PRODUCT_NAME = "Password Factory";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -728,59 +747,48 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Factory-Prefix.pch";
-				INFOPLIST_FILE = "Passsword Generator/Passsword Factory-Info.plist";
-				PRODUCT_NAME = "Passsword Factory";
+				GCC_PREFIX_HEADER = "Password Factory/Password Factory-Prefix.pch";
+				INFOPLIST_FILE = "Password Factory/Password Factory-Info.plist";
+				PRODUCT_NAME = "Password Factory";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		40BBBE551913BE1800AA5BC2 /* Debug */ = {
+		49597EE31940FCB80078CECF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Passsword Factory.app/Contents/MacOS/Passsword Factory";
-				COMBINE_HIDPI_IMAGES = YES;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Password Factory.app/Contents/MacOS/Password Factory";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
-					"$(PROJECT_DIR)/Passsword",
-					Generator,
 					"$(PROJECT_DIR)",
-					/Users/cristiana/Dropbox/dev/Password,
-					Generator,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Factory-Prefix.pch";
+				GCC_PREFIX_HEADER = "Password FactoryTests/Password FactoryTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"TEST=1",
 				);
-				INFOPLIST_FILE = "Passsword GeneratorTests/Passsword FactoryTests-Info.plist";
-				PRODUCT_NAME = "Passsword FactoryTests";
+				INFOPLIST_FILE = "Password FactoryTests/Password FactoryTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
-		40BBBE561913BE1800AA5BC2 /* Release */ = {
+		49597EE41940FCB80078CECF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Passsword Factory.app/Contents/MacOS/Passsword Factory";
-				COMBINE_HIDPI_IMAGES = YES;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Password Factory.app/Contents/MacOS/Password Factory";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
-					"$(PROJECT_DIR)/Passsword",
-					Generator,
 					"$(PROJECT_DIR)",
-					/Users/cristiana/Dropbox/dev/Password,
-					Generator,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Passsword Generator/Passsword Factory-Prefix.pch";
-				INFOPLIST_FILE = "Passsword GeneratorTests/Passsword FactoryTests-Info.plist";
-				PRODUCT_NAME = "Passsword FactoryTests";
+				GCC_PREFIX_HEADER = "Password FactoryTests/Password FactoryTests-Prefix.pch";
+				INFOPLIST_FILE = "Password FactoryTests/Password FactoryTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -789,7 +797,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		40BBBE1B1913BE1800AA5BC2 /* Build configuration list for PBXProject "Passsword Factory" */ = {
+		40BBBE1B1913BE1800AA5BC2 /* Build configuration list for PBXProject "Password Factory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				40BBBE4F1913BE1800AA5BC2 /* Debug */,
@@ -798,7 +806,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		40BBBE511913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword Factory" */ = {
+		40BBBE511913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Password Factory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				40BBBE521913BE1800AA5BC2 /* Debug */,
@@ -807,14 +815,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		40BBBE541913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Passsword FactoryTests" */ = {
+		49597EE21940FCB80078CECF /* Build configuration list for PBXNativeTarget "Password FactoryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				40BBBE551913BE1800AA5BC2 /* Debug */,
-				40BBBE561913BE1800AA5BC2 /* Release */,
+				49597EE31940FCB80078CECF /* Debug */,
+				49597EE41940FCB80078CECF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

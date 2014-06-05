@@ -1,6 +1,6 @@
 //
 //  NSColor+NSColorHexadecimalValue.m
-//  Passsword Generator
+//  Password Factory
 //  From : https://developer.apple.com/library/mac/qa/qa1576/_index.html
 //  Created by Cristiana Yambo on 5/13/14.
 //  Copyright (c) 2014 c13. All rights reserved.

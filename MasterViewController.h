@@ -1,13 +1,13 @@
 //
 //  MasterViewController.h
-//  Passsword Generator
+//  Password Factory
 //
 //  Created by Cristiana Yambo on 5/2/14.
 //  Copyright (c) 2014 c13. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
-#import "PasswordGenerator.h"
+#import "PasswordFactory.h"
 #import "PreferencesWindowController.h"
 @interface MasterViewController : NSViewController
 @property (weak) IBOutlet NSTextField *passwordField;
@@ -25,7 +25,7 @@
 @property (weak) IBOutlet NSTextField *patternText;
 @property (weak) IBOutlet NSMatrix *pronounceableSeparatorRadio;
 
-@property (nonatomic, strong) PasswordGenerator *pg;
+@property (nonatomic, strong) PasswordFactory *pg;
 
 @property (weak) IBOutlet NSButton *generateButton;
 @property (weak) IBOutlet NSButton *pasteboardButton;
