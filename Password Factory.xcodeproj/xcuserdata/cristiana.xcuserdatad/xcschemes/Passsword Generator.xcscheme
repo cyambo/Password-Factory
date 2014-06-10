@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "40BBBE401913BE1800AA5BC2"
+               BlueprintIdentifier = "49597ED41940FCB60078CECF"
                BuildableName = "Password FactoryTests.xctest"
                BlueprintName = "Password FactoryTests"
                ReferencedContainer = "container:Password Factory.xcodeproj">

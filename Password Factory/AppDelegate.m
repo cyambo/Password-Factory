@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSMenu *statusMenu;
 @end
 @implementation AppDelegate
-static BOOL isMenu;
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [PreferencesWindowController loadPreferencesFromPlist];

@@ -14,9 +14,6 @@
 int const  GenerateAndCopyLoops  = 10;
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
-
-
-
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) Class timerClass;
 
@@ -151,7 +148,9 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     
 }
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
+ 
     [self generatePassword];
+    
 }
 - (IBAction)pressPrononunceableRadio:(id)sender {
     [self generatePassword];
