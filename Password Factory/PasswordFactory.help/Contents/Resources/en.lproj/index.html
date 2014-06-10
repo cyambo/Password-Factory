@@ -5,51 +5,166 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Password Factory Help</title>
     <meta name="robots" content="index" />
-    <link rel="stylesheet" type="text/css" href="1sty/topiclist.css">
-    <link rel="stylesheet" type="text/css" href="/Library/Documentation/Resources/Flamingo/6/flamingo.css" />
+    <link rel="stylesheet" type="text/css" href="sty/screen.css">
+
 </head>
 
 <body dir="ltr">
-    <div class="body conbody">
-        <div class="section">
-        <img class="topicIcon" src="../shrd/icon.png" height="128" width="128">
-    <h1 class="title topictitle1">VoiceOver Help</h1>
-    <div class="body conbody">
-        <div class="section">
-            <h2 class="title sectiontitle">Password Factory Help</h2>
-            <p class="p">Generate passwords in a variety of formats with flexible controls</p>
+
+    <div class="body">
+        <div id="sidebar">
+            <ul>
+                <li>
+                    <a href="#help_top">Top</a>
+                </li>
+                <li>
+                    <a href="window_basics">Window Basics</a>
+                </li>
+                <li>
+                    <a href="#viewing_area"></a>
+                </li>
+                <li>
+                    <a href="#generate_area">Generate Area</a>
+                </li>
+                <li>
+                    <a href="#random_generator">Random</a>
+                </li>
+                <li>
+                    <a href="#pattern_generator">Pattern</a>
+                </li>
+                <li>
+                    <a href="#pronounceable_generator">Pronounceable</a>
+                </li>
+                <li>
+                    <a href="#preferences">Preferences</a>
+                </li>
+                <li>
+                    <a href="#preferences_password_display">Password Display</a>
+                </li>
+                <li>
+                    <a href="#preferences_hotkey">Hotkey</a>
+                </li>
+                <li>
+                    <a href="#preferences_clipboard">Clipboard</a>
+                </li>
+                <li>
+                    <a href="#preferences_menu">Menu</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <section id="help_top">
+                <h1>Password Factory Help</h1>
+
+                <p class="p">Password Factory is a flexible password generator that can give you passwords in a variety of formats.</p>
+            </section>
+
+            <section id="window_basics">
+                <h2>Window Basics</h2>
+
+                <p>The window consists of the password viewing area and the password generating area.</p>
+                <section id="viewing_area">
+                    <h3>Viewing Area</h3>
+                    <img class="window" src="gfx/viewing.png" width="406" />
+                    <p>This area consists of three sections, the password viewing area, strength meter, and the control buttons.</p>
+                    <p>The password viewing area shows the currently generated password. The password is either shown in black or highlighted. When the password is highlighted each type of character is shown in a different color. <a href="#preferences_password_display">See Preferences - Password Display</a> for more information.</p>
+                    <p>Below the password field is the strength meter. The stength meter will fill and indicate the relative strength via a color. Red is weak, yellow is medium, and green is strong. The strength meter goes from 0 to 100 and 100 is the strongest.</p>
+                    <p>The strength level is only a guide, and will not assure your password won't be hacked</p>
+                    <p>To the right are two buttons, generate will generate a new password, and copy will copy the current password to the clipboard</p>
+                </section>
+                <section id="generate_area">
+                    <h3>Generate Area</h3>
+                    <p>This consists of three tabs 'Random', 'Pattern' and 'Pronounceable'. Each tab will generate a password using a different format.</p>
+                </section>
+
+            </section>
+            <section id="random_generator">
+                <h2>Random Password</h2>
+                <img class="window" src="gfx/random.png" width="406" />
+                <p>The random option will generate a random password based on the options selected.</p>
+                <dl>
+                    <dt>Length</dt>
+                    <dd>This slider will set the length of the generated password, from 5 to 40 characters</dd>
+                    <dt>Use Symbols</dt>
+                    <dd>If this is checked symbols (i.e !,$,%) will be randomly added</dd>
+                    <dt>Mixed Case</dt>
+                    <dd>When this is checked uppercase and lowercase characters will be used, if it is unchecked, only lowercase will be used</dd>
+                    <dt>Avoid Ambiguous Characters</dt>
+                    <dd>If checked, characters that look like other characters will not be used, for example, 0,O,1,L</dd>
+                </dl>
+            </section>
+            <section id="pattern_generator">
+                <h2>Pattern</h2>
+                <img class="window" src="gfx/pattern.png" width="406" />
+                <p>The password generated will be based upon the pattern typed in the pattern field. A pattern is a series of characters that are replaced with a random character or characters following the pattern. The pattern symbols are as follows</p>
+                <dl>
+                    <dt>#</dt>
+                    <dd>This will be replaced by a number</dd>
+                    <dt>!</dt>
+                    <dd>An exclamation point will be replaced by a symbol, such as #,%,^</dd>
+                    <dt>w</dt>
+                    <dd>A lowercase 'w' will be replaced by a lowercase 6 or more letter word</dd>
+                    <dt>W</dt>
+                    <dd>This is the same as 'w', but the word will be in all capital letters</dd>
+                    <dt>s</dt>
+                    <dd>An 's' will be replaced with a 3 to 6 letter word</dd>
+                    <dt>S</dt>
+                    <dd>The same as 's', but in all capital letters</dd>
+                    <dt>c</dt>
+                    <dd>This will be replaced by a single lowercase letter</dd>
+                    <dt>C</dt>
+                    <dd>A 'C' will be replaced by a single uppercase letter</dd>
+                </dl>
+                <p>When typing in the pattern field any character not in the pattern list will be used as is. If you want to insert any of the pattern characters directly precede with a '\'</p>
+                <p>For example the pattern 'cC\C!w' will be a lowercase letter, uppercase letter, C, a symbol, and a word which would give a result like 'kWC!senseless'</p>
+            </section>
+            <section id="pronounceable_generator">
+                <h2>Pronounceable</h2>
+                <img src="gfx/pronounceable.png" class="window" width="406" />
+                <p>The pronounceable tab will generate a random password that is pronounceable rather than random. There are two options for generating, length, and separator</p>
+                <p>The length slider will set the approximate length for the password, and the separator buttons toggle between six different separators</p>
+            </section>
+            <section id="preferences">
+                <h2>Preferences</h2>
+                <img class="window" src="gfx/prefs.png" width="278" />
+                <section id="preferences_password_display">
+                    <h3>Password Display</h3>
+                    <p>The password display section controls how the password is shown in the app. If 'Color Password Text" is checked the characters in the password will be colored. Coloring the password text will enable you to easily distinguish between similar characters. You can change the color of each character type by clicking on the color boxes and selecting a new color</p>
+                </section>
+                <section id="preferences_hotkey">
+                    <h3>Generate and Copy Hotkey</h3>
+                    <p>The global hotkey will allow you to set a key command to autmatically generate a password and copy it to the clipboard.</p>
+                    <h4>Setting Global Hotkey</h4>
+                    <ol>
+                        <li>Make sure 'Enable Global Hotkey' is checked</li>
+                        <li>If there is a shortcut displayed, click the delete
+                            <img class="inline_image" src="gfx/delete.png" width="12" />button</li>
+                        <li>Click 'Record Shortcut'
+                            <img class="inline_image" src="gfx/record.png" width="167" />
+                        </li>
+                        <li>Press your desired key combination</li>
+                    </ol>
+                    <p>Now your global hotkey is set, you can press your key combination when in any app to copy a password to the clipboard</p>
+                    <p>There are two options for the global hotkey.</p>
+                    <dl>
+                        <dt>Display Notification</dt>
+                        <dd>Enabling this will show a copy notification in Notification Center when the global hotkey is pressed</dd>
+                        <dt>Play Sound</dt>
+                        <dd>If this is checked, a sound will be played whenever the global hotkey is pressed</dd>
+                    </dl>
+                </section>
+                <section id="preferences_clipboard">
+                    <h3>Clipboard Handling</h3>
+                    <p>Checking 'Automatically Clear Clipboard' will clear the clipboard of your password after the 'Clear Time' has passed. If you use a clipboard manager this may not remove the password from your clipboard manager</p>
+                </section>
+                <section id="preferences_menu">
+                    <h3>Menu Bar</h3>
+                    <p>If this is checked the app will run in the menu bar
+                        <img src="gfx/menu.png" class="inline" width="20" />. If you enable or disable this feature, you will have to restart the app for the setting to be changed.</p>
+                </section>
+            </section>
         </div>
     </div>
-    <img class="topicIcon" src="../shrd/icon.png" height="128" width="128" />
-    <h1>Password Factory Help</h1>
-    <p>Password Factory is a flexible password generator that can give you passwords in a variety of formats.</p>
-
-    <h2 id="window_basics">Window Basics</h2>
-    
-    <p>The window consists of the password viewing area and the password generating area.</p>
-    <h3 id="viewing_area">Viewing Area</h3>
-    <img class="window" src="gfx/viewing.png" width="406" />
-    <p>This area consists of three sections, the password viewing area, strength meter, and the control buttons.</p>
-    <p>The password viewing area shows the currently generated password.  The password is either shown in black or highlighted.  When the password is highlighted each type of character is shown in a different color.  <a href="#prefs_window">See Preferences - Password Display</a> for more information.</p>
-    <p>Below the password field is the strength meter.  The stength meter will fill and indicate the relative strength via a color.  Red is weak, yellow is medium, and green is strong. The strength meter goes from 0 to 100 and 100 is the strongest.</p>
-    <p>The strength level is only a guide, and will not assure your password won't be hacked</p>
-    <p>To the right are two buttons, generate will generate a new password, and copy will copy the current password to the clipboard</p>
-    <h3 id="generate_area">Generate Area</h3>  
-    <p>This consists of three tabs 'Random', 'Pattern' and 'Pronounceable'.  Each tab will generate a password using a different format.</p>
-    <h2 id="random_generator">Random Password</h2>
-    <img class="window" src="gfx/random.png" width="406" />
-    <p>There are four options for genrating a random password</p>
-    <dl>
-        <dt>Length</dt>
-        <dd>This slider will set the length of the generated password, from 5 to 40 characters</dd>
-        <dt>Use Symbols</dt>
-        <dd>If this is checked symbols (i.e !,$,%) will be randomly added</dd>
-        <dt>Mixed Case</dt>
-        <dd>When this is checked uppercase and lowercase characters will be used, if it is unchecked, only lowercase will be used</dd>
-        <dt>Avoid Ambiguous Characters</dt>
-        <dd>If checked, characters that look like other characters will not be used, for example, 0,O,1,L</dd>
-    </dl>
-    
 </body>
 
 </html>
