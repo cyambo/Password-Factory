@@ -168,6 +168,7 @@
 		40BBBE641913C0CF00AA5BC2 /* PasswordFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactory.m; sourceTree = "<group>"; };
 		40C6872A1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+canBecomeKeyWindow.h"; path = "../NSWindow+canBecomeKeyWindow.h"; sourceTree = "<group>"; };
 		40C6872B1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+canBecomeKeyWindow.m"; path = "../NSWindow+canBecomeKeyWindow.m"; sourceTree = "<group>"; };
+		40C6872D1947C1B500BFA14A /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
 		49597ED51940FCB60078CECF /* Password FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49597ED91940FCB70078CECF /* Password FactoryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Password FactoryTests-Info.plist"; sourceTree = "<group>"; };
 		49597EDB1940FCB70078CECF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -361,6 +362,7 @@
 		40BBBE291913BE1800AA5BC2 /* Password Factory */ = {
 			isa = PBXGroup;
 			children = (
+				40C6872D1947C1B500BFA14A /* Password Factory.entitlements */,
 				40596E1E192BAE8800A1D0B6 /* Categories */,
 				40596E1D192BAE7900A1D0B6 /* Delegate */,
 				40BBBE661913C0E400AA5BC2 /* Model */,
@@ -495,6 +497,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = c13;
 				TargetAttributes = {
+					40BBBE1F1913BE1800AA5BC2 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					49597ED41940FCB60078CECF = {
 						TestTargetID = 40BBBE1F1913BE1800AA5BC2;
 					};
@@ -726,6 +735,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer: Cristiana Yambo (BRRT2D2DE7)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -745,6 +756,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer: Cristiana Yambo (BRRT2D2DE7)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -759,6 +772,87 @@
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
+		};
+		40C6872E1947C24100BFA14A /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Test;
+		};
+		40C6872F1947C24100BFA14A /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/OCMock,
+					2.2.4/OSX,
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Password Factory/Password Factory-Prefix.pch";
+				INFOPLIST_FILE = "Password Factory/Password Factory-Info.plist";
+				PRODUCT_NAME = "Password Factory";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Test;
+		};
+		40C687301947C24100BFA14A /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Password Factory.app/Contents/MacOS/Password Factory";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Password FactoryTests/Password FactoryTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Password FactoryTests/Password FactoryTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Test;
 		};
 		49597EE31940FCB80078CECF /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -807,6 +901,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				40BBBE4F1913BE1800AA5BC2 /* Debug */,
+				40C6872E1947C24100BFA14A /* Test */,
 				40BBBE501913BE1800AA5BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -816,6 +911,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				40BBBE521913BE1800AA5BC2 /* Debug */,
+				40C6872F1947C24100BFA14A /* Test */,
 				40BBBE531913BE1800AA5BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -825,6 +921,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49597EE31940FCB80078CECF /* Debug */,
+				40C687301947C24100BFA14A /* Test */,
 				49597EE41940FCB80078CECF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
