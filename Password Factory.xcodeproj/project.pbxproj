@@ -362,12 +362,10 @@
 		40BBBE291913BE1800AA5BC2 /* Password Factory */ = {
 			isa = PBXGroup;
 			children = (
-				40C6872D1947C1B500BFA14A /* Password Factory.entitlements */,
 				40596E1E192BAE8800A1D0B6 /* Categories */,
 				40596E1D192BAE7900A1D0B6 /* Delegate */,
 				40BBBE661913C0E400AA5BC2 /* Model */,
 				40135D8419256FCB00E91FA9 /* GUI */,
-				40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */,
 				40BBBE2A1913BE1800AA5BC2 /* Supporting Files */,
 			);
 			path = "Password Factory";
@@ -376,6 +374,8 @@
 		40BBBE2A1913BE1800AA5BC2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				40C6872D1947C1B500BFA14A /* Password Factory.entitlements */,
+				40BBBE3B1913BE1800AA5BC2 /* Images.xcassets */,
 				4047839C19351A8F00971CB1 /* menu-icon-inv.png */,
 				4047839D19351A8F00971CB1 /* menu-icon-inv@2x.png */,
 				404783981935115800971CB1 /* menu-icon.png */,
@@ -500,7 +500,7 @@
 					40BBBE1F1913BE1800AA5BC2 = {
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -735,7 +735,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer: Cristiana Yambo (BRRT2D2DE7)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -756,7 +755,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer: Cristiana Yambo (BRRT2D2DE7)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -815,7 +813,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

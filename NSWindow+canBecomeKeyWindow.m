@@ -14,10 +14,14 @@
 //The pragma statements disable the corresponding warning for overriding an already-implemented method
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-- (BOOL)canBecomeKeyWindow
-{
-    return YES;
-}
+//- (BOOL)canBecomeKeyWindow
+//{
+//    if([self isKindOfClass:[NSTextField class]]) {
+//        NSTextField *s = self;
+//        NSLog(@"KEY %@",[s stringValue]);
+//    }
+//    return YES;
+//}
 #pragma clang diagnostic pop
 
 @end

@@ -148,11 +148,12 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     
 }
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
- 
+
     [self generatePassword];
     
 }
 - (IBAction)pressPrononunceableRadio:(id)sender {
+
     [self generatePassword];
 }
 
