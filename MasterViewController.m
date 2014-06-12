@@ -42,6 +42,7 @@ int const  GenerateAndCopyLoops  = 10;
     [self.passwordField setDelegate:self];
     
 }
+#pragma mark Observers
 //not using the global observer because it does not send what was changed
 - (void)setObservers {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
@@ -65,11 +66,14 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         [keyPath isEqualToString:@"clearClipboardTime"]) {
         //do nothing for now
     } else {
-        if (self.colorPasswordText ) {
+        //if it falls through here it is the color well, so update the password field for live updating of color changes
+        if (self.colorPasswordText) {
             [self updatePasswordField];
         }
+        
     }
 }
+#pragma mark Clipboard Handling
 - (void)updatePasteboard:(NSString *)val {
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
@@ -120,6 +124,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     [self updatePasteboard:self.passwordValue];
     if ([d boolForKey:@"clearClipboard"]) {
+        //setting up clear clipboard timer
         if ([self.clearClipboardTimer isValid]) {
             [self.clearClipboardTimer invalidate];
         }
@@ -131,10 +136,19 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
                                         repeats:NO];
         
     }
+    //closing window if it is a menuApp
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
+        NSWindow *window = [[NSApplication sharedApplication] mainWindow];
+        if (window.isVisible) {
+            [window close];
+        }
+    }
+    
 }
 - (void)clearClipboard {
     [self updatePasteboard:@""];
 }
+#pragma mark UI Controls
 - (void)controlTextDidChange:(NSNotification *)obj {
     //if the change came from the passwordField, just reset the strength
     //otherwise generate the password
@@ -202,12 +216,19 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     
     
 }
+- (NSString *)getPronounceableRadioSelected {
+    NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];
+    return [(NSString *)selected.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+}
+#pragma mark Password Display
 - (void)updatePasswordField{
-
+    
     if (!self.colorPasswordText) {
         NSAttributedString *s = [[NSAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         [self.passwordField setAttributedStringValue: s];
     } else {
+        //colors the password text based upon color wells in preferences
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         
         NSColor *nColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"numberTextColor"]];
@@ -253,11 +274,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
     
 }
-- (NSString *)getPronounceableRadioSelected {
-    NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];
-    return [(NSString *)selected.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-}
+#pragma mark Password Strength
 - (void)setPasswordStrength {
     BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:self.passwordValue];
     //playing around with numbers to make a good scale

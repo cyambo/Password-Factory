@@ -46,36 +46,9 @@ static NSDictionary* pronounceableSep;
     }
     return self;
 }
-- (void)loadJSONDict {
-    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
-    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
-    NSDictionary *dicts = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSMutableArray *e = [[NSMutableArray alloc] init];
-    NSMutableArray *es = [[NSMutableArray alloc] init];
-    NSCharacterSet *charSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    for (NSString *w in [dicts objectForKey:@"english"]) {
-        
-        if ([w rangeOfCharacterFromSet:charSet].length == 0){
-            if (w.length > 6) {
-                [e addObject:w];
-            }
-            if (w.length > 3 && w.length < 6) {
-                [es addObject:w];
-            }
-        }
-        
-    }
-    
-    self.englishWords = [[NSArray alloc] initWithArray:e];
-    self.shortWords = [[NSArray alloc] initWithArray:es];
-    
-}
-- (char)randomFromString:(NSString *)source {
-    return [source characterAtIndex:(arc4random() % source.length)];
-}
-- (id)randomFromArray:(NSArray *)source {
-    return [source objectAtIndex:(arc4random() % source.count)];
-}
+
+#pragma mark Pronounceable Password
+//get separator based on radio button
 - (NSString *)getPronounceableSeparator:(NSString *)selectedTitle {
     NSString *sep = @"";
     switch ((int)[[pronounceableSep objectForKey:selectedTitle] integerValue]) {
@@ -103,6 +76,7 @@ static NSDictionary* pronounceableSep;
     }
     return sep;
 }
+//generate a 'pronounceable' password
 - (NSString *)generatePronounceable:(NSString *)selectedTitle {
 
     NSMutableString *p = [[NSMutableString alloc] init];
@@ -125,6 +99,7 @@ static NSDictionary* pronounceableSep;
     return p;
     
 }
+//with pronnounceable we don't want to exceed the set password length, so choose the appropriate size 'sound'
 - (NSString *)getPronounceableForLength:(NSUInteger)length {
     if (length < 2) {
         return @"";
@@ -140,6 +115,8 @@ static NSDictionary* pronounceableSep;
     return @"";
     
 }
+#pragma mark Random Password
+//random password generator
 - (NSString *)generateRandom {
     [self setCharacterRange];
     NSMutableString *curr = [[NSMutableString alloc] init];
@@ -154,6 +131,7 @@ static NSDictionary* pronounceableSep;
     return curr;
     
 }
+//getting the characters used for a random password based upon settings
 - (void)setCharacterRange {
     NSMutableString *tmp = [[NSMutableString alloc] init];
     if (self.useSymbols) {
@@ -175,7 +153,8 @@ static NSDictionary* pronounceableSep;
     }
     self.currentRange = [self removeDuplicateChars:tmp];
 }
-
+#pragma mark Pattern Password
+//quick parser to parse the pattern string and build out a password
 - (NSString *)generatePattern: (NSString *)pattern {
     int l = (int)self.englishWords.count;
     int sl = (int)self.shortWords.count;
@@ -190,11 +169,12 @@ static NSDictionary* pronounceableSep;
             isEscaped = YES;
             continue;
         }
-        if (isEscaped ){
+        if (isEscaped){
             [s appendString:[NSString stringWithFormat:@"%c",c]];
             isEscaped = NO;
             continue;
         }
+        //dealing with pattern characters
         switch (at) {
             case 0:
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
@@ -245,6 +225,17 @@ static NSDictionary* pronounceableSep;
     }
     return s;
 }
+#pragma mark Utility Methods
+
+//get a random character from within a string
+- (char)randomFromString:(NSString *)source {
+    return [source characterAtIndex:(arc4random() % source.length)];
+}
+//get a random string or character from an array
+- (id)randomFromArray:(NSArray *)source {
+    return [source objectAtIndex:(arc4random() % source.count)];
+}
+//building out the static variables used to generate password
 - (void)setStatics {
     symbols = @"!@#$%^&*(){}[];:.\"<>?/\\-_+=|\'";
     upperCase = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -275,6 +266,30 @@ static NSDictionary* pronounceableSep;
                          @"Symbols" : @5,
                          @"Spaces"  : @6
                          };
+    
+}
+- (void)loadJSONDict {
+    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+    NSDictionary *dicts = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSMutableArray *e = [[NSMutableArray alloc] init];
+    NSMutableArray *es = [[NSMutableArray alloc] init];
+    NSCharacterSet *charSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    for (NSString *w in [dicts objectForKey:@"english"]) {
+        
+        if ([w rangeOfCharacterFromSet:charSet].length == 0){
+            if (w.length > 6) {
+                [e addObject:w];
+            }
+            if (w.length > 3 && w.length < 6) {
+                [es addObject:w];
+            }
+        }
+        
+    }
+    
+    self.englishWords = [[NSArray alloc] initWithArray:e];
+    self.shortWords = [[NSArray alloc] initWithArray:es];
     
 }
 - (NSMutableString *)removeDuplicateChars:(NSString *)input {

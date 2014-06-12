@@ -46,7 +46,7 @@
 		40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */; };
 		40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */; };
 		40BBBE651913C0CF00AA5BC2 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE641913C0CF00AA5BC2 /* PasswordFactory.m */; };
-		40C6872C1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6872B1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.m */; };
+		40C687391948FA3200BFA14A /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C687381948FA3200BFA14A /* MainWindow.m */; };
 		49597ED61940FCB70078CECF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE421913BE1800AA5BC2 /* XCTest.framework */; };
 		49597EDC1940FCB70078CECF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49597EDA1940FCB70078CECF /* InfoPlist.strings */; };
 		49597EE51940FCD70078CECF /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */; };
@@ -166,9 +166,9 @@
 		40BBBE601913BF7E00AA5BC2 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MasterViewController.xib; path = ../MasterViewController.xib; sourceTree = "<group>"; };
 		40BBBE631913C0CF00AA5BC2 /* PasswordFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordFactory.h; sourceTree = "<group>"; };
 		40BBBE641913C0CF00AA5BC2 /* PasswordFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactory.m; sourceTree = "<group>"; };
-		40C6872A1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+canBecomeKeyWindow.h"; path = "../NSWindow+canBecomeKeyWindow.h"; sourceTree = "<group>"; };
-		40C6872B1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+canBecomeKeyWindow.m"; path = "../NSWindow+canBecomeKeyWindow.m"; sourceTree = "<group>"; };
 		40C6872D1947C1B500BFA14A /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
+		40C687371948FA3200BFA14A /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		40C687381948FA3200BFA14A /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		49597ED51940FCB60078CECF /* Password FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49597ED91940FCB70078CECF /* Password FactoryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Password FactoryTests-Info.plist"; sourceTree = "<group>"; };
 		49597EDB1940FCB70078CECF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -243,10 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				40BBBE671913C0F800AA5BC2 /* XIBs */,
-				40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */,
-				40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */,
-				403BC3811922AFB3005C92D3 /* PreferencesWindowController.h */,
-				403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */,
+				40C6873A194A269D00BFA14A /* Windows */,
+				40C6873B194A26A900BFA14A /* Window Controllers */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -271,8 +269,6 @@
 		40596E1E192BAE8800A1D0B6 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				40C6872A1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.h */,
-				40C6872B1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.m */,
 				4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */,
 				4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */,
 			);
@@ -431,6 +427,26 @@
 			name = XIBs;
 			sourceTree = "<group>";
 		};
+		40C6873A194A269D00BFA14A /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				40C687371948FA3200BFA14A /* MainWindow.h */,
+				40C687381948FA3200BFA14A /* MainWindow.m */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
+		40C6873B194A26A900BFA14A /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				40BBBE5E1913BF7E00AA5BC2 /* MasterViewController.h */,
+				40BBBE5F1913BF7E00AA5BC2 /* MasterViewController.m */,
+				403BC3811922AFB3005C92D3 /* PreferencesWindowController.h */,
+				403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */,
+			);
+			name = "Window Controllers";
+			sourceTree = "<group>";
+		};
 		49597ED71940FCB70078CECF /* Password FactoryTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +588,7 @@
 				40A152571913E8AB0091E264 /* BBDictionaryMatcher.m in Sources */,
 				40A1525C1913E8AB0091E264 /* BBPattern.m in Sources */,
 				40BBBE651913C0CF00AA5BC2 /* PasswordFactory.m in Sources */,
+				40C687391948FA3200BFA14A /* MainWindow.m in Sources */,
 				40A152611913E8AB0091E264 /* BBSpatialMatcher.m in Sources */,
 				40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */,
 				40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */,
@@ -581,7 +598,6 @@
 				40A1525A1913E8AB0091E264 /* BBL33tMatcher.m in Sources */,
 				40135D711925349500E91FA9 /* MASShortcutView.m in Sources */,
 				40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */,
-				40C6872C1947B96800BFA14A /* NSWindow+canBecomeKeyWindow.m in Sources */,
 				4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */,
 				40A152581913E8AB0091E264 /* BBDigitsMatcher.m in Sources */,

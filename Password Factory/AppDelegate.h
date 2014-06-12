@@ -14,5 +14,5 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic, strong)  MasterViewController *masterViewController;
 @property (nonatomic, strong)  PreferencesWindowController *prefsWindowController;
-
+@property (nonatomic, strong) NSPopover *popover;
 @end
