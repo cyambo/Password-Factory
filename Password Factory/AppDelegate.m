@@ -41,8 +41,9 @@
         [self.statusItem setTarget:self];
         
         //setting up the window and window notifications
-       [self.window setStyleMask:NSBorderlessWindowMask];
+        [self.window setStyleMask:NSBorderlessWindowMask];
         
+
         
         SEL closeSelector = @selector(closeWindow);
         NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
@@ -75,12 +76,19 @@
     if (self.window.isVisible) {
         [self closeWindow];
     } else {
-    
+        
         //getting coordinates of status menu so I can place the window under it
         CGRect eventFrame = [[[NSApp currentEvent] window] frame];
         eventFrame.size = self.window.frame.size;
-        
-        [self.window setFrame:eventFrame display:YES];
+        CGRect screen = [[NSScreen mainScreen] frame];
+        float xPos = eventFrame.origin.x;
+        //if the window is partially offscreen then move it back onto screen
+        if (xPos + eventFrame.size.width > screen.size.width ) {
+            xPos -= ((xPos + eventFrame.size.width) - screen.size.width);
+        }
+        NSLog(@"XPOS %f",xPos);
+        CGRect e = CGRectMake(xPos , eventFrame.origin.y, eventFrame.size.width, eventFrame.size.height);
+        [self.window setFrame:e display:YES];
         [NSApp activateIgnoringOtherApps:YES];
         [self.window makeKeyAndOrderFront:self];
     }

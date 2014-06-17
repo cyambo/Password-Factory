@@ -228,13 +228,21 @@
 }
 -(void)testFirstResponderActions {
     
-    return;
+ 
     
+    //not sure why first responder actions like cut are not working
+    return; // just return out for now until i figure it out
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     NSString *testValue = @"updated password field";
     [self.mvc.passwordField becomeFirstResponder];
     [self.mvc.passwordField setStringValue:testValue];
-    [NSApp sendAction:@selector(cut:) to:nil from:self];
+
+//    [NSApp sendAction:@selector(cut:) to:nil from:self];
+    
+    NSTextView* fieldEditor = (NSTextView*)[[[NSApplication sharedApplication] mainWindow] firstResponder];
+    
+    [fieldEditor selectAll:self];
+    [fieldEditor cut:self];
     NSLog(@"STRING %@",[pasteboard stringForType:NSPasteboardTypeString] );
     XCTAssertTrue([[pasteboard stringForType:NSPasteboardTypeString] isEqualToString:testValue], @"Text not copied to pasteboard");
     
