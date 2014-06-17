@@ -7,12 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "StatusView.h"
+
 
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
-@property (nonatomic, strong) StatusView *statusView;
+
 @end
 @implementation AppDelegate
 
@@ -30,10 +30,27 @@
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
         //building the status item
+        [self.window setStyleMask:NSBorderlessWindowMask];
+        SEL closeSelector = @selector(closeWindow);
+        NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
 
+
+        //registering for notifications so window can be hidden when clicked outside of window
+        [notification addObserver:self
+                      selector:closeSelector
+                          name:NSWindowDidResignKeyNotification
+                        object:[self window]];
+
+        [notification addObserver:self
+                      selector:closeSelector
+                          name:NSWindowDidResignMainNotification
+                        object:[self window]];
+        
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
         self.statusView = [[StatusView alloc] initWithMvc:self.masterViewController]; /* square item */
-        self.statusView.mvc = self.masterViewController;
+        
+
+        
         [self.statusItem setView:self.statusView];
         
 
@@ -45,6 +62,10 @@
 
     
 
+}
+-(void)closeWindow {
+    [self.window close];
+    [self.statusView setNeedsDisplay:YES];
 }
 
 - (IBAction)loadPrefrences:(id)sender {

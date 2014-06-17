@@ -7,14 +7,21 @@
 //
 
 #import "NSWindow+canBecomeKeyWindow.h"
-
+#import "AppDelegate.h"
 @implementation NSWindow (canBecomeKeyWindow)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
+
 -(BOOL)canBecomeKeyWindow {
-    if([self class]==NSClassFromString(@"NSStatusBarWindow")) {
-        NSLog(@"SBW");
+
+    
+    if ([self class]==NSClassFromString(@"NSStatusBarWindow")) {
+
         return NO;
     }
-    NSLog(@"Not SBW");
+
     return YES;
+
 }
+#pragma clang diagnostic pop
 @end

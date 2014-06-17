@@ -7,27 +7,28 @@
 //
 
 #import "StatusView.h"
+#import "AppDelegate.h"
 @interface StatusView ()
 @property (nonatomic, assign) BOOL willClose;
 @property (nonatomic, strong) NSPopover *popover;
-
+@property (nonatomic, strong) MasterViewController *mvc;
 @end
 @implementation StatusView
 
 -(id)initWithMvc:(MasterViewController *)mvc {
     self = [super init];
     self.mvc = mvc;
-    self.willClose = NO;
-    [self _setupPopover];
+
     return self;
 }
+
 - (void)drawRect:(NSRect)rect
 {
 
     NSRect fillRect = CGRectOffset(rect, 0, 1); //changing fill size so it doesn't fall below menubar
     NSImage *statusIcon;
     //fills in blue if the item is clicked - stays that way until close
-    if (![self.popover isShown] || self.willClose) {
+    if (![[(AppDelegate *)[NSApp delegate] window] isVisible] ) {
         [[NSColor clearColor] set];
         statusIcon = [NSImage imageNamed:@"menu-icon"];
 
@@ -45,37 +46,31 @@
 
 - (void)mouseDown:(NSEvent *)event {
     NSLog(@"Mouse down event");
+    
+    NSWindow *currWindow = [(AppDelegate *)[NSApp delegate] window];
+    //simple toggle if window is visible
+    if (![currWindow isVisible]){
+        //getting coordinates of status menu so I can place the window under it
+        CGRect eventFrame = self.window.frame;
 
-    if (![self.popover isShown]) {
+        eventFrame.size = currWindow.frame.size;
+        CGRect screen = [[NSScreen mainScreen] frame];
+        float xPos = eventFrame.origin.x;
+        //if the window is partially offscreen then move it back onto screen
+        if (xPos + eventFrame.size.width > screen.size.width ) {
+            xPos -= ((xPos + eventFrame.size.width) - screen.size.width);
+        }
 
-        [self.popover showRelativeToRect:self.frame
-                                  ofView:self
-                           preferredEdge:NSMinYEdge];
+        CGRect e = CGRectMake(xPos , eventFrame.origin.y, eventFrame.size.width, eventFrame.size.height);
+        
+        [currWindow setFrame:e display:YES];
+        [currWindow makeKeyAndOrderFront:self];
     } else {
-        [self.popover performClose:self];
+        [currWindow close];
     }
     [self setNeedsDisplay:YES];
     
 }
-- (void)_setupPopover
-{
-    if (!self.popover) {
-        self.popover = [[NSPopover alloc] init];
-        self.popover.contentViewController = self.mvc;
-        self.popover.contentSize = (CGSize)self.mvc.view.frame.size;
-        self.popover.behavior = NSPopoverBehaviorTransient;
-        [self.popover setDelegate:self];
-    }
-}
-//using willClose and didClose because without willClose the status icon
-//change happens after close which looks weird, willClose makes it disappear immediately
--(void)popoverWillClose:(NSNotification *)notification {
-    self.willClose = YES;
-    [self setNeedsDisplay:YES];
-}
--(void)popoverDidClose:(NSNotification *)notification {
-    self.willClose = NO;
-    NSLog(@"CLOSEEEE");
-    [self setNeedsDisplay:YES];
-}
+
+
 @end
