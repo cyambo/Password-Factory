@@ -7,11 +7,12 @@
 //
 
 #import "AppDelegate.h"
-
+#import "StatusView.h"
 
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
+@property (nonatomic, strong) StatusView *statusView;
 @end
 @implementation AppDelegate
 
@@ -29,36 +30,12 @@
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
         //building the status item
+
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-        self.statusItem.title = @"";
+        self.statusView = [[StatusView alloc] initWithMvc:self.masterViewController]; /* square item */
+        self.statusView.mvc = self.masterViewController;
+        [self.statusItem setView:self.statusView];
         
-        self.statusItem.image = [NSImage imageNamed:@"menu-icon"];
-        self.statusItem.alternateImage = [NSImage imageNamed:@"menu-icon-inv"];
-        self.statusItem.highlightMode = YES;
-        self.statusMenu = [[NSMenu alloc] initWithTitle:@""];
-        self.statusMenu.autoenablesItems = YES;
-        [self.statusItem setAction:@selector(statusClick:)];
-        [self.statusItem setTarget:self];
-        
-        //setting up the window and window notifications
-        [self.window setStyleMask:NSBorderlessWindowMask];
-        
-
-        
-        SEL closeSelector = @selector(closeWindow);
-        NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
-
-        
-        //registering for notifications so window can be hidden
-        [notification addObserver:self
-                      selector:closeSelector
-                          name:NSWindowDidResignKeyNotification
-                        object:[self window]];
-        
-        [notification addObserver:self
-                      selector:closeSelector
-                          name:NSWindowDidResignMainNotification
-                        object:[self window]];
 
         
     } else {
@@ -69,33 +46,7 @@
     
 
 }
-- (void)closeWindow {
-    [self.window close];
-}
-- (void)statusClick:(id)sender {
-    if (self.window.isVisible) {
-        [self closeWindow];
-    } else {
-        
-        //getting coordinates of status menu so I can place the window under it
-        CGRect eventFrame = [[[NSApp currentEvent] window] frame];
-        eventFrame.size = self.window.frame.size;
-        CGRect screen = [[NSScreen mainScreen] frame];
-        float xPos = eventFrame.origin.x;
-        //if the window is partially offscreen then move it back onto screen
-        if (xPos + eventFrame.size.width > screen.size.width ) {
-            xPos -= ((xPos + eventFrame.size.width) - screen.size.width);
-        }
-        NSLog(@"XPOS %f",xPos);
-        CGRect e = CGRectMake(xPos , eventFrame.origin.y, eventFrame.size.width, eventFrame.size.height);
-        [self.window setFrame:e display:YES];
-        [NSApp activateIgnoringOtherApps:YES];
-        [self.window makeKeyAndOrderFront:self];
-    }
-    
 
-
-}
 - (IBAction)loadPrefrences:(id)sender {
     [self.prefsWindowController showWindow:self];
     

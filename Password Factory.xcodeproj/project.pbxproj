@@ -59,6 +59,8 @@
 		49597EED1940FD530078CECF /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D451923BE9300E91FA9 /* PreferencesWindowTestClass.m */; };
 		49597EEE1940FD530078CECF /* MasterViewControllerTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */; };
 		49597EF01940FE880078CECF /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49597EEF1940FE880078CECF /* PasswordFactoryTests.m */; };
+		496DA6FD195098D000D024D2 /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496DA6FC195098D000D024D2 /* StatusView.m */; };
+		496DA7091950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 496DA7081950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,10 @@
 		49597EDB1940FCB70078CECF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49597EDF1940FCB80078CECF /* Password FactoryTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Password FactoryTests-Prefix.pch"; sourceTree = "<group>"; };
 		49597EEF1940FE880078CECF /* PasswordFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactoryTests.m; sourceTree = "<group>"; };
+		496DA6FB195098D000D024D2 /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
+		496DA6FC195098D000D024D2 /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
+		496DA7071950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+canBecomeKeyWindow.h"; sourceTree = "<group>"; };
+		496DA7081950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+canBecomeKeyWindow.m"; sourceTree = "<group>"; };
 		49C7CC301940F44B00E3F807 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
 		49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewControllerTests.m; path = "../Password Factory/MasterViewControllerTests.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,6 +248,7 @@
 		40135D8419256FCB00E91FA9 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				496DA6FA195098AD00D024D2 /* Status View */,
 				40BBBE671913C0F800AA5BC2 /* XIBs */,
 				40C6873A194A269D00BFA14A /* Windows */,
 				40C6873B194A26A900BFA14A /* Window Controllers */,
@@ -271,6 +278,8 @@
 			children = (
 				4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */,
 				4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */,
+				496DA7071950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.h */,
+				496DA7081950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -465,6 +474,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		496DA6FA195098AD00D024D2 /* Status View */ = {
+			isa = PBXGroup;
+			children = (
+				496DA6FB195098D000D024D2 /* StatusView.h */,
+				496DA6FC195098D000D024D2 /* StatusView.m */,
+			);
+			name = "Status View";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -514,6 +532,7 @@
 				ORGANIZATIONNAME = c13;
 				TargetAttributes = {
 					40BBBE1F1913BE1800AA5BC2 = {
+						DevelopmentTeam = XWE2VMM384;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -589,6 +608,8 @@
 				40A1525C1913E8AB0091E264 /* BBPattern.m in Sources */,
 				40BBBE651913C0CF00AA5BC2 /* PasswordFactory.m in Sources */,
 				40C687391948FA3200BFA14A /* MainWindow.m in Sources */,
+				496DA6FD195098D000D024D2 /* StatusView.m in Sources */,
+				496DA7091950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m in Sources */,
 				40A152611913E8AB0091E264 /* BBSpatialMatcher.m in Sources */,
 				40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */,
 				40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */,
@@ -751,7 +772,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer: Cristiana Yambo (BRRT2D2DE7)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -763,6 +785,7 @@
 				GCC_PREFIX_HEADER = "Password Factory/Password Factory-Prefix.pch";
 				INFOPLIST_FILE = "Password Factory/Password Factory-Info.plist";
 				PRODUCT_NAME = "Password Factory";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -771,7 +794,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer: Cristiana Yambo (BRRT2D2DE7)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -783,6 +807,7 @@
 				GCC_PREFIX_HEADER = "Password Factory/Password Factory-Prefix.pch";
 				INFOPLIST_FILE = "Password Factory/Password Factory-Info.plist";
 				PRODUCT_NAME = "Password Factory";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -829,7 +854,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -841,6 +867,7 @@
 				GCC_PREFIX_HEADER = "Password Factory/Password Factory-Prefix.pch";
 				INFOPLIST_FILE = "Password Factory/Password Factory-Info.plist";
 				PRODUCT_NAME = "Password Factory";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Test;
