@@ -14,10 +14,13 @@
 
 -(BOOL)canBecomeKeyWindow {
 
-    
-    if ([self class]==NSClassFromString(@"NSStatusBarWindow")) {
 
-        return NO;
+    if ([self class]==NSClassFromString(@"NSStatusBarWindow")) {
+        AppDelegate *d = (AppDelegate *)[NSApp delegate];
+        if ([d.statusView isVisible]) {
+           return NO; 
+        }
+        
     }
 
     return YES;

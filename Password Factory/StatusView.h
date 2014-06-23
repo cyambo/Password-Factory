@@ -10,6 +10,6 @@
 #import "MasterViewController.h"
 @interface StatusView : NSView <NSPopoverDelegate>
 -(id)initWithMvc:(MasterViewController *)mvc;
-
+-(BOOL)isVisible;
 
 @end
