@@ -42,16 +42,15 @@
                     [notification addObserver:self
                                      selector:closeSelector
                                          name:NSWindowDidResignKeyNotification
-                                       object:[self window]];
+                                       object:self.window];
                     
                     [notification addObserver:self
                                      selector:closeSelector
                                          name:NSWindowDidResignMainNotification
-                                       object:[self window]];
+                                       object:self.window];
                     
                     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-                    self.statusView = [[StatusView alloc] initWithMvc:self.masterViewController]; /* square item */
-                    
+                    self.statusView = [[StatusView alloc] initWithMvc:self.masterViewController]; //square
                     
             
                     [self.statusItem setView:self.statusView];
@@ -85,27 +84,18 @@
             case PFStatusPopover:
                 {
                     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-                    self.statusView = [[StatusView alloc] initWithMvc:self.masterViewController]; /* square item */
+                    self.statusView = [[StatusView alloc] initWithMvc:self.masterViewController]; //square item
                     [self.statusItem setView:self.statusView];
                 }
                 break;
 
         }
-
-        
-        
-        
-        
-
-        
-
         
     } else {
         //not a menu app so show the the window
         [self.window makeKeyAndOrderFront:self];
     }
 
-    
 
 }
 -(void)closeWindow {

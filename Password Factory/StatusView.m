@@ -19,7 +19,7 @@
 -(id)initWithMvc:(MasterViewController *)mvc {
     self = [super init];
     self.mvc = mvc;
-//pop
+    //popover
     if (STATUS_MENU_TYPE == PFStatusPopover) {
         self.willClose = NO;
         [self _setupPopover];
@@ -71,9 +71,11 @@
     if (STATUS_MENU_TYPE == PFStatusPopover) {
         if (![self.popover isShown]) {
             
+            
             [self.popover showRelativeToRect:self.frame
                                       ofView:self
                                preferredEdge:NSMinYEdge];
+            
         } else {
             [self.popover performClose:self];
         }
