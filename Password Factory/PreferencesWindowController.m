@@ -43,13 +43,27 @@ static BOOL loadedPrefs;
     // Shortcut view will follow and modify user preferences automatically
     self.shortcutView.associatedUserDefaultsKey = MASPreferenceKeyShortcut;
     
-    // Activate the global keyboard shortcut if it was enabled last time
-    [self resetShortcutRegistration];
+
     
+    //setting up window close notification
+    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
+    
+    
+    //registering for notification that the window is closing to run shortcut set code
+    //this is because it seems to 'forget' the key when preferences is loaded
+    [notification addObserver:self
+                     selector:@selector(resetShortcutRegistration)
+                         name:NSWindowWillCloseNotification
+                       object:self.window];
     
 }
 
-
+-(void)showWindow:(id)sender {
+    // Activate the global keyboard shortcut if it was enabled last time
+    //moved to showWindow instead of awakeFromNib so that it will load everytime the window pops up
+    [self resetShortcutRegistration];
+    [super showWindow:sender];
+}
 
 #pragma mark observers
 -(void)setObservers {
@@ -148,23 +162,16 @@ static BOOL loadedPrefs;
     [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
 
 }
-//
-//- (IBAction)autoClearChange:(id)sender {
-//    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-//    if ([sender isEqualTo: self.automaticallyClearClipboard]) {
-//        [d setBool:(BOOL)self.automaticallyClearClipboard.state forKey:@"clearClipboard"];
-//    } else {
-//        [d setInteger:[self.clearTime intValue] forKey:@"clearClipboardTime"];
-//    }
-//}
+
 #pragma mark - Custom shortcut
 
 - (void)resetShortcutRegistration
 {
   
     if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
+        NSLog(@"SKey %@",@"RESET SHORTCUT");
         [MASShortcut registerGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut handler:^{
-
+            NSLog(@"SHORTCUT PRESSED");
             AppDelegate *d = [NSApplication sharedApplication].delegate;
             [d.masterViewController generateAndCopy];
         }];

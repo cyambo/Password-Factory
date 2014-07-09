@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "StatusBarType.h"
-
+#import "PreferencesWindowController.h"
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
@@ -27,7 +27,7 @@
 
     [self.window.contentView addSubview:self.masterViewController.view];
     self.masterViewController.view.frame = ((NSView *)self.window.contentView).bounds;
-    
+    [self.prefsWindowController resetShortcutRegistration]; //setting up shortcut when app launches
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
 
         switch (STATUS_MENU_TYPE) {
