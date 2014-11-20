@@ -278,7 +278,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
     
 }
-//if it is a menu app the program will swap white and black for more legibility
+//the program will swap white and black for more legibility
 -(NSString *)swapColorForDisplay:(NSString *)color {
     NSString *white = @"FFFFFF";
     NSString *black  = @"000000";
@@ -292,6 +292,8 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
                 return black;
             }
         }
+    } else if ([color isEqualToString:white]) {
+        return black;
     }
 
     return color;
