@@ -60,9 +60,9 @@
                 {
                     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
                     self.statusItem.title = @"";
-                    
-                    self.statusItem.image = [NSImage imageNamed:@"menu-icon"];
-                    self.statusItem.alternateImage = [NSImage imageNamed:@"menu-icon-inv"];
+                    NSImage *statusImage = [NSImage imageNamed:@"menu-icon"];
+                    [statusImage setTemplate:YES]; //setting it as a template will automatically change it based upon menu appearance, ie dark mode
+                    self.statusItem.image = statusImage;
                     self.statusItem.highlightMode = YES;
                     self.statusMenu = [[NSMenu alloc] initWithTitle:@""];
                     self.statusMenu.autoenablesItems = NO;
@@ -98,6 +98,7 @@
 
 
 }
+
 -(void)closeWindow {
     [self.window close];
     [self.statusView setNeedsDisplay:YES];
@@ -111,5 +112,10 @@
 {
     //if it is a menuApp then don't kill app when window is closed
     return ![[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"];
+}
+#pragma mark Util
++(BOOL)isDarkMode {
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    return [osxMode isEqualToString:@"Dark"];
 }
 @end

@@ -17,6 +17,6 @@ enum {
     
 };
 
-static int const STATUS_MENU_TYPE = PFStatusPopover;
+static int const STATUS_MENU_TYPE = PFStatusMenu;
 
 #endif

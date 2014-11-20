@@ -199,3 +199,6 @@ div.content {
   line-height: 2.75em;
   line-height: 12px;
 }
+p.note {
+  font-style: italic;
+}

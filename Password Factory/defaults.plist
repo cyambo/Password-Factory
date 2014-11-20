@@ -22,5 +22,15 @@
 	<false/>
 	<key>isMenuApp</key>
 	<false/>
+	<key>randomUseSymbols</key>
+	<true/>
+	<key>randomMixedCase</key>
+	<true/>
+	<key>randomAvoidAmbiguous</key>
+	<true/>
+	<key>passwordLength</key>
+	<string>15</string>
+	<key>pronounceableSeparator</key>
+	<integer>0</integer>
 </dict>
 </plist>

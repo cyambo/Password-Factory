@@ -51,11 +51,11 @@
     
     if (itemClicked) {
         [[NSColor clearColor] set];
-        statusIcon = [NSImage imageNamed:@"menu-icon"];
+        statusIcon = [self.mvc getMenuImage:NO];
 
     } else {
        [[NSColor selectedMenuItemColor] set];
-        statusIcon = [NSImage imageNamed:@"menu-icon-inv"];
+        statusIcon = [self.mvc getMenuImage:YES];
     }
     
     NSRectFill(fillRect);

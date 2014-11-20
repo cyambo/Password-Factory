@@ -231,12 +231,16 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         //colors the password text based upon color wells in preferences
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         
-        NSColor *nColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"numberTextColor"]];
-        NSColor *cColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"upperTextColor"]];
-        NSColor *clColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"lowerTextColor"]];
-        NSColor *sColor = [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]];
 
         
+        
+        NSColor *nColor = [PreferencesWindowController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"numberTextColor"]]];
+        NSColor *cColor = [PreferencesWindowController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"upperTextColor"]]];
+        NSColor *clColor = [PreferencesWindowController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"lowerTextColor"]]];
+        NSColor *sColor = [PreferencesWindowController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]]];
+
+
+ 
         
         NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         NSError *error;
@@ -274,6 +278,24 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
     
 }
+//if it is a menu app the program will swap white and black for more legibility
+-(NSString *)swapColorForDisplay:(NSString *)color {
+    NSString *white = @"FFFFFF";
+    NSString *black  = @"000000";
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
+        if ([AppDelegate isDarkMode]) {
+            if ([color isEqualToString:black]) {
+                return white;
+            }
+        } else {
+            if ([color isEqualToString:white]) {
+                return black;
+            }
+        }
+    }
+
+    return color;
+}
 #pragma mark Password Strength
 - (void)setPasswordStrength {
     BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:self.passwordValue];
@@ -297,5 +319,26 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     if (ct > 100) {ct = 100;}
     [self.passwordStrengthLevel setFloatValue:ct];
 }
+#pragma mark Status Image
+-(NSImage *)getMenuImage:(BOOL)menuOn {
+    
+    NSString *imageName;
+    if([AppDelegate isDarkMode]) {
+        //Dark Mode
+        if (!menuOn) {
+            imageName = @"menu-icon-inv";
+        } else {
+            imageName = @"menu-icon";
+        }
+    } else {
+        if (!menuOn) {
+            imageName = @"menu-icon";
+        } else {
+            imageName = @"menu-icon-inv";
+        }
+    }
+    return [NSImage imageNamed:imageName];
+}
 
+        
 @end

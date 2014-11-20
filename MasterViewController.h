@@ -46,4 +46,7 @@
 - (void)generateAndCopy;
 
 @property (nonatomic, weak) PreferencesWindowController *prefsWindow;
+
+-(NSImage *)getMenuImage:(BOOL)isMenuClicked;
+
 @end
