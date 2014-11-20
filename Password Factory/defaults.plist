@@ -5,9 +5,9 @@
 	<key>colorPasswordText</key>
 	<true/>
 	<key>upperTextColor</key>
-	<string>000000</string>
+	<string>4CB547</string>
 	<key>lowerTextColor</key>
-	<string>686868</string>
+	<string>1D451B</string>
 	<key>symbolTextColor</key>
 	<string>922890</string>
 	<key>numberTextColor</key>
@@ -29,7 +29,7 @@
 	<key>randomAvoidAmbiguous</key>
 	<true/>
 	<key>passwordLength</key>
-	<string>15</string>
+	<string>20</string>
 	<key>pronounceableSeparator</key>
 	<integer>0</integer>
 </dict>
