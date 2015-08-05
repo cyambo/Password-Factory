@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0BF27ECC43C53965175DD3A1 /* libPods-Password FactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF406AD061A3837BD6A9F831 /* libPods-Password FactoryTests.a */; };
-		40135D6B1925349500E91FA9 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D621925349500E91FA9 /* MASShortcut.m */; };
-		40135D6D1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */; };
-		40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */; };
-		40135D711925349500E91FA9 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D681925349500E91FA9 /* MASShortcutView.m */; };
-		40135D731925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */; };
 		403BC3831922AFB3005C92D3 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
 		4047839A1935115800971CB1 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 404783981935115800971CB1 /* menu-icon.png */; };
@@ -25,19 +20,6 @@
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
 		40A152541913E8AB0091E264 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152371913E8AB0091E264 /* frequency_lists.json */; };
 		40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152381913E8AB0091E264 /* adjacency_graphs.json */; };
-		40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1523A1913E8AB0091E264 /* BBDateMatcher.m */; };
-		40A152571913E8AB0091E264 /* BBDictionaryMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1523C1913E8AB0091E264 /* BBDictionaryMatcher.m */; };
-		40A152581913E8AB0091E264 /* BBDigitsMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1523E1913E8AB0091E264 /* BBDigitsMatcher.m */; };
-		40A152591913E8AB0091E264 /* BBEntropyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152401913E8AB0091E264 /* BBEntropyCenter.m */; };
-		40A1525A1913E8AB0091E264 /* BBL33tMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152421913E8AB0091E264 /* BBL33tMatcher.m */; };
-		40A1525B1913E8AB0091E264 /* BBPasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152441913E8AB0091E264 /* BBPasswordStrength.m */; };
-		40A1525C1913E8AB0091E264 /* BBPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152461913E8AB0091E264 /* BBPattern.m */; };
-		40A1525D1913E8AB0091E264 /* BBPatternCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152481913E8AB0091E264 /* BBPatternCenter.m */; };
-		40A1525E1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1524B1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m */; };
-		40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1524D1913E8AB0091E264 /* BBRepeatMatcher.m */; };
-		40A152601913E8AB0091E264 /* BBSequenceMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1524F1913E8AB0091E264 /* BBSequenceMatcher.m */; };
-		40A152611913E8AB0091E264 /* BBSpatialMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152511913E8AB0091E264 /* BBSpatialMatcher.m */; };
-		40A152621913E8AB0091E264 /* BBYearMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A152531913E8AB0091E264 /* BBYearMatcher.m */; };
 		40BBBE241913BE1800AA5BC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
 		40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */; };
 		40BBBE301913BE1800AA5BC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE2F1913BE1800AA5BC2 /* main.m */; };
@@ -58,6 +40,7 @@
 		49597EF01940FE880078CECF /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49597EEF1940FE880078CECF /* PasswordFactoryTests.m */; };
 		496DA6FD195098D000D024D2 /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496DA6FC195098D000D024D2 /* StatusView.m */; };
 		496DA7091950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 496DA7081950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m */; };
+		887FA00B573D1A88242B7360 /* libPods-Password Factory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 628DA653E9632AB78155269D /* libPods-Password Factory.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,16 +72,6 @@
 		40135D4B1923BF1C00E91FA9 /* MasterViewControllerTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTestClass.h; sourceTree = "<group>"; };
 		40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTestClass.m; sourceTree = "<group>"; };
 		40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindowTests.m; path = ../PreferencesWindowTests.m; sourceTree = "<group>"; };
-		40135D611925349500E91FA9 /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = ../MASShortcut/MASShortcut.h; sourceTree = "<group>"; };
-		40135D621925349500E91FA9 /* MASShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = ../MASShortcut/MASShortcut.m; sourceTree = "<group>"; };
-		40135D631925349500E91FA9 /* MASShortcut+Monitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcut+Monitoring.h"; path = "../MASShortcut/MASShortcut+Monitoring.h"; sourceTree = "<group>"; };
-		40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcut+Monitoring.m"; path = "../MASShortcut/MASShortcut+Monitoring.m"; sourceTree = "<group>"; };
-		40135D651925349500E91FA9 /* MASShortcut+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcut+UserDefaults.h"; path = "../MASShortcut/MASShortcut+UserDefaults.h"; sourceTree = "<group>"; };
-		40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcut+UserDefaults.m"; path = "../MASShortcut/MASShortcut+UserDefaults.m"; sourceTree = "<group>"; };
-		40135D671925349500E91FA9 /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASShortcutView.h; path = ../MASShortcut/MASShortcutView.h; sourceTree = "<group>"; };
-		40135D681925349500E91FA9 /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = ../MASShortcut/MASShortcutView.m; sourceTree = "<group>"; };
-		40135D691925349500E91FA9 /* MASShortcutView+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+UserDefaults.h"; path = "../MASShortcut/MASShortcutView+UserDefaults.h"; sourceTree = "<group>"; };
-		40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+UserDefaults.m"; path = "../MASShortcut/MASShortcutView+UserDefaults.m"; sourceTree = "<group>"; };
 		403BC3811922AFB3005C92D3 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -112,33 +85,6 @@
 		4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
 		40A152371913E8AB0091E264 /* frequency_lists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_lists.json; path = ../ZXCVBN/ZXCVBN/frequency_lists.json; sourceTree = "<group>"; };
 		40A152381913E8AB0091E264 /* adjacency_graphs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = adjacency_graphs.json; path = ../ZXCVBN/ZXCVBN/adjacency_graphs.json; sourceTree = "<group>"; };
-		40A152391913E8AB0091E264 /* BBDateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDateMatcher.h; path = ../ZXCVBN/ZXCVBN/BBDateMatcher.h; sourceTree = "<group>"; };
-		40A1523A1913E8AB0091E264 /* BBDateMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDateMatcher.m; path = ../ZXCVBN/ZXCVBN/BBDateMatcher.m; sourceTree = "<group>"; };
-		40A1523B1913E8AB0091E264 /* BBDictionaryMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDictionaryMatcher.h; path = ../ZXCVBN/ZXCVBN/BBDictionaryMatcher.h; sourceTree = "<group>"; };
-		40A1523C1913E8AB0091E264 /* BBDictionaryMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDictionaryMatcher.m; path = ../ZXCVBN/ZXCVBN/BBDictionaryMatcher.m; sourceTree = "<group>"; };
-		40A1523D1913E8AB0091E264 /* BBDigitsMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDigitsMatcher.h; path = ../ZXCVBN/ZXCVBN/BBDigitsMatcher.h; sourceTree = "<group>"; };
-		40A1523E1913E8AB0091E264 /* BBDigitsMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDigitsMatcher.m; path = ../ZXCVBN/ZXCVBN/BBDigitsMatcher.m; sourceTree = "<group>"; };
-		40A1523F1913E8AB0091E264 /* BBEntropyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBEntropyCenter.h; path = ../ZXCVBN/ZXCVBN/BBEntropyCenter.h; sourceTree = "<group>"; };
-		40A152401913E8AB0091E264 /* BBEntropyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBEntropyCenter.m; path = ../ZXCVBN/ZXCVBN/BBEntropyCenter.m; sourceTree = "<group>"; };
-		40A152411913E8AB0091E264 /* BBL33tMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBL33tMatcher.h; path = ../ZXCVBN/ZXCVBN/BBL33tMatcher.h; sourceTree = "<group>"; };
-		40A152421913E8AB0091E264 /* BBL33tMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBL33tMatcher.m; path = ../ZXCVBN/ZXCVBN/BBL33tMatcher.m; sourceTree = "<group>"; };
-		40A152431913E8AB0091E264 /* BBPasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPasswordStrength.h; path = ../ZXCVBN/ZXCVBN/BBPasswordStrength.h; sourceTree = "<group>"; };
-		40A152441913E8AB0091E264 /* BBPasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPasswordStrength.m; path = ../ZXCVBN/ZXCVBN/BBPasswordStrength.m; sourceTree = "<group>"; };
-		40A152451913E8AB0091E264 /* BBPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPattern.h; path = ../ZXCVBN/ZXCVBN/BBPattern.h; sourceTree = "<group>"; };
-		40A152461913E8AB0091E264 /* BBPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPattern.m; path = ../ZXCVBN/ZXCVBN/BBPattern.m; sourceTree = "<group>"; };
-		40A152471913E8AB0091E264 /* BBPatternCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPatternCenter.h; path = ../ZXCVBN/ZXCVBN/BBPatternCenter.h; sourceTree = "<group>"; };
-		40A152481913E8AB0091E264 /* BBPatternCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPatternCenter.m; path = ../ZXCVBN/ZXCVBN/BBPatternCenter.m; sourceTree = "<group>"; };
-		40A152491913E8AB0091E264 /* BBPatternMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPatternMatcher.h; path = ../ZXCVBN/ZXCVBN/BBPatternMatcher.h; sourceTree = "<group>"; };
-		40A1524A1913E8AB0091E264 /* BBRegularExpressionMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBRegularExpressionMatchHelper.h; path = ../ZXCVBN/ZXCVBN/BBRegularExpressionMatchHelper.h; sourceTree = "<group>"; };
-		40A1524B1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBRegularExpressionMatchHelper.m; path = ../ZXCVBN/ZXCVBN/BBRegularExpressionMatchHelper.m; sourceTree = "<group>"; };
-		40A1524C1913E8AB0091E264 /* BBRepeatMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBRepeatMatcher.h; path = ../ZXCVBN/ZXCVBN/BBRepeatMatcher.h; sourceTree = "<group>"; };
-		40A1524D1913E8AB0091E264 /* BBRepeatMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBRepeatMatcher.m; path = ../ZXCVBN/ZXCVBN/BBRepeatMatcher.m; sourceTree = "<group>"; };
-		40A1524E1913E8AB0091E264 /* BBSequenceMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBSequenceMatcher.h; path = ../ZXCVBN/ZXCVBN/BBSequenceMatcher.h; sourceTree = "<group>"; };
-		40A1524F1913E8AB0091E264 /* BBSequenceMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBSequenceMatcher.m; path = ../ZXCVBN/ZXCVBN/BBSequenceMatcher.m; sourceTree = "<group>"; };
-		40A152501913E8AB0091E264 /* BBSpatialMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBSpatialMatcher.h; path = ../ZXCVBN/ZXCVBN/BBSpatialMatcher.h; sourceTree = "<group>"; };
-		40A152511913E8AB0091E264 /* BBSpatialMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBSpatialMatcher.m; path = ../ZXCVBN/ZXCVBN/BBSpatialMatcher.m; sourceTree = "<group>"; };
-		40A152521913E8AB0091E264 /* BBYearMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBYearMatcher.h; path = ../ZXCVBN/ZXCVBN/BBYearMatcher.h; sourceTree = "<group>"; };
-		40A152531913E8AB0091E264 /* BBYearMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBYearMatcher.m; path = ../ZXCVBN/ZXCVBN/BBYearMatcher.m; sourceTree = "<group>"; };
 		40BBBE201913BE1800AA5BC2 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BBBE231913BE1800AA5BC2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		40BBBE261913BE1800AA5BC2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -175,9 +121,13 @@
 		496DA7071950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+canBecomeKeyWindow.h"; sourceTree = "<group>"; };
 		496DA7081950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+canBecomeKeyWindow.m"; sourceTree = "<group>"; };
 		49F27CDF1917EB47008DD7C6 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewControllerTests.m; path = "../Password Factory/MasterViewControllerTests.m"; sourceTree = "<group>"; };
+		628DA653E9632AB78155269D /* libPods-Password Factory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA581A56D2ADF0699FE9AAEA /* Pods-Password Factory.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.test.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.test.xcconfig"; sourceTree = "<group>"; };
+		CE88704005769D2866A679A4 /* Pods-Password Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.release.xcconfig"; sourceTree = "<group>"; };
 		CF406AD061A3837BD6A9F831 /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E8FD2D1D24AC470A8C269E /* Pods-Password FactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.release.xcconfig"; sourceTree = "<group>"; };
 		EF5F5C548D3702638CD96F4A /* Pods-Password FactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F74E5E5A6C11851A45CF752A /* Pods-Password Factory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40BBBE241913BE1800AA5BC2 /* Cocoa.framework in Frameworks */,
+				887FA00B573D1A88242B7360 /* libPods-Password Factory.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,23 +162,6 @@
 				40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		40135D601925347A00E91FA9 /* MASSShortCut */ = {
-			isa = PBXGroup;
-			children = (
-				40135D611925349500E91FA9 /* MASShortcut.h */,
-				40135D621925349500E91FA9 /* MASShortcut.m */,
-				40135D631925349500E91FA9 /* MASShortcut+Monitoring.h */,
-				40135D641925349500E91FA9 /* MASShortcut+Monitoring.m */,
-				40135D651925349500E91FA9 /* MASShortcut+UserDefaults.h */,
-				40135D661925349500E91FA9 /* MASShortcut+UserDefaults.m */,
-				40135D671925349500E91FA9 /* MASShortcutView.h */,
-				40135D681925349500E91FA9 /* MASShortcutView.m */,
-				40135D691925349500E91FA9 /* MASShortcutView+UserDefaults.h */,
-				40135D6A1925349500E91FA9 /* MASShortcutView+UserDefaults.m */,
-			);
-			name = MASSShortCut;
 			sourceTree = "<group>";
 		};
 		40135D8419256FCB00E91FA9 /* GUI */ = {
@@ -274,33 +208,6 @@
 			children = (
 				40A152371913E8AB0091E264 /* frequency_lists.json */,
 				40A152381913E8AB0091E264 /* adjacency_graphs.json */,
-				40A152391913E8AB0091E264 /* BBDateMatcher.h */,
-				40A1523A1913E8AB0091E264 /* BBDateMatcher.m */,
-				40A1523B1913E8AB0091E264 /* BBDictionaryMatcher.h */,
-				40A1523C1913E8AB0091E264 /* BBDictionaryMatcher.m */,
-				40A1523D1913E8AB0091E264 /* BBDigitsMatcher.h */,
-				40A1523E1913E8AB0091E264 /* BBDigitsMatcher.m */,
-				40A1523F1913E8AB0091E264 /* BBEntropyCenter.h */,
-				40A152401913E8AB0091E264 /* BBEntropyCenter.m */,
-				40A152411913E8AB0091E264 /* BBL33tMatcher.h */,
-				40A152421913E8AB0091E264 /* BBL33tMatcher.m */,
-				40A152431913E8AB0091E264 /* BBPasswordStrength.h */,
-				40A152441913E8AB0091E264 /* BBPasswordStrength.m */,
-				40A152451913E8AB0091E264 /* BBPattern.h */,
-				40A152461913E8AB0091E264 /* BBPattern.m */,
-				40A152471913E8AB0091E264 /* BBPatternCenter.h */,
-				40A152481913E8AB0091E264 /* BBPatternCenter.m */,
-				40A152491913E8AB0091E264 /* BBPatternMatcher.h */,
-				40A1524A1913E8AB0091E264 /* BBRegularExpressionMatchHelper.h */,
-				40A1524B1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m */,
-				40A1524C1913E8AB0091E264 /* BBRepeatMatcher.h */,
-				40A1524D1913E8AB0091E264 /* BBRepeatMatcher.m */,
-				40A1524E1913E8AB0091E264 /* BBSequenceMatcher.h */,
-				40A1524F1913E8AB0091E264 /* BBSequenceMatcher.m */,
-				40A152501913E8AB0091E264 /* BBSpatialMatcher.h */,
-				40A152511913E8AB0091E264 /* BBSpatialMatcher.m */,
-				40A152521913E8AB0091E264 /* BBYearMatcher.h */,
-				40A152531913E8AB0091E264 /* BBYearMatcher.m */,
 			);
 			name = ZXCVBN;
 			sourceTree = "<group>";
@@ -311,7 +218,6 @@
 				404783A21936611500971CB1 /* Resources */,
 				40BBBE291913BE1800AA5BC2 /* Password Factory */,
 				40BBBE471913BE1800AA5BC2 /* Password FactoryTests */,
-				40135D601925347A00E91FA9 /* MASSShortCut */,
 				40A152361913E8850091E264 /* ZXCVBN */,
 				49597ED71940FCB70078CECF /* Password FactoryTests */,
 				40BBBE221913BE1800AA5BC2 /* Frameworks */,
@@ -336,6 +242,7 @@
 				40BBBE421913BE1800AA5BC2 /* XCTest.framework */,
 				40BBBE251913BE1800AA5BC2 /* Other Frameworks */,
 				CF406AD061A3837BD6A9F831 /* libPods-Password FactoryTests.a */,
+				628DA653E9632AB78155269D /* libPods-Password Factory.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -475,6 +382,9 @@
 				EF5F5C548D3702638CD96F4A /* Pods-Password FactoryTests.debug.xcconfig */,
 				27E1619AEF78204469066D7A /* Pods-Password FactoryTests.test.xcconfig */,
 				E5E8FD2D1D24AC470A8C269E /* Pods-Password FactoryTests.release.xcconfig */,
+				F74E5E5A6C11851A45CF752A /* Pods-Password Factory.debug.xcconfig */,
+				BA581A56D2ADF0699FE9AAEA /* Pods-Password Factory.test.xcconfig */,
+				CE88704005769D2866A679A4 /* Pods-Password Factory.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -486,10 +396,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40BBBE511913BE1800AA5BC2 /* Build configuration list for PBXNativeTarget "Password Factory" */;
 			buildPhases = (
+				7E6022875CCA4EC2BB811AD0 /* Check Pods Manifest.lock */,
 				40BBBE1C1913BE1800AA5BC2 /* Sources */,
 				40BBBE1D1913BE1800AA5BC2 /* Frameworks */,
 				40BBBE1E1913BE1800AA5BC2 /* Resources */,
 				4097FBE21B7277460080A218 /* Show TODO and FIXME as warnings */,
+				A212E79A48FF25ADF2887B72 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -609,6 +521,36 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/Password Factory\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
+		7E6022875CCA4EC2BB811AD0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A212E79A48FF25ADF2887B72 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BA78934E1894F8F738F5F83B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -646,33 +588,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40A152621913E8AB0091E264 /* BBYearMatcher.m in Sources */,
-				40135D6B1925349500E91FA9 /* MASShortcut.m in Sources */,
-				40135D6D1925349500E91FA9 /* MASShortcut+Monitoring.m in Sources */,
-				40135D731925349500E91FA9 /* MASShortcutView+UserDefaults.m in Sources */,
-				40A152571913E8AB0091E264 /* BBDictionaryMatcher.m in Sources */,
-				40A1525C1913E8AB0091E264 /* BBPattern.m in Sources */,
 				40BBBE651913C0CF00AA5BC2 /* PasswordFactory.m in Sources */,
 				40C687391948FA3200BFA14A /* MainWindow.m in Sources */,
 				496DA6FD195098D000D024D2 /* StatusView.m in Sources */,
 				496DA7091950AE5100D024D2 /* NSWindow+canBecomeKeyWindow.m in Sources */,
-				40A152611913E8AB0091E264 /* BBSpatialMatcher.m in Sources */,
-				40A1525F1913E8AB0091E264 /* BBRepeatMatcher.m in Sources */,
-				40135D6F1925349500E91FA9 /* MASShortcut+UserDefaults.m in Sources */,
-				40A152591913E8AB0091E264 /* BBEntropyCenter.m in Sources */,
 				40BBBE371913BE1800AA5BC2 /* AppDelegate.m in Sources */,
 				403BC3831922AFB3005C92D3 /* PreferencesWindowController.m in Sources */,
-				40A1525A1913E8AB0091E264 /* BBL33tMatcher.m in Sources */,
-				40135D711925349500E91FA9 /* MASShortcutView.m in Sources */,
-				40A152561913E8AB0091E264 /* BBDateMatcher.m in Sources */,
 				4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40BBBE611913BF7E00AA5BC2 /* MasterViewController.m in Sources */,
-				40A152581913E8AB0091E264 /* BBDigitsMatcher.m in Sources */,
 				40BBBE301913BE1800AA5BC2 /* main.m in Sources */,
-				40A1525B1913E8AB0091E264 /* BBPasswordStrength.m in Sources */,
-				40A1525D1913E8AB0091E264 /* BBPatternCenter.m in Sources */,
-				40A1525E1913E8AB0091E264 /* BBRegularExpressionMatchHelper.m in Sources */,
-				40A152601913E8AB0091E264 /* BBSequenceMatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,6 +740,7 @@
 		};
 		40BBBE521913BE1800AA5BC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F74E5E5A6C11851A45CF752A /* Pods-Password Factory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
@@ -839,6 +764,7 @@
 		};
 		40BBBE531913BE1800AA5BC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE88704005769D2866A679A4 /* Pods-Password Factory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
@@ -901,6 +827,7 @@
 		};
 		40C6872F1947C24100BFA14A /* Test */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA581A56D2ADF0699FE9AAEA /* Pods-Password Factory.test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";

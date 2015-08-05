@@ -12,10 +12,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
 #import "PreferencesWindowController.h"
 #import "NSColor+NSColorHexadecimalValue.h"
-#import "MASShortcutView.h"
-#import "MASShortcutView+UserDefaults.h"
-#import "MASShortcut+UserDefaults.h"
-#import "MASShortcut+Monitoring.h"
+#import <MASShortcut/Shortcut.h>
 #import "AppDelegate.h"
 @implementation PreferencesWindowController
 __weak id _constantShortcutMonitor;
@@ -170,14 +167,15 @@ static BOOL loadedPrefs;
   
     if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
         NSLog(@"SKey %@",@"RESET SHORTCUT");
-        [MASShortcut registerGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut handler:^{
-            NSLog(@"SHORTCUT PRESSED");
-            AppDelegate *d = [NSApplication sharedApplication].delegate;
-            [d.masterViewController generateAndCopy];
-        }];
+        [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut
+                     toAction:^{
+                         NSLog(@"SHORTCUT PRESSED");
+                         AppDelegate *d = [NSApplication sharedApplication].delegate;
+                         [d.masterViewController generateAndCopy];
+                     }];
     }
     else {
-        [MASShortcut unregisterGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut];
+        [[MASShortcutBinder sharedBinder] unbind:MASPreferenceKeyShortcut];
     }
 
 }

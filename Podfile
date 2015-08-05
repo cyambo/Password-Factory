@@ -2,7 +2,8 @@
 # platform :ios, '6.0'
 
 target 'Password Factory' do
-
+    pod 'ZXCVBN'
+    pod 'MASShortcut'
 end
 
 target 'Password FactoryTests' do
