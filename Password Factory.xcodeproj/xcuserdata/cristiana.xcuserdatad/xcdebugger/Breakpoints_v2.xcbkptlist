@@ -246,6 +246,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[PreferencesWindowController resetShortcutRegistration]"
                   moduleName = "Password Factory"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/StorEdge/Google%20Drive/dev/Password%20Factory/Password%20Factory/Password%20Factory/PreferencesWindowController.m"
                   timestampString = "426593612.291266"
                   startingColumnNumber = "9223372036854775807"
@@ -260,6 +261,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "__56-[PreferencesWindowController resetShortcutRegistration]_block_invoke"
                   moduleName = "Password Factory"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/StorEdge/Google%20Drive/dev/Password%20Factory/Password%20Factory/Password%20Factory/PreferencesWindowController.m"
                   timestampString = "426593612.291417"
                   startingColumnNumber = "9223372036854775807"
@@ -342,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MasterViewController.m"
-            timestampString = "438185878.908249"
+            timestampString = "438192907.733057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "-getMenuImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -386,7 +388,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Password Factory/MasterViewControllerTests.m"
@@ -396,6 +398,38 @@
             startingLineNumber = "342"
             endingLineNumber = "342"
             landmarkName = "-testBindingsPattern"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MasterViewController.m"
+            timestampString = "438192808.614436"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "-swapColorForDisplay:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MasterViewController.m"
+            timestampString = "438192907.733057"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "-swapColorForDisplay:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
