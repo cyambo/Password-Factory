@@ -18,8 +18,6 @@
 		404783A61936640400971CB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE381913BE1800AA5BC2 /* MainMenu.xib */; };
 		405B5F50192D86DB00938AFF /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
-		40A152541913E8AB0091E264 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152371913E8AB0091E264 /* frequency_lists.json */; };
-		40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A152381913E8AB0091E264 /* adjacency_graphs.json */; };
 		40BBBE241913BE1800AA5BC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
 		40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */; };
 		40BBBE301913BE1800AA5BC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE2F1913BE1800AA5BC2 /* main.m */; };
@@ -83,8 +81,6 @@
 		405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
 		4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
 		4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
-		40A152371913E8AB0091E264 /* frequency_lists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_lists.json; path = ../ZXCVBN/ZXCVBN/frequency_lists.json; sourceTree = "<group>"; };
-		40A152381913E8AB0091E264 /* adjacency_graphs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = adjacency_graphs.json; path = ../ZXCVBN/ZXCVBN/adjacency_graphs.json; sourceTree = "<group>"; };
 		40BBBE201913BE1800AA5BC2 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BBBE231913BE1800AA5BC2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		40BBBE261913BE1800AA5BC2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -203,22 +199,12 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		40A152361913E8850091E264 /* ZXCVBN */ = {
-			isa = PBXGroup;
-			children = (
-				40A152371913E8AB0091E264 /* frequency_lists.json */,
-				40A152381913E8AB0091E264 /* adjacency_graphs.json */,
-			);
-			name = ZXCVBN;
-			sourceTree = "<group>";
-		};
 		40BBBE171913BE1800AA5BC2 = {
 			isa = PBXGroup;
 			children = (
 				404783A21936611500971CB1 /* Resources */,
 				40BBBE291913BE1800AA5BC2 /* Password Factory */,
 				40BBBE471913BE1800AA5BC2 /* Password FactoryTests */,
-				40A152361913E8850091E264 /* ZXCVBN */,
 				49597ED71940FCB70078CECF /* Password FactoryTests */,
 				40BBBE221913BE1800AA5BC2 /* Frameworks */,
 				40BBBE211913BE1800AA5BC2 /* Products */,
@@ -485,8 +471,6 @@
 				403BC3871922B658005C92D3 /* defaults.plist in Resources */,
 				40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */,
 				40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
-				40A152541913E8AB0091E264 /* frequency_lists.json in Resources */,
-				40A152551913E8AB0091E264 /* adjacency_graphs.json in Resources */,
 				4047839B1935115800971CB1 /* menu-icon@2x.png in Resources */,
 				4047839F19351A8F00971CB1 /* menu-icon-inv@2x.png in Resources */,
 				40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */,
