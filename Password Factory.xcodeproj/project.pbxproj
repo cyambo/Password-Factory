@@ -489,6 +489,7 @@
 				40BBBE1C1913BE1800AA5BC2 /* Sources */,
 				40BBBE1D1913BE1800AA5BC2 /* Frameworks */,
 				40BBBE1E1913BE1800AA5BC2 /* Resources */,
+				4097FBE21B7277460080A218 /* Show TODO and FIXME as warnings */,
 			);
 			buildRules = (
 			);
@@ -594,6 +595,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4097FBE21B7277460080A218 /* Show TODO and FIXME as warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Show TODO and FIXME as warnings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/Password Factory\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
 		BA78934E1894F8F738F5F83B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

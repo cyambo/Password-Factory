@@ -231,13 +231,15 @@
  
     
     //not sure why first responder actions like cut are not working
-    return; // just return out for now until i figure it out
+    //TODO: fix first responder tests??
+    return;
+    
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     NSString *testValue = @"updated password field";
     [self.mvc.passwordField becomeFirstResponder];
     [self.mvc.passwordField setStringValue:testValue];
 
-//    [NSApp sendAction:@selector(cut:) to:nil from:self];
+    [NSApp sendAction:@selector(cut:) to:nil from:self];
     
     NSTextView* fieldEditor = (NSTextView*)[[[NSApplication sharedApplication] mainWindow] firstResponder];
     
