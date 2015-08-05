@@ -28,6 +28,8 @@ static NSDictionary* pronounceableSep;
 
 @property (nonatomic, strong) NSArray *englishWords;
 @property (nonatomic, strong) NSArray *shortWords;
+
+@property (nonatomic, strong) NSArray *badWords;
 @end
 
 @implementation PasswordFactory
@@ -269,20 +271,31 @@ static NSDictionary* pronounceableSep;
     
 }
 - (void)loadJSONDict {
+    //loading up our word list
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
     NSDictionary *dicts = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     NSMutableArray *e = [[NSMutableArray alloc] init];
     NSMutableArray *es = [[NSMutableArray alloc] init];
     NSCharacterSet *charSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    
+    //loading up our 'bad' words
+    NSString *badWordsPath = [[NSBundle mainBundle] pathForResource:@"bad_words" ofType:@"json"];
+    NSData *bData = [NSData dataWithContentsOfFile:badWordsPath];
+    self.badWords = (NSArray *)[NSJSONSerialization JSONObjectWithData:bData options:0 error:nil];
+    
+    
     for (NSString *w in [dicts objectForKey:@"english"]) {
         
         if ([w rangeOfCharacterFromSet:charSet].length == 0){
-            if (w.length > 6) {
-                [e addObject:w];
-            }
-            if (w.length > 3 && w.length < 6) {
-                [es addObject:w];
+            
+            if (![self isBadWord:w]) { //remove bad words
+                if (w.length > 6) { //main word list uses only words of length 6 or more
+                    [e addObject:w];
+                }
+                if (w.length > 3 && w.length < 6) {
+                    [es addObject:w];
+                }
             }
         }
         
@@ -291,6 +304,30 @@ static NSDictionary* pronounceableSep;
     self.englishWords = [[NSArray alloc] initWithArray:e];
     self.shortWords = [[NSArray alloc] initWithArray:es];
     
+}
+/**
+ *  Rudimentary bad word filter, uses an array of 'bad' words to determine if passed in word is bad
+ *
+ *  @param word word to check to see if it is bad
+ *
+ *  @return YES if it is a 'bad' word 'NO' if it is not
+ */
+- (BOOL)isBadWord:(NSString *)word {
+    if ([self.badWords containsObject:word]) {
+        return YES;
+    }
+    
+    //Searching for substrings within the current word
+    for (int i=0; i< self.badWords.count; i++) {
+        NSString *currWord = self.badWords[i];
+        if (currWord.length < 4) { //do not search if word is less than 4 characters
+            continue;
+        }
+        if ([word rangeOfString:currWord].location != NSNotFound) { //has a substring of that word, so it is also a bad word
+            return YES;
+        }
+    }
+    return NO;
 }
 - (NSMutableString *)removeDuplicateChars:(NSString *)input {
     

@@ -18,6 +18,7 @@
 		404783A61936640400971CB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE381913BE1800AA5BC2 /* MainMenu.xib */; };
 		405B5F50192D86DB00938AFF /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */; };
 		4092E6171922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */; };
+		4097FBE41B7283050080A218 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 4097FBE31B7283050080A218 /* bad_words.json */; };
 		40BBBE241913BE1800AA5BC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBBE231913BE1800AA5BC2 /* Cocoa.framework */; };
 		40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40BBBE2C1913BE1800AA5BC2 /* InfoPlist.strings */; };
 		40BBBE301913BE1800AA5BC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BBBE2F1913BE1800AA5BC2 /* main.m */; };
@@ -81,6 +82,7 @@
 		405B5F4E192D86DB00938AFF /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
 		4092E6151922CC4B008072ED /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
 		4092E6161922CC4B008072ED /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
+		4097FBE31B7283050080A218 /* bad_words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bad_words.json; sourceTree = "<group>"; };
 		40BBBE201913BE1800AA5BC2 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BBBE231913BE1800AA5BC2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		40BBBE261913BE1800AA5BC2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				404783A01936600500971CB1 /* PasswordFactory.help */,
+				4097FBE31B7283050080A218 /* bad_words.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				403BC3871922B658005C92D3 /* defaults.plist in Resources */,
 				40BBBE621913BF7E00AA5BC2 /* MasterViewController.xib in Resources */,
 				40BBBE2E1913BE1800AA5BC2 /* InfoPlist.strings in Resources */,
+				4097FBE41B7283050080A218 /* bad_words.json in Resources */,
 				4047839B1935115800971CB1 /* menu-icon@2x.png in Resources */,
 				4047839F19351A8F00971CB1 /* menu-icon-inv@2x.png in Resources */,
 				40BBBE3C1913BE1800AA5BC2 /* Images.xcassets in Resources */,
