@@ -7,9 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <OCMock/OCMock.h>
-#import "NSTimer+UnitTest.h"
-#import "NSUSerDefaults+UnitTest.h"
+#import <OCMock.h>
+
 #import "MasterViewControllerTestClass.h"
 @interface MasterViewControllerTests : XCTestCase
 @property (nonatomic, strong) MasterViewControllerTestClass *mvc;
@@ -30,6 +29,7 @@
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+
 }
 - (NSString *)getPasswordFieldValue {
     return self.mvc.passwordField.stringValue;
@@ -88,7 +88,7 @@
 }
 - (void)testPattern {
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:1];
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+
     id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
     [[[mockNotification stub] andReturn:self.mvc.patternText] object];
     
@@ -176,18 +176,19 @@
     [self copyToPasteboard:YES];
 }
 -(void)copyToPasteboard:(BOOL)setTimer {
-    //calling NSTimer+UnitTest category
-    [NSTimer resetTimer];
-    id timer = [NSTimer getTimer];
+
     NSInteger timerRetval = 3;
-    [[timer expect] scheduledTimerWithTimeInterval:timerRetval
+    
+    id timerMock = OCMClassMock([NSTimer class]);
+    [[timerMock expect] scheduledTimerWithTimeInterval:timerRetval
                                             target:[OCMArg any]
                                           selector:[OCMArg anySelector]
                                           userInfo:nil
                                            repeats:NO];
-    [NSUserDefaults swapMethods];
+
+    id defaultsMock = OCMClassMock([NSUserDefaults class]);
     
-    id d = [NSUserDefaults standardUserDefaults];
+    id d = OCMPartialMock([NSUserDefaults standardUserDefaults]);
     
     [[[d stub] andReturnValue:OCMOCK_VALUE(timerRetval)] integerForKey:@"clearClipboardTime"];
     
@@ -198,7 +199,7 @@
         NSLog(@"NO %hhd",setTimer);
     }
 
-    
+    OCMStub([defaultsMock standardUserDefaults]).andReturn(d);
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
     
     [self.mvc.pasteboardButton performClick:self.mvc];
@@ -206,14 +207,15 @@
     NSString *pbval = [pasteboard stringForType:NSPasteboardTypeString];
     
     if (setTimer) {
-        XCTAssertNoThrow([timer verify], @"Timer should be triggered");
+        XCTAssertNoThrow([timerMock verify], @"Timer should be triggered");
     } else {
-        XCTAssertThrows([timer verify], @"Timer should not be triggered");
+        XCTAssertThrows([timerMock verify], @"Timer should not be triggered");
     }
     
     XCTAssertTrue([pbval isEqualToString:[self getPasswordFieldValue]], @"Password not copied to pasteboard");
 
-    [NSUserDefaults swapMethods];
+    [defaultsMock stopMocking];
+    [d stopMocking];
 }
 - (void)testClipboardHandling {
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
@@ -272,8 +274,11 @@
     }
     XCTAssertFalse(mismatch, @"Password field is highlighted when it shouldn't be");
     //testing highlighted string
-    [NSUserDefaults swapMethods];
-    id d = [NSUserDefaults standardUserDefaults];
+
+    id defaultsMock = OCMClassMock([NSUserDefaults class]);
+    
+    id d = OCMPartialMock([NSUserDefaults standardUserDefaults]);
+    
     [[[d stub] andReturnValue:OCMOCK_VALUE(@"111111")] objectForKey:@"numberTextColor"];
     [[[d stub] andReturnValue:OCMOCK_VALUE(@"222222")] objectForKey:@"upperTextColor"];
     [[[d stub] andReturnValue:OCMOCK_VALUE(@"333333")] objectForKey:@"numberTextColor"];
@@ -295,7 +300,8 @@
         }
     }
     XCTAssertTrue(mismatch, @"Password field is highlighted when it should be");
-    [NSUserDefaults swapMethods];
+    [defaultsMock stopMocking];
+    [d stopMocking];
     
 }
 - (void)testManualChangePasswordField {
@@ -315,6 +321,7 @@
     XCTAssertTrue(currStrength != self.mvc.passwordStrengthLevel.floatValue, @"Password strength did not update when passwordField is entered manually");
 }
 -(void)testDefaultsBindingsRandom {
+
     [self deleteUserDefaults];
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:0];
 
