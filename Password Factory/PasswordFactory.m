@@ -50,7 +50,13 @@ static NSDictionary* pronounceableSep;
 }
 
 #pragma mark Pronounceable Password
-//get separator based on radio button
+/**
+ *  Gets pronounceable separator based on radio button
+ *
+ *  @param selectedTitle title of radio button
+ *
+ *  @return a separator for pronounceable strings
+ */
 - (NSString *)getPronounceableSeparator:(NSString *)selectedTitle {
     NSString *sep = @"";
     switch ((int)[[pronounceableSep objectForKey:selectedTitle] integerValue]) {
@@ -78,7 +84,13 @@ static NSDictionary* pronounceableSep;
     }
     return sep;
 }
-//generate a 'pronounceable' password
+/**
+ *  generate a 'pronounceable' password
+ *
+ *  @param selectedTitle Title of separator radio button
+ *
+ *  @return 'pronunceable' password
+ */
 - (NSString *)generatePronounceable:(NSString *)selectedTitle {
 
     NSMutableString *p = [[NSMutableString alloc] init];
@@ -101,7 +113,13 @@ static NSDictionary* pronounceableSep;
     return p;
     
 }
-//with pronnounceable we don't want to exceed the set password length, so choose the appropriate size 'sound'
+/**
+ *  with pronnounceable we don't want to exceed the set password length, so choose the appropriate size 'sound'
+ *
+ *  @param length remaining length left in password string
+ *
+ *  @return a pronounceable 'piece'
+ */
 - (NSString *)getPronounceableForLength:(NSUInteger)length {
     if (length < 2) {
         return @"";
@@ -118,7 +136,11 @@ static NSDictionary* pronounceableSep;
     
 }
 #pragma mark Random Password
-//random password generator
+/**
+ *  Generates a random password
+ *
+ *  @return randomized password based on settings
+ */
 - (NSString *)generateRandom {
     [self setCharacterRange];
     NSMutableString *curr = [[NSMutableString alloc] init];
@@ -133,7 +155,9 @@ static NSDictionary* pronounceableSep;
     return curr;
     
 }
-//getting the characters used for a random password based upon settings
+/**
+ *  Gets the characters used for a random password based upon settings
+ */
 - (void)setCharacterRange {
     NSMutableString *tmp = [[NSMutableString alloc] init];
     if (self.useSymbols) {
@@ -156,7 +180,13 @@ static NSDictionary* pronounceableSep;
     self.currentRange = [self removeDuplicateChars:tmp];
 }
 #pragma mark Pattern Password
-//quick parser to parse the pattern string and build out a password
+/**
+ *  quick parser to parse the pattern string and build out a password
+ *
+ *  @param pattern Password pattern
+ *
+ *  @return a pattern generated password
+ */
 - (NSString *)generatePattern: (NSString *)pattern {
     int l = (int)self.englishWords.count;
     int sl = (int)self.shortWords.count;
@@ -229,15 +259,29 @@ static NSDictionary* pronounceableSep;
 }
 #pragma mark Utility Methods
 
-//get a random character from within a string
+/**
+ *  get a random character from within a string
+ *
+ *  @param source source string
+ *
+ *  @return random character from string
+ */
 - (char)randomFromString:(NSString *)source {
     return [source characterAtIndex:(arc4random() % source.length)];
 }
-//get a random string or character from an array
+/**
+ *  get a random item from an array
+ *
+ *  @param source source array
+ *
+ *  @return random item from array
+ */
 - (id)randomFromArray:(NSArray *)source {
     return [source objectAtIndex:(arc4random() % source.count)];
 }
-//building out the static variables used to generate password
+/**
+ *  building out the static variables used to generate password
+ */
 - (void)setStatics {
     symbols = @"!@#$%^&*(){}[];:.\"<>?/\\-_+=|\'";
     upperCase = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -270,6 +314,10 @@ static NSDictionary* pronounceableSep;
                          };
     
 }
+/**
+ *  Loads up our dictionary, and removes 'bad' words to generate pattern passwords.
+ *  The results are cached so that the parsing only happens on app install or upgrade
+ */
 - (void)loadJSONDict {
     //loading up our word list
     
@@ -332,7 +380,13 @@ static NSDictionary* pronounceableSep;
     
 }
 
-//Gets path to App document directory to allow saving of users and other data
+/**
+ *  Gets path to App document directory to allow saving of users and other data
+ *
+ *  @param withFile filename
+ *
+ *  @return path of file
+ */
 -(NSString *)getDocumentDirectory:(NSString *)withFile {
     NSArray *documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [[documentDirs firstObject] stringByAppendingPathComponent:withFile];
@@ -362,6 +416,13 @@ static NSDictionary* pronounceableSep;
     }
     return NO;
 }
+/**
+ *  Removes duplicate characters from a string
+ *
+ *  @param input string to remove dupes
+ *
+ *  @return string without dupes
+ */
 - (NSMutableString *)removeDuplicateChars:(NSString *)input {
     
     NSMutableSet *seenCharacters = [NSMutableSet set];
