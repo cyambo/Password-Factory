@@ -272,7 +272,28 @@ static NSDictionary* pronounceableSep;
 }
 - (void)loadJSONDict {
     //loading up our word list
+    
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
+    NSString *badWordsPath = [[NSBundle mainBundle] pathForResource:@"bad_words" ofType:@"json"];
+
+    NSString *englishWordsPath = [self getDocumentDirectory:@"englishWords.archive"];
+    NSString *shortWordsPath = [self getDocumentDirectory:@"shortWords.archive"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //Checking to see if our cached files exist and are newer than our data files, if so, load them instead of parsing
+    if ([fileManager fileExistsAtPath:englishWordsPath] && [fileManager fileExistsAtPath:shortWordsPath]) {
+        NSDate *eDate = [fileManager attributesOfItemAtPath:englishWordsPath error:nil][@"NSFileCreationDate"];
+        NSDate *sDate = [fileManager attributesOfItemAtPath:shortWordsPath error:nil][@"NSFileCreationDate"];
+        NSDate *jDate = [fileManager attributesOfItemAtPath:jsonPath error:nil][@"NSFileCreationDate"];
+        if ([eDate compare:jDate] == NSOrderedDescending && [sDate compare:jDate] == NSOrderedDescending) {
+            self.englishWords = [NSKeyedUnarchiver unarchiveObjectWithFile:englishWordsPath];
+            self.shortWords = [NSKeyedUnarchiver unarchiveObjectWithFile:shortWordsPath];
+        }
+        return;
+    }
+    
+    //parsing out the data for our word lists
     NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
     NSDictionary *dicts = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     NSMutableArray *e = [[NSMutableArray alloc] init];
@@ -280,7 +301,7 @@ static NSDictionary* pronounceableSep;
     NSCharacterSet *charSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
     
     //loading up our 'bad' words
-    NSString *badWordsPath = [[NSBundle mainBundle] pathForResource:@"bad_words" ofType:@"json"];
+    
     NSData *bData = [NSData dataWithContentsOfFile:badWordsPath];
     self.badWords = (NSArray *)[NSJSONSerialization JSONObjectWithData:bData options:0 error:nil];
     
@@ -304,6 +325,17 @@ static NSDictionary* pronounceableSep;
     self.englishWords = [[NSArray alloc] initWithArray:e];
     self.shortWords = [[NSArray alloc] initWithArray:es];
     
+    //Saving our word lists so we don't have to run this every time
+    [NSKeyedArchiver archiveRootObject:self.englishWords toFile:englishWordsPath];
+    [NSKeyedArchiver archiveRootObject:self.shortWords toFile:shortWordsPath];
+    
+    
+}
+
+//Gets path to App document directory to allow saving of users and other data
+-(NSString *)getDocumentDirectory:(NSString *)withFile {
+    NSArray *documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [[documentDirs firstObject] stringByAppendingPathComponent:withFile];
 }
 /**
  *  Rudimentary bad word filter, uses an array of 'bad' words to determine if passed in word is bad
@@ -313,6 +345,7 @@ static NSDictionary* pronounceableSep;
  *  @return YES if it is a 'bad' word 'NO' if it is not
  */
 - (BOOL)isBadWord:(NSString *)word {
+
     if ([self.badWords containsObject:word]) {
         return YES;
     }
