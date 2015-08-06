@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
@@ -27,14 +27,14 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="277" height="488"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="contentRect" x="196" y="240" width="277" height="497"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="277" height="488"/>
+                <rect key="frame" x="0.0" y="5" width="277" height="497"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Password Display" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="9Rk-T8-6dg">
-                        <rect key="frame" x="16" y="317" width="242" height="157"/>
+                        <rect key="frame" x="16" y="326" width="242" height="157"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="240" height="141"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,13 +131,13 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Clipboard Handling" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="vL5-0M-yIu">
-                        <rect key="frame" x="17" y="93" width="242" height="83"/>
+                        <rect key="frame" x="17" y="102" width="242" height="83"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="240" height="67"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6d2-lC-0Y7">
-                                    <rect key="frame" x="14" y="41" width="211" height="18"/>
+                                    <rect key="frame" x="16" y="41" width="211" height="18"/>
                                     <buttonCell key="cell" type="check" title="Automatically Clear Clipboard" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mix-e2-rAu">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -147,7 +147,7 @@
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5i1-9w-1AU">
-                                    <rect key="frame" x="133" y="18" width="91" height="17"/>
+                                    <rect key="frame" x="133" y="13" width="91" height="17"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Clear Time (s)" id="cNR-6L-B0s">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -157,8 +157,19 @@
                                         <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.clearClipboard" id="S16-vL-SEg"/>
                                     </connections>
                                 </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WOR-VL-9aO">
+                                    <rect key="frame" x="14" y="13" width="21" height="17"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="99" id="xbm-86-ek4">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.clearClipboard" id="uSq-pT-iE4"/>
+                                    </connections>
+                                </textField>
                                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfY-sM-IQE">
-                                    <rect key="frame" x="41" y="18" width="86" height="15"/>
+                                    <rect key="frame" x="41" y="13" width="86" height="15"/>
                                     <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="15" maxValue="99" doubleValue="15" tickMarkPosition="above" sliderType="linear" id="hOd-l4-h6H">
                                         <connections>
                                             <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.clearClipboard" id="znC-VK-5h4"/>
@@ -169,24 +180,13 @@
                                         <action selector="changeClearTime:" target="-2" id="aPp-jK-UFO"/>
                                     </connections>
                                 </slider>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WOR-VL-9aO">
-                                    <rect key="frame" x="14" y="18" width="21" height="17"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="99" id="xbm-86-ek4">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.clearClipboard" id="uSq-pT-iE4"/>
-                                    </connections>
-                                </textField>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Generate and Copy Hotkey" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-pS-dpl">
-                        <rect key="frame" x="17" y="180" width="242" height="127"/>
+                        <rect key="frame" x="17" y="189" width="242" height="127"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="240" height="111"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,13 +235,24 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Menu Bar" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ej7-u9-CPh">
-                        <rect key="frame" x="16" y="25" width="244" height="64"/>
+                        <rect key="frame" x="16" y="16" width="244" height="83"/>
                         <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="242" height="48"/>
+                            <rect key="frame" x="1" y="1" width="242" height="67"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNW-p0-lA1">
+                                    <rect key="frame" x="16" y="13" width="216" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Hide Dock Icon" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qGs-nL-oGZ">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.isMenuApp" id="OjF-rq-Hot"/>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.hideDockIcon" id="8Tt-s7-eCt"/>
+                                    </connections>
+                                </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jx-1H-FYb">
-                                    <rect key="frame" x="16" y="17" width="216" height="18"/>
+                                    <rect key="frame" x="16" y="41" width="216" height="18"/>
                                     <buttonCell key="cell" type="check" title="Run in Menu (Requires Restart)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5R4-Vh-n0w">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -260,6 +271,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
+            <point key="canvasLocation" x="592.5" y="368.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="gVG-eV-jH6"/>
     </objects>

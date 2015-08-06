@@ -31,7 +31,7 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
         
         //hiding the dock icon if specified
-        if([[NSUserDefaults standardUserDefaults] boolForKey:@"HideDockIcon"]) {
+        if([[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
             [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
         }
         // Chooses which type of status menu we use, because each type had random bugs or crashers
