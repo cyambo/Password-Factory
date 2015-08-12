@@ -241,7 +241,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNW-p0-lA1">
-                                    <rect key="frame" x="16" y="13" width="216" height="18"/>
+                                    <rect key="frame" x="13" y="13" width="216" height="18"/>
                                     <buttonCell key="cell" type="check" title="Hide Dock Icon" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qGs-nL-oGZ">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -252,7 +252,7 @@
                                     </connections>
                                 </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jx-1H-FYb">
-                                    <rect key="frame" x="16" y="41" width="216" height="18"/>
+                                    <rect key="frame" x="13" y="41" width="216" height="18"/>
                                     <buttonCell key="cell" type="check" title="Run in Menu (Requires Restart)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5R4-Vh-n0w">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
