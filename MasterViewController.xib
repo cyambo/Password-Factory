@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MasterViewController">
             <connections>
                 <outlet property="avoidAmbiguous" destination="q2y-v2-bIT" id="UFp-K2-vzq"/>
                 <outlet property="generateButton" destination="TlR-Vl-tPI" id="cn8-gk-yZe"/>
+                <outlet property="loadPreferencesButton" destination="N7q-aW-3QQ" id="a59-8F-vWw"/>
                 <outlet property="mixedCase" destination="FAm-zY-Nsw" id="SjC-qo-wk6"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
                 <outlet property="passwordLengthLabelPronounceable" destination="oSQ-1W-5v1" id="xne-AO-Kvw"/>
@@ -49,7 +50,7 @@
                     </connections>
                 </button>
                 <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sh2-oy-uhM">
-                    <rect key="frame" x="82" y="177" width="242" height="16"/>
+                    <rect key="frame" x="82" y="177" width="212" height="16"/>
                     <levelIndicatorCell key="cell" controlSize="mini" alignment="left" doubleValue="2" maxValue="100" warningValue="70" criticalValue="20" levelIndicatorStyle="continuousCapacity" id="ADC-wx-zpZ"/>
                 </levelIndicator>
                 <tabView fixedFrame="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7G-rB-QOb">
@@ -57,12 +58,12 @@
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Random" identifier="0" id="zr5-iB-5I9">
-                            <view key="view" ambiguous="YES" id="TTS-Hg-P6L">
-                                <rect key="frame" x="10" y="33" width="379" height="105"/>
+                            <view key="view" id="TTS-Hg-P6L">
+                                <rect key="frame" x="10" y="33" width="203" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-Qg-3Sd">
-                                        <rect key="frame" x="37" y="54" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="-51" width="304" height="18"/>
                                         <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XDj-Cb-rZ3">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -73,7 +74,7 @@
                                         </connections>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAm-zY-Nsw">
-                                        <rect key="frame" x="37" y="34" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="-71" width="304" height="18"/>
                                         <buttonCell key="cell" type="check" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OPh-WO-qZF">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -84,7 +85,7 @@
                                         </connections>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2y-v2-bIT">
-                                        <rect key="frame" x="37" y="14" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="-91" width="304" height="18"/>
                                         <buttonCell key="cell" type="check" title="Avoid Ambiguous Characters" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yrh-pS-CML">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -95,7 +96,7 @@
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fc-DjX">
-                                        <rect key="frame" x="88" y="80" width="224" height="20"/>
+                                        <rect key="frame" x="88" y="-25" width="224" height="20"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mGh-qr-LNC">
                                             <connections>
                                                 <action selector="changeLength:" target="-2" id="Wgk-li-RuC"/>
@@ -106,7 +107,7 @@
                                         </connections>
                                     </slider>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqi-Du-606">
-                                        <rect key="frame" x="316" y="82" width="21" height="17"/>
+                                        <rect key="frame" x="316" y="-23" width="21" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="50" id="LRQ-wR-Nch">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -114,7 +115,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yhn-Xd-r0K">
-                                        <rect key="frame" x="37" y="82" width="47" height="17"/>
+                                        <rect key="frame" x="37" y="-23" width="47" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="0Xj-5v-hJb">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -277,6 +278,16 @@ C -Random Uppercase Character</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7q-aW-3QQ">
+                    <rect key="frame" x="296" y="168" width="34" height="32"/>
+                    <buttonCell key="cell" type="push" title="P" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8KO-FU-3hu">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="loadPreferences:" target="-2" id="Pgu-V5-7TN"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="2ia-xi-Rdb"/>

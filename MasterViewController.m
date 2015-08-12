@@ -145,6 +145,10 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     }
     
 }
+- (IBAction)loadPreferences:(id)sender {
+    AppDelegate *d = [[NSApplication sharedApplication] delegate];
+    [d.prefsWindowController showWindow:sender];
+}
 - (void)clearClipboard {
     [self updatePasteboard:@""];
 }
