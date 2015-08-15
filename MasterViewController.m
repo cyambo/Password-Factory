@@ -31,6 +31,13 @@ int const  GenerateAndCopyLoops  = 10;
 
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
 
+        if([[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
+            self.loadPreferencesButton.hidden = NO;
+        } else {
+            self.loadPreferencesButton.hidden = YES;
+        }
+        self.passwordStrengthLevel = [[StrengthMeter alloc] initWithFrame:CGRectMake(82, 175, 212, 21)];
+        [self.view addSubview:self.passwordStrengthLevel];
         [self setObservers];
     }
     return self;
@@ -86,14 +93,16 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     float s = -1;
     for(int i = 0; i < GenerateAndCopyLoops; i++) {
         [self generatePassword];
-        if (self.passwordStrengthLevel.floatValue  > s) {
-            s = self.passwordStrengthLevel.floatValue;
+        if (self.passwordStrengthLevel.strength  > s) {
+            s = self.passwordStrengthLevel.strength;
             pw = self.passwordValue;
         }
     }
     self.passwordValue = pw;
     [self updatePasswordField];
-    [self.passwordStrengthLevel setFloatValue:s];
+
+    [self.passwordStrengthLevel updateStrength:s];
+
     [self copyToPasteboard:nil];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
@@ -110,7 +119,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 - (void)displayCopyNotification {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     [notification setTitle:@"Password Copied"];
-    [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.floatValue]];
+    [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.strength]];
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"globalHotkeyPlaySound"]) {
         [notification setSoundName:NSUserNotificationDefaultSoundName];
@@ -323,7 +332,9 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     
     
     if (ct > 100) {ct = 100;}
-    [self.passwordStrengthLevel setFloatValue:ct];
+    [self.passwordStrengthLevel updateStrength:ct];
+
+
 }
 #pragma mark Status Image
 -(NSImage *)getMenuImage:(BOOL)menuOn {

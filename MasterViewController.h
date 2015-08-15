@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "PasswordFactory.h"
 #import "PreferencesWindowController.h"
+#import "StrengthMeter.h"
 @interface MasterViewController : NSViewController
 @property (weak) IBOutlet NSTextField *passwordField;
 
@@ -19,7 +20,8 @@
 @property (weak) IBOutlet NSTextField *passwordLengthLabelPronounceable;
 @property (weak) IBOutlet NSSlider *passwordLengthSliderRandom;
 @property (weak) IBOutlet NSTextField *passwordLengthLabelRandom;
-@property (weak) IBOutlet NSLevelIndicator *passwordStrengthLevel;
+@property (nonatomic, strong) StrengthMeter *passwordStrengthLevel;
+
 @property (weak) IBOutlet NSTabView *passwordTypeTab;
 
 @property (weak) IBOutlet NSTextField *patternText;

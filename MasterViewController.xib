@@ -16,7 +16,6 @@
                 <outlet property="passwordLengthLabelRandom" destination="zqi-Du-606" id="01s-Z0-bEP"/>
                 <outlet property="passwordLengthSliderPrononunceable" destination="WN8-xU-zDN" id="H6r-b9-oYT"/>
                 <outlet property="passwordLengthSliderRandom" destination="4uN-fc-DjX" id="FWq-t3-ssZ"/>
-                <outlet property="passwordStrengthLevel" destination="sh2-oy-uhM" id="9uD-Yc-c1q"/>
                 <outlet property="passwordTypeTab" destination="D7G-rB-QOb" id="rp6-xC-Dol"/>
                 <outlet property="pasteboardButton" destination="xyJ-Ut-Xnd" id="kqR-sI-BAj"/>
                 <outlet property="patternText" destination="Tx1-SO-FyV" id="On6-0L-CeL"/>
@@ -49,10 +48,6 @@
                         <action selector="generateAction:" target="-2" id="uuy-fp-gMk"/>
                     </connections>
                 </button>
-                <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sh2-oy-uhM">
-                    <rect key="frame" x="82" y="177" width="212" height="16"/>
-                    <levelIndicatorCell key="cell" controlSize="mini" alignment="left" doubleValue="2" maxValue="100" warningValue="70" criticalValue="20" levelIndicatorStyle="continuousCapacity" id="ADC-wx-zpZ"/>
-                </levelIndicator>
                 <tabView fixedFrame="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7G-rB-QOb">
                     <rect key="frame" x="13" y="10" width="399" height="151"/>
                     <font key="font" metaFont="system"/>
@@ -280,7 +275,7 @@ C -Random Uppercase Character</string>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7q-aW-3QQ">
                     <rect key="frame" x="296" y="168" width="34" height="32"/>
-                    <buttonCell key="cell" type="push" title="P" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8KO-FU-3hu">
+                    <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8KO-FU-3hu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
