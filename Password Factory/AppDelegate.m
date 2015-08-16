@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "StatusBarType.h"
 #import "PreferencesWindowController.h"
+#import "StyleKit.h"
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
@@ -66,7 +67,7 @@
                 {
                     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
                     self.statusItem.title = @"";
-                    NSImage *statusImage = [NSImage imageNamed:@"menu-icon"];
+                    NSImage *statusImage = [StyleKit imageOfMenuIcon];
                     [statusImage setTemplate:YES]; //setting it as a template will automatically change it based upon menu appearance, ie dark mode
                     self.statusItem.image = statusImage;
                     self.statusItem.highlightMode = YES;
