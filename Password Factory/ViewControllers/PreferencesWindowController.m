@@ -6,14 +6,17 @@
 //  Copyright (c) 2014 c13. All rights reserved.
 //
 
-NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
-NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
+
 
 
 #import "PreferencesWindowController.h"
 #import "NSColor+NSColorHexadecimalValue.h"
 #import <MASShortcut/Shortcut.h>
 #import "AppDelegate.h"
+
+NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
+NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
+
 @implementation PreferencesWindowController
 __weak id _constantShortcutMonitor;
 static BOOL loadedPrefs;

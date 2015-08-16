@@ -61,10 +61,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "ZXCVBN/tools/generated/adjacency_graphs.json"
   install_resource "ZXCVBN/tools/generated/frequency_lists.json"
 fi
-if [[ "$CONFIGURATION" == "Test" ]]; then
-  install_resource "ZXCVBN/tools/generated/adjacency_graphs.json"
-  install_resource "ZXCVBN/tools/generated/frequency_lists.json"
-fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "ZXCVBN/tools/generated/adjacency_graphs.json"
   install_resource "ZXCVBN/tools/generated/frequency_lists.json"

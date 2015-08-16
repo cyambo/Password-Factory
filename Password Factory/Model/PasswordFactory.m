@@ -338,7 +338,10 @@ static NSDictionary* pronounceableSep;
             self.englishWords = [NSKeyedUnarchiver unarchiveObjectWithFile:englishWordsPath];
             self.shortWords = [NSKeyedUnarchiver unarchiveObjectWithFile:shortWordsPath];
         }
-        return;
+        if (self.englishWords.count > 0 && self.shortWords > 0) {
+            return;
+        }
+        
     }
     
     //parsing out the data for our word lists
