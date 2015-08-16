@@ -152,6 +152,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 - (IBAction)loadPreferences:(id)sender {
     AppDelegate *d = [[NSApplication sharedApplication] delegate];
     [d.prefsWindowController showWindow:sender];
+    [NSApp activateIgnoringOtherApps:YES]; //brings it to front
 }
 - (void)clearClipboard {
     [self updatePasteboard:@""];
