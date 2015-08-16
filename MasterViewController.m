@@ -11,6 +11,7 @@
 #import "PasswordFactory.h"
 #import "PreferencesWindowController.h"
 #import "AppDelegate.h"
+#import "StyleKit.h"
 int const  GenerateAndCopyLoops  = 10;
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
@@ -31,13 +32,18 @@ int const  GenerateAndCopyLoops  = 10;
 
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
 
-        if([[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
-            self.loadPreferencesButton.hidden = NO;
-        } else {
-            self.loadPreferencesButton.hidden = YES;
-        }
+//        if([[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
+//            self.loadPreferencesButton.hidden = NO;
+//        } else {
+//            self.loadPreferencesButton.hidden = YES;
+//        }
         self.passwordStrengthLevel = [[StrengthMeter alloc] initWithFrame:CGRectMake(82, 175, 212, 21)];
         [self.view addSubview:self.passwordStrengthLevel];
+        self.loadPreferencesButton.bordered = NO;
+        self.loadPreferencesButton.image  = [StyleKit imageOfPreferencesButton];
+
+
+
         [self setObservers];
     }
     return self;

@@ -50,6 +50,7 @@
 @property (nonatomic, weak) PreferencesWindowController *prefsWindow;
 
 -(NSImage *)getMenuImage:(BOOL)isMenuClicked;
+
 @property (weak) IBOutlet NSButton *loadPreferencesButton;
 
 @end

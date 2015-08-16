@@ -21,6 +21,7 @@
     [StyleKit drawStrengthMeterWithStrengthColor:[self getStrengthColor] strength:self.strength];
 
 
+
 }
 -(NSColor *)getStrengthColor {
     float hue = self.strength *.3;
@@ -31,7 +32,7 @@
 
     if (strength >=0.0 && strength <= 100.0) {
         self.strength = strength/100;
-
+        self.floatValue = strength;
         [self setNeedsDisplay:YES];
     }
 }

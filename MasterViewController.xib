@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="avoidAmbiguous" destination="q2y-v2-bIT" id="UFp-K2-vzq"/>
                 <outlet property="generateButton" destination="TlR-Vl-tPI" id="cn8-gk-yZe"/>
-                <outlet property="loadPreferencesButton" destination="N7q-aW-3QQ" id="a59-8F-vWw"/>
+                <outlet property="loadPreferencesButton" destination="pHj-hg-aZg" id="XGM-yz-irk"/>
                 <outlet property="mixedCase" destination="FAm-zY-Nsw" id="SjC-qo-wk6"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
                 <outlet property="passwordLengthLabelPronounceable" destination="oSQ-1W-5v1" id="xne-AO-Kvw"/>
@@ -273,16 +273,19 @@ C -Random Uppercase Character</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7q-aW-3QQ">
-                    <rect key="frame" x="296" y="168" width="34" height="32"/>
-                    <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8KO-FU-3hu">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHj-hg-aZg">
+                    <rect key="frame" x="304" y="176" width="19" height="19"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wR0-BZ-nQM">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="loadPreferences:" target="-2" id="Pgu-V5-7TN"/>
+                        <action selector="loadPreferences:" target="-2" id="PqM-IM-CTy"/>
                     </connections>
                 </button>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NML-Rl-bwo">
+                    <rect key="frame" x="82" y="175" width="212" height="21"/>
+                </customView>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="2ia-xi-Rdb"/>

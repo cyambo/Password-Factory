@@ -10,5 +10,6 @@
 
 @interface StrengthMeter : NSView
 @property (nonatomic, assign) float strength;
+@property (nonatomic, assign) float floatValue;
 -(void)updateStrength:(float)strength;
 @end

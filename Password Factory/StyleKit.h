@@ -19,5 +19,9 @@
 
 // Drawing Methods
 + (void)drawStrengthMeterWithStrengthColor: (NSColor*)strengthColor strength: (CGFloat)strength;
++ (void)drawPreferencesButton;
+
+// Generated Images
++ (NSImage*)imageOfPreferencesButton;
 
 @end
