@@ -9,15 +9,17 @@
 #import "StrengthMeter.h"
 #import "StyleKit.h"
 @implementation StrengthMeter
-- (instancetype)init {
-    [StrengthMeter initialize];
-    self = [super init];
-    self.strength = .25;
+
+
+-(instancetype)initWithFrame:(NSRect)frameRect {
+
+    self = [super initWithFrame:frameRect];
+    self.strength = 0.25;
     return self;
 }
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    NSLog(@"STRENGTH %f",self.strength);
     [StyleKit drawStrengthMeterWithStrengthColor:[self getStrengthColor] strength:self.strength];
 
 

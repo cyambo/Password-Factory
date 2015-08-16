@@ -16,6 +16,7 @@
                 <outlet property="passwordLengthLabelRandom" destination="zqi-Du-606" id="01s-Z0-bEP"/>
                 <outlet property="passwordLengthSliderPrononunceable" destination="WN8-xU-zDN" id="H6r-b9-oYT"/>
                 <outlet property="passwordLengthSliderRandom" destination="4uN-fc-DjX" id="FWq-t3-ssZ"/>
+                <outlet property="passwordStrengthLevel" destination="NML-Rl-bwo" id="9Di-7u-P50"/>
                 <outlet property="passwordTypeTab" destination="D7G-rB-QOb" id="rp6-xC-Dol"/>
                 <outlet property="pasteboardButton" destination="xyJ-Ut-Xnd" id="kqR-sI-BAj"/>
                 <outlet property="patternText" destination="Tx1-SO-FyV" id="On6-0L-CeL"/>
@@ -273,8 +274,8 @@ C -Random Uppercase Character</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHj-hg-aZg">
-                    <rect key="frame" x="304" y="176" width="19" height="19"/>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHj-hg-aZg" customClass="PreferencesButton">
+                    <rect key="frame" x="303" y="176" width="19" height="19"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wR0-BZ-nQM">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -283,7 +284,7 @@ C -Random Uppercase Character</string>
                         <action selector="loadPreferences:" target="-2" id="PqM-IM-CTy"/>
                     </connections>
                 </button>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NML-Rl-bwo">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NML-Rl-bwo" customClass="StrengthMeter">
                     <rect key="frame" x="82" y="175" width="212" height="21"/>
                 </customView>
             </subviews>

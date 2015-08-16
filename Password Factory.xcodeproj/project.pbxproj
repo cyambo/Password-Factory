@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0BF27ECC43C53965175DD3A1 /* libPods-Password FactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF406AD061A3837BD6A9F831 /* libPods-Password FactoryTests.a */; };
+		40275D2E1B80EB0A00E46850 /* PreferencesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 40275D2D1B80EB0A00E46850 /* PreferencesButton.m */; };
 		403BC3831922AFB3005C92D3 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */; };
 		403BC3871922B658005C92D3 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403BC3861922B658005C92D3 /* defaults.plist */; };
 		4047839A1935115800971CB1 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 404783981935115800971CB1 /* menu-icon.png */; };
@@ -73,6 +74,8 @@
 		40135D4B1923BF1C00E91FA9 /* MasterViewControllerTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTestClass.h; sourceTree = "<group>"; };
 		40135D4C1923BF1C00E91FA9 /* MasterViewControllerTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTestClass.m; sourceTree = "<group>"; };
 		40135D4E1923C73100E91FA9 /* PreferencesWindowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindowTests.m; path = ../PreferencesWindowTests.m; sourceTree = "<group>"; };
+		40275D2C1B80EB0A00E46850 /* PreferencesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesButton.h; sourceTree = "<group>"; };
+		40275D2D1B80EB0A00E46850 /* PreferencesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesButton.m; sourceTree = "<group>"; };
 		403BC3811922AFB3005C92D3 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		403BC3821922AFB3005C92D3 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		403BC3861922B658005C92D3 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 				40E1599E1B7CEBD900F8C5CA /* StyleKit.m */,
 				40E159A01B7CECEC00F8C5CA /* StrengthMeter.h */,
 				40E159A11B7CECEC00F8C5CA /* StrengthMeter.m */,
+				40275D2C1B80EB0A00E46850 /* PreferencesButton.h */,
+				40275D2D1B80EB0A00E46850 /* PreferencesButton.m */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40275D2E1B80EB0A00E46850 /* PreferencesButton.m in Sources */,
 				40BBBE651913C0CF00AA5BC2 /* PasswordFactory.m in Sources */,
 				40C687391948FA3200BFA14A /* MainWindow.m in Sources */,
 				496DA6FD195098D000D024D2 /* StatusView.m in Sources */,

@@ -20,7 +20,7 @@
 @property (weak) IBOutlet NSTextField *passwordLengthLabelPronounceable;
 @property (weak) IBOutlet NSSlider *passwordLengthSliderRandom;
 @property (weak) IBOutlet NSTextField *passwordLengthLabelRandom;
-@property (nonatomic, strong) StrengthMeter *passwordStrengthLevel;
+@property (weak) IBOutlet StrengthMeter *passwordStrengthLevel;
 
 @property (weak) IBOutlet NSTabView *passwordTypeTab;
 
