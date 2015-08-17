@@ -30,6 +30,11 @@
 		4095862F1B8112FD00393B99 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860D1B8112FD00393B99 /* PreferencesWindowController.m */; };
 		409586301B8112FD00393B99 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */; };
 		409586321B81131100393B99 /* PasswordFactory.help in Resources */ = {isa = PBXBuildFile; fileRef = 409586311B81131100393B99 /* PasswordFactory.help */; };
+		409E13BA1B8258170041541B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409E13B91B8258170041541B /* NotificationCenter.framework */; };
+		409E13C11B8258170041541B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 409E13BF1B8258170041541B /* InfoPlist.strings */; };
+		409E13C41B8258170041541B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409E13C31B8258170041541B /* TodayViewController.m */; };
+		409E13C61B8258170041541B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 409E13C51B8258170041541B /* TodayViewController.xib */; };
+		409E13C91B8258170041541B /* Password Factory Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 409E13B81B8258170041541B /* Password Factory Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
 		40FB0C241B810F10009193F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C231B810F10009193F8 /* main.m */; };
@@ -40,6 +45,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		409E13C71B8258170041541B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40FB0C131B810F10009193F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 409E13B71B8258170041541B;
+			remoteInfo = "Password Factory Widget";
+		};
 		40FB0C2F1B810F10009193F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 40FB0C131B810F10009193F8 /* Project object */;
@@ -48,6 +60,20 @@
 			remoteInfo = "Password Factory";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		409E13CD1B8258170041541B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				409E13C91B8258170041541B /* Password Factory Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		132E358EAA30C1AC8D546220 /* Pods-Password FactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +113,14 @@
 		4095860D1B8112FD00393B99 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		409586311B81131100393B99 /* PasswordFactory.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PasswordFactory.help; sourceTree = "<group>"; };
+		409E13B81B8258170041541B /* Password Factory Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Password Factory Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		409E13B91B8258170041541B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		409E13BD1B8258170041541B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		409E13BE1B8258170041541B /* Password_Factory_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Password_Factory_Widget.entitlements; sourceTree = "<group>"; };
+		409E13C01B8258170041541B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		409E13C21B8258170041541B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		409E13C31B8258170041541B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		409E13C51B8258170041541B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		40FB0C1B1B810F10009193F8 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +140,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		409E13B51B8258170041541B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				409E13BA1B8258170041541B /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40FB0C181B810F10009193F8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,6 +243,27 @@
 			path = "Password Factory/ViewControllers";
 			sourceTree = "<group>";
 		};
+		409E13BB1B8258170041541B /* Password Factory Widget */ = {
+			isa = PBXGroup;
+			children = (
+				409E13C21B8258170041541B /* TodayViewController.h */,
+				409E13C31B8258170041541B /* TodayViewController.m */,
+				409E13C51B8258170041541B /* TodayViewController.xib */,
+				409E13BC1B8258170041541B /* Supporting Files */,
+			);
+			path = "Password Factory Widget";
+			sourceTree = "<group>";
+		};
+		409E13BC1B8258170041541B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				409E13BD1B8258170041541B /* Info.plist */,
+				409E13BE1B8258170041541B /* Password_Factory_Widget.entitlements */,
+				409E13BF1B8258170041541B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		40FB0C121B810F10009193F8 = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +275,7 @@
 				409586081B8112FD00393B99 /* ViewControllers */,
 				40FB0C1D1B810F10009193F8 /* Password Factory */,
 				40FB0C311B810F10009193F8 /* Password FactoryTests */,
+				409E13BB1B8258170041541B /* Password Factory Widget */,
 				40FB0C1C1B810F10009193F8 /* Products */,
 				E85251CC741D3A52CEF24A18 /* Pods */,
 				F9FEF77E1307D364CA2465EF /* Frameworks */,
@@ -223,6 +287,7 @@
 			children = (
 				40FB0C1B1B810F10009193F8 /* Password Factory.app */,
 				40FB0C2E1B810F10009193F8 /* Password FactoryTests.xctest */,
+				409E13B81B8258170041541B /* Password Factory Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -290,6 +355,7 @@
 			children = (
 				859C6F374BB62F7214302EA7 /* libPods-Password Factory.a */,
 				8D133D170B36EEF7085404B5 /* libPods-Password FactoryTests.a */,
+				409E13B91B8258170041541B /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -297,6 +363,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		409E13B71B8258170041541B /* Password Factory Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 409E13CC1B8258170041541B /* Build configuration list for PBXNativeTarget "Password Factory Widget" */;
+			buildPhases = (
+				409E13B41B8258170041541B /* Sources */,
+				409E13B51B8258170041541B /* Frameworks */,
+				409E13B61B8258170041541B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Password Factory Widget";
+			productName = "Password Factory Widget";
+			productReference = 409E13B81B8258170041541B /* Password Factory Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		40FB0C1A1B810F10009193F8 /* Password Factory */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40FB0C381B810F10009193F8 /* Build configuration list for PBXNativeTarget "Password Factory" */;
@@ -306,10 +389,12 @@
 				40FB0C181B810F10009193F8 /* Frameworks */,
 				40FB0C191B810F10009193F8 /* Resources */,
 				9C88311E94026174CDA4BB06 /* Copy Pods Resources */,
+				409E13CD1B8258170041541B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				409E13C81B8258170041541B /* PBXTargetDependency */,
 			);
 			name = "Password Factory";
 			productName = "Password Factory";
@@ -345,6 +430,10 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Cristiana Yambo";
 				TargetAttributes = {
+					409E13B71B8258170041541B = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = XWE2VMM384;
+					};
 					40FB0C1A1B810F10009193F8 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = XWE2VMM384;
@@ -375,11 +464,21 @@
 			targets = (
 				40FB0C1A1B810F10009193F8 /* Password Factory */,
 				40FB0C2D1B810F10009193F8 /* Password FactoryTests */,
+				409E13B71B8258170041541B /* Password Factory Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		409E13B61B8258170041541B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				409E13C61B8258170041541B /* TodayViewController.xib in Resources */,
+				409E13C11B8258170041541B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40FB0C191B810F10009193F8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -471,6 +570,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		409E13B41B8258170041541B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40FB0C171B810F10009193F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,6 +612,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		409E13C81B8258170041541B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 409E13B71B8258170041541B /* Password Factory Widget */;
+			targetProxy = 409E13C71B8258170041541B /* PBXContainerItemProxy */;
+		};
 		40FB0C301B810F10009193F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 40FB0C1A1B810F10009193F8 /* Password Factory */;
@@ -513,6 +625,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		409E13BF1B8258170041541B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				409E13C01B8258170041541B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		40FB0C271B810F10009193F8 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -524,6 +644,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		409E13CA1B8258170041541B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Password Factory Widget/Password_Factory_Widget.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Password Factory Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		409E13CB1B8258170041541B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Password Factory Widget/Password_Factory_Widget.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Password Factory Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		40FB0C361B810F10009193F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -672,6 +822,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		409E13CC1B8258170041541B /* Build configuration list for PBXNativeTarget "Password Factory Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				409E13CA1B8258170041541B /* Debug */,
+				409E13CB1B8258170041541B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		40FB0C161B810F10009193F8 /* Build configuration list for PBXProject "Password Factory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
