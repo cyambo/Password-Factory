@@ -433,11 +433,19 @@
 					409E13B71B8258170041541B = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = XWE2VMM384;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+						};
 					};
 					40FB0C1A1B810F10009193F8 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = XWE2VMM384;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
