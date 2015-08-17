@@ -6,6 +6,10 @@ target 'Password Factory' do
     pod 'MASShortcut'
 end
 
+target 'Password Factory Widget' do
+    pod 'ZXCVBN'
+end;
+
 target 'Password FactoryTests' do
 	pod 'OCMock', '~> 3.1'
 end
