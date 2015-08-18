@@ -35,5 +35,7 @@
 @property (weak) IBOutlet NSButton *playNotificationSound;
 @property (weak) IBOutlet NSButton *enableGlobalHotkey;
 
+- (IBAction)quitApplication:(id)sender;
+
 - (void)resetShortcutRegistration;
 @end

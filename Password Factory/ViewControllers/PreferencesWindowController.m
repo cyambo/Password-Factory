@@ -163,8 +163,12 @@ static BOOL loadedPrefs;
 
 }
 
-#pragma mark - Custom shortcut
 
+
+- (IBAction)quitApplication:(id)sender {
+    [[NSApplication sharedApplication] terminate:nil];
+}
+#pragma mark - Custom shortcut
 - (void)resetShortcutRegistration
 {
   

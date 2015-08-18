@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
@@ -234,7 +233,7 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Menu Bar" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ej7-u9-CPh">
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Menu Bar (changes require restart)" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ej7-u9-CPh">
                         <rect key="frame" x="16" y="16" width="244" height="83"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="242" height="67"/>
@@ -247,18 +246,33 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.isMenuApp" id="OjF-rq-Hot"/>
                                         <binding destination="gVG-eV-jH6" name="value" keyPath="values.hideDockIcon" id="8Tt-s7-eCt"/>
+                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.isMenuApp" id="OjF-rq-Hot"/>
                                     </connections>
                                 </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jx-1H-FYb">
                                     <rect key="frame" x="13" y="41" width="216" height="18"/>
-                                    <buttonCell key="cell" type="check" title="Run in Menu (Requires Restart)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5R4-Vh-n0w">
+                                    <buttonCell key="cell" type="check" title="Run in Menu" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5R4-Vh-n0w">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
                                         <binding destination="gVG-eV-jH6" name="value" keyPath="values.isMenuApp" id="RQj-tF-Ucm"/>
+                                    </connections>
+                                </button>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-7c-5Pz">
+                                    <rect key="frame" x="174" y="8" width="52" height="53"/>
+                                    <buttonCell key="cell" type="bevel" title="Quit" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0vA-hk-iS0">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="quitApplication:" target="-2" id="t8a-AU-Oz1"/>
+                                        <binding destination="gVG-eV-jH6" name="hidden" keyPath="values.isMenuApp" id="2wU-xl-kg7">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
                                     </connections>
                                 </button>
                             </subviews>
