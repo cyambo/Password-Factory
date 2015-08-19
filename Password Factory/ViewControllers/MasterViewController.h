@@ -33,7 +33,7 @@
 @property (weak) IBOutlet NSButton *pasteboardButton;
 - (IBAction)copyToPasteboard:(id)sender;
 
-- (IBAction)changeLength:(id)sender;
+- (IBAction)changeLength:(NSSliderCell *)sender;
 - (IBAction)pressPrononunceableRadio:(id)sender;
 - (NSString *)getPronounceableRadioSelected;
 

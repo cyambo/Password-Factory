@@ -13,14 +13,14 @@
 #import "NSColor+NSColorHexadecimalValue.h"
 #import <MASShortcut/Shortcut.h>
 #import "AppDelegate.h"
-
+#import "DefaultsManager.h"
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
 @implementation PreferencesWindowController
 __weak id _constantShortcutMonitor;
 static BOOL loadedPrefs;
-static NSUserDefaults *sharedDefaults;
+
 static NSDictionary *prefsPlist;
 
 - (id)initWithWindow:(NSWindow *)window
@@ -105,17 +105,15 @@ static NSDictionary *prefsPlist;
     }
 
 }
-+ (void)getPrefsFromPlist {
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
++(void)loadDefaultsPlist {
     if (prefsPlist == nil) {
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
         prefsPlist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
         NSLog(@"LOADED PREFS");
     }
-    if (sharedDefaults == nil) {
-        sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.cloud13.password-factory"];
-        NSLog(@"LOADED SHARED DEFAULTS");
-    }
-
+}
++ (void)getPrefsFromPlist {
+    [PreferencesWindowController loadDefaultsPlist];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
     
@@ -126,9 +124,19 @@ static NSDictionary *prefsPlist;
             [d setObject:[prefsPlist objectForKey:k] forKey:k];
             
         }
+    }
+    [PreferencesWindowController syncSharedDefaults];
+}
++(void)syncSharedDefaults {
+    [PreferencesWindowController loadDefaultsPlist];
+    NSUserDefaults *sharedDefaults = [DefaultsManager sharedDefaults];
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    for (NSString *key in prefsPlist) {
+        NSString *k = [key stringByAppendingString:@"Shared"]; //Appending shared to shared defaults because KVO will cause the observer to be called 
         //syncing to shared defaults
-        if([sharedDefaults objectForKey:k] != [d objectForKey:k]) {
-            [sharedDefaults setObject:[d objectForKey:k] forKey:k];
+        if([sharedDefaults objectForKey:k] != [d objectForKey:key]) {
+            NSLog(@"CHANGED %@",k);
+            [sharedDefaults setObject:[d objectForKey:key] forKey:k];
         }
         
     }
@@ -177,8 +185,6 @@ static NSDictionary *prefsPlist;
     [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
 
 }
-
-
 
 - (IBAction)quitApplication:(id)sender {
     [[NSApplication sharedApplication] terminate:nil];

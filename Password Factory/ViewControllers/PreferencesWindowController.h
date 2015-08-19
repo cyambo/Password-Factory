@@ -27,6 +27,7 @@
 
 + (void)loadPreferencesFromPlist;
 + (void)getPrefsFromPlist;
++(void)syncSharedDefaults;
 
 + (NSColor*)colorWithHexColorString:(NSString*)inColorString;
 

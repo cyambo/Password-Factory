@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
             <connections>
                 <outlet property="passwordField" destination="3ob-i2-V6T" id="bht-2e-R8v"/>
+                <outlet property="passwordType" destination="LTY-Kh-P2c" id="mI0-rk-cqd"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -15,16 +16,16 @@
         <customView misplaced="YES" simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="5" width="320" height="130"/>
             <subviews>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
-                    <rect key="frame" x="20" y="87" width="280" height="22.5"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="k2G-xb-uyj">
+                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
+                    <rect key="frame" x="20" y="86" width="280" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title=" " drawsBackground="YES" id="k2G-xb-uyj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-Xk-p8m">
-                    <rect key="frame" x="154" y="47" width="122" height="32"/>
+                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-Xk-p8m">
+                    <rect key="frame" x="154" y="46" width="122" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="Yiz-4A-Nu0"/>
                     </constraints>
@@ -36,8 +37,8 @@
                         <action selector="generatePassword:" target="-2" id="gE5-1R-7Zn"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d86-9W-hIU">
-                    <rect key="frame" x="154" y="14" width="122" height="32"/>
+                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d86-9W-hIU">
+                    <rect key="frame" x="154" y="13" width="122" height="32"/>
                     <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xek-rO-QG8">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -46,15 +47,15 @@
                         <action selector="copyPassword:" target="-2" id="qIg-B5-Pmp"/>
                     </connections>
                 </button>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="9Gx-gN-5HI">
-                    <rect key="frame" x="279" y="54" width="21" height="21"/>
+                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Gx-gN-5HI">
+                    <rect key="frame" x="279" y="53" width="21" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="2xF-VC-Er9"/>
                         <constraint firstAttribute="width" constant="21" id="JWP-AI-WZA"/>
                     </constraints>
                 </customView>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="cOE-n1-oHo">
-                    <rect key="frame" x="279" y="21" width="21" height="21"/>
+                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOE-n1-oHo">
+                    <rect key="frame" x="279" y="20" width="21" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="21" id="nBq-Vj-Br7"/>
                         <constraint firstAttribute="height" constant="21" id="ya2-qD-KoW"/>
@@ -63,8 +64,11 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="backToApp:" target="-2" id="nF7-is-9jN"/>
+                    </connections>
                 </button>
-                <matrix verticalHuggingPriority="750" misplaced="YES" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTY-Kh-P2c">
+                <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTY-Kh-P2c">
                     <rect key="frame" x="20" y="20" width="120" height="57.5"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     <size key="cellSize" width="120" height="17"/>
@@ -89,6 +93,9 @@
                             </buttonCell>
                         </column>
                     </cells>
+                    <connections>
+                        <action selector="changePasswordType:" target="-2" id="9p7-2J-I0i"/>
+                    </connections>
                 </matrix>
             </subviews>
             <constraints>

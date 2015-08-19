@@ -17,7 +17,7 @@ int const  GenerateAndCopyLoops  = 10;
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) Class timerClass;
-@property (nonatomic, strong) NSUserDefaults *sharedDefaults;
+
 @end
 
 @implementation MasterViewController
@@ -27,7 +27,6 @@ int const  GenerateAndCopyLoops  = 10;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.pg = [[PasswordFactory alloc] init];
-        self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.cloud13.password-factory"];
         self.timerClass = [NSTimer class];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
@@ -183,7 +182,9 @@ int const  GenerateAndCopyLoops  = 10;
     [self generatePassword];
 }
 
-- (IBAction)changeLength:(id)sender {
+- (IBAction)changeLength:(NSSliderCell *)sender {
+    
+    
     [self getPasswordLength];
 }
 - (IBAction)generateAction:(id)sender {
@@ -197,6 +198,7 @@ int const  GenerateAndCopyLoops  = 10;
 }
 - (void)getPasswordLength{
     NSInteger atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
+    NSUInteger prevLength = self.pg.passwordLength;
     if (atTab == 0) {
         self.pg.passwordLength = [self.passwordLengthSliderRandom integerValue];
         [self.passwordLengthSliderPrononunceable setIntegerValue:self.pg.passwordLength];
@@ -206,7 +208,10 @@ int const  GenerateAndCopyLoops  = 10;
     }
     [self.passwordLengthLabelRandom setStringValue:[NSString stringWithFormat:@"%i",(int)self.pg.passwordLength]];
     [self.passwordLengthLabelPronounceable setStringValue:[NSString stringWithFormat:@"%i",(int)self.pg.passwordLength]];
-    [self generatePassword];
+    if (prevLength != self.pg.passwordLength) { //do not change password unless length changes
+        [self generatePassword];
+    }
+    
 }
 
 - (void)generatePassword {
@@ -235,7 +240,7 @@ int const  GenerateAndCopyLoops  = 10;
 }
 #pragma mark Password Display
 - (void)updatePasswordField{
-    [PreferencesWindowController loadPreferencesFromPlist];
+    [PreferencesWindowController syncSharedDefaults];
     if (!self.colorPasswordText) {
         NSAttributedString *s = [[NSAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         [self.passwordField setAttributedStringValue: s];

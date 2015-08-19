@@ -105,7 +105,10 @@
 
 
 }
-
+-(void)applicationWillTerminate:(NSNotification *)notification {
+    //Sync preferences when closing
+    [PreferencesWindowController syncSharedDefaults];
+}
 -(void)closeWindow {
     [self.window close];
     [self.statusView setNeedsDisplay:YES];

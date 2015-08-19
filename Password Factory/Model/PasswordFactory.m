@@ -58,22 +58,27 @@ static NSDictionary* pronounceableSep;
  *  @return a separator for pronounceable strings
  */
 - (NSString *)getPronounceableSeparator:(NSString *)selectedTitle {
+    return [self getPronounceableSeparatorWithInt:(int)[[pronounceableSep objectForKey:selectedTitle] integerValue]];
+}
+- (NSString *)getPronounceableSeparatorWithInt:(int)separator {
     NSString *sep = @"";
-    switch ((int)[[pronounceableSep objectForKey:selectedTitle] integerValue]) {
+    switch (separator) {
+            
+            
         case 1:
-            sep = @"";
-            break;
-        case 2:
             sep = @"-";
             break;
-        case 3:
-            sep = [NSString stringWithFormat:@"%c",[self randomFromString:nonAmbiguousUpperCase]];
-            break;
-        case 4:
+        case 2:
             sep = [NSString stringWithFormat:@"%d",arc4random()%10];
             break;
-        case 5:
+        case 3:
+            sep = @"";
+            break;
+        case 4:
             sep = [NSString stringWithFormat:@"%c",[self randomFromString:symbols]];
+            break;
+        case 5:
+            sep = [NSString stringWithFormat:@"%c",[self randomFromString:nonAmbiguousUpperCase]];
             break;
         case 6:
             sep = @" ";
@@ -91,10 +96,17 @@ static NSDictionary* pronounceableSep;
  *
  *  @return 'pronunceable' password
  */
-- (NSString *)generatePronounceable:(NSString *)selectedTitle {
+- (NSString *)generatePronounceable:(id)selectedTitle {
 
     NSMutableString *p = [[NSMutableString alloc] init];
-    NSString *sep = [self getPronounceableSeparator:selectedTitle];
+    int st = (int)[selectedTitle integerValue];
+    NSString *sep;
+    if ([selectedTitle isKindOfClass:[NSString class]]) {
+        sep = [self getPronounceableSeparator:selectedTitle];
+    }else if (st >=0 && st <=5) {
+        NSLog(@"%d",st);
+        sep = [self getPronounceableSeparatorWithInt:st+1];
+    }
     int i = 0;
     while (p.length < self.passwordLength) {
         NSString *append = [[self getPronounceableForLength:(self.passwordLength - p.length)] lowercaseString];
@@ -113,6 +125,7 @@ static NSDictionary* pronounceableSep;
     return p;
     
 }
+
 /**
  *  with pronnounceable we don't want to exceed the set password length, so choose the appropriate size 'sound'
  *
@@ -305,11 +318,11 @@ static NSDictionary* pronounceableSep;
                          @"C" : @8 //random uppercase char
                          };
     pronounceableSep = @{
-                         @"None": @1,
-                         @"Hyphen" : @2,
-                         @"Characters" : @3,
-                         @"Numbers" : @4,
-                         @"Symbols" : @5,
+                         @"Hyphen": @1,
+                         @"Numbers" : @2,
+                         @"None" : @3,
+                         @"Symbols" : @4,
+                         @"Characters" : @5,
                          @"Spaces"  : @6
                          };
     

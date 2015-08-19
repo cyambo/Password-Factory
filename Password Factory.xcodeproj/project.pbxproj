@@ -37,6 +37,8 @@
 		409E13C41B8258170041541B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409E13C31B8258170041541B /* TodayViewController.m */; };
 		409E13C61B8258170041541B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 409E13C51B8258170041541B /* TodayViewController.xib */; };
 		409E13C91B8258170041541B /* Password Factory Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 409E13B81B8258170041541B /* Password Factory Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
+		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
 		40FB0C241B810F10009193F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C231B810F10009193F8 /* main.m */; };
@@ -126,6 +128,8 @@
 		409E13C21B8258170041541B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		409E13C31B8258170041541B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		409E13C51B8258170041541B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		40DAB57E1B843734003F5C3D /* DefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultsManager.h; sourceTree = "<group>"; };
+		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		40FB0C1B1B810F10009193F8 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +235,8 @@
 			children = (
 				409586061B8112FD00393B99 /* PasswordFactory.h */,
 				409586071B8112FD00393B99 /* PasswordFactory.m */,
+				40DAB57E1B843734003F5C3D /* DefaultsManager.h */,
+				40DAB57F1B843734003F5C3D /* DefaultsManager.m */,
 			);
 			name = Model;
 			path = "Password Factory/Model";
@@ -627,6 +633,7 @@
 			files = (
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
+				40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +653,7 @@
 				4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */,
 				4095862B1B8112FD00393B99 /* StatusView.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
+				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
