@@ -20,7 +20,8 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 @implementation PreferencesWindowController
 __weak id _constantShortcutMonitor;
 static BOOL loadedPrefs;
-
+static NSUserDefaults *sharedDefaults;
+static NSDictionary *prefsPlist;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -106,20 +107,28 @@ static BOOL loadedPrefs;
 }
 + (void)getPrefsFromPlist {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
-    NSDictionary *p = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    if (prefsPlist == nil) {
+        prefsPlist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+        NSLog(@"LOADED PREFS");
+    }
+    if (sharedDefaults == nil) {
+        sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.cloud13.password-factory"];
+        NSLog(@"LOADED SHARED DEFAULTS");
+    }
+
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    NSUserDefaults *sd = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.cloud13.password-factory"];
+
     
 
     //taking plist and filling in defaults if none set
-    for (NSString *k in p) {
+    for (NSString *k in prefsPlist) {
         if (![d objectForKey:k]) {
-            [d setObject:[p objectForKey:k] forKey:k];
+            [d setObject:[prefsPlist objectForKey:k] forKey:k];
             
         }
         //syncing to shared defaults
-        if([sd objectForKey:k] != [d objectForKey:k]) {
-            [sd setObject:[d objectForKey:k] forKey:k];
+        if([sharedDefaults objectForKey:k] != [d objectForKey:k]) {
+            [sharedDefaults setObject:[d objectForKey:k] forKey:k];
         }
         
     }

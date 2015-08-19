@@ -235,7 +235,7 @@ int const  GenerateAndCopyLoops  = 10;
 }
 #pragma mark Password Display
 - (void)updatePasswordField{
-    //TODO: Sync changes to shared defaults
+    [PreferencesWindowController loadPreferencesFromPlist];
     if (!self.colorPasswordText) {
         NSAttributedString *s = [[NSAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         [self.passwordField setAttributedStringValue: s];
