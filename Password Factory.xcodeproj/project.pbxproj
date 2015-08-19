@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
+		406C388A1B844D0100F471E7 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
+		406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3F1B8447A700727FDB /* StrengthControl.m */; };
+		406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3C1B84476F00727FDB /* StrengthBox.m */; };
 		409585CF1B8112D600393B99 /* MasterViewControllerTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585C91B8112D600393B99 /* MasterViewControllerTestClass.m */; };
 		409585D01B8112D600393B99 /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
@@ -32,6 +35,8 @@
 		4095862F1B8112FD00393B99 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860D1B8112FD00393B99 /* PreferencesWindowController.m */; };
 		409586301B8112FD00393B99 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */; };
 		409586321B81131100393B99 /* PasswordFactory.help in Resources */ = {isa = PBXBuildFile; fileRef = 409586311B81131100393B99 /* PasswordFactory.help */; };
+		409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3C1B84476F00727FDB /* StrengthBox.m */; };
+		409DEE401B8447A700727FDB /* StrengthControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3F1B8447A700727FDB /* StrengthControl.m */; };
 		409E13BA1B8258170041541B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409E13B91B8258170041541B /* NotificationCenter.framework */; };
 		409E13C11B8258170041541B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 409E13BF1B8258170041541B /* InfoPlist.strings */; };
 		409E13C41B8258170041541B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409E13C31B8258170041541B /* TodayViewController.m */; };
@@ -120,6 +125,10 @@
 		4095860D1B8112FD00393B99 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		409586311B81131100393B99 /* PasswordFactory.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PasswordFactory.help; sourceTree = "<group>"; };
+		409DEE3B1B84476F00727FDB /* StrengthBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrengthBox.h; sourceTree = "<group>"; };
+		409DEE3C1B84476F00727FDB /* StrengthBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrengthBox.m; sourceTree = "<group>"; };
+		409DEE3E1B8447A700727FDB /* StrengthControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrengthControl.h; sourceTree = "<group>"; };
+		409DEE3F1B8447A700727FDB /* StrengthControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrengthControl.m; sourceTree = "<group>"; };
 		409E13B81B8258170041541B /* Password Factory Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Password Factory Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		409E13B91B8258170041541B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		409E13BD1B8258170041541B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -214,6 +223,10 @@
 				409585FE1B8112FD00393B99 /* PreferencesButton.m */,
 				409585FF1B8112FD00393B99 /* StrengthMeter.h */,
 				409586001B8112FD00393B99 /* StrengthMeter.m */,
+				409DEE3B1B84476F00727FDB /* StrengthBox.h */,
+				409DEE3C1B84476F00727FDB /* StrengthBox.m */,
+				409DEE3E1B8447A700727FDB /* StrengthControl.h */,
+				409DEE3F1B8447A700727FDB /* StrengthControl.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -634,6 +647,9 @@
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
 				40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */,
+				406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */,
+				406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */,
+				406C388A1B844D0100F471E7 /* StyleKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */,
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,
 				4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */,
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,
@@ -648,6 +665,7 @@
 				4095862F1B8112FD00393B99 /* PreferencesWindowController.m in Sources */,
 				409586281B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.m in Sources */,
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
+				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,
 				40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */,
 				40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */,
 				4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */,

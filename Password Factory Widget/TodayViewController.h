@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "StrengthBox.h"
 @interface TodayViewController : NSViewController
 @property (weak) IBOutlet NSTextField *passwordField;
 - (IBAction)generatePassword:(id)sender;
@@ -15,6 +15,9 @@
 - (IBAction)backToApp:(id)sender;
 - (IBAction)changePasswordType:(id)sender;
 @property (weak) IBOutlet NSMatrix *passwordType;
+@property (weak) IBOutlet StrengthBox *strengthBox;
+
+
 
 
 

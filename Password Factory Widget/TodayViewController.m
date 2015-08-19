@@ -56,6 +56,7 @@
     } else {
         password = [self.factory generatePronounceable:[sd objectForKey:@"pronounceableSeparatorShared"]];
     }
+//    [self.strengthBox updateStrength:.2];
     [self.passwordField setStringValue:password];
  }
 @end

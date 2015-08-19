@@ -7,9 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "StrengthControl.h"
+@interface StrengthMeter : StrengthControl
 
-@interface StrengthMeter : NSView
-@property (nonatomic, assign) float strength;
-@property (nonatomic, assign) float floatValue;
--(void)updateStrength:(float)strength;
 @end
