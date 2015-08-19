@@ -10,6 +10,7 @@
 #import <NotificationCenter/NotificationCenter.h>
 #import "PasswordFactory.h"
 #import "DefaultsManager.h"
+#import "BBPasswordStrength.h"
 @interface TodayViewController () <NCWidgetProviding>
 @property (nonatomic, strong) PasswordFactory *factory;
 @end
@@ -34,6 +35,7 @@
 }
 
 - (IBAction)backToApp:(id)sender {
+    [[self extensionContext] openURL:nil completionHandler:nil];
 }
 
 - (IBAction)changePasswordType:(id)sender {
@@ -56,8 +58,28 @@
     } else {
         password = [self.factory generatePronounceable:[sd objectForKey:@"pronounceableSeparatorShared"]];
     }
-//    [self.strengthBox updateStrength:.2];
+    [self updateStrength:password];
     [self.passwordField setStringValue:password];
  }
+-(void)updateStrength:(NSString *)password {
+    BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:password];
+    NSString *type = [(NSButtonCell *)self.passwordType.selectedCell title];
+    //playing around with numbers to make a good scale
+    double ct = log10(strength.crackTime);
+    //tweaking output based on password type
+    if ([type isEqualToString:@"Random"]) {
+        ct = (ct/40)*100;
+    } else if ([type isEqualToString:@"Pattern"]) {
+        ct = (ct/20)*100;
+        
+    } else {
+        ct = (ct/40)*100;
+    }
+
+    
+    
+    if (ct > 100) {ct = 100;}
+    [self.strengthBox updateStrength:ct];
+}
 @end
 
