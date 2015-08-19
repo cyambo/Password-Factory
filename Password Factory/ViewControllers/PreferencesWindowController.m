@@ -108,14 +108,20 @@ static BOOL loadedPrefs;
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
     NSDictionary *p = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *sd = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.cloud13.password-factory"];
+    
+
     //taking plist and filling in defaults if none set
     for (NSString *k in p) {
         if (![d objectForKey:k]) {
-            
             [d setObject:[p objectForKey:k] forKey:k];
             
-            
         }
+        //syncing to shared defaults
+        if([sd objectForKey:k] != [d objectForKey:k]) {
+            [sd setObject:[d objectForKey:k] forKey:k];
+        }
+        
     }
 }
 #pragma mark colors

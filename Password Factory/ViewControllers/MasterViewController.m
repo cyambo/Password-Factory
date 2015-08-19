@@ -17,7 +17,7 @@ int const  GenerateAndCopyLoops  = 10;
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) Class timerClass;
-
+@property (nonatomic, strong) NSUserDefaults *sharedDefaults;
 @end
 
 @implementation MasterViewController
@@ -27,6 +27,7 @@ int const  GenerateAndCopyLoops  = 10;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.pg = [[PasswordFactory alloc] init];
+        self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.cloud13.password-factory"];
         self.timerClass = [NSTimer class];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
@@ -49,7 +50,7 @@ int const  GenerateAndCopyLoops  = 10;
 - (void)setObservers {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
     NSDictionary *p = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     //taking plist and filling in defaults if none set
     for (NSString *k in p) {
         [d addObserver:self
@@ -60,6 +61,8 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+
+
     if ([keyPath isEqualToString:@"colorPasswordText"]) {
         self.colorPasswordText = [object boolForKey:keyPath];
         [self updatePasswordField];
@@ -232,7 +235,7 @@ NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 }
 #pragma mark Password Display
 - (void)updatePasswordField{
-    
+    //TODO: Sync changes to shared defaults
     if (!self.colorPasswordText) {
         NSAttributedString *s = [[NSAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         [self.passwordField setAttributedStringValue: s];
