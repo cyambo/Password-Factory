@@ -182,7 +182,7 @@ int const  GenerateAndCopyLoops  = 10;
     [self generatePassword];
 }
 
-- (IBAction)changeLength:(NSSliderCell *)sender {
+- (IBAction)changeLength:(id)sender {
     
     
     [self getPasswordLength];

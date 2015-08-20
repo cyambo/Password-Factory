@@ -7,8 +7,8 @@
 //
 
 #import "PasswordFactory.h"
-
-
+#import "constants.h"
+#import "NSString+RandomCase.h"
 static NSString* symbols;
 static NSString* upperCase;
 static NSString* lowerCase;
@@ -38,7 +38,7 @@ static NSDictionary* pronounceableSep;
     if (self) {
         // Initialization code here.
         
-        [self loadJSONDict];
+        [self loadWords];
         [self setStatics];
         self.useSymbols = YES;
         self.avoidAmbiguous = YES;
@@ -147,6 +147,70 @@ static NSDictionary* pronounceableSep;
     }
     return @"";
     
+}
+#pragma mark Passphrase
+/**
+ *  Generates a passphrase by combining various length words
+ *
+ *  @param separator string to use to separate words
+ *  @param caseType  type of case to use, upper, lower, mixed, capitalized - see constants.h for values
+ *
+ *  @return <#return value description#>
+ */
+-(NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType {
+
+    NSMutableString *p = [[NSMutableString alloc] init];
+
+    while (p.length < self.passwordLength) {
+        NSString *append = [self getPassphraseForLength:(self.passwordLength - p.length)];
+        switch (caseType) {
+            case PFPassphraseUseUpperCase:
+                append = [append uppercaseString];
+                break;
+            case PFPassphraseUseMixedCase:
+                append = [append randomCase];
+                break;
+            case PFPassphraseUseTitleCase:
+                append = [append capitalizedString];
+                break;
+            case PFPassphraseUseLowerCase:
+            default:
+                append = [append lowercaseString];
+                break;
+        }
+        if ([append isEqual: @""]) {
+            break;
+        } else {
+            [p appendString:append];
+        }
+        if (p.length < self.passwordLength) {
+            [p appendString:separator];
+        }
+
+        
+    }
+    
+    return p;
+}
+-(NSString *)getPassphraseForLength:(NSUInteger)length {
+
+    NSString *found;
+    int spun = 0;
+    if (length > 11) {
+        length = 11;
+    } else if (length < 4) {
+        length = 4;
+    }
+    while (!found && spun <= 40) {
+        spun ++;
+        int currLength = (arc4random() % 8) + 4;
+        NSArray *curr = self.wordsByLength[@(currLength)];
+        if (curr) {
+            found = curr[arc4random() % curr.count];
+        }
+        
+    }
+    return found;
 }
 #pragma mark Random Password
 /**
@@ -270,11 +334,7 @@ static NSDictionary* pronounceableSep;
     }
     return s;
 }
-#pragma mark Passphrase
 
--(NSString *)generatePassphrase:(NSString *)separator {
-    
-}
 #pragma mark Utility Methods
 
 /**
@@ -336,7 +396,7 @@ static NSDictionary* pronounceableSep;
  *  Loads up our dictionary, and removes 'bad' words to generate pattern passwords.
  *  The results are cached so that the parsing only happens on app install or upgrade
  */
-- (void)loadJSONDict {
+- (void)loadWords {
     //loading up our word list
     
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
@@ -344,19 +404,28 @@ static NSDictionary* pronounceableSep;
 
     NSString *englishWordsPath = [self getDocumentDirectory:@"englishWords.archive"];
     NSString *shortWordsPath = [self getDocumentDirectory:@"shortWords.archive"];
-    
+    NSString *wordsByLengthPath = [self getDocumentDirectory:@"wordsByLength.archive"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     //Checking to see if our cached files exist and are newer than our data files, if so, load them instead of parsing
-    if ([fileManager fileExistsAtPath:englishWordsPath] && [fileManager fileExistsAtPath:shortWordsPath]) {
+    if ([fileManager fileExistsAtPath:englishWordsPath] &&
+        [fileManager fileExistsAtPath:shortWordsPath] &&
+        [fileManager fileExistsAtPath:wordsByLengthPath]) {
         NSDate *eDate = [fileManager attributesOfItemAtPath:englishWordsPath error:nil][@"NSFileCreationDate"];
         NSDate *sDate = [fileManager attributesOfItemAtPath:shortWordsPath error:nil][@"NSFileCreationDate"];
+        NSDate *wDate = [fileManager attributesOfItemAtPath:wordsByLengthPath error:nil][@"NSFileCreationDate"];
         NSDate *jDate = [fileManager attributesOfItemAtPath:jsonPath error:nil][@"NSFileCreationDate"];
-        if ([eDate compare:jDate] == NSOrderedDescending && [sDate compare:jDate] == NSOrderedDescending) {
+        if ([eDate compare:jDate] == NSOrderedDescending && [sDate compare:jDate] == NSOrderedDescending && [wDate compare:jDate] == NSOrderedDescending) {
             self.englishWords = [NSKeyedUnarchiver unarchiveObjectWithFile:englishWordsPath];
             self.shortWords = [NSKeyedUnarchiver unarchiveObjectWithFile:shortWordsPath];
+            self.wordsByLength = [NSKeyedUnarchiver unarchiveObjectWithFile:wordsByLengthPath];
         }
-        if (self.englishWords.count > 0 && self.shortWords > 0) {
+        if (self.englishWords.count > 0 && self.shortWords > 0 && self.wordsByLength.count > 0) {
+            for (int i = 1; i < 15; i++) {
+                if (self.wordsByLength[@(i)]) {
+                    NSLog(@"%d : %lu",i,(unsigned long)[(NSArray*)self.wordsByLength[@(i)] count]);
+                }
+            }
             return;
         }
         
@@ -368,7 +437,7 @@ static NSDictionary* pronounceableSep;
     NSMutableArray *e = [[NSMutableArray alloc] init];
     NSMutableArray *es = [[NSMutableArray alloc] init];
     NSCharacterSet *charSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    
+    NSMutableDictionary *wl = [[NSMutableDictionary alloc] init];
     //loading up our 'bad' words
     
     NSData *bData = [NSData dataWithContentsOfFile:badWordsPath];
@@ -386,6 +455,13 @@ static NSDictionary* pronounceableSep;
                 if (w.length > 3 && w.length < 6) {
                     [es addObject:w];
                 }
+                if ([wl objectForKey:@(w.length)]) {
+                    [(NSMutableArray *)wl[@(w.length)] addObject: w];
+                } else {
+                    NSMutableArray *a = [[NSMutableArray alloc] initWithObjects:w, nil];
+                    [wl setObject:a forKey:@(w.length)];
+                }
+                
             }
         }
         
@@ -393,10 +469,11 @@ static NSDictionary* pronounceableSep;
     
     self.englishWords = [[NSArray alloc] initWithArray:e];
     self.shortWords = [[NSArray alloc] initWithArray:es];
-    
+    self.wordsByLength = [[NSDictionary alloc] initWithDictionary:wl];
     //Saving our word lists so we don't have to run this every time
     [NSKeyedArchiver archiveRootObject:self.englishWords toFile:englishWordsPath];
     [NSKeyedArchiver archiveRootObject:self.shortWords toFile:shortWordsPath];
+    [NSKeyedArchiver archiveRootObject:self.wordsByLength toFile:wordsByLengthPath];
     
     
 }

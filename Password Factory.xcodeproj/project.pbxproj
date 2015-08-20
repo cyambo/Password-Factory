@@ -43,6 +43,7 @@
 		409E13C41B8258170041541B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409E13C31B8258170041541B /* TodayViewController.m */; };
 		409E13C61B8258170041541B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 409E13C51B8258170041541B /* TodayViewController.xib */; };
 		409E13C91B8258170041541B /* Password Factory Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 409E13B81B8258170041541B /* Password Factory Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
 		40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
@@ -138,6 +139,9 @@
 		409E13C21B8258170041541B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		409E13C31B8258170041541B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		409E13C51B8258170041541B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		40C0F3821B85FAD3005FC25D /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = "Password Factory/constants.h"; sourceTree = "<group>"; };
+		40C0F3861B860791005FC25D /* NSString+RandomCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RandomCase.h"; sourceTree = "<group>"; };
+		40C0F3871B860791005FC25D /* NSString+RandomCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RandomCase.m"; sourceTree = "<group>"; };
 		40DAB57E1B843734003F5C3D /* DefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultsManager.h; sourceTree = "<group>"; };
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 				409585F91B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m */,
 				409585FA1B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.h */,
 				409585FB1B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.m */,
+				40C0F3861B860791005FC25D /* NSString+RandomCase.h */,
+				40C0F3871B860791005FC25D /* NSString+RandomCase.m */,
 			);
 			name = Categories;
 			path = "Password Factory/Categories";
@@ -294,6 +300,7 @@
 		40FB0C121B810F10009193F8 = {
 			isa = PBXGroup;
 			children = (
+				40C0F3821B85FAD3005FC25D /* constants.h */,
 				409585D41B8112FD00393B99 /* Assets */,
 				409585F71B8112FD00393B99 /* Categories */,
 				409585FC1B8112FD00393B99 /* Controls */,
@@ -659,6 +666,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */,
 				409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */,
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,
 				4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */,
