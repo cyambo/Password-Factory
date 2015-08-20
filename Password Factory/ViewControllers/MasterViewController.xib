@@ -11,7 +11,6 @@
                 <outlet property="loadPreferencesButton" destination="pHj-hg-aZg" id="XGM-yz-irk"/>
                 <outlet property="mixedCase" destination="FAm-zY-Nsw" id="SjC-qo-wk6"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
-                <outlet property="passwordLengthLabelPronounceable" destination="oSQ-1W-5v1" id="xne-AO-Kvw"/>
                 <outlet property="passwordLengthLabelRandom" destination="zqi-Du-606" id="01s-Z0-bEP"/>
                 <outlet property="passwordLengthSliderPrononunceable" destination="WN8-xU-zDN" id="H6r-b9-oYT"/>
                 <outlet property="passwordLengthSliderRandom" destination="4uN-fc-DjX" id="FWq-t3-ssZ"/>
@@ -179,8 +178,8 @@ C -Random Uppercase Character</string>
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPH-tB-8uS">
-                                        <rect key="frame" x="34" y="11" width="312" height="58"/>
+                                    <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPH-tB-8uS">
+                                        <rect key="frame" x="34" y="56" width="310" height="18"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         <size key="cellSize" width="153" height="18"/>
                                         <size key="intercellSpacing" width="4" height="2"/>
@@ -194,25 +193,9 @@ C -Random Uppercase Character</string>
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="1" inset="2" id="EXP-sd-JGV">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <buttonCell type="radio" title="Characters                " imagePosition="left" alignment="left" tag="2" inset="2" id="8r4-EK-pG0">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" tag="3" inset="2" id="mWc-WT-f7O">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" tag="4" inset="2" id="28X-de-1zu">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="5" inset="2" id="CzE-8V-8qc">
+                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="3" inset="2" id="mWc-WT-f7O">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -247,7 +230,45 @@ C -Random Uppercase Character</string>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wnl-13-Dyw">
+                                        <rect key="frame" x="34" y="10" width="310" height="38"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        <size key="cellSize" width="153" height="18"/>
+                                        <size key="intercellSpacing" width="4" height="2"/>
+                                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="Uyg-hM-9Cn">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <cells>
+                                            <column>
+                                                <buttonCell type="radio" title="Lowercase" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="zxv-ax-sYs">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="Mixed Case" imagePosition="left" alignment="left" inset="2" id="cqD-hK-9uJ">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </column>
+                                            <column>
+                                                <buttonCell type="radio" title="Uppercase" imagePosition="left" alignment="left" inset="2" id="pT4-fa-tUr">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="Title Case" imagePosition="left" alignment="left" inset="2" id="PgP-Pv-SHw">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </column>
+                                        </cells>
+                                    </matrix>
                                 </subviews>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="Passphrase" identifier="" id="d4t-7I-4Zu">
+                            <view key="view" id="b3Q-4s-CG7">
+                                <rect key="frame" x="10" y="33" width="379" height="105"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                         </tabViewItem>
                     </tabViewItems>

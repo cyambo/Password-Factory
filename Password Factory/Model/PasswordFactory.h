@@ -18,4 +18,5 @@
 - (NSString *)generatePronounceable:(NSString *)selectedTitle;
 - (NSString *)generateRandom;
 - (NSString *)generatePattern: (NSString *)pattern;
+- (NSString *)generatePassphrase: (NSString *)separator;
 @end

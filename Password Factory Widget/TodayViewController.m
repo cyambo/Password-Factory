@@ -35,7 +35,11 @@
 }
 
 - (IBAction)backToApp:(id)sender {
-    [[self extensionContext] openURL:nil completionHandler:nil];
+    NSURL *u = [[NSURL alloc] initWithString:@"c13PasswordFactory://"];
+    [self.extensionContext openURL:u completionHandler:^(BOOL success) {
+        NSLog(@"C");
+    }];
+
 }
 
 - (IBAction)changePasswordType:(id)sender {

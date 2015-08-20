@@ -268,11 +268,6 @@
                                     </buttonCell>
                                     <connections>
                                         <action selector="quitApplication:" target="-2" id="t8a-AU-Oz1"/>
-                                        <binding destination="gVG-eV-jH6" name="hidden" keyPath="values.isMenuApp" id="2wU-xl-kg7">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
                                     </connections>
                                 </button>
                             </subviews>

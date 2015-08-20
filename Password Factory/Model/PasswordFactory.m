@@ -28,7 +28,7 @@ static NSDictionary* pronounceableSep;
 
 @property (nonatomic, strong) NSArray *englishWords;
 @property (nonatomic, strong) NSArray *shortWords;
-
+@property (nonatomic, strong) NSDictionary *wordsByLength;
 @property (nonatomic, strong) NSArray *badWords;
 @end
 
@@ -269,6 +269,11 @@ static NSDictionary* pronounceableSep;
         }
     }
     return s;
+}
+#pragma mark Passphrase
+
+-(NSString *)generatePassphrase:(NSString *)separator {
+    
 }
 #pragma mark Utility Methods
 
