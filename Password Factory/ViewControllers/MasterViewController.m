@@ -225,7 +225,7 @@ int const  GenerateAndCopyLoops  = 10;
             self.passwordValue = [self.pg generatePattern:self.patternText.stringValue];
             break;
         case 2: //pronounceable
-            self.passwordValue = [self.pg generatePronounceable:[self getPronounceableRadioSelected]];
+            self.passwordValue = [self.pg generatePronounceableWithSeparatorType:[self getPronounceableRadioSelected]];
             break;
     }
     [self updatePasswordField];
@@ -235,9 +235,10 @@ int const  GenerateAndCopyLoops  = 10;
 }
 - (NSString *)getPronounceableRadioSelected {
     NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];
-    return [(NSString *)selected.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return [[(NSString *)selected.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseString] ;
     
 }
+
 #pragma mark Password Display
 - (void)updatePasswordField{
     [PreferencesWindowController syncSharedDefaults];

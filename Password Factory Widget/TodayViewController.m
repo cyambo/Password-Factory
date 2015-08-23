@@ -47,7 +47,8 @@
 }
 
 -(void)generatePassword {
-    NSString *type = [(NSButtonCell *)self.passwordType.selectedCell title];
+    //TODO: use shared defautls for type
+    NSString *type = @"Random";
     NSUserDefaults *sd = [DefaultsManager sharedDefaults];
     self.factory.passwordLength = [[sd objectForKey:@"passwordLengthShared"] floatValue];
     self.factory.useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];

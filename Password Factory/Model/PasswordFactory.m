@@ -50,17 +50,81 @@ static NSDictionary* pronounceableSep;
 }
 
 #pragma mark Pronounceable Password
+
+
 /**
- *  Gets pronounceable separator based on radio button
+ *  Generates a pronounceable password with the separator passed in
  *
- *  @param selectedTitle title of radio button
+ *  @param separator string separator - zero or on character
+ *
+ *  @return pronounceable password approximately the legnth of the passwordLength property
+ */
+- (NSString *)generatePronounceable:(NSString *)separator {
+    NSMutableString *p = [[NSMutableString alloc] init];
+    separator = [self validateSeparator:separator];
+    int i = 0;
+    while (p.length < self.passwordLength) {
+        NSString *append = [[self getPronounceableForLength:(self.passwordLength - p.length)] lowercaseString];
+        if ([append isEqual: @""]) {
+            break;
+        } else {
+            [p appendString:append];
+        }
+        if (i%2 == 1 && p.length < self.passwordLength) {
+            [p appendString:separator];
+        }
+        i++;
+        
+    }
+    
+    return [self removeTrailingSeparator:p separator:separator];
+}
+/**
+ *  Generates a 'pronounceable' password
+ *
+ *  @param separatorType string of separator type, can be hyphen, numbers, none, symbols, characters, spaces
+ *
+ *  @return pronounceable password with separator and approximately the leghth of the passwordLength property
+ */
+- (NSString *)generatePronounceableWithSeparatorType:(NSString *)separatorType; {
+
+    NSString *sep = [self getPronounceableSeparator:separatorType];
+
+    return [self generatePronounceable:sep];
+    
+}
+/**
+ *  with pronounceable we don't want to exceed the set password length, so choose the appropriate size 'sound'
+ *
+ *  @param length remaining length left in password string
+ *
+ *  @return a pronounceable 'piece'
+ */
+- (NSString *)getPronounceableForLength:(NSUInteger)length {
+    if (length < 2) {
+        return @"";
+    }
+    else if (length == 2) {
+        return [self randomFromArray:phoeneticSoundsTwo];
+    } else if (length == 3) {
+        return [self randomFromArray:phoeneticSoundsThree];
+    }
+    else {
+        return [self randomFromArray:phoeneticSounds];
+    }
+    return @"";
+    
+}
+/**
+ *  Gets pronounceable separator based on type string
+ *
+ *  @param separatorType can be hyphen, numbers, none, symbols, characters, spaces
  *
  *  @return a separator for pronounceable strings
  */
-- (NSString *)getPronounceableSeparator:(NSString *)selectedTitle {
-    return [self getPronounceableSeparatorWithInt:(int)[[pronounceableSep objectForKey:selectedTitle] integerValue]];
-}
-- (NSString *)getPronounceableSeparatorWithInt:(int)separator {
+
+- (NSString *)getPronounceableSeparator:(NSString *)separatorType {
+    int separator = (int)[[pronounceableSep objectForKey:[separatorType lowercaseString]] integerValue];
     NSString *sep = @"";
     switch (separator) {
             
@@ -89,65 +153,6 @@ static NSDictionary* pronounceableSep;
     }
     return sep;
 }
-/**
- *  generate a 'pronounceable' password
- *
- *  @param selectedTitle Title of separator radio button
- *
- *  @return 'pronunceable' password
- */
-- (NSString *)generatePronounceable:(id)selectedTitle {
-
-    NSMutableString *p = [[NSMutableString alloc] init];
-    int st = (int)[selectedTitle integerValue];
-    NSString *sep;
-    if ([selectedTitle isKindOfClass:[NSString class]]) {
-        sep = [self getPronounceableSeparator:selectedTitle];
-    }else if (st >=0 && st <=5) {
-        NSLog(@"%d",st);
-        sep = [self getPronounceableSeparatorWithInt:st+1];
-    }
-    int i = 0;
-    while (p.length < self.passwordLength) {
-        NSString *append = [[self getPronounceableForLength:(self.passwordLength - p.length)] lowercaseString];
-        if ([append isEqual: @""]) {
-            break;
-        } else {
-            [p appendString:append];
-        }
-        if (i%2 == 1 && p.length < self.passwordLength) {
-            [p appendString:sep];
-        }
-        i++;
-        
-    }
-    
-    return p;
-    
-}
-
-/**
- *  with pronnounceable we don't want to exceed the set password length, so choose the appropriate size 'sound'
- *
- *  @param length remaining length left in password string
- *
- *  @return a pronounceable 'piece'
- */
-- (NSString *)getPronounceableForLength:(NSUInteger)length {
-    if (length < 2) {
-        return @"";
-    }
-    else if (length == 2) {
-        return [self randomFromArray:phoeneticSoundsTwo];
-    } else if (length == 3) {
-        return [self randomFromArray:phoeneticSoundsThree];
-    }
-    else {
-        return [self randomFromArray:phoeneticSounds];
-    }
-    return @"";
-    
-}
 #pragma mark Passphrase
 /**
  *  Generates a passphrase by combining various length words
@@ -155,13 +160,14 @@ static NSDictionary* pronounceableSep;
  *  @param separator string to use to separate words
  *  @param caseType  type of case to use, upper, lower, mixed, capitalized - see constants.h for values
  *
- *  @return <#return value description#>
+ *  @return password based on passphrase settings
  */
 -(NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType {
-
+    separator = [self validateSeparator:separator];
     NSMutableString *p = [[NSMutableString alloc] init];
 
     while (p.length < self.passwordLength) {
+
         NSString *append = [self getPassphraseForLength:(self.passwordLength - p.length)];
         switch (caseType) {
             case PFPassphraseUseUpperCase:
@@ -181,16 +187,11 @@ static NSDictionary* pronounceableSep;
         if ([append isEqual: @""]) {
             break;
         } else {
+
             [p appendString:append];
         }
-        if (p.length < self.passwordLength) {
-            [p appendString:separator];
-        }
-
-        
     }
-    
-    return p;
+    return [self removeTrailingSeparator:p separator:separator];
 }
 -(NSString *)getPassphraseForLength:(NSUInteger)length {
 
@@ -383,12 +384,12 @@ static NSDictionary* pronounceableSep;
                          @"C" : @8 //random uppercase char
                          };
     pronounceableSep = @{
-                         @"Hyphen": @1,
-                         @"Numbers" : @2,
-                         @"None" : @3,
-                         @"Symbols" : @4,
-                         @"Characters" : @5,
-                         @"Spaces"  : @6
+                         @"hyphen": @1,
+                         @"numbers" : @2,
+                         @"none" : @3,
+                         @"symbols" : @4,
+                         @"characters" : @5,
+                         @"spaces"  : @6
                          };
     
 }
@@ -533,7 +534,43 @@ static NSDictionary* pronounceableSep;
     }];
     return result;
 }
+/**
+ *  Returns a valid separator of length one, will truncate anything longer than 1 character
+ *
+ *  @param separator separator to check
+ *
+ *  @return single char separator or nothing
+ */
+-(NSString *)validateSeparator:(NSString *)separator {
+    
+    if (separator.length > 1) {
+        separator = [separator substringToIndex:1];
+    }
+    return separator;
+}
 
+/**
+ *  removes the trailing separator from a string
+ *
+ *  @param string    string to check
+ *  @param separator separator to remove - only one character will be checked
+ *
+ *  @return string without trailing separator
+ */
+-(NSString *)removeTrailingSeparator:(NSString *)string separator:(NSString *)separator {
+    //don't need to do anything for empty separator
+    if (separator.length == 0) {
+        return string;
+    }
+    //checking last character to see if it is the same as separator, if it is, remove it
+    char c = [string characterAtIndex:string.length - 1];
+    if ([separator characterAtIndex:0] == c) {
+        return [string substringToIndex:string.length -2];
+    }
+    //TODO: potential bug where the separator is the same as the last character and it will be removed truncating the string
+    return string;
+}
+                                
 @end
 
 

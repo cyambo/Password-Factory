@@ -7,7 +7,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
             <connections>
                 <outlet property="passwordField" destination="3ob-i2-V6T" id="bht-2e-R8v"/>
-                <outlet property="passwordType" destination="LTY-Kh-P2c" id="mI0-rk-cqd"/>
                 <outlet property="strengthBox" destination="9Gx-gN-5HI" id="pez-fA-gns"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -69,44 +68,13 @@
                         <action selector="backToApp:" target="-2" id="nF7-is-9jN"/>
                     </connections>
                 </button>
-                <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTY-Kh-P2c">
-                    <rect key="frame" x="20" y="20" width="120" height="57"/>
-                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    <size key="cellSize" width="120" height="17"/>
-                    <size key="intercellSpacing" width="0.0" height="2"/>
-                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="NHo-vA-6yw">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <cells>
-                        <column>
-                            <buttonCell type="radio" title="Random" imagePosition="left" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="i39-tH-Y6V">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="smallSystem"/>
-                            </buttonCell>
-                            <buttonCell type="radio" title="Pattern" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Sif-PA-yRR">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="smallSystem"/>
-                            </buttonCell>
-                            <buttonCell type="radio" title="Pronounceable" imagePosition="left" alignment="left" controlSize="small" inset="2" id="nsW-5W-NkH">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="smallSystem"/>
-                            </buttonCell>
-                        </column>
-                    </cells>
-                    <connections>
-                        <action selector="changePasswordType:" target="-2" id="9p7-2J-I0i"/>
-                    </connections>
-                </matrix>
             </subviews>
             <constraints>
                 <constraint firstItem="9Gx-gN-5HI" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="71l-jb-qtN"/>
-                <constraint firstAttribute="bottom" secondItem="LTY-Kh-P2c" secondAttribute="bottom" constant="20" symbolic="YES" id="Bwv-Nt-Vit"/>
                 <constraint firstItem="d86-9W-hIU" firstAttribute="leading" secondItem="4Ya-Xk-p8m" secondAttribute="leading" id="CPr-IR-Tz3"/>
                 <constraint firstAttribute="trailing" secondItem="3ob-i2-V6T" secondAttribute="trailing" constant="20" symbolic="YES" id="J8F-DT-CNK"/>
                 <constraint firstItem="9Gx-gN-5HI" firstAttribute="top" secondItem="4Ya-Xk-p8m" secondAttribute="top" id="K1r-45-sb9"/>
                 <constraint firstItem="d86-9W-hIU" firstAttribute="width" secondItem="4Ya-Xk-p8m" secondAttribute="width" id="KLL-D2-uXi"/>
-                <constraint firstItem="LTY-Kh-P2c" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="Ld7-zz-reE"/>
                 <constraint firstItem="9Gx-gN-5HI" firstAttribute="leading" secondItem="4Ya-Xk-p8m" secondAttribute="trailing" constant="9" id="OEE-q3-69W"/>
                 <constraint firstItem="3ob-i2-V6T" firstAttribute="trailing" secondItem="9Gx-gN-5HI" secondAttribute="trailing" id="OWD-WB-Mr1"/>
                 <constraint firstItem="d86-9W-hIU" firstAttribute="top" secondItem="4Ya-Xk-p8m" secondAttribute="bottom" constant="12" symbolic="YES" id="X7l-BT-Z1I"/>
@@ -115,7 +83,6 @@
                 <constraint firstItem="cOE-n1-oHo" firstAttribute="top" secondItem="d86-9W-hIU" secondAttribute="top" id="eZV-Sx-M8Y"/>
                 <constraint firstItem="3ob-i2-V6T" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="gFe-1w-ziF"/>
                 <constraint firstItem="3ob-i2-V6T" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="hB2-k5-sUQ"/>
-                <constraint firstItem="3ob-i2-V6T" firstAttribute="leading" secondItem="LTY-Kh-P2c" secondAttribute="leading" id="pbS-nz-TM3"/>
             </constraints>
             <point key="canvasLocation" x="665" y="385"/>
         </customView>
