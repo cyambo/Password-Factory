@@ -93,6 +93,7 @@ static NSDictionary* pronounceableSep;
     return [self generatePronounceable:sep];
     
 }
+#pragma mark Pronounceable Utilities
 /**
  *  with pronounceable we don't want to exceed the set password length, so choose the appropriate size 'sound'
  *
@@ -160,7 +161,7 @@ static NSDictionary* pronounceableSep;
  *  @param separator string to use to separate words
  *  @param caseType  type of case to use, upper, lower, mixed, capitalized - see constants.h for values
  *
- *  @return password based on passphrase settings
+ *  @return password based on passphrase settings and approximately the passwordLength property
  */
 -(NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType {
     separator = [self validateSeparator:separator];
@@ -193,6 +194,13 @@ static NSDictionary* pronounceableSep;
     }
     return [self removeTrailingSeparator:p separator:separator];
 }
+/**
+ *  Gets a word from our dictionary to fit the length remaining in passphrase
+ *
+ *  @param length remaining length of passphrase
+ *
+ *  @return word to fit
+ */
 -(NSString *)getPassphraseForLength:(NSUInteger)length {
 
     NSString *found;
@@ -233,6 +241,7 @@ static NSDictionary* pronounceableSep;
     return curr;
     
 }
+#pragma mark Random Password Utilities
 /**
  *  Gets the characters used for a random password based upon settings
  */
