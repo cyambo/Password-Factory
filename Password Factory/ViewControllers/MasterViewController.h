@@ -16,10 +16,17 @@
 @property (weak) IBOutlet NSButton *useSymbols;
 @property (weak) IBOutlet NSButton *mixedCase;
 @property (weak) IBOutlet NSButton *avoidAmbiguous;
+
 @property (weak) IBOutlet NSSlider *passwordLengthSliderPrononunceable;
 @property (weak) IBOutlet NSTextField *passwordLengthLabelPronounceable;
+
+@property (weak) IBOutlet NSSlider *passwordLengthSliderPassphrase;
+@property (weak) IBOutlet NSTextField *passwordLengthLabelPassphrase;
+
+
 @property (weak) IBOutlet NSSlider *passwordLengthSliderRandom;
 @property (weak) IBOutlet NSTextField *passwordLengthLabelRandom;
+
 @property (weak) IBOutlet StrengthMeter *passwordStrengthLevel;
 
 @property (weak) IBOutlet NSTabView *passwordTypeTab;
@@ -52,5 +59,13 @@
 -(NSImage *)getMenuImage:(BOOL)isMenuClicked;
 
 @property (weak) IBOutlet NSButton *loadPreferencesButton;
+
+
+@property (weak) IBOutlet NSMatrix *passphraseSeparatorRadio;
+@property (weak) IBOutlet NSMatrix *passphraseCaseRadio;
+
+- (IBAction)pressPassphraseSeparatorRadio:(id)sender;
+- (IBAction)pressPassphraseCaseRadio:(id)sender;
+
 
 @end

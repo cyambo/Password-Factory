@@ -10,9 +10,13 @@
                 <outlet property="generateButton" destination="TlR-Vl-tPI" id="cn8-gk-yZe"/>
                 <outlet property="loadPreferencesButton" destination="pHj-hg-aZg" id="XGM-yz-irk"/>
                 <outlet property="mixedCase" destination="FAm-zY-Nsw" id="SjC-qo-wk6"/>
+                <outlet property="passphraseCaseRadio" destination="jp4-IO-7rk" id="WxI-ex-aMf"/>
+                <outlet property="passphraseSeparatorRadio" destination="k9d-UR-Jr7" id="ySo-TG-Sls"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
+                <outlet property="passwordLengthLabelPassphrase" destination="GPQ-iZ-6x7" id="0mY-0i-VzX"/>
                 <outlet property="passwordLengthLabelPronounceable" destination="oSQ-1W-5v1" id="xne-AO-Kvw"/>
                 <outlet property="passwordLengthLabelRandom" destination="zqi-Du-606" id="01s-Z0-bEP"/>
+                <outlet property="passwordLengthSliderPassphrase" destination="FfR-cB-aCw" id="e6i-3c-uVn"/>
                 <outlet property="passwordLengthSliderPrononunceable" destination="WN8-xU-zDN" id="H6r-b9-oYT"/>
                 <outlet property="passwordLengthSliderRandom" destination="4uN-fc-DjX" id="FWq-t3-ssZ"/>
                 <outlet property="passwordStrengthLevel" destination="NML-Rl-bwo" id="9Di-7u-P50"/>
@@ -254,6 +258,96 @@ C -Random Uppercase Character</string>
                             <view key="view" id="r7Q-MH-tBN">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9d-UR-Jr7">
+                                        <rect key="frame" x="39" y="55" width="296" height="18"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        <size key="cellSize" width="146" height="18"/>
+                                        <size key="intercellSpacing" width="4" height="2"/>
+                                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="H56-IX-spj">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <cells>
+                                            <column>
+                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" inset="2" id="eLa-E0-0ZC">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </column>
+                                            <column>
+                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="3" inset="2" id="3k4-M7-EoH">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </column>
+                                        </cells>
+                                        <connections>
+                                            <action selector="pressPassphraseSeparatorRadio:" target="-2" id="2jG-m2-RRt"/>
+                                            <binding destination="2ia-xi-Rdb" name="selectedIndex" keyPath="values.passphraseRadioSeparator" id="N4I-Hh-Z7p"/>
+                                        </connections>
+                                    </matrix>
+                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfR-cB-aCw">
+                                        <rect key="frame" x="88" y="79" width="224" height="20"/>
+                                        <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="vF0-l5-VJo"/>
+                                        <connections>
+                                            <action selector="changeLength:" target="-2" id="YLl-mH-RsG"/>
+                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="KVL-4a-kWR"/>
+                                        </connections>
+                                    </slider>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPQ-iZ-6x7">
+                                        <rect key="frame" x="316" y="82" width="21" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="50" id="Oy5-8T-ddb">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1XZ-Yn-GMR">
+                                        <rect key="frame" x="37" y="82" width="47" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="XV9-2S-Aed">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jp4-IO-7rk">
+                                        <rect key="frame" x="39" y="9" width="296" height="38"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        <size key="cellSize" width="146" height="18"/>
+                                        <size key="intercellSpacing" width="4" height="2"/>
+                                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="6Z0-8i-xOj">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <cells>
+                                            <column>
+                                                <buttonCell type="radio" title="Lower Case" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="jzz-cC-92v">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="Title Case" imagePosition="left" alignment="left" inset="2" id="827-bw-CaU">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </column>
+                                            <column>
+                                                <buttonCell type="radio" title="Upper Case" imagePosition="left" alignment="left" inset="2" id="Aze-Mg-xR8">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="Mixed Case" imagePosition="left" alignment="left" inset="2" id="RjB-hS-cKB">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </column>
+                                        </cells>
+                                        <connections>
+                                            <action selector="pressPassphraseCaseRadio:" target="-2" id="3DU-yG-Rav"/>
+                                            <binding destination="2ia-xi-Rdb" name="selectedIndex" keyPath="values.passphraseRadioCaseType" id="dQ8-lt-AOr"/>
+                                        </connections>
+                                    </matrix>
+                                </subviews>
                             </view>
                         </tabViewItem>
                     </tabViewItems>

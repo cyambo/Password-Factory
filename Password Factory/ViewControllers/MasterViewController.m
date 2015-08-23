@@ -363,4 +363,9 @@ int const  GenerateAndCopyLoops  = 10;
 }
 
         
+- (IBAction)pressPassphraseSeparatorRadio:(id)sender {
+}
+
+- (IBAction)pressPassphraseCaseRadio:(id)sender {
+}
 @end
