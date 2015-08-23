@@ -15,4 +15,7 @@
 #define PFPassphraseUseMixedCase 103
 #define PFPassphraseUseTitleCase 104
 
+#define PFPassphraseUseHyphenSeparator 111
+#define PFPassphraseUseSpaceSeparator 112
+
 #endif

@@ -184,7 +184,6 @@ int const  GenerateAndCopyLoops  = 10;
 
 - (IBAction)changeLength:(id)sender {
     
-    
     [self getPasswordLength];
 }
 - (IBAction)generateAction:(id)sender {
@@ -217,6 +216,7 @@ int const  GenerateAndCopyLoops  = 10;
 - (void)generatePassword {
     NSInteger atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
     [self getButtonStates];
+
     switch (atTab) {
         case 0: //random
             self.passwordValue = [self.pg generateRandom];
@@ -226,6 +226,9 @@ int const  GenerateAndCopyLoops  = 10;
             break;
         case 2: //pronounceable
             self.passwordValue = [self.pg generatePronounceableWithSeparatorType:[self getPronounceableRadioSelected]];
+            break;
+        case 3: //passphrase:
+            NSLog(@"CSDCDS");
             break;
     }
     [self updatePasswordField];

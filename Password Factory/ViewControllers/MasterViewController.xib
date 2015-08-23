@@ -254,7 +254,7 @@ C -Random Uppercase Character</string>
                                 </subviews>
                             </view>
                         </tabViewItem>
-                        <tabViewItem label="Passphrase" identifier="" id="NPi-qA-3zW">
+                        <tabViewItem label="Passphrase" identifier="3" id="NPi-qA-3zW">
                             <view key="view" id="r7Q-MH-tBN">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,13 +270,13 @@ C -Random Uppercase Character</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" inset="2" id="eLa-E0-0ZC">
+                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" tag="111" inset="2" id="eLa-E0-0ZC">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="3" inset="2" id="3k4-M7-EoH">
+                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="112" inset="2" id="3k4-M7-EoH">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -322,21 +322,21 @@ C -Random Uppercase Character</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Lower Case" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="jzz-cC-92v">
+                                                <buttonCell type="radio" title="Lower Case" imagePosition="left" alignment="left" state="on" tag="101" inset="2" id="jzz-cC-92v">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Title Case" imagePosition="left" alignment="left" inset="2" id="827-bw-CaU">
+                                                <buttonCell type="radio" title="Title Case" imagePosition="left" alignment="left" tag="104" inset="2" id="827-bw-CaU">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Upper Case" imagePosition="left" alignment="left" inset="2" id="Aze-Mg-xR8">
+                                                <buttonCell type="radio" title="Upper Case" imagePosition="left" alignment="left" tag="102" inset="2" id="Aze-Mg-xR8">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Mixed Case" imagePosition="left" alignment="left" inset="2" id="RjB-hS-cKB">
+                                                <buttonCell type="radio" title="Mixed Case" imagePosition="left" alignment="left" tag="103" inset="2" id="RjB-hS-cKB">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>

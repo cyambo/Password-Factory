@@ -34,5 +34,9 @@
 	<integer>0</integer>
 	<key>userPattern</key>
 	<string>w##</string>
+	<key>passphraseRadioSeparator</key>
+	<integer>0</integer>
+	<key>passphraseRadioCaseType</key>
+	<integer>0</integer>
 </dict>
 </plist>
