@@ -20,7 +20,7 @@ static NSDictionary* characterPattern;
 static NSArray* phoeneticSounds;
 static NSArray* phoeneticSoundsTwo;
 static NSArray* phoeneticSoundsThree;
-static NSDictionary* pronounceableSep;
+
 
 
 @interface PasswordFactory ()
@@ -86,7 +86,7 @@ static NSDictionary* pronounceableSep;
  *
  *  @return pronounceable password with separator and approximately the leghth of the passwordLength property
  */
-- (NSString *)generatePronounceableWithSeparatorType:(NSString *)separatorType; {
+- (NSString *)generatePronounceableWithSeparatorType:(int)separatorType; {
 
     NSString *sep = [self getPronounceableSeparator:separatorType];
 
@@ -119,38 +119,34 @@ static NSDictionary* pronounceableSep;
 /**
  *  Gets pronounceable separator based on type string
  *
- *  @param separatorType can be hyphen, numbers, none, symbols, characters, spaces
+ *  @param separatorType is a code from constants.h
  *
  *  @return a separator for pronounceable strings
  */
 
-- (NSString *)getPronounceableSeparator:(NSString *)separatorType {
-    int separator = (int)[[pronounceableSep objectForKey:[separatorType lowercaseString]] integerValue];
+- (NSString *)getPronounceableSeparator:(int)separatorType {
     NSString *sep = @"";
-    switch (separator) {
+    switch (separatorType) {
             
-            
-        case 1:
+        case PFPronounceableHyphenSeparator:
             sep = @"-";
             break;
-        case 2:
+        case PFPronounceableNumberSeparator:
             sep = [NSString stringWithFormat:@"%d",arc4random()%10];
             break;
-        case 3:
+        case PFPronounceableNoSeparator:
             sep = @"";
             break;
-        case 4:
+        case PFPronounceableSymbolSeparator:
             sep = [NSString stringWithFormat:@"%c",[self randomFromString:symbols]];
             break;
-        case 5:
+        case PFPronounceableCharacterSeparator:
             sep = [NSString stringWithFormat:@"%c",[self randomFromString:nonAmbiguousUpperCase]];
             break;
-        case 6:
+        case PFPronounceableSpaceSeparator:
             sep = @" ";
             break;
-        default:
-            sep = @"";
-            break;
+
     }
     return sep;
 }
@@ -206,11 +202,7 @@ static NSDictionary* pronounceableSep;
 
     NSString *found;
     int spun = 0;
-    if (length > 11) {
-        length = 11;
-    } else if (length < 4) {
-        length = 4;
-    }
+
     while (!found && spun <= 40) {
         spun ++;
         int currLength = (arc4random() % 8) + 4;
@@ -393,14 +385,7 @@ static NSDictionary* pronounceableSep;
                          @"c" : @7, //random character
                          @"C" : @8 //random uppercase char
                          };
-    pronounceableSep = @{
-                         @"hyphen": @1,
-                         @"numbers" : @2,
-                         @"none" : @3,
-                         @"symbols" : @4,
-                         @"characters" : @5,
-                         @"spaces"  : @6
-                         };
+
     
 }
 /**

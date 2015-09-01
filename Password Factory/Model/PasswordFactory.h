@@ -17,7 +17,7 @@
 @property (nonatomic, assign) BOOL mixedCase;
 
 
-- (NSString *)generatePronounceableWithSeparatorType:(NSString *)separatorType;
+- (NSString *)generatePronounceableWithSeparatorType:(int)separatorType;
 - (NSString *)generatePronounceable:(NSString *)separator;
 - (NSString *)generateRandom;
 - (NSString *)generatePattern: (NSString *)pattern;

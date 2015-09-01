@@ -225,7 +225,7 @@ int const  GenerateAndCopyLoops  = 10;
             self.passwordValue = [self.pg generatePattern:self.patternText.stringValue];
             break;
         case 2: //pronounceable
-            self.passwordValue = [self.pg generatePronounceableWithSeparatorType:[self getPronounceableRadioSelected]];
+            self.passwordValue = [self.pg generatePronounceableWithSeparatorType:[self getPronounceableSeparatorCode]];
             break;
         case 3: //passphrase:
             self.passwordValue = [self.pg generatePassphrase:[self getPassphraseSeparator] caseType:[self getPassphraseCaseType]];
@@ -258,10 +258,9 @@ int const  GenerateAndCopyLoops  = 10;
     //the casetype is stored in the tag and matches the constants in constants.h
     return (int)[(NSButtonCell *)[self.passphraseCaseRadio selectedCell] tag];
 }
-- (NSString *)getPronounceableRadioSelected {
-    NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];
-    return [[(NSString *)selected.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseString] ;
-    
+- (int)getPronounceableSeparatorCode {
+    return  (int)[(NSButtonCell *)[self.pronounceableSeparatorRadio selectedCell] tag];
+
 }
 
 #pragma mark Password Display

@@ -42,7 +42,7 @@
 
 - (IBAction)changeLength:(id)sender;
 - (IBAction)pressPrononunceableRadio:(id)sender;
-- (NSString *)getPronounceableRadioSelected;
+- (int)getPronounceableSeparatorCode;
 
 - (void)setPasswordStrength;
 @property (nonatomic, strong) NSString *passwordValue;
