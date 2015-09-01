@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
@@ -194,29 +194,29 @@ C -Random Uppercase Character</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" inset="2" id="MTM-cn-e23">
+                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" tag="201" inset="2" id="MTM-cn-e23">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="1" inset="2" id="EXP-sd-JGV">
+                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="203" inset="2" id="EXP-sd-JGV">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Characters                " imagePosition="left" alignment="left" tag="2" inset="2" id="8r4-EK-pG0">
+                                                <buttonCell type="radio" title="Characters                " imagePosition="left" alignment="left" tag="205" inset="2" id="8r4-EK-pG0">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" tag="3" inset="2" id="mWc-WT-f7O">
+                                                <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" tag="202" inset="2" id="mWc-WT-f7O">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" tag="4" inset="2" id="28X-de-1zu">
+                                                <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" tag="204" inset="2" id="28X-de-1zu">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="5" inset="2" id="CzE-8V-8qc">
+                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="206" inset="2" id="CzE-8V-8qc">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -260,9 +260,9 @@ C -Random Uppercase Character</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9d-UR-Jr7">
-                                        <rect key="frame" x="39" y="55" width="296" height="18"/>
+                                        <rect key="frame" x="6" y="7" width="190" height="38"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        <size key="cellSize" width="146" height="18"/>
+                                        <size key="cellSize" width="93" height="18"/>
                                         <size key="intercellSpacing" width="4" height="2"/>
                                         <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="H56-IX-spj">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -270,13 +270,21 @@ C -Random Uppercase Character</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" tag="111" inset="2" id="eLa-E0-0ZC">
+                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" tag="301" inset="2" id="eLa-E0-0ZC">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="Underscore" imagePosition="left" alignment="left" tag="303" inset="2" id="XjL-CC-NvU">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="112" inset="2" id="3k4-M7-EoH">
+                                                <buttonCell type="radio" title="Space" imagePosition="left" alignment="left" tag="302" inset="2" id="3k4-M7-EoH">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="304" inset="2" id="Jnp-tm-frQ">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -312,9 +320,9 @@ C -Random Uppercase Character</string>
                                         </textFieldCell>
                                     </textField>
                                     <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jp4-IO-7rk">
-                                        <rect key="frame" x="39" y="9" width="296" height="38"/>
+                                        <rect key="frame" x="204" y="7" width="190" height="38"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        <size key="cellSize" width="146" height="18"/>
+                                        <size key="cellSize" width="93" height="18"/>
                                         <size key="intercellSpacing" width="4" height="2"/>
                                         <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="6Z0-8i-xOj">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -322,21 +330,21 @@ C -Random Uppercase Character</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Lower Case" imagePosition="left" alignment="left" state="on" tag="101" inset="2" id="jzz-cC-92v">
+                                                <buttonCell type="radio" title="Lower" imagePosition="left" alignment="left" tag="401" inset="2" id="jzz-cC-92v">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Title Case" imagePosition="left" alignment="left" tag="104" inset="2" id="827-bw-CaU">
+                                                <buttonCell type="radio" title="Title" imagePosition="left" alignment="left" tag="402" inset="2" id="827-bw-CaU">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Upper Case" imagePosition="left" alignment="left" tag="102" inset="2" id="Aze-Mg-xR8">
+                                                <buttonCell type="radio" title="Upper" imagePosition="left" alignment="left" tag="403" inset="2" id="Aze-Mg-xR8">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Mixed Case" imagePosition="left" alignment="left" tag="103" inset="2" id="RjB-hS-cKB">
+                                                <buttonCell type="radio" title="Mixed" imagePosition="left" alignment="left" tag="404" inset="2" id="RjB-hS-cKB">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -347,6 +355,22 @@ C -Random Uppercase Character</string>
                                             <binding destination="2ia-xi-Rdb" name="selectedIndex" keyPath="values.passphraseRadioCaseType" id="dQ8-lt-AOr"/>
                                         </connections>
                                     </matrix>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gUr-aP-cpc">
+                                        <rect key="frame" x="4" y="54" width="65" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Separator" id="N1S-dZ-cCv">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZu-Hf-806">
+                                        <rect key="frame" x="202" y="54" width="72" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Word Case" id="KaQ-qe-eSA">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </view>
                         </tabViewItem>

@@ -171,16 +171,16 @@ static NSDictionary* pronounceableSep;
 
         NSString *append = [self getPassphraseForLength:(self.passwordLength - p.length)];
         switch (caseType) {
-            case PFPassphraseUseUpperCase:
+            case PFPassphraseUpperCase:
                 append = [append uppercaseString];
                 break;
-            case PFPassphraseUseMixedCase:
+            case PFPassphraseMixedCase:
                 append = [append randomCase];
                 break;
-            case PFPassphraseUseTitleCase:
+            case PFPassphraseTitleCase:
                 append = [append capitalizedString];
                 break;
-            case PFPassphraseUseLowerCase:
+            case PFPassphraseLowerCase:
             default:
                 append = [append lowercaseString];
                 break;
@@ -190,6 +190,7 @@ static NSDictionary* pronounceableSep;
         } else {
 
             [p appendString:append];
+            [p appendString:separator];
         }
     }
     return [self removeTrailingSeparator:p separator:separator];
@@ -574,7 +575,7 @@ static NSDictionary* pronounceableSep;
     //checking last character to see if it is the same as separator, if it is, remove it
     char c = [string characterAtIndex:string.length - 1];
     if ([separator characterAtIndex:0] == c) {
-        return [string substringToIndex:string.length -2];
+        return [string substringToIndex:string.length -1];
     }
     //TODO: potential bug where the separator is the same as the last character and it will be removed truncating the string
     return string;

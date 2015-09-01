@@ -135,7 +135,6 @@ static NSDictionary *prefsPlist;
         NSString *k = [key stringByAppendingString:@"Shared"]; //Appending shared to shared defaults because KVO will cause the observer to be called 
         //syncing to shared defaults
         if([sharedDefaults objectForKey:k] != [d objectForKey:key]) {
-            NSLog(@"CHANGED %@",k);
             [sharedDefaults setObject:[d objectForKey:key] forKey:k];
         }
         

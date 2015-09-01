@@ -11,7 +11,7 @@
 #import "PasswordFactory.h"
 #import "PreferencesWindowController.h"
 #import "AppDelegate.h"
-
+#import "constants.h"
 int const  GenerateAndCopyLoops  = 10;
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
@@ -228,13 +228,35 @@ int const  GenerateAndCopyLoops  = 10;
             self.passwordValue = [self.pg generatePronounceableWithSeparatorType:[self getPronounceableRadioSelected]];
             break;
         case 3: //passphrase:
-            NSLog(@"CSDCDS");
+            self.passwordValue = [self.pg generatePassphrase:[self getPassphraseSeparator] caseType:[self getPassphraseCaseType]];
             break;
     }
     [self updatePasswordField];
     [self setPasswordStrength];
     
     
+}
+- (NSString *)getPassphraseSeparator {
+    int separatorCode = (int)[(NSButtonCell *)[self.passphraseSeparatorRadio selectedCell] tag];
+    switch (separatorCode) {
+        case PFPassphraseHyphenSeparator:
+            return @"-";
+            break;
+        case PFPassphraseSpaceSeparator:
+            return @" ";
+            break;
+        case PFPassphraseNoSeparator:
+            return @"";
+            break;
+        case PFPassphraseUnderscoreSeparator:
+            return @"_";
+            break;
+    }
+    return @"";
+}
+- (int)getPassphraseCaseType {
+    //the casetype is stored in the tag and matches the constants in constants.h
+    return (int)[(NSButtonCell *)[self.passphraseCaseRadio selectedCell] tag];
 }
 - (NSString *)getPronounceableRadioSelected {
     NSButtonCell *selected = [[self pronounceableSeparatorRadio] selectedCell];
@@ -367,8 +389,10 @@ int const  GenerateAndCopyLoops  = 10;
 
         
 - (IBAction)pressPassphraseSeparatorRadio:(id)sender {
+    [self generatePassword];
 }
 
 - (IBAction)pressPassphraseCaseRadio:(id)sender {
+    [self generatePassword];
 }
 @end
