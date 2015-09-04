@@ -11,6 +11,7 @@
 #import "PasswordFactory.h"
 #import "DefaultsManager.h"
 #import "BBPasswordStrength.h"
+#import "constants.h"
 @interface TodayViewController () <NCWidgetProviding>
 @property (nonatomic, strong) PasswordFactory *factory;
 @end
@@ -48,20 +49,31 @@
 
 -(void)generatePassword {
     //TODO: use shared defautls for type
-    NSString *type = @"Random";
+
     NSUserDefaults *sd = [DefaultsManager sharedDefaults];
     self.factory.passwordLength = [[sd objectForKey:@"passwordLengthShared"] floatValue];
     self.factory.useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];
     self.factory.mixedCase = [[sd objectForKey:@"randomMixedCaseShared"] boolValue];
     self.factory.avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
+    
+    int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
     NSString *password;
-    if ([type isEqualToString:@"Random"]) {
-        password = [self.factory generateRandom];
-    } else if ([type isEqualToString:@"Pattern"]) {
-        password = [self.factory generatePattern:[sd objectForKey:@"userPatternShared"]];
-        
-    } else {
-        password = [self.factory generatePronounceable:[sd objectForKey:@"pronounceableSeparatorShared"]];
+    
+    
+    //TODO: still working on this
+    switch(index) {
+        case PFTabRandom:
+            password = [self.factory generateRandom];
+            break;
+        case PFTabPattern:
+            password = [self.factory generatePattern:[sd objectForKey:@"userPatternShared"]];
+            break;
+        case PFTabPronounceable:
+            password = [self.factory generatePronounceableWithSeparatorType:(int)[[sd objectForKey:@"pronounceableSeparatorShared"] integerValue]];
+            break;
+        case PFTabPassphrase:
+            password = [self.factory generatePassphrase:@"-" caseType:(int)[[sd objectForKey:@"passphraseRadioCaseTypeShared"] integerValue]];
+            break;
     }
     [self updateStrength:password];
     [self.passwordField setStringValue:password];

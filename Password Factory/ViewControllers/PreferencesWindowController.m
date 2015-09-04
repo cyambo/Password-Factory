@@ -132,13 +132,14 @@ static NSDictionary *prefsPlist;
     NSUserDefaults *sharedDefaults = [DefaultsManager sharedDefaults];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     for (NSString *key in prefsPlist) {
-        NSString *k = [key stringByAppendingString:@"Shared"]; //Appending shared to shared defaults because KVO will cause the observer to be called 
+        NSString *k = [key stringByAppendingString:@"Shared"]; //Appending shared to shared defaults because KVO will cause the observer to be called
         //syncing to shared defaults
         if([sharedDefaults objectForKey:k] != [d objectForKey:key]) {
             [sharedDefaults setObject:[d objectForKey:key] forKey:k];
         }
-        
     }
+    //saving selected tab manually
+    [sharedDefaults setObject:[d objectForKey:@"selectedTabIndex"]  forKey:@"selectedTabIndexShared"];
 }
 #pragma mark colors
 // From http://stackoverflow.com/questions/8697205/convert-hex-color-code-to-nscolor

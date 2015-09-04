@@ -34,6 +34,9 @@
 #define PFPassphraseUpperCase 403
 #define PFPassphraseMixedCase 404
 
-
+#define PFTabRandom 0
+#define PFTabPattern 1
+#define PFTabPronounceable 2
+#define PFTabPassphrase 3
 
 #endif

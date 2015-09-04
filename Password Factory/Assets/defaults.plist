@@ -31,12 +31,14 @@
 	<key>passwordLength</key>
 	<string>20</string>
 	<key>pronounceableSeparator</key>
-	<integer>0</integer>
+	<integer>201</integer>
 	<key>userPattern</key>
 	<string>w##</string>
 	<key>passphraseRadioSeparator</key>
-	<integer>0</integer>
+	<integer>301</integer>
 	<key>passphraseRadioCaseType</key>
-	<integer>0</integer>
+	<integer>401</integer>
+	<key>enableSymbolTransform</key>
+	<false/>
 </dict>
 </plist>
