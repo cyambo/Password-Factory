@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "constants.h"
 @interface PasswordFactory : NSObject
 @property (nonatomic, assign) NSUInteger passwordLength;
 //These properties are only for random and pattern

@@ -7,7 +7,7 @@
 //
 
 #import "PasswordFactory.h"
-#import "constants.h"
+
 #import "NSString+RandomCase.h"
 #import "NSString+SymbolCase.h"
 static NSString* symbols;

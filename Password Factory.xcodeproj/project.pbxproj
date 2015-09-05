@@ -414,6 +414,7 @@
 				409E13B51B8258170041541B /* Frameworks */,
 				409E13B61B8258170041541B /* Resources */,
 				BD45B2432913C3B9E7C0FE8E /* Copy Pods Resources */,
+				4012E5141B9B463A00BAF217 /* Show TODO and FIXME as warnings */,
 			);
 			buildRules = (
 			);
@@ -434,6 +435,7 @@
 				40FB0C191B810F10009193F8 /* Resources */,
 				9C88311E94026174CDA4BB06 /* Copy Pods Resources */,
 				409E13CD1B8258170041541B /* Embed App Extensions */,
+				4012E5111B9B44E900BAF217 /* Show TODO and FIXME as warnings */,
 			);
 			buildRules = (
 			);
@@ -454,6 +456,7 @@
 				40FB0C2B1B810F10009193F8 /* Frameworks */,
 				40FB0C2C1B810F10009193F8 /* Resources */,
 				AEC17E222327D242E999B06A /* Copy Pods Resources */,
+				4012E5131B9B461E00BAF217 /* Show TODO and FIXME as warnings */,
 			);
 			buildRules = (
 			);
@@ -560,6 +563,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4012E5111B9B44E900BAF217 /* Show TODO and FIXME as warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Show TODO and FIXME as warnings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/Password Factory\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+		4012E5131B9B461E00BAF217 /* Show TODO and FIXME as warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Show TODO and FIXME as warnings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/Password FactoryTests\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+		4012E5141B9B463A00BAF217 /* Show TODO and FIXME as warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Show TODO and FIXME as warnings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/Password Factory Widget\" \"${SRCROOT}/Password FactoryTests\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
 		4485B544EB373C6A0DC1161D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -357,8 +357,12 @@ int const  GenerateAndCopyLoops  = 10;
             break;
     }
     
-    
-    if (ct > 100) {ct = 100;}
+    //normalizing it to 0-100
+    if (ct > 100){
+        ct = 100;
+    } else if (ct < 0) {
+        ct = 0;
+    }
     [self.passwordStrengthLevel updateStrength:ct];
 
 

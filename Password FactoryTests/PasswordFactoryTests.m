@@ -34,33 +34,33 @@ const int LONG_PASSWORD_LENGTH = 100;
     [self regexReplaceTest:@"([a-z]+-?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Hyphen"
              generateBlock:^{
-                 return [self.pg generatePronounceable:@"Hyphen"];
+                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableHyphenSeparator];
              }];
     [self regexReplaceTest:@"[a-z]"
               errorMessage:@"Value of password not valid for generatePronounceable:None"
              generateBlock:^{
-                 return [self.pg generatePronounceable:@"None"];
+                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableNoSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+[A-Z]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Characters"
              generateBlock:^{
-                 return [self.pg generatePronounceable:@"Chracters"];
+                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableCharacterSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+[0-9]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Numbers"
              generateBlock:^{
-                 return [self.pg generatePronounceable:@"Numbers"];
+                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableNumberSeparator];
              }];
     
     [self regexReplaceTest:@"([a-z]+[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Symbols"
              generateBlock:^{
-                 return [self.pg generatePronounceable:@"Symbols"];
+                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableSymbolSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+ ?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Spaces"
              generateBlock:^{
-                 return [self.pg generatePronounceable:@"Spaces"];
+                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableSpaceSeparator];
              }];
     
     
