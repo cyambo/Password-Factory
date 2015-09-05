@@ -110,37 +110,36 @@ const int LONG_PASSWORD_LENGTH = 100;
     
     //testing password lengths
     self.pg.passwordLength = 5;
-    XCTAssertTrue([self.pg generateRandom].length == 5, @"Password Length not 5");
+    XCTAssertTrue([self.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES].length == 5, @"Password Length not 5");
     self.pg.passwordLength = 10;
-    XCTAssertFalse([self.pg generateRandom].length == 5, @"Password Length not Changed from 5 to 10");
-    XCTAssertTrue([self.pg generateRandom].length == 10, @"Password Length not 10");
+    XCTAssertFalse([self.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES].length == 5, @"Password Length not Changed from 5 to 10");
+    XCTAssertTrue([self.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES].length == 10, @"Password Length not 10");
     
     self.pg.passwordLength = LONG_PASSWORD_LENGTH;
     //testing the useSymbols to see if any symbols are part of the password
-    self.pg.useSymbols = NO;
+
     
     
     [self regexCheckHasMatchesTest:@"[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]"
                       errorMessage:@"Symbol found when useSymbols == NO"
                      generateBlock:^{
-                         return [self.pg generateRandom];
+                         return [self.pg generateRandom:YES avoidAmbiguous:YES useSymbols:NO];
                      }];
     
     //testing mixed case
-    self.pg.useSymbols = NO;
-    self.pg.mixedCase = NO;
+
     [self regexCheckHasMatchesTest:@"[A-Z]"
                       errorMessage:@"Capitals found when mixedCase == NO"
                      generateBlock:^{
-                         return [self.pg generateRandom];
+                         return [self.pg generateRandom:NO avoidAmbiguous:NO useSymbols:NO];
                      }];
     
     //testing ambiguous characters
-    self.pg.avoidAmbiguous = YES;
+
     [self regexCheckHasMatchesTest:@"[lo]"
                       errorMessage:@"Ambiguous Lowercase found when avoidAmbiguous = YES"
                      generateBlock:^{
-                         return [self.pg generateRandom];
+                         return [self.pg generateRandom:NO avoidAmbiguous:YES useSymbols:NO];
                      }];
     
     

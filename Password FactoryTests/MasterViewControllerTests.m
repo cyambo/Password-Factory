@@ -42,15 +42,16 @@
         NSString *p = [self getPasswordFieldValue];
         [b performClick:self];
         XCTAssertNotEqual(p, [self getPasswordFieldValue], @"Checkbox %@ failed to change value",b.title);
+        NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         switch (i) {
             case 0:
-                XCTAssertEqual(self.mvc.useSymbols.state, self.mvc.pg.useSymbols, @"useSymbols failed to check");
+                XCTAssertEqual(self.mvc.useSymbols.state, [[d objectForKey:@"randomUseSymbols"] boolValue], @"useSymbols failed to check");
                 break;
             case 1:
-                XCTAssertEqual(self.mvc.avoidAmbiguous.state, self.mvc.pg.avoidAmbiguous, @"avoidAmbiguous failed to check");
+                XCTAssertEqual(self.mvc.avoidAmbiguous.state, [[d objectForKey:@"randomAvoidAmbiguous"] boolValue], @"avoidAmbiguous failed to check");
                 break;
             case 2:
-                XCTAssertEqual(self.mvc.mixedCase.state, self.mvc.pg.mixedCase, @"mixedCase failed to check");
+                XCTAssertEqual(self.mvc.mixedCase.state, [[d objectForKey:@"randomMixedCase"] boolValue], @"mixedCase failed to check");
                 break;
                 
 

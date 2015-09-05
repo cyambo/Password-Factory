@@ -52,9 +52,9 @@
 
     NSUserDefaults *sd = [DefaultsManager sharedDefaults];
     self.factory.passwordLength = [[sd objectForKey:@"passwordLengthShared"] floatValue];
-    self.factory.useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];
-    self.factory.mixedCase = [[sd objectForKey:@"randomMixedCaseShared"] boolValue];
-    self.factory.avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
+    BOOL useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];
+    BOOL mixedCase = [[sd objectForKey:@"randomMixedCaseShared"] boolValue];
+    BOOL avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
     
     int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
     NSString *password;
@@ -63,7 +63,7 @@
     //TODO: still working on this
     switch(index) {
         case PFTabRandom:
-            password = [self.factory generateRandom];
+            password = [self.factory generateRandom:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
             break;
         case PFTabPattern:
             password = [self.factory generatePattern:[sd objectForKey:@"userPatternShared"]];

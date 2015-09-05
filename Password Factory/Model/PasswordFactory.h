@@ -12,14 +12,15 @@
 @property (nonatomic, assign) NSUInteger passwordLength;
 //These properties are only for random and pattern
 //TODO: move to method ?
-@property (nonatomic, assign) BOOL useSymbols;
-@property (nonatomic, assign) BOOL avoidAmbiguous;
-@property (nonatomic, assign) BOOL mixedCase;
+
 
 
 - (NSString *)generatePronounceableWithSeparatorType:(int)separatorType;
 - (NSString *)generatePronounceable:(NSString *)separator;
-- (NSString *)generateRandom;
+
+- (NSString *)generateRandom:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols;
+
 - (NSString *)generatePattern: (NSString *)pattern;
+
 - (NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType;
 @end

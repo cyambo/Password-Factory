@@ -41,9 +41,7 @@ static NSArray* phoeneticSoundsThree;
         
         [self loadWords];
         [self setStatics];
-        self.useSymbols = YES;
-        self.avoidAmbiguous = YES;
-        self.mixedCase = YES;
+
         self.passwordLength = 5;
         
     }
@@ -217,12 +215,16 @@ static NSArray* phoeneticSoundsThree;
 }
 #pragma mark Random Password
 /**
- *  Generates a random password
+ *  Generates a random password of passwordLength length
  *
- *  @return randomized password based on settings
+ *  @param mixedCase      use upper and lowercase letters
+ *  @param avoidAmbiguous Avoid using ambiguous letters such as l and i
+ *  @param useSymbols     Use symbols uses ascii symbols, such as @#$
+ *
+ *  @return randomized password
  */
-- (NSString *)generateRandom {
-    [self setCharacterRange];
+- (NSString *)generateRandom:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols{
+    [self setCharacterRange:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
     NSMutableString *curr = [[NSMutableString alloc] init];
     for(int i=0;i<self.passwordLength;i++){
         int at = arc4random() % [self.currentRange length];
@@ -239,20 +241,20 @@ static NSArray* phoeneticSoundsThree;
 /**
  *  Gets the characters used for a random password based upon settings
  */
-- (void)setCharacterRange {
+- (void)setCharacterRange:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols {
     NSMutableString *tmp = [[NSMutableString alloc] init];
-    if (self.useSymbols) {
+    if (useSymbols) {
         [tmp appendString:symbols];
     }
-    if (self.avoidAmbiguous) {
+    if (avoidAmbiguous) {
         [tmp appendString:nonAmbiguousLowerCase];
         [tmp appendString:nonAmbiguousNumbers];
     } else {
         [tmp appendString:lowerCase];
         [tmp appendString:numbers];
     }
-    if (self.mixedCase) {
-        if (self.avoidAmbiguous) {
+    if (mixedCase) {
+        if (avoidAmbiguous) {
             [tmp appendString:nonAmbiguousUpperCase];
         } else {
             [tmp appendString:upperCase];
@@ -316,19 +318,19 @@ static NSArray* phoeneticSoundsThree;
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
             case 7:
-                if (self.avoidAmbiguous) {
-                    c = [nonAmbiguousLowerCase characterAtIndex:(arc4random() % nonAmbiguousLowerCase.length)];
-                } else {
-                    c = [lowerCase characterAtIndex:(arc4random() % lowerCase.length)];
-                }
+                c = [lowerCase characterAtIndex:(arc4random() % lowerCase.length)];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
             case 8:
-                if (self.avoidAmbiguous) {
-                    c = [nonAmbiguousUpperCase characterAtIndex:(arc4random() % nonAmbiguousUpperCase.length)];
-                } else {
-                    c = [upperCase characterAtIndex:(arc4random() % upperCase.length)];
-                }
+                c = [upperCase characterAtIndex:(arc4random() % upperCase.length)];
+                [s appendString:[NSString stringWithFormat:@"%c",c]];
+                break;
+            case 9:
+                c = [nonAmbiguousLowerCase characterAtIndex:(arc4random() % nonAmbiguousLowerCase.length)];
+                [s appendString:[NSString stringWithFormat:@"%c",c]];
+                break;
+            case 10:
+                c = [nonAmbiguousUpperCase characterAtIndex:(arc4random() % nonAmbiguousUpperCase.length)];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
                 
@@ -377,14 +379,16 @@ static NSArray* phoeneticSoundsThree;
     phoeneticSounds = [phoeneticSoundsTwo arrayByAddingObjectsFromArray:phoeneticSoundsThree];
     
     
-    characterPattern = @{@"#" : @1, //Number
-                         @"w" : @2, //Lowercase Word
-                         @"W" : @3, //capital word
-                         @"s" : @4, //lowercase short word
-                         @"S" : @5, //capital short word
-                         @"!" : @6, //symbol
-                         @"c" : @7, //random character
-                         @"C" : @8 //random uppercase char
+    characterPattern = @{@"#" : @1,  //Number
+                         @"w" : @2,  //Lowercase Word
+                         @"W" : @3,  //capital word
+                         @"s" : @4,  //lowercase short word
+                         @"S" : @5,  //capital short word
+                         @"!" : @6,  //symbol
+                         @"c" : @7,  //random character
+                         @"C" : @8,   //random uppercase char
+                         @"a" : @9,   //random non-ambiguous char
+                         @"A" : @10  //random non-ambiguuous uppercase char
                          };
 
     

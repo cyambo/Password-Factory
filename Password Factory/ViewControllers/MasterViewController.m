@@ -190,11 +190,7 @@ int const  GenerateAndCopyLoops  = 10;
     [self generatePassword];
 }
 
-- (void)getButtonStates {
-    self.pg.useSymbols = [self.useSymbols state];
-    self.pg.avoidAmbiguous = [self.avoidAmbiguous state];
-    self.pg.mixedCase = [self.mixedCase state];
-}
+
 - (void)getPasswordLength{
     NSInteger atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
     NSUInteger prevLength = self.pg.passwordLength;
@@ -215,11 +211,13 @@ int const  GenerateAndCopyLoops  = 10;
 
 - (void)generatePassword {
     NSInteger atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
-    [self getButtonStates];
+
 
     switch (atTab) {
         case 0: //random
-            self.passwordValue = [self.pg generateRandom];
+            self.passwordValue = [self.pg generateRandom:[self.mixedCase state]
+                                          avoidAmbiguous:[self.avoidAmbiguous state]
+                                              useSymbols:[self.useSymbols state]];
             break;
         case 1: //pattern
             self.passwordValue = [self.pg generatePattern:self.patternText.stringValue];
