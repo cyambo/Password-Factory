@@ -10,10 +10,6 @@
 #import "constants.h"
 @interface PasswordFactory : NSObject
 @property (nonatomic, assign) NSUInteger passwordLength;
-//These properties are only for random and pattern
-//TODO: move to method ?
-
-
 
 - (NSString *)generatePronounceableWithSeparatorType:(int)separatorType;
 - (NSString *)generatePronounceable:(NSString *)separator;

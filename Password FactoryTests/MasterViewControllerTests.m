@@ -110,46 +110,43 @@
 
 
 }
--(BOOL)pronounceableRadioPress:(NSString *)toCompare tag:(int)tag {
+-(BOOL)pronounceableRadioPress:(int)tag {
     
-    //FIXME: BROKEN TEST IN MODEL REFACTOR
-    return NO;
-//    [self.mvc.pronounceableSeparatorRadio selectCellWithTag:tag];
-//    [self.mvc pressPrononunceableRadio:self.mvc.pronounceableSeparatorRadio];
-//    XCTAssertTrue([[self.mvc getPronounceableSeparatorCode]
-//                   isEqualToString:toCompare],
-//                  @"Pronouneable radio should be %@ is %@",toCompare,[self.mvc getPronounceableRadioSelected]);
+
+
+    [self.mvc.pronounceableSeparatorRadio selectCellWithTag:tag];
+    [self.mvc pressPrononunceableRadio:self.mvc.pronounceableSeparatorRadio];
+    XCTAssertEqual(tag, [self.mvc getPronounceableSeparatorCode],@"Pronounceable radio should be clicked to tag %d",tag);
+
 }
 -(void)testPronounceable {
     
+        
+    [self.mvc.passwordTypeTab selectTabViewItemAtIndex:2];
     
-    //FIXME: BROKEN TEST IN MODEL REFACTOR
+    [self.mvc.passwordLengthSliderPrononunceable setIntegerValue:5];
+    [self.mvc changeLength:self.mvc.passwordLengthSliderPrononunceable];
+    NSString *currPassword = [self getPasswordFieldValue];
+    [self.mvc.passwordLengthSliderPrononunceable setIntegerValue:10];
+    [self.mvc changeLength:self.mvc.passwordLengthSliderPrononunceable];
+    XCTAssertNotEqual(currPassword, [self getPasswordFieldValue], @"Password not changed when pronounceable slider changed");
+    XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Pronounceable length 5 not less than length 10");
     
-//    [self.mvc.passwordTypeTab selectTabViewItemAtIndex:2];
-//    
-//    [self.mvc.passwordLengthSliderPrononunceable setIntegerValue:5];
-//    [self.mvc changeLength:self.mvc.passwordLengthSliderPrononunceable];
-//    NSString *currPassword = [self getPasswordFieldValue];
-//    [self.mvc.passwordLengthSliderPrononunceable setIntegerValue:10];
-//    [self.mvc changeLength:self.mvc.passwordLengthSliderPrononunceable];
-//    XCTAssertNotEqual(currPassword, [self getPasswordFieldValue], @"Password not changed when pronounceable slider changed");
-//    XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Pronounceable length 5 not less than length 10");
-//    
-//    //testing radio mappings
-//    [self pronounceableRadioPress:@"None" tag:1];
-//    [self pronounceableRadioPress:@"Characters" tag:2];
-//    [self pronounceableRadioPress:@"Numbers" tag:3];
-//    [self pronounceableRadioPress:@"Symbols" tag:4];
-//    [self pronounceableRadioPress:@"Spaces" tag:5];
-//    [self pronounceableRadioPress:@"Hyphen" tag:0];
-//    currPassword = [self getPasswordFieldValue];
-//    //test if password is changed when radio is pressed
-//    for (int i=0; i<=5; i++) {
-//        [self.mvc.pronounceableSeparatorRadio selectCellWithTag:i];
-//        [self.mvc pressPrononunceableRadio:self.mvc.pronounceableSeparatorRadio];
-//        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]], @"Password Field not updated when %@ radio is pressed",[self.mvc getPronounceableRadioSelected]);
-//        currPassword = [self getPasswordFieldValue];
-//    }
+    //testing radio mappings
+    [self pronounceableRadioPress:PFPronounceableNoSeparator];
+    [self pronounceableRadioPress:PFPronounceableCharacterSeparator];
+    [self pronounceableRadioPress:PFPronounceableNumberSeparator];
+    [self pronounceableRadioPress:PFPronounceableSymbolSeparator];
+    [self pronounceableRadioPress:PFPronounceableSpaceSeparator];
+    [self pronounceableRadioPress:PFPronounceableHyphenSeparator];
+    currPassword = [self getPasswordFieldValue];
+    //test if password is changed when radio is pressed
+    for (int i=0; i<=5; i++) {
+        [self.mvc.pronounceableSeparatorRadio selectCellWithTag:i];
+        [self.mvc pressPrononunceableRadio:self.mvc.pronounceableSeparatorRadio];
+        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]], @"Password Field not updated when %d radio is pressed",[self.mvc getPronounceableSeparatorCode]);
+        currPassword = [self getPasswordFieldValue];
+    }
 }
 - (void)testStrengthMeter {
     self.mvc.passwordValue = @"1";
