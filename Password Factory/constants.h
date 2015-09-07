@@ -39,4 +39,8 @@
 #define PFTabPronounceable 2
 #define PFTabPassphrase 3
 
+#define PFPasswordMinLength 5
+#define PFPasswordMaxLength 150
+
+
 #endif

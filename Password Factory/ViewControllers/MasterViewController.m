@@ -201,8 +201,10 @@ int const  GenerateAndCopyLoops  = 10;
         self.pg.passwordLength = [self.passwordLengthSliderPrononunceable integerValue];
         [self.passwordLengthSliderRandom setIntegerValue:self.pg.passwordLength];
     }
+    //Setting the length label
     [self.passwordLengthLabelRandom setStringValue:[NSString stringWithFormat:@"%i",(int)self.pg.passwordLength]];
     [self.passwordLengthLabelPronounceable setStringValue:[NSString stringWithFormat:@"%i",(int)self.pg.passwordLength]];
+    [self.passwordLengthLabelPassphrase setStringValue:[NSString stringWithFormat:@"%i",(int)self.pg.passwordLength]];
     if (prevLength != self.pg.passwordLength) { //do not change password unless length changes
         [self generatePassword];
     }

@@ -38,7 +38,7 @@
 	<integer>301</integer>
 	<key>passphraseRadioCaseType</key>
 	<integer>401</integer>
-	<key>enableSymbolTransform</key>
+	<key>enableAdvancedMode</key>
 	<false/>
 </dict>
 </plist>

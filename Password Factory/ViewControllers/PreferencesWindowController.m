@@ -17,7 +17,7 @@
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
-@implementation PreferencesWindowController
+@implementation PreferencesWindowController 
 __weak id _constantShortcutMonitor;
 static BOOL loadedPrefs;
 
@@ -189,6 +189,8 @@ static NSDictionary *prefsPlist;
 - (IBAction)quitApplication:(id)sender {
     [[NSApplication sharedApplication] terminate:nil];
 }
+
+
 #pragma mark - Custom shortcut
 - (void)resetShortcutRegistration
 {

@@ -38,5 +38,6 @@
 
 - (IBAction)quitApplication:(id)sender;
 
+
 - (void)resetShortcutRegistration;
 @end
