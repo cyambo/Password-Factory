@@ -13,12 +13,7 @@
                 <outlet property="passphraseCaseRadio" destination="jp4-IO-7rk" id="WxI-ex-aMf"/>
                 <outlet property="passphraseSeparatorRadio" destination="k9d-UR-Jr7" id="ySo-TG-Sls"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
-                <outlet property="passwordLengthLabelPassphrase" destination="GPQ-iZ-6x7" id="0mY-0i-VzX"/>
-                <outlet property="passwordLengthLabelPronounceable" destination="oSQ-1W-5v1" id="xne-AO-Kvw"/>
-                <outlet property="passwordLengthLabelRandom" destination="zqi-Du-606" id="01s-Z0-bEP"/>
-                <outlet property="passwordLengthSliderPassphrase" destination="FfR-cB-aCw" id="e6i-3c-uVn"/>
-                <outlet property="passwordLengthSliderPrononunceable" destination="WN8-xU-zDN" id="H6r-b9-oYT"/>
-                <outlet property="passwordLengthSliderRandom" destination="4uN-fc-DjX" id="FWq-t3-ssZ"/>
+                <outlet property="passwordLengthSlider" destination="FfR-cB-aCw" id="HKb-Fm-RcU"/>
                 <outlet property="passwordLengthStepper" destination="1NU-p7-2hR" id="gmM-NK-IeP"/>
                 <outlet property="passwordLengthText" destination="S5l-1X-1uf" id="efG-ym-ew5"/>
                 <outlet property="passwordStrengthLevel" destination="NML-Rl-bwo" id="9Di-7u-P50"/>
@@ -97,7 +92,7 @@
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fc-DjX">
-                                        <rect key="frame" x="88" y="80" width="224" height="20"/>
+                                        <rect key="frame" x="88" y="79" width="224" height="20"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.10088900862069" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mGh-qr-LNC">
                                             <connections>
                                                 <action selector="changeLength:" target="-2" id="Wgk-li-RuC"/>
@@ -107,14 +102,6 @@
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="ghq-6L-d8e"/>
                                         </connections>
                                     </slider>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqi-Du-606">
-                                        <rect key="frame" x="316" y="82" width="21" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="50" id="LRQ-wR-Nch">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yhn-Xd-r0K">
                                         <rect key="frame" x="37" y="82" width="47" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="0Xj-5v-hJb">
@@ -131,8 +118,8 @@
                                         </connections>
                                     </stepper>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5l-1X-1uf">
-                                        <rect key="frame" x="-3" y="77" width="28" height="22"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="foV-9D-qPW">
+                                        <rect key="frame" x="306" y="75" width="32" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="foV-9D-qPW">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -249,21 +236,13 @@ C -Random Uppercase Character</string>
                                         </connections>
                                     </matrix>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WN8-xU-zDN">
-                                        <rect key="frame" x="88" y="80" width="224" height="20"/>
+                                        <rect key="frame" x="88" y="79" width="224" height="20"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="PCl-1G-QR9"/>
                                         <connections>
                                             <action selector="changeLength:" target="-2" id="2tM-uu-5f2"/>
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="k8R-yy-BFM"/>
                                         </connections>
                                     </slider>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oSQ-1W-5v1">
-                                        <rect key="frame" x="316" y="82" width="21" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="50" id="fAQ-v2-vxB">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OtX-Py-zBb">
                                         <rect key="frame" x="37" y="82" width="47" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="IfW-x7-e1b">
@@ -280,8 +259,8 @@ C -Random Uppercase Character</string>
                                         </connections>
                                     </stepper>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85W-Ry-dAE">
-                                        <rect key="frame" x="-3" y="79" width="28" height="22"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="doM-rQ-Ate">
+                                        <rect key="frame" x="306" y="75" width="32" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="doM-rQ-Ate">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -343,14 +322,6 @@ C -Random Uppercase Character</string>
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="KVL-4a-kWR"/>
                                         </connections>
                                     </slider>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPQ-iZ-6x7">
-                                        <rect key="frame" x="316" y="82" width="21" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="50" id="Oy5-8T-ddb">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1XZ-Yn-GMR">
                                         <rect key="frame" x="37" y="82" width="47" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="XV9-2S-Aed">
@@ -419,8 +390,8 @@ C -Random Uppercase Character</string>
                                         </connections>
                                     </stepper>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OoD-jh-PoF">
-                                        <rect key="frame" x="-3" y="75" width="28" height="22"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="ylU-g4-H8F">
+                                        <rect key="frame" x="306" y="75" width="32" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="ylU-g4-H8F">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

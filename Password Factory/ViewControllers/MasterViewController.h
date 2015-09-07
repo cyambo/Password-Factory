@@ -17,15 +17,10 @@
 @property (weak) IBOutlet NSButton *mixedCase;
 @property (weak) IBOutlet NSButton *avoidAmbiguous;
 
-@property (weak) IBOutlet NSSlider *passwordLengthSliderPrononunceable;
-@property (weak) IBOutlet NSTextField *passwordLengthLabelPronounceable;
 
-@property (weak) IBOutlet NSSlider *passwordLengthSliderPassphrase;
-@property (weak) IBOutlet NSTextField *passwordLengthLabelPassphrase;
+@property (weak) IBOutlet NSSlider *passwordLengthSlider;
 
 
-@property (weak) IBOutlet NSSlider *passwordLengthSliderRandom;
-@property (weak) IBOutlet NSTextField *passwordLengthLabelRandom;
 
 @property (weak) IBOutlet NSStepper *passwordLengthStepper;
 @property (weak) IBOutlet NSTextField *passwordLengthText;

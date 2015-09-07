@@ -59,33 +59,33 @@
         i++;
     }
     //checking random password length setter
-    [self.mvc.passwordLengthSliderRandom setIntegerValue:5];
-    [self.mvc changeLength:self.mvc.passwordLengthSliderRandom];
+    [self.mvc.passwordLengthSlider setIntegerValue:5];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
     
     XCTAssertEqual(5, [self getPasswordFieldValue].length, @"Password not changed to 5");
-    XCTAssertEqual(5, self.mvc.passwordLengthLabelPronounceable.intValue, @"Random password length label not changed to 5 it is %@",self.mvc.passwordLengthLabelPronounceable.stringValue);
+   
     
     //checking random password length setter min
     //the min is 5 and if you make a setter less than 5 it will be 5
-    [self.mvc.passwordLengthSliderRandom setIntegerValue:4];
-    [self.mvc changeLength:self.mvc.passwordLengthSliderRandom];
+    [self.mvc.passwordLengthSlider setIntegerValue:4];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
     ;
     XCTAssertEqual(5, [self getPasswordFieldValue].length, @"Password not changed to 5");
-    XCTAssertEqual(5, self.mvc.passwordLengthLabelPronounceable.intValue, @"Random Password length label should be 5 it is %@",self.mvc.passwordLengthLabelPronounceable.stringValue);
+   
     
     //checking random password length setter max
     //the max is 40 and if you make a setter more than 40 it will be 40
-    [self.mvc.passwordLengthSliderRandom setIntegerValue:41];
-    [self.mvc changeLength:self.mvc.passwordLengthSliderRandom];
+    [self.mvc.passwordLengthSlider setIntegerValue:41];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
     ;
     XCTAssertEqual(40, [self getPasswordFieldValue].length, @"Password not changed to 40");
-    XCTAssertEqual(40, self.mvc.passwordLengthLabelPronounceable.intValue, @"Random Password length label should be 40 it is %@",self.mvc.passwordLengthLabelPronounceable.stringValue);
+   
     
     //making sure the length gets passed across
-    [self.mvc.passwordLengthSliderRandom setIntegerValue:22];
-    [self.mvc changeLength:self.mvc.passwordLengthSliderRandom];
-    XCTAssertEqual(22, self.mvc.passwordLengthSliderPrononunceable.intValue, @"Pronounceable length should be equal to random length 22 it is %@",self.mvc.passwordLengthSliderPrononunceable.stringValue);
-    XCTAssertEqual(22, self.mvc.passwordLengthLabelPronounceable.intValue, @"Pronounceable length label should be the same as random 22 it is %@",self.mvc.passwordLengthLabelPronounceable);
+    [self.mvc.passwordLengthSlider setIntegerValue:22];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
+    XCTAssertEqual(22, self.mvc.passwordLengthSlider.intValue, @"Pronounceable length should be equal to random length 22 it is %@",self.mvc.passwordLengthSlider.stringValue);
+ 
 }
 - (void)testPattern {
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:1];
@@ -124,11 +124,11 @@
         
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:2];
     
-    [self.mvc.passwordLengthSliderPrononunceable setIntegerValue:5];
-    [self.mvc changeLength:self.mvc.passwordLengthSliderPrononunceable];
+    [self.mvc.passwordLengthSlider setIntegerValue:5];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
     NSString *currPassword = [self getPasswordFieldValue];
-    [self.mvc.passwordLengthSliderPrononunceable setIntegerValue:10];
-    [self.mvc changeLength:self.mvc.passwordLengthSliderPrononunceable];
+    [self.mvc.passwordLengthSlider setIntegerValue:10];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
     XCTAssertNotEqual(currPassword, [self getPasswordFieldValue], @"Password not changed when pronounceable slider changed");
     XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Pronounceable length 5 not less than length 10");
     
@@ -336,7 +336,7 @@
     [self validateCheckboxDefaults:self.mvc.avoidAmbiguous defaultsKey:@"randomAvoidAmbiguous"];
     [self validateCheckboxDefaults:self.mvc.mixedCase defaultsKey:@"randomMixedCase"];
     
-    [self validateSliderDefaults:self.mvc.passwordLengthSliderRandom defaultsKey:@"passwordLength"];
+    [self validateSliderDefaults:self.mvc.passwordLengthSlider defaultsKey:@"passwordLength"];
 
 }
 -(void)testBindingsPattern {
@@ -378,12 +378,12 @@
                   defaultsKey:(NSString *)key {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     
-    self.mvc.passwordLengthSliderRandom.integerValue = 22;
-    [self.mvc.passwordLengthSliderRandom performClick:self];
+    self.mvc.passwordLengthSlider.integerValue = 22;
+    [self.mvc.passwordLengthSlider performClick:self];
     XCTAssertEqual([d floatForKey:key], 22, @"%@ slider should update defaults to 22",key);
     
-    self.mvc.passwordLengthSliderRandom.integerValue = 12;
-    [self.mvc.passwordLengthSliderRandom performClick:self];
+    self.mvc.passwordLengthSlider.integerValue = 12;
+    [self.mvc.passwordLengthSlider performClick:self];
     XCTAssertEqual([d floatForKey:key], 12, @"%@ slider should update defaults to 22",key);
 }
 -(void)validateCheckboxDefaults:(NSButton *)checkbox
