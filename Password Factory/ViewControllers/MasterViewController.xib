@@ -19,6 +19,8 @@
                 <outlet property="passwordLengthSliderPassphrase" destination="FfR-cB-aCw" id="e6i-3c-uVn"/>
                 <outlet property="passwordLengthSliderPrononunceable" destination="WN8-xU-zDN" id="H6r-b9-oYT"/>
                 <outlet property="passwordLengthSliderRandom" destination="4uN-fc-DjX" id="FWq-t3-ssZ"/>
+                <outlet property="passwordLengthStepper" destination="1NU-p7-2hR" id="gmM-NK-IeP"/>
+                <outlet property="passwordLengthText" destination="S5l-1X-1uf" id="efG-ym-ew5"/>
                 <outlet property="passwordStrengthLevel" destination="NML-Rl-bwo" id="9Di-7u-P50"/>
                 <outlet property="passwordTypeTab" destination="D7G-rB-QOb" id="rp6-xC-Dol"/>
                 <outlet property="pasteboardButton" destination="xyJ-Ut-Xnd" id="kqR-sI-BAj"/>
@@ -120,6 +122,25 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                    </textField>
+                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1NU-p7-2hR">
+                                        <rect key="frame" x="22" y="74" width="19" height="27"/>
+                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="Ln3-Gy-htR"/>
+                                        <connections>
+                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="VAf-kG-Sqz"/>
+                                        </connections>
+                                    </stepper>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5l-1X-1uf">
+                                        <rect key="frame" x="-3" y="77" width="28" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="foV-9D-qPW">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="ayL-2N-LGh"/>
+                                            <outlet property="formatter" destination="8VG-bV-YYR" id="EUD-Zm-fnn"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </view>
@@ -251,6 +272,25 @@ C -Random Uppercase Character</string>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QAg-Wk-XuC">
+                                        <rect key="frame" x="22" y="76" width="19" height="27"/>
+                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="91b-8W-mpa"/>
+                                        <connections>
+                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="ju5-ab-nd6"/>
+                                        </connections>
+                                    </stepper>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85W-Ry-dAE">
+                                        <rect key="frame" x="-3" y="79" width="28" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="doM-rQ-Ate">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="2Tc-z5-itS"/>
+                                            <outlet property="formatter" destination="8VG-bV-YYR" id="q71-de-vHs"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                             </view>
                         </tabViewItem>
@@ -371,6 +411,25 @@ C -Random Uppercase Character</string>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Voe-8r-l8d">
+                                        <rect key="frame" x="22" y="72" width="19" height="27"/>
+                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="I6G-iO-FsF"/>
+                                        <connections>
+                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="vZD-69-AlR"/>
+                                        </connections>
+                                    </stepper>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OoD-jh-PoF">
+                                        <rect key="frame" x="-3" y="75" width="28" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="ylU-g4-H8F">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="2PA-WV-pvb"/>
+                                            <outlet property="formatter" destination="8VG-bV-YYR" id="gfD-t1-b80"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                             </view>
                         </tabViewItem>
@@ -413,5 +472,6 @@ C -Random Uppercase Character</string>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="2ia-xi-Rdb"/>
+        <customObject id="8VG-bV-YYR" customClass="OnlyIntegerFormatter"/>
     </objects>
 </document>

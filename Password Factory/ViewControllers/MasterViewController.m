@@ -61,21 +61,20 @@ int const  GenerateAndCopyLoops  = 10;
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 
-
     if ([keyPath isEqualToString:@"colorPasswordText"]) {
         self.colorPasswordText = [object boolForKey:keyPath];
         [self updatePasswordField];
-    } else if(
-        [keyPath isEqualToString:@"clearClipboard"] ||
-        [keyPath isEqualToString:@"clearClipboardTime"]) {
-        //do nothing for now
-    } else {
-        //if it falls through here it is the color well, so update the password field for live updating of color changes
-        if (self.colorPasswordText) {
-            [self updatePasswordField];
-        }
-        
     }
+    //Updating the password field when the color well changes to enable live color updating
+    if (self.colorPasswordText &&
+        ([keyPath isEqualToString:@"upperTextColor"] ||
+         [keyPath isEqualToString:@"lowerTextColor"] ||
+         [keyPath isEqualToString:@"numberTextColor"] ||
+         [keyPath isEqualToString:@"symbolTextColor"])
+        ) {
+        [self updatePasswordField];
+    }
+    
 }
 #pragma mark Clipboard Handling
 - (void)updatePasteboard:(NSString *)val {

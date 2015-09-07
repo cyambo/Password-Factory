@@ -27,6 +27,10 @@
 @property (weak) IBOutlet NSSlider *passwordLengthSliderRandom;
 @property (weak) IBOutlet NSTextField *passwordLengthLabelRandom;
 
+@property (weak) IBOutlet NSStepper *passwordLengthStepper;
+@property (weak) IBOutlet NSTextField *passwordLengthText;
+
+
 @property (weak) IBOutlet StrengthMeter *passwordStrengthLevel;
 
 @property (weak) IBOutlet NSTabView *passwordTypeTab;
