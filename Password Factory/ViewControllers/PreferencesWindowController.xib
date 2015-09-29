@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
@@ -26,15 +27,15 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="277" height="607"/>
+            <rect key="contentRect" x="196" y="240" width="277" height="497"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="-1" width="277" height="607"/>
+                <rect key="frame" x="0.0" y="0.0" width="277" height="497"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Password Display" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="9Rk-T8-6dg">
-                        <rect key="frame" x="16" y="436" width="242" height="157"/>
-                        <view key="contentView">
+                        <rect key="frame" x="16" y="326" width="242" height="157"/>
+                        <view key="contentView" id="F0z-5B-lBN">
                             <rect key="frame" x="1" y="1" width="240" height="141"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -130,8 +131,8 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Clipboard Handling" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="vL5-0M-yIu">
-                        <rect key="frame" x="17" y="212" width="242" height="83"/>
-                        <view key="contentView">
+                        <rect key="frame" x="17" y="102" width="242" height="83"/>
+                        <view key="contentView" id="oM3-bY-Qf6">
                             <rect key="frame" x="1" y="1" width="240" height="67"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -185,8 +186,8 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Generate and Copy Hotkey" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-pS-dpl">
-                        <rect key="frame" x="17" y="299" width="242" height="127"/>
-                        <view key="contentView">
+                        <rect key="frame" x="17" y="189" width="242" height="127"/>
+                        <view key="contentView" id="zsU-dx-l8o">
                             <rect key="frame" x="1" y="1" width="240" height="111"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -234,13 +235,13 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Menu Bar (changes require restart)" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ej7-u9-CPh">
-                        <rect key="frame" x="16" y="76" width="244" height="133"/>
-                        <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="242" height="117"/>
+                        <rect key="frame" x="16" y="16" width="244" height="83"/>
+                        <view key="contentView" id="62c-Vb-8xK">
+                            <rect key="frame" x="1" y="1" width="242" height="67"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNW-p0-lA1">
-                                    <rect key="frame" x="13" y="63" width="216" height="18"/>
+                                    <rect key="frame" x="13" y="13" width="216" height="18"/>
                                     <buttonCell key="cell" type="check" title="Hide Dock Icon" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qGs-nL-oGZ">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -251,7 +252,7 @@
                                     </connections>
                                 </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jx-1H-FYb">
-                                    <rect key="frame" x="13" y="91" width="216" height="18"/>
+                                    <rect key="frame" x="13" y="41" width="216" height="18"/>
                                     <buttonCell key="cell" type="check" title="Run in Menu" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5R4-Vh-n0w">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -261,7 +262,7 @@
                                     </connections>
                                 </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-7c-5Pz">
-                                    <rect key="frame" x="174" y="58" width="52" height="53"/>
+                                    <rect key="frame" x="174" y="8" width="52" height="53"/>
                                     <buttonCell key="cell" type="bevel" title="Quit" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0vA-hk-iS0">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -270,56 +271,17 @@
                                         <action selector="quitApplication:" target="-2" id="t8a-AU-Oz1"/>
                                     </connections>
                                 </button>
-                                <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CYt-Gf-Cs4">
-                                    <rect key="frame" x="13" y="5" width="227" height="38"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="cellSize" width="223" height="18"/>
-                                    <size key="intercellSpacing" width="4" height="2"/>
-                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="L9Y-00-8qa">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <cells>
-                                        <column>
-                                            <buttonCell type="radio" title="Click Activate / Right Click Copy" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="TZc-ul-StD">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <buttonCell type="radio" title="Click Copy / Right Click Activate" imagePosition="left" alignment="left" inset="2" id="Jrs-O4-CKJ">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                        </column>
-                                    </cells>
-                                </matrix>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcE-GG-FCA">
-                                    <rect key="frame" x="22" y="44" width="213" height="18"/>
-                                    <buttonCell key="cell" type="check" title="Generate and Copy from Menu" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="95D-Rz-BnT">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                </button>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJg-AM-P4e">
-                        <rect key="frame" x="49" y="51" width="123" height="18"/>
-                        <buttonCell key="cell" type="check" title="Advanced Mode" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eYs-qC-yVN">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="gVG-eV-jH6" name="value" keyPath="values.enableAdvancedMode" id="dr2-dX-5yL"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="592.5" y="423.5"/>
+            <point key="canvasLocation" x="592.5" y="368.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="gVG-eV-jH6"/>
         <customObject id="NJa-co-c6S" customClass="OnlyIntegerFormatter"/>

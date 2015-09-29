@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MasterViewController">
@@ -14,7 +14,6 @@
                 <outlet property="passphraseSeparatorRadio" destination="k9d-UR-Jr7" id="ySo-TG-Sls"/>
                 <outlet property="passwordField" destination="qet-DJ-02l" id="Ntm-BK-b7b"/>
                 <outlet property="passwordLengthSlider" destination="FfR-cB-aCw" id="HKb-Fm-RcU"/>
-                <outlet property="passwordLengthStepper" destination="1NU-p7-2hR" id="gmM-NK-IeP"/>
                 <outlet property="passwordLengthText" destination="S5l-1X-1uf" id="efG-ym-ew5"/>
                 <outlet property="passwordStrengthLevel" destination="NML-Rl-bwo" id="9Di-7u-P50"/>
                 <outlet property="passwordTypeTab" destination="D7G-rB-QOb" id="rp6-xC-Dol"/>
@@ -110,13 +109,6 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1NU-p7-2hR">
-                                        <rect key="frame" x="22" y="74" width="19" height="27"/>
-                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="Ln3-Gy-htR"/>
-                                        <connections>
-                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="VAf-kG-Sqz"/>
-                                        </connections>
-                                    </stepper>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5l-1X-1uf">
                                         <rect key="frame" x="306" y="75" width="32" height="22"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="foV-9D-qPW">
@@ -251,13 +243,6 @@ C -Random Uppercase Character</string>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QAg-Wk-XuC">
-                                        <rect key="frame" x="22" y="76" width="19" height="27"/>
-                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="91b-8W-mpa"/>
-                                        <connections>
-                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="ju5-ab-nd6"/>
-                                        </connections>
-                                    </stepper>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85W-Ry-dAE">
                                         <rect key="frame" x="306" y="75" width="32" height="22"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="doM-rQ-Ate">
@@ -274,7 +259,7 @@ C -Random Uppercase Character</string>
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Passphrase" identifier="3" id="NPi-qA-3zW">
-                            <view key="view" id="r7Q-MH-tBN">
+                            <view key="view" ambiguous="YES" id="r7Q-MH-tBN">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -382,13 +367,6 @@ C -Random Uppercase Character</string>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Voe-8r-l8d">
-                                        <rect key="frame" x="22" y="72" width="19" height="27"/>
-                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="I6G-iO-FsF"/>
-                                        <connections>
-                                            <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="vZD-69-AlR"/>
-                                        </connections>
-                                    </stepper>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OoD-jh-PoF">
                                         <rect key="frame" x="306" y="75" width="32" height="22"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="ylU-g4-H8F">

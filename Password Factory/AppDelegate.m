@@ -99,6 +99,10 @@
         }
         
     } else {
+        self.window.titlebarAppearsTransparent = YES;
+        self.window.titleVisibility = NSWindowTitleHidden;
+        self.window.styleMask |= NSFullSizeContentViewWindowMask;
+        self.window.movableByWindowBackground = YES;
         //not a menu app so show the the window
         [self.window makeKeyAndOrderFront:self];
     }
