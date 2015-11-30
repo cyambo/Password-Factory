@@ -59,7 +59,8 @@
         i++;
     }
     //checking random password length setter
-    [self.mvc.passwordLengthSlider setIntegerValue:5];
+    self.mvc.passwordLengthSlider.floatValue = 5.0;
+    [self.mvc.passwordLengthSlider performClick:nil];
     [self.mvc changeLength:self.mvc.passwordLengthSlider];
     
     XCTAssertEqual(5, [self getPasswordFieldValue].length, @"Password not changed to 5");
@@ -68,6 +69,7 @@
     //checking random password length setter min
     //the min is 5 and if you make a setter less than 5 it will be 5
     [self.mvc.passwordLengthSlider setIntegerValue:4];
+    [self.mvc.passwordLengthSlider performClick:nil];
     [self.mvc changeLength:self.mvc.passwordLengthSlider];
     ;
     XCTAssertEqual(5, [self getPasswordFieldValue].length, @"Password not changed to 5");
@@ -76,6 +78,7 @@
     //checking random password length setter max
     //the max is 40 and if you make a setter more than 40 it will be 40
     [self.mvc.passwordLengthSlider setIntegerValue:41];
+    [self.mvc.passwordLengthSlider performClick:nil];
     [self.mvc changeLength:self.mvc.passwordLengthSlider];
     ;
     XCTAssertEqual(40, [self getPasswordFieldValue].length, @"Password not changed to 40");
@@ -125,9 +128,11 @@
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:2];
     
     [self.mvc.passwordLengthSlider setIntegerValue:5];
+    [self.mvc.passwordLengthSlider performClick:nil];
     [self.mvc changeLength:self.mvc.passwordLengthSlider];
     NSString *currPassword = [self getPasswordFieldValue];
     [self.mvc.passwordLengthSlider setIntegerValue:10];
+    [self.mvc.passwordLengthSlider performClick:nil];
     [self.mvc changeLength:self.mvc.passwordLengthSlider];
     XCTAssertNotEqual(currPassword, [self getPasswordFieldValue], @"Password not changed when pronounceable slider changed");
     XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Pronounceable length 5 not less than length 10");
