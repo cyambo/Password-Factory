@@ -11,7 +11,7 @@
 #import "StatusBarType.h"
 @interface StatusView ()
 @property (nonatomic, assign) BOOL willClose;
-@property (nonatomic, strong) NSPopover *popover;
+
 @property (nonatomic, strong) MasterViewController *mvc;
 @end
 @implementation StatusView
@@ -19,11 +19,7 @@
 -(id)initWithMvc:(MasterViewController *)mvc {
     self = [super init];
     self.mvc = mvc;
-    //popover
-    if (STATUS_MENU_TYPE == PFStatusPopover) {
-        self.willClose = NO;
-        [self _setupPopover];
-    }
+
 
     
     
@@ -38,9 +34,7 @@
     //fills in blue if the item is clicked - stays that way until close
     BOOL itemClicked = NO;
     switch (STATUS_MENU_TYPE) {
-        case PFStatusPopover:
-            itemClicked = ![self.popover isShown] || self.willClose;
-            break;
+
         case PFStatusWindow:
             itemClicked = ![[(AppDelegate *)[NSApp delegate] window] isVisible];
             break;
@@ -68,18 +62,7 @@
 - (void)mouseDown:(NSEvent *)event {
     NSLog(@"Mouse down event");
     
-    if (STATUS_MENU_TYPE == PFStatusPopover) {
-        if (![self.popover isShown]) {
-            
-            
-            [self.popover showRelativeToRect:self.frame
-                                      ofView:self
-                               preferredEdge:NSMinYEdge];
-            
-        } else {
-            [self.popover performClose:self];
-        }
-    } else {
+    if (STATUS_MENU_TYPE == PFStatusWindow) {
         NSWindow *currWindow = [(AppDelegate *)[NSApp delegate] window];
         //simple toggle if window is visible
         if (![currWindow isVisible]){
@@ -101,40 +84,19 @@
         } else {
             [currWindow close];
         }
-    }
+        
 
-    [self setNeedsDisplay:YES];
+        [self setNeedsDisplay:YES];
+    }
     
 }
 -(BOOL)isVisible {
-    if (STATUS_MENU_TYPE == PFStatusPopover) {
-        return [self.popover isShown];
-    } else if (STATUS_MENU_TYPE == PFStatusWindow) {
+    if (STATUS_MENU_TYPE == PFStatusWindow) {
         NSWindow *currWindow = [(AppDelegate *)[NSApp delegate] window];
         return [currWindow isVisible];
     }
     return NO;
 }
-- (void)_setupPopover
-{
-    if (!self.popover) {
-        self.popover = [[NSPopover alloc] init];
-        self.popover.contentViewController = self.mvc;
-        self.popover.contentSize = (CGSize)self.mvc.view.frame.size;
-        self.popover.behavior = NSPopoverBehaviorTransient;
-        [self.popover setDelegate:self];
-    }
-}
-//using willClose and didClose because without willClose the status icon
-//change happens after close which looks weird, willClose makes it disappear immediately
--(void)popoverWillClose:(NSNotification *)notification {
-    self.willClose = YES;
-    [self setNeedsDisplay:YES];
-}
--(void)popoverDidClose:(NSNotification *)notification {
-    self.willClose = NO;
-    NSLog(@"CLOSEEEE");
-    [self setNeedsDisplay:YES];
-}
+
 
 @end

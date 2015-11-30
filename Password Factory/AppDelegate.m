@@ -13,7 +13,8 @@
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
-
+@property (nonatomic, strong) NSPopover *popover;
+@property (nonatomic, strong) NSEvent *popoverEvent;
 @end
 @implementation AppDelegate
 
@@ -41,7 +42,7 @@
             case PFStatusWindow: //uses view as dropdown
                 {
                     [self.window setStyleMask:NSBorderlessWindowMask];
-                    SEL closeSelector = @selector(closeWindow);
+                    SEL closeSelector = @selector(closePopover:);
                     NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
                     
                     
@@ -90,9 +91,27 @@
                 break;
             case PFStatusPopover:
                 {
+                    self.popover = [[NSPopover alloc] init];
+                    self.popover.contentViewController = self.masterViewController;
+                    self.popover.contentSize = (CGSize)self.masterViewController.view.frame.size;
+                    self.popover.behavior = NSPopoverBehaviorTransient;
                     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-                    self.statusView = [[StatusView alloc] initWithMvc:self.masterViewController]; //square item
-                    [self.statusItem setView:self.statusView];
+                    
+                    NSImage *statusImage = [StyleKit imageOfMenuIcon];
+                    [statusImage setTemplate:YES]; //setting it as a template will automatically change it based upon menu appearance, ie dark mode
+                    self.statusItem.button.image = statusImage;
+                    self.statusItem.highlightMode = YES;
+
+                    
+                    self.statusItem.button.action = @selector(togglePopover:);
+                    
+                    //Registering for events so the popover can be closed when we click outside the window
+                    self.popoverEvent = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDown
+                                                                               handler:^(NSEvent *event) {
+                                                                                   if (self.popover.shown) {
+                                                                                       [self closePopover:event];
+                                                                                   }
+                    }];
                 }
                 break;
 
@@ -109,15 +128,26 @@
 
 
 }
-
+-(IBAction)togglePopover:(id)sender {
+    if (self.popover.shown) {
+        [self closePopover:sender];
+    } else {
+        [self showPopover:sender];
+    }
+    
+}
+-(void)showPopover:(id)sender {
+    NSButton *b = (NSButton *)self.statusItem.button;
+    [self.popover showRelativeToRect:b.bounds ofView:self.statusItem.button preferredEdge:NSRectEdgeMinY];
+}
+-(void)closePopover:(id)sender {
+    [self.popover performClose:sender];
+}
 -(void)applicationWillTerminate:(NSNotification *)notification {
     //Sync preferences when closing
     [PreferencesWindowController syncSharedDefaults];
 }
--(void)closeWindow {
-    [self.window close];
-    [self.statusView setNeedsDisplay:YES];
-}
+
 
 - (IBAction)loadPrefrences:(id)sender {
     [self.prefsWindowController showWindow:self];
