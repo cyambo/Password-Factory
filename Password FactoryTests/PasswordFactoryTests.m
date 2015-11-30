@@ -28,6 +28,38 @@ const int LONG_PASSWORD_LENGTH = 100;
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
+- (void)testGeneratePassphrase {
+
+    self.pg.passwordLength = LONG_PASSWORD_LENGTH;
+    NSDictionary *regexSep = @{
+                            @PFPassphraseHyphenSeparator:@"-?",
+                            @PFPassphraseSpaceSeparator:@"\\s?",
+                            @PFPassphraseUnderscoreSeparator:@"_?",
+                            @PFPassphraseNoSeparator:@"",
+
+                           };
+    NSDictionary *regexCase = @{
+
+                             @PFPassphraseLowerCase:@"[a-z]+",
+                             @PFPassphraseTitleCase:@"[A-Z][a-z]+",
+                             @PFPassphraseUpperCase:@"[A-Z]+",
+                             @PFPassphraseMixedCase:@"[a-zA-Z]"
+                             };
+    for (NSNumber *rSeparator in [regexSep allKeys]) {
+        for(NSNumber *rCase in [regexCase allKeys]) {
+            NSString *regex = [NSString stringWithFormat:@"(%@%@)+",regexCase[rCase],regexSep[rSeparator]];
+            NSString *errorMessage = [NSString stringWithFormat:@"Regex %@ failed for generatePassphhrase:%@:%@",regex,rSeparator,rCase];
+            
+            [self regexReplaceTest:regex errorMessage:errorMessage generateBlock:^NSString *{
+                return [self.pg generatePassphraseWithCode:[rSeparator intValue] caseType:[rCase intValue]];
+            }];
+        }
+    }
+ 
+
+                              
+                             
+}
 - (void)testGeneratePronounceable {
     self.pg.passwordLength = LONG_PASSWORD_LENGTH;
     

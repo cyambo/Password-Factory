@@ -190,6 +190,24 @@ static NSArray* phoeneticSoundsThree;
     }
     return [self removeTrailingSeparator:p separator:separator];
 }
+-(NSString *)generatePassphraseWithCode:(int)separatorCode caseType:(int)caseType {
+    NSString *sep = @"";
+    switch (separatorCode) {
+        case PFPassphraseHyphenSeparator:
+            sep = @"-";
+            break;
+        case PFPassphraseSpaceSeparator:
+            sep = @" ";
+            break;
+        case PFPassphraseNoSeparator:
+            sep = @"";
+            break;
+        case PFPassphraseUnderscoreSeparator:
+            sep = @"_";
+            break;
+    }
+    return [self generatePassphrase:sep caseType:caseType];
+}
 /**
  *  Gets a word from our dictionary to fit the length remaining in passphrase
  *

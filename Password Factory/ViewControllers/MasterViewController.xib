@@ -193,7 +193,7 @@ C -Random Uppercase Character</string>
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Pronounceable" identifier="2" id="Jox-n0-Kcz">
-                            <view key="view" ambiguous="YES" id="HQx-iP-Ml6">
+                            <view key="view" id="HQx-iP-Ml6">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -278,7 +278,7 @@ C -Random Uppercase Character</string>
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Passphrase" identifier="3" id="NPi-qA-3zW">
-                            <view key="view" id="r7Q-MH-tBN">
+                            <view key="view" ambiguous="YES" id="r7Q-MH-tBN">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>

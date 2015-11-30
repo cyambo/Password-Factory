@@ -19,4 +19,5 @@
 - (NSString *)generatePattern: (NSString *)pattern;
 
 - (NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType;
+- (NSString *)generatePassphraseWithCode:(int)separatorCode caseType:(int)caseType ;
 @end

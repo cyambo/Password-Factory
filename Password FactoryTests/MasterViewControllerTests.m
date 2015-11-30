@@ -135,7 +135,7 @@
     [self.mvc.passwordLengthSlider performClick:nil];
     [self.mvc changeLength:self.mvc.passwordLengthSlider];
     XCTAssertNotEqual(currPassword, [self getPasswordFieldValue], @"Password not changed when pronounceable slider changed");
-    XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Pronounceable length 5 not less than length 10");
+    XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Pronounceable length should increase to about 10 from about 5");
     
     //testing radio mappings
     [self pronounceableRadioPress:PFPronounceableNoSeparator];
@@ -153,6 +153,29 @@
         currPassword = [self getPasswordFieldValue];
     }
 }
+- (void)testPassphrase {
+    [self.mvc.passwordTypeTab selectTabViewItemAtIndex:3];
+    [self.mvc.passwordLengthSlider setIntegerValue:5];
+    [self.mvc.passwordLengthSlider performClick:nil];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
+    NSString *currPassword = [self getPasswordFieldValue];
+    [self.mvc.passwordLengthSlider setIntegerValue:10];
+    [self.mvc.passwordLengthSlider performClick:nil];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
+    XCTAssertNotEqual(currPassword, [self getPasswordFieldValue], @"Password not changed when passphrase slider changed");
+    XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Passphrase length should increase to about 10 from about 5");
+    currPassword = [self getPasswordFieldValue];
+    for (int i = 0 ; i <= 3 ; i++) {
+        for (int j = 0 ; j <= 3 ; j++) {
+            [self.mvc.passphraseCaseRadio selectCellWithTag:i];
+            [self.mvc.passphraseSeparatorRadio selectCellWithTag:j];
+            [self.mvc.passphraseSeparatorRadio performClick:nil];
+            [self.mvc.passphraseCaseRadio performClick:nil];
+            XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]], @"Passphrase Password Field not updated when case:%d or separator:%d radio is pressed",i,j);
+            currPassword = [self getPasswordFieldValue];
+        }
+    }
+}
 - (void)testStrengthMeter {
     self.mvc.passwordValue = @"1";
     [self.mvc setPasswordStrength];
@@ -160,6 +183,7 @@
     self.mvc.passwordValue = [self.mvc.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES];
     [self.mvc setPasswordStrength];
     XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.floatValue, @"Password strength meter not updated with change");
+
 }
 
 -(void)testChangeTab {
