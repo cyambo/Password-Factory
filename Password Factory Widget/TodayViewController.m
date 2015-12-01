@@ -19,6 +19,17 @@
 
 @implementation TodayViewController
 
+- (void)viewWillAppear {
+    if(!self.factory) {
+        self.factory = [[PasswordFactory alloc] init];
+    }
+    [self changeLabel];
+
+    [self generatePassword];
+}
+-(void)viewDidLayout {
+    [self changeLabel];
+}
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
     // Update your data and prepare for a snapshot. Call completion handler when you are done
     // with NoData if nothing has changed or NewData if there is new data since the last
@@ -57,6 +68,30 @@
         }
     }
 }
+- (void)changeLabel {
+    NSUserDefaults *sd = [DefaultsManager sharedDefaults];
+    int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
+    
+    
+    NSString *label;
+
+    switch(index) {
+        case PFTabRandom:
+            label = @"Random";
+            break;
+        case PFTabPattern:
+            label = @"Pattern";
+            break;
+        case PFTabPronounceable:
+            label = @"Pronounceable";
+            break;
+        case PFTabPassphrase:
+            label = @"Passphrase";
+            break;
+            
+    }
+    [self.passwordType setStringValue:label];
+}
 - (void)clearClipboard {
     [self updatePasteboard:@""];
 }
@@ -80,6 +115,7 @@
 }
 
 -(void)generatePassword {
+    
     if(!self.factory) {
         self.factory = [[PasswordFactory alloc] init];
     }
@@ -115,6 +151,7 @@
 
             break;
     }
+    [self changeLabel];
     [self updateStrength:password];
     [self.passwordField setStringValue:password];
  }

@@ -13,11 +13,12 @@
 - (IBAction)generatePassword:(id)sender;
 - (IBAction)copyPassword:(id)sender;
 - (IBAction)backToApp:(id)sender;
-- (IBAction)changePasswordType:(id)sender;
-@property (weak) IBOutlet NSMatrix *passwordType;
+
+
 @property (weak) IBOutlet StrengthBox *strengthBox;
 
 
+@property (weak) IBOutlet NSTextField *passwordType;
 
 
 

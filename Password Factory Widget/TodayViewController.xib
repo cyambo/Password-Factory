@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
             <connections>
                 <outlet property="passwordField" destination="3ob-i2-V6T" id="bht-2e-R8v"/>
+                <outlet property="passwordType" destination="s57-gu-QtJ" id="f3J-aa-kTV"/>
                 <outlet property="strengthBox" destination="9Gx-gN-5HI" id="pez-fA-gns"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -17,9 +18,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
             <subviews>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
-                    <rect key="frame" x="20" y="51" width="280" height="22"/>
+                    <rect key="frame" x="135" y="51" width="165" height="22"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title=" " drawsBackground="YES" id="k2G-xb-uyj">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title=" " drawsBackground="YES" id="k2G-xb-uyj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -70,6 +71,15 @@
                         <action selector="generatePassword:" target="-2" id="gE5-1R-7Zn"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s57-gu-QtJ">
+                    <rect key="frame" x="18" y="54" width="109" height="17"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Pronounceable" id="3Gx-C0-db1">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="2Cf-Dr-5Sf"/>
@@ -77,21 +87,24 @@
                 <constraint firstItem="9Gx-gN-5HI" firstAttribute="trailing" secondItem="3ob-i2-V6T" secondAttribute="trailing" id="2mZ-R9-Ezz"/>
                 <constraint firstItem="9Gx-gN-5HI" firstAttribute="leading" secondItem="cOE-n1-oHo" secondAttribute="trailing" constant="8" id="59V-Cu-h5v"/>
                 <constraint firstItem="d86-9W-hIU" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="5y3-uT-Cla"/>
+                <constraint firstItem="s57-gu-QtJ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="24" id="Aef-z7-Rxu"/>
                 <constraint firstItem="3ob-i2-V6T" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="Cqs-ZU-veq"/>
-                <constraint firstItem="d86-9W-hIU" firstAttribute="leading" secondItem="3ob-i2-V6T" secondAttribute="leading" id="FG3-gW-9a6"/>
-                <constraint firstItem="3ob-i2-V6T" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="FLz-KR-EaG"/>
                 <constraint firstAttribute="trailing" secondItem="3ob-i2-V6T" secondAttribute="trailing" constant="20" id="GA4-OA-zqa"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="leading" secondItem="d86-9W-hIU" secondAttribute="trailing" constant="10" id="ITH-dR-88u"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="width" secondItem="d86-9W-hIU" secondAttribute="width" id="JRN-PQ-qhF"/>
                 <constraint firstAttribute="bottom" secondItem="4Ya-Xk-p8m" secondAttribute="bottom" constant="20" id="TKl-EI-jz8"/>
+                <constraint firstItem="s57-gu-QtJ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Tn7-UI-8bV"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="leading" secondItem="d86-9W-hIU" secondAttribute="trailing" constant="10" id="VNN-Cm-iwU"/>
+                <constraint firstItem="4Ya-Xk-p8m" firstAttribute="leading" secondItem="3ob-i2-V6T" secondAttribute="leading" id="Vra-C1-1c5"/>
                 <constraint firstItem="cOE-n1-oHo" firstAttribute="leading" secondItem="4Ya-Xk-p8m" secondAttribute="trailing" constant="10" id="bpm-sY-G3i"/>
+                <constraint firstItem="d86-9W-hIU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="el0-59-G1t"/>
                 <constraint firstAttribute="bottom" secondItem="d86-9W-hIU" secondAttribute="bottom" constant="20" id="jIu-cK-XkS"/>
                 <constraint firstItem="cOE-n1-oHo" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="ndB-kX-jIw"/>
+                <constraint firstItem="d86-9W-hIU" firstAttribute="width" secondItem="s57-gu-QtJ" secondAttribute="width" id="rQW-m1-qdO"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="tNe-bc-Koi"/>
             </constraints>
             <animations/>
-            <point key="canvasLocation" x="665" y="367.5"/>
+            <point key="canvasLocation" x="382" y="279.5"/>
         </customView>
     </objects>
 </document>
