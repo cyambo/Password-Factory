@@ -12,6 +12,7 @@
 #import "PreferencesWindowController.h"
 #import "AppDelegate.h"
 #import "constants.h"
+#import "DefaultsManager.h"
 int const  GenerateAndCopyLoops  = 10;
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
@@ -216,10 +217,10 @@ int const  GenerateAndCopyLoops  = 10;
             self.passwordValue = [self.pg generatePattern:self.patternText.stringValue];
             break;
         case 2: //pronounceable
-            self.passwordValue = [self.pg generatePronounceableWithSeparatorType:[self getPronounceableSeparatorCode]];
+            self.passwordValue = [self.pg generatePronounceableWithSeparatorType:[self getPronounceableSeparatorType]];
             break;
         case 3: //passphrase:
-            self.passwordValue = [self.pg generatePassphrase:[self getPassphraseSeparator] caseType:[self getPassphraseCaseType]];
+            self.passwordValue = [self.pg generatePassphraseWithCode:[self getPassphraseSeparatorType] caseType:[self getPassphraseCaseType]];
             break;
     }
     [self updatePasswordField];
@@ -227,30 +228,24 @@ int const  GenerateAndCopyLoops  = 10;
     
     
 }
-- (NSString *)getPassphraseSeparator {
-    int separatorCode = (int)[(NSButtonCell *)[self.passphraseSeparatorRadio selectedCell] tag];
-    switch (separatorCode) {
-        case PFPassphraseHyphenSeparator:
-            return @"-";
-            break;
-        case PFPassphraseSpaceSeparator:
-            return @" ";
-            break;
-        case PFPassphraseNoSeparator:
-            return @"";
-            break;
-        case PFPassphraseUnderscoreSeparator:
-            return @"_";
-            break;
-    }
-    return @"";
+//When getting the radio selections, the tag is added to the shared defaults
+//because the bindings do not use tags, they use the position value
+- (int)getPassphraseSeparatorType {
+    int type = (int)[(NSButtonCell *)[self.passphraseSeparatorRadio selectedCell] tag];
+    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"passphraseSeparatorTagShared"];
+
+    return type;
+    
 }
 - (int)getPassphraseCaseType {
-    //the casetype is stored in the tag and matches the constants in constants.h
-    return (int)[(NSButtonCell *)[self.passphraseCaseRadio selectedCell] tag];
+    int type = (int)[(NSButtonCell *)[self.passphraseCaseRadio selectedCell] tag];
+    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"passphraseCaseTypeTagShared"];
+    return type;
 }
-- (int)getPronounceableSeparatorCode {
-    return  (int)[(NSButtonCell *)[self.pronounceableSeparatorRadio selectedCell] tag];
+- (int)getPronounceableSeparatorType {
+    int type = (int)[(NSButtonCell *)[self.pronounceableSeparatorRadio selectedCell] tag];
+    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"pronounceableSeparatorTagShared"];
+    return  type;
 
 }
 

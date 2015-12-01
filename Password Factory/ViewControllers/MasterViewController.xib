@@ -57,11 +57,11 @@
                     <tabViewItems>
                         <tabViewItem label="Random" identifier="0" id="zr5-iB-5I9">
                             <view key="view" id="TTS-Hg-P6L">
-                                <rect key="frame" x="10" y="33" width="261" height="0.0"/>
+                                <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-Qg-3Sd">
-                                        <rect key="frame" x="37" y="-51" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="54" width="304" height="18"/>
                                         <animations/>
                                         <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XDj-Cb-rZ3">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -73,7 +73,7 @@
                                         </connections>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAm-zY-Nsw">
-                                        <rect key="frame" x="37" y="-71" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="34" width="304" height="18"/>
                                         <animations/>
                                         <buttonCell key="cell" type="check" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OPh-WO-qZF">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -85,7 +85,7 @@
                                         </connections>
                                     </button>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2y-v2-bIT">
-                                        <rect key="frame" x="37" y="-91" width="304" height="18"/>
+                                        <rect key="frame" x="37" y="14" width="304" height="18"/>
                                         <animations/>
                                         <buttonCell key="cell" type="check" title="Avoid Ambiguous Characters" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yrh-pS-CML">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -97,7 +97,7 @@
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fc-DjX">
-                                        <rect key="frame" x="88" y="-26" width="224" height="21"/>
+                                        <rect key="frame" x="88" y="79" width="224" height="21"/>
                                         <animations/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.10088900862069" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mGh-qr-LNC">
                                             <connections>
@@ -109,7 +109,7 @@
                                         </connections>
                                     </slider>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yhn-Xd-r0K">
-                                        <rect key="frame" x="37" y="-23" width="47" height="17"/>
+                                        <rect key="frame" x="37" y="82" width="47" height="17"/>
                                         <animations/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="0Xj-5v-hJb">
                                             <font key="font" metaFont="system"/>
@@ -118,7 +118,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5l-1X-1uf">
-                                        <rect key="frame" x="306" y="-30" width="32" height="22"/>
+                                        <rect key="frame" x="306" y="75" width="32" height="22"/>
                                         <animations/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="foV-9D-qPW">
                                             <font key="font" metaFont="system"/>
@@ -193,7 +193,7 @@ C -Random Uppercase Character</string>
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Pronounceable" identifier="2" id="Jox-n0-Kcz">
-                            <view key="view" id="HQx-iP-Ml6">
+                            <view key="view" ambiguous="YES" id="HQx-iP-Ml6">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -239,7 +239,7 @@ C -Random Uppercase Character</string>
                                         </cells>
                                         <connections>
                                             <action selector="pressPrononunceableRadio:" target="-2" id="rFv-Nt-qig"/>
-                                            <binding destination="2ia-xi-Rdb" name="selectedIndex" keyPath="values.pronounceableSeparator" id="YpX-hX-8XW"/>
+                                            <binding destination="2ia-xi-Rdb" name="selectedIndex" keyPath="values.pronounceableSeparator" id="n9Y-u9-PFk"/>
                                         </connections>
                                     </matrix>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WN8-xU-zDN">
@@ -278,7 +278,7 @@ C -Random Uppercase Character</string>
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Passphrase" identifier="3" id="NPi-qA-3zW">
-                            <view key="view" ambiguous="YES" id="r7Q-MH-tBN">
+                            <view key="view" id="r7Q-MH-tBN">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
