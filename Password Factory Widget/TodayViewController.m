@@ -77,16 +77,16 @@
 
     switch(index) {
         case PFTabRandom:
-            label = @"Random";
+            label = @"Random:";
             break;
         case PFTabPattern:
-            label = @"Pattern";
+            label = @"Pattern:";
             break;
         case PFTabPronounceable:
-            label = @"Pronounceable";
+            label = @"Pronounceable:";
             break;
         case PFTabPassphrase:
-            label = @"Passphrase";
+            label = @"Passphrase:";
             break;
             
     }
@@ -103,7 +103,7 @@
     if (!ok) { NSLog(@"Write to pasteboard failed");}
 }
 - (IBAction)backToApp:(id)sender {
-    NSURL *u = [[NSURL alloc] initWithString:@"c13PasswordFactory://"];
+    NSURL *u = [[NSURL alloc] initWithString:@"com-cloud13-password-factory://settings"];
     [self.extensionContext openURL:u completionHandler:^(BOOL success) {
         NSLog(@"C");
     }];
@@ -157,21 +157,22 @@
  }
 -(void)updateStrength:(NSString *)password {
     BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:password];
-    NSString *type = [(NSButtonCell *)self.passwordType.selectedCell title];
+    NSUserDefaults *sd = [DefaultsManager sharedDefaults];
+    
+    
+    int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
     //playing around with numbers to make a good scale
     double ct = log10(strength.crackTime);
     //tweaking output based on password type
-    if ([type isEqualToString:@"Random"]) {
+    if (index == PFTabRandom) {
         ct = (ct/40)*100;
-    } else if ([type isEqualToString:@"Pattern"]) {
+    } else if (index == PFTabPassphrase) {
         ct = (ct/20)*100;
         
     } else {
         ct = (ct/40)*100;
     }
 
-    
-    
     if (ct > 100) {ct = 100;}
     [self.strengthBox updateStrength:ct];
 }

@@ -17,7 +17,7 @@
         <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
             <subviews>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
+                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
                     <rect key="frame" x="135" y="51" width="165" height="22"/>
                     <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title=" " drawsBackground="YES" id="k2G-xb-uyj">
@@ -71,7 +71,7 @@
                         <action selector="generatePassword:" target="-2" id="gE5-1R-7Zn"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s57-gu-QtJ">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s57-gu-QtJ">
                     <rect key="frame" x="18" y="54" width="109" height="17"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Pronounceable" id="3Gx-C0-db1">
@@ -91,16 +91,15 @@
                 <constraint firstItem="3ob-i2-V6T" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="Cqs-ZU-veq"/>
                 <constraint firstAttribute="trailing" secondItem="3ob-i2-V6T" secondAttribute="trailing" constant="20" id="GA4-OA-zqa"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="leading" secondItem="d86-9W-hIU" secondAttribute="trailing" constant="10" id="ITH-dR-88u"/>
+                <constraint firstItem="3ob-i2-V6T" firstAttribute="leading" secondItem="s57-gu-QtJ" secondAttribute="trailing" constant="10" id="Ijd-9N-x8g"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="width" secondItem="d86-9W-hIU" secondAttribute="width" id="JRN-PQ-qhF"/>
                 <constraint firstAttribute="bottom" secondItem="4Ya-Xk-p8m" secondAttribute="bottom" constant="20" id="TKl-EI-jz8"/>
                 <constraint firstItem="s57-gu-QtJ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Tn7-UI-8bV"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="leading" secondItem="d86-9W-hIU" secondAttribute="trailing" constant="10" id="VNN-Cm-iwU"/>
-                <constraint firstItem="4Ya-Xk-p8m" firstAttribute="leading" secondItem="3ob-i2-V6T" secondAttribute="leading" id="Vra-C1-1c5"/>
                 <constraint firstItem="cOE-n1-oHo" firstAttribute="leading" secondItem="4Ya-Xk-p8m" secondAttribute="trailing" constant="10" id="bpm-sY-G3i"/>
                 <constraint firstItem="d86-9W-hIU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="el0-59-G1t"/>
                 <constraint firstAttribute="bottom" secondItem="d86-9W-hIU" secondAttribute="bottom" constant="20" id="jIu-cK-XkS"/>
                 <constraint firstItem="cOE-n1-oHo" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="ndB-kX-jIw"/>
-                <constraint firstItem="d86-9W-hIU" firstAttribute="width" secondItem="s57-gu-QtJ" secondAttribute="width" id="rQW-m1-qdO"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="tNe-bc-Koi"/>
             </constraints>
             <animations/>
