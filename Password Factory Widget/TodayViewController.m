@@ -104,9 +104,7 @@
 }
 - (IBAction)backToApp:(id)sender {
     NSURL *u = [[NSURL alloc] initWithString:@"com-cloud13-password-factory://settings"];
-    [self.extensionContext openURL:u completionHandler:^(BOOL success) {
-        NSLog(@"C");
-    }];
+    [[NSWorkspace sharedWorkspace] openURL:u];
 
 }
 

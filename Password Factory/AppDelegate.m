@@ -158,6 +158,23 @@
     //if it is a menuApp then don't kill app when window is closed
     return ![[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"];
 }
+
+-(void)applicationWillFinishLaunching:(NSNotification *)aNotification
+{
+    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
+    [appleEventManager setEventHandler:self
+                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+                         forEventClass:kInternetEventClass andEventID:kAEGetURL];
+}
+
+- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
+{
+    NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
+    if([url.host isEqualToString:@"settings"]) {
+        [self loadPrefrences:nil];
+    }
+}
+
 #pragma mark Util
 +(BOOL)isDarkMode {
     NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
