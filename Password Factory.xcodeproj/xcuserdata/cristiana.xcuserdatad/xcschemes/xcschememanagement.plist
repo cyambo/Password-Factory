@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Password Factory iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Password Factory.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +22,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>40511CFA1C10C960005BE5BE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>40511D0F1C10C960005BE5BE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>409E13B71B8258170041541B</key>
 		<dict>
 			<key>primary</key>
