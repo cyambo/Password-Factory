@@ -14,10 +14,13 @@
 		40511D071C10C960005BE5BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40511D061C10C960005BE5BE /* Assets.xcassets */; };
 		40511D0A1C10C960005BE5BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40511D081C10C960005BE5BE /* LaunchScreen.storyboard */; };
 		40511D151C10C960005BE5BE /* Password_Factory_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D141C10C960005BE5BE /* Password_Factory_iOSUITests.swift */; };
-		40511D1E1C121BB2005BE5BE /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D1D1C121BB2005BE5BE /* RandomViewController.swift */; };
-		40511D201C121BC0005BE5BE /* PatternViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D1F1C121BC0005BE5BE /* PatternViewController.swift */; };
-		40511D221C121BCB005BE5BE /* PassphraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D211C121BCB005BE5BE /* PassphraseViewController.swift */; };
-		40511D241C121BDE005BE5BE /* PronounceableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D231C121BDE005BE5BE /* PronounceableViewController.swift */; };
+		40511D261C124F07005BE5BE /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
+		40511D271C124F09005BE5BE /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
+		40511D291C124F7E005BE5BE /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D281C124F7E005BE5BE /* RandomViewController.swift */; };
+		40511D2B1C124F8B005BE5BE /* PassphraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D2A1C124F8B005BE5BE /* PassphraseViewController.swift */; };
+		40511D2D1C124F9A005BE5BE /* PatternViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D2C1C124F9A005BE5BE /* PatternViewController.swift */; };
+		40511D2F1C124FA6005BE5BE /* PronounceableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D2E1C124FA6005BE5BE /* PronounceableViewController.swift */; };
+		40511D321C125097005BE5BE /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
 		406C388A1B844D0100F471E7 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
@@ -122,10 +125,11 @@
 		40511D101C10C960005BE5BE /* Password Factory iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Factory iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40511D141C10C960005BE5BE /* Password_Factory_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Factory_iOSUITests.swift; sourceTree = "<group>"; };
 		40511D161C10C960005BE5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40511D1D1C121BB2005BE5BE /* RandomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
-		40511D1F1C121BC0005BE5BE /* PatternViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternViewController.swift; sourceTree = "<group>"; };
-		40511D211C121BCB005BE5BE /* PassphraseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseViewController.swift; sourceTree = "<group>"; };
-		40511D231C121BDE005BE5BE /* PronounceableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronounceableViewController.swift; sourceTree = "<group>"; };
+		40511D281C124F7E005BE5BE /* RandomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
+		40511D2A1C124F8B005BE5BE /* PassphraseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseViewController.swift; sourceTree = "<group>"; };
+		40511D2C1C124F9A005BE5BE /* PatternViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternViewController.swift; sourceTree = "<group>"; };
+		40511D2E1C124FA6005BE5BE /* PronounceableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronounceableViewController.swift; sourceTree = "<group>"; };
+		40511D331C12512C005BE5BE /* Password Factory iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Password Factory iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
 		409585C81B8112D600393B99 /* MasterViewControllerTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTestClass.h; sourceTree = "<group>"; };
 		409585C91B8112D600393B99 /* MasterViewControllerTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTestClass.m; sourceTree = "<group>"; };
@@ -241,13 +245,14 @@
 			children = (
 				40511CFD1C10C960005BE5BE /* AppDelegate.swift */,
 				40511D031C10C960005BE5BE /* Main.storyboard */,
-				40511D1D1C121BB2005BE5BE /* RandomViewController.swift */,
-				40511D1F1C121BC0005BE5BE /* PatternViewController.swift */,
-				40511D211C121BCB005BE5BE /* PassphraseViewController.swift */,
 				40511D061C10C960005BE5BE /* Assets.xcassets */,
 				40511D081C10C960005BE5BE /* LaunchScreen.storyboard */,
 				40511D0B1C10C960005BE5BE /* Info.plist */,
-				40511D231C121BDE005BE5BE /* PronounceableViewController.swift */,
+				40511D281C124F7E005BE5BE /* RandomViewController.swift */,
+				40511D331C12512C005BE5BE /* Password Factory iOS-Bridging-Header.h */,
+				40511D2A1C124F8B005BE5BE /* PassphraseViewController.swift */,
+				40511D2C1C124F9A005BE5BE /* PatternViewController.swift */,
+				40511D2E1C124FA6005BE5BE /* PronounceableViewController.swift */,
 			);
 			path = "Password Factory iOS";
 			sourceTree = "<group>";
@@ -831,10 +836,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40511D221C121BCB005BE5BE /* PassphraseViewController.swift in Sources */,
-				40511D201C121BC0005BE5BE /* PatternViewController.swift in Sources */,
-				40511D1E1C121BB2005BE5BE /* RandomViewController.swift in Sources */,
-				40511D241C121BDE005BE5BE /* PronounceableViewController.swift in Sources */,
+				40511D2F1C124FA6005BE5BE /* PronounceableViewController.swift in Sources */,
+				40511D2B1C124F8B005BE5BE /* PassphraseViewController.swift in Sources */,
+				40511D291C124F7E005BE5BE /* RandomViewController.swift in Sources */,
+				40511D321C125097005BE5BE /* PasswordFactory.m in Sources */,
+				40511D2D1C124F9A005BE5BE /* PatternViewController.swift in Sources */,
+				40511D271C124F09005BE5BE /* NSString+SymbolCase.m in Sources */,
+				40511D261C124F07005BE5BE /* NSString+RandomCase.m in Sources */,
 				40511CFE1C10C960005BE5BE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -966,6 +974,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nbcuni.Password-Factory-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory iOS/Password Factory iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -982,6 +991,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nbcuni.Password-Factory-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory iOS/Password Factory iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
