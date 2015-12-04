@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Random-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Random" id="9pv-A4-QxB" customClass="RandomViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -42,16 +42,16 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Random" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
-        <!--Second-->
+        <!--Pronounceable-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pronounceable" id="8rJ-Kc-sve" customClass="PronounceableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -85,7 +85,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Pronounceable" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,16 +105,18 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="T1P-mX-zdP" kind="relationship" relationship="viewControllers" id="CnT-JM-k9H"/>
+                        <segue destination="1zq-Wf-0Be" kind="relationship" relationship="viewControllers" id="efW-Lr-a9D"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Second-->
+        <!--Passphrase-->
         <scene sceneID="SQx-xi-hB4">
             <objects>
-                <viewController id="1zq-Wf-0Be" customClass="SecondViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Passphrase" id="1zq-Wf-0Be" customClass="PassphraseViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pdp-m1-U33"/>
                         <viewControllerLayoutGuide type="bottom" id="4Kx-VS-yjJ"/>
@@ -148,15 +150,54 @@
                             <constraint firstItem="kka-VH-Hef" firstAttribute="centerX" secondItem="LFQ-rd-Pih" secondAttribute="centerX" id="g2f-gC-tbk"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="ydZ-KB-yD1"/>
+                    <tabBarItem key="tabBarItem" title="Passphrase" id="ydZ-KB-yD1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inr-6F-eeQ" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="165" y="795"/>
         </scene>
+        <!--Pattern-->
+        <scene sceneID="1rL-D9-ZiR">
+            <objects>
+                <viewController title="Pattern" id="T1P-mX-zdP" customClass="PatternViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="leT-mz-MCy"/>
+                        <viewControllerLayoutGuide type="bottom" id="X7X-1x-vQs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a0i-N2-6w5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Pattern" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zq6-JO-JvO">
+                                <rect key="frame" x="242" y="279" width="117" height="42"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9y3-pf-Qmj">
+                                <rect key="frame" x="192" y="329" width="216" height="17"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Zq6-JO-JvO" secondAttribute="centerX" id="37l-To-Ndy"/>
+                            <constraint firstItem="9y3-pf-Qmj" firstAttribute="top" secondItem="Zq6-JO-JvO" secondAttribute="bottom" constant="8" symbolic="YES" id="AwR-oL-FmG"/>
+                            <constraint firstAttribute="centerY" secondItem="Zq6-JO-JvO" secondAttribute="centerY" id="b9s-Pg-Kwv"/>
+                            <constraint firstItem="9y3-pf-Qmj" firstAttribute="centerX" secondItem="Zq6-JO-JvO" secondAttribute="centerX" id="uok-2W-7XP"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Pattern" id="yLY-6E-3G9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UdZ-6p-BMM" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="786" y="776"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
-    </resources>
 </document>

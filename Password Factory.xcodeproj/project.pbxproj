@@ -10,12 +10,14 @@
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		40511CFE1C10C960005BE5BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511CFD1C10C960005BE5BE /* AppDelegate.swift */; };
-		40511D001C10C960005BE5BE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511CFF1C10C960005BE5BE /* FirstViewController.swift */; };
-		40511D021C10C960005BE5BE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D011C10C960005BE5BE /* SecondViewController.swift */; };
 		40511D051C10C960005BE5BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40511D031C10C960005BE5BE /* Main.storyboard */; };
 		40511D071C10C960005BE5BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40511D061C10C960005BE5BE /* Assets.xcassets */; };
 		40511D0A1C10C960005BE5BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40511D081C10C960005BE5BE /* LaunchScreen.storyboard */; };
 		40511D151C10C960005BE5BE /* Password_Factory_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D141C10C960005BE5BE /* Password_Factory_iOSUITests.swift */; };
+		40511D1E1C121BB2005BE5BE /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D1D1C121BB2005BE5BE /* RandomViewController.swift */; };
+		40511D201C121BC0005BE5BE /* PatternViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D1F1C121BC0005BE5BE /* PatternViewController.swift */; };
+		40511D221C121BCB005BE5BE /* PassphraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D211C121BCB005BE5BE /* PassphraseViewController.swift */; };
+		40511D241C121BDE005BE5BE /* PronounceableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D231C121BDE005BE5BE /* PronounceableViewController.swift */; };
 		405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
 		406C388A1B844D0100F471E7 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
@@ -115,8 +117,6 @@
 		4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyIntegerFormatter.m; sourceTree = "<group>"; };
 		40511CFB1C10C960005BE5BE /* Password Factory iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40511CFD1C10C960005BE5BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40511CFF1C10C960005BE5BE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		40511D011C10C960005BE5BE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		40511D041C10C960005BE5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40511D061C10C960005BE5BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40511D091C10C960005BE5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,6 +124,10 @@
 		40511D101C10C960005BE5BE /* Password Factory iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Factory iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40511D141C10C960005BE5BE /* Password_Factory_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Factory_iOSUITests.swift; sourceTree = "<group>"; };
 		40511D161C10C960005BE5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40511D1D1C121BB2005BE5BE /* RandomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
+		40511D1F1C121BC0005BE5BE /* PatternViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternViewController.swift; sourceTree = "<group>"; };
+		40511D211C121BCB005BE5BE /* PassphraseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseViewController.swift; sourceTree = "<group>"; };
+		40511D231C121BDE005BE5BE /* PronounceableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronounceableViewController.swift; sourceTree = "<group>"; };
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
 		409585C81B8112D600393B99 /* MasterViewControllerTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTestClass.h; sourceTree = "<group>"; };
 		409585C91B8112D600393B99 /* MasterViewControllerTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTestClass.m; sourceTree = "<group>"; };
@@ -243,12 +247,14 @@
 			isa = PBXGroup;
 			children = (
 				40511CFD1C10C960005BE5BE /* AppDelegate.swift */,
-				40511CFF1C10C960005BE5BE /* FirstViewController.swift */,
-				40511D011C10C960005BE5BE /* SecondViewController.swift */,
 				40511D031C10C960005BE5BE /* Main.storyboard */,
+				40511D1D1C121BB2005BE5BE /* RandomViewController.swift */,
+				40511D1F1C121BC0005BE5BE /* PatternViewController.swift */,
+				40511D211C121BCB005BE5BE /* PassphraseViewController.swift */,
 				40511D061C10C960005BE5BE /* Assets.xcassets */,
 				40511D081C10C960005BE5BE /* LaunchScreen.storyboard */,
 				40511D0B1C10C960005BE5BE /* Info.plist */,
+				40511D231C121BDE005BE5BE /* PronounceableViewController.swift */,
 			);
 			path = "Password Factory iOS";
 			sourceTree = "<group>";
@@ -837,9 +843,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40511D021C10C960005BE5BE /* SecondViewController.swift in Sources */,
+				40511D221C121BCB005BE5BE /* PassphraseViewController.swift in Sources */,
+				40511D201C121BC0005BE5BE /* PatternViewController.swift in Sources */,
+				40511D1E1C121BB2005BE5BE /* RandomViewController.swift in Sources */,
+				40511D241C121BDE005BE5BE /* PronounceableViewController.swift in Sources */,
 				40511CFE1C10C960005BE5BE /* AppDelegate.swift in Sources */,
-				40511D001C10C960005BE5BE /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1212,6 +1220,7 @@
 				40511D181C10C960005BE5BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		40511D1C1C10C960005BE5BE /* Build configuration list for PBXNativeTarget "Password Factory iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -1220,6 +1229,7 @@
 				40511D1A1C10C960005BE5BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		409E13CC1B8258170041541B /* Build configuration list for PBXNativeTarget "Password Factory Widget" */ = {
 			isa = XCConfigurationList;
