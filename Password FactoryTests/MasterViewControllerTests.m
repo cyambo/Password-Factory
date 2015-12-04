@@ -119,7 +119,7 @@
 
     [self.mvc.pronounceableSeparatorRadio selectCellWithTag:tag];
     [self.mvc pressPrononunceableRadio:self.mvc.pronounceableSeparatorRadio];
-    XCTAssertEqual(tag, [self.mvc getPronounceableSeparatorCode],@"Pronounceable radio should be clicked to tag %d",tag);
+    XCTAssertEqual(tag, [self.mvc getPronounceableSeparatorType],@"Pronounceable radio should be clicked to tag %d",tag);
 
 }
 -(void)testPronounceable {
@@ -149,7 +149,7 @@
     for (int i=0; i<=5; i++) {
         [self.mvc.pronounceableSeparatorRadio selectCellWithTag:i];
         [self.mvc pressPrononunceableRadio:self.mvc.pronounceableSeparatorRadio];
-        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]], @"Password Field not updated when %d radio is pressed",[self.mvc getPronounceableSeparatorCode]);
+        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]], @"Password Field not updated when %d radio is pressed",[self.mvc getPronounceableSeparatorType]);
         currPassword = [self getPasswordFieldValue];
     }
 }

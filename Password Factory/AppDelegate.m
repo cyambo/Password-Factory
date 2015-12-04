@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "StatusBarType.h"
 #import "PreferencesWindowController.h"
 #import "StyleKit.h"
 @interface AppDelegate()
@@ -36,86 +35,30 @@
         if([[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
             [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
         }
-        // Chooses which type of status menu we use, because each type had random bugs or crashers
-        // And I wanted to be able to switch between the three types, Window, Menu and Popover for testing
-        switch (STATUS_MENU_TYPE) {
-            case PFStatusWindow: //uses view as dropdown
-                {
-                    [self.window setStyleMask:NSBorderlessWindowMask];
-                    SEL closeSelector = @selector(closePopover:);
-                    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
-                    
-                    
-                    //registering for notifications so window can be hidden when clicked outside of window
-                    [notification addObserver:self
-                                     selector:closeSelector
-                                         name:NSWindowDidResignKeyNotification
-                                       object:self.window];
-                    
-                    [notification addObserver:self
-                                     selector:closeSelector
-                                         name:NSWindowDidResignMainNotification
-                                       object:self.window];
-                    
-                    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-                    self.statusView = [[StatusView alloc] initWithMvc:self.masterViewController]; //square
-                    
-            
-                    [self.statusItem setView:self.statusView];
-                }
-                break;
-            case PFStatusMenu: //uses menu for dropdown
-                {
-                    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-                    self.statusItem.title = @"";
-                    NSImage *statusImage = [StyleKit imageOfMenuIcon];
-                    [statusImage setTemplate:YES]; //setting it as a template will automatically change it based upon menu appearance, ie dark mode
-                    self.statusItem.image = statusImage;
-                    self.statusItem.highlightMode = YES;
-                    self.statusMenu = [[NSMenu alloc] initWithTitle:@""];
-                    self.statusMenu.autoenablesItems = NO;
-                    
-                    
-                    NSMenuItem* statusMenuItem;
-                    statusMenuItem = [[NSMenuItem alloc]
-                                      initWithTitle:@""
-                                      action:nil
-                                      keyEquivalent:@""];
-                    [statusMenuItem setView: self.masterViewController.view];
-                    [statusMenuItem setTarget:self];
-                    [self.statusMenu addItem:statusMenuItem];
-                    
-                    
-                    self.statusItem.menu = self.statusMenu;
-                }
-                break;
-            case PFStatusPopover:
-                {
-                    self.popover = [[NSPopover alloc] init];
-                    self.popover.contentViewController = self.masterViewController;
-                    self.popover.contentSize = (CGSize)self.masterViewController.view.frame.size;
-                    self.popover.behavior = NSPopoverBehaviorTransient;
-                    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-                    
-                    NSImage *statusImage = [StyleKit imageOfMenuIcon];
-                    [statusImage setTemplate:YES]; //setting it as a template will automatically change it based upon menu appearance, ie dark mode
-                    self.statusItem.button.image = statusImage;
-                    self.statusItem.highlightMode = YES;
+        
+        //Showing popover
+        self.popover = [[NSPopover alloc] init];
+        self.popover.contentViewController = self.masterViewController;
+        self.popover.contentSize = (CGSize)self.masterViewController.view.frame.size;
+        self.popover.behavior = NSPopoverBehaviorTransient;
+        self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+        
+        NSImage *statusImage = [StyleKit imageOfMenuIcon];
+        [statusImage setTemplate:YES]; //setting it as a template will automatically change it based upon menu appearance, ie dark mode
+        self.statusItem.button.image = statusImage;
+        self.statusItem.highlightMode = YES;
 
-                    
-                    self.statusItem.button.action = @selector(togglePopover:);
-                    
-                    //Registering for events so the popover can be closed when we click outside the window
-                    self.popoverEvent = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDown
-                                                                               handler:^(NSEvent *event) {
-                                                                                   if (self.popover.shown) {
-                                                                                       [self closePopover:event];
-                                                                                   }
-                    }];
-                }
-                break;
-
-        }
+        
+        self.statusItem.button.action = @selector(togglePopover:);
+        
+        //Registering for events so the popover can be closed when we click outside the window
+        self.popoverEvent = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDown
+                                                                   handler:^(NSEvent *event) {
+                                                                       if (self.popover.shown) {
+                                                                           [self closePopover:event];
+                                                                       }
+        }];
+ 
         
     } else {
         self.window.titlebarAppearsTransparent = YES;

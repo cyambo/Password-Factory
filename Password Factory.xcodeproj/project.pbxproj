@@ -37,10 +37,8 @@
 		409586141B8112FD00393B99 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409585DA1B8112FD00393B99 /* menu-icon@2x.png */; };
 		409586261B8112FD00393B99 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
 		409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F91B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m */; };
-		409586281B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585FB1B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.m */; };
 		409586291B8112FD00393B99 /* PreferencesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585FE1B8112FD00393B99 /* PreferencesButton.m */; };
 		4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586001B8112FD00393B99 /* StrengthMeter.m */; };
-		4095862B1B8112FD00393B99 /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586041B8112FD00393B99 /* StatusView.m */; };
 		4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860A1B8112FD00393B99 /* MasterViewController.m */; };
 		4095862E1B8112FD00393B99 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4095860B1B8112FD00393B99 /* MasterViewController.xib */; };
@@ -146,15 +144,10 @@
 		409585F61B8112FD00393B99 /* StyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleKit.m; sourceTree = "<group>"; };
 		409585F81B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
 		409585F91B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+NSColorHexadecimalValue.m"; sourceTree = "<group>"; };
-		409585FA1B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+canBecomeKeyWindow.h"; sourceTree = "<group>"; };
-		409585FB1B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+canBecomeKeyWindow.m"; sourceTree = "<group>"; };
 		409585FD1B8112FD00393B99 /* PreferencesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesButton.h; sourceTree = "<group>"; };
 		409585FE1B8112FD00393B99 /* PreferencesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesButton.m; sourceTree = "<group>"; };
 		409585FF1B8112FD00393B99 /* StrengthMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrengthMeter.h; sourceTree = "<group>"; };
 		409586001B8112FD00393B99 /* StrengthMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrengthMeter.m; sourceTree = "<group>"; };
-		409586021B8112FD00393B99 /* StatusBarType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarType.h; sourceTree = "<group>"; };
-		409586031B8112FD00393B99 /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
-		409586041B8112FD00393B99 /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
 		409586061B8112FD00393B99 /* PasswordFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordFactory.h; sourceTree = "<group>"; };
 		409586071B8112FD00393B99 /* PasswordFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactory.m; sourceTree = "<group>"; };
 		409586091B8112FD00393B99 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
@@ -290,8 +283,6 @@
 			children = (
 				409585F81B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.h */,
 				409585F91B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m */,
-				409585FA1B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.h */,
-				409585FB1B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.m */,
 				40C0F3861B860791005FC25D /* NSString+RandomCase.h */,
 				40C0F3871B860791005FC25D /* NSString+RandomCase.m */,
 				4012E50E1B9750FA00BAF217 /* NSString+SymbolCase.h */,
@@ -322,9 +313,6 @@
 		409586011B8112FD00393B99 /* MenuApp */ = {
 			isa = PBXGroup;
 			children = (
-				409586021B8112FD00393B99 /* StatusBarType.h */,
-				409586031B8112FD00393B99 /* StatusView.h */,
-				409586041B8112FD00393B99 /* StatusView.m */,
 			);
 			name = MenuApp;
 			path = "Password Factory/MenuApp";
@@ -886,7 +874,6 @@
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,
 				40FB0C241B810F10009193F8 /* main.m in Sources */,
 				4095862F1B8112FD00393B99 /* PreferencesWindowController.m in Sources */,
-				409586281B8112FD00393B99 /* NSWindow+canBecomeKeyWindow.m in Sources */,
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
 				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,
@@ -894,7 +881,6 @@
 				40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */,
 				4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */,
 				4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */,
-				4095862B1B8112FD00393B99 /* StatusView.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
 			);
