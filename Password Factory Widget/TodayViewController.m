@@ -10,11 +10,12 @@
 #import <NotificationCenter/NotificationCenter.h>
 #import "PasswordFactory.h"
 #import "DefaultsManager.h"
-#import "BBPasswordStrength.h"
+#import "PasswordStrength.h"
 
 @interface TodayViewController () <NCWidgetProviding>
 @property (nonatomic, strong) PasswordFactory *factory;
 @property (nonatomic, strong) id clearClipboardTimer;
+@property (nonatomic, strong) PasswordStrength *passwordStrength;
 @end
 
 @implementation TodayViewController
@@ -23,6 +24,7 @@
     if(!self.factory) {
         self.factory = [[PasswordFactory alloc] init];
     }
+
     [self changeLabel];
 
     [self generatePassword];
@@ -154,25 +156,11 @@
     [self.passwordField setStringValue:password];
  }
 -(void)updateStrength:(NSString *)password {
-    BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:password];
-    NSUserDefaults *sd = [DefaultsManager sharedDefaults];
-    
-    
-    int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
-    //playing around with numbers to make a good scale
-    double ct = log10(strength.crackTime);
-    //tweaking output based on password type
-    if (index == PFTabRandom) {
-        ct = (ct/40)*100;
-    } else if (index == PFTabPassphrase) {
-        ct = (ct/20)*100;
-        
-    } else {
-        ct = (ct/40)*100;
+    if (!self.passwordStrength) {
+        self.passwordStrength = [[PasswordStrength alloc] init];
     }
 
-    if (ct > 100) {ct = 100;}
-    [self.strengthBox updateStrength:ct];
+    [self.strengthBox updateStrength:[self.passwordStrength getStrengthForPasswordType:index password:password]];
 }
 @end
 

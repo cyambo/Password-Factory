@@ -21,6 +21,8 @@
 		40511D2D1C124F9A005BE5BE /* PatternViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D2C1C124F9A005BE5BE /* PatternViewController.swift */; };
 		40511D2F1C124FA6005BE5BE /* PronounceableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D2E1C124FA6005BE5BE /* PronounceableViewController.swift */; };
 		40511D321C125097005BE5BE /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
+		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
+		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
 		406C388A1B844D0100F471E7 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
@@ -130,6 +132,8 @@
 		40511D2C1C124F9A005BE5BE /* PatternViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternViewController.swift; sourceTree = "<group>"; };
 		40511D2E1C124FA6005BE5BE /* PronounceableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronounceableViewController.swift; sourceTree = "<group>"; };
 		40511D331C12512C005BE5BE /* Password Factory iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Password Factory iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
+		40511D651C125348005BE5BE /* PasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrength.m; sourceTree = "<group>"; };
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
 		409585C81B8112D600393B99 /* MasterViewControllerTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTestClass.h; sourceTree = "<group>"; };
 		409585C91B8112D600393B99 /* MasterViewControllerTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTestClass.m; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 				409586071B8112FD00393B99 /* PasswordFactory.m */,
 				40DAB57E1B843734003F5C3D /* DefaultsManager.h */,
 				40DAB57F1B843734003F5C3D /* DefaultsManager.m */,
+				40511D641C125348005BE5BE /* PasswordStrength.h */,
+				40511D651C125348005BE5BE /* PasswordStrength.m */,
 			);
 			name = Model;
 			path = "Password Factory/Model";
@@ -860,6 +866,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */,
+				40511D671C125348005BE5BE /* PasswordStrength.m in Sources */,
 				40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */,
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
@@ -875,6 +882,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40511D661C125348005BE5BE /* PasswordStrength.m in Sources */,
 				40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */,
 				409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */,
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,

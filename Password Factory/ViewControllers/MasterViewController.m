@@ -7,7 +7,7 @@
 //
 
 #import "MasterViewController.h"
-#import "BBPasswordStrength.h"
+#import "PasswordStrength.h"
 #import "PasswordFactory.h"
 #import "PreferencesWindowController.h"
 #import "AppDelegate.h"
@@ -18,7 +18,7 @@ int const  GenerateAndCopyLoops  = 10;
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) Class timerClass;
-
+@property (nonatomic, strong) PasswordStrength *passwordStrength;
 @end
 
 @implementation MasterViewController
@@ -28,6 +28,7 @@ int const  GenerateAndCopyLoops  = 10;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.pg = [[PasswordFactory alloc] init];
+        self.passwordStrength = [[PasswordStrength alloc] init];
         self.timerClass = [NSTimer class];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
@@ -328,30 +329,13 @@ int const  GenerateAndCopyLoops  = 10;
 }
 #pragma mark Password Strength
 - (void)setPasswordStrength {
-    BBPasswordStrength *strength = [[BBPasswordStrength alloc] initWithPassword:self.passwordValue];
-    //playing around with numbers to make a good scale
-    double ct = log10(strength.crackTime);
-    //tweaking output based on password type
-    switch ([self.passwordTypeTab.selectedTabViewItem.identifier intValue]) {
-        case 0: //random
-            ct = (ct/40)*100;
-            break;
-        case 1: //pattern
-            
-            ct = (ct/20)*100;
-            break;
-        case 2: //pronounceable
-            ct = (ct/40)*100;
-            break;
-    }
-    
-    //normalizing it to 0-100
-    if (ct > 100){
-        ct = 100;
-    } else if (ct < 0) {
-        ct = 0;
-    }
-    [self.passwordStrengthLevel updateStrength:ct];
+
+
+    [self.passwordStrengthLevel updateStrength:
+     [self.passwordStrength
+      getStrengthForPasswordType:
+        [self.passwordTypeTab.selectedTabViewItem.identifier intValue]
+        password:self.passwordValue]];
 
 
 }
