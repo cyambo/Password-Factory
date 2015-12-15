@@ -10,10 +10,31 @@ import UIKit
 
 class PronounceableViewController: UIViewController {
 
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var passwordLength: UISlider!
+    @IBOutlet weak var spacesButton: UIButton!
+    @IBOutlet weak var charactersButton: UIButton!
+    @IBOutlet weak var symbolsButton: UIButton!
+    @IBOutlet weak var hyphenButton: UIButton!
+    @IBOutlet weak var numbersButton: UIButton!
+    @IBOutlet weak var noneButton: UIButton!
+    var buttons = [UIButton]()
+    var factory = PasswordFactory()
+    var separator: Int = 201
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        buttons = [
+            spacesButton,
+            charactersButton,
+            symbolsButton,
+            hyphenButton,
+            numbersButton,
+            noneButton
+        ]
+        changeSeparator(hyphenButton)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +42,27 @@ class PronounceableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func changeLength(sender: AnyObject) {
+        generatePassword()
+    }
+    @IBAction func changeSeparator(sender: AnyObject) {
+        for button in buttons {
+            if button.isEqual(sender) {
+                button.selected = true
+                button.highlighted = true
+                separator = button.tag
+            } else {
+                button.selected = false
+                button.highlighted = false
+            }
+        }
+        generatePassword()
+    }
+    func generatePassword() {
+        factory.passwordLength = UInt(passwordLength.value)
+        passwordField.text = factory.generatePronounceableWithSeparatorType(Int32(separator))
+        
+    }
 
     /*
     // MARK: - Navigation

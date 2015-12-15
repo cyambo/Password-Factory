@@ -8,28 +8,31 @@
 
 import UIKit
 
-class PatternViewController: UIViewController {
+class PatternViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var patternTextField: UITextField!
+    var factory = PasswordFactory()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        patternTextField.delegate = self;
+        generatePassword()
     }
 
+    @IBAction func changePattern(sender: AnyObject) {
+        generatePassword()
+    }
+    func generatePassword() {
+        passwordField.text = factory.generatePattern(patternTextField.text)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-    */
 
 }
