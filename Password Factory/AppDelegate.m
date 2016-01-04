@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSMenu *statusMenu;
 @property (nonatomic, strong) NSPopover *popover;
 @property (nonatomic, strong) NSEvent *popoverEvent;
+@property (nonatomic, assign) BOOL showPrefs;
+@property (nonatomic, assign) BOOL launched;
 @end
 @implementation AppDelegate
 
@@ -47,7 +49,7 @@
         [statusImage setTemplate:YES]; //setting it as a template will automatically change it based upon menu appearance, ie dark mode
         self.statusItem.button.image = statusImage;
         self.statusItem.highlightMode = YES;
-
+ 
         
         self.statusItem.button.action = @selector(togglePopover:);
         
@@ -67,6 +69,11 @@
         self.window.movableByWindowBackground = YES;
         //not a menu app so show the the window
         [self.window makeKeyAndOrderFront:self];
+    }
+    self.launched = YES;
+    if (self.showPrefs) {
+        self.showPrefs = NO;
+        [self loadPrefrences:nil];
     }
 
 
@@ -116,7 +123,12 @@
 {
     NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
     if([url.host isEqualToString:@"settings"]) {
-        [self loadPrefrences:nil];
+        if (self.launched) {
+           [self loadPrefrences:nil];
+        } else {
+            self.showPrefs = YES;
+        }
+        
     }
 }
 
