@@ -67,7 +67,7 @@ static NSImage* _imageOfMenuIcon = nil;
 + (void)drawPreferencesButton
 {
     //// Color Declarations
-    NSColor* strokeColor = [NSColor colorWithCalibratedRed: 0.694 green: 0.694 blue: 0.694 alpha: 1];
+    NSColor* strokeColor = [NSColor colorWithCalibratedRed: 0.255 green: 0.608 blue: 0.976 alpha: 1];
 
     //// Bezier Drawing
     NSBezierPath* bezierPath = [NSBezierPath bezierPath];

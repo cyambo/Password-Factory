@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
@@ -19,7 +19,6 @@
             <subviews>
                 <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
                     <rect key="frame" x="135" y="51" width="165" height="22"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title=" " drawsBackground="YES" id="k2G-xb-uyj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -28,7 +27,6 @@
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d86-9W-hIU">
                     <rect key="frame" x="14" y="13" width="117" height="32"/>
-                    <animations/>
                     <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xek-rO-QG8">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -43,15 +41,13 @@
                         <constraint firstAttribute="width" constant="21" id="jSG-U2-kUw"/>
                         <constraint firstAttribute="height" constant="21" id="mve-Lw-8OI"/>
                     </constraints>
-                    <animations/>
                 </customView>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="cOE-n1-oHo" customClass="PreferencesButton">
+                <button alphaValue="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="cOE-n1-oHo" customClass="PreferencesButton">
                     <rect key="frame" x="250" y="20" width="21" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="eM8-17-ydv"/>
                         <constraint firstAttribute="width" constant="21" id="ehg-5X-G4k"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="udp-TD-GjT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -62,7 +58,6 @@
                 </button>
                 <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-Xk-p8m">
                     <rect key="frame" x="129" y="13" width="117" height="32"/>
-                    <animations/>
                     <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p9W-qG-QOh">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -73,7 +68,6 @@
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s57-gu-QtJ">
                     <rect key="frame" x="18" y="54" width="109" height="17"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Pronounceable" id="3Gx-C0-db1">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -102,7 +96,6 @@
                 <constraint firstItem="cOE-n1-oHo" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="ndB-kX-jIw"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="10" id="tNe-bc-Koi"/>
             </constraints>
-            <animations/>
             <point key="canvasLocation" x="382" y="279.5"/>
         </customView>
     </objects>
