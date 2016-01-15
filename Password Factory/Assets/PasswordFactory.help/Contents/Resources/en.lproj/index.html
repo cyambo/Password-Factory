@@ -36,6 +36,9 @@
                     <a href="#pronounceable_generator">Pronounceable</a>
                 </li>
                 <li>
+                    <a href="#passphrase_generator">Passphrase</a>
+                </li>
+                <li>
                     <a href="#preferences">Preferences</a>
                 </li>
                 <li>
@@ -71,10 +74,11 @@
                     <p>Below the password field is the strength meter. The stength meter will fill and indicate the relative strength via a color. Red is weak, yellow is medium, and green is strong. The strength meter goes from 0 to 100 and 100 is the strongest.</p>
                     <p>The strength level is only a guide, and will not assure your password won't be hacked</p>
                     <p>To the right are two buttons, generate will generate a new password, and copy will copy the current password to the clipboard</p>
+                    <p>Clicking the gear button will open up the preferences window</p>
                 </section>
                 <section id="generate_area">
                     <h3>Generate Area</h3>
-                    <p>This consists of three tabs 'Random', 'Pattern' and 'Pronounceable'. Each tab will generate a password using a different format.</p>
+                    <p>This consists of four tabs 'Random', 'Pattern', 'Pronounceable' and 'Passphrase'. Each tab will generate a password using a different format.</p>
                 </section>
 
             </section>
@@ -123,6 +127,12 @@
                 <img src="gfx/pronounceable.png" class="window" width="406" />
                 <p>The pronounceable tab will generate a random password that is pronounceable rather than random. There are two options for generating, length, and separator</p>
                 <p>The length slider will set the approximate length for the password, and the separator buttons toggle between six different separators</p>
+            </section>
+            <section id="passphrase_generator">
+                <h2>Passphrase</h2>
+                <img src="gfx/passphrase.png" class="window" width="406" />
+                <p>The passphrase tab will generate a passphrase style password. The password will consist of a series of words separated by your chosen separator character.</p>
+                <p>The length slider will set the approximate length of the passphrase, and the separator buttons will choose the separator. The word case buttons will set the case style of each of the words in the passphrase. </p>
             </section>
             <section id="preferences">
                 <h2>Preferences</h2>
