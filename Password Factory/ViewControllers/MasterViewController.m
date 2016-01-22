@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "constants.h"
 #import "DefaultsManager.h"
+
 int const  GenerateAndCopyLoops  = 10;
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
@@ -37,6 +38,7 @@ int const  GenerateAndCopyLoops  = 10;
 
         [self setObservers];
     }
+
     return self;
 }
 - (void)awakeFromNib {
@@ -339,26 +341,7 @@ int const  GenerateAndCopyLoops  = 10;
 
 
 }
-#pragma mark Status Image
--(NSImage *)getMenuImage:(BOOL)menuOn {
-    
-    NSString *imageName;
-    if([AppDelegate isDarkMode]) {
-        //Dark Mode
-        if (!menuOn) {
-            imageName = @"menu-icon-inv";
-        } else {
-            imageName = @"menu-icon";
-        }
-    } else {
-        if (!menuOn) {
-            imageName = @"menu-icon";
-        } else {
-            imageName = @"menu-icon-inv";
-        }
-    }
-    return [NSImage imageNamed:imageName];
-}
+
 
         
 - (IBAction)pressPassphraseSeparatorRadio:(id)sender {

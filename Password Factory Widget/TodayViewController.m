@@ -152,10 +152,10 @@
             break;
     }
     [self changeLabel];
-    [self updateStrength:password];
+    [self updateStrength:password index:index];
     [self.passwordField setStringValue:password];
  }
--(void)updateStrength:(NSString *)password {
+-(void)updateStrength:(NSString *)password index:(int)index {
     if (!self.passwordStrength) {
         self.passwordStrength = [[PasswordStrength alloc] init];
     }
