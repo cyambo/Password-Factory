@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B98203CBD9C967352151E1F /* libPods-Password Factory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBAB00AF1D0F074F3A739F05 /* libPods-Password Factory.a */; };
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
+		401CADD9A9011491FAAC9F0B /* libPods-Password Factory Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44FDCD71FA2FFE744911A929 /* libPods-Password Factory Widget.a */; };
 		40511CFE1C10C960005BE5BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511CFD1C10C960005BE5BE /* AppDelegate.swift */; };
 		40511D051C10C960005BE5BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40511D031C10C960005BE5BE /* Main.storyboard */; };
 		40511D071C10C960005BE5BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40511D061C10C960005BE5BE /* Assets.xcassets */; };
@@ -69,9 +71,7 @@
 		40FB0C241B810F10009193F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C231B810F10009193F8 /* main.m */; };
 		40FB0C261B810F10009193F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
 		40FB0C291B810F10009193F8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C271B810F10009193F8 /* MainMenu.xib */; };
-		9CB9C78BD21C21C40D317572 /* libPods-Password Factory Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D223EDD2644281BD09229C /* libPods-Password Factory Widget.a */; };
-		BB1E172239050C911ACB289A /* libPods-Password Factory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 859C6F374BB62F7214302EA7 /* libPods-Password Factory.a */; };
-		FFB25E0E689C2DE275FE5157 /* libPods-Password FactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D133D170B36EEF7085404B5 /* libPods-Password FactoryTests.a */; };
+		F65DACD884EAA2D22E854711 /* libPods-Password FactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC82162430EC23F4CA70528B /* libPods-Password FactoryTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,9 +113,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		132E358EAA30C1AC8D546220 /* Pods-Password FactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.release.xcconfig"; sourceTree = "<group>"; };
-		1515DC69891C2E8269E3619E /* Pods-Password Factory Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget.release.xcconfig"; sourceTree = "<group>"; };
-		27C005D5C512BF6809437B5B /* Pods-Password Factory Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		4012E50E1B9750FA00BAF217 /* NSString+SymbolCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymbolCase.h"; sourceTree = "<group>"; };
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
@@ -196,12 +193,15 @@
 		40FB0C281B810F10009193F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		40FB0C2E1B810F10009193F8 /* Password FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB0C331B810F10009193F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		859C6F374BB62F7214302EA7 /* libPods-Password Factory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D133D170B36EEF7085404B5 /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD797011269CBEC3CCB25B4A /* Pods-Password Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.release.xcconfig"; sourceTree = "<group>"; };
-		D1D223EDD2644281BD09229C /* libPods-Password Factory Widget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory Widget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E14B2029619F73F011DA2479 /* Pods-Password FactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EEC958D01070065C655AEFF2 /* Pods-Password Factory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.debug.xcconfig"; sourceTree = "<group>"; };
+		44FDCD71FA2FFE744911A929 /* libPods-Password Factory Widget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory Widget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		606635F649A5D8345CA085F0 /* Pods-Password Factory Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget.debug.xcconfig"; sourceTree = "<group>"; };
+		92DF9DCCD4D91BE7C41B3119 /* Pods-Password FactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		992C0DDAA7C6B470AB43B513 /* Pods-Password Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.release.xcconfig"; sourceTree = "<group>"; };
+		C0807F79D4983657CD7FF600 /* Pods-Password Factory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.debug.xcconfig"; sourceTree = "<group>"; };
+		CBAB00AF1D0F074F3A739F05 /* libPods-Password Factory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC3F094DAE6FD4A5F29A068A /* Pods-Password Factory Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget.release.xcconfig"; sourceTree = "<group>"; };
+		D3E03A0938BB72CA6655D746 /* Pods-Password FactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		FC82162430EC23F4CA70528B /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				409E13BA1B8258170041541B /* NotificationCenter.framework in Frameworks */,
-				9CB9C78BD21C21C40D317572 /* libPods-Password Factory Widget.a in Frameworks */,
+				401CADD9A9011491FAAC9F0B /* libPods-Password Factory Widget.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB1E172239050C911ACB289A /* libPods-Password Factory.a in Frameworks */,
+				3B98203CBD9C967352151E1F /* libPods-Password Factory.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,13 +240,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFB25E0E689C2DE275FE5157 /* libPods-Password FactoryTests.a in Frameworks */,
+				F65DACD884EAA2D22E854711 /* libPods-Password FactoryTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B02AE986D3D7439C5502752 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0807F79D4983657CD7FF600 /* Pods-Password Factory.debug.xcconfig */,
+				992C0DDAA7C6B470AB43B513 /* Pods-Password Factory.release.xcconfig */,
+				606635F649A5D8345CA085F0 /* Pods-Password Factory Widget.debug.xcconfig */,
+				CC3F094DAE6FD4A5F29A068A /* Pods-Password Factory Widget.release.xcconfig */,
+				92DF9DCCD4D91BE7C41B3119 /* Pods-Password FactoryTests.debug.xcconfig */,
+				D3E03A0938BB72CA6655D746 /* Pods-Password FactoryTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		40511CFC1C10C960005BE5BE /* Password Factory iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,8 +409,8 @@
 				40511CFC1C10C960005BE5BE /* Password Factory iOS */,
 				40511D131C10C960005BE5BE /* Password Factory iOSUITests */,
 				40FB0C1C1B810F10009193F8 /* Products */,
-				E85251CC741D3A52CEF24A18 /* Pods */,
 				F9FEF77E1307D364CA2465EF /* Frameworks */,
+				2B02AE986D3D7439C5502752 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -460,26 +473,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E85251CC741D3A52CEF24A18 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EEC958D01070065C655AEFF2 /* Pods-Password Factory.debug.xcconfig */,
-				BD797011269CBEC3CCB25B4A /* Pods-Password Factory.release.xcconfig */,
-				E14B2029619F73F011DA2479 /* Pods-Password FactoryTests.debug.xcconfig */,
-				132E358EAA30C1AC8D546220 /* Pods-Password FactoryTests.release.xcconfig */,
-				27C005D5C512BF6809437B5B /* Pods-Password Factory Widget.debug.xcconfig */,
-				1515DC69891C2E8269E3619E /* Pods-Password Factory Widget.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		F9FEF77E1307D364CA2465EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				859C6F374BB62F7214302EA7 /* libPods-Password Factory.a */,
-				8D133D170B36EEF7085404B5 /* libPods-Password FactoryTests.a */,
 				409E13B91B8258170041541B /* NotificationCenter.framework */,
-				D1D223EDD2644281BD09229C /* libPods-Password Factory Widget.a */,
+				CBAB00AF1D0F074F3A739F05 /* libPods-Password Factory.a */,
+				44FDCD71FA2FFE744911A929 /* libPods-Password Factory Widget.a */,
+				FC82162430EC23F4CA70528B /* libPods-Password FactoryTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -526,12 +526,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 409E13CC1B8258170041541B /* Build configuration list for PBXNativeTarget "Password Factory Widget" */;
 			buildPhases = (
-				ED859E3F6F44691C9BF8FF3E /* Check Pods Manifest.lock */,
+				F8EE279BC0692E850A7C5219 /* Check Pods Manifest.lock */,
 				409E13B41B8258170041541B /* Sources */,
 				409E13B51B8258170041541B /* Frameworks */,
 				409E13B61B8258170041541B /* Resources */,
-				BD45B2432913C3B9E7C0FE8E /* Copy Pods Resources */,
 				4012E5141B9B463A00BAF217 /* Show TODO and FIXME as warnings */,
+				4F9FC3D8F547B659B76260C3 /* Embed Pods Frameworks */,
+				9C0C00ACBBAD1530D74657B1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -546,13 +547,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40FB0C381B810F10009193F8 /* Build configuration list for PBXNativeTarget "Password Factory" */;
 			buildPhases = (
-				4485B544EB373C6A0DC1161D /* Check Pods Manifest.lock */,
+				FE5602BBC6C7B39316C64CAD /* Check Pods Manifest.lock */,
 				40FB0C171B810F10009193F8 /* Sources */,
 				40FB0C181B810F10009193F8 /* Frameworks */,
 				40FB0C191B810F10009193F8 /* Resources */,
-				9C88311E94026174CDA4BB06 /* Copy Pods Resources */,
 				409E13CD1B8258170041541B /* Embed App Extensions */,
 				4012E5111B9B44E900BAF217 /* Show TODO and FIXME as warnings */,
+				54F5E2237CE78575A9208BE7 /* Embed Pods Frameworks */,
+				251E0C7A809BD16DBA03B2C8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -568,12 +570,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40FB0C3B1B810F10009193F8 /* Build configuration list for PBXNativeTarget "Password FactoryTests" */;
 			buildPhases = (
-				6D4CBB3F5B2147998812263B /* Check Pods Manifest.lock */,
+				9433A2E781A8401722D56136 /* Check Pods Manifest.lock */,
 				40FB0C2A1B810F10009193F8 /* Sources */,
 				40FB0C2B1B810F10009193F8 /* Frameworks */,
 				40FB0C2C1B810F10009193F8 /* Resources */,
-				AEC17E222327D242E999B06A /* Copy Pods Resources */,
 				4012E5131B9B461E00BAF217 /* Show TODO and FIXME as warnings */,
+				3274BF0649430CA1AFE25898 /* Embed Pods Frameworks */,
+				BFDE0E496F0071125CA52CB5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -709,6 +712,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		251E0C7A809BD16DBA03B2C8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3274BF0649430CA1AFE25898 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4012E5111B9B44E900BAF217 /* Show TODO and FIXME as warnings */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -751,7 +784,37 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/Password Factory Widget\" \"${SRCROOT}/Password FactoryTests\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
-		4485B544EB373C6A0DC1161D /* Check Pods Manifest.lock */ = {
+		4F9FC3D8F547B659B76260C3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54F5E2237CE78575A9208BE7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9433A2E781A8401722D56136 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -766,52 +829,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		6D4CBB3F5B2147998812263B /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9C88311E94026174CDA4BB06 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AEC17E222327D242E999B06A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BD45B2432913C3B9E7C0FE8E /* Copy Pods Resources */ = {
+		9C0C00ACBBAD1530D74657B1 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -826,7 +844,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ED859E3F6F44691C9BF8FF3E /* Check Pods Manifest.lock */ = {
+		BFDE0E496F0071125CA52CB5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8EE279BC0692E850A7C5219 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FE5602BBC6C7B39316C64CAD /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1045,7 +1093,7 @@
 		};
 		409E13CA1B8258170041541B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C005D5C512BF6809437B5B /* Pods-Password Factory Widget.debug.xcconfig */;
+			baseConfigurationReference = 606635F649A5D8345CA085F0 /* Pods-Password Factory Widget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Password Factory Widget/Password_Factory_Widget.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1056,7 +1104,7 @@
 				);
 				INFOPLIST_FILE = "Password Factory Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloud13.Password-Factory.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Password-Factory-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1064,14 +1112,14 @@
 		};
 		409E13CB1B8258170041541B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1515DC69891C2E8269E3619E /* Pods-Password Factory Widget.release.xcconfig */;
+			baseConfigurationReference = CC3F094DAE6FD4A5F29A068A /* Pods-Password Factory Widget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Password Factory Widget/Password_Factory_Widget.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Password Factory Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloud13.Password-Factory.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Password-Factory-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1159,7 +1207,7 @@
 		};
 		40FB0C391B810F10009193F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEC958D01070065C655AEFF2 /* Pods-Password Factory.debug.xcconfig */;
+			baseConfigurationReference = C0807F79D4983657CD7FF600 /* Pods-Password Factory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
@@ -1167,14 +1215,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Password Factory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloud13.$(PRODUCT_NAME:rfc1034identifier)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		40FB0C3A1B810F10009193F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD797011269CBEC3CCB25B4A /* Pods-Password Factory.release.xcconfig */;
+			baseConfigurationReference = 992C0DDAA7C6B470AB43B513 /* Pods-Password Factory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
@@ -1182,14 +1231,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Password Factory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloud13.$(PRODUCT_NAME:rfc1034identifier)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 		40FB0C3C1B810F10009193F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E14B2029619F73F011DA2479 /* Pods-Password FactoryTests.debug.xcconfig */;
+			baseConfigurationReference = 92DF9DCCD4D91BE7C41B3119 /* Pods-Password FactoryTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1211,7 +1261,7 @@
 		};
 		40FB0C3D1B810F10009193F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 132E358EAA30C1AC8D546220 /* Pods-Password FactoryTests.release.xcconfig */;
+			baseConfigurationReference = D3E03A0938BB72CA6655D746 /* Pods-Password FactoryTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;

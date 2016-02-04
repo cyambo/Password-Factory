@@ -11,7 +11,6 @@
 
 #import "PreferencesWindowController.h"
 #import "NSColor+NSColorHexadecimalValue.h"
-#import <MASShortcut/Shortcut.h>
 #import "AppDelegate.h"
 #import "DefaultsManager.h"
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";

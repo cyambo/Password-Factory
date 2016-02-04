@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "MASShortcutView.h"
+#import <MASShortcut/Shortcut.h>
 
 
 

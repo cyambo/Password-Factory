@@ -1,16 +1,18 @@
 PODS:
-  - MASShortcut (2.1.2)
+  - MASShortcut (2.2.0)
   - OCMock (3.1.2)
   - ZXCVBN (1.0.5)
 
 DEPENDENCIES:
-  - MASShortcut
+  - MASShortcut (~> 2.2.0)
   - OCMock (~> 3.1)
   - ZXCVBN
 
 SPEC CHECKSUMS:
-  MASShortcut: ef92b912469f9f6744dba5f0a906665c26de760c
+  MASShortcut: f016adee0731ece84a143ba39204afe46a68e1d9
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   ZXCVBN: f3888e3f6363b8cf57bcc32857a9bc09f9f9e18e
 
-COCOAPODS: 0.37.2
+PODFILE CHECKSUM: 06668b08492fd83f78e99ca6f33081e801fa2ed5
+
+COCOAPODS: 1.0.0.beta.3
