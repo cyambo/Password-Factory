@@ -155,15 +155,15 @@
 }
 - (void)testPassphrase {
     [self.mvc.passwordTypeTab selectTabViewItemAtIndex:3];
-    [self.mvc.passwordLengthSlider setIntegerValue:5];
-    [self.mvc.passwordLengthSlider performClick:nil];
-    [self.mvc changeLength:self.mvc.passwordLengthSlider];
-    NSString *currPassword = [self getPasswordFieldValue];
     [self.mvc.passwordLengthSlider setIntegerValue:10];
     [self.mvc.passwordLengthSlider performClick:nil];
     [self.mvc changeLength:self.mvc.passwordLengthSlider];
+    NSString *currPassword = [self getPasswordFieldValue];
+    [self.mvc.passwordLengthSlider setIntegerValue:30];
+    [self.mvc.passwordLengthSlider performClick:nil];
+    [self.mvc changeLength:self.mvc.passwordLengthSlider];
     XCTAssertNotEqual(currPassword, [self getPasswordFieldValue], @"Password not changed when passphrase slider changed");
-    XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Passphrase length should increase to about 10 from about 5");
+    XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Passphrase length should increase to about 30 from about 10");
     currPassword = [self getPasswordFieldValue];
     for (int i = 0 ; i <= 3 ; i++) {
         for (int j = 0 ; j <= 3 ; j++) {
@@ -179,8 +179,7 @@
 - (void)testStrengthMeter {
     self.mvc.passwordValue = @"1";
     [self.mvc setPasswordStrength];
-    float currStrength = self.mvc.passwordStrengthLevel.floatValue;
-    self.mvc.pg.passwordLength = 2;
+    float currStrength = self.mvc.passwordStrengthLevel.floatValue;;
     self.mvc.passwordValue = [self.mvc.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES];
     [self.mvc setPasswordStrength];
     XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.floatValue, @"Password strength meter not updated with change");
