@@ -180,6 +180,7 @@
     self.mvc.passwordValue = @"1";
     [self.mvc setPasswordStrength];
     float currStrength = self.mvc.passwordStrengthLevel.floatValue;
+    self.mvc.pg.passwordLength = 2;
     self.mvc.passwordValue = [self.mvc.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES];
     [self.mvc setPasswordStrength];
     XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.floatValue, @"Password strength meter not updated with change");

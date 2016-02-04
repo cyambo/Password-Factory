@@ -100,8 +100,8 @@ int const  GenerateAndCopyLoops  = 10;
     }
     self.passwordValue = pw;
     [self updatePasswordField];
-
-    [self.passwordStrengthLevel updateStrength:s];
+    //updateStrength takes 0-100 value
+    [self.passwordStrengthLevel updateStrength:s * 100];
 
     [self copyToPasteboard:nil];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
@@ -119,7 +119,7 @@ int const  GenerateAndCopyLoops  = 10;
 - (void)displayCopyNotification {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     [notification setTitle:@"Password Copied"];
-    [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.strength]];
+    [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.floatValue ]];
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"globalHotkeyPlaySound"]) {
         [notification setSoundName:NSUserNotificationDefaultSoundName];
