@@ -71,9 +71,11 @@
         [self.window makeKeyAndOrderFront:self];
     }
     self.launched = YES;
+
     if (self.showPrefs) {
         self.showPrefs = NO;
         [self loadPrefrences:nil];
+
     }
 
 
@@ -118,13 +120,20 @@
                            andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                          forEventClass:kInternetEventClass andEventID:kAEGetURL];
 }
-
+//This gets called when the gear is pressed on the widget
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
 {
     NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
     if([url.host isEqualToString:@"settings"]) {
         if (self.launched) {
-           [self loadPrefrences:nil];
+            [self loadPrefrences:nil];
+            //Load up the main window as well 
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
+                [self showPopover:nil];
+            } else {
+                [self.window makeKeyAndOrderFront:self];
+            }
+            
         } else {
             self.showPrefs = YES;
         }
