@@ -3,9 +3,8 @@
 
 NSString *const MASShortcutBinding = @"shortcutValue";
 
-#define HINT_BUTTON_WIDTH 23.0
-#define BUTTON_FONT_SIZE 11.0
-#define SEGMENT_CHROME_WIDTH 6.0
+static const CGFloat MASHintButtonWidth = 23;
+static const CGFloat MASButtonFontSize = 11;
 
 #pragma mark -
 
@@ -13,6 +12,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 
 @property (nonatomic, getter = isHinting) BOOL hinting;
 @property (nonatomic, copy) NSString *shortcutPlaceholder;
+@property (nonatomic, assign) BOOL showsDeleteButton;
 
 @end
 
@@ -23,6 +23,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     NSInteger _shortcutToolTipTag;
     NSInteger _hintToolTipTag;
     NSTrackingArea *_hintArea;
+	BOOL _acceptsFirstResponder;
 }
 
 #pragma mark -
@@ -54,9 +55,11 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 {
     _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
     _shortcutCell.buttonType = NSPushOnPushOffButton;
-    _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
+    _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:MASButtonFontSize];
     _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
+    _showsDeleteButton = YES;
+	_acceptsFirstResponder = NO;
     [self resetShortcutCellStyle];
 }
 
@@ -122,14 +125,27 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     
     // Only enabled view supports recording
     if (flag && !self.enabled) return;
-    
-    if (_recording != flag) {
-        _recording = flag;
-        self.shortcutPlaceholder = nil;
-        [self resetToolTips];
-        [self activateEventMonitoring:_recording];
-        [self activateResignObserver:_recording];
-        [self setNeedsDisplay:YES];
+
+    // Only care about changes in state
+    if (flag == _recording) return;
+
+    _recording = flag;
+    self.shortcutPlaceholder = nil;
+    [self resetToolTips];
+    [self activateEventMonitoring:_recording];
+    [self activateResignObserver:_recording];
+    [self setNeedsDisplay:YES];
+
+    // Give VoiceOver users feedback on the result. Requires at least 10.9 to run.
+    if (_recording == NO && (&NSAccessibilityPriorityKey != NULL)) {
+        NSString* msg = _shortcutValue ?
+                         NSLocalizedString(@"Shortcut set", @"VoiceOver: Shortcut set") :
+                         NSLocalizedString(@"Shortcut cleared", @"VoiceOver: Shortcut cleared");
+        NSDictionary *announcementInfo = @{
+            NSAccessibilityAnnouncementKey : msg,
+            NSAccessibilityPriorityKey : @(NSAccessibilityPriorityHigh),
+        };
+        NSAccessibilityPostNotificationWithUserInfo(self, NSAccessibilityAnnouncementRequestedNotification, announcementInfo);
     }
 }
 
@@ -138,7 +154,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     _shortcutValue = shortcutValue;
     [self resetToolTips];
     [self setNeedsDisplay:YES];
-    [self propagateValue:shortcutValue forBinding:@"shortcutValue"];
+    [self propagateValue:shortcutValue forBinding:MASShortcutBinding];
 
     if (self.shortcutValueChange) {
         self.shortcutValueChange(self);
@@ -188,9 +204,15 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 - (void)drawRect:(CGRect)dirtyRect
 {
     if (self.shortcutValue) {
-        [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphClear)
-               alignment:NSRightTextAlignment state:NSOffState];
-        
+        NSString *buttonTitle;
+        if (self.recording) {
+            buttonTitle = NSStringFromMASKeyCode(kMASShortcutGlyphEscape);
+        } else if (self.showsDeleteButton) {
+            buttonTitle = NSStringFromMASKeyCode(kMASShortcutGlyphClear);
+        }
+        if (buttonTitle != nil) {
+            [self drawInRect:self.bounds withTitle:buttonTitle alignment:NSRightTextAlignment state:NSOffState];
+        }
         CGRect shortcutRect;
         [self getShortcutRect:&shortcutRect hintRect:NULL];
         NSString *title = (self.recording
@@ -229,11 +251,11 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 - (void)getShortcutRect:(CGRect *)shortcutRectRef hintRect:(CGRect *)hintRectRef
 {
     CGRect shortcutRect, hintRect;
-    CGFloat hintButtonWidth = HINT_BUTTON_WIDTH;
+    CGFloat hintButtonWidth = MASHintButtonWidth;
     switch (self.style) {
         case MASShortcutViewStyleTexturedRect: hintButtonWidth += 2.0; break;
         case MASShortcutViewStyleRounded: hintButtonWidth += 3.0; break;
-        case MASShortcutViewStyleFlat: hintButtonWidth -= 8.0 - (_shortcutCell.font.pointSize - BUTTON_FONT_SIZE); break;
+        case MASShortcutViewStyleFlat: hintButtonWidth -= 8.0 - (_shortcutCell.font.pointSize - MASButtonFontSize); break;
         default: break;
     }
     CGRectDivide(self.bounds, &hintRect, &shortcutRect, hintButtonWidth, CGRectMaxXEdge);
@@ -376,6 +398,11 @@ void *kUserDataHint = &kUserDataHint;
             // Create a shortcut from the event
             MASShortcut *shortcut = [MASShortcut shortcutWithEvent:event];
 
+            // Tab key must pass through.
+            if (shortcut.keyCode == kVK_Tab){
+                return event;
+            }
+
             // If the shortcut is a plain Delete or Backspace, clear the current shortcut and cancel recording
             if (!shortcut.modifierFlags && ((shortcut.keyCode == kVK_Delete) || (shortcut.keyCode == kVK_ForwardDelete))) {
                 weakSelf.shortcutValue = nil;
@@ -464,7 +491,7 @@ void *kUserDataHint = &kUserDataHint;
 #pragma mark Bindings
 
 // http://tomdalling.com/blog/cocoa/implementing-your-own-cocoa-bindings/
--(void) propagateValue:(id)value forBinding:(NSString*)binding;
+-(void) propagateValue:(id)value forBinding:(NSString*)binding
 {
     NSParameterAssert(binding != nil);
 
@@ -506,6 +533,75 @@ void *kUserDataHint = &kUserDataHint;
     }
 
     [boundObject setValue:value forKeyPath:boundKeyPath];
+}
+
+#pragma mark - Accessibility
+
+- (BOOL)accessibilityIsIgnored
+{
+    return NO;
+}
+
+- (NSString *)accessibilityHelp
+{
+    return NSLocalizedString(@"To record a new shortcut, click this button, and then type the"
+                             @" new shortcut, or press delete to clear an existing shortcut.",
+                             @"VoiceOver shortcut help");
+}
+
+- (NSString *)accessibilityLabel
+{
+    NSString* title = _shortcutValue.description ?: @"Empty";
+    title = [title stringByAppendingFormat:@" %@", NSLocalizedString(@"keyboard shortcut", @"VoiceOver title")];
+    return title;
+}
+
+- (BOOL)accessibilityPerformPress
+{
+    if (self.isRecording == NO) {
+        self.recording = YES;
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+- (NSString *)accessibilityRole
+{
+    return NSAccessibilityButtonRole;
+}
+
+- (BOOL)acceptsFirstResponder
+{
+	return _acceptsFirstResponder;
+}
+
+- (void)setAcceptsFirstResponder:(BOOL)value
+{
+	_acceptsFirstResponder = value;
+}
+
+- (BOOL)becomeFirstResponder
+{
+    [self setNeedsDisplay:YES];
+    return [super becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder
+{
+    [self setNeedsDisplay:YES];
+    return [super resignFirstResponder];
+}
+
+- (void)drawFocusRingMask
+{
+    [_shortcutCell drawFocusRingMaskWithFrame:[self bounds] inView:self];
+}
+
+- (NSRect)focusRingMaskBounds
+{
+    return [self bounds];
 }
 
 @end

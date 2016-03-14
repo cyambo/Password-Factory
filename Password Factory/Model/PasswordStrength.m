@@ -18,7 +18,7 @@
     //tweaking output based on password type
     if (passwordType == PFTabRandom) {
         ct = (ct/40)*100;
-    } else if (passwordType == PFTabPassphrase) {
+    } else if (passwordType == PFTabPassphrase || passwordType == PFTabPattern) {
         ct = (ct/20)*100;
         
     } else {

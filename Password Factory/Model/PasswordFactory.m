@@ -421,9 +421,9 @@ static NSArray* phoeneticSoundsThree;
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
     NSString *badWordsPath = [[NSBundle mainBundle] pathForResource:@"bad_words" ofType:@"json"];
 
-    NSString *englishWordsPath = [self getDocumentDirectory:@"englishWords.archive"];
-    NSString *shortWordsPath = [self getDocumentDirectory:@"shortWords.archive"];
-    NSString *wordsByLengthPath = [self getDocumentDirectory:@"wordsByLength.archive"];
+    NSString *englishWordsPath = [self getApplicationSupportDirectory:@"englishWords.archive"];
+    NSString *shortWordsPath = [self getApplicationSupportDirectory:@"shortWords.archive"];
+    NSString *wordsByLengthPath = [self getApplicationSupportDirectory:@"wordsByLength.archive"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     //Checking to see if our cached files exist and are newer than our data files, if so, load them instead of parsing
@@ -504,10 +504,30 @@ static NSArray* phoeneticSoundsThree;
  *
  *  @return path of file
  */
--(NSString *)getDocumentDirectory:(NSString *)withFile {
-    NSArray *documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    return [[documentDirs firstObject] stringByAppendingPathComponent:withFile];
+-(NSString *)getApplicationSupportDirectory:(NSString *)withFile {
+    
+    NSError *error;
+    NSFileManager *fm = [NSFileManager defaultManager];
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *appS = [paths firstObject];
+    NSString *executableName =
+    [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+    appS = [appS stringByAppendingPathComponent:executableName];
+    
+    if(![fm fileExistsAtPath:appS]) {
+        [fm createDirectoryAtPath:appS
+      withIntermediateDirectories:YES
+                       attributes:nil
+                            error:&error];
+    }
+    
+    appS = [appS stringByAppendingPathComponent:withFile];
+    return appS;
 }
+
+
+
 /**
  *  Rudimentary bad word filter, uses an array of 'bad' words to determine if passed in word is bad
  *
