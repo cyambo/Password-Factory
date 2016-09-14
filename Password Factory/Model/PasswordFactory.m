@@ -498,7 +498,7 @@ static NSArray* phoeneticSoundsThree;
 }
 
 /**
- *  Gets path to App document directory to allow saving of users and other data
+ *  Gets path to Application support directory for the app to allow saving of users and other data
  *
  *  @param withFile filename
  *
@@ -512,16 +512,18 @@ static NSArray* phoeneticSoundsThree;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *appS = [paths firstObject];
     NSString *executableName =
-    [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+    [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"]; //appending the app name
     appS = [appS stringByAppendingPathComponent:executableName];
-    
+
+    //Creating the directory if it needs to be
     if(![fm fileExistsAtPath:appS]) {
+        
         [fm createDirectoryAtPath:appS
       withIntermediateDirectories:YES
                        attributes:nil
                             error:&error];
     }
-    
+
     appS = [appS stringByAppendingPathComponent:withFile];
     return appS;
 }
