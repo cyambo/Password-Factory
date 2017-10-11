@@ -11,22 +11,8 @@
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		401CADD9A9011491FAAC9F0B /* libPods-Password Factory Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44FDCD71FA2FFE744911A929 /* libPods-Password Factory Widget.a */; };
-		40511CFE1C10C960005BE5BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511CFD1C10C960005BE5BE /* AppDelegate.swift */; };
-		40511D051C10C960005BE5BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40511D031C10C960005BE5BE /* Main.storyboard */; };
-		40511D071C10C960005BE5BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40511D061C10C960005BE5BE /* Assets.xcassets */; };
-		40511D0A1C10C960005BE5BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40511D081C10C960005BE5BE /* LaunchScreen.storyboard */; };
-		40511D151C10C960005BE5BE /* Password_Factory_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D141C10C960005BE5BE /* Password_Factory_iOSUITests.swift */; };
-		40511D261C124F07005BE5BE /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
-		40511D271C124F09005BE5BE /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
-		40511D291C124F7E005BE5BE /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D281C124F7E005BE5BE /* RandomViewController.swift */; };
-		40511D2B1C124F8B005BE5BE /* PassphraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D2A1C124F8B005BE5BE /* PassphraseViewController.swift */; };
-		40511D2D1C124F9A005BE5BE /* PatternViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D2C1C124F9A005BE5BE /* PatternViewController.swift */; };
-		40511D2F1C124FA6005BE5BE /* PronounceableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40511D2E1C124FA6005BE5BE /* PronounceableViewController.swift */; };
-		40511D321C125097005BE5BE /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
-		40511D681C16307D005BE5BE /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
-		40511D6A1C163114005BE5BE /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40511D691C163114005BE5BE /* frequency_lists.json */; };
 		405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
 		406C388A1B844D0100F471E7 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
@@ -61,6 +47,13 @@
 		409E13C41B8258170041541B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409E13C31B8258170041541B /* TodayViewController.m */; };
 		409E13C61B8258170041541B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 409E13C51B8258170041541B /* TodayViewController.xib */; };
 		409E13C91B8258170041541B /* Password Factory Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 409E13B81B8258170041541B /* Password Factory Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5D01F8EC67F00324759 /* AppDelegate.swift */; };
+		40AAB5D31F8EC67F00324759 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5D21F8EC67F00324759 /* ViewController.swift */; };
+		40AAB5D61F8EC67F00324759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D41F8EC67F00324759 /* Main.storyboard */; };
+		40AAB5D81F8EC67F00324759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D71F8EC67F00324759 /* Assets.xcassets */; };
+		40AAB5DB1F8EC67F00324759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D91F8EC67F00324759 /* LaunchScreen.storyboard */; };
+		40AAB5E61F8EC68000324759 /* Password_Factory_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5E51F8EC68000324759 /* Password_Factory_iOSTests.swift */; };
+		40AAB5F11F8EC68000324759 /* Password_Factory_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5F01F8EC68000324759 /* Password_Factory_iOSUITests.swift */; };
 		40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
 		40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
@@ -75,19 +68,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		40511D111C10C960005BE5BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40FB0C131B810F10009193F8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 40511CFA1C10C960005BE5BE;
-			remoteInfo = "Password Factory iOS";
-		};
 		409E13C71B8258170041541B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 40FB0C131B810F10009193F8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 409E13B71B8258170041541B;
 			remoteInfo = "Password Factory Widget";
+		};
+		40AAB5E21F8EC68000324759 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40FB0C131B810F10009193F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40AAB5CD1F8EC67F00324759;
+			remoteInfo = "Password Factory iOS";
+		};
+		40AAB5ED1F8EC68000324759 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40FB0C131B810F10009193F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40AAB5CD1F8EC67F00324759;
+			remoteInfo = "Password Factory iOS";
 		};
 		40FB0C2F1B810F10009193F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -117,20 +117,6 @@
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
 		4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyIntegerFormatter.m; sourceTree = "<group>"; };
-		40511CFB1C10C960005BE5BE /* Password Factory iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40511CFD1C10C960005BE5BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40511D041C10C960005BE5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		40511D061C10C960005BE5BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		40511D091C10C960005BE5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		40511D0B1C10C960005BE5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40511D101C10C960005BE5BE /* Password Factory iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Factory iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40511D141C10C960005BE5BE /* Password_Factory_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Factory_iOSUITests.swift; sourceTree = "<group>"; };
-		40511D161C10C960005BE5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40511D281C124F7E005BE5BE /* RandomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
-		40511D2A1C124F8B005BE5BE /* PassphraseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseViewController.swift; sourceTree = "<group>"; };
-		40511D2C1C124F9A005BE5BE /* PatternViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternViewController.swift; sourceTree = "<group>"; };
-		40511D2E1C124FA6005BE5BE /* PronounceableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronounceableViewController.swift; sourceTree = "<group>"; };
-		40511D331C12512C005BE5BE /* Password Factory iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Password Factory iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
 		40511D651C125348005BE5BE /* PasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrength.m; sourceTree = "<group>"; };
 		40511D691C163114005BE5BE /* frequency_lists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = frequency_lists.json; path = Pods/ZXCVBN/tools/generated/frequency_lists.json; sourceTree = "<group>"; };
@@ -177,6 +163,19 @@
 		409E13C21B8258170041541B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		409E13C31B8258170041541B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		409E13C51B8258170041541B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		40AAB5CE1F8EC67F00324759 /* Password Factory iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40AAB5D01F8EC67F00324759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		40AAB5D21F8EC67F00324759 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		40AAB5D51F8EC67F00324759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40AAB5D71F8EC67F00324759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		40AAB5DA1F8EC67F00324759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		40AAB5DC1F8EC67F00324759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40AAB5E11F8EC68000324759 /* Password Factory iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Factory iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40AAB5E51F8EC68000324759 /* Password_Factory_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Factory_iOSTests.swift; sourceTree = "<group>"; };
+		40AAB5E71F8EC68000324759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40AAB5EC1F8EC68000324759 /* Password Factory iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Factory iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40AAB5F01F8EC68000324759 /* Password_Factory_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Factory_iOSUITests.swift; sourceTree = "<group>"; };
+		40AAB5F21F8EC68000324759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40C0F3821B85FAD3005FC25D /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = "Password Factory/constants.h"; sourceTree = "<group>"; };
 		40C0F3861B860791005FC25D /* NSString+RandomCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RandomCase.h"; sourceTree = "<group>"; };
 		40C0F3871B860791005FC25D /* NSString+RandomCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RandomCase.m"; sourceTree = "<group>"; };
@@ -205,26 +204,33 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		40511CF81C10C960005BE5BE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40511D0D1C10C960005BE5BE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		409E13B51B8258170041541B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				409E13BA1B8258170041541B /* NotificationCenter.framework in Frameworks */,
 				401CADD9A9011491FAAC9F0B /* libPods-Password Factory Widget.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5CB1F8EC67F00324759 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5DE1F8EC68000324759 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5E91F8EC68000324759 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,32 +264,6 @@
 				D3E03A0938BB72CA6655D746 /* Pods-Password FactoryTests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		40511CFC1C10C960005BE5BE /* Password Factory iOS */ = {
-			isa = PBXGroup;
-			children = (
-				40511CFD1C10C960005BE5BE /* AppDelegate.swift */,
-				40511D031C10C960005BE5BE /* Main.storyboard */,
-				40511D061C10C960005BE5BE /* Assets.xcassets */,
-				40511D081C10C960005BE5BE /* LaunchScreen.storyboard */,
-				40511D0B1C10C960005BE5BE /* Info.plist */,
-				40511D281C124F7E005BE5BE /* RandomViewController.swift */,
-				40511D331C12512C005BE5BE /* Password Factory iOS-Bridging-Header.h */,
-				40511D2A1C124F8B005BE5BE /* PassphraseViewController.swift */,
-				40511D2C1C124F9A005BE5BE /* PatternViewController.swift */,
-				40511D2E1C124FA6005BE5BE /* PronounceableViewController.swift */,
-			);
-			path = "Password Factory iOS";
-			sourceTree = "<group>";
-		};
-		40511D131C10C960005BE5BE /* Password Factory iOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				40511D141C10C960005BE5BE /* Password_Factory_iOSUITests.swift */,
-				40511D161C10C960005BE5BE /* Info.plist */,
-			);
-			path = "Password Factory iOSUITests";
 			sourceTree = "<group>";
 		};
 		409585D41B8112FD00393B99 /* Assets */ = {
@@ -392,6 +372,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		40AAB5CF1F8EC67F00324759 /* Password Factory iOS */ = {
+			isa = PBXGroup;
+			children = (
+				40AAB5D01F8EC67F00324759 /* AppDelegate.swift */,
+				40AAB5D21F8EC67F00324759 /* ViewController.swift */,
+				40AAB5D41F8EC67F00324759 /* Main.storyboard */,
+				40AAB5D71F8EC67F00324759 /* Assets.xcassets */,
+				40AAB5D91F8EC67F00324759 /* LaunchScreen.storyboard */,
+				40AAB5DC1F8EC67F00324759 /* Info.plist */,
+			);
+			path = "Password Factory iOS";
+			sourceTree = "<group>";
+		};
+		40AAB5E41F8EC68000324759 /* Password Factory iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				40AAB5E51F8EC68000324759 /* Password_Factory_iOSTests.swift */,
+				40AAB5E71F8EC68000324759 /* Info.plist */,
+			);
+			path = "Password Factory iOSTests";
+			sourceTree = "<group>";
+		};
+		40AAB5EF1F8EC68000324759 /* Password Factory iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				40AAB5F01F8EC68000324759 /* Password_Factory_iOSUITests.swift */,
+				40AAB5F21F8EC68000324759 /* Info.plist */,
+			);
+			path = "Password Factory iOSUITests";
+			sourceTree = "<group>";
+		};
 		40FB0C121B810F10009193F8 = {
 			isa = PBXGroup;
 			children = (
@@ -406,8 +417,9 @@
 				40FB0C1D1B810F10009193F8 /* Password Factory */,
 				40FB0C311B810F10009193F8 /* Password FactoryTests */,
 				409E13BB1B8258170041541B /* Password Factory Widget */,
-				40511CFC1C10C960005BE5BE /* Password Factory iOS */,
-				40511D131C10C960005BE5BE /* Password Factory iOSUITests */,
+				40AAB5CF1F8EC67F00324759 /* Password Factory iOS */,
+				40AAB5E41F8EC68000324759 /* Password Factory iOSTests */,
+				40AAB5EF1F8EC68000324759 /* Password Factory iOSUITests */,
 				40FB0C1C1B810F10009193F8 /* Products */,
 				F9FEF77E1307D364CA2465EF /* Frameworks */,
 				2B02AE986D3D7439C5502752 /* Pods */,
@@ -420,8 +432,9 @@
 				40FB0C1B1B810F10009193F8 /* Password Factory.app */,
 				40FB0C2E1B810F10009193F8 /* Password FactoryTests.xctest */,
 				409E13B81B8258170041541B /* Password Factory Widget.appex */,
-				40511CFB1C10C960005BE5BE /* Password Factory iOS.app */,
-				40511D101C10C960005BE5BE /* Password Factory iOSUITests.xctest */,
+				40AAB5CE1F8EC67F00324759 /* Password Factory iOS.app */,
+				40AAB5E11F8EC68000324759 /* Password Factory iOSTests.xctest */,
+				40AAB5EC1F8EC68000324759 /* Password Factory iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -487,41 +500,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		40511CFA1C10C960005BE5BE /* Password Factory iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40511D1B1C10C960005BE5BE /* Build configuration list for PBXNativeTarget "Password Factory iOS" */;
-			buildPhases = (
-				40511CF71C10C960005BE5BE /* Sources */,
-				40511CF81C10C960005BE5BE /* Frameworks */,
-				40511CF91C10C960005BE5BE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Password Factory iOS";
-			productName = "Password Factory iOS";
-			productReference = 40511CFB1C10C960005BE5BE /* Password Factory iOS.app */;
-			productType = "com.apple.product-type.application";
-		};
-		40511D0F1C10C960005BE5BE /* Password Factory iOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40511D1C1C10C960005BE5BE /* Build configuration list for PBXNativeTarget "Password Factory iOSUITests" */;
-			buildPhases = (
-				40511D0C1C10C960005BE5BE /* Sources */,
-				40511D0D1C10C960005BE5BE /* Frameworks */,
-				40511D0E1C10C960005BE5BE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				40511D121C10C960005BE5BE /* PBXTargetDependency */,
-			);
-			name = "Password Factory iOSUITests";
-			productName = "Password Factory iOSUITests";
-			productReference = 40511D101C10C960005BE5BE /* Password Factory iOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		409E13B71B8258170041541B /* Password Factory Widget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 409E13CC1B8258170041541B /* Build configuration list for PBXNativeTarget "Password Factory Widget" */;
@@ -542,6 +520,59 @@
 			productName = "Password Factory Widget";
 			productReference = 409E13B81B8258170041541B /* Password Factory Widget.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		40AAB5CD1F8EC67F00324759 /* Password Factory iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40AAB5F31F8EC68000324759 /* Build configuration list for PBXNativeTarget "Password Factory iOS" */;
+			buildPhases = (
+				40AAB5CA1F8EC67F00324759 /* Sources */,
+				40AAB5CB1F8EC67F00324759 /* Frameworks */,
+				40AAB5CC1F8EC67F00324759 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Password Factory iOS";
+			productName = "Password Factory iOS";
+			productReference = 40AAB5CE1F8EC67F00324759 /* Password Factory iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		40AAB5E01F8EC68000324759 /* Password Factory iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40AAB5F61F8EC68000324759 /* Build configuration list for PBXNativeTarget "Password Factory iOSTests" */;
+			buildPhases = (
+				40AAB5DD1F8EC68000324759 /* Sources */,
+				40AAB5DE1F8EC68000324759 /* Frameworks */,
+				40AAB5DF1F8EC68000324759 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40AAB5E31F8EC68000324759 /* PBXTargetDependency */,
+			);
+			name = "Password Factory iOSTests";
+			productName = "Password Factory iOSTests";
+			productReference = 40AAB5E11F8EC68000324759 /* Password Factory iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		40AAB5EB1F8EC68000324759 /* Password Factory iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40AAB5F91F8EC68000324759 /* Build configuration list for PBXNativeTarget "Password Factory iOSUITests" */;
+			buildPhases = (
+				40AAB5E81F8EC68000324759 /* Sources */,
+				40AAB5E91F8EC68000324759 /* Frameworks */,
+				40AAB5EA1F8EC68000324759 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40AAB5EE1F8EC68000324759 /* PBXTargetDependency */,
+			);
+			name = "Password Factory iOSUITests";
+			productName = "Password Factory iOSUITests";
+			productReference = 40AAB5EC1F8EC68000324759 /* Password Factory iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		40FB0C1A1B810F10009193F8 /* Password Factory */ = {
 			isa = PBXNativeTarget;
@@ -594,17 +625,10 @@
 		40FB0C131B810F10009193F8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Cristiana Yambo";
 				TargetAttributes = {
-					40511CFA1C10C960005BE5BE = {
-						CreatedOnToolsVersion = 7.1.1;
-					};
-					40511D0F1C10C960005BE5BE = {
-						CreatedOnToolsVersion = 7.1.1;
-						TestTargetID = 40511CFA1C10C960005BE5BE;
-					};
 					409E13B71B8258170041541B = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = XWE2VMM384;
@@ -613,6 +637,23 @@
 								enabled = 1;
 							};
 						};
+					};
+					40AAB5CD1F8EC67F00324759 = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = XWE2VMM384;
+						ProvisioningStyle = Automatic;
+					};
+					40AAB5E01F8EC68000324759 = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = XWE2VMM384;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 40AAB5CD1F8EC67F00324759;
+					};
+					40AAB5EB1F8EC68000324759 = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = XWE2VMM384;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 40AAB5CD1F8EC67F00324759;
 					};
 					40FB0C1A1B810F10009193F8 = {
 						CreatedOnToolsVersion = 6.4;
@@ -648,32 +689,14 @@
 				40FB0C1A1B810F10009193F8 /* Password Factory */,
 				40FB0C2D1B810F10009193F8 /* Password FactoryTests */,
 				409E13B71B8258170041541B /* Password Factory Widget */,
-				40511CFA1C10C960005BE5BE /* Password Factory iOS */,
-				40511D0F1C10C960005BE5BE /* Password Factory iOSUITests */,
+				40AAB5CD1F8EC67F00324759 /* Password Factory iOS */,
+				40AAB5E01F8EC68000324759 /* Password Factory iOSTests */,
+				40AAB5EB1F8EC68000324759 /* Password Factory iOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		40511CF91C10C960005BE5BE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40511D0A1C10C960005BE5BE /* LaunchScreen.storyboard in Resources */,
-				40511D6A1C163114005BE5BE /* frequency_lists.json in Resources */,
-				40511D681C16307D005BE5BE /* bad_words.json in Resources */,
-				40511D071C10C960005BE5BE /* Assets.xcassets in Resources */,
-				40511D051C10C960005BE5BE /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40511D0E1C10C960005BE5BE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		409E13B61B8258170041541B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -681,6 +704,30 @@
 				409E13C61B8258170041541B /* TodayViewController.xib in Resources */,
 				409E13C11B8258170041541B /* InfoPlist.strings in Resources */,
 				405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5CC1F8EC67F00324759 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40AAB5DB1F8EC67F00324759 /* LaunchScreen.storyboard in Resources */,
+				40AAB5D81F8EC67F00324759 /* Assets.xcassets in Resources */,
+				40AAB5D61F8EC67F00324759 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5DF1F8EC68000324759 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5EA1F8EC68000324759 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,29 +939,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		40511CF71C10C960005BE5BE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40511D2F1C124FA6005BE5BE /* PronounceableViewController.swift in Sources */,
-				40511D2B1C124F8B005BE5BE /* PassphraseViewController.swift in Sources */,
-				40511D291C124F7E005BE5BE /* RandomViewController.swift in Sources */,
-				40511D321C125097005BE5BE /* PasswordFactory.m in Sources */,
-				40511D2D1C124F9A005BE5BE /* PatternViewController.swift in Sources */,
-				40511D271C124F09005BE5BE /* NSString+SymbolCase.m in Sources */,
-				40511D261C124F07005BE5BE /* NSString+RandomCase.m in Sources */,
-				40511CFE1C10C960005BE5BE /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40511D0C1C10C960005BE5BE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40511D151C10C960005BE5BE /* Password_Factory_iOSUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		409E13B41B8258170041541B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -929,6 +953,31 @@
 				406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */,
 				406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */,
 				406C388A1B844D0100F471E7 /* StyleKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5CA1F8EC67F00324759 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40AAB5D31F8EC67F00324759 /* ViewController.swift in Sources */,
+				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5DD1F8EC68000324759 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40AAB5E61F8EC68000324759 /* Password_Factory_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40AAB5E81F8EC68000324759 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40AAB5F11F8EC68000324759 /* Password_Factory_iOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,15 +1020,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		40511D121C10C960005BE5BE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 40511CFA1C10C960005BE5BE /* Password Factory iOS */;
-			targetProxy = 40511D111C10C960005BE5BE /* PBXContainerItemProxy */;
-		};
 		409E13C81B8258170041541B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 409E13B71B8258170041541B /* Password Factory Widget */;
 			targetProxy = 409E13C71B8258170041541B /* PBXContainerItemProxy */;
+		};
+		40AAB5E31F8EC68000324759 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40AAB5CD1F8EC67F00324759 /* Password Factory iOS */;
+			targetProxy = 40AAB5E21F8EC68000324759 /* PBXContainerItemProxy */;
+		};
+		40AAB5EE1F8EC68000324759 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40AAB5CD1F8EC67F00324759 /* Password Factory iOS */;
+			targetProxy = 40AAB5ED1F8EC68000324759 /* PBXContainerItemProxy */;
 		};
 		40FB0C301B810F10009193F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -989,28 +1043,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		40511D031C10C960005BE5BE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40511D041C10C960005BE5BE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		40511D081C10C960005BE5BE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40511D091C10C960005BE5BE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		409E13BF1B8258170041541B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				409E13C01B8258170041541B /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		40AAB5D41F8EC67F00324759 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40AAB5D51F8EC67F00324759 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		40AAB5D91F8EC67F00324759 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40AAB5DA1F8EC67F00324759 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		40FB0C271B810F10009193F8 /* MainMenu.xib */ = {
@@ -1024,73 +1078,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		40511D171C10C960005BE5BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_TESTABILITY = YES;
-				INFOPLIST_FILE = "Password Factory iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nbcuni.Password-Factory-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory iOS/Password Factory iOS-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		40511D181C10C960005BE5BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Password Factory iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nbcuni.Password-Factory-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory iOS/Password Factory iOS-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		40511D191C10C960005BE5BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_TESTABILITY = YES;
-				INFOPLIST_FILE = "Password Factory iOSUITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nbcuni.Password-Factory-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_TARGET_NAME = "Password Factory iOS";
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		40511D1A1C10C960005BE5BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Password Factory iOSUITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nbcuni.Password-Factory-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_TARGET_NAME = "Password Factory iOS";
-				USES_XCTRUNNER = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		409E13CA1B8258170041541B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 606635F649A5D8345CA085F0 /* Pods-Password Factory Widget.debug.xcconfig */;
@@ -1122,6 +1109,216 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Password-Factory-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		40AAB5F41F8EC68000324759 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWE2VMM384;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Password Factory iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		40AAB5F51F8EC68000324759 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWE2VMM384;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Password Factory iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40AAB5F71F8EC68000324759 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWE2VMM384;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Password Factory iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Password Factory iOS.app/Password Factory iOS";
+			};
+			name = Debug;
+		};
+		40AAB5F81F8EC68000324759 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWE2VMM384;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Password Factory iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Password Factory iOS.app/Password Factory iOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40AAB5FA1F8EC68000324759 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWE2VMM384;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Password Factory iOSUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Password Factory iOS";
+			};
+			name = Debug;
+		};
+		40AAB5FB1F8EC68000324759 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWE2VMM384;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Password Factory iOSUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Password Factory iOS";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -1280,29 +1477,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		40511D1B1C10C960005BE5BE /* Build configuration list for PBXNativeTarget "Password Factory iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				40511D171C10C960005BE5BE /* Debug */,
-				40511D181C10C960005BE5BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		40511D1C1C10C960005BE5BE /* Build configuration list for PBXNativeTarget "Password Factory iOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				40511D191C10C960005BE5BE /* Debug */,
-				40511D1A1C10C960005BE5BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		409E13CC1B8258170041541B /* Build configuration list for PBXNativeTarget "Password Factory Widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				409E13CA1B8258170041541B /* Debug */,
 				409E13CB1B8258170041541B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40AAB5F31F8EC68000324759 /* Build configuration list for PBXNativeTarget "Password Factory iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40AAB5F41F8EC68000324759 /* Debug */,
+				40AAB5F51F8EC68000324759 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40AAB5F61F8EC68000324759 /* Build configuration list for PBXNativeTarget "Password Factory iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40AAB5F71F8EC68000324759 /* Debug */,
+				40AAB5F81F8EC68000324759 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40AAB5F91F8EC68000324759 /* Build configuration list for PBXNativeTarget "Password Factory iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40AAB5FA1F8EC68000324759 /* Debug */,
+				40AAB5FB1F8EC68000324759 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

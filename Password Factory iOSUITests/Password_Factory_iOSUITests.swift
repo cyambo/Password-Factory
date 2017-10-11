@@ -2,8 +2,8 @@
 //  Password_Factory_iOSUITests.swift
 //  Password Factory iOSUITests
 //
-//  Created by Cristiana Yambo on 12/3/15.
-//  Copyright © 2015 Cristiana Yambo. All rights reserved.
+//  Created by Cristiana Yambo on 10/11/17.
+//  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
 
 import XCTest
