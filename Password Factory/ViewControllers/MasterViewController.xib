@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MasterViewController">
@@ -35,7 +35,7 @@
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Random" identifier="0" id="zr5-iB-5I9">
-                            <view key="view" ambiguous="YES" id="TTS-Hg-P6L">
+                            <view key="view" id="TTS-Hg-P6L">
                                 <rect key="frame" x="10" y="33" width="261" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -73,7 +73,7 @@
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fc-DjX">
-                                        <rect key="frame" x="88" y="-26" width="224" height="21"/>
+                                        <rect key="frame" x="88" y="-26" width="224" height="20"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.10088900862069" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mGh-qr-LNC">
                                             <connections>
                                                 <action selector="changeLength:" target="-2" id="Wgk-li-RuC"/>
@@ -107,7 +107,7 @@
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Pattern" identifier="1" id="etA-Qv-795">
-                            <view key="view" id="tNm-qa-FhM">
+                            <view key="view" ambiguous="YES" id="tNm-qa-FhM">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -210,7 +210,7 @@ C -Random Uppercase Character</string>
                                         </connections>
                                     </matrix>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WN8-xU-zDN">
-                                        <rect key="frame" x="88" y="79" width="224" height="21"/>
+                                        <rect key="frame" x="88" y="79" width="224" height="20"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="PCl-1G-QR9"/>
                                         <connections>
                                             <action selector="changeLength:" target="-2" id="2tM-uu-5f2"/>
@@ -282,7 +282,7 @@ C -Random Uppercase Character</string>
                                         </connections>
                                     </matrix>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfR-cB-aCw">
-                                        <rect key="frame" x="88" y="79" width="224" height="21"/>
+                                        <rect key="frame" x="88" y="79" width="224" height="20"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="vF0-l5-VJo"/>
                                         <connections>
                                             <action selector="changeLength:" target="-2" id="YLl-mH-RsG"/>
