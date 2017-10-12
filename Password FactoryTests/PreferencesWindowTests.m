@@ -23,20 +23,26 @@
         self.pw = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
         [self.pw showWindow:self];
     }
-
 }
-
 - (void)tearDown
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     [self.pw.window orderOut:self];
 }
+
+/**
+ deletes all the defaults stored in NSUserDefaults
+ */
 -(void)deleteUserDefaults {
     //delete current nsuserdefaults
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
 }
+
+/**
+ Tests loading preferences from the default plist created for the app
+ */
 - (void)testLoadPreferencesFromPlist
 {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
@@ -59,6 +65,10 @@
         
     }
 }
+
+/**
+ Tests to make sure the color wells update the text color
+ */
 -(void)testChangeColor {
     NSDictionary *wells = @{
                             @"upperTextColor":  self.pw.uppercaseTextColor,
@@ -81,6 +91,10 @@
 -(void)testSlider {
     //put test to test slider to label bindings
 }
+
+/**
+ Tests the various bindings on the preferences checkboxes
+ */
 -(void)testBindings {
     [self validateCheckBindings:self.pw.colorPasswordText defaultsKey:@"colorPasswordText" boundTo:@[self.pw.uppercaseTextColor,self.pw.lowercaseTextColor,self.pw.symbolsColor, self.pw.numbersColor] top:nil];
     [self validateCheckBindings:self.pw.enableGlobalHotkey defaultsKey:@"MASPGShortcutEnabled" boundTo:@[self.pw.displayNotification, self.pw.playNotificationSound] top:nil];
@@ -90,14 +104,28 @@
     
 
 }
+
+/**
+ Validates bindings on checkboxes
+
+ @param checkBox checkbox to evaluate
+ @param defaultsKey defaults key that checkbox is mapped to
+ @param bound Items that the checkbox contols the enabled state
+ @param top Checkbox that enables tested checkbox
+ */
 -(void)validateCheckBindings:(NSButton *)checkBox defaultsKey:(NSString *)defaultsKey boundTo:(NSArray *)bound top:(NSButton *)top {
     [self deleteUserDefaults];
     if(top) {
-        top.state = NO;
         [top performClick:self];
+        if (top.state == NO) {
+            [top performClick:self];
+        }
+
     }
-    checkBox.state = YES;
     [checkBox performClick:self];
+    if (checkBox.state == YES) {
+       [checkBox performClick:self];
+    }
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
     XCTAssertFalse([d boolForKey:defaultsKey], @"Checkbox %@ did not update defaults",defaultsKey);
@@ -106,9 +134,16 @@
     XCTAssertTrue([d boolForKey:defaultsKey], @"Checkbox %@ did not update defaults",defaultsKey);
     [self validateBindings:YES bound:bound name:defaultsKey];
 }
+
+/**
+ Validates enabled state on an array of NSControls
+
+ @param enabled state the control should be in
+ @param bound array of NSControls to check
+ @param name NSUserDefaults key of controlling checkbox
+ */
 -(void)validateBindings:(BOOL)enabled bound:(NSArray *)bound name:(NSString *)name{
     for(NSControl *b in bound) {
-
         XCTAssertEqual(enabled, [b isEnabled], @"%@ isEnabled should be %d",name,[b isEnabled]);
     }
 }

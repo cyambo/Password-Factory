@@ -38,6 +38,11 @@
 
 - (IBAction)quitApplication:(id)sender;
 
+@property (nonatomic, assign) int initialMenuState;
+@property (nonatomic, assign) int initialDockState;
+@property (weak) IBOutlet NSButton *quitButton;
+- (IBAction)menuCheckBoxesChanged:(id)sender;
+
 
 - (void)resetShortcutRegistration;
 @end

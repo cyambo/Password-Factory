@@ -18,6 +18,7 @@
                 <outlet property="lowercaseTextColor" destination="AQp-H3-av2" id="yjW-Qb-29Y"/>
                 <outlet property="numbersColor" destination="gZh-JY-pjQ" id="zu4-bs-5oz"/>
                 <outlet property="playNotificationSound" destination="2u6-HN-b47" id="vdX-9r-qRH"/>
+                <outlet property="quitButton" destination="eYg-7c-5Pz" id="F6y-Zu-nT8"/>
                 <outlet property="shortcutView" destination="kW6-ZI-IKO" id="z8M-EY-HyY"/>
                 <outlet property="symbolsColor" destination="ffN-DS-dp0" id="J1M-ki-NUH"/>
                 <outlet property="uppercaseTextColor" destination="E12-aM-C4D" id="b3d-o2-F4K"/>
@@ -231,8 +232,12 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.MASPGShortcutEnabled" id="2RN-Xw-GJS"/>
-                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyPlaySound" id="Jxy-b8-eGQ"/>
+                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.MASPGShortcutEnabled" id="WaT-0k-4FU">
+                                            <dictionary key="options">
+                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyPlaySound" id="cNl-KM-HNx"/>
                                     </connections>
                                 </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jb8-JE-onG">
@@ -243,8 +248,8 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyShowNotification" id="GM0-TI-zkI"/>
                                         <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.MASPGShortcutEnabled" id="hjX-5D-L7I"/>
-                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyShowNotification" id="MV2-wg-wBz"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -265,8 +270,9 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.hideDockIcon" id="8Tt-s7-eCt"/>
-                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.isMenuApp" id="OjF-rq-Hot"/>
+                                        <action selector="menuCheckBoxesChanged:" target="-2" id="Rip-xA-9wu"/>
+                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.isMenuApp" id="DEN-xa-7v1"/>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.hideDockIcon" id="8W1-sC-YzL"/>
                                     </connections>
                                 </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jx-1H-FYb">
@@ -277,11 +283,12 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.isMenuApp" id="RQj-tF-Ucm"/>
+                                        <action selector="menuCheckBoxesChanged:" target="-2" id="s0W-dA-wGQ"/>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.isMenuApp" id="x2v-KQ-8T4"/>
                                     </connections>
                                 </button>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-7c-5Pz">
-                                    <rect key="frame" x="174" y="8" width="52" height="53"/>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-7c-5Pz" userLabel="Restart_Quit">
+                                    <rect key="frame" x="167" y="7" width="68" height="53"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="bevel" title="Quit" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0vA-hk-iS0">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

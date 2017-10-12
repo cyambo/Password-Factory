@@ -17,10 +17,11 @@ NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
 @implementation PreferencesWindowController 
+
 __weak id _constantShortcutMonitor;
 static BOOL loadedPrefs;
-
 static NSDictionary *prefsPlist;
+
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -38,6 +39,7 @@ static NSDictionary *prefsPlist;
     [self updatePrefsUI];
     [self setObservers];
     
+    //setup shortcut handler
     [self.shortcutView bind:@"enabled" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
     
     // Shortcut view will follow and modify user preferences automatically
@@ -56,7 +58,8 @@ static NSDictionary *prefsPlist;
                          name:NSWindowWillCloseNotification
                        object:self.window];
     
-
+    self.initialMenuState = 2;
+    self.initialDockState = 2;
     
 }
 
@@ -188,11 +191,42 @@ static NSDictionary *prefsPlist;
 }
 
 - (IBAction)quitApplication:(id)sender {
+    if ([self.quitButton.title isEqualToString:@"Restart"]) {
+        //Restart the app if any of the menu checkboxes were changed
+        NSURL *u = [[NSURL alloc] initFileURLWithPath:NSBundle.mainBundle.resourcePath];
+        NSString *path = [[u URLByDeletingLastPathComponent] URLByDeletingLastPathComponent].absoluteString;
+        
+        NSTask *t = [[NSTask alloc] init];
+        t.launchPath = @"/usr/bin/open";
+        t.arguments = @[path];
+        [t launch];
+        exit(0);
+    }
     [[NSApplication sharedApplication] terminate:nil];
 }
-
+- (IBAction)menuCheckBoxesChanged:(NSButton*)sender {
+    int isMenuApp = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"isMenuApp"];
+    int hideDockIcon = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"hideDockIcon"];
+    NSLog(@"MENU: %d,%d DOCK %d,%d",self.initialMenuState,isMenuApp,self.initialDockState,hideDockIcon);
+    [self.quitButton setTitle:@"Quit"];
+    if (self.initialMenuState == 2 && self.initialDockState == 2) {
+        self.initialDockState = isMenuApp;
+        self.initialMenuState = hideDockIcon;
+//        if ([sender.title isEqualToString:@"Hide Dock Icon"]) {
+//            self.initialDockState = !hideDockIcon;
+//        } else {
+//            self.initialMenuState = !isMenuApp;
+//        }
+    }
+    NSLog(@"MENU: %d,%d DOCK %d,%d",self.initialMenuState,isMenuApp,self.initialDockState,hideDockIcon);
+    if (!(isMenuApp ^ self.initialMenuState)  || (isMenuApp && !(hideDockIcon ^ self.initialDockState))) {
+        [self.quitButton setTitle:@"Restart"];
+    }
+}
 
 #pragma mark - Custom shortcut
+
+
 - (void)resetShortcutRegistration
 {
   
