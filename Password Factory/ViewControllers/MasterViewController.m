@@ -157,6 +157,7 @@ int const  GenerateAndCopyLoops  = 10;
 - (IBAction)loadPreferences:(id)sender {
     AppDelegate *d = [[NSApplication sharedApplication] delegate];
     [d.prefsWindowController showWindow:sender];
+    d.prefsWindowController.window.restorable = YES;
     [NSApp activateIgnoringOtherApps:YES]; //brings it to front
 }
 - (void)clearClipboard {

@@ -9,6 +9,7 @@
 #import "MainWindow.h"
 
 @implementation MainWindow
+
 -(BOOL)canBecomeKeyWindow {
     return YES;
 }

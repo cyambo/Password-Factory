@@ -70,6 +70,10 @@
         //not a menu app so show the the window
         [self.window makeKeyAndOrderFront:self];
     }
+    //save window state
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"NSQuitAlwaysKeepsWindows"];
+    self.window.restorable = YES;
+    
     self.launched = YES;
 
     if (self.showPrefs) {
@@ -77,6 +81,7 @@
         [self loadPrefrences:nil];
 
     }
+    
 
 
 }

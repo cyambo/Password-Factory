@@ -56,6 +56,8 @@ static NSDictionary *prefsPlist;
                          name:NSWindowWillCloseNotification
                        object:self.window];
     
+
+    
 }
 
 -(void)showWindow:(id)sender {
