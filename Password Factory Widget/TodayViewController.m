@@ -16,6 +16,7 @@
 @property (nonatomic, strong) PasswordFactory *factory;
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
+
 @end
 
 @implementation TodayViewController
@@ -28,6 +29,7 @@
     [self changeLabel];
 
     [self generatePassword];
+    
 }
 -(void)viewDidLayout {
     [self changeLabel];

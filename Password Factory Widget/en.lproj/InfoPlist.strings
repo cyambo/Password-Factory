@@ -1,4 +1,4 @@
 /* Display name and description for this extension. */
-"CFBundleDisplayName" = "Password Factory Widget";
-"com.apple.notificationcenter.widget.description" = "Sample description";
+"CFBundleDisplayName" = "Password Factory";
+"com.apple.notificationcenter.widget.description" = "Generates passwords from Password Factory";
 

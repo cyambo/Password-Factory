@@ -32,6 +32,11 @@
 		<string>TodayViewController</string>
 		<key>com.apple.notificationcenter.widget.description</key>
 		<string>Password Factory Widget</string>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>NSExtensionPointVersion</key>
+			<string>2.0</string>
+		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 Cristiana Yambo. All rights reserved.</string>
