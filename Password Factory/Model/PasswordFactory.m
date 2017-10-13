@@ -22,8 +22,6 @@ static NSArray* phoeneticSounds;
 static NSArray* phoeneticSoundsTwo;
 static NSArray* phoeneticSoundsThree;
 
-
-
 @interface PasswordFactory ()
 @property (nonatomic, strong) NSMutableString *currentRange;
 
@@ -456,9 +454,7 @@ static NSArray* phoeneticSoundsThree;
     self.badWords = (NSArray *)[NSJSONSerialization JSONObjectWithData:bData options:0 error:nil];
     
     for (NSString *w in [dicts objectForKey:@"english"]) {
-        
         if ([w rangeOfCharacterFromSet:charSet].length == 0){
-            
             if (![self isBadWord:w]) { //remove bad words
                 if (w.length > 6) { //main word list uses only words of length 6 or more
                     [e addObject:w];
@@ -472,12 +468,9 @@ static NSArray* phoeneticSoundsThree;
                     NSMutableArray *a = [[NSMutableArray alloc] initWithObjects:w, nil];
                     [wl setObject:a forKey:@(w.length)];
                 }
-                
             }
         }
-        
     }
-    
     self.englishWords = [[NSArray alloc] initWithArray:e];
     self.shortWords = [[NSArray alloc] initWithArray:es];
     self.wordsByLength = [[NSDictionary alloc] initWithDictionary:wl];
