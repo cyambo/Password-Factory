@@ -1,4 +1,4 @@
-# Password-Factory
+# Password Factory
 A macOS password generator to make passwords in various formats.
 
 ### Features
