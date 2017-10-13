@@ -19,8 +19,7 @@
 @end
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [PreferencesWindowController loadPreferencesFromPlist];
 
     self.prefsWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
@@ -60,8 +59,6 @@
                                                                            [self closePopover:event];
                                                                        }
         }];
- 
-        
     } else {
         self.window.titlebarAppearsTransparent = YES;
         self.window.titleVisibility = NSWindowTitleHidden;
@@ -81,9 +78,6 @@
         [self loadPrefrences:nil];
 
     }
-    
-
-
 }
 -(IBAction)togglePopover:(id)sender {
     if (self.popover.shown) {
@@ -91,7 +85,6 @@
     } else {
         [self showPopover:sender];
     }
-    
 }
 -(void)showPopover:(id)sender {
     NSButton *b = (NSButton *)self.statusItem.button;
@@ -107,27 +100,21 @@
 
 
 - (IBAction)loadPrefrences:(id)sender {
-    
-
     [self.prefsWindowController showWindow:self];
-    
 }
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
-{
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     //if it is a menuApp then don't kill app when window is closed
     return ![[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"];
 }
 
--(void)applicationWillFinishLaunching:(NSNotification *)aNotification
-{
+-(void)applicationWillFinishLaunching:(NSNotification *)aNotification {
     NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
     [appleEventManager setEventHandler:self
                            andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                          forEventClass:kInternetEventClass andEventID:kAEGetURL];
 }
 //This gets called when the gear is pressed on the widget
-- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
-{
+- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
     NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
     if([url.host isEqualToString:@"settings"]) {
         if (self.launched) {

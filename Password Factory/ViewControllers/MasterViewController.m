@@ -440,7 +440,6 @@ int const  GenerateAndCopyLoops  = 10; //number of loops to run when doing a gen
     [self generatePassword];
 }
 
-
 /**
  Pressed passphrase case radio button
 
