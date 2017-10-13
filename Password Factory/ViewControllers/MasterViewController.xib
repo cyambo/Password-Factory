@@ -38,7 +38,7 @@
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Random" identifier="0" id="zr5-iB-5I9">
-                            <view key="view" ambiguous="YES" id="TTS-Hg-P6L">
+                            <view key="view" id="TTS-Hg-P6L">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -50,7 +50,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="generateAction:" target="-2" id="Y4K-Ei-RHa"/>
+                                            <action selector="generateAction:" target="-2" id="xMx-xH-WdK"/>
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.randomUseSymbols" id="Ezr-GN-t7F"/>
                                         </connections>
                                     </button>
@@ -62,7 +62,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="generateAction:" target="-2" id="QJz-dV-Lhg"/>
+                                            <action selector="generateAction:" target="-2" id="BO2-O5-cVQ"/>
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.randomMixedCase" id="sML-63-3Ye"/>
                                         </connections>
                                     </button>
@@ -74,19 +74,16 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="generateAction:" target="-2" id="zaQ-dP-9NY"/>
+                                            <action selector="generateAction:" target="-2" id="XK9-bo-3Ml"/>
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.randomAvoidAmbiguous" id="PTd-bz-LCD"/>
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fc-DjX">
                                         <rect key="frame" x="88" y="79" width="224" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.10088900862069" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mGh-qr-LNC">
-                                            <connections>
-                                                <action selector="changeLength:" target="-2" id="Wgk-li-RuC"/>
-                                            </connections>
-                                        </sliderCell>
+                                        <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.10088900862069" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mGh-qr-LNC"/>
                                         <connections>
+                                            <action selector="changeLength:" target="-2" id="ptj-tM-wAV"/>
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="ghq-6L-d8e"/>
                                         </connections>
                                     </slider>
@@ -116,7 +113,7 @@
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Pattern" identifier="1" id="etA-Qv-795">
-                            <view key="view" id="tNm-qa-FhM">
+                            <view key="view" ambiguous="YES" id="tNm-qa-FhM">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -218,7 +215,7 @@ C -Random Uppercase Character</string>
                                             </column>
                                         </cells>
                                         <connections>
-                                            <action selector="pressPrononunceableRadio:" target="-2" id="rFv-Nt-qig"/>
+                                            <action selector="pressPrononunceableRadio:" target="-2" id="3h7-B0-lPe"/>
                                             <binding destination="2ia-xi-Rdb" name="selectedIndex" keyPath="values.pronounceableSeparator" id="n9Y-u9-PFk"/>
                                         </connections>
                                     </matrix>
@@ -227,7 +224,7 @@ C -Random Uppercase Character</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="PCl-1G-QR9"/>
                                         <connections>
-                                            <action selector="changeLength:" target="-2" id="2tM-uu-5f2"/>
+                                            <action selector="changeLength:" target="-2" id="U1Q-Jh-fgG"/>
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="k8R-yy-BFM"/>
                                         </connections>
                                     </slider>
@@ -294,7 +291,7 @@ C -Random Uppercase Character</string>
                                             </column>
                                         </cells>
                                         <connections>
-                                            <action selector="pressPassphraseSeparatorRadio:" target="-2" id="2jG-m2-RRt"/>
+                                            <action selector="pressPassphraseSeparatorRadio:" target="-2" id="sgI-Ya-wVt"/>
                                             <binding destination="2ia-xi-Rdb" name="selectedIndex" keyPath="values.passphraseRadioSeparator" id="N4I-Hh-Z7p"/>
                                         </connections>
                                     </matrix>
@@ -303,7 +300,7 @@ C -Random Uppercase Character</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="vF0-l5-VJo"/>
                                         <connections>
-                                            <action selector="changeLength:" target="-2" id="YLl-mH-RsG"/>
+                                            <action selector="changeLength:" target="-2" id="buH-0a-bkT"/>
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.passwordLength" id="KVL-4a-kWR"/>
                                         </connections>
                                     </slider>
@@ -349,7 +346,7 @@ C -Random Uppercase Character</string>
                                             </column>
                                         </cells>
                                         <connections>
-                                            <action selector="pressPassphraseCaseRadio:" target="-2" id="3DU-yG-Rav"/>
+                                            <action selector="pressPassphraseCaseRadio:" target="-2" id="x5a-v3-jqM"/>
                                             <binding destination="2ia-xi-Rdb" name="selectedIndex" keyPath="values.passphraseRadioCaseType" id="dQ8-lt-AOr"/>
                                         </connections>
                                     </matrix>
@@ -400,7 +397,7 @@ C -Random Uppercase Character</string>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="copyToPasteboard:" target="-2" id="wfS-fu-lFT"/>
+                        <action selector="copyToClipboard:" target="-2" id="EmI-mT-CXh"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lHR-vq-1jc">
@@ -420,7 +417,7 @@ C -Random Uppercase Character</string>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="loadPreferences:" target="-2" id="PqM-IM-CTy"/>
+                        <action selector="loadPreferencesWindow:" target="-2" id="PqM-IM-CTy"/>
                     </connections>
                 </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NML-Rl-bwo" customClass="StrengthMeter">
@@ -444,7 +441,7 @@ C -Random Uppercase Character</string>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="generateAction:" target="-2" id="uuy-fp-gMk"/>
+                        <action selector="generateAction:" target="-2" id="Zmu-Xf-YOf"/>
                     </connections>
                 </button>
             </subviews>

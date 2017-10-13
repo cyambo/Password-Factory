@@ -27,8 +27,6 @@ static NSDictionary *prefsPlist;
 {
     self = [super initWithWindow:window];
     if (self) {
-        // Initialization code here.
-        
 
     }
     return self;
@@ -58,11 +56,17 @@ static NSDictionary *prefsPlist;
                          name:NSWindowWillCloseNotification
                        object:self.window];
     
+    //setting the initial checkbox states for the menu and dock checkboxes to an unset state
     self.initialMenuState = 2;
     self.initialDockState = 2;
     
 }
 
+/**
+ Shows the window 
+
+ @param default sender from IBOutlet
+ */
 -(void)showWindow:(id)sender {
     // Activate the global keyboard shortcut if it was enabled last time
     //moved to showWindow instead of awakeFromNib so that it will load everytime the window pops up
@@ -71,37 +75,48 @@ static NSDictionary *prefsPlist;
 }
 
 #pragma mark observers
+
+/**
+ Sets the observers for the class
+ */
 -(void)setObservers {
-
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-
-        [d addObserver:self
-            forKeyPath:MASPreferenceKeyShortcutEnabled
-               options:NSKeyValueObservingOptionNew
-               context:NULL];
+    //sets the observer for the global shortcut key
+    [d addObserver:self
+        forKeyPath:MASPreferenceKeyShortcutEnabled
+           options:NSKeyValueObservingOptionNew
+           context:NULL];
     
 }
+
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    //observing when the global shortcut is enabled
     if ([keyPath isEqualToString:MASPreferenceKeyShortcutEnabled]) {
         [self resetShortcutRegistration];
     }
 }
 #pragma mark prefs
+
+/**
+ Setup for the prefs window to fill in the set values
+ */
 -(void)updatePrefsUI {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-
+    //Loading up the erase clipboard timer
     [self.clearTimeLabel setIntValue:(int)[d integerForKey:@"clearClipboardTime"]];
-
+    
+    //setting the color wells
     [self.uppercaseTextColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"upperTextColor"]]];
     [self.lowercaseTextColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"lowerTextColor"]]];
     [self.symbolsColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]]];
     [self.numbersColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
-    
-
-    
 }
 
 
+/**
+ Makes sure our preferences are loaded only at launch
+ */
 +(void)loadPreferencesFromPlist {
     if (!loadedPrefs) {
         [PreferencesWindowController getPrefsFromPlist];
@@ -109,6 +124,10 @@ static NSDictionary *prefsPlist;
     }
 
 }
+
+/**
+ Loads our defaults.plist into a dictionary
+ */
 +(void)loadDefaultsPlist {
     if (prefsPlist == nil) {
         NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
@@ -116,11 +135,13 @@ static NSDictionary *prefsPlist;
         NSLog(@"LOADED PREFS");
     }
 }
+
+/**
+ Takes our defaults plist dictionary and merges it with standardUserDefaults so that our prefs are always set
+ */
 + (void)getPrefsFromPlist {
     [PreferencesWindowController loadDefaultsPlist];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-
-    
 
     //taking plist and filling in defaults if none set
     for (NSString *k in prefsPlist) {
@@ -131,6 +152,10 @@ static NSDictionary *prefsPlist;
     }
     [PreferencesWindowController syncSharedDefaults];
 }
+
+/**
+ Syncs our plist with the sharedDefaults manager for use in the today extension
+ */
 +(void)syncSharedDefaults {
     [PreferencesWindowController loadDefaultsPlist];
     NSUserDefaults *sharedDefaults = [DefaultsManager sharedDefaults];
@@ -146,7 +171,14 @@ static NSDictionary *prefsPlist;
     [sharedDefaults setObject:[d objectForKey:@"selectedTabIndex"]  forKey:@"selectedTabIndexShared"];
 }
 #pragma mark colors
-// From http://stackoverflow.com/questions/8697205/convert-hex-color-code-to-nscolor
+
+/**
+ Converts a hex color string into an NSColor
+ From http://stackoverflow.com/questions/8697205/convert-hex-color-code-to-nscolor
+
+ @param inColorString hex color string
+ @return NSColor made from hex color string
+ */
 + (NSColor*)colorWithHexColorString:(NSString*)inColorString
 {
     NSColor* result = nil;
@@ -169,6 +201,12 @@ static NSDictionary *prefsPlist;
               alpha:1.0];
     return result;
 }
+
+/**
+ Action taken whenever any of thethe color wells are changed
+
+ @param sender default sender from IBAction
+ */
 - (IBAction)changeColor:(id)sender {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     if ([sender isEqualTo:self.uppercaseTextColor]) {
@@ -184,13 +222,24 @@ static NSDictionary *prefsPlist;
     }
 }
 #pragma mark auto clear clipboard
-- (IBAction)changeClearTime:(id)sender {
 
+/**
+ Clipboard erase time slider action
+
+ @param sender default sender
+ */
+- (IBAction)changeClearTime:(id)sender {
+    //changes the label for the clipboard erase time
     [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
 
 }
 
-- (IBAction)quitApplication:(id)sender {
+/**
+ Quits or restarts the application depending on the checkboxes for the menu bar state
+
+ @param sender default sender
+ */
+- (IBAction)quitOrRestartApplication:(id)sender {
     if ([self.quitButton.title isEqualToString:@"Restart"]) {
         //Restart the app if any of the menu checkboxes were changed
         NSURL *u = [[NSURL alloc] initFileURLWithPath:NSBundle.mainBundle.resourcePath];
@@ -202,24 +251,37 @@ static NSDictionary *prefsPlist;
         [t launch];
         exit(0);
     }
+    //Quit the app if the checkbox state does not require a restart
     [[NSApplication sharedApplication] terminate:nil];
 }
+
+/**
+ Called whenever the checkboxes controlling the menu bar state are called
+
+ @param sender default sender
+ */
 - (IBAction)menuCheckBoxesChanged:(NSButton*)sender {
     int isMenuApp = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"isMenuApp"];
     int hideDockIcon = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"hideDockIcon"];
     NSLog(@"MENU: %d,%d DOCK %d,%d",self.initialMenuState,isMenuApp,self.initialDockState,hideDockIcon);
     [self.quitButton setTitle:@"Quit"];
+    
+    //Setting the initial states if they were unset
     if (self.initialMenuState == 2 && self.initialDockState == 2) {
         self.initialDockState = isMenuApp;
         self.initialMenuState = hideDockIcon;
-//        if ([sender.title isEqualToString:@"Hide Dock Icon"]) {
-//            self.initialDockState = !hideDockIcon;
-//        } else {
-//            self.initialMenuState = !isMenuApp;
-//        }
+        NSLog(@"%@",sender.title);
+        //since the values get changed when they are clicked, flip the one that was clicked to make it the same as the initial state
+        if ([sender.title isEqualToString:@"Hide Dock Icon"]) {
+            self.initialDockState = !hideDockIcon;
+        } else {
+            self.initialMenuState = !isMenuApp;
+        }
     }
     NSLog(@"MENU: %d,%d DOCK %d,%d",self.initialMenuState,isMenuApp,self.initialDockState,hideDockIcon);
-    if (!(isMenuApp ^ self.initialMenuState)  || (isMenuApp && !(hideDockIcon ^ self.initialDockState))) {
+    //Set the app to restart depending on the checkbox states as such
+    //if the menu status has changed, if it is a menuApp and the dock state changes
+    if ((isMenuApp ^ self.initialMenuState) || (isMenuApp && (hideDockIcon ^ self.initialDockState))) {
         [self.quitButton setTitle:@"Restart"];
     }
 }
@@ -227,18 +289,23 @@ static NSDictionary *prefsPlist;
 #pragma mark - Custom shortcut
 
 
+/**
+ Sets the global shortcut callback
+ */
 - (void)resetShortcutRegistration
 {
-  
+    //The global shortcut was set, so setup the callback
     if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
         NSLog(@"SKey %@",@"RESET SHORTCUT");
         [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut
                      toAction:^{
+                         //Loads the app delegate and runs generateAndCopy when the shortcut us pressed
                          NSLog(@"SHORTCUT PRESSED");
                          AppDelegate *d = [NSApplication sharedApplication].delegate;
                          [d.masterViewController generateAndCopy];
                      }];
     }
+    //the shortcut was turned off, so unbind it
     else {
         [[MASShortcutBinder sharedBinder] unbind:MASPreferenceKeyShortcut];
     }

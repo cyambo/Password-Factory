@@ -11,20 +11,16 @@
 #import "PreferencesWindowController.h"
 #import "StrengthMeter.h"
 @interface MasterViewController : NSViewController
+
 @property (weak) IBOutlet NSTextField *passwordField;
 
 @property (weak) IBOutlet NSButton *useSymbols;
 @property (weak) IBOutlet NSButton *mixedCase;
 @property (weak) IBOutlet NSButton *avoidAmbiguous;
 
-
 @property (weak) IBOutlet NSSlider *passwordLengthSlider;
 
-
-
-@property (weak) IBOutlet NSStepper *passwordLengthStepper;
 @property (weak) IBOutlet NSTextField *passwordLengthText;
-
 
 @property (weak) IBOutlet StrengthMeter *passwordStrengthLevel;
 
@@ -33,11 +29,11 @@
 @property (weak) IBOutlet NSTextField *patternText;
 @property (weak) IBOutlet NSMatrix *pronounceableSeparatorRadio;
 
-@property (nonatomic, strong) PasswordFactory *pg;
+@property (nonatomic, strong) PasswordFactory *pf;
 
 @property (weak) IBOutlet NSButton *generateButton;
 @property (weak) IBOutlet NSButton *pasteboardButton;
-- (IBAction)copyToPasteboard:(id)sender;
+- (IBAction)copyToClipboard:(id)sender;
 
 - (IBAction)changeLength:(id)sender;
 - (IBAction)pressPrononunceableRadio:(id)sender;
@@ -55,10 +51,7 @@
 
 @property (nonatomic, weak) PreferencesWindowController *prefsWindow;
 
-
-
 @property (weak) IBOutlet NSButton *loadPreferencesButton;
-
 
 @property (weak) IBOutlet NSMatrix *passphraseSeparatorRadio;
 @property (weak) IBOutlet NSMatrix *passphraseCaseRadio;
@@ -66,5 +59,5 @@
 - (IBAction)pressPassphraseSeparatorRadio:(id)sender;
 - (IBAction)pressPassphraseCaseRadio:(id)sender;
 
-
+- (IBAction)generateAction:(id)sender;
 @end

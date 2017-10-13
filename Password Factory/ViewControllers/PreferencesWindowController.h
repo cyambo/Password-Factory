@@ -36,13 +36,12 @@
 @property (weak) IBOutlet NSButton *playNotificationSound;
 @property (weak) IBOutlet NSButton *enableGlobalHotkey;
 
-- (IBAction)quitApplication:(id)sender;
+- (IBAction)quitOrRestartApplication:(id)sender;
 
 @property (nonatomic, assign) int initialMenuState;
 @property (nonatomic, assign) int initialDockState;
 @property (weak) IBOutlet NSButton *quitButton;
 - (IBAction)menuCheckBoxesChanged:(id)sender;
-
 
 - (void)resetShortcutRegistration;
 @end

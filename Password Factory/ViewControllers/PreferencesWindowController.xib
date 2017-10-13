@@ -48,7 +48,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
-                                        <action selector="changeColor:" target="-2" id="fmj-90-kXk"/>
+                                        <action selector="changeColor:" target="-2" id="x0C-8d-VLa"/>
                                         <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.colorPasswordText" id="Jf0-WB-a3k"/>
                                     </connections>
                                 </colorWell>
@@ -80,7 +80,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="color" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
-                                        <action selector="changeColor:" target="-2" id="ltL-AL-ZhV"/>
+                                        <action selector="changeColor:" target="-2" id="ShT-IK-SoG"/>
                                         <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.colorPasswordText" id="bmD-9i-Kcc"/>
                                     </connections>
                                 </colorWell>
@@ -101,7 +101,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="color" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
-                                        <action selector="changeColor:" target="-2" id="kcg-fZ-hic"/>
+                                        <action selector="changeColor:" target="-2" id="ecv-be-nQd"/>
                                         <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.colorPasswordText" id="Iri-dS-0RQ"/>
                                     </connections>
                                 </colorWell>
@@ -122,7 +122,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
-                                        <action selector="changeColor:" target="-2" id="AOk-12-GJW"/>
+                                        <action selector="changeColor:" target="-2" id="FM4-ke-150"/>
                                         <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.colorPasswordText" id="lp4-aY-9fw"/>
                                     </connections>
                                 </colorWell>
@@ -193,7 +193,7 @@
                                         </connections>
                                     </sliderCell>
                                     <connections>
-                                        <action selector="changeClearTime:" target="-2" id="aPp-jK-UFO"/>
+                                        <action selector="changeClearTime:" target="-2" id="zV8-Ck-tvm"/>
                                     </connections>
                                 </slider>
                             </subviews>
@@ -248,8 +248,8 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyShowNotification" id="GM0-TI-zkI"/>
                                         <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.MASPGShortcutEnabled" id="hjX-5D-L7I"/>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.globalHotkeyShowNotification" id="GM0-TI-zkI"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -270,9 +270,9 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="menuCheckBoxesChanged:" target="-2" id="Rip-xA-9wu"/>
-                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.isMenuApp" id="DEN-xa-7v1"/>
+                                        <action selector="menuCheckBoxesChanged:" target="-2" id="pSe-1b-0sK"/>
                                         <binding destination="gVG-eV-jH6" name="value" keyPath="values.hideDockIcon" id="8W1-sC-YzL"/>
+                                        <binding destination="gVG-eV-jH6" name="enabled" keyPath="values.isMenuApp" id="DEN-xa-7v1"/>
                                     </connections>
                                 </button>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jx-1H-FYb">
@@ -283,7 +283,7 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="menuCheckBoxesChanged:" target="-2" id="s0W-dA-wGQ"/>
+                                        <action selector="menuCheckBoxesChanged:" target="-2" id="pTd-8k-2uB"/>
                                         <binding destination="gVG-eV-jH6" name="value" keyPath="values.isMenuApp" id="x2v-KQ-8T4"/>
                                     </connections>
                                 </button>
@@ -295,7 +295,7 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="quitApplication:" target="-2" id="t8a-AU-Oz1"/>
+                                        <action selector="quitOrRestartApplication:" target="-2" id="t8a-AU-Oz1"/>
                                     </connections>
                                 </button>
                             </subviews>
