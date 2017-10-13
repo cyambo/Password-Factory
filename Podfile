@@ -3,7 +3,7 @@
 
 target 'Password Factory'  do
     pod 'ZXCVBN'
-    pod 'MASShortcut', '~> 2.2.0'
+    pod 'MASShortcut'
     pod 'EMCLoginItem'
 end
 
@@ -12,6 +12,6 @@ target 'Password Factory Widget' do
 end;
 
 target 'Password FactoryTests' do
-	pod 'OCMock', '~> 3.1'
+	pod 'OCMock'
 end
 
