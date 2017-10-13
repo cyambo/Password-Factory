@@ -3,7 +3,7 @@
 //  Password Factory
 //
 //  Created by Cristiana Yambo on 5/2/14.
-//  Copyright (c) 2014 c13. All rights reserved.
+//  Copyright (c) 2017 Cristiana Yambo. All rights reserved.
 //
 
 #import "PasswordFactory.h"
@@ -351,16 +351,12 @@ static NSArray* phoeneticSoundsThree;
                 c = [nonAmbiguousUpperCase characterAtIndex:(arc4random() % nonAmbiguousUpperCase.length)];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
-                
-                
-                
         }
     }
     return s;
 }
 
 #pragma mark Utility Methods
-
 /**
  *  get a random character from within a string
  *
@@ -408,8 +404,6 @@ static NSArray* phoeneticSoundsThree;
                          @"a" : @9,   //random non-ambiguous char
                          @"A" : @10  //random non-ambiguuous uppercase char
                          };
-
-    
 }
 /**
  *  Loads up our dictionary, and removes 'bad' words to generate pattern passwords.
@@ -447,7 +441,6 @@ static NSArray* phoeneticSoundsThree;
             }
             return;
         }
-        
     }
     
     //parsing out the data for our word lists
@@ -461,7 +454,6 @@ static NSArray* phoeneticSoundsThree;
     
     NSData *bData = [NSData dataWithContentsOfFile:badWordsPath];
     self.badWords = (NSArray *)[NSJSONSerialization JSONObjectWithData:bData options:0 error:nil];
-    
     
     for (NSString *w in [dicts objectForKey:@"english"]) {
         
@@ -493,8 +485,6 @@ static NSArray* phoeneticSoundsThree;
     [NSKeyedArchiver archiveRootObject:self.englishWords toFile:englishWordsPath];
     [NSKeyedArchiver archiveRootObject:self.shortWords toFile:shortWordsPath];
     [NSKeyedArchiver archiveRootObject:self.wordsByLength toFile:wordsByLengthPath];
-    
-    
 }
 
 /**
@@ -527,9 +517,6 @@ static NSArray* phoeneticSoundsThree;
     appS = [appS stringByAppendingPathComponent:withFile];
     return appS;
 }
-
-
-
 /**
  *  Rudimentary bad word filter, uses an array of 'bad' words to determine if passed in word is bad
  *
@@ -588,7 +575,6 @@ static NSArray* phoeneticSoundsThree;
     }
     return separator;
 }
-
 /**
  *  removes the trailing separator from a string
  *

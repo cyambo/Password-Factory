@@ -3,12 +3,13 @@
 //  Password Factory
 //
 //  Created by Cristiana Yambo on 5/2/14.
-//  Copyright (c) 2014 c13. All rights reserved.
+//  Copyright (c) 2017 Cristiana Yambo. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "PreferencesWindowController.h"
 #import "StyleKit.h"
+
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
@@ -49,7 +50,6 @@
         self.statusItem.button.image = statusImage;
         self.statusItem.highlightMode = YES;
  
-        
         self.statusItem.button.action = @selector(togglePopover:);
         
         //Registering for events so the popover can be closed when we click outside the window
@@ -97,8 +97,6 @@
     //Sync preferences when closing
     [PreferencesWindowController syncSharedDefaults];
 }
-
-
 - (IBAction)loadPrefrences:(id)sender {
     [self.prefsWindowController showWindow:self];
 }
