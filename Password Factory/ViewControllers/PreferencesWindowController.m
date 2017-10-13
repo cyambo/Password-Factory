@@ -6,9 +6,6 @@
 //  Copyright (c) 2017 Cristiana Yambo. All rights reserved.
 //
 
-
-
-
 #import "PreferencesWindowController.h"
 #import "NSColor+NSColorHexadecimalValue.h"
 #import "AppDelegate.h"

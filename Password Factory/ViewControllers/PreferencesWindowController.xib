@@ -29,16 +29,18 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="PreferencesWindow" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="277" height="497"/>
+            <rect key="contentRect" x="196" y="240" width="277" height="551"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <value key="minSize" type="size" width="277" height="551"/>
+            <value key="maxSize" type="size" width="277" height="551"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="277" height="497"/>
+                <rect key="frame" x="0.0" y="0.0" width="277" height="551"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Password Display" translatesAutoresizingMaskIntoConstraints="NO" id="9Rk-T8-6dg">
-                        <rect key="frame" x="16" y="326" width="242" height="157"/>
+                        <rect key="frame" x="16" y="380" width="242" height="157"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="F0z-5B-lBN">
                             <rect key="frame" x="1" y="1" width="240" height="141"/>
@@ -143,7 +145,7 @@
                         </view>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Clipboard Handling" translatesAutoresizingMaskIntoConstraints="NO" id="vL5-0M-yIu">
-                        <rect key="frame" x="17" y="102" width="242" height="83"/>
+                        <rect key="frame" x="17" y="156" width="242" height="83"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="oM3-bY-Qf6">
                             <rect key="frame" x="1" y="1" width="240" height="67"/>
@@ -201,7 +203,7 @@
                         </view>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Generate and Copy Hotkey" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-pS-dpl">
-                        <rect key="frame" x="17" y="189" width="242" height="127"/>
+                        <rect key="frame" x="17" y="243" width="242" height="127"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="zsU-dx-l8o">
                             <rect key="frame" x="1" y="1" width="240" height="111"/>
@@ -257,7 +259,7 @@
                         </view>
                     </box>
                     <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Menu Bar (changes require restart)" translatesAutoresizingMaskIntoConstraints="NO" id="ej7-u9-CPh">
-                        <rect key="frame" x="16" y="16" width="244" height="83"/>
+                        <rect key="frame" x="16" y="70" width="244" height="83"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="62c-Vb-8xK">
                             <rect key="frame" x="1" y="1" width="242" height="67"/>
@@ -302,24 +304,34 @@
                             </subviews>
                         </view>
                     </box>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N9L-xA-0sH">
-                        <rect key="frame" x="55" y="5" width="136" height="18"/>
+                    <box fixedFrame="YES" title="Login Items" translatesAutoresizingMaskIntoConstraints="NO" id="WT5-Tf-PhR">
+                        <rect key="frame" x="15" y="16" width="243" height="51"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Add to Login Items" bezelStyle="regularSquare" imagePosition="left" inset="2" id="a2m-os-W4X">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="changeLoginItem:" target="-2" id="b0S-mu-Rv4"/>
-                            <binding destination="gVG-eV-jH6" name="value" keyPath="values.addToLoginItems" id="Txd-qv-V2E"/>
-                        </connections>
-                    </button>
+                        <view key="contentView" id="Wsb-Cn-biy">
+                            <rect key="frame" x="2" y="2" width="239" height="34"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N9L-xA-0sH">
+                                    <rect key="frame" x="13" y="8" width="136" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Add to Login Items" bezelStyle="regularSquare" imagePosition="left" inset="2" id="a2m-os-W4X">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="changeLoginItem:" target="-2" id="b0S-mu-Rv4"/>
+                                        <binding destination="gVG-eV-jH6" name="value" keyPath="values.addToLoginItems" id="Txd-qv-V2E"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                    </box>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="592.5" y="368.5"/>
+            <point key="canvasLocation" x="592" y="417"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="gVG-eV-jH6"/>
         <customObject id="NJa-co-c6S" customClass="OnlyIntegerFormatter"/>
