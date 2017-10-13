@@ -21,22 +21,22 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>8</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSExtension</key>
 	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>NSExtensionPointVersion</key>
+			<string>2.0</string>
+		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widget-extension</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>TodayViewController</string>
 		<key>com.apple.notificationcenter.widget.description</key>
 		<string>Password Factory Widget</string>
-		<key>NSExtensionAttributes</key>
-		<dict>
-			<key>NSExtensionPointVersion</key>
-			<string>2.0</string>
-		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 Cristiana Yambo. All rights reserved.</string>

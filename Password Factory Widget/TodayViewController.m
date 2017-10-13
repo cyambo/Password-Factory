@@ -3,7 +3,7 @@
 //  Password Factory Widget
 //
 //  Created by Cristiana Yambo on 8/17/15.
-//  Copyright (c) 2015 Cristiana Yambo. All rights reserved.
+//  Copyright (c) 2017 Cristiana Yambo. All rights reserved.
 //
 #import "constants.h"
 #import "TodayViewController.h"
@@ -12,7 +12,13 @@
 #import "DefaultsManager.h"
 #import "PasswordStrength.h"
 
+
+/**
+ Displays a today widget showing a simplified app
+ Uses the shared defaults system to get data and configuration from the main app
+ */
 @interface TodayViewController () <NCWidgetProviding>
+
 @property (nonatomic, strong) PasswordFactory *factory;
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
@@ -21,16 +27,20 @@
 
 @implementation TodayViewController
 
+/**
+ Initialize the model and update interface
+ */
 - (void)viewWillAppear {
     if(!self.factory) {
         self.factory = [[PasswordFactory alloc] init];
     }
-
     [self changeLabel];
-
     [self generatePassword];
-    
 }
+
+/**
+ Change the label when the view changes
+ */
 -(void)viewDidLayout {
     [self changeLabel];
 }
@@ -39,15 +49,24 @@
     // with NoData if nothing has changed or NewData if there is new data since the last
     // time we called you
 
-
     [self generatePassword];
     completionHandler(NCUpdateResultNoData);
 }
 
+/**
+ Pressed the 'generate' button
+
+ @param sender default sender
+ */
 - (IBAction)generatePassword:(id)sender {
     [self generatePassword];
 }
 
+/**
+ Pressed the 'copy' button
+
+ @param sender default sender
+ */
 - (IBAction)copyPassword:(id)sender {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     [self updatePasteboard:[self.passwordField stringValue]];
@@ -64,18 +83,14 @@
                                         repeats:NO];
         
     }
-    //closing window if it is a menuApp
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
-        NSWindow *window = [[NSApplication sharedApplication] mainWindow];
-        if (window.isVisible) {
-            [window close];
-        }
-    }
 }
+
+/**
+ Changes the label showing which type of password is being generated
+ */
 - (void)changeLabel {
     NSUserDefaults *sd = [DefaultsManager sharedDefaults];
     int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
-    
     
     NSString *label;
 
@@ -92,13 +107,22 @@
         case PFTabPassphrase:
             label = @"Passphrase:";
             break;
-            
     }
     [self.passwordType setStringValue:label];
 }
+
+/**
+ Clear the clipboard
+ */
 - (void)clearClipboard {
     [self updatePasteboard:@""];
 }
+
+/**
+ Updates the clipboard with specified value
+
+ @param val string to put on the clipboard
+ */
 - (void)updatePasteboard:(NSString *)val {
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
@@ -106,16 +130,30 @@
     BOOL ok = [pasteboard writeObjects:toPasteboard];
     if (!ok) { NSLog(@"Write to pasteboard failed");}
 }
+
+/**
+ Pressed the gear button to open up the main application
+
+ @param sender default sender
+ */
 - (IBAction)backToApp:(id)sender {
     NSURL *u = [[NSURL alloc] initWithString:@"com-cloud13-password-factory://settings"];
     [[NSWorkspace sharedWorkspace] openURL:u];
-
 }
 
+
+/**
+ Generate a new password when the type has changed
+
+ @param sender default sender
+ */
 - (IBAction)changePasswordType:(id)sender {
     [self generatePassword];
 }
 
+/**
+ Generate a password based upon the main app's settings
+ */
 -(void)generatePassword {
     
     if(!self.factory) {
@@ -123,22 +161,18 @@
     }
     NSUserDefaults *sd = [DefaultsManager sharedDefaults];
 
-    
     int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
     NSString *password;
     
- 
     self.factory.passwordLength = [[sd objectForKey:@"passwordLengthShared"] integerValue];
-    
     
     BOOL useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];
     BOOL mixedCase = [[sd objectForKey:@"randomMixedCaseShared"] boolValue];
     BOOL avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
     
-    //TODO: still working on this
+    
     switch(index) {
         case PFTabRandom:
-           
             password = [self.factory generateRandom:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
             break;
         case PFTabPattern:
@@ -157,6 +191,13 @@
     [self updateStrength:password index:index];
     [self.passwordField setStringValue:password];
  }
+
+/**
+ Updates the color of the strength box depending on the password strength
+
+ @param password password to check
+ @param index selected tab index to change the strength type based upon what type of password is generated
+ */
 -(void)updateStrength:(NSString *)password index:(int)index {
     if (!self.passwordStrength) {
         self.passwordStrength = [[PasswordStrength alloc] init];
