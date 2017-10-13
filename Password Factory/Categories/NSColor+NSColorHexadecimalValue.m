@@ -10,16 +10,14 @@
 
 
 @implementation NSColor (NSColorHexadecimalValue)
--(NSString *)hexadecimalValueOfAnNSColor
-{
+-(NSString *)hexadecimalValueOfAnNSColor {
     int redIntValue, greenIntValue, blueIntValue;
     NSString *redHexValue, *greenHexValue, *blueHexValue;
     
     //Convert the NSColor to the RGB color space before we can access its components
     NSColor *convertedColor=[self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
     
-    if(convertedColor)
-    {
+    if(convertedColor) {
 
         
         // Convert the components to numbers (unsigned decimal integer) between 0 and 255

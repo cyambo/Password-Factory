@@ -4,6 +4,7 @@
 target 'Password Factory'  do
     pod 'ZXCVBN'
     pod 'MASShortcut', '~> 2.2.0'
+    pod 'EMCLoginItem'
 end
 
 target 'Password Factory Widget' do

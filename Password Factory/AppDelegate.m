@@ -31,8 +31,8 @@
     [self.window.contentView addSubview:self.masterViewController.view];
     self.masterViewController.view.frame = ((NSView *)self.window.contentView).bounds;
     [self.prefsWindowController resetShortcutRegistration]; //setting up shortcut when app launches
+    [self.prefsWindowController changeLoginItem:nil]; //set the login item to the current state
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
-        
         //hiding the dock icon if specified
         if([[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
             [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
@@ -76,7 +76,6 @@
     if (self.showPrefs) {
         self.showPrefs = NO;
         [self loadPrefrences:nil];
-
     }
 }
 -(IBAction)togglePopover:(id)sender {

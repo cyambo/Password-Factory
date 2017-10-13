@@ -16,16 +16,14 @@
 
 @implementation PreferencesWindowTests
 
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
     if (self.pw == nil) {
         self.pw = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
         [self.pw showWindow:self];
     }
 }
-- (void)tearDown
-{
+- (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     [self.pw.window orderOut:self];
@@ -43,12 +41,11 @@
 /**
  Tests loading preferences from the default plist created for the app
  */
-- (void)testLoadPreferencesFromPlist
-{
+- (void)testLoadPreferencesFromPlist {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
     NSDictionary *p = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    
+
     [self deleteUserDefaults];
     
     //nothing should be set

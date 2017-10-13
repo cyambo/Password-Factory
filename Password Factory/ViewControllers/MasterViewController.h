@@ -10,6 +10,7 @@
 #import "PasswordFactory.h"
 #import "PreferencesWindowController.h"
 #import "StrengthMeter.h"
+
 @interface MasterViewController : NSViewController
 
 @property (weak) IBOutlet NSTextField *passwordField;
@@ -60,4 +61,5 @@
 - (IBAction)pressPassphraseCaseRadio:(id)sender;
 
 - (IBAction)generateAction:(id)sender;
+
 @end

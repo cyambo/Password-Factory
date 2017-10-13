@@ -13,6 +13,7 @@
 #import "NSColor+NSColorHexadecimalValue.h"
 #import "AppDelegate.h"
 #import "DefaultsManager.h"
+
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
@@ -22,9 +23,7 @@ __weak id _constantShortcutMonitor;
 static BOOL loadedPrefs;
 static NSDictionary *prefsPlist;
 
-
-- (id)initWithWindow:(NSWindow *)window
-{
+- (id)initWithWindow:(NSWindow *)window {
     self = [super initWithWindow:window];
     if (self) {
 
@@ -43,11 +42,8 @@ static NSDictionary *prefsPlist;
     // Shortcut view will follow and modify user preferences automatically
     self.shortcutView.associatedUserDefaultsKey = MASPreferenceKeyShortcut;
     
-
-    
     //setting up window close notification
     NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
-    
     
     //registering for notification that the window is closing to run shortcut set code
     //this is because it seems to 'forget' the key when preferences is loaded
@@ -60,6 +56,8 @@ static NSDictionary *prefsPlist;
     self.initialMenuState = 2;
     self.initialDockState = 2;
     
+    //initting login item
+    self.loginItem = [[EMCLoginItem alloc] init];
 }
 
 /**
@@ -72,10 +70,10 @@ static NSDictionary *prefsPlist;
     //moved to showWindow instead of awakeFromNib so that it will load everytime the window pops up
     [self resetShortcutRegistration];
     [super showWindow:sender];
+    [self changeLoginItem:nil]; //runs every time the window is opened because the user can remove or add the login item from the prefs directly
 }
 
 #pragma mark observers
-
 /**
  Sets the observers for the class
  */
@@ -88,8 +86,6 @@ static NSDictionary *prefsPlist;
            context:NULL];
     
 }
-
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     //observing when the global shortcut is enabled
     if ([keyPath isEqualToString:MASPreferenceKeyShortcutEnabled]) {
@@ -97,7 +93,6 @@ static NSDictionary *prefsPlist;
     }
 }
 #pragma mark prefs
-
 /**
  Setup for the prefs window to fill in the set values
  */
@@ -112,8 +107,6 @@ static NSDictionary *prefsPlist;
     [self.symbolsColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]]];
     [self.numbersColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
 }
-
-
 /**
  Makes sure our preferences are loaded only at launch
  */
@@ -124,7 +117,6 @@ static NSDictionary *prefsPlist;
     }
 
 }
-
 /**
  Loads our defaults.plist into a dictionary
  */
@@ -135,7 +127,6 @@ static NSDictionary *prefsPlist;
         NSLog(@"LOADED PREFS");
     }
 }
-
 /**
  Takes our defaults plist dictionary and merges it with standardUserDefaults so that our prefs are always set
  */
@@ -152,7 +143,6 @@ static NSDictionary *prefsPlist;
     }
     [PreferencesWindowController syncSharedDefaults];
 }
-
 /**
  Syncs our plist with the sharedDefaults manager for use in the today extension
  */
@@ -171,7 +161,6 @@ static NSDictionary *prefsPlist;
     [sharedDefaults setObject:[d objectForKey:@"selectedTabIndex"]  forKey:@"selectedTabIndexShared"];
 }
 #pragma mark colors
-
 /**
  Converts a hex color string into an NSColor
  From http://stackoverflow.com/questions/8697205/convert-hex-color-code-to-nscolor
@@ -179,14 +168,12 @@ static NSDictionary *prefsPlist;
  @param inColorString hex color string
  @return NSColor made from hex color string
  */
-+ (NSColor*)colorWithHexColorString:(NSString*)inColorString
-{
++ (NSColor*)colorWithHexColorString:(NSString*)inColorString {
     NSColor* result = nil;
     unsigned colorCode = 0;
     unsigned char redByte, greenByte, blueByte;
     
-    if (nil != inColorString)
-    {
+    if (nil != inColorString) {
         NSScanner* scanner = [NSScanner scannerWithString:inColorString];
         (void) [scanner scanHexInt:&colorCode]; // ignore error
     }
@@ -201,7 +188,6 @@ static NSDictionary *prefsPlist;
               alpha:1.0];
     return result;
 }
-
 /**
  Action taken whenever any of thethe color wells are changed
 
@@ -222,7 +208,6 @@ static NSDictionary *prefsPlist;
     }
 }
 #pragma mark auto clear clipboard
-
 /**
  Clipboard erase time slider action
 
@@ -233,7 +218,6 @@ static NSDictionary *prefsPlist;
     [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
 
 }
-
 /**
  Quits or restarts the application depending on the checkboxes for the menu bar state
 
@@ -285,15 +269,11 @@ static NSDictionary *prefsPlist;
         [self.quitButton setTitle:@"Restart"];
     }
 }
-
 #pragma mark - Custom shortcut
-
-
 /**
  Sets the global shortcut callback
  */
-- (void)resetShortcutRegistration
-{
+- (void)resetShortcutRegistration {
     //The global shortcut was set, so setup the callback
     if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
         NSLog(@"SKey %@",@"RESET SHORTCUT");
@@ -309,7 +289,39 @@ static NSDictionary *prefsPlist;
     else {
         [[MASShortcutBinder sharedBinder] unbind:MASPreferenceKeyShortcut];
     }
-
 }
 
+/**
+ Adds to login items based upon preference state
+
+ @param sender default sender
+ */
+- (IBAction)changeLoginItem:(NSButton *)sender {
+    //get the login item status from preferences and change the checkbox state
+
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    
+    if(sender == nil) {
+        //called from showWindow
+        //checks to see if the item has been manually removed or added from login items and changes the state to match
+        if ([self.loginItem isLoginItem] && self.addToLoginItems.state == NSControlStateValueOff) {
+            self.addToLoginItems.state = NSControlStateValueOn;
+            [d setBool:YES forKey:@"addToLoginItems"];
+        } else if (![self.loginItem isLoginItem] && (self.addToLoginItems.state == NSControlStateValueOn)) {
+            self.addToLoginItems.state = NSControlStateValueOff;
+            [d setBool:NO forKey:@"addToLoginItems"];
+        }
+    }
+    //turns on or off depending on checkbox state
+    if ([d boolForKey:@"addToLoginItems"]) {
+        //login item on
+        if(![self.loginItem isLoginItem]) {
+            [self.loginItem addLoginItem];
+        }
+    } else {
+        if([self.loginItem isLoginItem]) {
+            [self.loginItem removeLoginItem];
+        }
+    }
+}
 @end

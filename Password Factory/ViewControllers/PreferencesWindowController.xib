@@ -9,6 +9,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
             <connections>
+                <outlet property="addToLoginItems" destination="N9L-xA-0sH" id="HY6-XF-zQs"/>
                 <outlet property="automaticallyClearClipboard" destination="6d2-lC-0Y7" id="YuB-ae-Hgy"/>
                 <outlet property="clearTime" destination="cfY-sM-IQE" id="8Mu-K5-b2u"/>
                 <outlet property="clearTimeLabel" destination="WOR-VL-9aO" id="yCW-zs-S7O"/>
@@ -301,6 +302,18 @@
                             </subviews>
                         </view>
                     </box>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N9L-xA-0sH">
+                        <rect key="frame" x="55" y="5" width="136" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Add to Login Items" bezelStyle="regularSquare" imagePosition="left" inset="2" id="a2m-os-W4X">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="changeLoginItem:" target="-2" id="b0S-mu-Rv4"/>
+                            <binding destination="gVG-eV-jH6" name="value" keyPath="values.addToLoginItems" id="Txd-qv-V2E"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>

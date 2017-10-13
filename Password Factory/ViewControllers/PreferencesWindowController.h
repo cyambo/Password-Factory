@@ -8,8 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <MASShortcut/Shortcut.h>
-
-
+#import "EMCLoginItem.h"
 
 @interface PreferencesWindowController : NSWindowController <NSTextFieldDelegate>
 
@@ -44,4 +43,8 @@
 - (IBAction)menuCheckBoxesChanged:(id)sender;
 
 - (void)resetShortcutRegistration;
+
+@property (weak) IBOutlet NSButton *addToLoginItems;
+- (IBAction)changeLoginItem:(NSButton *)sender;
+@property (nonatomic, strong) EMCLoginItem *loginItem;
 @end

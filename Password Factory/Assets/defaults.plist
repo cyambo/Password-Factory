@@ -40,5 +40,7 @@
 	<integer>401</integer>
 	<key>enableAdvancedMode</key>
 	<false/>
+	<key>addToLoginItems</key>
+	<false/>
 </dict>
 </plist>

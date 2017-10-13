@@ -24,8 +24,7 @@ int const  GenerateAndCopyLoops  = 10; //number of loops to run when doing a gen
 
 @implementation MasterViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         //initialize everything
@@ -38,7 +37,6 @@ int const  GenerateAndCopyLoops  = 10; //number of loops to run when doing a gen
 
         [self setObservers];
     }
-
     return self;
 }
 - (void)awakeFromNib {

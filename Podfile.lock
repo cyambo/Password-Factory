@@ -1,18 +1,21 @@
 PODS:
+  - EMCLoginItem (1.0.1)
   - MASShortcut (2.2.0)
   - OCMock (3.4)
   - ZXCVBN (1.0.5)
 
 DEPENDENCIES:
+  - EMCLoginItem
   - MASShortcut (~> 2.2.0)
   - OCMock (~> 3.1)
   - ZXCVBN
 
 SPEC CHECKSUMS:
+  EMCLoginItem: ac4a198cda3f4a8dc72797d2e89ad6c640624835
   MASShortcut: f016adee0731ece84a143ba39204afe46a68e1d9
   OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
   ZXCVBN: f3888e3f6363b8cf57bcc32857a9bc09f9f9e18e
 
-PODFILE CHECKSUM: 06668b08492fd83f78e99ca6f33081e801fa2ed5
+PODFILE CHECKSUM: cee0c5ab7104e769049f4a1e9cd81e05da971eb1
 
 COCOAPODS: 1.3.1
