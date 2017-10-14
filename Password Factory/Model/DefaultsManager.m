@@ -19,7 +19,7 @@
     
     dispatch_once(&once, ^ {
         dm = [[DefaultsManager alloc] init];
-        dm.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"XWE2VMM384.com.cloudthirteen.password-factory"];
+        dm.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"XWE2VMM384.com.cloudthirteen.Password-Factory"];
     });
     return dm;
 }

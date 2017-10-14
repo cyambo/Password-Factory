@@ -284,7 +284,7 @@ static NSDictionary *prefsPlist;
     }
     //the shortcut was turned off, so unbind it
     else {
-        [[MASShortcutBinder sharedBinder] unbind:MASPreferenceKeyShortcut];
+        [[MASShortcutBinder sharedBinder] breakBindingWithDefaultsKey:MASPreferenceKeyShortcut];
     }
 }
 
@@ -314,12 +314,10 @@ static NSDictionary *prefsPlist;
         //login item on
         if(!isLoginItem) {
             self.loginController.startAtLogin = YES;
-            self.loginController.enabled = YES;
         }
     } else {
         if(isLoginItem) {
             self.loginController.enabled = NO;
-            self.loginController.startAtLogin = NO;
         }
     }
 }

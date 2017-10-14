@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Password Factory Helper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>Password Factory Widget.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,6 +33,11 @@
 			<true/>
 		</dict>
 		<key>40511D0F1C10C960005BE5BE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>408673DF1F91D1C400C189AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
