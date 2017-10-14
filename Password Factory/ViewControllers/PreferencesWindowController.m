@@ -54,7 +54,7 @@ static NSDictionary *prefsPlist;
     self.initialDockState = 2;
     
     //initting login item
-    self.loginItem = [[EMCLoginItem alloc] init];
+    self.loginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.cloudthirteen.Password-Factory-Helper"];
 }
 
 /**
@@ -297,14 +297,14 @@ static NSDictionary *prefsPlist;
     //get the login item status from preferences and change the checkbox state
 
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    
+    BOOL isLoginItem = [self.loginController startAtLogin];
     if(sender == nil) {
         //called from showWindow
         //checks to see if the item has been manually removed or added from login items and changes the state to match
-        if ([self.loginItem isLoginItem] && self.addToLoginItems.state == NSControlStateValueOff) {
+        if (isLoginItem && self.addToLoginItems.state == NSControlStateValueOff) {
             self.addToLoginItems.state = NSControlStateValueOn;
             [d setBool:YES forKey:@"addToLoginItems"];
-        } else if (![self.loginItem isLoginItem] && (self.addToLoginItems.state == NSControlStateValueOn)) {
+        } else if (!isLoginItem && (self.addToLoginItems.state == NSControlStateValueOn)) {
             self.addToLoginItems.state = NSControlStateValueOff;
             [d setBool:NO forKey:@"addToLoginItems"];
         }
@@ -312,12 +312,14 @@ static NSDictionary *prefsPlist;
     //turns on or off depending on checkbox state
     if ([d boolForKey:@"addToLoginItems"]) {
         //login item on
-        if(![self.loginItem isLoginItem]) {
-            [self.loginItem addLoginItem];
+        if(!isLoginItem) {
+            self.loginController.startAtLogin = YES;
+            self.loginController.enabled = YES;
         }
     } else {
-        if([self.loginItem isLoginItem]) {
-            [self.loginItem removeLoginItem];
+        if(isLoginItem) {
+            self.loginController.enabled = NO;
+            self.loginController.startAtLogin = NO;
         }
     }
 }

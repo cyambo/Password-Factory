@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <MASShortcut/Shortcut.h>
-#import "EMCLoginItem.h"
+#import "StartAtLoginController.h"
 
 @interface PreferencesWindowController : NSWindowController <NSTextFieldDelegate>
 
@@ -46,5 +46,5 @@
 
 @property (weak) IBOutlet NSButton *addToLoginItems;
 - (IBAction)changeLoginItem:(NSButton *)sender;
-@property (nonatomic, strong) EMCLoginItem *loginItem;
+@property (nonatomic, strong) StartAtLoginController *loginController;
 @end

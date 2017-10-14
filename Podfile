@@ -1,10 +1,11 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '6.0'
+
+platform :osx, '10.11'
 
 target 'Password Factory'  do
     pod 'ZXCVBN'
     pod 'MASShortcut'
-    pod 'EMCLoginItem'
+    pod 'StartAtLoginController'
 end
 
 target 'Password Factory Widget' do
