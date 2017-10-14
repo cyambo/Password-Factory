@@ -308,6 +308,20 @@ static NSDictionary *prefsPlist;
             self.addToLoginItems.state = NSControlStateValueOff;
             [d setBool:NO forKey:@"addToLoginItems"];
         }
+    } else {
+        NSArray *applicationPath = [[[[NSProcessInfo processInfo] arguments] objectAtIndex:0] pathComponents];
+        if (![applicationPath[1] isEqualToString:@"Applications"]) {
+            //check to see if app is in Applications because login items only work from there
+            self.addToLoginItems.state = NSControlStateValueOff;
+            [d setBool:NO forKey:@"addToLoginItems"];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"OK"];
+            [alert setMessageText:@"Error"];
+            [alert setInformativeText:@"Password Factory must be installed in Applications to add to Login Items"];
+            [alert setAlertStyle:NSWarningAlertStyle];
+            [alert runModal];
+            return;
+        }
     }
     //turns on or off depending on checkbox state
     if ([d boolForKey:@"addToLoginItems"]) {

@@ -10,7 +10,6 @@
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
 @end
 
 @implementation AppDelegate
@@ -27,16 +26,20 @@
     
     if (!alreadyRunning) {
         NSMutableArray *path = (NSMutableArray *)[[[NSBundle mainBundle] bundlePath] pathComponents];
-        path = [[path subarrayWithRange:NSMakeRange(0, path.count - 3)] mutableCopy];
-        [path addObjectsFromArray:@[@"MacOS",@"Password Factory"]];
-        BOOL didRun = [[NSWorkspace sharedWorkspace] launchApplication:[NSString pathWithComponents:path]];
-        if (!didRun) {
-            NSLog(@"App didn't start from helper");
+        if ([(NSString *)[path objectAtIndex:path.count -2] isEqualToString:@"LoginItems"]) { //check to see if we are running within the main app
+            path = [[path subarrayWithRange:NSMakeRange(0, path.count - 3)] mutableCopy]; //Remove last three items from path - Library/LoginItems/Password Factory Helper.App
+            [path addObjectsFromArray:@[@"MacOS",@"Password Factory"]]; //Add the relative path to the app executable to absolute path
+            BOOL didRun = [[NSWorkspace sharedWorkspace] launchApplication:[NSString pathWithComponents:path]]; //try to start the app
+            if (!didRun) {
+                NSLog(@"App didn't start from helper");
+            }
+        } else {
+            NSLog(@"Helper app was not installed properly");
         }
-    }
-    [NSApp terminate:nil];
-}
 
+    }
+    [NSApp terminate:nil]; //kill the helper
+}
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
