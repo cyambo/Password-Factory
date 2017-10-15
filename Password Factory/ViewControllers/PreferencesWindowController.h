@@ -43,6 +43,7 @@
 - (IBAction)menuCheckBoxesChanged:(id)sender;
 
 - (void)resetShortcutRegistration;
+- (IBAction)showHelp:(id)sender;
 
 @property (weak) IBOutlet NSButton *addToLoginItems;
 - (IBAction)changeLoginItem:(NSButton *)sender;

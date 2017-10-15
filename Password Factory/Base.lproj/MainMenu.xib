@@ -15,6 +15,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="passphraseMenuItem" destination="r5p-Lf-o1b" id="TBJ-wO-4nX"/>
+                <outlet property="patternMenuItem" destination="yR7-IT-xyI" id="0Xu-Vm-QDW"/>
+                <outlet property="pronounceableMenuItem" destination="jUv-6N-B5b" id="kJy-CL-QlD"/>
+                <outlet property="randomMenuItem" destination="Hox-1P-dhe" id="90p-6G-AYa"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -85,6 +89,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Edit" id="W48-6f-4Dl">
                         <items>
+                            <menuItem title="Generate Password" keyEquivalent="g" id="oLV-fJ-4Ab">
+                                <connections>
+                                    <action selector="generatePasswordFromMenu:" target="Voe-Tx-rLC" id="mYT-wY-2x7"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Rh3-b3-LGt"/>
                             <menuItem title="Cut" keyEquivalent="x" id="uRl-iY-unG">
                                 <connections>
                                     <action selector="cut:" target="-1" id="YJe-68-I9s"/>
@@ -118,6 +128,27 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                         <items>
+                            <menuItem title="Random" keyEquivalent="r" id="Hox-1P-dhe">
+                                <connections>
+                                    <action selector="selectTabFromMenu:" target="Voe-Tx-rLC" id="cfE-gt-EpR"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Pattern" keyEquivalent="t" id="yR7-IT-xyI">
+                                <connections>
+                                    <action selector="selectTabFromMenu:" target="Voe-Tx-rLC" id="HzL-lH-ZOR"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Pronounceable" keyEquivalent="u" id="jUv-6N-B5b">
+                                <connections>
+                                    <action selector="selectTabFromMenu:" target="Voe-Tx-rLC" id="1sv-n4-ZzS"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Passphrase" keyEquivalent="p" id="r5p-Lf-o1b">
+                                <connections>
+                                    <action selector="selectTabFromMenu:" target="Voe-Tx-rLC" id="8fV-bV-gZC"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="myX-eG-gvC"/>
                             <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
                                 <connections>
                                     <action selector="performMiniaturize:" target="-1" id="VwT-WD-YPe"/>

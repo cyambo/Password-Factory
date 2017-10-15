@@ -289,6 +289,15 @@ static NSDictionary *prefsPlist;
 }
 
 /**
+ Shows help window
+
+ @param sender default sender
+ */
+- (IBAction)showHelp:(id)sender {
+    [[NSApplication sharedApplication] showHelp:nil];
+}
+
+/**
  Adds to login items based upon preference state
 
  @param sender default sender
@@ -334,5 +343,6 @@ static NSDictionary *prefsPlist;
             self.loginController.enabled = NO;
         }
     }
+    
 }
 @end

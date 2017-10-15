@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "PreferencesWindowController.h"
 #import "StyleKit.h"
+#import "constants.h"
 
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
@@ -22,7 +23,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [PreferencesWindowController loadPreferencesFromPlist];
-
+    
     self.prefsWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
 
     self.masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
@@ -85,6 +86,37 @@
         [self showPopover:sender];
     }
 }
+- (IBAction)generatePasswordFromMenu:(id)sender {
+    [self.masterViewController generatePassword];
+}
+- (IBAction)selectTabFromMenu:(NSMenuItem *)sender {
+    //Maps tab titles to constants matching the tab index
+    NSDictionary *tabSelect = @{@"Random" : @PFTabRandom, @"Pronounceable": @PFTabPronounceable, @"Passphrase": @PFTabPassphrase, @"Pattern": @PFTabPattern};
+    if (tabSelect[sender.title] != nil) {
+        [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:[tabSelect[sender.title] intValue]];
+    }
+}
+-(void)disablePasswordTypeMenu:(int)selectedType {
+//    NSMutableArray *menuTab = [NSMutableArray arrayWithCapacity:10];
+//    [menuTab insertObject:self.randomMenuItem atIndex:PFTabRandom];
+//    [menuTab insertObject:self.patternMenuItem atIndex:PFTabPattern];
+//    [menuTab insertObject:self.pronounceableMenuItem atIndex:PFTabPronounceable];
+//    [menuTab insertObject:self.passphraseMenuItem atIndex:PFTabPassphrase];
+//
+//
+//
+//    if(menuTab[selectedType]) {
+//        NSMenuItem *m = menuTab[i];
+//        m setAuto
+//        for(int i = 0; i < menuTab.count; i++) {
+//            if(i == selectedType) {
+//                [(NSMenuItem *)menuTab[i] set\\\];
+//            } else {
+//                [(NSMenuItem *)menuTab[i] setEnabled:YES];
+//            }
+//        }
+//    }
+}
 -(void)showPopover:(id)sender {
     NSButton *b = (NSButton *)self.statusItem.button;
     [self.popover showRelativeToRect:b.bounds ofView:self.statusItem.button preferredEdge:NSRectEdgeMinY];
@@ -105,10 +137,13 @@
 }
 
 -(void)applicationWillFinishLaunching:(NSNotification *)aNotification {
+    //set selector for url scheme that is called by the widget to go back to the app
     NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
     [appleEventManager setEventHandler:self
                            andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                          forEventClass:kInternetEventClass andEventID:kAEGetURL];
+    //remove enter full screen menu item
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
 }
 //This gets called when the gear is pressed on the widget
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
@@ -129,7 +164,9 @@
         
     }
 }
-
++(void)sendSupportEmail {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:support@password-factory.com"]];
+}
 #pragma mark Util
 +(BOOL)isDarkMode {
     NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
