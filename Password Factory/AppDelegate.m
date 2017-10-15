@@ -18,21 +18,24 @@
 @property (nonatomic, strong) NSEvent *popoverEvent;
 @property (nonatomic, assign) BOOL showPrefs;
 @property (nonatomic, assign) BOOL launched;
+
 @end
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    //load default preferences from our plist
     [PreferencesWindowController loadPreferencesFromPlist];
-    
+    //init prefs window
     self.prefsWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
-
+    //init master view
     self.masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
     self.masterViewController.prefsWindow = self.prefsWindowController;
-
+    //put the master view in our window
     [self.window.contentView addSubview:self.masterViewController.view];
     self.masterViewController.view.frame = ((NSView *)self.window.contentView).bounds;
-    [self.prefsWindowController resetShortcutRegistration]; //setting up shortcut when app launches
+    [self.prefsWindowController resetShortcutRegistration]; //setting up global shortcut when app launches
     [self.prefsWindowController changeLoginItem:nil]; //set the login item to the current state
+    //doing magic for the app if it is in the menu
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
         //hiding the dock icon if specified
         if([[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
@@ -44,13 +47,14 @@
         self.popover.contentViewController = self.masterViewController;
         self.popover.contentSize = (CGSize)self.masterViewController.view.frame.size;
         self.popover.behavior = NSPopoverBehaviorTransient;
+        //setting the status bar size
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-        
+        //getting the status image
         NSImage *statusImage = [StyleKit imageOfMenuIcon];
         [statusImage setTemplate:YES]; //setting it as a template will automatically change it based upon menu appearance, ie dark mode
         self.statusItem.button.image = statusImage;
         self.statusItem.highlightMode = YES;
- 
+        //set the action when clicking menu item
         self.statusItem.button.action = @selector(togglePopover:);
         
         //Registering for events so the popover can be closed when we click outside the window
@@ -61,6 +65,7 @@
                                                                        }
         }];
     } else {
+        //set window appearance and settings
         self.window.titlebarAppearsTransparent = YES;
         self.window.titleVisibility = NSWindowTitleHidden;
         self.window.styleMask |= NSFullSizeContentViewWindowMask;
@@ -72,13 +77,20 @@
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"NSQuitAlwaysKeepsWindows"];
     self.window.restorable = YES;
     
+    //set the launched flag to true
     self.launched = YES;
-
+    //show the prefs if we need to show them on launch
     if (self.showPrefs) {
         self.showPrefs = NO;
         [self loadPrefrences:nil];
     }
 }
+
+/**
+ Toggles the display of the popover in the menu app
+
+ @param sender default sender
+ */
 -(IBAction)togglePopover:(id)sender {
     if (self.popover.shown) {
         [self closePopover:sender];
@@ -86,41 +98,70 @@
         [self showPopover:sender];
     }
 }
+
+/**
+ Called when the generate menu item is selected and will generate a new password
+
+ @param sender default sender
+ */
 - (IBAction)generatePasswordFromMenu:(id)sender {
     [self.masterViewController generatePassword];
 }
+
+/**
+ Called when an item in the tab menu is selected, and will switch to that tab
+
+ @param sender default sender
+ */
 - (IBAction)selectTabFromMenu:(NSMenuItem *)sender {
-    //Maps tab titles to constants matching the tab index
-    NSDictionary *tabSelect = @{@"Random" : @PFTabRandom, @"Pronounceable": @PFTabPronounceable, @"Passphrase": @PFTabPassphrase, @"Pattern": @PFTabPattern};
-    if (tabSelect[sender.title] != nil) {
-        [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:[tabSelect[sender.title] intValue]];
+    //the tag of the menu item matches the identifier of the tabs so we can
+    //just use the tag to select the proper tab
+    if (sender.tag >= 0) {
+        [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:sender.tag];
     }
 }
--(void)disablePasswordTypeMenu:(int)selectedType {
-//    NSMutableArray *menuTab = [NSMutableArray arrayWithCapacity:10];
-//    [menuTab insertObject:self.randomMenuItem atIndex:PFTabRandom];
-//    [menuTab insertObject:self.patternMenuItem atIndex:PFTabPattern];
-//    [menuTab insertObject:self.pronounceableMenuItem atIndex:PFTabPronounceable];
-//    [menuTab insertObject:self.passphraseMenuItem atIndex:PFTabPassphrase];
-//
-//
-//
-//    if(menuTab[selectedType]) {
-//        NSMenuItem *m = menuTab[i];
-//        m setAuto
-//        for(int i = 0; i < menuTab.count; i++) {
-//            if(i == selectedType) {
-//                [(NSMenuItem *)menuTab[i] set\\\];
-//            } else {
-//                [(NSMenuItem *)menuTab[i] setEnabled:YES];
-//            }
-//        }
-//    }
+
+/**
+ Sends an email to support
+
+ @param sender default sender
+ */
+- (IBAction)contactSupport:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:support@password-factory.com"]];
 }
+/**
+ Called to show and hide menu items when they are shown
+
+ @param item default item
+ @return the menu display status
+ */
+- (BOOL)validateUserInterfaceItem:(id<NSValidatedUserInterfaceItem>)item {
+    //if the menu matches the selected tab, it hides it
+    NSMenuItem *m = (NSMenuItem *)item;
+    //get the selected tab identifier
+    int selected = [[self.masterViewController passwordTypeTab].selectedTabViewItem.identifier intValue];
+    //the tab identifier and menu item tag match up
+    if(m.tag == selected) {
+        return NO;
+    }
+    return YES;
+}
+
+/**
+ Show the popover when the menu item is clicked
+
+ @param sender default sender
+ */
 -(void)showPopover:(id)sender {
     NSButton *b = (NSButton *)self.statusItem.button;
     [self.popover showRelativeToRect:b.bounds ofView:self.statusItem.button preferredEdge:NSRectEdgeMinY];
 }
+
+/**
+ Close the popover when clicking outside window
+
+ @param sender default sender
+ */
 -(void)closePopover:(id)sender {
     [self.popover performClose:sender];
 }
@@ -128,9 +169,22 @@
     //Sync preferences when closing
     [PreferencesWindowController syncSharedDefaults];
 }
+
+/**
+ Loads the prefs window
+
+ @param sender default sender
+ */
 - (IBAction)loadPrefrences:(id)sender {
     [self.prefsWindowController showWindow:self];
 }
+
+/**
+ Will kill the app when the last window is closed if it is not a menu app, if it is, it will keep running
+
+ @param sender default sender
+ @return close state
+ */
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     //if it is a menuApp then don't kill app when window is closed
     return ![[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"];
@@ -145,7 +199,13 @@
     //remove enter full screen menu item
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
 }
-//This gets called when the gear is pressed on the widget
+
+/**
+ Called when the gear is pressed on the widget - it uses our url scheme to open the application if it is not running, or switch to it if it is active
+
+ @param event default event
+ @param replyEvent default replyEvent
+ */
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
     NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
     if([url.host isEqualToString:@"settings"]) {
@@ -164,10 +224,13 @@
         
     }
 }
-+(void)sendSupportEmail {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:support@password-factory.com"]];
-}
 #pragma mark Util
+
+/**
+ Static method that returns the dark mode state
+
+ @return yes if it is dark, no if it isnt
+ */
 +(BOOL)isDarkMode {
     NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
     return [osxMode isEqualToString:@"Dark"];

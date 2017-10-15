@@ -18,11 +18,11 @@
 @property (nonatomic, strong)  PreferencesWindowController *prefsWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;
 - (IBAction)selectTabFromMenu:(NSMenuItem *)sender;
--(void)disablePasswordTypeMenu:(int)selectedType;
 @property (weak) IBOutlet NSMenuItem *randomMenuItem;
 @property (weak) IBOutlet NSMenuItem *patternMenuItem;
 @property (weak) IBOutlet NSMenuItem *pronounceableMenuItem;
 @property (weak) IBOutlet NSMenuItem *passphraseMenuItem;
+- (IBAction)contactSupport:(id)sender;
 
 
 +(BOOL)isDarkMode;

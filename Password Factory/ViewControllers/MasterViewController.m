@@ -14,7 +14,7 @@
 #import "constants.h"
 #import "DefaultsManager.h"
 
-int const  GenerateAndCopyLoops  = 10; //number of loops to run when doing a genreateAndCopy
+
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
 @property (nonatomic, strong) id clearClipboardTimer;
@@ -232,10 +232,6 @@ int const  GenerateAndCopyLoops  = 10; //number of loops to run when doing a gen
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
     //generate a new password
     [self generatePassword];
-    
-    //disable the current tab in the menu so it can't be selected
-    AppDelegate *d = [[NSApplication sharedApplication] delegate];
-    [d disablePasswordTypeMenu:[(NSString*)tabViewItem.identifier intValue]];
 }
 
 /**

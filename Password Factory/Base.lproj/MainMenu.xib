@@ -89,7 +89,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Edit" id="W48-6f-4Dl">
                         <items>
-                            <menuItem title="Generate Password" keyEquivalent="g" id="oLV-fJ-4Ab">
+                            <menuItem title="Generate Password" tag="-1" keyEquivalent="g" id="oLV-fJ-4Ab">
                                 <connections>
                                     <action selector="generatePasswordFromMenu:" target="Voe-Tx-rLC" id="mYT-wY-2x7"/>
                                 </connections>
@@ -124,31 +124,37 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Window" id="aUF-d1-5bR">
+                <menuItem title="Tabs" id="plX-AS-Oju" userLabel="Tabs">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                    <menu key="submenu" title="Tabs" id="eZG-8N-nKQ">
                         <items>
                             <menuItem title="Random" keyEquivalent="r" id="Hox-1P-dhe">
                                 <connections>
                                     <action selector="selectTabFromMenu:" target="Voe-Tx-rLC" id="cfE-gt-EpR"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Pattern" keyEquivalent="t" id="yR7-IT-xyI">
+                            <menuItem title="Pattern" tag="1" keyEquivalent="t" id="yR7-IT-xyI">
                                 <connections>
                                     <action selector="selectTabFromMenu:" target="Voe-Tx-rLC" id="HzL-lH-ZOR"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Pronounceable" keyEquivalent="u" id="jUv-6N-B5b">
+                            <menuItem title="Pronounceable" tag="2" keyEquivalent="u" id="jUv-6N-B5b">
                                 <connections>
                                     <action selector="selectTabFromMenu:" target="Voe-Tx-rLC" id="1sv-n4-ZzS"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Passphrase" keyEquivalent="p" id="r5p-Lf-o1b">
+                            <menuItem title="Passphrase" tag="3" keyEquivalent="p" id="r5p-Lf-o1b">
                                 <connections>
                                     <action selector="selectTabFromMenu:" target="Voe-Tx-rLC" id="8fV-bV-gZC"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="myX-eG-gvC"/>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="aUF-d1-5bR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                        <items>
                             <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
                                 <connections>
                                     <action selector="performMiniaturize:" target="-1" id="VwT-WD-YPe"/>
@@ -171,6 +177,12 @@
                             <menuItem title="Password Factory Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Contact Support" tag="-1" id="QCg-Fx-6ne">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="contactSupport:" target="-1" id="zwc-8j-DKX"/>
                                 </connections>
                             </menuItem>
                         </items>

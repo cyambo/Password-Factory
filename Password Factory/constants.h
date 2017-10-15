@@ -42,5 +42,6 @@
 #define PFPasswordMinLength 5
 #define PFPasswordMaxLength 150
 
+#define GenerateAndCopyLoops 20
 
 #endif
