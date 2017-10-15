@@ -56,6 +56,9 @@
                 <li>
                     <a href="#preferences_menu">Menu</a>
                 </li>
+                <li>
+                    <a href="#preferences_login">Add to Login Items</a>
+                </li>
             </ul>
         </div>
         <div class="content">
@@ -71,7 +74,7 @@
                 <p>The window consists of the password viewing area and the password generating area.</p>
                 <section id="viewing_area">
                     <h3>Viewing Area</h3>
-                    <img class="window" src="gfx/viewing.png" width="406" />
+                    <img class="window" src="gfx/viewing.png" width="425" />
                     <p>This area consists of three sections, the password viewing area, strength meter, and the control buttons.</p>
                     <p>The password viewing area shows the currently generated password. The password is either shown in black or highlighted. When the password is highlighted each type of character is shown in a different color. <a href="#preferences_password_display">See Preferences - Password Display</a> for more information.</p>
                     <p>Below the password field is the strength meter. The stength meter will fill and indicate the relative strength via a color. Red is weak, yellow is medium, and green is strong. The strength meter goes from 0 to 100 and 100 is the strongest.</p>
@@ -87,7 +90,7 @@
             </section>
             <section id="random_generator">
                 <h2>Random Password</h2>
-                <img class="window" src="gfx/random.png" width="406" />
+                <img class="window" src="gfx/random.png" width="425" />
                 <p>The random option will generate a random password based on the options selected.</p>
                 <dl>
                     <dt>Length</dt>
@@ -102,7 +105,7 @@
             </section>
             <section id="pattern_generator">
                 <h2>Pattern</h2>
-                <img class="window" src="gfx/pattern.png" width="406" />
+                <img class="window" src="gfx/pattern.png" width="425" />
                 <p>The password generated will be based upon the pattern typed in the pattern field. A pattern is a series of characters that are replaced with a random character or characters following the pattern. The pattern symbols are as follows</p>
                 <dl>
                     <dt>#</dt>
@@ -127,26 +130,26 @@
             </section>
             <section id="pronounceable_generator">
                 <h2>Pronounceable</h2>
-                <img src="gfx/pronounceable.png" class="window" width="406" />
+                <img src="gfx/pronounceable.png" class="window" width="425" />
                 <p>The pronounceable tab will generate a random password that is pronounceable rather than random. There are two options for generating, length, and separator</p>
                 <p>The length slider will set the approximate length for the password, and the separator buttons toggle between six different separators</p>
             </section>
             <section id="passphrase_generator">
                 <h2>Passphrase</h2>
-                <img src="gfx/passphrase.png" class="window" width="406" />
+                <img src="gfx/passphrase.png" class="window" width="425" />
                 <p>The passphrase tab will generate a passphrase style password. The password will consist of a series of words separated by your chosen separator character.</p>
                 <p>The length slider will set the approximate length of the passphrase, and the separator buttons will choose the separator. The word case buttons will set the case style of each of the words in the passphrase. </p>
             </section>
             <section id="widget">
             	<h2>Widget</h2>
-            	<img src="gfx/widget.png" class="window" width="274" />
+            	<img src="gfx/widget.png" class="window" width="331" />
             	<p>You can enable the widget by going to the notification center and clicking edit, and then you can add the "Password Factory" widget</p>
-                <img src="gfx/widget-add.png" class="window" width="308" />
+                <img src="gfx/widget-add.png" class="window" width="331" />
             	<p>The widget will generate passwords based upon the configuration of the Password Factory application. Therefore, if the 'Passphrase' type is set, then the widget will generate a 'Passphrase' password using the current settings. The widget can only generate and copy passwords, and if you wish to change the password type go back to the application by clicking the gear and change settings from there.</p>
             </section>
             <section id="preferences">
                 <h2>Preferences</h2>
-                <img class="window" src="gfx/prefs.png" width="278" />
+                <img class="window" src="gfx/prefs.png" width="277" />
                 <section id="preferences_password_display">
                     <h3>Password Display</h3>
                     <p>The password display section controls how the password is shown in the app. If 'Color Password Text" is checked the characters in the password will be colored. Coloring the password text will enable you to easily distinguish between similar characters. You can change the color of each character type by clicking on the color boxes and selecting a new color</p>
@@ -183,6 +186,14 @@
                         <img src="gfx/menu.png" class="inline" width="20" />. If you enable or disable this feature, you will have to restart the app for the setting to be changed. You can also hide the dock icon while running as a menu bar application, but changing this setting will also require you to restart the application.</p>
                     <p class="note">
                         Note: if you are running as a menu app, the app may modify the password display colors for legibility
+                    </p>
+                </section>
+                <section id="preferences_login">
+                    <h3>Add to Login Items</h3>
+                    <p>Checking this will add Password Factory to your login items. In order for the app to be added to your login items, it has to be installed in Applications
+                    </p>
+                    <p class="note">
+                        Note: If you add to login items it will not show up in your Accounts preferences, however it will start on login if it is checked
                     </p>
                 </section>
             </section>

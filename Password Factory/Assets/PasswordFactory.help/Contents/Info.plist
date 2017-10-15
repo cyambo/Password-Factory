@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en-us</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.c13.passwordfactory.help</string>
+	<string>com.cloudthirteen.passwordfactory.help</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
