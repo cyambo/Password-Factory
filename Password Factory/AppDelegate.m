@@ -127,7 +127,8 @@
  @param sender default sender
  */
 - (IBAction)contactSupport:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:support@password-factory.com"]];
+    NSString *mailto = [NSString stringWithFormat:@"mailto:%@",SupportEmailAddress];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:mailto]];
 }
 /**
  Called to show and hide menu items when they are shown

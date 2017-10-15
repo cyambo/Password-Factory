@@ -13,7 +13,7 @@
 #import "AppDelegate.h"
 #import "constants.h"
 #import "DefaultsManager.h"
-
+#import "constants.h"
 
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
 
@@ -131,7 +131,7 @@
     
     //or play the sound
     } else if ([d boolForKey:@"globalHotkeyPlaySound"]) {
-        [[NSSound soundNamed:@"Hero"] play];
+        [[NSSound soundNamed:NotificationSoundName] play];
     }
     
 }
@@ -146,7 +146,7 @@
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     //Set the sound if the user configured it
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"globalHotkeyPlaySound"]) {
-        [notification setSoundName:@"Hero"];
+        [notification setSoundName:NotificationSoundName];
     }
     
     NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];

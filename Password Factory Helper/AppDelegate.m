@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "constants.h"
 @interface AppDelegate ()
 
 @end
@@ -19,7 +19,7 @@
     BOOL alreadyRunning = NO;
     NSArray *running = [[NSWorkspace sharedWorkspace] runningApplications];
     for (NSRunningApplication *app in running) {
-        if ([[app bundleIdentifier] isEqualToString:@"com.cloudthirteen.Password-Factory"]) {
+        if ([[app bundleIdentifier] isEqualToString:HelperIdentifier]) {
             alreadyRunning = YES;
         }
     }

@@ -7,6 +7,7 @@
 //
 
 #import "DefaultsManager.h"
+#import "constants.h"
 @interface DefaultsManager ()
 @property (nonatomic, strong) NSUserDefaults *sharedDefaults;
 @end
@@ -19,7 +20,7 @@
     
     dispatch_once(&once, ^ {
         dm = [[DefaultsManager alloc] init];
-        dm.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"XWE2VMM384.com.cloudthirteen.Password-Factory"];
+        dm.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     });
     return dm;
 }

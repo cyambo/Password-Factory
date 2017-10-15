@@ -10,7 +10,7 @@
 #import "NSColor+NSColorHexadecimalValue.h"
 #import "AppDelegate.h"
 #import "DefaultsManager.h"
-
+#import "constants.h"
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
@@ -54,7 +54,7 @@ static NSDictionary *prefsPlist;
     self.initialDockState = 2;
     
     //initting login item
-    self.loginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.cloudthirteen.Password-Factory-Helper"];
+    self.loginController = [[StartAtLoginController alloc] initWithIdentifier:HelperIdentifier];
 }
 
 /**
@@ -121,7 +121,6 @@ static NSDictionary *prefsPlist;
     if (prefsPlist == nil) {
         NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
         prefsPlist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-        NSLog(@"LOADED PREFS");
     }
 }
 /**
@@ -244,7 +243,7 @@ static NSDictionary *prefsPlist;
 - (IBAction)menuCheckBoxesChanged:(NSButton*)sender {
     int isMenuApp = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"isMenuApp"];
     int hideDockIcon = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"hideDockIcon"];
-    NSLog(@"MENU: %d,%d DOCK %d,%d",self.initialMenuState,isMenuApp,self.initialDockState,hideDockIcon);
+
     [self.quitButton setTitle:@"Quit"];
     
     //Setting the initial states if they were unset
@@ -259,7 +258,7 @@ static NSDictionary *prefsPlist;
             self.initialMenuState = !isMenuApp;
         }
     }
-    NSLog(@"MENU: %d,%d DOCK %d,%d",self.initialMenuState,isMenuApp,self.initialDockState,hideDockIcon);
+
     //Set the app to restart depending on the checkbox states as such
     //if the menu status has changed, if it is a menuApp and the dock state changes
     if ((isMenuApp ^ self.initialMenuState) || (isMenuApp && (hideDockIcon ^ self.initialDockState))) {
@@ -273,7 +272,7 @@ static NSDictionary *prefsPlist;
 - (void)resetShortcutRegistration {
     //The global shortcut was set, so setup the callback
     if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
-        NSLog(@"SKey %@",@"RESET SHORTCUT");
+
         [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut
                      toAction:^{
                          //Loads the app delegate and runs generateAndCopy when the shortcut us pressed

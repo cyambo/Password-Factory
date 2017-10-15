@@ -11,6 +11,9 @@
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
+		40537D8D1F9419FD00D645B7 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
+		40537D8E1F941C1700D645B7 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
+		40537D8F1F941D1800D645B7 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
 		4058DF281F92995800CCB6E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4058DF271F92995800CCB6E7 /* AppDelegate.m */; };
 		4058DF2A1F92995800CCB6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4058DF291F92995800CCB6E7 /* Assets.xcassets */; };
 		4058DF2D1F92995800CCB6E7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4058DF2B1F92995800CCB6E7 /* MainMenu.xib */; };
@@ -136,6 +139,7 @@
 		4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyIntegerFormatter.m; sourceTree = "<group>"; };
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
 		40511D651C125348005BE5BE /* PasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrength.m; sourceTree = "<group>"; };
+		40537D8C1F9419FD00D645B7 /* constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = constants.m; path = "Password Factory/constants.m"; sourceTree = "<group>"; };
 		4058DF241F92995800CCB6E7 /* Password Factory Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4058DF261F92995800CCB6E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4058DF271F92995800CCB6E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -443,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				408673D51F91D04B00C189AB /* constants.h */,
+				40537D8C1F9419FD00D645B7 /* constants.m */,
 				409585D41B8112FD00393B99 /* Assets */,
 				409585F71B8112FD00393B99 /* Categories */,
 				409585FC1B8112FD00393B99 /* Controls */,
@@ -1032,6 +1037,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40537D8F1F941D1800D645B7 /* constants.m in Sources */,
 				4058DF301F92995800CCB6E7 /* main.m in Sources */,
 				4058DF281F92995800CCB6E7 /* AppDelegate.m in Sources */,
 			);
@@ -1046,6 +1052,7 @@
 				40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */,
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
+				40537D8E1F941C1700D645B7 /* constants.m in Sources */,
 				40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */,
 				406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */,
 				406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */,
@@ -1098,6 +1105,7 @@
 				40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */,
 				4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */,
 				4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */,
+				40537D8D1F9419FD00D645B7 /* constants.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
 			);

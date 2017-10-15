@@ -137,7 +137,7 @@
  @param sender default sender
  */
 - (IBAction)backToApp:(id)sender {
-    NSURL *u = [[NSURL alloc] initWithString:@"com-cloud13-password-factory://settings"];
+    NSURL *u = [[NSURL alloc] initWithString:OpenSettingsURL];
     [[NSWorkspace sharedWorkspace] openURL:u];
 }
 

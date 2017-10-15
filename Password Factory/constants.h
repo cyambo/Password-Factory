@@ -5,6 +5,7 @@
 //  Created by Cristiana Yambo on 8/20/15.
 //  Copyright (c) 2015 Cristiana Yambo. All rights reserved.
 //
+#import <Foundation/Foundation.h>
 
 #ifndef Password_Factory_constants_h
 #define Password_Factory_constants_h
@@ -44,4 +45,10 @@
 
 #define GenerateAndCopyLoops 20
 
+extern NSString * const SupportEmailAddress;
+extern NSString * const SharedDefaultsAppGroup;
+extern NSString * const NotificationSoundName;
+extern NSString * const HelperIdentifier;
+extern NSString * const OpenSettingsURL;
 #endif
+
