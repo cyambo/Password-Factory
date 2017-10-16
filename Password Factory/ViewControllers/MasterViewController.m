@@ -281,18 +281,18 @@
     NSInteger atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
     //Generates different password formats based upon the selected tab
     switch (atTab) {
-        case 0: //random
+        case PFTabRandom: //random
             self.passwordValue = [self.pf generateRandom:[self.mixedCase state]
                                           avoidAmbiguous:[self.avoidAmbiguous state]
                                               useSymbols:[self.useSymbols state]];
             break;
-        case 1: //pattern
+        case PFTabPattern: //pattern
             self.passwordValue = [self.pf generatePattern:self.patternText.stringValue];
             break;
-        case 2: //pronounceable
+        case PFTabPronounceable: //pronounceable
             self.passwordValue = [self.pf generatePronounceableWithSeparatorType:[self getPronounceableSeparatorType]];
             break;
-        case 3: //passphrase:
+        case PFTabPassphrase: //passphrase:
             self.passwordValue = [self.pf generatePassphraseWithCode:[self getPassphraseSeparatorType] caseType:[self getPassphraseCaseType]];
             break;
     }

@@ -50,5 +50,6 @@ extern NSString * const SharedDefaultsAppGroup;
 extern NSString * const NotificationSoundName;
 extern NSString * const HelperIdentifier;
 extern NSString * const OpenSettingsURL;
+
 #endif
 

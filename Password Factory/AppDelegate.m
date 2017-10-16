@@ -114,13 +114,21 @@
  @param sender default sender
  */
 - (IBAction)selectTabFromMenu:(NSMenuItem *)sender {
-    //the tag of the menu item matches the identifier of the tabs so we can
-    //just use the tag to select the proper tab
-    if (sender.tag >= 0) {
-        [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:sender.tag];
-    }
+    [self selectTabByTag:(int)sender.tag];
 }
 
+/**
+ Selects the tab in the main window by tag id
+
+ @param tag tag number of tab
+ */
+-(void)selectTabByTag:(int)tag {
+    //the tag of the menu item matches the identifier of the tabs so we can
+    //just use the tag to select the proper tab
+    if (tag >= 0) {
+        [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:tag];
+    }
+}
 /**
  Sends an email to support
 
@@ -191,6 +199,33 @@
     return ![[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"];
 }
 
+/**
+ Create the dock menu with the four password types
+
+ @param sender default sender
+ @return dock menu
+ */
+- (NSMenu *)applicationDockMenu:(NSApplication *)sender {
+    NSMenu *dockMenu = [[NSMenu alloc] init];
+    NSArray *types = @[@"Random", @"Pattern", @"Pronounceable", @"Passphrase"];
+    for(int i = 0; i < types.count; i++) {
+        NSMenuItem *m = [[NSMenuItem alloc] initWithTitle:types[i] action:@selector(dockMenuItem:) keyEquivalent:@""];
+        [dockMenu addItem:m];
+        m.tag = -1; //setting a tag of -1 enables it
+        m.identifier = @(i).stringValue; //set the identifier to match the tab type
+    }
+    return dockMenu;
+}
+
+/**
+ Called when dock menu item is clicked will select tab matching type and generate and copy (which will display a notification is set)
+
+ @param sender default sender
+ */
+- (void)dockMenuItem:(NSMenuItem *)sender {
+    [self selectTabByTag:[sender.identifier intValue]];
+    [self.masterViewController generateAndCopy];
+}
 -(void)applicationWillFinishLaunching:(NSNotification *)aNotification {
     //set selector for url scheme that is called by the widget to go back to the app
     NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
