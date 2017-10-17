@@ -51,7 +51,6 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
     ct = log10(ct); //strength display is logarithmic
     ct /= .265; //this multiplier will give a nice scale
     self.strength = floor(ct);
-    NSLog(@"%d",self.strength);
     if (self.strength < 0) {
         self.strength = 0;
     } else if (self.strength > 100) {

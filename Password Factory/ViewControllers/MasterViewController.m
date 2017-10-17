@@ -396,7 +396,7 @@
 }
 
 /**
- Swaps white and black when the program is running in dark mode so that the characters are always visible regardless of mode
+ Swaps white and black when depending on dark or light mode, so white will be black on normal, and black will be white on dark
 
  @param color color to swap
  @return possibly swapped color
