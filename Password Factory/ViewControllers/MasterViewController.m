@@ -20,6 +20,7 @@
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) Class timerClass;
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
+
 @end
 
 @implementation MasterViewController
@@ -46,7 +47,9 @@
     [self.passwordTypeTab setDelegate:self];
     [self.patternText setDelegate:self];
     [self.passwordField setDelegate:self];
-    
+}
+-(void)viewWillAppear {
+    [self generatePassword];
 }
 #pragma mark Observers
 
@@ -420,14 +423,18 @@
 #pragma mark Password Strength
 
 /**
- Updates the password strength meter
+ Updates the password strength meter and the crack time string
  */
 - (void)setPasswordStrength {
-    [self.passwordStrengthLevel updateStrength:
-     [self.passwordStrength
-      getStrengthForPasswordType:
-        [self.passwordTypeTab.selectedTabViewItem.identifier intValue]
-        password:self.passwordValue]];
+    BOOL displayCTS = [[NSUserDefaults standardUserDefaults] boolForKey:@"displayCrackTime"]; //do we want to display the crack time string?
+    [self.passwordStrength updatePasswordStrength:self.passwordValue withCrackTimeString:displayCTS];
+    [self.passwordStrengthLevel updateStrength:self.passwordStrength.strength];
+    //only generate the crack time string if the user has it selected
+    if (displayCTS) {
+        [self.crackTimeButton setTitle:[self.passwordStrength.crackTimeString uppercaseString]];
+    }
+    //display the button using the alpha value
+    self.crackTimeButton.alphaValue = (int)displayCTS;
 }
 
 /**
@@ -446,5 +453,10 @@
  */
 - (IBAction)pressPassphraseCaseRadio:(id)sender {
     [self generatePassword];
+}
+- (IBAction)toggleCrackTimeDisplay:(id)sender {
+    BOOL alpha = ![[NSUserDefaults standardUserDefaults] boolForKey:@"displayCrackTime"];
+    self.crackTimeButton.alphaValue = (int)alpha;
+    [[NSUserDefaults standardUserDefaults] setBool:alpha forKey:@"displayCrackTime"];
 }
 @end

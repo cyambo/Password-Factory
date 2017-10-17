@@ -202,8 +202,8 @@
     if (!self.passwordStrength) {
         self.passwordStrength = [[PasswordStrength alloc] init];
     }
-
-    [self.strengthBox updateStrength:[self.passwordStrength getStrengthForPasswordType:index password:password]];
+    [self.passwordStrength updatePasswordStrength:password withCrackTimeString:NO];
+    [self.strengthBox updateStrength:self.passwordStrength.strength];
 }
 @end
 

@@ -19,5 +19,6 @@
 - (NSString *)generatePattern: (NSString *)pattern;
 
 - (NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType;
-- (NSString *)generatePassphraseWithCode:(int)separatorCode caseType:(int)caseType ;
+- (NSString *)generatePassphraseWithCode:(int)separatorCode caseType:(int)caseType;
+- (uint)randomNumber:(uint)limit;
 @end

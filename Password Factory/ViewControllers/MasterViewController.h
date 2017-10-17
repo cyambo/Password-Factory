@@ -61,5 +61,7 @@
 - (IBAction)pressPassphraseCaseRadio:(id)sender;
 
 - (IBAction)generateAction:(id)sender;
+@property (weak) IBOutlet NSButton *crackTimeButton;
+- (IBAction)toggleCrackTimeDisplay:(id)sender;
 
 @end

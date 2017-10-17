@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface PasswordStrength : NSObject
--(double)getStrengthForPasswordType:(int)passwordType
-                           password:(NSString *)password;
+@property (nonatomic, strong) NSString *crackTimeString;
+@property (nonatomic, assign) int strength;
+-(void)updatePasswordStrength:(NSString *)password withCrackTimeString:(BOOL)withCt;
 @end

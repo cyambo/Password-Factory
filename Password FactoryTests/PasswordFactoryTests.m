@@ -250,4 +250,15 @@ const int LONG_PASSWORD_LENGTH = 100;
     
 }
 
+/**
+ Test the random number generator
+ */
+-(void)testRandom {
+    for (uint i = 1; i < 50; i ++) {
+        for(uint j = 10; j < 20; j++) {
+            uint k = [self.pg randomNumber:j];
+            XCTAssertFalse((k < 0 || k > j), @"Random Number is out of range");
+        }
+    }
+}
 @end

@@ -42,5 +42,7 @@
 	<false/>
 	<key>addToLoginItems</key>
 	<false/>
+	<key>displayCrackTime</key>
+	<false/>
 </dict>
 </plist>

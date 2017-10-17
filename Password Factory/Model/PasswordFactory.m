@@ -41,7 +41,6 @@ static NSArray* phoeneticSoundsThree;
         [self setStatics];
 
         self.passwordLength = 5;
-        
     }
     return self;
 }
@@ -129,7 +128,7 @@ static NSArray* phoeneticSoundsThree;
             sep = @"-";
             break;
         case PFPronounceableNumberSeparator:
-            sep = [NSString stringWithFormat:@"%d",arc4random()%10];
+            sep = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
             break;
         case PFPronounceableNoSeparator:
             sep = @"";
@@ -220,12 +219,11 @@ static NSArray* phoeneticSoundsThree;
 
     while (!found && spun <= 40) {
         spun ++;
-        int currLength = (arc4random() % 8) + 4;
+        int currLength = [self randomNumber:8] + 4;
         NSArray *curr = self.wordsByLength[@(currLength)];
         if (curr) {
-            found = curr[arc4random() % curr.count];
+            found = curr[[self randomNumber:(uint)curr.count]];
         }
-        
     }
     return found;
 }
@@ -243,7 +241,7 @@ static NSArray* phoeneticSoundsThree;
     [self setCharacterRange:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
     NSMutableString *curr = [[NSMutableString alloc] init];
     for(int i=0;i<self.passwordLength;i++){
-        int at = arc4random() % [self.currentRange length];
+        int at = [self randomNumber:(uint)[self.currentRange length]];
         char charAt = [self.currentRange characterAtIndex:at];
         [curr appendFormat:@"%c",charAt];
         
@@ -311,42 +309,42 @@ static NSArray* phoeneticSoundsThree;
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
             case 1:
-                [s appendString:[NSString stringWithFormat:@"%d",arc4random()%10]];
+                [s appendString:[NSString stringWithFormat:@"%d",[self randomNumber:10]]];
                 break;
             case 2:
-                currVal = [self.englishWords objectAtIndex:arc4random() % l];
+                currVal = [self.englishWords objectAtIndex:[self randomNumber:l]];
                 [s appendString:[currVal lowercaseString]];
                 break;
             case 3:
-                currVal = [self.englishWords objectAtIndex:arc4random() % l];
+                currVal = [self.englishWords objectAtIndex:[self randomNumber:l]];
                 [s appendString:[currVal uppercaseString]];
                 break;
             case 4:
-                currVal = [self.shortWords objectAtIndex:arc4random() % sl];
+                currVal = [self.shortWords objectAtIndex:[self randomNumber:sl]];
                 [s appendString:[currVal lowercaseString]];
                 break;
             case 5:
-                currVal = [self.shortWords objectAtIndex:arc4random() % sl];
+                currVal = [self.shortWords objectAtIndex:[self randomNumber:sl]];
                 [s appendString:[currVal uppercaseString]];
                 break;
             case 6:
-                c = [symbols characterAtIndex:(arc4random() % symbols.length)];
+                c = [symbols characterAtIndex:([self randomNumber:(uint)symbols.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
             case 7:
-                c = [lowerCase characterAtIndex:(arc4random() % lowerCase.length)];
+                c = [lowerCase characterAtIndex:([self randomNumber:(uint)lowerCase.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
             case 8:
-                c = [upperCase characterAtIndex:(arc4random() % upperCase.length)];
+                c = [upperCase characterAtIndex:([self randomNumber:(uint)upperCase.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
             case 9:
-                c = [nonAmbiguousLowerCase characterAtIndex:(arc4random() % nonAmbiguousLowerCase.length)];
+                c = [nonAmbiguousLowerCase characterAtIndex:([self randomNumber:(uint)nonAmbiguousLowerCase.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
             case 10:
-                c = [nonAmbiguousUpperCase characterAtIndex:(arc4random() % nonAmbiguousUpperCase.length)];
+                c = [nonAmbiguousUpperCase characterAtIndex:([self randomNumber:(uint)nonAmbiguousUpperCase.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
         }
@@ -363,7 +361,7 @@ static NSArray* phoeneticSoundsThree;
  *  @return random character from string
  */
 - (char)randomFromString:(NSString *)source {
-    return [source characterAtIndex:(arc4random() % source.length)];
+    return [source characterAtIndex:([self randomNumber:(uint)source.length])];
 }
 /**
  *  get a random item from an array
@@ -373,7 +371,7 @@ static NSArray* phoeneticSoundsThree;
  *  @return random item from array
  */
 - (id)randomFromArray:(NSArray *)source {
-    return [source objectAtIndex:(arc4random() % source.count)];
+    return [source objectAtIndex:([self randomNumber:(uint)source.count])];
 }
 /**
  *  building out the static variables used to generate password
@@ -413,9 +411,9 @@ static NSArray* phoeneticSoundsThree;
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
     NSString *badWordsPath = [[NSBundle mainBundle] pathForResource:@"bad_words" ofType:@"json"];
 
-    NSString *englishWordsPath = [self getApplicationSupportDirectory:@"englishWords.archive"];
-    NSString *shortWordsPath = [self getApplicationSupportDirectory:@"shortWords.archive"];
-    NSString *wordsByLengthPath = [self getApplicationSupportDirectory:@"wordsByLength.archive"];
+    NSString *englishWordsPath = [self getApplicationSupportDirectory:EnglishWordsArchiveFilename];
+    NSString *shortWordsPath = [self getApplicationSupportDirectory:ShortWordsArchiveFilename];
+    NSString *wordsByLengthPath = [self getApplicationSupportDirectory:WordsByLengthWordsArchiveFilename];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     //Checking to see if our cached files exist and are newer than our data files, if so, load them instead of parsing
@@ -426,11 +424,14 @@ static NSArray* phoeneticSoundsThree;
         NSDate *sDate = [fileManager attributesOfItemAtPath:shortWordsPath error:nil][@"NSFileCreationDate"];
         NSDate *wDate = [fileManager attributesOfItemAtPath:wordsByLengthPath error:nil][@"NSFileCreationDate"];
         NSDate *jDate = [fileManager attributesOfItemAtPath:jsonPath error:nil][@"NSFileCreationDate"];
+        
+        //comparing file dates to json path create date
         if ([eDate compare:jDate] == NSOrderedDescending && [sDate compare:jDate] == NSOrderedDescending && [wDate compare:jDate] == NSOrderedDescending) {
             self.englishWords = [NSKeyedUnarchiver unarchiveObjectWithFile:englishWordsPath];
             self.shortWords = [NSKeyedUnarchiver unarchiveObjectWithFile:shortWordsPath];
             self.wordsByLength = [NSKeyedUnarchiver unarchiveObjectWithFile:wordsByLengthPath];
         }
+        //did we load the archive?
         if (self.englishWords.count > 0 && self.shortWords > 0 && self.wordsByLength.count > 0) {
             for (int i = 1; i < 15; i++) {
                 if (self.wordsByLength[@(i)]) {
@@ -440,7 +441,7 @@ static NSArray* phoeneticSoundsThree;
             return;
         }
     }
-    
+    //Archives didn't load, so parse out the words manually
     //parsing out the data for our word lists
     NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
     NSDictionary *dicts = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
@@ -589,7 +590,24 @@ static NSArray* phoeneticSoundsThree;
     //TODO: potential bug where the separator is the same as the last character and it will be removed truncating the string
     return string;
 }
-                                
+
+/**
+ Generates a cryptographic random number
+
+ @param limit upper limit of number
+ @return random uint
+ */
+-(uint)randomNumber:(uint)limit {
+    int32_t randomNumber = 0;
+    uint result = SecRandomCopyBytes(kSecRandomDefault, 4, (uint8_t*) &randomNumber);
+    if(result == 0) {
+        return randomNumber % limit;
+    } else {
+        NSLog(@"SecRandomCopyBytes failed for some reason");
+    }
+    return 0;
+}
+
 @end
 
 

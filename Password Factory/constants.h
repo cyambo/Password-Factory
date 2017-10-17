@@ -51,5 +51,8 @@ extern NSString * const NotificationSoundName;
 extern NSString * const HelperIdentifier;
 extern NSString * const OpenSettingsURL;
 
+extern NSString * const EnglishWordsArchiveFilename;
+extern NSString * const ShortWordsArchiveFilename;
+extern NSString * const WordsByLengthWordsArchiveFilename;
 #endif
 
