@@ -578,8 +578,8 @@ static NSArray* phoeneticSoundsThree;
  *  @return string without trailing separator
  */
 -(NSString *)removeTrailingSeparator:(NSString *)string separator:(NSString *)separator {
-    //don't need to do anything for empty separator
-    if (separator.length == 0) {
+    //don't need to do anything for empty separator, or empty string
+    if (separator.length == 0 | string.length == 0) {
         return string;
     }
     //checking last character to see if it is the same as separator, if it is, remove it
@@ -587,7 +587,7 @@ static NSArray* phoeneticSoundsThree;
     if ([separator characterAtIndex:0] == c) {
         return [string substringToIndex:string.length -1];
     }
-    //TODO: potential bug where the separator is the same as the last character and it will be removed truncating the string
+    //TODO: potential bug where the separator is the same as the last character of the password and is not the appended separator then it will be removed truncating the string
     return string;
 }
 

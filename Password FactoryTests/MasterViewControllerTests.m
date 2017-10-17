@@ -482,7 +482,21 @@
     XCTAssertEqual([self getSelectedPronounceableTag], [d integerForKey:@"pronounceableSeparator"], @"Pronounceable radio should set to 1");
     
 }
+-(void)testDisplayCrackTime {
 
+    NSUserDefaults * d = [NSUserDefaults standardUserDefaults];
+
+    NSButton *b = self.mvc.crackTimeButton;
+    NSString *key = @"displayCrackTime";
+
+    [self validateButtonBinding:b defaultsKey:key];
+    if ([d boolForKey:key] == TRUE) {
+        [b performClick:self];
+    }
+    XCTAssertTrue(b.alphaValue == 0,@"Alpha Value of Crack time button should be 0");
+    [b performClick:self];
+    XCTAssertTrue(b.alphaValue == 1,@"Alpha Value of Crack time button should be 1");
+}
 /**
  Tests that slider updates NSUserDefaults bindings
 
@@ -531,25 +545,18 @@
 }
 
 /**
- Tests the button NSUserDefaults bindings
+ Validates that clicking a button will toggle the defaults
 
  @param button button to test
- @param key mapped NSUserDefaults key
- @param setValue value to set
- @param expectedValue expected value stored
+ @param defaultsKey NSUserDefaults key
  */
--(void)validateButtonDefaults:(NSButton *)button
-                  defaultsKey:(NSString *)key
-                     setValue:(NSInteger)setValue
-                expectedValue:(NSInteger)expectedValue {
+-(void)validateButtonBinding:(NSButton *)button defaultsKey:(NSString *)defaultsKey {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    button.integerValue = setValue;
-    NSLog(@"set to %ld - %ld - %ld",(long)setValue,(long)button.integerValue,(long)[d integerForKey:key]);
     [button performClick:self];
-    NSLog(@"clicked  %ld - %ld",button.integerValue,[d integerForKey:key]);
-    XCTAssertEqual([d integerForKey:key], expectedValue,@"Defaults not saved for %@",key);
+    BOOL initialDefault = [d boolForKey:defaultsKey];
+    [button performClick:self];
+    XCTAssertTrue(initialDefault != [d boolForKey:defaultsKey],@"Binding for %@ did not update on click",defaultsKey);
 }
-
 /**
  Deletes all values in NSUserDefaults
  */

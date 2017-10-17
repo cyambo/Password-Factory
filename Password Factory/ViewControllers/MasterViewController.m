@@ -454,9 +454,21 @@
 - (IBAction)pressPassphraseCaseRadio:(id)sender {
     [self generatePassword];
 }
+
+/**
+ Toggles the display of the crack time in the strength bar
+
+ @param sender default sender
+ */
 - (IBAction)toggleCrackTimeDisplay:(id)sender {
-    BOOL alpha = ![[NSUserDefaults standardUserDefaults] boolForKey:@"displayCrackTime"];
-    self.crackTimeButton.alphaValue = (int)alpha;
-    [[NSUserDefaults standardUserDefaults] setBool:alpha forKey:@"displayCrackTime"];
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSButton *b = self.crackTimeButton;
+    BOOL showCT = ![d boolForKey:@"displayCrackTime"];
+    [d setBool:showCT forKey:@"displayCrackTime"]; //manually setting defaults because bindings don't work for this
+    if (showCT) { //regenerate the password strength to make sure the values are displaying correctly
+        [self setPasswordStrength];
+    }
+    b.alphaValue = (int)showCT; //the int value of the bool matches the alpha value we need to show and hide the button
+    
 }
 @end
