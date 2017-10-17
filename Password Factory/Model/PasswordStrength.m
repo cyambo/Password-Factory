@@ -81,14 +81,14 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
         s = @"a day";
     } else if ((approximate = [self checkApproximateToOne:(ct / (60 * 24 * 7))]) != PSGreaterThan) {
         s = @"a week";
-    } else if ((approximate = [self checkApproximateToOne:(ct / (60 * 24 * 7 * 30))]) != PSGreaterThan) {
+    } else if ((approximate = [self checkApproximateToOne:(ct / (60 * 24 * 30))]) != PSGreaterThan) {
         s = @"a month";
     } else if ((ct / (60 * 24 * 7 * 30 * 365)) < 1) {
         s = @"a year";
     }
     //Greater than a year
     if (s == nil) {
-        ct /= (60 * 24 * 7 * 30 * 365); //crack time in years
+        ct /= (60 * 24 * 365); //crack time in years
         
         if (ct < 10) { //less than ten years
             ct = floor(ct); //get number of years
