@@ -429,7 +429,7 @@
     BOOL displayCTS = [[NSUserDefaults standardUserDefaults] boolForKey:@"displayCrackTime"]; //do we want to display the crack time string?
     [self.passwordStrength updatePasswordStrength:self.passwordValue withCrackTimeString:displayCTS];
     [self.passwordStrengthLevel updateStrength:self.passwordStrength.strength];
-    //only generate the crack time string if the user has it selected
+    //only display the crack time string if the user has it selected
     if (displayCTS) {
         [self.crackTimeButton setTitle:[self.passwordStrength.crackTimeString uppercaseString]];
     }
