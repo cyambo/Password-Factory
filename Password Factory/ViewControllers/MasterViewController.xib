@@ -115,11 +115,11 @@
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Pattern" identifier="1" id="etA-Qv-795">
-                            <view key="view" id="tNm-qa-FhM">
+                            <view key="view" ambiguous="YES" id="tNm-qa-FhM">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-SO-FyV">
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-SO-FyV">
                                         <rect key="frame" x="21" y="80" width="336" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Pattern" drawsBackground="YES" id="tER-aD-4v5">
@@ -256,7 +256,7 @@ C -Random Uppercase Character</string>
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Passphrase" identifier="3" id="NPi-qA-3zW">
-                            <view key="view" ambiguous="YES" id="r7Q-MH-tBN">
+                            <view key="view" id="r7Q-MH-tBN">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -439,7 +439,7 @@ C -Random Uppercase Character</string>
                         </button>
                     </subviews>
                 </customView>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qet-DJ-02l">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qet-DJ-02l">
                     <rect key="frame" x="20" y="192" width="304" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" allowsEditingTextAttributes="YES" id="Myv-Rk-pwt">

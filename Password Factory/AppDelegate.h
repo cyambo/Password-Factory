@@ -23,6 +23,8 @@
 @property (weak) IBOutlet NSMenuItem *pronounceableMenuItem;
 @property (weak) IBOutlet NSMenuItem *passphraseMenuItem;
 - (IBAction)contactSupport:(id)sender;
+- (IBAction)menuCopy:(id)sender;
+- (IBAction)menuCut:(id)sender;
 
 
 +(BOOL)isDarkMode;

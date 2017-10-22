@@ -129,6 +129,56 @@
         [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:tag];
     }
 }
+
+/**
+ Called when the user presses copy on the menu
+ It will determine if there is anything selected in any text box, and if it is selected, it will copy that
+ If nothing is selected, it will copy the password displayed to the clipboard
+
+ @param sender default sender
+ */
+-(IBAction)menuCopy:(id)sender {
+    //get the first responder
+    NSResponder *fr = [self.window firstResponder];
+    //see if we are a text view
+    if ([fr isKindOfClass:[NSTextView class]]) {
+        //if anything has a selection send copy to the first responder
+        if ([self hasSelectionInTextView:(NSTextView *)fr]) {
+            [(NSTextView *)fr copy:self];
+            return;
+        }
+    }
+    //otherwise copy the password to the clipboard
+    [self.masterViewController copyToClipboard:self];
+}
+-(IBAction)menuCut:(id)sender {
+    //get the first responder
+    NSResponder *fr = [self.window firstResponder];
+    //see if we are a text view
+    if ([fr isKindOfClass:[NSTextView class]]) {
+        //if anything has a selection send copy to the first responder
+        if ([self hasSelectionInTextView:(NSTextView *)fr]) {
+            [(NSTextView *)fr cut:self];
+            return;
+        }
+    }
+    //otherwise copy the password to the clipboard
+    [self.masterViewController copyToClipboard:self];
+    //empty the password field
+    [self.masterViewController.passwordField setStringValue:@""];
+
+}
+
+-(BOOL)hasSelectionInTextView:(NSTextView *)textView {
+    NSArray *ranges = [textView selectedRanges]; //get the selection
+    for(int i = 0; i < ranges.count; i++) { //go through all the possible selections and if any has anything in it set hasSelection
+        if([ranges[i] rangeValue].length > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
 /**
  Sends an email to support
 
@@ -145,14 +195,18 @@
  @return the menu display status
  */
 - (BOOL)validateUserInterfaceItem:(id<NSValidatedUserInterfaceItem>)item {
-    //if the menu matches the selected tab, it hides it
+
     NSMenuItem *m = (NSMenuItem *)item;
-    //get the selected tab identifier
-    int selected = [[self.masterViewController passwordTypeTab].selectedTabViewItem.identifier intValue];
-    //the tab identifier and menu item tag match up
-    if(m.tag == selected) {
-        return NO;
+    //If we are in the 'Tabs' menu, then disable the currently selected tab
+    if ([m.parentItem.title isEqualToString:@"Tabs"]) {
+        //get the selected tab identifier
+        int selected = [[self.masterViewController passwordTypeTab].selectedTabViewItem.identifier intValue];
+        //the tab identifier and menu item tag match up
+        if(m.tag == selected) {
+            return NO;
+        }
     }
+    //otherwise, enable the menu
     return YES;
 }
 
