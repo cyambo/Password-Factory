@@ -117,8 +117,8 @@ const int LONG_PASSWORD_LENGTH = 100;
     }
 }
 - (void)regexReplaceTest: (NSString *)regexPattern
-            errorMessage:(NSString *)errorMessage
-           generateBlock:(NSString *(^)(void))generateBlock {
+            errorMessage: (NSString *)errorMessage
+           generateBlock: (NSString *(^)(void))generateBlock {
     NSError *error;
     NSRegularExpression *replaceRegex = [NSRegularExpression
                                          regularExpressionWithPattern:regexPattern

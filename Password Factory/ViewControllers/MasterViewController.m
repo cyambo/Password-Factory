@@ -360,34 +360,33 @@
         //uses AttributedString to color password
         NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         NSError *error;
-        NSRegularExpression *charRegex = [[NSRegularExpression alloc] initWithPattern:@"[A-Z]" options:0 error:&error];
-        NSRegularExpression *charlRegex = [[NSRegularExpression alloc] initWithPattern:@"[a-z]" options:0 error:&error];
-        NSRegularExpression *numRegex = [[NSRegularExpression alloc] initWithPattern:@"[0-9]" options:0 error:&error];
-        NSRegularExpression *symRegex = [[NSRegularExpression alloc] initWithPattern:@"[^0-9A-Za-z]" options:0 error:&error];
+        //setting up regexes to match the characters and use that to colorize them
+        NSRegularExpression *charRegex = [[NSRegularExpression alloc] initWithPattern:@"[A-Z]" options:0 error:&error]; //uppercase characters
+        NSRegularExpression *charlRegex = [[NSRegularExpression alloc] initWithPattern:@"[a-z]" options:0 error:&error]; //lowercase characters
+        NSRegularExpression *numRegex = [[NSRegularExpression alloc] initWithPattern:@"[0-9]" options:0 error:&error]; //numbers
+        NSRegularExpression *symRegex = [[NSRegularExpression alloc] initWithPattern:@"[^0-9A-Za-z]" options:0 error:&error]; //symbols
         
         NSRange r = NSMakeRange(0, 1);
         //colorizing password label
         [s beginEditing];
         //loops through the string and uses a regex to determine the color of the character
         for (int i=0; i < self.passwordValue.length ; i++) {
-            NSColor *c = [NSColor blueColor];
-            NSString *at = [NSString stringWithFormat:@"%c",[self.passwordValue characterAtIndex:i]];
-            
-            if ([charRegex matchesInString:at options:0 range:r].count) {
-                c = cColor;
-            } else if ([charlRegex matchesInString:at options:0 range:r].count){
-                c = clColor;
-            } else if ([numRegex matchesInString:at options:0 range:r].count){
-                c = nColor;
-            } else if ([symRegex matchesInString:at options:0 range:r].count){
-                c = sColor;
+            NSColor *c = [NSColor blueColor]; //set a default color of the text to blue
+            NSString *at = [NSString stringWithFormat:@"%c",[self.passwordValue characterAtIndex:i]]; //converting char to NSString
+            if (at.length) { //multibyte characters, such as emoji return zero length strings, and crash the app, so just bypass them
+                if ([charRegex matchesInString:at options:0 range:r].count) { //are we an uppercase character
+                    c = cColor;
+                } else if ([charlRegex matchesInString:at options:0 range:r].count){ //lowercase character?
+                    c = clColor;
+                } else if ([numRegex matchesInString:at options:0 range:r].count){ //number?
+                    c = nColor;
+                } else if ([symRegex matchesInString:at options:0 range:r].count){ //symbol?
+                    c = sColor;
+                }
             }
+
             //set the character color
-            [s addAttribute:NSForegroundColorAttributeName
-                      value:c
-                      range:NSMakeRange(i, 1)];
-            
-            
+            [s addAttribute:NSForegroundColorAttributeName value:c range:NSMakeRange(i, 1)];
         }
         [s endEditing];
         //update the password field

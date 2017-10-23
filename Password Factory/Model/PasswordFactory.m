@@ -287,68 +287,75 @@ static NSArray* phoeneticSoundsThree;
 - (NSString *)generatePattern: (NSString *)pattern {
     int l = (int)self.englishWords.count;
     int sl = (int)self.shortWords.count;
-    NSMutableString *s = [[NSMutableString alloc] init];
-    bool isEscaped = NO;
-    for (int i=0; i< pattern.length; i++) {
-        char c = [pattern characterAtIndex:i];
-        int at = (int)[[characterPattern objectForKey:[NSString stringWithFormat:@"%c",c]] integerValue];
+    __block NSMutableString *s = [[NSMutableString alloc] init];
+    __block bool isEscaped = NO;
+    
+    //enumerate through the characters typed in the pattern field
+    //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
+    [pattern enumerateSubstringsInRange:NSMakeRange(0, pattern.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+        
+        //check to see if the character is one of the special pattern characters (#!wW etc)
+        int patternType = (int)[[characterPattern objectForKey:character] integerValue];
         NSString *currVal;
         //dealing with escape - skip to next and place it
-        if (c == '\\') {
+        if ([character isEqualToString:@"\\"]) { //the slash will escape the next character and display it exactly as typed
             isEscaped = YES;
-            continue;
+            return;
         }
-        if (isEscaped){
-            [s appendString:[NSString stringWithFormat:@"%c",c]];
+        if (isEscaped){ //we are the character directly after the escape sequence, so display it exactly
+            [s appendString:character];
             isEscaped = NO;
-            continue;
+            return;
         }
-        //dealing with pattern characters
-        switch (at) {
-            case 0:
-                [s appendString:[NSString stringWithFormat:@"%c",c]];
+
+        char c;
+        //will replace the special pattern characters with their proper randomized value
+        switch (patternType) {
+            case 0: //is not a pattern character, so append directly to the password
+                [s appendString:character];
                 break;
-            case 1:
+            case 1: //# - Random Number
                 [s appendString:[NSString stringWithFormat:@"%d",[self randomNumber:10]]];
                 break;
-            case 2:
+            case 2: //w - Lowercase word
                 currVal = [self.englishWords objectAtIndex:[self randomNumber:l]];
                 [s appendString:[currVal lowercaseString]];
                 break;
-            case 3:
+            case 3: //W - Uppercase word
                 currVal = [self.englishWords objectAtIndex:[self randomNumber:l]];
                 [s appendString:[currVal uppercaseString]];
                 break;
-            case 4:
+            case 4: //S - Uppercase short word
                 currVal = [self.shortWords objectAtIndex:[self randomNumber:sl]];
                 [s appendString:[currVal lowercaseString]];
                 break;
-            case 5:
+            case 5: //s - Lowercase short word
                 currVal = [self.shortWords objectAtIndex:[self randomNumber:sl]];
                 [s appendString:[currVal uppercaseString]];
                 break;
-            case 6:
+            case 6:  //! - Symbol
                 c = [symbols characterAtIndex:([self randomNumber:(uint)symbols.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
-            case 7:
+            case 7: //c - Random lowercase character
                 c = [lowerCase characterAtIndex:([self randomNumber:(uint)lowerCase.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
-            case 8:
+            case 8: //C - Random uppercase character
                 c = [upperCase characterAtIndex:([self randomNumber:(uint)upperCase.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
-            case 9:
+            case 9: // - Random non ambiguous lowercase (not supported)
                 c = [nonAmbiguousLowerCase characterAtIndex:([self randomNumber:(uint)nonAmbiguousLowerCase.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
-            case 10:
+            case 10: // - Random non ambiguous uppercase (not supported)
                 c = [nonAmbiguousUpperCase characterAtIndex:([self randomNumber:(uint)nonAmbiguousUpperCase.length])];
                 [s appendString:[NSString stringWithFormat:@"%c",c]];
                 break;
         }
-    }
+    }];
+
     return s;
 }
 
