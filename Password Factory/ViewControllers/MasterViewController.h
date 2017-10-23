@@ -31,7 +31,7 @@
 @property (weak) IBOutlet NSMatrix *pronounceableSeparatorRadio;
 
 @property (nonatomic, strong) PasswordFactory *pf;
-@property (nonnull, strong) NSColor *defaultCharacterColor;
+@property (nonatomic, strong) NSColor *defaultCharacterColor;
 @property (weak) IBOutlet NSButton *generateButton;
 @property (weak) IBOutlet NSButton *pasteboardButton;
 - (IBAction)copyToClipboard:(id)sender;
