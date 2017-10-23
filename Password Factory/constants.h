@@ -54,5 +54,6 @@ extern NSString * const OpenSettingsURL;
 extern NSString * const EnglishWordsArchiveFilename;
 extern NSString * const ShortWordsArchiveFilename;
 extern NSString * const WordsByLengthWordsArchiveFilename;
+extern NSString * const EmojiArchiveFilename;
 #endif
 

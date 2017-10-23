@@ -367,17 +367,21 @@
         //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
         [self.passwordValue enumerateSubstringsInRange:NSMakeRange(0, self.passwordValue.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
             NSColor *c = self.defaultCharacterColor; //set a default color of the text to the default color
-            if ([self.pf characterIsTypeOfPasswordBuilderItem:@"upperCaseLetters" character:at]) { //are we an uppercase character
-                c = cColor;
-            } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"lowerCaseLetters" character:at]){ //lowercase character?
-                c = clColor;
-            } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"numbers" character:at]){ //number?
-                c = nColor;
-            } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"symbols" character:at]){ //symbol?
-                c = sColor;
+            if(substringRange.length == 1) {
+                if ([self.pf characterIsTypeOfPasswordBuilderItem:@"upperCaseLetters" character:at]) { //are we an uppercase character
+                    c = cColor;
+                } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"lowerCaseLetters" character:at]){ //lowercase character?
+                    c = clColor;
+                } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"numbers" character:at]){ //number?
+                    c = nColor;
+                } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"symbols" character:at]){ //symbol?
+                    c = sColor;
+                }
+                //set the character color
+                [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];
             }
-            //set the character color
-            [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];
+
+
         }];
 
         [s endEditing];

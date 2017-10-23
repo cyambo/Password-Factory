@@ -9,3 +9,4 @@ NSString * const OpenSettingsURL = @"com-cloud13-password-factory://settings";
 NSString * const EnglishWordsArchiveFilename = @"englishWords.archive";
 NSString * const ShortWordsArchiveFilename = @"shortWords.archive";
 NSString * const WordsByLengthWordsArchiveFilename = @"wordsByLength.archive";
+NSString * const EmojiArchiveFilename = @"emoji.archive";

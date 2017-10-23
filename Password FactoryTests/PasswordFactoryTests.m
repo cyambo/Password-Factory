@@ -178,46 +178,69 @@ const int LONG_PASSWORD_LENGTH = 100;
 - (void)testGeneratePattern {
     
     //testing single patterns
+    
+    //Testing Character 'c' pattern
     [self regexReplaceTest:@"^[a-z]$"
               errorMessage:@"Pattern 'c' failed"
              generateBlock:^{
                  return [self.pg generatePattern:@"c"];
              }];
+    //Testing Uppercase Character 'C' pattern
     [self regexReplaceTest:@"^[A-Z]$"
               errorMessage:@"Pattern 'C' failed"
              generateBlock:^{
                  return [self.pg generatePattern:@"C"];
              }];
+    //Testing Number '#' pattern
     [self regexReplaceTest:@"^[0-9]$"
               errorMessage:@"Pattern '#' failed"
              generateBlock:^{
                  return [self.pg generatePattern:@"#"];
              }];
+    //Testing Word 'w' pattern
     [self regexReplaceTest:@"^[a-z]+$"
               errorMessage:@"Pattern 'w' failed"
              generateBlock:^{
                  return [self.pg generatePattern:@"w"];
              }];
+    //Testing uppercase word 'W' pattern
     [self regexReplaceTest:@"^[A-Z]+$"
               errorMessage:@"Pattern 'W' failed"
              generateBlock:^{
                  return [self.pg generatePattern:@"W"];
              }];
+    //testing short word 's' pattern
     [self regexReplaceTest:@"^[a-z]{3,6}+$"
               errorMessage:@"Pattern 's' failed"
              generateBlock:^{
                  return [self.pg generatePattern:@"s"];
              }];
+    //testing uppercase short word 'S' pattern
     [self regexReplaceTest:@"^[A-Z]{3,6}+$"
               errorMessage:@"Pattern 'S' failed"
              generateBlock:^{
                  return [self.pg generatePattern:@"S"];
              }];
+    //testing symbol '!' pattern
     [self regexReplaceTest:@"^[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]$"
               errorMessage:@"Pattern '!' failed"
              generateBlock:^{
                  return [self.pg generatePattern:@"!"];
              }];
+    
+    //testing phonetic item 'p' pattern
+    [self regexReplaceTest:@"^[a-z]{2,3}+$"
+              errorMessage:@"Pattern 'p' failed"
+             generateBlock:^{
+                 return [self.pg generatePattern:@"p"];
+             }];
+    //testing phonetic uppercase item 'P' pattern
+    [self regexReplaceTest:@"^[A-Z]{2,3}+$"
+              errorMessage:@"Pattern 'P' failed"
+             generateBlock:^{
+                 return [self.pg generatePattern:@"P"];
+             }];
+    
     //testing multiple patterns
     [self regexReplaceTest:@"^[a-z][A-Z]$"
               errorMessage:@"Pattern 'cC' failed"
@@ -242,10 +265,10 @@ const int LONG_PASSWORD_LENGTH = 100;
                  return [self.pg generatePattern:@"\\C"];
              }];
     //testing character replacement
-    [self regexReplaceTest:@"^dDEe>$"
-              errorMessage:@"Pattern 'dDEe>' failed"
+    [self regexReplaceTest:@"^dDYy>$"
+              errorMessage:@"Pattern 'dDYy>' failed"
              generateBlock:^{
-                 return [self.pg generatePattern:@"dDEe>"];
+                 return [self.pg generatePattern:@"dDYy>"];
              }];
     
 }

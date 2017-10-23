@@ -142,29 +142,32 @@
                                             <binding destination="2ia-xi-Rdb" name="value" keyPath="values.userPattern" id="f7T-ga-yhz"/>
                                         </connections>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zKu-mV-rc2">
-                                        <rect key="frame" x="10" y="-35" width="167" height="103"/>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grl-UY-3rx">
+                                        <rect key="frame" x="26" y="-8" width="172" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="oMP-xF-dA2">
-                                            <font key="font" metaFont="system" size="10"/>
+                                        <textFieldCell key="cell" controlSize="mini" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="wh2-m6-Bl6">
+                                            <font key="font" metaFont="system" size="9"/>
                                             <string key="title"># - Number
 ! - Symbol
 w - Lowercase Word
-W - Uppercase Word</string>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+W - Uppercase Word
+p - Lowercase Sound
+P - Uppercase Sound</string>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqz-Ot-vID">
-                                        <rect key="frame" x="197" y="-35" width="167" height="103"/>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wm4-CF-vx0">
+                                        <rect key="frame" x="189" y="-8" width="172" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="DXN-aB-ngI">
-                                            <font key="font" metaFont="system" size="10"/>
+                                        <textFieldCell key="cell" controlSize="mini" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="AeU-ML-Gjz">
+                                            <font key="font" metaFont="system" size="9"/>
                                             <string key="title">s - Short Word
 S - Short Uppercase Word
-c - Random Character
-C -Random Uppercase Character</string>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+c - Lowercase Character
+C - Uppercase Character
+e - Emoji</string>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>

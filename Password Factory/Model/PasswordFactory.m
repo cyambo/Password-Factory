@@ -18,18 +18,19 @@ static NSString* nonAmbiguousUpperCase;
 static NSString* nonAmbiguousLowerCase;
 static NSString* nonAmbiguousNumbers;
 static NSDictionary* characterPattern;
-static NSArray* phoeneticSounds;
-static NSArray* phoeneticSoundsTwo;
-static NSArray* phoeneticSoundsThree;
+static NSArray* phoneticSounds;
+static NSArray* phoneticSoundsTwo;
+static NSArray* phoneticSoundsThree;
 static NSDictionary* passwordBuilderItems;
-
 @interface PasswordFactory ()
 @property (nonatomic, strong) NSMutableString *currentRange;
 
 @property (nonatomic, strong) NSArray *englishWords;
 @property (nonatomic, strong) NSArray *shortWords;
 @property (nonatomic, strong) NSDictionary *wordsByLength;
+@property (nonatomic, strong) NSArray *emojis;
 @property (nonatomic, strong) NSArray *badWords;
+
 @end
 
 @implementation PasswordFactory
@@ -73,7 +74,6 @@ static NSDictionary* passwordBuilderItems;
         i++;
         
     }
-    
     return [self removeTrailingSeparator:p separator:separator];
 }
 /**
@@ -88,7 +88,6 @@ static NSDictionary* passwordBuilderItems;
     NSString *sep = [self getPronounceableSeparator:separatorType];
 
     return [self generatePronounceable:sep];
-    
 }
 #pragma mark Pronounceable Utilities
 /**
@@ -103,12 +102,12 @@ static NSDictionary* passwordBuilderItems;
         return @"";
     }
     else if (length == 2) {
-        return [self randomFromArray:phoeneticSoundsTwo];
+        return [self randomFromArray:phoneticSoundsTwo];
     } else if (length == 3) {
-        return [self randomFromArray:phoeneticSoundsThree];
+        return [self randomFromArray:phoneticSoundsThree];
     }
     else {
-        return [self randomFromArray:phoeneticSounds];
+        return [self randomFromArray:phoneticSounds];
     }
     return @"";
     
@@ -288,6 +287,8 @@ static NSDictionary* passwordBuilderItems;
 - (NSString *)generatePattern: (NSString *)pattern {
     int l = (int)self.englishWords.count;
     int sl = (int)self.shortWords.count;
+    int el = (int)self.emojis.count;
+    int pl = (int)phoneticSounds.count;
     __block NSMutableString *s = [[NSMutableString alloc] init];
     __block bool isEscaped = NO;
     
@@ -297,7 +298,6 @@ static NSDictionary* passwordBuilderItems;
         
         //check to see if the character is one of the special pattern characters (#!wW etc)
         int patternType = (int)[[characterPattern objectForKey:character] integerValue];
-        NSString *currVal;
         //dealing with escape - skip to next and place it
         if ([character isEqualToString:@"\\"]) { //the slash will escape the next character and display it exactly as typed
             isEscaped = YES;
@@ -310,53 +310,63 @@ static NSDictionary* passwordBuilderItems;
         }
 
         char c;
+        NSString *toAppend;
         //will replace the special pattern characters with their proper randomized value
         switch (patternType) {
             case 0: //is not a pattern character, so append directly to the password
-                [s appendString:character];
+                toAppend = character;
                 break;
             case 1: //# - Random Number
-                [s appendString:[NSString stringWithFormat:@"%d",[self randomNumber:10]]];
+                toAppend = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
                 break;
             case 2: //w - Lowercase word
-                currVal = [self.englishWords objectAtIndex:[self randomNumber:l]];
-                [s appendString:[currVal lowercaseString]];
+                toAppend = [[self.englishWords objectAtIndex:[self randomNumber:l]] lowercaseString];
                 break;
             case 3: //W - Uppercase word
-                currVal = [self.englishWords objectAtIndex:[self randomNumber:l]];
-                [s appendString:[currVal uppercaseString]];
+                toAppend = [[self.englishWords objectAtIndex:[self randomNumber:l]] uppercaseString];
                 break;
-            case 4: //S - Uppercase short word
-                currVal = [self.shortWords objectAtIndex:[self randomNumber:sl]];
-                [s appendString:[currVal lowercaseString]];
+            case 4: //S - Lowercase short word
+                toAppend = [[self.shortWords objectAtIndex:[self randomNumber:sl]] lowercaseString];
                 break;
-            case 5: //s - Lowercase short word
-                currVal = [self.shortWords objectAtIndex:[self randomNumber:sl]];
-                [s appendString:[currVal uppercaseString]];
+            case 5: //s - Uppercase short word
+                toAppend = [[self.shortWords objectAtIndex:[self randomNumber:sl]] uppercaseString];
                 break;
             case 6:  //! - Symbol
                 c = [symbols characterAtIndex:([self randomNumber:(uint)symbols.length])];
-                [s appendString:[NSString stringWithFormat:@"%c",c]];
+                toAppend = [NSString stringWithFormat:@"%c",c];
                 break;
             case 7: //c - Random lowercase character
                 c = [lowerCase characterAtIndex:([self randomNumber:(uint)lowerCase.length])];
-                [s appendString:[NSString stringWithFormat:@"%c",c]];
+                toAppend = [NSString stringWithFormat:@"%c",c];
                 break;
             case 8: //C - Random uppercase character
                 c = [upperCase characterAtIndex:([self randomNumber:(uint)upperCase.length])];
-                [s appendString:[NSString stringWithFormat:@"%c",c]];
+                toAppend = [NSString stringWithFormat:@"%c",c];
                 break;
-            case 9: // - Random non ambiguous lowercase (not supported)
+            case 9: // - Random non ambiguous lowercase
                 c = [nonAmbiguousLowerCase characterAtIndex:([self randomNumber:(uint)nonAmbiguousLowerCase.length])];
-                [s appendString:[NSString stringWithFormat:@"%c",c]];
+                toAppend = [NSString stringWithFormat:@"%c",c];
                 break;
-            case 10: // - Random non ambiguous uppercase (not supported)
+            case 10: // - Random non ambiguous uppercase
                 c = [nonAmbiguousUpperCase characterAtIndex:([self randomNumber:(uint)nonAmbiguousUpperCase.length])];
-                [s appendString:[NSString stringWithFormat:@"%c",c]];
+                toAppend = [NSString stringWithFormat:@"%c",c];
+                break;
+            case 11: //random non-ambiguous number
+                c = [nonAmbiguousNumbers characterAtIndex:[self randomNumber:(uint)nonAmbiguousNumbers.length]];
+                toAppend = [NSString stringWithFormat:@"%c",c];
+                break;
+            case 12: //random emoji
+                toAppend = [self.emojis objectAtIndex:[self randomNumber:el]];
+                break;
+            case 13: //random phonetic sound
+                toAppend = [[phoneticSounds objectAtIndex:[self randomNumber:pl]] lowercaseString];
+                break;
+            case 14: //random uppercase phonetic sound
+                toAppend = [[phoneticSounds objectAtIndex:[self randomNumber:pl]] uppercaseString];
                 break;
         }
+        [s appendString:toAppend];
     }];
-
     return s;
 }
 
@@ -392,21 +402,25 @@ static NSDictionary* passwordBuilderItems;
     nonAmbiguousLowerCase = @"abcdefghijkmnpqrstuvwxyz";
     numbers = @"0123456789";
     nonAmbiguousNumbers = @"23456789";
-    phoeneticSoundsTwo = @[@"BA",@"BE",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"FA",@"FE",@"FI",@"FO",@"FU",@"GA",@"GE",@"GI",@"GO",@"GU",@"HA",@"HE",@"HI",@"HO",@"HU",@"JA",@"JE",@"JI",@"JO",@"JU",@"KA",@"KE",@"KI",@"KO",@"KU",@"LA",@"LE",@"LI",@"LO",@"LU",@"MA",@"ME",@"MI",@"MO",@"MU",@"NA",@"NE",@"NI",@"NO",@"NU",@"PA",@"PE",@"PI",@"PO",@"PU",@"RA",@"RE",@"RI",@"RO",@"RU",@"SA",@"SE",@"SI",@"SO",@"SU",@"TA",@"TE",@"TI",@"TO",@"TU",@"VA",@"VE",@"VI",@"VO",@"VU"];
-    phoeneticSoundsThree = @[@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
-    phoeneticSounds = [phoeneticSoundsTwo arrayByAddingObjectsFromArray:phoeneticSoundsThree];
+    phoneticSoundsTwo = @[@"BA",@"BE",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"FA",@"FE",@"FI",@"FO",@"FU",@"GA",@"GE",@"GI",@"GO",@"GU",@"HA",@"HE",@"HI",@"HO",@"HU",@"JA",@"JE",@"JI",@"JO",@"JU",@"KA",@"KE",@"KI",@"KO",@"KU",@"LA",@"LE",@"LI",@"LO",@"LU",@"MA",@"ME",@"MI",@"MO",@"MU",@"NA",@"NE",@"NI",@"NO",@"NU",@"PA",@"PE",@"PI",@"PO",@"PU",@"RA",@"RE",@"RI",@"RO",@"RU",@"SA",@"SE",@"SI",@"SO",@"SU",@"TA",@"TE",@"TI",@"TO",@"TU",@"VA",@"VE",@"VI",@"VO",@"VU"];
+    phoneticSoundsThree = @[@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
+    phoneticSounds = [phoneticSoundsTwo arrayByAddingObjectsFromArray:phoneticSoundsThree];
     
     
     characterPattern = @{@"#" : @1,  //Number
                          @"w" : @2,  //Lowercase Word
-                         @"W" : @3,  //capital word
+                         @"W" : @3,  //Uppercase word
                          @"s" : @4,  //lowercase short word
-                         @"S" : @5,  //capital short word
+                         @"S" : @5,  //uppercase short word
                          @"!" : @6,  //symbol
                          @"c" : @7,  //random character
-                         @"C" : @8,   //random uppercase char
-                         @"a" : @9,   //random non-ambiguous char
-                         @"A" : @10  //random non-ambiguuous uppercase char
+                         @"C" : @8,  //random uppercase char
+                         @"a" : @9,  //random non-ambiguous char
+                         @"A" : @10, //random non-ambiguous uppercase char
+                         @"N" : @11, //random non-ambiguous number
+                         @"e" : @12, //random emoji
+                         @"p" : @13, //random phonetic sound
+                         @"P" : @14  //random uppercase phonetic sound
                          };
     passwordBuilderItems = @{@"symbols": symbols,
                              @"upperCaseLetters": upperCase,
@@ -454,16 +468,20 @@ static NSDictionary* passwordBuilderItems;
     
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
     NSString *badWordsPath = [[NSBundle mainBundle] pathForResource:@"bad_words" ofType:@"json"];
-
+    NSString *emojiPath = [[NSBundle mainBundle] pathForResource:@"emojis" ofType:@"txt"];
+    
     NSString *englishWordsPath = [self getApplicationSupportDirectory:EnglishWordsArchiveFilename];
     NSString *shortWordsPath = [self getApplicationSupportDirectory:ShortWordsArchiveFilename];
     NSString *wordsByLengthPath = [self getApplicationSupportDirectory:WordsByLengthWordsArchiveFilename];
+    NSString *emojiArchivePath = [self getApplicationSupportDirectory:EmojiArchiveFilename];
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     //Checking to see if our cached files exist and are newer than our data files, if so, load them instead of parsing
     if ([fileManager fileExistsAtPath:englishWordsPath] &&
         [fileManager fileExistsAtPath:shortWordsPath] &&
-        [fileManager fileExistsAtPath:wordsByLengthPath]) {
+        [fileManager fileExistsAtPath:wordsByLengthPath] &&
+        [fileManager fileExistsAtPath:emojiPath]) {
         NSDate *eDate = [fileManager attributesOfItemAtPath:englishWordsPath error:nil][@"NSFileCreationDate"];
         NSDate *sDate = [fileManager attributesOfItemAtPath:shortWordsPath error:nil][@"NSFileCreationDate"];
         NSDate *wDate = [fileManager attributesOfItemAtPath:wordsByLengthPath error:nil][@"NSFileCreationDate"];
@@ -474,14 +492,10 @@ static NSDictionary* passwordBuilderItems;
             self.englishWords = [NSKeyedUnarchiver unarchiveObjectWithFile:englishWordsPath];
             self.shortWords = [NSKeyedUnarchiver unarchiveObjectWithFile:shortWordsPath];
             self.wordsByLength = [NSKeyedUnarchiver unarchiveObjectWithFile:wordsByLengthPath];
+            self.emojis = [NSKeyedUnarchiver unarchiveObjectWithFile:emojiArchivePath];
         }
         //did we load the archive?
-        if (self.englishWords.count > 0 && self.shortWords > 0 && self.wordsByLength.count > 0) {
-            for (int i = 1; i < 15; i++) {
-                if (self.wordsByLength[@(i)]) {
-                    NSLog(@"%d : %lu",i,(unsigned long)[(NSArray*)self.wordsByLength[@(i)] count]);
-                }
-            }
+        if (self.englishWords.count > 0 && self.shortWords > 0 && self.wordsByLength.count > 0 && self.emojis.count > 0) {
             return;
         }
     }
@@ -523,6 +537,18 @@ static NSDictionary* passwordBuilderItems;
     [NSKeyedArchiver archiveRootObject:self.englishWords toFile:englishWordsPath];
     [NSKeyedArchiver archiveRootObject:self.shortWords toFile:shortWordsPath];
     [NSKeyedArchiver archiveRootObject:self.wordsByLength toFile:wordsByLengthPath];
+    
+    //loading up the emojis
+    NSString *emojiText = [NSString stringWithContentsOfFile:emojiPath encoding:NSUTF8StringEncoding error:nil];
+    NSMutableArray *em = [[NSMutableArray alloc] init];
+    //using the enumerator because some emojis are multibyte strings
+    [emojiText enumerateSubstringsInRange:NSMakeRange(0, emojiText.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+        if (![character isEqualToString:@"\n"]) {
+            [em addObject:character];
+        }
+    }];
+    self.emojis = (NSArray *)em;
+    [NSKeyedArchiver archiveRootObject:self.emojis toFile:emojiArchivePath];
 }
 
 /**
@@ -533,7 +559,7 @@ static NSDictionary* passwordBuilderItems;
  *  @return path of file
  */
 -(NSString *)getApplicationSupportDirectory:(NSString *)withFile {
-    
+
     NSError *error;
     NSFileManager *fm = [NSFileManager defaultManager];
 

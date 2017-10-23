@@ -62,6 +62,8 @@
 		40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
 		40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
+		40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
+		40C4C8AF1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
 		40CC4D881F91B4620093A9B8 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */; };
 		40D970EF1F92A3C1007677D6 /* Password Factory Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4058DF241F92995800CCB6E7 /* Password Factory Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
@@ -209,6 +211,7 @@
 		40AAB5F21F8EC68000324759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40C0F3861B860791005FC25D /* NSString+RandomCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RandomCase.h"; sourceTree = "<group>"; };
 		40C0F3871B860791005FC25D /* NSString+RandomCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RandomCase.m"; sourceTree = "<group>"; };
+		40C4C8AD1F9E9C0900F31070 /* emojis.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = emojis.txt; sourceTree = "<group>"; };
 		40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		40DAB57E1B843734003F5C3D /* DefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultsManager.h; sourceTree = "<group>"; };
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
@@ -318,6 +321,7 @@
 				409585DA1B8112FD00393B99 /* menu-icon@2x.png */,
 				409585F51B8112FD00393B99 /* StyleKit.h */,
 				409585F61B8112FD00393B99 /* StyleKit.m */,
+				40C4C8AD1F9E9C0900F31070 /* emojis.txt */,
 			);
 			name = Assets;
 			path = "Password Factory/Assets";
@@ -795,6 +799,7 @@
 				409E13C61B8258170041541B /* TodayViewController.xib in Resources */,
 				409E13C11B8258170041541B /* InfoPlist.strings in Resources */,
 				405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */,
+				40C4C8AF1F9E9C0900F31070 /* emojis.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +834,7 @@
 				409586141B8112FD00393B99 /* menu-icon@2x.png in Resources */,
 				409586101B8112FD00393B99 /* defaults.plist in Resources */,
 				4095860F1B8112FD00393B99 /* bad_words.json in Resources */,
+				40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */,
 				409586301B8112FD00393B99 /* PreferencesWindowController.xib in Resources */,
 				409586121B8112FD00393B99 /* menu-icon-inv@2x.png in Resources */,
 				40FB0C261B810F10009193F8 /* Images.xcassets in Resources */,
