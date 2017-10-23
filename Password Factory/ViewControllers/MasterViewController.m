@@ -367,7 +367,7 @@
         //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
         [self.passwordValue enumerateSubstringsInRange:NSMakeRange(0, self.passwordValue.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
             NSColor *c = self.defaultCharacterColor; //set a default color of the text to the default color
-            if(substringRange.length == 1) {
+            if(substringRange.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
                 if ([self.pf characterIsTypeOfPasswordBuilderItem:@"upperCaseLetters" character:at]) { //are we an uppercase character
                     c = cColor;
                 } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"lowerCaseLetters" character:at]){ //lowercase character?
