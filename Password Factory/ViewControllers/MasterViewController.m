@@ -370,24 +370,22 @@
         //colorizing password label
         [s beginEditing];
         //loops through the string and uses a regex to determine the color of the character
-        for (int i=0; i < self.passwordValue.length ; i++) {
+        //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
+        [self.passwordValue enumerateSubstringsInRange:NSMakeRange(0, self.passwordValue.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
             NSColor *c = [NSColor blueColor]; //set a default color of the text to blue
-            NSString *at = [NSString stringWithFormat:@"%c",[self.passwordValue characterAtIndex:i]]; //converting char to NSString
-            if (at.length) { //multibyte characters, such as emoji return zero length strings, and crash the app, so just bypass them
-                if ([charRegex matchesInString:at options:0 range:r].count) { //are we an uppercase character
-                    c = cColor;
-                } else if ([charlRegex matchesInString:at options:0 range:r].count){ //lowercase character?
-                    c = clColor;
-                } else if ([numRegex matchesInString:at options:0 range:r].count){ //number?
-                    c = nColor;
-                } else if ([symRegex matchesInString:at options:0 range:r].count){ //symbol?
-                    c = sColor;
-                }
+            if ([charRegex matchesInString:at options:0 range:r].count) { //are we an uppercase character
+                c = cColor;
+            } else if ([charlRegex matchesInString:at options:0 range:r].count){ //lowercase character?
+                c = clColor;
+            } else if ([numRegex matchesInString:at options:0 range:r].count){ //number?
+                c = nColor;
+            } else if ([symRegex matchesInString:at options:0 range:r].count){ //symbol?
+                c = sColor;
             }
-
             //set the character color
-            [s addAttribute:NSForegroundColorAttributeName value:c range:NSMakeRange(i, 1)];
-        }
+            [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];
+        }];
+
         [s endEditing];
         //update the password field
         [self.passwordField setAttributedStringValue:s];
