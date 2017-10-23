@@ -434,6 +434,17 @@ static NSDictionary* passwordBuilderItems;
     return all;
     
 }
+
+/**
+ Returns if a character is part of a password builder item
+
+ @param type password builder item type i.e. upperCaseCharacters
+ @param character character to check
+ @return true if character is part of builder item
+ */
+- (BOOL)characterIsTypeOfPasswordBuilderItem:(NSString *)type character:(NSString *)character {
+    return [(NSString *)passwordBuilderItems[type] containsString:character];
+}
 /**
  *  Loads up our dictionary, and removes 'bad' words to generate pattern passwords.
  *  The results are cached so that the parsing only happens on app install or upgrade

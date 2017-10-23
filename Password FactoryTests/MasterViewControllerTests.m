@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock.h>
-
+#import "NSColor+NSColorHexadecimalValue.h"
 #import "MasterViewControllerTestClass.h"
 @interface MasterViewControllerTests : XCTestCase
 @property (nonatomic, strong) MasterViewControllerTestClass *mvc;
@@ -340,12 +340,12 @@
 /**
  Tests that the password field gets updated and highlighted based on color settings
  */
-- (void)testUpdatePasswordField {
+- (void)testColorPasswordField {
     id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
     //returning password field for object propery
     [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
-    //generate a string with all the possible characters that can be highlighted
-    NSString *testString = [self.mvc.pf getPasswordBuilderItem:nil];
+    //generate a string with all the possible characters that can be highlighted, and some characters that should not be highlighted
+    NSString *testString = [NSString stringWithFormat:@"%@áéíòü",[self.mvc.pf getPasswordBuilderItem:nil]];
     //do not color password
     self.mvc.colorPasswordText = NO;
     
@@ -372,12 +372,16 @@
     id defaultsMock = OCMClassMock([NSUserDefaults class]);
     id d = OCMPartialMock([NSUserDefaults standardUserDefaults]);
     
+    NSColor *upperTextColor = [NSColor greenColor];
+    NSColor *lowerTextColor = [NSColor orangeColor];
+    NSColor *numberTextColor = [NSColor purpleColor];
+    NSColor *symbolTextColor = [NSColor redColor];
+    
     //set our mock defaults to return these colors for the character types
-    [[[d stub] andReturnValue:OCMOCK_VALUE(@"111111")] objectForKey:@"numberTextColor"];
-    [[[d stub] andReturnValue:OCMOCK_VALUE(@"222222")] objectForKey:@"upperTextColor"];
-    [[[d stub] andReturnValue:OCMOCK_VALUE(@"333333")] objectForKey:@"numberTextColor"];
-    [[[d stub] andReturnValue:OCMOCK_VALUE(@"444444")] objectForKey:@"lowerTextColor"];
-    [[[d stub] andReturnValue:OCMOCK_VALUE(@"555555")] objectForKey:@"symbolTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE([numberTextColor hexadecimalValueOfAnNSColor])] objectForKey:@"numberTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE([upperTextColor hexadecimalValueOfAnNSColor])] objectForKey:@"upperTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE([lowerTextColor hexadecimalValueOfAnNSColor])] objectForKey:@"lowerTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE([symbolTextColor hexadecimalValueOfAnNSColor])] objectForKey:@"symbolTextColor"];
     
     //turn on password coloring
     self.mvc.colorPasswordText = YES;
@@ -385,19 +389,43 @@
     [self.mvc controlTextDidChange:mockNotification]; //send notification to update the text field
     attrStr = [self.mvc.passwordField attributedStringValue];
     
-    mismatch = YES;
-    //comparing attributed string to the single color string
-    //every character should have a different color than the single color string
+    mismatch = NO;
+    NSString *at = @"";
+
+    //testing that the password string is properly highlighted for each of the possible character types that are highlighted
     for (int i = 0; i < testStr.length ; i++) {
         NSDictionary *a1, *a2;
         a1 = [attrStr attributesAtIndex:i effectiveRange:nil];
         a2 = [testStr attributesAtIndex:i effectiveRange:nil];
-        if ([a1 isEqualTo:a2]) { //string is not colored properly
-            mismatch = NO;
-            break;
+        
+        NSColor *atColor = a1[@"NSColor"];
+        
+        NSDictionary *colorMap = @{
+                                   @"upperCaseLetters": upperTextColor,
+                                   @"lowerCaseLetters": lowerTextColor,
+                                   @"numbers": numberTextColor,
+                                   @"symbols": symbolTextColor
+                                   };
+        
+        at = [NSString stringWithFormat:@"%c", [testString characterAtIndex:i]];
+        BOOL foundType = NO;
+        for(NSString *key in [colorMap allKeys]) {
+            if ([self.mvc.pf characterIsTypeOfPasswordBuilderItem:key character:at]) {
+                foundType = YES;
+                if (![atColor isEqual: colorMap[key]]) {
+                    mismatch = YES;
+                    break;
+                }
+            }
+        }
+        if (!foundType) {
+            if (![atColor isEqual:self.mvc.defaultCharacterColor]) {
+                mismatch = YES;
+                break;
+            }
         }
     }
-    XCTAssertTrue(mismatch, @"Password field is highlighted when it should be");
+    XCTAssertTrue(mismatch, @"Password field at character %@ is not highlighted properly",at);
     [defaultsMock stopMocking];
     [d stopMocking];
     

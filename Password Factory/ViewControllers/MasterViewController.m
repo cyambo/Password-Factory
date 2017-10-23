@@ -47,6 +47,7 @@
     [self.passwordTypeTab setDelegate:self];
     [self.patternText setDelegate:self];
     [self.passwordField setDelegate:self];
+    self.defaultCharacterColor = [NSColor blueColor]; //set the default color of non-highlighted text
 }
 -(void)viewWillAppear {
     [self generatePassword];
@@ -359,39 +360,20 @@
         
         //uses AttributedString to color password
         NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
-        NSError *error;
-        
-        
-        //building up a regex to match the symbols that are specified in the model
-        NSString * symbolString = [self.pf getPasswordBuilderItem:@"symbols"];
-        NSMutableString *symbolStringRegex = [[NSMutableString alloc] init];
-        [symbolStringRegex appendString:@"["];
-        //prepending every character with a \ to escape them so that we don't have to manually escape special characters
-        for (int i = 0; i < symbolString.length; i++) {
-            [symbolStringRegex appendFormat:@"\\%c",[symbolString characterAtIndex:i]];
-        }
-        [symbolStringRegex appendString:@"]"];
-        
-        //setting up regexes to match the characters and use that to colorize them
-        NSRegularExpression *charRegex = [[NSRegularExpression alloc] initWithPattern:@"[A-Z]" options:0 error:&error]; //uppercase characters
-        NSRegularExpression *charlRegex = [[NSRegularExpression alloc] initWithPattern:@"[a-z]" options:0 error:&error]; //lowercase characters
-        NSRegularExpression *numRegex = [[NSRegularExpression alloc] initWithPattern:@"[0-9]" options:0 error:&error]; //numbers
-        NSRegularExpression *symRegex = [[NSRegularExpression alloc] initWithPattern:symbolStringRegex options:0 error:&error]; //symbols
-        
-        NSRange r = NSMakeRange(0, 1);
+
         //colorizing password label
         [s beginEditing];
-        //loops through the string and uses a regex to determine the color of the character
+        //loops through the string and sees if it is in each type of string to determine the color of the character
         //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
         [self.passwordValue enumerateSubstringsInRange:NSMakeRange(0, self.passwordValue.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
-            NSColor *c = [NSColor blueColor]; //set a default color of the text to blue
-            if ([charRegex matchesInString:at options:0 range:r].count) { //are we an uppercase character
+            NSColor *c = self.defaultCharacterColor; //set a default color of the text to the default color
+            if ([self.pf characterIsTypeOfPasswordBuilderItem:@"upperCaseLetters" character:at]) { //are we an uppercase character
                 c = cColor;
-            } else if ([charlRegex matchesInString:at options:0 range:r].count){ //lowercase character?
+            } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"lowerCaseLetters" character:at]){ //lowercase character?
                 c = clColor;
-            } else if ([numRegex matchesInString:at options:0 range:r].count){ //number?
+            } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"numbers" character:at]){ //number?
                 c = nColor;
-            } else if ([symRegex matchesInString:at options:0 range:r].count){ //symbol?
+            } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"symbols" character:at]){ //symbol?
                 c = sColor;
             }
             //set the character color

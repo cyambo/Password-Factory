@@ -22,4 +22,5 @@
 - (NSString *)generatePassphraseWithCode:(int)separatorCode caseType:(int)caseType;
 - (uint)randomNumber:(uint)limit;
 - (NSString *)getPasswordBuilderItem:(NSString *)item;
+- (BOOL)characterIsTypeOfPasswordBuilderItem:(NSString *)type character:(NSString *)character;
 @end
