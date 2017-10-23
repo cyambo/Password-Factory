@@ -344,14 +344,16 @@
     id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
     //returning password field for object propery
     [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
-    
+    //generate a string with all the possible characters that can be highlighted
+    NSString *testString = [self.mvc.pf getPasswordBuilderItem:nil];
     //do not color password
     self.mvc.colorPasswordText = NO;
-    [self.mvc.passwordField setStringValue:@"cC#2"]; //set password
+    
+    [self.mvc.passwordField setStringValue:testString]; //set password
     [self.mvc controlTextDidChange:mockNotification]; //send notification
     NSAttributedString *attrStr = [self.mvc.passwordField attributedStringValue]; //get attributed string from password field
     //generate an attributed string all one color - which is how the password field should be
-    NSAttributedString *testStr = [[NSAttributedString alloc] initWithString:@"cC#2" attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+    NSAttributedString *testStr = [[NSAttributedString alloc] initWithString:testString attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
 
     BOOL mismatch = NO;
     //compare every character and its attributes to see if they match
@@ -365,8 +367,7 @@
         }
     }
     XCTAssertFalse(mismatch, @"Password field is highlighted when it shouldn't be");
-    //testing highlighted string
-    
+    //testing highlighted string to see if it gets highlighted when it shouldn't
     //setting up a mock defaults object
     id defaultsMock = OCMClassMock([NSUserDefaults class]);
     id d = OCMPartialMock([NSUserDefaults standardUserDefaults]);
@@ -376,10 +377,11 @@
     [[[d stub] andReturnValue:OCMOCK_VALUE(@"222222")] objectForKey:@"upperTextColor"];
     [[[d stub] andReturnValue:OCMOCK_VALUE(@"333333")] objectForKey:@"numberTextColor"];
     [[[d stub] andReturnValue:OCMOCK_VALUE(@"444444")] objectForKey:@"lowerTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE(@"555555")] objectForKey:@"symbolTextColor"];
     
     //turn on password coloring
     self.mvc.colorPasswordText = YES;
-    [self.mvc.passwordField setStringValue:@"cC#2"]; //set a new string
+    [self.mvc.passwordField setStringValue:testString]; //set a new string
     [self.mvc controlTextDidChange:mockNotification]; //send notification to update the text field
     attrStr = [self.mvc.passwordField attributedStringValue];
     

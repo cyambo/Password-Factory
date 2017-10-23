@@ -21,6 +21,7 @@ static NSDictionary* characterPattern;
 static NSArray* phoeneticSounds;
 static NSArray* phoeneticSoundsTwo;
 static NSArray* phoeneticSoundsThree;
+static NSDictionary* passwordBuilderItems;
 
 @interface PasswordFactory ()
 @property (nonatomic, strong) NSMutableString *currentRange;
@@ -407,6 +408,31 @@ static NSArray* phoeneticSoundsThree;
                          @"a" : @9,   //random non-ambiguous char
                          @"A" : @10  //random non-ambiguuous uppercase char
                          };
+    passwordBuilderItems = @{@"symbols": symbols,
+                             @"upperCaseLetters": upperCase,
+                             @"lowerCaseLetters": lowerCase,
+                             @"nonAmbiguousUpperCaseLetters": nonAmbiguousUpperCase,
+                             @"nonAmbiguousLowerCaseLetters": nonAmbiguousLowerCase,
+                             @"numbers": numbers,
+                             @"nonAmbiguousNumbers": nonAmbiguousNumbers,
+                             };
+}
+/**
+ Gets the strings that are used to build up the passwords
+
+ @param NSString Password builder item name, if it is nil, send back all the items concatenated
+ @return string containing all the items
+ */
+- (NSString *)getPasswordBuilderItem:(NSString *)item {
+    if (item != nil) {
+        return passwordBuilderItems[item];
+    }
+    NSMutableString *all = [[NSMutableString alloc] init];
+    for (NSString *key in [passwordBuilderItems allKeys]) {
+        [all appendString:passwordBuilderItems[key]];
+    }
+    return all;
+    
 }
 /**
  *  Loads up our dictionary, and removes 'bad' words to generate pattern passwords.

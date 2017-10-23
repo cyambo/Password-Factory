@@ -360,11 +360,23 @@
         //uses AttributedString to color password
         NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         NSError *error;
+        
+        
+        //building up a regex to match the symbols that are specified in the model
+        NSString * symbolString = [self.pf getPasswordBuilderItem:@"symbols"];
+        NSMutableString *symbolStringRegex = [[NSMutableString alloc] init];
+        [symbolStringRegex appendString:@"["];
+        //prepending every character with a \ to escape them so that we don't have to manually escape special characters
+        for (int i = 0; i < symbolString.length; i++) {
+            [symbolStringRegex appendFormat:@"\\%c",[symbolString characterAtIndex:i]];
+        }
+        [symbolStringRegex appendString:@"]"];
+        
         //setting up regexes to match the characters and use that to colorize them
         NSRegularExpression *charRegex = [[NSRegularExpression alloc] initWithPattern:@"[A-Z]" options:0 error:&error]; //uppercase characters
         NSRegularExpression *charlRegex = [[NSRegularExpression alloc] initWithPattern:@"[a-z]" options:0 error:&error]; //lowercase characters
         NSRegularExpression *numRegex = [[NSRegularExpression alloc] initWithPattern:@"[0-9]" options:0 error:&error]; //numbers
-        NSRegularExpression *symRegex = [[NSRegularExpression alloc] initWithPattern:@"[^0-9A-Za-z]" options:0 error:&error]; //symbols
+        NSRegularExpression *symRegex = [[NSRegularExpression alloc] initWithPattern:symbolStringRegex options:0 error:&error]; //symbols
         
         NSRange r = NSMakeRange(0, 1);
         //colorizing password label
