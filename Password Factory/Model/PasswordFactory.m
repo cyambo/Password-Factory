@@ -364,6 +364,9 @@ static NSDictionary* passwordBuilderItems;
             case 14: //random uppercase phonetic sound
                 toAppend = [[phoneticSounds objectAtIndex:[self randomNumber:pl]] uppercaseString];
                 break;
+            case 15: //random symbol
+                toAppend = @"r"; //TODO: add random symbol to pattern password
+                break;
         }
         [s appendString:toAppend];
     }];
@@ -420,7 +423,8 @@ static NSDictionary* passwordBuilderItems;
                          @"N" : @11, //random non-ambiguous number
                          @"e" : @12, //random emoji
                          @"p" : @13, //random phonetic sound
-                         @"P" : @14  //random uppercase phonetic sound
+                         @"P" : @14, //random uppercase phonetic sound
+                         @"r" : @15  //random item generated from random tab settings
                          };
     passwordBuilderItems = @{@"symbols": symbols,
                              @"upperCaseLetters": upperCase,

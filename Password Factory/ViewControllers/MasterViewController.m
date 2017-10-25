@@ -47,7 +47,7 @@
     [self.passwordTypeTab setDelegate:self];
     [self.patternText setDelegate:self];
     [self.passwordField setDelegate:self];
-    self.defaultCharacterColor = [NSColor blueColor]; //set the default color of non-highlighted text
+    self.defaultCharacterColor = [NSColor blackColor]; //set the default color of non-highlighted text
 }
 -(void)viewWillAppear {
     [self generatePassword];
