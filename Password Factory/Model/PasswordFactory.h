@@ -17,9 +17,9 @@
 - (NSString *)generateRandom:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols;
 
 - (NSString *)generatePattern: (NSString *)pattern;
-
+-(NSString *)generatePatternWithOptions: (NSString *)pattern mixedCase:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols;
 - (NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType;
-- (NSString *)generatePassphraseWithCode:(int)separatorCode caseType:(int)caseType;
+- (NSString *)generatePassphraseWithSeparatorCode:(int)separatorCode caseType:(int)caseType;
 - (uint)randomNumber:(uint)limit;
 - (NSString *)getPasswordBuilderItem:(NSString *)item;
 - (BOOL)characterIsTypeOfPasswordBuilderItem:(NSString *)type character:(NSString *)character;

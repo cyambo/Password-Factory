@@ -47,7 +47,7 @@ static NSDictionary *map = nil;
     } else if(percent <= 0) {
         return self;
     }
-    int numReplace = floor(self.length * percent);
+    NSUInteger numReplace = floor(self.length * percent);
     if (numReplace > self.length) {
         numReplace = self.length;
     }
@@ -64,13 +64,12 @@ static NSDictionary *map = nil;
     for(int i=0; i < self.length; i++) {
         BOOL replaced = NO;
         if(toReplace.count) {
-            int item = [[toReplace objectAtIndex:0] integerValue];
+            NSUInteger item = [[toReplace objectAtIndex:0] integerValue];
             if (item == i) {
                 replaced = YES;
                 [retval appendString:[self getRandomSymbolForLetter:[self characterAtIndex:i]]];
                 [toReplace removeObjectAtIndex:0];
             }
-
         }
         if (!replaced) {
             [retval appendString:[NSString stringWithFormat:@"%c",[self characterAtIndex:i]]];
@@ -93,7 +92,7 @@ static NSDictionary *map = nil;
     NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:array];
     
     for(NSUInteger i = [array count]; i > 1; i--) {
-        NSUInteger j = arc4random_uniform(i);
+        NSUInteger j = (NSUInteger)arc4random_uniform((unsigned int)i);
         [temp exchangeObjectAtIndex:i-1 withObjectAtIndex:j];
     }
     

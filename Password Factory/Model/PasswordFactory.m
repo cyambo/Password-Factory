@@ -187,7 +187,15 @@ static NSDictionary* passwordBuilderItems;
     }
     return [self removeTrailingSeparator:p separator:separator];
 }
--(NSString *)generatePassphraseWithCode:(int)separatorCode caseType:(int)caseType {
+
+/**
+ Generates a passphrase using the separator code constant
+
+ @param separatorCode separator code constant
+ @param caseType case type constant
+ @return generated passphrase
+ */
+-(NSString *)generatePassphraseWithSeparatorCode:(int)separatorCode caseType:(int)caseType {
     NSString *sep = @"";
     switch (separatorCode) {
         case PFPassphraseHyphenSeparator:
@@ -238,24 +246,34 @@ static NSDictionary* passwordBuilderItems;
  *  @return randomized password
  */
 - (NSString *)generateRandom:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols{
+    return [self generateRandomWithLength:self.passwordLength mixedCase:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
+}
+
+/**
+ Generates a random password of length
+
+ @param length length of password
+ @param mixedCase use upper and lowercase letters
+ @param avoidAmbiguous Avoid using ambiguous letters such as l and i
+ @param useSymbols Use symbols uses ascii symbols, such as @#$
+ @return randomized password
+ */
+- (NSString *)generateRandomWithLength:(NSUInteger)length mixedCase:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols {
     [self setCharacterRange:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
     NSMutableString *curr = [[NSMutableString alloc] init];
-    for(int i=0;i<self.passwordLength;i++){
+    for(int i=0;i<length;i++){
         int at = [self randomNumber:(uint)[self.currentRange length]];
         char charAt = [self.currentRange characterAtIndex:at];
         [curr appendFormat:@"%c",charAt];
-        
-        
     }
-    
     return curr;
-    
 }
 #pragma mark Random Password Utilities
 /**
  *  Gets the characters used for a random password based upon settings
  */
 - (void)setCharacterRange:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols {
+    //TODO: improve speed
     NSMutableString *tmp = [[NSMutableString alloc] init];
     if (useSymbols) {
         [tmp appendString:symbols];
@@ -277,14 +295,17 @@ static NSDictionary* passwordBuilderItems;
     self.currentRange = [self removeDuplicateChars:tmp];
 }
 #pragma mark Pattern Password
+
 /**
- *  quick parser to parse the pattern string and build out a password
- *
- *  @param pattern Password pattern
- *
- *  @return a pattern generated password
+ Generates a pattern password with options for the random 'r' pattern
+
+ @param pattern Pattern to use
+ @param mixedCase use mixed case
+ @param avoidAmbiguous avoid ambiguous characters
+ @param useSymbols use symbols
+ @return generated passwords
  */
-- (NSString *)generatePattern: (NSString *)pattern {
+-(NSString *)generatePatternWithOptions: (NSString *)pattern mixedCase:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols {
     int l = (int)self.englishWords.count;
     int sl = (int)self.shortWords.count;
     int el = (int)self.emojis.count;
@@ -308,7 +329,7 @@ static NSDictionary* passwordBuilderItems;
             isEscaped = NO;
             return;
         }
-
+        
         char c;
         NSString *toAppend;
         //will replace the special pattern characters with their proper randomized value
@@ -365,12 +386,22 @@ static NSDictionary* passwordBuilderItems;
                 toAppend = [[phoneticSounds objectAtIndex:[self randomNumber:pl]] uppercaseString];
                 break;
             case 15: //random symbol
-                toAppend = @"r"; //TODO: add random symbol to pattern password
+                toAppend = [self generateRandomWithLength:1 mixedCase:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
                 break;
         }
         [s appendString:toAppend];
     }];
     return s;
+}
+/**
+ *  quick parser to parse the pattern string and build out a password
+ *
+ *  @param pattern Password pattern
+ *
+ *  @return a pattern generated password
+ */
+- (NSString *)generatePattern: (NSString *)pattern {
+    return [self generatePatternWithOptions:pattern mixedCase:YES avoidAmbiguous:NO useSymbols:YES];
 }
 
 #pragma mark Utility Methods
@@ -618,7 +649,6 @@ static NSDictionary* passwordBuilderItems;
  *  @return string without dupes
  */
 - (NSMutableString *)removeDuplicateChars:(NSString *)input {
-    
     NSMutableSet *seenCharacters = [NSMutableSet set];
     NSMutableString *result = [NSMutableString string];
     [input enumerateSubstringsInRange:NSMakeRange(0, input.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {

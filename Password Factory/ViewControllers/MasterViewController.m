@@ -291,13 +291,13 @@
                                               useSymbols:[self.useSymbols state]];
             break;
         case PFTabPattern: //pattern
-            self.passwordValue = [self.pf generatePattern:self.patternText.stringValue];
+            self.passwordValue = [self.pf generatePatternWithOptions:self.patternText.stringValue mixedCase:[self.mixedCase state] avoidAmbiguous:[self.avoidAmbiguous state] useSymbols:[self.useSymbols state]];
             break;
         case PFTabPronounceable: //pronounceable
             self.passwordValue = [self.pf generatePronounceableWithSeparatorType:[self getPronounceableSeparatorType]];
             break;
         case PFTabPassphrase: //passphrase:
-            self.passwordValue = [self.pf generatePassphraseWithCode:[self getPassphraseSeparatorType] caseType:[self getPassphraseCaseType]];
+            self.passwordValue = [self.pf generatePassphraseWithSeparatorCode:[self getPassphraseSeparatorType] caseType:[self getPassphraseCaseType]];
             break;
     }
     [self updatePasswordField];

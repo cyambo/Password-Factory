@@ -183,7 +183,7 @@
             password = [self.factory generatePronounceableWithSeparatorType:(int)[sd integerForKey:@"pronounceableSeparatorTagShared"]];
             break;
         case PFTabPassphrase:
-            password = [self.factory generatePassphraseWithCode:(int)[sd integerForKey:@"passphraseSeparatorTagShared"] caseType:(int)[sd integerForKey:@"passphraseCaseTypeTagShared"]];
+            password = [self.factory generatePassphraseWithSeparatorCode:(int)[sd integerForKey:@"passphraseSeparatorTagShared"] caseType:(int)[sd integerForKey:@"passphraseCaseTypeTagShared"]];
 
             break;
     }
