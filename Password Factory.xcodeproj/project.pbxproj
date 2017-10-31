@@ -12,6 +12,10 @@
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		4051C9CB1FA7CF070097CDD9 /* MasterViewController-new.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4051C9CA1FA7CF070097CDD9 /* MasterViewController-new.xib */; };
+		4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */; };
+		4051C9CF1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */; };
+		4051C9D21FA7D7780097CDD9 /* NSString+MapCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */; };
+		4051C9D31FA7D7780097CDD9 /* NSString+MapCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */; };
 		40537D8D1F9419FD00D645B7 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
 		40537D8E1F941C1700D645B7 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
 		40537D8F1F941D1800D645B7 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
@@ -151,6 +155,10 @@
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
 		40511D651C125348005BE5BE /* PasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrength.m; sourceTree = "<group>"; };
 		4051C9CA1FA7CF070097CDD9 /* MasterViewController-new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MasterViewController-new.xib"; sourceTree = "<group>"; };
+		4051C9CC1FA7D6E90097CDD9 /* NSString+AccentedCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AccentedCase.h"; sourceTree = "<group>"; };
+		4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AccentedCase.m"; sourceTree = "<group>"; };
+		4051C9D01FA7D7780097CDD9 /* NSString+MapCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MapCase.h"; sourceTree = "<group>"; };
+		4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MapCase.m"; sourceTree = "<group>"; };
 		40537D8C1F9419FD00D645B7 /* constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = constants.m; path = "Password Factory/constants.m"; sourceTree = "<group>"; };
 		4058DF241F92995800CCB6E7 /* Password Factory Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4058DF261F92995800CCB6E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -356,6 +364,10 @@
 				40C0F3871B860791005FC25D /* NSString+RandomCase.m */,
 				4012E50E1B9750FA00BAF217 /* NSString+SymbolCase.h */,
 				4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */,
+				4051C9CC1FA7D6E90097CDD9 /* NSString+AccentedCase.h */,
+				4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */,
+				4051C9D01FA7D7780097CDD9 /* NSString+MapCase.h */,
+				4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */,
 			);
 			name = Categories;
 			path = "Password Factory/Categories";
@@ -1118,10 +1130,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4051C9D31FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */,
 				40511D671C125348005BE5BE /* PasswordStrength.m in Sources */,
 				40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */,
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
+				4051C9CF1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
 				40537D8E1F941C1700D645B7 /* constants.m in Sources */,
 				40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */,
@@ -1175,6 +1189,7 @@
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,
 				4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */,
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,
+				4051C9D21FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40FB0C241B810F10009193F8 /* main.m in Sources */,
 				4095862F1B8112FD00393B99 /* PreferencesWindowController.m in Sources */,
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
@@ -1185,6 +1200,7 @@
 				4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */,
 				4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */,
 				40537D8D1F9419FD00D645B7 /* constants.m in Sources */,
+				4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
 			);

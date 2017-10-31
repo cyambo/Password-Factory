@@ -21,7 +21,6 @@
         }
         [r appendFormat:@"%c",c];
     }
-
     return r;
 }
 @end
