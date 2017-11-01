@@ -712,6 +712,9 @@ r - Random item</string>
                                         </view>
                                     </tabViewItem>
                                 </tabViewItems>
+                                <connections>
+                                    <binding destination="ZgV-Co-VUK" name="selectedIdentifier" keyPath="values.selectedTabIndex" id="cHZ-lq-EHl"/>
+                                </connections>
                             </tabView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Puo-6a-nTE">
                                 <rect key="frame" x="326" y="156" width="85" height="32"/>
