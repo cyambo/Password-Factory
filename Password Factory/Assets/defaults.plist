@@ -31,13 +31,13 @@
 	<key>passwordLength</key>
 	<string>20</string>
 	<key>pronounceableSeparator</key>
-	<integer>201</integer>
+	<integer>202</integer>
 	<key>userPattern</key>
 	<string>w##</string>
 	<key>passphraseRadioSeparator</key>
-	<integer>301</integer>
+	<integer>202</integer>
 	<key>passphraseRadioCaseType</key>
-	<integer>401</integer>
+	<integer>101</integer>
 	<key>enableAdvancedMode</key>
 	<false/>
 	<key>addToLoginItems</key>

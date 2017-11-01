@@ -39,8 +39,8 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
-                        <tabViewItem label="Random" identifier="0" id="zr5-iB-5I9">
-                            <view key="view" ambiguous="YES" id="TTS-Hg-P6L">
+                        <tabViewItem label="Random" identifier="401" id="zr5-iB-5I9">
+                            <view key="view" id="TTS-Hg-P6L">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -148,7 +148,7 @@
                                 </subviews>
                             </view>
                         </tabViewItem>
-                        <tabViewItem label="Pattern" identifier="1" id="etA-Qv-795">
+                        <tabViewItem label="Pattern" identifier="402" id="etA-Qv-795">
                             <view key="view" id="tNm-qa-FhM">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -209,7 +209,7 @@ r - Random item</string>
                                 </subviews>
                             </view>
                         </tabViewItem>
-                        <tabViewItem label="Pronounceable" identifier="2" id="Jox-n0-Kcz">
+                        <tabViewItem label="Pronounceable" identifier="403" id="Jox-n0-Kcz">
                             <view key="view" id="HQx-iP-Ml6">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,29 +226,29 @@ r - Random item</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" tag="201" inset="2" id="MTM-cn-e23">
+                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" tag="202" inset="2" id="MTM-cn-e23">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="203" inset="2" id="EXP-sd-JGV">
+                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="201" inset="2" id="EXP-sd-JGV">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Characters                " imagePosition="left" alignment="left" tag="205" inset="2" id="8r4-EK-pG0">
+                                                <buttonCell type="radio" title="Characters                " imagePosition="left" alignment="left" tag="207" inset="2" id="8r4-EK-pG0">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" tag="202" inset="2" id="mWc-WT-f7O">
+                                                <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" tag="205" inset="2" id="mWc-WT-f7O">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" tag="204" inset="2" id="28X-de-1zu">
+                                                <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" tag="206" inset="2" id="28X-de-1zu">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="206" inset="2" id="CzE-8V-8qc">
+                                                <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="203" inset="2" id="CzE-8V-8qc">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -293,8 +293,8 @@ r - Random item</string>
                                 </subviews>
                             </view>
                         </tabViewItem>
-                        <tabViewItem label="Passphrase" identifier="3" id="NPi-qA-3zW">
-                            <view key="view" id="r7Q-MH-tBN">
+                        <tabViewItem label="Passphrase" identifier="404" id="NPi-qA-3zW">
+                            <view key="view" ambiguous="YES" id="r7Q-MH-tBN">
                                 <rect key="frame" x="10" y="33" width="379" height="105"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -310,21 +310,21 @@ r - Random item</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" tag="301" inset="2" id="eLa-E0-0ZC">
+                                                <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" tag="202" inset="2" id="eLa-E0-0ZC">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Underscore" imagePosition="left" alignment="left" tag="303" inset="2" id="XjL-CC-NvU">
+                                                <buttonCell type="radio" title="Underscore" imagePosition="left" alignment="left" tag="204" inset="2" id="XjL-CC-NvU">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Space" imagePosition="left" alignment="left" tag="302" inset="2" id="3k4-M7-EoH">
+                                                <buttonCell type="radio" title="Space" imagePosition="left" alignment="left" tag="203" inset="2" id="3k4-M7-EoH">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="304" inset="2" id="Jnp-tm-frQ">
+                                                <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="201" inset="2" id="Jnp-tm-frQ">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -365,21 +365,21 @@ r - Random item</string>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="radio" title="Lower" imagePosition="left" alignment="left" tag="401" inset="2" id="jzz-cC-92v">
+                                                <buttonCell type="radio" title="Lower" imagePosition="left" alignment="left" tag="101" inset="2" id="jzz-cC-92v">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Title" imagePosition="left" alignment="left" tag="402" inset="2" id="827-bw-CaU">
+                                                <buttonCell type="radio" title="Title" imagePosition="left" alignment="left" tag="104" inset="2" id="827-bw-CaU">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </column>
                                             <column>
-                                                <buttonCell type="radio" title="Upper" imagePosition="left" alignment="left" tag="403" inset="2" id="Aze-Mg-xR8">
+                                                <buttonCell type="radio" title="Upper" imagePosition="left" alignment="left" tag="102" inset="2" id="Aze-Mg-xR8">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <buttonCell type="radio" title="Mixed" imagePosition="left" alignment="left" tag="404" inset="2" id="RjB-hS-cKB">
+                                                <buttonCell type="radio" title="Mixed" imagePosition="left" alignment="left" tag="103" inset="2" id="RjB-hS-cKB">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>

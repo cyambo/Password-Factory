@@ -41,13 +41,14 @@
     return self;
 }
 - (void)awakeFromNib {
+    self.defaultCharacterColor = [NSColor blackColor]; //set the default color of non-highlighted text
     //get the length from the slider
     [self getPasswordLength];
     //sets the delegates for the tab buttons
     [self.passwordTypeTab setDelegate:self];
     [self.patternText setDelegate:self];
     [self.passwordField setDelegate:self];
-    self.defaultCharacterColor = [NSColor blackColor]; //set the default color of non-highlighted text
+    
 }
 -(void)viewWillAppear {
     [self generatePassword];
@@ -247,7 +248,6 @@
     [self generatePassword];
 }
 
-
 /**
  Called when the length slider is changed - generates password
 
@@ -270,10 +270,10 @@
  Gets the set password length from the slider
  */
 - (void)getPasswordLength{
-    NSUInteger prevLength = self.pf.passwordLength;
-    self.pf.passwordLength = [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
+    NSUInteger prevLength = self.pf.length;
+    self.pf.length = [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
 
-    if (prevLength != self.pf.passwordLength) { //do not change password unless length changes
+    if (prevLength != self.pf.length) { //do not change password unless length changes
         [self generatePassword];
     }
 }
@@ -282,22 +282,30 @@
  Generates password in the proper format
  */
 - (void)generatePassword {
-    NSInteger atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
+    PFPasswordType atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
     //Generates different password formats based upon the selected tab
+    //set modifiers
+    self.pf.avoidAmbiguous = [self.avoidAmbiguous state];
+    self.pf.useSymbols = [self.useSymbols state];
+    
     switch (atTab) {
-        case PFTabRandom: //random
-            self.passwordValue = [self.pf generateRandom:[self.mixedCase state]
-                                          avoidAmbiguous:[self.avoidAmbiguous state]
-                                              useSymbols:[self.useSymbols state]];
+        case PFRandomType: //random
+            if ([self.mixedCase state]) {
+                self.pf.caseType = PFMixed;
+            } else {
+                self.pf.caseType = PFLower;
+            }
+            self.passwordValue = [self.pf generateRandom];
             break;
-        case PFTabPattern: //pattern
-            self.passwordValue = [self.pf generatePatternWithOptions:self.patternText.stringValue mixedCase:[self.mixedCase state] avoidAmbiguous:[self.avoidAmbiguous state] useSymbols:[self.useSymbols state]];
+        case PFPatternType: //pattern
+            self.passwordValue = [self.pf generatePattern:self.patternText.stringValue];
             break;
-        case PFTabPronounceable: //pronounceable
+        case PFPronounceableType: //pronounceable
             self.passwordValue = [self.pf generatePronounceableWithSeparatorType:[self getPronounceableSeparatorType]];
             break;
-        case PFTabPassphrase: //passphrase:
-            self.passwordValue = [self.pf generatePassphraseWithSeparatorCode:[self getPassphraseSeparatorType] caseType:[self getPassphraseCaseType]];
+        case PFPassphraseType: //passphrase:
+            self.pf.caseType = [self getPassphraseCaseType];
+            self.passwordValue = [self.pf generatePassphraseWithSeparatorType:[self getPassphraseSeparatorType]];
             break;
     }
     [self updatePasswordField];
@@ -309,8 +317,8 @@
 
  @return separator type
  */
-- (int)getPassphraseSeparatorType {
-    int type = (int)[(NSButtonCell *)[self.passphraseSeparatorRadio selectedCell] tag];
+- (PFSeparatorType)getPassphraseSeparatorType {
+    PFSeparatorType type = (PFSeparatorType)[(NSButtonCell *)[self.passphraseSeparatorRadio selectedCell] tag];
     [[DefaultsManager sharedDefaults] setInteger:type forKey:@"passphraseSeparatorTagShared"];
     return type;
 }
@@ -320,7 +328,7 @@
 
  @return case type
  */
-- (int)getPassphraseCaseType {
+- (PFCaseType)getPassphraseCaseType {
     int type = (int)[(NSButtonCell *)[self.passphraseCaseRadio selectedCell] tag];
     [[DefaultsManager sharedDefaults] setInteger:type forKey:@"passphraseCaseTypeTagShared"];
     return type;
@@ -331,8 +339,8 @@
 
  @return separator type
  */
-- (int)getPronounceableSeparatorType {
-    int type = (int)[(NSButtonCell *)[self.pronounceableSeparatorRadio selectedCell] tag];
+- (PFSeparatorType)getPronounceableSeparatorType {
+    PFSeparatorType type = (PFSeparatorType)[(NSButtonCell *)[self.pronounceableSeparatorRadio selectedCell] tag];
     [[DefaultsManager sharedDefaults] setInteger:type forKey:@"pronounceableSeparatorTagShared"];
     return  type;
 
@@ -368,14 +376,16 @@
         [self.passwordValue enumerateSubstringsInRange:NSMakeRange(0, self.passwordValue.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
             NSColor *c = self.defaultCharacterColor; //set a default color of the text to the default color
             if(substringRange.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
-                if ([self.pf characterIsTypeOfPasswordBuilderItem:@"upperCaseLetters" character:at]) { //are we an uppercase character
+                if ([self.pf isCharacterType:PFUpperCaseLetters character:at]) { //are we an uppercase character
                     c = cColor;
-                } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"lowerCaseLetters" character:at]){ //lowercase character?
+                } else if ([self.pf isCharacterType:PFLowerCaseLetters character:at]){ //lowercase character?
                     c = clColor;
-                } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"numbers" character:at]){ //number?
+                } else if ([self.pf isCharacterType:PFNumbers character:at]){ //number?
                     c = nColor;
-                } else if ([self.pf characterIsTypeOfPasswordBuilderItem:@"symbols" character:at]){ //symbol?
+                } else if ([self.pf isCharacterType:PFSymbols character:at]){ //symbol?
                     c = sColor;
+                } else {
+                    c = self.defaultCharacterColor;
                 }
                 //set the character color
                 [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];

@@ -9,18 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "constants.h"
 @interface PasswordFactory : NSObject
-@property (nonatomic, assign) NSUInteger passwordLength;
 
-- (NSString *)generatePronounceableWithSeparatorType:(int)separatorType;
-- (NSString *)generatePronounceable:(NSString *)separator;
+@property (nonatomic, assign) NSUInteger length;
+@property (nonatomic, strong) NSString *separator;
+@property (nonatomic, assign) PFCaseType caseType;
+@property (nonatomic, assign) BOOL avoidAmbiguous;
+@property (nonatomic, assign) BOOL useSymbols;
+@property (nonatomic, assign) BOOL useEmoji;
 
-- (NSString *)generateRandom:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols;
-
-- (NSString *)generatePattern: (NSString *)pattern;
--(NSString *)generatePatternWithOptions: (NSString *)pattern mixedCase:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols;
-- (NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType;
-- (NSString *)generatePassphraseWithSeparatorCode:(int)separatorCode caseType:(int)caseType;
+- (NSString *)generatePronounceableWithSeparatorType:(PFSeparatorType)separatorType;
+- (NSString *)generatePronounceable;
+- (NSString *)generateRandom;
+- (NSString *)generatePattern:(NSString *)pattern;
+- (NSString *)generatePassphrase;
+- (NSString *)generatePassphraseWithSeparatorType:(PFSeparatorType)separatorType;
 - (uint)randomNumber:(uint)limit;
-- (NSString *)getPasswordBuilderItem:(NSString *)item;
-- (BOOL)characterIsTypeOfPasswordBuilderItem:(NSString *)type character:(NSString *)character;
+- (NSString *)getPasswordCharacterType:(PFCharacterType)type;
+- (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character;
 @end

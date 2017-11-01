@@ -147,19 +147,19 @@
     XCTAssertTrue(currPassword.length < [self getPasswordFieldValue].length, @"Pronounceable length should increase to about 10 from about 5");
     
     //testing radio mappings
-    [self pronounceableRadioPress:PFPronounceableNoSeparator];
-    [self pronounceableRadioPress:PFPronounceableCharacterSeparator];
-    [self pronounceableRadioPress:PFPronounceableNumberSeparator];
-    [self pronounceableRadioPress:PFPronounceableSymbolSeparator];
-    [self pronounceableRadioPress:PFPronounceableSpaceSeparator];
-    [self pronounceableRadioPress:PFPronounceableHyphenSeparator];
+    [self pronounceableRadioPress:PFNoSeparator];
+    [self pronounceableRadioPress:PFCharacterSeparator];
+    [self pronounceableRadioPress:PFNumberSeparator];
+    [self pronounceableRadioPress:PFSymbolSeparator];
+    [self pronounceableRadioPress:PFSpaceSeparator];
+    [self pronounceableRadioPress:PFHyphenSeparator];
     currPassword = [self getPasswordFieldValue];
     
     //test if password is changed when radio is pressed
     for (int i=0; i<=5; i++) {
         [self.mvc.pronounceableSeparatorRadio selectCellWithTag:i];
         [self.mvc pressPrononunceableRadio:self.mvc.pronounceableSeparatorRadio];
-        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]], @"Password Field not updated when %d radio is pressed",[self.mvc getPronounceableSeparatorType]);
+        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]], @"Password Field not updated when %ld radio is pressed",(long)[self.mvc getPronounceableSeparatorType]);
         currPassword = [self getPasswordFieldValue];
     }
 }
@@ -203,7 +203,10 @@
     self.mvc.passwordValue = @"1"; //set the password
     [self.mvc setPasswordStrength]; //run the strength update method
     float currStrength = self.mvc.passwordStrengthLevel.floatValue; //get the new strength
-    self.mvc.passwordValue = [self.mvc.pf generateRandom:YES avoidAmbiguous:YES useSymbols:YES]; //generate a new password
+    self.mvc.pf.caseType = PFMixed;
+    self.mvc.pf.avoidAmbiguous = YES;
+    self.mvc.pf.useSymbols = YES;
+    self.mvc.passwordValue = [self.mvc.pf generateRandom]; //generate a new password
     [self.mvc setPasswordStrength]; //run the strength update method
     XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.floatValue, @"Password strength meter not updated with change"); //check to see if strength changed with updates
 
@@ -224,7 +227,7 @@
         XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Password not changed when switched to tab %d",i);
         currPassword = [self getPasswordFieldValue];
         //see if the selectedTabIndex gets updated in defaults
-        XCTAssertEqual([d integerForKey:@"selectedTabIndex"], i, @"Tab %d selection not saved in defaults",i);
+        XCTAssertEqual([d integerForKey:@"selectedTabIndex"], (i + 401), @"Tab %d selection not saved in defaults",i);
     }
     
 }
@@ -345,7 +348,8 @@
     //returning password field for object propery
     [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
     //generate a string with all the possible characters that can be highlighted, and some characters that should not be highlighted
-    NSString *testString = [NSString stringWithFormat:@"%@áéíòü",[self.mvc.pf getPasswordBuilderItem:nil]];
+
+    NSString *testString = [NSString stringWithFormat:@"%@áéíòü",[self.mvc.pf getPasswordCharacterType:PFAllCharacters]];
     //do not color password
     self.mvc.colorPasswordText = NO;
     
@@ -401,16 +405,17 @@
         NSColor *atColor = a1[@"NSColor"];
         
         NSDictionary *colorMap = @{
-                                   @"upperCaseLetters": upperTextColor,
-                                   @"lowerCaseLetters": lowerTextColor,
-                                   @"numbers": numberTextColor,
-                                   @"symbols": symbolTextColor
+                                   @(PFUpper): upperTextColor,
+                                   @(PFLower): lowerTextColor,
+                                   @(PFNumbers): numberTextColor,
+                                   @(PFSymbols): symbolTextColor
                                    };
         
         at = [NSString stringWithFormat:@"%c", [testString characterAtIndex:i]];
         BOOL foundType = NO;
-        for(NSString *key in [colorMap allKeys]) {
-            if ([self.mvc.pf characterIsTypeOfPasswordBuilderItem:key character:at]) {
+        for(NSNumber *key in [colorMap allKeys]) {
+            PFCharacterType type = (PFCharacterType)key.intValue;
+            if ([self.mvc.pf isCharacterType:type character:at]) {
                 foundType = YES;
                 if (![atColor isEqual: colorMap[key]]) {
                     mismatch = YES;

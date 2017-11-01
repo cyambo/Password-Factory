@@ -28,20 +28,20 @@ const int LONG_PASSWORD_LENGTH = 100;
 }
 - (void)testGeneratePassphrase {
 
-    self.pg.passwordLength = LONG_PASSWORD_LENGTH;
+    self.pg.length = LONG_PASSWORD_LENGTH;
     NSDictionary *regexSep = @{
-                            @PFPassphraseHyphenSeparator:@"-?",
-                            @PFPassphraseSpaceSeparator:@"\\s?",
-                            @PFPassphraseUnderscoreSeparator:@"_?",
-                            @PFPassphraseNoSeparator:@"",
+                            @(PFHyphenSeparator):@"-?",
+                            @(PFSpaceSeparator):@"\\s?",
+                            @(PFUnderscoreSeparator):@"_?",
+                            @(PFNoSeparator):@"",
 
                            };
     NSDictionary *regexCase = @{
 
-                             @PFPassphraseLowerCase:@"[a-z]+",
-                             @PFPassphraseTitleCase:@"[A-Z][a-z]+",
-                             @PFPassphraseUpperCase:@"[A-Z]+",
-                             @PFPassphraseMixedCase:@"[a-zA-Z]"
+                             @(PFLower):@"[a-z]+",
+                             @(PFTitle):@"[A-Z][a-z]+",
+                             @(PFUpper):@"[A-Z]+",
+                             @(PFMixed):@"[a-zA-Z]"
                              };
     for (NSNumber *rSeparator in [regexSep allKeys]) {
         for(NSNumber *rCase in [regexCase allKeys]) {
@@ -49,45 +49,46 @@ const int LONG_PASSWORD_LENGTH = 100;
             NSString *errorMessage = [NSString stringWithFormat:@"Regex %@ failed for generatePassphhrase:%@:%@",regex,rSeparator,rCase];
             
             [self regexReplaceTest:regex errorMessage:errorMessage generateBlock:^NSString *{
-                return [self.pg generatePassphraseWithSeparatorCode:[rSeparator intValue] caseType:[rCase intValue]];
+                self.pg.caseType = (PFCaseType)[rCase intValue];
+                return [self.pg generatePassphraseWithSeparatorType:(PFSeparatorType)[rSeparator intValue]];
             }];
         }
     }
 }
 
 - (void)testGeneratePronounceable {
-    self.pg.passwordLength = LONG_PASSWORD_LENGTH;
+    self.pg.length = LONG_PASSWORD_LENGTH;
     
     [self regexReplaceTest:@"([a-z]+-?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Hyphen"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableHyphenSeparator];
+                 return [self.pg generatePronounceableWithSeparatorType:PFHyphenSeparator];
              }];
     [self regexReplaceTest:@"[a-z]"
               errorMessage:@"Value of password not valid for generatePronounceable:None"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableNoSeparator];
+                 return [self.pg generatePronounceableWithSeparatorType:PFNoSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+[A-Z]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Characters"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableCharacterSeparator];
+                 return [self.pg generatePronounceableWithSeparatorType:PFCharacterSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+[0-9]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Numbers"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableNumberSeparator];
+                 return [self.pg generatePronounceableWithSeparatorType:PFNumberSeparator];
              }];
     
     [self regexReplaceTest:@"([a-z]+[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Symbols"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableSymbolSeparator];
+                 return [self.pg generatePronounceableWithSeparatorType:PFSymbolSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+ ?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Spaces"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFPronounceableSpaceSeparator];
+                 return [self.pg generatePronounceableWithSeparatorType:PFSpaceSeparator];
              }];
     
     
@@ -136,13 +137,16 @@ const int LONG_PASSWORD_LENGTH = 100;
 - (void)testGenerateRandom {
     
     //testing password lengths
-    self.pg.passwordLength = 5;
-    XCTAssertTrue([self.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES].length == 5, @"Password Length not 5");
-    self.pg.passwordLength = 10;
-    XCTAssertFalse([self.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES].length == 5, @"Password Length not Changed from 5 to 10");
-    XCTAssertTrue([self.pg generateRandom:YES avoidAmbiguous:YES useSymbols:YES].length == 10, @"Password Length not 10");
+    self.pg.length = 5;
+    self.pg.caseType = PFMixed;
+    self.pg.avoidAmbiguous = YES;
+    self.pg.useSymbols = YES;
+    XCTAssertTrue([self.pg generateRandom].length == 5, @"Password Length not 5");
+    self.pg.length = 10;
+    XCTAssertFalse([self.pg generateRandom].length == 5, @"Password Length not Changed from 5 to 10");
+    XCTAssertTrue([self.pg generateRandom].length == 10, @"Password Length not 10");
     
-    self.pg.passwordLength = LONG_PASSWORD_LENGTH;
+    self.pg.length = LONG_PASSWORD_LENGTH;
     //testing the useSymbols to see if any symbols are part of the password
 
     
@@ -150,7 +154,10 @@ const int LONG_PASSWORD_LENGTH = 100;
     [self regexCheckHasMatchesTest:@"[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]"
                       errorMessage:@"Symbol found when useSymbols == NO"
                      generateBlock:^{
-                         return [self.pg generateRandom:YES avoidAmbiguous:YES useSymbols:NO];
+                         self.pg.caseType = PFMixed;
+                         self.pg.avoidAmbiguous = YES;
+                         self.pg.useSymbols = NO;
+                         return [self.pg generateRandom];
                      }];
     
     //testing mixed case
@@ -158,7 +165,10 @@ const int LONG_PASSWORD_LENGTH = 100;
     [self regexCheckHasMatchesTest:@"[A-Z]"
                       errorMessage:@"Capitals found when mixedCase == NO"
                      generateBlock:^{
-                         return [self.pg generateRandom:NO avoidAmbiguous:NO useSymbols:NO];
+                         self.pg.caseType = PFLower;
+                         self.pg.avoidAmbiguous = NO;
+                         self.pg.useSymbols = NO;
+                         return [self.pg generateRandom];
                      }];
     
     //testing ambiguous characters
@@ -166,7 +176,10 @@ const int LONG_PASSWORD_LENGTH = 100;
     [self regexCheckHasMatchesTest:@"[lo]"
                       errorMessage:@"Ambiguous Lowercase found when avoidAmbiguous = YES"
                      generateBlock:^{
-                         return [self.pg generateRandom:NO avoidAmbiguous:YES useSymbols:NO];
+                         self.pg.caseType = PFLower;
+                         self.pg.avoidAmbiguous = YES;
+                         self.pg.useSymbols = NO;
+                         return [self.pg generateRandom];
                      }];
     
     

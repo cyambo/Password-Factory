@@ -90,21 +90,21 @@
  */
 - (void)changeLabel {
     NSUserDefaults *sd = [DefaultsManager sharedDefaults];
-    int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
+    PFPasswordType index = (PFPasswordType)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
     
     NSString *label;
 
     switch(index) {
-        case PFTabRandom:
+        case PFRandomType:
             label = @"Random:";
             break;
-        case PFTabPattern:
+        case PFPatternType:
             label = @"Pattern:";
             break;
-        case PFTabPronounceable:
+        case PFPronounceableType:
             label = @"Pronounceable:";
             break;
-        case PFTabPassphrase:
+        case PFPassphraseType:
             label = @"Passphrase:";
             break;
     }
@@ -164,26 +164,29 @@
     int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
     NSString *password;
     
-    self.factory.passwordLength = [[sd objectForKey:@"passwordLengthShared"] integerValue];
+    self.factory.length = [[sd objectForKey:@"passwordLengthShared"] integerValue];
     
-    BOOL useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];
-    BOOL mixedCase = [[sd objectForKey:@"randomMixedCaseShared"] boolValue];
-    BOOL avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
+    self.factory.useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];
+    if ([[sd objectForKey:@"randomMixedCaseShared"] boolValue]) {
+        self.factory.caseType = PFMixed;
+    } else {
+        self.factory.caseType = PFLower;
+    }
+    self.factory.avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
     
     
     switch(index) {
-        case PFTabRandom:
-            password = [self.factory generateRandom:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
+        case PFRandomType:
+            password = [self.factory generateRandom];
             break;
-        case PFTabPattern:
+        case PFPatternType:
             password = [self.factory generatePattern:[sd objectForKey:@"userPatternShared"]];
             break;
-        case PFTabPronounceable:
- 
-            password = [self.factory generatePronounceableWithSeparatorType:(int)[sd integerForKey:@"pronounceableSeparatorTagShared"]];
+        case PFPronounceableType:
+            password = [self.factory generatePronounceableWithSeparatorType:(PFSeparatorType)[sd integerForKey:@"pronounceableSeparatorTagShared"]];
             break;
-        case PFTabPassphrase:
-            password = [self.factory generatePassphraseWithSeparatorCode:(int)[sd integerForKey:@"passphraseSeparatorTagShared"] caseType:(int)[sd integerForKey:@"passphraseCaseTypeTagShared"]];
+        case PFPassphraseType:
+            password = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[sd integerForKey:@"passphraseSeparatorTagShared"]];
 
             break;
     }

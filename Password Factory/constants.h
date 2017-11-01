@@ -10,35 +10,41 @@
 #ifndef Password_Factory_constants_h
 #define Password_Factory_constants_h
 
+typedef NS_ENUM(NSInteger, PFCaseType) {
+    PFLower = 101,
+    PFUpper,
+    PFMixed,
+    PFTitle
+};
+typedef NS_ENUM(NSInteger,PFSeparatorType) {
+    PFNoSeparator = 201,
+    PFHyphenSeparator,
+    PFSpaceSeparator,
+    PFUnderscoreSeparator,
+    PFNumberSeparator,
+    PFSymbolSeparator,
+    PFCharacterSeparator,
+    PFEmojiSeparator,
+    PFRandomSeparator
+};
+typedef NS_ENUM(NSInteger, PFCharacterType) {
+    PFUpperCaseLetters = 301,
+    PFLowerCaseLetters,
+    PFNumbers,
+    PFSymbols,
+    PFNonAmbiguousUpperCaseLetters,
+    PFNonAmbiguousLowerCaseLetters,
+    PFNonAmbiguousNumbers,
+    PFAllCharacters
+};
 
-#define PFPassphraseUseLowerCase 101
-#define PFPassphraseUseUpperCase 102
-#define PFPassphraseUseMixedCase 103
-#define PFPassphraseUseTitleCase 104
+typedef NS_ENUM(NSInteger, PFPasswordType) {
+    PFRandomType = 401,
+    PFPatternType,
+    PFPronounceableType,
+    PFPassphraseType
+};
 
-
-#define PFPronounceableHyphenSeparator 201
-#define PFPronounceableNumberSeparator 202
-#define PFPronounceableNoSeparator 203
-#define PFPronounceableSymbolSeparator 204
-#define PFPronounceableCharacterSeparator 205
-#define PFPronounceableSpaceSeparator 206
-
-
-#define PFPassphraseHyphenSeparator 301
-#define PFPassphraseSpaceSeparator 302
-#define PFPassphraseUnderscoreSeparator 303
-#define PFPassphraseNoSeparator 304
-
-#define PFPassphraseLowerCase 401
-#define PFPassphraseTitleCase 402
-#define PFPassphraseUpperCase 403
-#define PFPassphraseMixedCase 404
-
-#define PFTabRandom 0
-#define PFTabPattern 1
-#define PFTabPronounceable 2
-#define PFTabPassphrase 3
 
 #define PFPasswordMinLength 5
 #define PFPasswordMaxLength 150

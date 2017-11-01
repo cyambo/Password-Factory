@@ -38,7 +38,7 @@
 
 - (IBAction)changeLength:(id)sender;
 - (IBAction)pressPrononunceableRadio:(id)sender;
-- (int)getPronounceableSeparatorType;
+- (PFSeparatorType)getPronounceableSeparatorType;
 
 - (void)setPasswordStrength;
 @property (nonatomic, strong) NSString *passwordValue;

@@ -21,10 +21,11 @@ static NSDictionary* characterPattern;
 static NSArray* phoneticSounds;
 static NSArray* phoneticSoundsTwo;
 static NSArray* phoneticSoundsThree;
-static NSDictionary* passwordBuilderItems;
-@interface PasswordFactory ()
-@property (nonatomic, strong) NSMutableString *currentRange;
+static NSDictionary* passwordCharacterTypes;
 
+@interface PasswordFactory ()
+
+@property (nonatomic, strong) NSMutableArray *currentRange;
 @property (nonatomic, strong) NSArray *englishWords;
 @property (nonatomic, strong) NSArray *shortWords;
 @property (nonatomic, strong) NSDictionary *wordsByLength;
@@ -42,7 +43,7 @@ static NSDictionary* passwordBuilderItems;
         [self loadWords];
         [self setStatics];
 
-        self.passwordLength = 5;
+        self.length = 5;
     }
     return self;
 }
@@ -51,28 +52,26 @@ static NSDictionary* passwordBuilderItems;
 
 
 /**
- *  Generates a pronounceable password with the separator passed in
+ *  Generates a pronounceable password using the separator property
  *
- *  @param separator string separator - zero or on character
- *
- *  @return pronounceable password approximately the legnth of the passwordLength property
+ *  @return pronounceable password approximately the legnth of the length property
  */
-- (NSString *)generatePronounceable:(NSString *)separator {
+- (NSString *)generatePronounceable {
     NSMutableString *p = [[NSMutableString alloc] init];
-    separator = [self validateSeparator:separator];
+    [self validateSeparator];
+    NSString *separator = self.separator;
     int i = 0;
-    while (p.length < self.passwordLength) {
-        NSString *append = [[self getPronounceableForLength:(self.passwordLength - p.length)] lowercaseString];
+    while (p.length < self.length) {
+        NSString *append = [[self getPronounceableForLength:(self.length - p.length)] lowercaseString];
         if ([append isEqual: @""]) {
             break;
         } else {
             [p appendString:append];
         }
-        if (i%2 == 1 && p.length < self.passwordLength) {
-            [p appendString:separator];
+        if (i%2 == 1 && p.length < self.length) {
+            [p appendString:self.separator];
         }
         i++;
-        
     }
     return [self removeTrailingSeparator:p separator:separator];
 }
@@ -81,13 +80,13 @@ static NSDictionary* passwordBuilderItems;
  *
  *  @param separatorType string of separator type, can be hyphen, numbers, none, symbols, characters, spaces
  *
- *  @return pronounceable password with separator and approximately the leghth of the passwordLength property
+ *  @return pronounceable password with separator and approximately .length property
  */
-- (NSString *)generatePronounceableWithSeparatorType:(int)separatorType; {
+- (NSString *)generatePronounceableWithSeparatorType:(PFSeparatorType)separatorType {
 
-    NSString *sep = [self getPronounceableSeparator:separatorType];
+    [self setSeparatorFromType:separatorType];
 
-    return [self generatePronounceable:sep];
+    return [self generatePronounceable];
 }
 #pragma mark Pronounceable Utilities
 /**
@@ -98,81 +97,83 @@ static NSDictionary* passwordBuilderItems;
  *  @return a pronounceable 'piece'
  */
 - (NSString *)getPronounceableForLength:(NSUInteger)length {
-    if (length < 2) {
+    if (length < 2) { //if we have a length less than two, return nothing
         return @"";
     }
-    else if (length == 2) {
+    else if (length == 2) { //return a two length sound
         return [self randomFromArray:phoneticSoundsTwo];
-    } else if (length == 3) {
+    } else if (length == 3) { //return a three length sound
         return [self randomFromArray:phoneticSoundsThree];
     }
-    else {
+    else { //return any length sound
         return [self randomFromArray:phoneticSounds];
     }
     return @"";
-    
 }
 /**
- *  Gets pronounceable separator based on type string
+ *  Sets separator based on type string
  *
  *  @param separatorType is a code from constants.h
  *
- *  @return a separator for pronounceable strings
  */
-
-- (NSString *)getPronounceableSeparator:(int)separatorType {
+- (void)setSeparatorFromType:(PFSeparatorType)separatorType {
     NSString *sep = @"";
     switch (separatorType) {
-            
-        case PFPronounceableHyphenSeparator:
-            sep = @"-";
-            break;
-        case PFPronounceableNumberSeparator:
-            sep = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
-            break;
-        case PFPronounceableNoSeparator:
+        case PFNoSeparator:
             sep = @"";
             break;
-        case PFPronounceableSymbolSeparator:
-            sep = [NSString stringWithFormat:@"%c",[self randomFromString:symbols]];
+        case PFHyphenSeparator:
+            sep = @"-";
             break;
-        case PFPronounceableCharacterSeparator:
-            sep = [NSString stringWithFormat:@"%c",[self randomFromString:nonAmbiguousUpperCase]];
-            break;
-        case PFPronounceableSpaceSeparator:
+        case PFSpaceSeparator:
             sep = @" ";
             break;
-
+        case PFUnderscoreSeparator:
+            sep = @"_";
+            break;
+        case PFNumberSeparator:
+            sep = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
+            break;
+        case PFSymbolSeparator:
+            sep = [NSString stringWithFormat:@"%c",[self randomFromString:symbols]];
+            break;
+        case PFCharacterSeparator:
+            sep = [NSString stringWithFormat:@"%c",[self randomFromString:nonAmbiguousUpperCase]];
+            break;
+        case PFEmojiSeparator:
+            sep = [self.emojis objectAtIndex:[self randomNumber:[self randomNumber:(uint)self.emojis.count]]];
+            break;
+        case PFRandomSeparator:
+            sep = [self generateRandomWithLength:1];
+            break;
     }
-    return sep;
+    self.separator = sep;
 }
 #pragma mark Passphrase
 /**
  *  Generates a passphrase by combining various length words
  *
- *  @param separator string to use to separate words
- *  @param caseType  type of case to use, upper, lower, mixed, capitalized - see constants.h for values
- *
- *  @return password based on passphrase settings and approximately the passwordLength property
+ *  @return password based on passphrase settings and approximately the length property
  */
--(NSString *)generatePassphrase:(NSString *)separator caseType:(int)caseType {
-    separator = [self validateSeparator:separator];
+-(NSString *)generatePassphrase {
+    [self validateSeparator];
+    NSString *separator = self.separator;
     NSMutableString *p = [[NSMutableString alloc] init];
 
-    while (p.length < self.passwordLength) {
+    while (p.length < self.length) {
 
-        NSString *append = [self getPassphraseForLength:(self.passwordLength - p.length)];
-        switch (caseType) {
-            case PFPassphraseUpperCase:
+        NSString *append = [self getPassphraseForLength:(self.length - p.length)];
+        switch (self.caseType) {
+            case PFUpper:
                 append = [append uppercaseString];
                 break;
-            case PFPassphraseMixedCase:
+            case PFMixed:
                 append = [append randomCase];
                 break;
-            case PFPassphraseTitleCase:
+            case PFTitle:
                 append = [append capitalizedString];
                 break;
-            case PFPassphraseLowerCase:
+            case PFLower:
             default:
                 append = [append lowercaseString];
                 break;
@@ -191,27 +192,12 @@ static NSDictionary* passwordBuilderItems;
 /**
  Generates a passphrase using the separator code constant
 
- @param separatorCode separator code constant
- @param caseType case type constant
+ @param PFSeparatorType separator
  @return generated passphrase
  */
--(NSString *)generatePassphraseWithSeparatorCode:(int)separatorCode caseType:(int)caseType {
-    NSString *sep = @"";
-    switch (separatorCode) {
-        case PFPassphraseHyphenSeparator:
-            sep = @"-";
-            break;
-        case PFPassphraseSpaceSeparator:
-            sep = @" ";
-            break;
-        case PFPassphraseNoSeparator:
-            sep = @"";
-            break;
-        case PFPassphraseUnderscoreSeparator:
-            sep = @"_";
-            break;
-    }
-    return [self generatePassphrase:sep caseType:caseType];
+-(NSString *)generatePassphraseWithSeparatorType:(PFSeparatorType)separatorType {
+    [self setSeparatorFromType:separatorType];
+    return [self generatePassphrase];
 }
 /**
  *  Gets a word from our dictionary to fit the length remaining in passphrase
@@ -237,34 +223,26 @@ static NSDictionary* passwordBuilderItems;
 }
 #pragma mark Random Password
 /**
- *  Generates a random password of passwordLength length
- *
- *  @param mixedCase      use upper and lowercase letters
- *  @param avoidAmbiguous Avoid using ambiguous letters such as l and i
- *  @param useSymbols     Use symbols uses ascii symbols, such as @#$
+ *  Generates a random password of .length
  *
  *  @return randomized password
  */
-- (NSString *)generateRandom:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols{
-    return [self generateRandomWithLength:self.passwordLength mixedCase:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
+- (NSString *)generateRandom{
+    return [self generateRandomWithLength:self.length];
 }
 
 /**
  Generates a random password of length
 
  @param length length of password
- @param mixedCase use upper and lowercase letters
- @param avoidAmbiguous Avoid using ambiguous letters such as l and i
- @param useSymbols Use symbols uses ascii symbols, such as @#$
  @return randomized password
  */
-- (NSString *)generateRandomWithLength:(NSUInteger)length mixedCase:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols {
-    [self setCharacterRange:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
+- (NSString *)generateRandomWithLength:(NSUInteger)length {
+    [self setCharacterRange];
     NSMutableString *curr = [[NSMutableString alloc] init];
     for(int i=0;i<length;i++){
-        int at = [self randomNumber:(uint)[self.currentRange length]];
-        char charAt = [self.currentRange characterAtIndex:at];
-        [curr appendFormat:@"%c",charAt];
+        int at = [self randomNumber:(uint)self.currentRange.count];
+        [curr appendString:[self.currentRange objectAtIndex:at]];
     }
     return curr;
 }
@@ -272,40 +250,41 @@ static NSDictionary* passwordBuilderItems;
 /**
  *  Gets the characters used for a random password based upon settings
  */
-- (void)setCharacterRange:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols {
-    //TODO: improve speed
+- (void)setCharacterRange {
     NSMutableString *tmp = [[NSMutableString alloc] init];
-    if (useSymbols) {
+    if (self.useSymbols) {
         [tmp appendString:symbols];
     }
-    if (avoidAmbiguous) {
+    if (self.avoidAmbiguous) {
         [tmp appendString:nonAmbiguousLowerCase];
         [tmp appendString:nonAmbiguousNumbers];
     } else {
         [tmp appendString:lowerCase];
         [tmp appendString:numbers];
     }
-    if (mixedCase) {
-        if (avoidAmbiguous) {
+    if (self.caseType == PFMixed) {
+        if (self.avoidAmbiguous) {
             [tmp appendString:nonAmbiguousUpperCase];
         } else {
             [tmp appendString:upperCase];
         }
     }
-    self.currentRange = [self removeDuplicateChars:tmp];
+    NSMutableDictionary *d = [[NSMutableDictionary alloc] init];
+    for(int i = 0; i < tmp.length; i++) {
+        NSRange r = NSMakeRange(i, 1);
+        d[[tmp substringWithRange:r]] = @(1);
+    }
+    self.currentRange = [[d allKeys] mutableCopy];
 }
 #pragma mark Pattern Password
 
 /**
- Generates a pattern password with options for the random 'r' pattern
+ Generates a pattern password
 
  @param pattern Pattern to use
- @param mixedCase use mixed case
- @param avoidAmbiguous avoid ambiguous characters
- @param useSymbols use symbols
  @return generated passwords
  */
--(NSString *)generatePatternWithOptions: (NSString *)pattern mixedCase:(BOOL)mixedCase avoidAmbiguous:(BOOL)avoidAmbiguous useSymbols:(BOOL)useSymbols {
+-(NSString *)generatePattern: (NSString *)pattern {
     int l = (int)self.englishWords.count;
     int sl = (int)self.shortWords.count;
     int el = (int)self.emojis.count;
@@ -386,22 +365,12 @@ static NSDictionary* passwordBuilderItems;
                 toAppend = [[phoneticSounds objectAtIndex:[self randomNumber:pl]] uppercaseString];
                 break;
             case 15: //random symbol
-                toAppend = [self generateRandomWithLength:1 mixedCase:mixedCase avoidAmbiguous:avoidAmbiguous useSymbols:useSymbols];
+                toAppend = [self generateRandomWithLength:1];
                 break;
         }
         [s appendString:toAppend];
     }];
     return s;
-}
-/**
- *  quick parser to parse the pattern string and build out a password
- *
- *  @param pattern Password pattern
- *
- *  @return a pattern generated password
- */
-- (NSString *)generatePattern: (NSString *)pattern {
-    return [self generatePatternWithOptions:pattern mixedCase:YES avoidAmbiguous:NO useSymbols:YES];
 }
 
 #pragma mark Utility Methods
@@ -457,42 +426,43 @@ static NSDictionary* passwordBuilderItems;
                          @"P" : @14, //random uppercase phonetic sound
                          @"r" : @15  //random item generated from random tab settings
                          };
-    passwordBuilderItems = @{@"symbols": symbols,
-                             @"upperCaseLetters": upperCase,
-                             @"lowerCaseLetters": lowerCase,
-                             @"nonAmbiguousUpperCaseLetters": nonAmbiguousUpperCase,
-                             @"nonAmbiguousLowerCaseLetters": nonAmbiguousLowerCase,
-                             @"numbers": numbers,
-                             @"nonAmbiguousNumbers": nonAmbiguousNumbers,
+    passwordCharacterTypes = @{
+                               @(PFSymbols): symbols,
+                               @(PFUpperCaseLetters): upperCase,
+                               @(PFLowerCaseLetters): lowerCase,
+                               @(PFNonAmbiguousUpperCaseLetters): nonAmbiguousUpperCase,
+                               @(PFNonAmbiguousLowerCaseLetters): nonAmbiguousLowerCase,
+                               @(PFNumbers): numbers,
+                               @(PFNonAmbiguousNumbers): nonAmbiguousNumbers,
                              };
 }
 /**
  Gets the strings that are used to build up the passwords
 
- @param NSString Password builder item name, if it is nil, send back all the items concatenated
- @return string containing all the items
+ @param  PFCharacterType
+ @return string containing all the items of that type
  */
-- (NSString *)getPasswordBuilderItem:(NSString *)item {
-    if (item != nil) {
-        return passwordBuilderItems[item];
+- (NSString *)getPasswordCharacterType:(PFCharacterType)type {
+    if (type != PFAllCharacters) {
+        return passwordCharacterTypes[@(type)];
+    } else {
+        NSMutableString *all = [[NSMutableString alloc] init];
+        for (id key in [passwordCharacterTypes allKeys]) {
+            [all appendString:passwordCharacterTypes[key]];
+        }
+        return all;
     }
-    NSMutableString *all = [[NSMutableString alloc] init];
-    for (NSString *key in [passwordBuilderItems allKeys]) {
-        [all appendString:passwordBuilderItems[key]];
-    }
-    return all;
-    
 }
 
 /**
- Returns if a character is part of a password builder item
+ Returns if a character is part of password character type item
 
- @param type password builder item type i.e. upperCaseCharacters
+ @param PFCharacterType - i.e UpperCase
  @param character character to check
  @return true if character is part of builder item
  */
-- (BOOL)characterIsTypeOfPasswordBuilderItem:(NSString *)type character:(NSString *)character {
-    return [(NSString *)passwordBuilderItems[type] containsString:character];
+- (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character {
+    return [(NSString *)passwordCharacterTypes[@(type)] containsString:character];
 }
 /**
  *  Loads up our dictionary, and removes 'bad' words to generate pattern passwords.
@@ -641,37 +611,17 @@ static NSDictionary* passwordBuilderItems;
     }
     return NO;
 }
+
 /**
- *  Removes duplicate characters from a string
- *
- *  @param input string to remove dupes
- *
- *  @return string without dupes
- */
-- (NSMutableString *)removeDuplicateChars:(NSString *)input {
-    NSMutableSet *seenCharacters = [NSMutableSet set];
-    NSMutableString *result = [NSMutableString string];
-    [input enumerateSubstringsInRange:NSMakeRange(0, input.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-        if (![seenCharacters containsObject:substring]) {
-            [seenCharacters addObject:substring];
-            [result appendString:substring];
-        }
-    }];
-    return result;
-}
-/**
- *  Returns a valid separator of length one, will truncate anything longer than 1 character
- *
- *  @param separator separator to check
+ *  Sets separator to a length of one, will truncate anything longer than 1 character
  *
  *  @return single char separator or nothing
  */
--(NSString *)validateSeparator:(NSString *)separator {
-    
-    if (separator.length > 1) {
-        separator = [separator substringToIndex:1];
+-(void)validateSeparator {
+    //truncate
+    if (self.separator.length > 1) {
+        self.separator = [self.separator substringToIndex:1];
     }
-    return separator;
 }
 /**
  *  removes the trailing separator from a string
