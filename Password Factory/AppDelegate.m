@@ -204,7 +204,7 @@
     //If we are in the 'Tabs' menu, then disable the currently selected tab
     if ([m.parentItem.title isEqualToString:@"Tabs"]) {
         //get the selected tab identifier
-        int selected = [[self.masterViewController passwordTypeTab].selectedTabViewItem.identifier intValue];
+        int selected = [[self.masterViewController passwordTypeTab].selectedTabViewItem.identifier intValue] - PFRandomType;
         //the tab identifier and menu item tag match up
         if(m.tag == selected) {
             return NO;
