@@ -475,9 +475,6 @@ r - Random item</string>
                                                 </textField>
                                             </subviews>
                                         </view>
-                                        <connections>
-                                            <binding destination="ZgV-Co-VUK" name="selectedIdentifier" keyPath="values" id="h44-XX-OC5"/>
-                                        </connections>
                                     </tabViewItem>
                                     <tabViewItem label="Passphrase" identifier="404" id="8tp-VM-PDg">
                                         <view key="view" id="JB7-fZ-4Bb">
@@ -801,6 +798,7 @@ r - Random item</string>
                         <outlet property="passwordLengthSlider" destination="71P-bN-ogl" id="j6a-lW-NkB"/>
                         <outlet property="passwordLengthText" destination="pzN-6W-2N9" id="wDD-R5-6O6"/>
                         <outlet property="passwordStrengthLevel" destination="Qws-ld-xuc" id="eCW-kS-1Za"/>
+                        <outlet property="passwordTypeTab" destination="S4s-h0-KA4" id="04r-YI-sok"/>
                         <outlet property="pasteboardButton" destination="Puo-6a-nTE" id="0pw-2L-RSe"/>
                         <outlet property="patternText" destination="5dp-ch-hic" id="3y3-oc-QCx"/>
                         <outlet property="pronounceableSeparatorRadio" destination="OC2-KS-tXw" id="t9P-yE-PeH"/>
