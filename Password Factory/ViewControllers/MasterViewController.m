@@ -25,8 +25,8 @@
 
 @implementation MasterViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (instancetype)initWithCoder:(NSCoder *)coder{
+    self = [super initWithCoder:coder];
     if (self) {
         //initialize everything
         self.pf = [[PasswordFactory alloc] init];
@@ -42,6 +42,7 @@
 }
 - (void)awakeFromNib {
     self.defaultCharacterColor = [NSColor blackColor]; //set the default color of non-highlighted text
+    
     //get the length from the slider
     [self getPasswordLength];
     //sets the delegates for the tab buttons

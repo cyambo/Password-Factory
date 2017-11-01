@@ -13,7 +13,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSWindow *currWindow;
 @property (nonatomic, strong)  MasterViewController *masterViewController;
 @property (nonatomic, strong)  PreferencesWindowController *prefsWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;

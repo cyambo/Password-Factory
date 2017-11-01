@@ -9,9 +9,9 @@
 #import <XCTest/XCTest.h>
 #import <OCMock.h>
 #import "NSColor+NSColorHexadecimalValue.h"
-#import "MasterViewControllerTestClass.h"
+#import "MasterViewController.h"
 @interface MasterViewControllerTests : XCTestCase
-@property (nonatomic, strong) MasterViewControllerTestClass *mvc;
+@property (nonatomic, strong) MasterViewController *mvc;
 
 @end
 
@@ -19,7 +19,8 @@
 
 - (void)setUp {
     [super setUp];
-    self.mvc = [[MasterViewControllerTestClass alloc] initWithNibName:@"MasterViewController" bundle:nil];
+    self.mvc = (MasterViewController *)[[NSApplication sharedApplication] mainWindow].contentViewController;
+//    self.mvc = [[MasterViewControllerTestClass alloc] initWithNibName:@"MasterViewController" bundle:nil];
     [self.mvc view];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }

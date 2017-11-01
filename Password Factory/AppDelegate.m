@@ -27,12 +27,11 @@
     [PreferencesWindowController loadPreferencesFromPlist];
     //init prefs window
     self.prefsWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
-    //init master view
-    self.masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
+    //Set properties
+    self.currWindow = [[NSApplication sharedApplication] mainWindow];
+    self.masterViewController = (MasterViewController *)[[NSApplication sharedApplication] mainWindow].contentViewController;
     self.masterViewController.prefsWindow = self.prefsWindowController;
-    //put the master view in our window
-    [self.window.contentView addSubview:self.masterViewController.view];
-    self.masterViewController.view.frame = ((NSView *)self.window.contentView).bounds;
+
     [self.prefsWindowController resetShortcutRegistration]; //setting up global shortcut when app launches
     [self.prefsWindowController changeLoginItem:nil]; //set the login item to the current state
     //doing magic for the app if it is in the menu
@@ -66,16 +65,16 @@
         }];
     } else {
         //set window appearance and settings
-        self.window.titlebarAppearsTransparent = YES;
-        self.window.titleVisibility = NSWindowTitleHidden;
-        self.window.styleMask |= NSFullSizeContentViewWindowMask;
-        self.window.movableByWindowBackground = YES;
+        self.currWindow.titlebarAppearsTransparent = YES;
+        self.currWindow.titleVisibility = NSWindowTitleHidden;
+        self.currWindow.styleMask |= NSFullSizeContentViewWindowMask;
+        self.currWindow.movableByWindowBackground = YES;
         //not a menu app so show the the window
-        [self.window makeKeyAndOrderFront:self];
+        [self.currWindow makeKeyAndOrderFront:self];
     }
     //save window state
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"NSQuitAlwaysKeepsWindows"];
-    self.window.restorable = YES;
+    self.currWindow.restorable = YES;
     
     //set the launched flag to true
     self.launched = YES;
@@ -139,7 +138,7 @@
  */
 -(IBAction)menuCopy:(id)sender {
     //get the first responder
-    NSResponder *fr = [self.window firstResponder];
+    NSResponder *fr = [self.currWindow firstResponder];
     //see if we are a text view
     if ([fr isKindOfClass:[NSTextView class]]) {
         //if anything has a selection send copy to the first responder
@@ -153,7 +152,7 @@
 }
 -(IBAction)menuCut:(id)sender {
     //get the first responder
-    NSResponder *fr = [self.window firstResponder];
+    NSResponder *fr = [self.currWindow firstResponder];
     //see if we are a text view
     if ([fr isKindOfClass:[NSTextView class]]) {
         //if anything has a selection send copy to the first responder
@@ -305,7 +304,7 @@
             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
                 [self showPopover:nil];
             } else {
-                [self.window makeKeyAndOrderFront:self];
+                [self.currWindow makeKeyAndOrderFront:self];
             }
             
         } else {

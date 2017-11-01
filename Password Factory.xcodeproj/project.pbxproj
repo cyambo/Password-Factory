@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
+		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		4051C9CB1FA7CF070097CDD9 /* MasterViewController-new.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4051C9CA1FA7CF070097CDD9 /* MasterViewController-new.xib */; };
@@ -29,7 +30,6 @@
 		406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3F1B8447A700727FDB /* StrengthControl.m */; };
 		406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3C1B84476F00727FDB /* StrengthBox.m */; };
 		406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585FE1B8112FD00393B99 /* PreferencesButton.m */; };
-		409585CF1B8112D600393B99 /* MasterViewControllerTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585C91B8112D600393B99 /* MasterViewControllerTestClass.m */; };
 		409585D01B8112D600393B99 /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
 		409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CD1B8112D600393B99 /* PreferencesWindowTestClass.m */; };
@@ -152,6 +152,7 @@
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
 		4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyIntegerFormatter.m; sourceTree = "<group>"; };
+		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
 		40511D651C125348005BE5BE /* PasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrength.m; sourceTree = "<group>"; };
 		4051C9CA1FA7CF070097CDD9 /* MasterViewController-new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MasterViewController-new.xib"; sourceTree = "<group>"; };
@@ -171,8 +172,6 @@
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
 		408673D51F91D04B00C189AB /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = "Password Factory/constants.h"; sourceTree = "<group>"; };
 		408673DA1F91D0DF00C189AB /* Password Factory Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = "Password Factory Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		409585C81B8112D600393B99 /* MasterViewControllerTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerTestClass.h; sourceTree = "<group>"; };
-		409585C91B8112D600393B99 /* MasterViewControllerTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTestClass.m; sourceTree = "<group>"; };
 		409585CA1B8112D600393B99 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTests.m; sourceTree = "<group>"; };
 		409585CB1B8112D600393B99 /* PasswordFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactoryTests.m; sourceTree = "<group>"; };
 		409585CC1B8112D600393B99 /* PreferencesWindowTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowTestClass.h; sourceTree = "<group>"; };
@@ -540,6 +539,7 @@
 				40FB0C1E1B810F10009193F8 /* Supporting Files */,
 				40DFFEE21B811F470047CF90 /* MainWindow.h */,
 				40DFFEE31B811F470047CF90 /* MainWindow.m */,
+				402A42821FAA316F00615A2E /* Main.storyboard */,
 			);
 			path = "Password Factory";
 			sourceTree = "<group>";
@@ -556,8 +556,6 @@
 		40FB0C311B810F10009193F8 /* Password FactoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				409585C81B8112D600393B99 /* MasterViewControllerTestClass.h */,
-				409585C91B8112D600393B99 /* MasterViewControllerTestClass.m */,
 				409585CA1B8112D600393B99 /* MasterViewControllerTests.m */,
 				409585CB1B8112D600393B99 /* PasswordFactoryTests.m */,
 				409585CC1B8112D600393B99 /* PreferencesWindowTestClass.h */,
@@ -914,6 +912,7 @@
 				409586301B8112FD00393B99 /* PreferencesWindowController.xib in Resources */,
 				4051C9CB1FA7CF070097CDD9 /* MasterViewController-new.xib in Resources */,
 				409586121B8112FD00393B99 /* menu-icon-inv@2x.png in Resources */,
+				402A42831FAA316F00615A2E /* Main.storyboard in Resources */,
 				40FB0C261B810F10009193F8 /* Images.xcassets in Resources */,
 				4095862E1B8112FD00393B99 /* MasterViewController.xib in Resources */,
 				409586131B8112FD00393B99 /* menu-icon.png in Resources */,
@@ -1211,7 +1210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				409585D01B8112D600393B99 /* MasterViewControllerTests.m in Sources */,
-				409585CF1B8112D600393B99 /* MasterViewControllerTestClass.m in Sources */,
 				409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */,
 				409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */,
 				409585D31B8112D600393B99 /* PreferencesWindowTests.m in Sources */,
