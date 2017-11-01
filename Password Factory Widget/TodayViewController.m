@@ -174,6 +174,7 @@
     }
     self.factory.avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
     
+    //TODO: not getting all values for caseType etc from defaults
     
     switch(index) {
         case PFRandomType:

@@ -58,7 +58,7 @@ const int LONG_PASSWORD_LENGTH = 100;
 
 - (void)testGeneratePronounceable {
     self.pg.length = LONG_PASSWORD_LENGTH;
-    
+    self.pg.caseType = PFLower;
     [self regexReplaceTest:@"([a-z]+-?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Hyphen"
              generateBlock:^{

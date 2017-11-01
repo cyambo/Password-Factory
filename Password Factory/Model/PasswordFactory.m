@@ -62,7 +62,7 @@ static NSDictionary* passwordCharacterTypes;
     NSString *separator = self.separator;
     int i = 0;
     while (p.length < self.length) {
-        NSString *append = [[self getPronounceableForLength:(self.length - p.length)] lowercaseString];
+        NSString *append = [self caseString:[self getPronounceableForLength:(self.length - p.length)]];
         if ([append isEqual: @""]) {
             break;
         } else {
@@ -162,22 +162,7 @@ static NSDictionary* passwordCharacterTypes;
 
     while (p.length < self.length) {
 
-        NSString *append = [self getPassphraseForLength:(self.length - p.length)];
-        switch (self.caseType) {
-            case PFUpper:
-                append = [append uppercaseString];
-                break;
-            case PFMixed:
-                append = [append randomCase];
-                break;
-            case PFTitle:
-                append = [append capitalizedString];
-                break;
-            case PFLower:
-            default:
-                append = [append lowercaseString];
-                break;
-        }
+        NSString *append = [self caseString:[self getPassphraseForLength:(self.length - p.length)]];
         if ([append isEqual: @""]) {
             break;
         } else {
@@ -393,6 +378,23 @@ static NSDictionary* passwordCharacterTypes;
  */
 - (id)randomFromArray:(NSArray *)source {
     return [source objectAtIndex:([self randomNumber:(uint)source.count])];
+}
+-(NSString *)caseString:(NSString *)toCase {
+    switch (self.caseType) {
+        case PFUpper:
+            return [toCase uppercaseString];
+            break;
+        case PFMixed:
+            return [toCase randomCase];
+            break;
+        case PFTitle:
+            return [toCase capitalizedString];
+            break;
+        case PFLower:
+        default:
+            return [toCase lowercaseString];
+            break;
+    }
 }
 /**
  *  building out the static variables used to generate password

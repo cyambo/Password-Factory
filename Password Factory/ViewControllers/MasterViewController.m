@@ -287,7 +287,7 @@
     //set modifiers
     self.pf.avoidAmbiguous = [self.avoidAmbiguous state];
     self.pf.useSymbols = [self.useSymbols state];
-    
+    self.passwordValue = @"";
     switch (atTab) {
         case PFRandomType: //random
             if ([self.mixedCase state]) {
@@ -301,6 +301,7 @@
             self.passwordValue = [self.pf generatePattern:self.patternText.stringValue];
             break;
         case PFPronounceableType: //pronounceable
+            self.pf.caseType = PFLower; //TODO: add case type to pronounceable
             self.passwordValue = [self.pf generatePronounceableWithSeparatorType:[self getPronounceableSeparatorType]];
             break;
         case PFPassphraseType: //passphrase:
@@ -353,6 +354,10 @@
  */
 - (void)updatePasswordField{
     [PreferencesWindowController syncSharedDefaults];
+    if (self.passwordValue == nil || self.passwordValue.length == 0) {
+        [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
+        return;
+    }
     //Just display the password
     if (!self.colorPasswordText) {
         NSAttributedString *s = [[NSAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
