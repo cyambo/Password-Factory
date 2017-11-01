@@ -8,14 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #include "MasterViewController.h"
-#include "PreferencesWindowController.h"
+#include "PreferencesViewController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 
-@property (assign) IBOutlet NSWindow *currWindow;
-@property (nonatomic, strong)  MasterViewController *masterViewController;
-@property (nonatomic, strong)  PreferencesWindowController *prefsWindowController;
+@property (nonatomic, weak) NSWindow *currWindow;
+@property (nonatomic, weak) MasterViewController *masterViewController;
+@property (nonatomic, weak) PreferencesViewController *prefsViewController;
+@property (nonatomic, weak) NSWindowController *prefsWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;
 - (IBAction)selectTabFromMenu:(NSMenuItem *)sender;
 @property (weak) IBOutlet NSMenuItem *randomMenuItem;

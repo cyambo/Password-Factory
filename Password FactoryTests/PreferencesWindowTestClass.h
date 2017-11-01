@@ -6,8 +6,8 @@
 //  Copyright (c) 2017 Cristiana Yambo. All rights reserved.
 //
 
-#import "PreferencesWindowController.h"
+#import "PreferencesViewController.h"
 
-@interface PreferencesWindowTestClass : PreferencesWindowController
+@interface PreferencesWindowTestClass : PreferencesViewController
 
 @end

@@ -9,7 +9,7 @@
 #import "MasterViewController.h"
 #import "PasswordStrength.h"
 #import "PasswordFactory.h"
-#import "PreferencesWindowController.h"
+#import "PreferencesViewController.h"
 #import "AppDelegate.h"
 #import "constants.h"
 #import "DefaultsManager.h"
@@ -197,9 +197,11 @@
  @param sender IBAction sender
  */
 - (IBAction)loadPreferencesWindow:(id)sender {
-    AppDelegate *d = [[NSApplication sharedApplication] delegate];
-    [d.prefsWindowController showWindow:sender];
-    d.prefsWindowController.window.restorable = YES;
+    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSWindowController *w = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
+    [w showWindow:sender];
+    w.window.restorable = YES;
+
     [NSApp activateIgnoringOtherApps:YES]; //brings it to front
 }
 
@@ -354,7 +356,7 @@
  Updates the password field and colors it if user asks
  */
 - (void)updatePasswordField{
-    [PreferencesWindowController syncSharedDefaults];
+    [PreferencesViewController syncSharedDefaults];
     if (self.passwordValue == nil || self.passwordValue.length == 0) {
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
         return;
@@ -367,10 +369,10 @@
         //colors the password text based upon color wells in preferences
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         
-        NSColor *nColor = [PreferencesWindowController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"numberTextColor"]]];
-        NSColor *cColor = [PreferencesWindowController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"upperTextColor"]]];
-        NSColor *clColor = [PreferencesWindowController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"lowerTextColor"]]];
-        NSColor *sColor = [PreferencesWindowController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]]];
+        NSColor *nColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"numberTextColor"]]];
+        NSColor *cColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"upperTextColor"]]];
+        NSColor *clColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"lowerTextColor"]]];
+        NSColor *sColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]]];
         
         //uses AttributedString to color password
         NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];

@@ -8,25 +8,27 @@
 
 #import <XCTest/XCTest.h>
 #import "NSColor+NSColorHexadecimalValue.h"
-#import "PreferencesWindowController.h"
+#import "PreferencesViewController.h"
 
 @interface PreferencesWindowTests : XCTestCase
-@property (nonatomic, strong) PreferencesWindowController *pw;
+@property (nonatomic, strong) PreferencesViewController *pw;
+@property (nonatomic, strong) NSWindowController *windowController;
 @end
 
 @implementation PreferencesWindowTests
 
 - (void)setUp {
     [super setUp];
-    if (self.pw == nil) {
-        self.pw = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
-        [self.pw showWindow:self];
-    }
+    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.windowController = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
+    self.pw = (PreferencesViewController *)self.windowController.window.contentViewController;
+    [self.windowController showWindow:self];
+
 }
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-    [self.pw.window orderOut:self];
+    [self.windowController.window orderOut:self];
 }
 
 /**
@@ -54,7 +56,7 @@
         XCTAssertNil([d objectForKey:k], @"Key '%@' set when it should be nil",k);
 
     }
-    [PreferencesWindowController getPrefsFromPlist];
+    [PreferencesViewController getPrefsFromPlist];
     
     for (NSString *k in p) {
         

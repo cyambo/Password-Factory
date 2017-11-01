@@ -1,12 +1,12 @@
 //
-//  PreferencesWindowController.m
+//  PreferencesViewController.m
 //  Password Factory
 //
 //  Created by Cristiana Yambo on 5/13/14.
 //  Copyright (c) 2017 Cristiana Yambo. All rights reserved.
 //
 
-#import "PreferencesWindowController.h"
+#import "PreferencesViewController.h"
 #import "NSColor+NSColorHexadecimalValue.h"
 #import "AppDelegate.h"
 #import "DefaultsManager.h"
@@ -14,22 +14,19 @@
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
-@implementation PreferencesWindowController 
+@implementation PreferencesViewController
 
 __weak id _constantShortcutMonitor;
 static BOOL loadedPrefs;
 static NSDictionary *prefsPlist;
 
-- (id)initWithWindow:(NSWindow *)window {
-    self = [super initWithWindow:window];
-    if (self) {
-
-    }
+-(instancetype)init {
+    self = [super init];
     return self;
 }
 - (void)awakeFromNib {
 
-    [PreferencesWindowController loadPreferencesFromPlist];
+    [PreferencesViewController loadPreferencesFromPlist];
     [self updatePrefsUI];
     [self setObservers];
     
@@ -44,10 +41,10 @@ static NSDictionary *prefsPlist;
     
     //registering for notification that the window is closing to run shortcut set code
     //this is because it seems to 'forget' the key when preferences is loaded
-    [notification addObserver:self
-                     selector:@selector(resetShortcutRegistration)
-                         name:NSWindowWillCloseNotification
-                       object:self.window];
+//    [notification addObserver:self
+//                     selector:@selector(resetShortcutRegistration)
+//                         name:NSWindowWillCloseNotification
+//                       object:self.window];
     
     //setting the initial checkbox states for the menu and dock checkboxes to an unset state
     self.initialMenuState = 2;
@@ -66,7 +63,7 @@ static NSDictionary *prefsPlist;
     // Activate the global keyboard shortcut if it was enabled last time
     //moved to showWindow instead of awakeFromNib so that it will load everytime the window pops up
     [self resetShortcutRegistration];
-    [super showWindow:sender];
+//    [super showWindow:sender];
     [self changeLoginItem:nil]; //runs every time the window is opened because the user can remove or add the login item from the prefs directly
 }
 
@@ -99,17 +96,17 @@ static NSDictionary *prefsPlist;
     [self.clearTimeLabel setIntValue:(int)[d integerForKey:@"clearClipboardTime"]];
     
     //setting the color wells
-    [self.uppercaseTextColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"upperTextColor"]]];
-    [self.lowercaseTextColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"lowerTextColor"]]];
-    [self.symbolsColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]]];
-    [self.numbersColor setColor: [PreferencesWindowController colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
+    [self.uppercaseTextColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"upperTextColor"]]];
+    [self.lowercaseTextColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"lowerTextColor"]]];
+    [self.symbolsColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]]];
+    [self.numbersColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
 }
 /**
  Makes sure our preferences are loaded only at launch
  */
 +(void)loadPreferencesFromPlist {
     if (!loadedPrefs) {
-        [PreferencesWindowController getPrefsFromPlist];
+        [PreferencesViewController getPrefsFromPlist];
         loadedPrefs = YES;
     }
 
@@ -127,7 +124,7 @@ static NSDictionary *prefsPlist;
  Takes our defaults plist dictionary and merges it with standardUserDefaults so that our prefs are always set
  */
 + (void)getPrefsFromPlist {
-    [PreferencesWindowController loadDefaultsPlist];
+    [PreferencesViewController loadDefaultsPlist];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
     //taking plist and filling in defaults if none set
@@ -137,13 +134,13 @@ static NSDictionary *prefsPlist;
             
         }
     }
-    [PreferencesWindowController syncSharedDefaults];
+    [PreferencesViewController syncSharedDefaults];
 }
 /**
  Syncs our plist with the sharedDefaults manager for use in the today extension
  */
 +(void)syncSharedDefaults {
-    [PreferencesWindowController loadDefaultsPlist];
+    [PreferencesViewController loadDefaultsPlist];
     NSUserDefaults *sharedDefaults = [DefaultsManager sharedDefaults];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     for (NSString *key in prefsPlist) {

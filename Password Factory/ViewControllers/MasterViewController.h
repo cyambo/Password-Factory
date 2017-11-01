@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PasswordFactory.h"
-#import "PreferencesWindowController.h"
+#import "PreferencesViewController.h"
 #import "StrengthMeter.h"
 
 @interface MasterViewController : NSViewController
@@ -50,7 +50,7 @@
 @property (nonatomic,assign) BOOL colorPasswordText;
 - (void)generateAndCopy;
 
-@property (nonatomic, weak) PreferencesWindowController *prefsWindow;
+@property (nonatomic, weak) NSWindowController *prefsWindowController;
 
 @property (weak) IBOutlet NSButton *loadPreferencesButton;
 

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainWindow.h"
-#import "PreferencesWindowController.h"
+#import "PreferencesViewController.h"
 #import "StyleKit.h"
 #import "constants.h"
 
@@ -25,20 +25,21 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     //load default preferences from our plist
-    [PreferencesWindowController loadPreferencesFromPlist];
+    [PreferencesViewController loadPreferencesFromPlist];
     //init prefs window
-    self.prefsWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
     
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
     NSWindowController *windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
+    self.prefsWindowController = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
+    self.prefsViewController = (PreferencesViewController *)self.prefsWindowController.window.contentViewController;
     
     //Set properties
     self.currWindow = windowController.window;
     self.masterViewController = (MasterViewController *)windowController.window.contentViewController;
-    self.masterViewController.prefsWindow = self.prefsWindowController;
+    self.masterViewController.prefsWindowController = self.prefsWindowController;
 
-    [self.prefsWindowController resetShortcutRegistration]; //setting up global shortcut when app launches
-    [self.prefsWindowController changeLoginItem:nil]; //set the login item to the current state
+    [self.prefsViewController resetShortcutRegistration]; //setting up global shortcut when app launches
+    [self.prefsViewController changeLoginItem:nil]; //set the login item to the current state
     //doing magic for the app if it is in the menu
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
         //hiding the dock icon if specified
@@ -234,7 +235,7 @@
 }
 -(void)applicationWillTerminate:(NSNotification *)notification {
     //Sync preferences when closing
-    [PreferencesWindowController syncSharedDefaults];
+    [PreferencesViewController syncSharedDefaults];
 }
 
 /**
@@ -243,7 +244,7 @@
  @param sender default sender
  */
 - (IBAction)loadPrefrences:(id)sender {
-    [self.prefsWindowController showWindow:self];
+//    [self.prefsWindowController showWindow:self];
 }
 
 /**

@@ -1,5 +1,5 @@
 //
-//  PreferencesWindowController.h
+//  PreferencesViewController.h
 //  Password Factory
 //
 //  Created by Cristiana Yambo on 5/13/14.
@@ -10,7 +10,7 @@
 #import <MASShortcut/Shortcut.h>
 #import "StartAtLoginController.h"
 
-@interface PreferencesWindowController : NSWindowController <NSTextFieldDelegate>
+@interface PreferencesViewController : NSViewController <NSTextFieldDelegate>
 
 @property (weak) IBOutlet NSButton *colorPasswordText;
 @property (weak) IBOutlet NSColorWell *uppercaseTextColor;

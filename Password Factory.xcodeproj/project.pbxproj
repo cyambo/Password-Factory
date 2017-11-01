@@ -45,7 +45,7 @@
 		4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586001B8112FD00393B99 /* StrengthMeter.m */; };
 		4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860A1B8112FD00393B99 /* MasterViewController.m */; };
-		4095862F1B8112FD00393B99 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860D1B8112FD00393B99 /* PreferencesWindowController.m */; };
+		4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860D1B8112FD00393B99 /* PreferencesViewController.m */; };
 		409586301B8112FD00393B99 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */; };
 		409586321B81131100393B99 /* PasswordFactory.help in Resources */ = {isa = PBXBuildFile; fileRef = 409586311B81131100393B99 /* PasswordFactory.help */; };
 		409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3C1B84476F00727FDB /* StrengthBox.m */; };
@@ -191,8 +191,8 @@
 		409586071B8112FD00393B99 /* PasswordFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactory.m; sourceTree = "<group>"; };
 		409586091B8112FD00393B99 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		4095860A1B8112FD00393B99 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		4095860C1B8112FD00393B99 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
-		4095860D1B8112FD00393B99 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		4095860C1B8112FD00393B99 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
+		4095860D1B8112FD00393B99 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
 		4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		409586311B81131100393B99 /* PasswordFactory.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PasswordFactory.help; sourceTree = "<group>"; };
 		409DEE3B1B84476F00727FDB /* StrengthBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrengthBox.h; sourceTree = "<group>"; };
@@ -411,8 +411,8 @@
 			children = (
 				409586091B8112FD00393B99 /* MasterViewController.h */,
 				4095860A1B8112FD00393B99 /* MasterViewController.m */,
-				4095860C1B8112FD00393B99 /* PreferencesWindowController.h */,
-				4095860D1B8112FD00393B99 /* PreferencesWindowController.m */,
+				4095860C1B8112FD00393B99 /* PreferencesViewController.h */,
+				4095860D1B8112FD00393B99 /* PreferencesViewController.m */,
 				4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */,
 			);
 			name = ViewControllers;
@@ -1178,7 +1178,7 @@
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,
 				4051C9D21FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40FB0C241B810F10009193F8 /* main.m in Sources */,
-				4095862F1B8112FD00393B99 /* PreferencesWindowController.m in Sources */,
+				4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */,
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
 				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,
