@@ -12,7 +12,6 @@
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
-		4051C9CB1FA7CF070097CDD9 /* MasterViewController-new.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4051C9CA1FA7CF070097CDD9 /* MasterViewController-new.xib */; };
 		4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */; };
 		4051C9CF1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */; };
 		4051C9D21FA7D7780097CDD9 /* NSString+MapCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */; };
@@ -46,7 +45,6 @@
 		4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586001B8112FD00393B99 /* StrengthMeter.m */; };
 		4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860A1B8112FD00393B99 /* MasterViewController.m */; };
-		4095862E1B8112FD00393B99 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4095860B1B8112FD00393B99 /* MasterViewController.xib */; };
 		4095862F1B8112FD00393B99 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860D1B8112FD00393B99 /* PreferencesWindowController.m */; };
 		409586301B8112FD00393B99 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */; };
 		409586321B81131100393B99 /* PasswordFactory.help in Resources */ = {isa = PBXBuildFile; fileRef = 409586311B81131100393B99 /* PasswordFactory.help */; };
@@ -78,7 +76,6 @@
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
 		40FB0C241B810F10009193F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C231B810F10009193F8 /* main.m */; };
 		40FB0C261B810F10009193F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
-		40FB0C291B810F10009193F8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C271B810F10009193F8 /* MainMenu.xib */; };
 		4F1ED79D12270B1711884AF9 /* libPods-Password Factory Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39728CFBCBE26EDF076FD6 /* libPods-Password Factory Widget.a */; };
 		5902001B6C472E037A69C066 /* libPods-Password FactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */; };
 		629FF80EF3AE7ECEE253EF57 /* libPods-Password Factory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C166078E13798FABDD114 /* libPods-Password Factory.a */; };
@@ -155,7 +152,6 @@
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
 		40511D651C125348005BE5BE /* PasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrength.m; sourceTree = "<group>"; };
-		4051C9CA1FA7CF070097CDD9 /* MasterViewController-new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MasterViewController-new.xib"; sourceTree = "<group>"; };
 		4051C9CC1FA7D6E90097CDD9 /* NSString+AccentedCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AccentedCase.h"; sourceTree = "<group>"; };
 		4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AccentedCase.m"; sourceTree = "<group>"; };
 		4051C9D01FA7D7780097CDD9 /* NSString+MapCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MapCase.h"; sourceTree = "<group>"; };
@@ -195,7 +191,6 @@
 		409586071B8112FD00393B99 /* PasswordFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactory.m; sourceTree = "<group>"; };
 		409586091B8112FD00393B99 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		4095860A1B8112FD00393B99 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		4095860B1B8112FD00393B99 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
 		4095860C1B8112FD00393B99 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		4095860D1B8112FD00393B99 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
@@ -243,7 +238,6 @@
 		40FB0C211B810F10009193F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		40FB0C231B810F10009193F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		40FB0C251B810F10009193F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		40FB0C281B810F10009193F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		40FB0C2E1B810F10009193F8 /* Password FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB0C331B810F10009193F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -417,8 +411,6 @@
 			children = (
 				409586091B8112FD00393B99 /* MasterViewController.h */,
 				4095860A1B8112FD00393B99 /* MasterViewController.m */,
-				4095860B1B8112FD00393B99 /* MasterViewController.xib */,
-				4051C9CA1FA7CF070097CDD9 /* MasterViewController-new.xib */,
 				4095860C1B8112FD00393B99 /* PreferencesWindowController.h */,
 				4095860D1B8112FD00393B99 /* PreferencesWindowController.m */,
 				4095860E1B8112FD00393B99 /* PreferencesWindowController.xib */,
@@ -532,14 +524,13 @@
 			isa = PBXGroup;
 			children = (
 				406E50611B81481B00A170CF /* Password Factory.entitlements */,
+				402A42821FAA316F00615A2E /* Main.storyboard */,
 				40FB0C201B810F10009193F8 /* AppDelegate.h */,
 				40FB0C211B810F10009193F8 /* AppDelegate.m */,
 				40FB0C251B810F10009193F8 /* Images.xcassets */,
-				40FB0C271B810F10009193F8 /* MainMenu.xib */,
 				40FB0C1E1B810F10009193F8 /* Supporting Files */,
 				40DFFEE21B811F470047CF90 /* MainWindow.h */,
 				40DFFEE31B811F470047CF90 /* MainWindow.m */,
-				402A42821FAA316F00615A2E /* Main.storyboard */,
 			);
 			path = "Password Factory";
 			sourceTree = "<group>";
@@ -910,13 +901,10 @@
 				4095860F1B8112FD00393B99 /* bad_words.json in Resources */,
 				40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */,
 				409586301B8112FD00393B99 /* PreferencesWindowController.xib in Resources */,
-				4051C9CB1FA7CF070097CDD9 /* MasterViewController-new.xib in Resources */,
 				409586121B8112FD00393B99 /* menu-icon-inv@2x.png in Resources */,
 				402A42831FAA316F00615A2E /* Main.storyboard in Resources */,
 				40FB0C261B810F10009193F8 /* Images.xcassets in Resources */,
-				4095862E1B8112FD00393B99 /* MasterViewController.xib in Resources */,
 				409586131B8112FD00393B99 /* menu-icon.png in Resources */,
-				40FB0C291B810F10009193F8 /* MainMenu.xib in Resources */,
 				409586321B81131100393B99 /* PasswordFactory.help in Resources */,
 				409586111B8112FD00393B99 /* menu-icon-inv.png in Resources */,
 			);
@@ -1277,14 +1265,6 @@
 				40AAB5DA1F8EC67F00324759 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		40FB0C271B810F10009193F8 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40FB0C281B810F10009193F8 /* Base */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -231,7 +231,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Random" identifier="401" id="bkQ-kJ-CPe">
-                                        <view key="view" ambiguous="YES" id="AWP-eS-Hcr">
+                                        <view key="view" id="AWP-eS-Hcr">
                                             <rect key="frame" x="10" y="33" width="379" height="105"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -609,7 +609,7 @@ r - Random item</string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="✪" identifier="" id="3IY-EK-PXf">
-                                        <view key="view" id="9MI-40-fJy">
+                                        <view key="view" ambiguous="YES" id="9MI-40-fJy">
                                             <rect key="frame" x="10" y="33" width="379" height="105"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
