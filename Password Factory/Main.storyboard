@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="WOt-nU-SAU">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
@@ -198,7 +198,7 @@
         <!--Window Controller-->
         <scene sceneID="wYJ-g3-zNB">
             <objects>
-                <windowController id="WOt-nU-SAU" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="MainWindowController" id="WOt-nU-SAU" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="U5Z-KO-ffe" customClass="MainWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -220,7 +220,7 @@
         <scene sceneID="wYK-af-EjZ">
             <objects>
                 <customObject id="Ycb-eF-n0G" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="X40-vW-2nF" customClass="MasterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MasterViewController" id="X40-vW-2nF" customClass="MasterViewController" sceneMemberID="viewController">
                     <customView key="view" id="iUt-sH-MrM">
                         <rect key="frame" x="0.0" y="0.0" width="425" height="234"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

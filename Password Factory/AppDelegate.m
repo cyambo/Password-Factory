@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MainWindow.h"
 #import "PreferencesWindowController.h"
 #import "StyleKit.h"
 #import "constants.h"
@@ -27,9 +28,13 @@
     [PreferencesWindowController loadPreferencesFromPlist];
     //init prefs window
     self.prefsWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
+    
+    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSWindowController *windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
+    
     //Set properties
-    self.currWindow = [[NSApplication sharedApplication] mainWindow];
-    self.masterViewController = (MasterViewController *)[[NSApplication sharedApplication] mainWindow].contentViewController;
+    self.currWindow = windowController.window;
+    self.masterViewController = (MasterViewController *)windowController.window.contentViewController;
     self.masterViewController.prefsWindow = self.prefsWindowController;
 
     [self.prefsWindowController resetShortcutRegistration]; //setting up global shortcut when app launches
@@ -70,7 +75,7 @@
         self.currWindow.styleMask |= NSFullSizeContentViewWindowMask;
         self.currWindow.movableByWindowBackground = YES;
         //not a menu app so show the the window
-        [self.currWindow makeKeyAndOrderFront:self];
+        [windowController showWindow:self];
     }
     //save window state
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"NSQuitAlwaysKeepsWindows"];
