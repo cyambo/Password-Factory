@@ -220,7 +220,7 @@
         <!--Window Controller-->
         <scene sceneID="GJT-II-y8b">
             <objects>
-                <windowController storyboardIdentifier="PreferencesWindowController" id="65G-m9-MUQ" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="PreferencesWindowController" id="65G-m9-MUQ" customClass="PreferencesWindowController" sceneMemberID="viewController">
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oth-DO-Nbl">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -307,6 +307,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <binding destination="nFT-T1-lwX" name="value" keyPath="values.MASPGShortcutEnabled" id="Zas-pG-azh"/>
+                                            </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DeC-TX-RaX">
                                             <rect key="frame" x="42" y="12" width="91" height="18"/>
@@ -315,6 +318,10 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.MASPGShortcutEnabled" id="Zfn-hz-WD3"/>
+                                                <binding destination="nFT-T1-lwX" name="value" keyPath="values.globalHotkeyPlaySound" id="VdH-On-Yvl"/>
+                                            </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8W-vk-w7r">
                                             <rect key="frame" x="42" y="36" width="145" height="18"/>
@@ -323,6 +330,10 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.MASPGShortcutEnabled" id="00L-Ab-53Y"/>
+                                                <binding destination="nFT-T1-lwX" name="value" keyPath="values.globalHotkeyShowNotification" id="4Xe-Ob-kqd"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>
@@ -354,13 +365,13 @@
                                                 <binding destination="hPZ-fd-3Qa" name="value" keyPath="values.colorPasswordText" id="rSb-d4-Kbu"/>
                                             </connections>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d45-Jo-kCI">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d45-Jo-kCI" customClass="TextField">
                                             <rect key="frame" x="46" y="92" width="116" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Uppercase Letters" id="5Ic-ft-yAE">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Uppercase Letters" id="5Ic-ft-yAE">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="hPZ-fd-3Qa" name="enabled" keyPath="values.colorPasswordText" id="J5C-WZ-dDs"/>
@@ -372,9 +383,10 @@
                                             <color key="color" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="changeColor:" target="2B8-vP-6ly" id="fng-xB-ap5"/>
+                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="JHN-N3-ukc"/>
                                             </connections>
                                         </colorWell>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9xY-8e-0jc">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9xY-8e-0jc" customClass="TextField">
                                             <rect key="frame" x="46" y="67" width="115" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lowercase Letters" id="rQ7-eN-H6J">
@@ -382,6 +394,9 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="EtS-VX-ZiX"/>
+                                            </connections>
                                         </textField>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-ZI-YnJ">
                                             <rect key="frame" x="170" y="39" width="23" height="23"/>
@@ -389,9 +404,10 @@
                                             <color key="color" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="changeColor:" target="2B8-vP-6ly" id="kmP-TU-gU4"/>
+                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="ISI-Ez-mtR"/>
                                             </connections>
                                         </colorWell>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hM1-dz-0bY">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hM1-dz-0bY" customClass="TextField">
                                             <rect key="frame" x="46" y="42" width="61" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Numbers" id="GNj-4K-8jA">
@@ -399,6 +415,9 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="Wbc-FU-TOm"/>
+                                            </connections>
                                         </textField>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHi-qb-Klf">
                                             <rect key="frame" x="170" y="14" width="23" height="23"/>
@@ -406,9 +425,10 @@
                                             <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="changeColor:" target="2B8-vP-6ly" id="tmL-8T-H1y"/>
+                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="Y98-bm-tNa"/>
                                             </connections>
                                         </colorWell>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6MK-iQ-wnA">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6MK-iQ-wnA" customClass="TextField">
                                             <rect key="frame" x="46" y="17" width="56" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Symbols" id="eVc-tf-1rD">
@@ -416,6 +436,9 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="eX7-ah-eyV"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </view>
@@ -510,13 +533,14 @@
                         <outlet property="numbersColor" destination="Cy3-ZI-YnJ" id="FRJ-hS-R6X"/>
                         <outlet property="playNotificationSound" destination="DeC-TX-RaX" id="gyx-pb-Aa2"/>
                         <outlet property="quitButton" destination="gTY-3a-D4r" id="8FU-Wz-683"/>
-                        <outlet property="shortcutView" destination="a2T-my-TdI" id="qM3-Qq-Jsz"/>
+                        <outlet property="shortcutView" destination="a2T-my-TdI" id="voD-6B-A97"/>
                         <outlet property="symbolsColor" destination="LHi-qb-Klf" id="UhR-yl-VZz"/>
                         <outlet property="uppercaseTextColor" destination="Uj9-zk-COr" id="e1J-PK-ZKV"/>
                     </connections>
                 </viewController>
                 <customObject id="5A0-3l-x8K" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="hPZ-fd-3Qa"/>
+                <userDefaultsController id="nFT-T1-lwX"/>
             </objects>
             <point key="canvasLocation" x="212.5" y="248"/>
         </scene>

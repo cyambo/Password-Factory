@@ -26,8 +26,7 @@
 
 + (void)loadPreferencesFromPlist;
 + (void)getPrefsFromPlist;
-+(void)syncSharedDefaults;
-
++ (void)syncSharedDefaults;
 + (NSColor*)colorWithHexColorString:(NSString*)inColorString;
 
 @property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;

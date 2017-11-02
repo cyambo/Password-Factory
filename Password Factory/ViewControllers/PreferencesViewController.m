@@ -16,35 +16,25 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
 @implementation PreferencesViewController
 
-__weak id _constantShortcutMonitor;
 static BOOL loadedPrefs;
 static NSDictionary *prefsPlist;
 
--(instancetype)init {
-    self = [super init];
+-(instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    [self setObservers];
     return self;
 }
 - (void)awakeFromNib {
 
     [PreferencesViewController loadPreferencesFromPlist];
     [self updatePrefsUI];
-    [self setObservers];
+    
     
     //setup shortcut handler
     [self.shortcutView bind:@"enabled" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
     
     // Shortcut view will follow and modify user preferences automatically
     self.shortcutView.associatedUserDefaultsKey = MASPreferenceKeyShortcut;
-    
-    //setting up window close notification
-    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
-    
-    //registering for notification that the window is closing to run shortcut set code
-    //this is because it seems to 'forget' the key when preferences is loaded
-//    [notification addObserver:self
-//                     selector:@selector(resetShortcutRegistration)
-//                         name:NSWindowWillCloseNotification
-//                       object:self.window];
     
     //setting the initial checkbox states for the menu and dock checkboxes to an unset state
     self.initialMenuState = 2;
@@ -54,17 +44,9 @@ static NSDictionary *prefsPlist;
     self.loginController = [[StartAtLoginController alloc] initWithIdentifier:HelperIdentifier];
 }
 
-/**
- Shows the window 
-
- @param default sender from IBOutlet
- */
--(void)showWindow:(id)sender {
-    // Activate the global keyboard shortcut if it was enabled last time
-    //moved to showWindow instead of awakeFromNib so that it will load everytime the window pops up
+- (void)viewWillAppear {
     [self resetShortcutRegistration];
-//    [super showWindow:sender];
-    [self changeLoginItem:nil]; //runs every time the window is opened because the user can remove or add the login item from the prefs directly
+    [self changeLoginItem:nil];
 }
 
 #pragma mark observers
@@ -78,13 +60,21 @@ static NSDictionary *prefsPlist;
         forKeyPath:MASPreferenceKeyShortcutEnabled
            options:NSKeyValueObservingOptionNew
            context:NULL];
-    
+
+}
+-(void)unsetObservers {
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    //remove observer
+    [d removeObserver:self forKeyPath:MASPreferenceKeyShortcutEnabled];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     //observing when the global shortcut is enabled
     if ([keyPath isEqualToString:MASPreferenceKeyShortcutEnabled]) {
         [self resetShortcutRegistration];
     }
+}
+-(void)dealloc {
+    [self unsetObservers];
 }
 #pragma mark prefs
 /**
@@ -304,7 +294,7 @@ static NSDictionary *prefsPlist;
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     BOOL isLoginItem = [self.loginController startAtLogin];
     if(sender == nil) {
-        //called from showWindow
+        //called from viewWillAppear
         //checks to see if the item has been manually removed or added from login items and changes the state to match
         if (isLoginItem && self.addToLoginItems.state == NSControlStateValueOff) {
             self.addToLoginItems.state = NSControlStateValueOn;
