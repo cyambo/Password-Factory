@@ -262,6 +262,8 @@
                                             </buttonCell>
                                             <connections>
                                                 <action selector="menuCheckBoxesChanged:" target="2B8-vP-6ly" id="LxP-tV-FQp"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.isMenuApp" id="QV8-kD-u52"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.hideDockIcon" id="vIR-ye-0Ch"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5KO-Sf-l0R">
@@ -273,6 +275,7 @@
                                             </buttonCell>
                                             <connections>
                                                 <action selector="menuCheckBoxesChanged:" target="2B8-vP-6ly" id="Ga4-q7-VhU"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.isMenuApp" id="5UI-49-4oy"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-3a-D4r" userLabel="Restart_Quit">
@@ -477,9 +480,12 @@
                                             <buttonCell key="cell" type="check" title="Automatically Clear Clipboard" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1S8-Wr-kra">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="DGa-ye-VaM" name="value" keyPath="values.clearClipboard" id="lqY-Ui-EnZ"/>
+                                                </connections>
                                             </buttonCell>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xSy-Iy-xp9">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xSy-Iy-xp9" customClass="TextField">
                                             <rect key="frame" x="133" y="13" width="91" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Clear Time (s)" id="rPy-99-P1s">
@@ -487,8 +493,11 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.clearClipboard" id="gyh-Ce-6GA"/>
+                                            </connections>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZoL-o6-QXE">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZoL-o6-QXE" customClass="TextField">
                                             <rect key="frame" x="14" y="13" width="21" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="99" id="j7H-M3-UyA">
@@ -496,6 +505,9 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.clearClipboard" id="NXp-tK-9RL"/>
+                                            </connections>
                                         </textField>
                                         <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zea-F5-oph">
                                             <rect key="frame" x="41" y="13" width="86" height="13"/>
@@ -503,6 +515,8 @@
                                             <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="15" maxValue="99" doubleValue="15" tickMarkPosition="above" sliderType="linear" id="pVR-NN-o62"/>
                                             <connections>
                                                 <action selector="changeClearTime:" target="2B8-vP-6ly" id="cmb-s2-4Q2"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.clearClipboard" id="dR4-eK-xOo"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.clearClipboardTime" id="USe-IF-43K"/>
                                             </connections>
                                         </slider>
                                     </subviews>
