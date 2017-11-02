@@ -308,7 +308,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="nFT-T1-lwX" name="value" keyPath="values.MASPGShortcutEnabled" id="Zas-pG-azh"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.MASPGShortcutEnabled" id="YBG-nq-PP8"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DeC-TX-RaX">
@@ -319,8 +319,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.MASPGShortcutEnabled" id="Zfn-hz-WD3"/>
-                                                <binding destination="nFT-T1-lwX" name="value" keyPath="values.globalHotkeyPlaySound" id="VdH-On-Yvl"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="KvI-Ve-7HP"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.globalHotkeyPlaySound" id="pe1-wA-Sol"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8W-vk-w7r">
@@ -331,8 +331,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.MASPGShortcutEnabled" id="00L-Ab-53Y"/>
-                                                <binding destination="nFT-T1-lwX" name="value" keyPath="values.globalHotkeyShowNotification" id="4Xe-Ob-kqd"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="epF-5K-tZx"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.globalHotkeyShowNotification" id="5lg-7C-e0Z"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -351,7 +351,7 @@
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="changeColor:" target="2B8-vP-6ly" id="0Qn-mV-YFm"/>
-                                                <binding destination="hPZ-fd-3Qa" name="enabled" keyPath="values.colorPasswordText" id="OQD-m1-qQa"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.colorPasswordText" id="ZSH-Sv-J2e"/>
                                             </connections>
                                         </colorWell>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INO-jc-SFw">
@@ -362,7 +362,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="hPZ-fd-3Qa" name="value" keyPath="values.colorPasswordText" id="rSb-d4-Kbu"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.colorPasswordText" id="YsS-Jo-VSf"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d45-Jo-kCI" customClass="TextField">
@@ -374,7 +374,7 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="hPZ-fd-3Qa" name="enabled" keyPath="values.colorPasswordText" id="J5C-WZ-dDs"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.colorPasswordText" id="Pia-W2-0pE"/>
                                             </connections>
                                         </textField>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8wy-JD-kmX">
@@ -383,7 +383,7 @@
                                             <color key="color" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="changeColor:" target="2B8-vP-6ly" id="fng-xB-ap5"/>
-                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="JHN-N3-ukc"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.colorPasswordText" id="01r-Pm-Z2G"/>
                                             </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9xY-8e-0jc" customClass="TextField">
@@ -395,7 +395,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="EtS-VX-ZiX"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.colorPasswordText" id="RH6-DO-Q4l"/>
                                             </connections>
                                         </textField>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-ZI-YnJ">
@@ -404,7 +404,7 @@
                                             <color key="color" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="changeColor:" target="2B8-vP-6ly" id="kmP-TU-gU4"/>
-                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="ISI-Ez-mtR"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.colorPasswordText" id="dIV-ub-aHZ"/>
                                             </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hM1-dz-0bY" customClass="TextField">
@@ -416,7 +416,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="Wbc-FU-TOm"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.colorPasswordText" id="3x0-0z-A07"/>
                                             </connections>
                                         </textField>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHi-qb-Klf">
@@ -425,7 +425,7 @@
                                             <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="changeColor:" target="2B8-vP-6ly" id="tmL-8T-H1y"/>
-                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="Y98-bm-tNa"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.colorPasswordText" id="UqH-c4-NSj"/>
                                             </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6MK-iQ-wnA" customClass="TextField">
@@ -437,7 +437,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="nFT-T1-lwX" name="enabled" keyPath="values.colorPasswordText" id="eX7-ah-eyV"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.colorPasswordText" id="dhQ-lO-KRf"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -539,8 +539,7 @@
                     </connections>
                 </viewController>
                 <customObject id="5A0-3l-x8K" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="hPZ-fd-3Qa"/>
-                <userDefaultsController id="nFT-T1-lwX"/>
+                <userDefaultsController id="DGa-ye-VaM"/>
             </objects>
             <point key="canvasLocation" x="212.5" y="248"/>
         </scene>
