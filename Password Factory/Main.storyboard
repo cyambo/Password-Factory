@@ -459,6 +459,9 @@
                                             <buttonCell key="cell" type="check" title="Add to Login Items" bezelStyle="regularSquare" imagePosition="left" inset="2" id="1eX-tg-r2K">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="DGa-ye-VaM" name="value" keyPath="values.addToLoginItems" id="IBx-2J-XQS"/>
+                                                </connections>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="changeLoginItem:" target="2B8-vP-6ly" id="O5Z-x8-GLU"/>
