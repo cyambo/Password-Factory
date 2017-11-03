@@ -412,7 +412,7 @@
 			path = "Password Factory/Model";
 			sourceTree = "<group>";
 		};
-		409586081B8112FD00393B99 /* ViewControllers */ = {
+		409586081B8112FD00393B99 /* Storyboard Classes */ = {
 			isa = PBXGroup;
 			children = (
 				409586091B8112FD00393B99 /* MasterViewController.h */,
@@ -422,8 +422,8 @@
 				4095860C1B8112FD00393B99 /* PreferencesViewController.h */,
 				4095860D1B8112FD00393B99 /* PreferencesViewController.m */,
 			);
-			name = ViewControllers;
-			path = "Password Factory/ViewControllers";
+			name = "Storyboard Classes";
+			path = "Password Factory/Storyboard Classes";
 			sourceTree = "<group>";
 		};
 		409E13BB1B8258170041541B /* Password Factory Widget */ = {
@@ -497,7 +497,7 @@
 				409585FC1B8112FD00393B99 /* Controls */,
 				409586011B8112FD00393B99 /* MenuApp */,
 				409586051B8112FD00393B99 /* Model */,
-				409586081B8112FD00393B99 /* ViewControllers */,
+				409586081B8112FD00393B99 /* Storyboard Classes */,
 				40FB0C1D1B810F10009193F8 /* Password Factory */,
 				4058DF251F92995800CCB6E7 /* Password Factory Helper */,
 				40FB0C311B810F10009193F8 /* Password FactoryTests */,

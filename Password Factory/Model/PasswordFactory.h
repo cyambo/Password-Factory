@@ -26,4 +26,6 @@
 - (uint)randomNumber:(uint)limit;
 - (NSString *)getPasswordCharacterType:(PFCharacterType)type;
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character;
+- (NSString *)getNameForPasswordType: (PFPasswordType)type;
+- (NSDictionary *)getAllPasswordTypes;
 @end

@@ -14,8 +14,8 @@
 #import "constants.h"
 #import "DefaultsManager.h"
 #import "constants.h"
-
-@interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate>
+#import "StyleKit.h"
+@interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) Class timerClass;
@@ -482,6 +482,17 @@
         [self setPasswordStrength];
     }
     b.alphaValue = (int)showCT; //the int value of the bool matches the alpha value we need to show and hide the button
-    
+}
+#pragma mark Table View
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return [[self.pf getAllPasswordTypes] count];
+}
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSTableCellView *c = [tableView makeViewWithIdentifier:@"Password Type Cell" owner:nil];
+    NSDictionary *types = [self.pf getAllPasswordTypes];
+    NSArray *keys = [[types allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
+    c.textField.stringValue = [types objectForKey:[keys objectAtIndex:row]];
+    c.imageView.image = [StyleKit imageOfPreferencesButton];
+    return c;
 }
 @end

@@ -11,7 +11,7 @@
 #import "PreferencesViewController.h"
 #import "StrengthMeter.h"
 
-@interface MasterViewController : NSViewController
+@interface MasterViewController : NSViewController 
 
 @property (weak) IBOutlet NSTextField *passwordField;
 
@@ -64,4 +64,6 @@
 @property (weak) IBOutlet NSButton *crackTimeButton;
 - (IBAction)toggleCrackTimeDisplay:(id)sender;
 
+@property (weak) IBOutlet NSView *passwordView;
+@property (weak) IBOutlet NSTableView *passwordTypeSelection;
 @end

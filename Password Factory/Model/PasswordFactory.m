@@ -10,19 +10,19 @@
 
 #import "NSString+RandomCase.h"
 #import "NSString+SymbolCase.h"
-static NSString* symbols;
-static NSString* upperCase;
-static NSString* lowerCase;
-static NSString* numbers;
-static NSString* nonAmbiguousUpperCase;
-static NSString* nonAmbiguousLowerCase;
-static NSString* nonAmbiguousNumbers;
-static NSDictionary* characterPattern;
-static NSArray* phoneticSounds;
-static NSArray* phoneticSoundsTwo;
-static NSArray* phoneticSoundsThree;
-static NSDictionary* passwordCharacterTypes;
-
+static NSString *symbols;
+static NSString *upperCase;
+static NSString *lowerCase;
+static NSString *numbers;
+static NSString *nonAmbiguousUpperCase;
+static NSString *nonAmbiguousLowerCase;
+static NSString *nonAmbiguousNumbers;
+static NSDictionary *characterPattern;
+static NSArray *phoneticSounds;
+static NSArray *phoneticSoundsTwo;
+static NSArray *phoneticSoundsThree;
+static NSDictionary *passwordCharacterTypes;
+static NSDictionary *passwordTypes;
 @interface PasswordFactory ()
 
 @property (nonatomic, strong) NSMutableArray *currentRange;
@@ -437,6 +437,12 @@ static NSDictionary* passwordCharacterTypes;
                                @(PFNumbers): numbers,
                                @(PFNonAmbiguousNumbers): nonAmbiguousNumbers,
                              };
+    passwordTypes = @{
+                      @(PFRandomType): @"Random",
+                      @(PFPatternType): @"Pattern",
+                      @(PFPassphraseType): @"Passphrase",
+                      @(PFPronounceableType): @"Pronounceable"
+                     };
 }
 /**
  Gets the strings that are used to build up the passwords
@@ -664,6 +670,24 @@ static NSDictionary* passwordCharacterTypes;
     return 0;
 }
 
+/**
+ Gets name of password type for PFPasswordType
+
+ @param type PFPasswordType
+ @return String of name
+ */
+-(NSString *)getNameForPasswordType:(PFPasswordType)type {
+    return [passwordTypes objectForKey:@(type)];
+}
+
+/**
+ Returns all the passsword types in a dictionary keyed by PFPasswordType
+
+ @return all password types
+ */
+-(NSDictionary *)getAllPasswordTypes {
+    return passwordTypes;
+}
 @end
 
 

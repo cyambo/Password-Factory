@@ -266,6 +266,7 @@
  */
 - (NSMenu *)applicationDockMenu:(NSApplication *)sender {
     NSMenu *dockMenu = [[NSMenu alloc] init];
+    //TODO: use model types for this list
     NSArray *types = @[@"Random", @"Pattern", @"Pronounceable", @"Passphrase"];
     for(int i = 0; i < types.count; i++) {
         NSMenuItem *m = [[NSMenuItem alloc] initWithTitle:types[i] action:@selector(dockMenuItem:) keyEquivalent:@""];
