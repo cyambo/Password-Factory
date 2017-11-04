@@ -286,6 +286,7 @@
  */
 - (void)generatePassword {
     PFPasswordType atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
+    atTab = PFRandomType;
     //Generates different password formats based upon the selected tab
     //set modifiers
     self.pf.avoidAmbiguous = [self.avoidAmbiguous state];
@@ -489,10 +490,19 @@
 }
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSTableCellView *c = [tableView makeViewWithIdentifier:@"Password Type Cell" owner:nil];
-    NSDictionary *types = [self.pf getAllPasswordTypes];
-    NSArray *keys = [[types allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
-    c.textField.stringValue = [types objectForKey:[keys objectAtIndex:row]];
+    PFPasswordType type = [self.pf getPasswordTypeByIndex:row];
+
+    c.textField.stringValue = [self.pf getNameForPasswordType:type];
     c.imageView.image = [StyleKit imageOfPreferencesButton];
     return c;
+}
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSInteger row = self.passwordTypesTable.selectedRow;
+    PFPasswordType type = [self.pf getPasswordTypeByIndex:row];
+    NSString *storyboardName = [NSString stringWithFormat:@"%@Password",[self.pf getNameForPasswordType:type]];
+    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSViewController *vc = [storyBoard instantiateControllerWithIdentifier:storyboardName];
+    self.passwordView.subviews = @[];
+    [self.passwordView addSubview:vc.view];
 }
 @end

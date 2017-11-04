@@ -65,5 +65,5 @@
 - (IBAction)toggleCrackTimeDisplay:(id)sender;
 
 @property (weak) IBOutlet NSView *passwordView;
-@property (weak) IBOutlet NSTableView *passwordTypeSelection;
+@property (weak) IBOutlet NSTableView *passwordTypesTable;
 @end

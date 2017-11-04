@@ -28,4 +28,5 @@
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character;
 - (NSString *)getNameForPasswordType: (PFPasswordType)type;
 - (NSDictionary *)getAllPasswordTypes;
+-(PFPasswordType)getPasswordTypeByIndex:(NSInteger)index;
 @end
