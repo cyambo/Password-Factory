@@ -8,7 +8,7 @@
 
 #import "PasswordController.h"
 #import "PasswordStrength.h"
-
+#import "PasswordTypesViewController.h"
 
 @interface PasswordController()
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
@@ -34,8 +34,9 @@
 /**
  Generates password in the proper format
  */
-- (void)generatePassword:(PFPasswordType)type andSettings:(NSDictionary *)settings {
+- (void)generatePassword:(PFPasswordType)type {
     //Generates different password formats based upon the selected tab
+    NSDictionary *settings = [[self getViewControllerForPasswordType:type] getPasswordSettings];
     if(settings[@"length"]) {
         self.factory.length = (NSUInteger)settings[@"length"];
     }
@@ -50,7 +51,7 @@
             self.password = [self.factory generateRandom];
             break;
         case PFPatternType: //pattern
-            [self.factory generatePattern:settings[@"patternText"]];
+            self.password = [self.factory generatePattern:settings[@"patternText"]];
             break;
 
         case PFPronounceableType: //pronounceable
@@ -72,14 +73,14 @@
         for(NSNumber *key in types) {
             NSString *name = types[key];
             NSString *storyboardName = [NSString stringWithFormat:@"%@Password",name];
-            NSViewController *vc = [storyBoard instantiateControllerWithIdentifier:storyboardName];
+            PasswordTypesViewController *vc = [storyBoard instantiateControllerWithIdentifier:storyboardName];
+            vc.passwordType = (PFPasswordType)[key integerValue];
             vcs[key] = vc;
         }
         self.viewControllers = vcs;
     }
-
 }
-- (NSViewController *)getViewControllerForPasswordType:(PFPasswordType)type {
+- (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type {
     [self initViewControllers];
     return self.viewControllers[@(type)];
 }

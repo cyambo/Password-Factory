@@ -7,7 +7,6 @@
 //
 
 #import "MasterViewController.h"
-#import "PasswordFactory.h"
 #import "PreferencesViewController.h"
 #import "AppDelegate.h"
 #import "constants.h"
@@ -15,7 +14,7 @@
 #import "StyleKit.h"
 #import "PasswordController.h"
 
-@interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource>
+@interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) PasswordController *password;
@@ -30,21 +29,13 @@
         //initialize everything
         self.password = [PasswordController get];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
-
         [self setObservers];
     }
     return self;
 }
 - (void)awakeFromNib {
     self.defaultCharacterColor = [NSColor blackColor]; //set the default color of non-highlighted text
-    
-    //get the length from the slider
-    [self getPasswordLength];
-    //sets the delegates for the tab buttons
-
-    [self.patternText setDelegate:self];
     [self.passwordField setDelegate:self];
     
 }
@@ -62,10 +53,7 @@
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     //setting observers for all the items in our defaults plist
     for (NSString *k in p) {
-        [d addObserver:self
-            forKeyPath:k
-               options:NSKeyValueObservingOptionNew
-               context:NULL];
+        [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
     }
     
 }
@@ -113,12 +101,11 @@
         [self generatePassword];
         //choose the stronger one
         if (self.passwordStrengthLevel.strength  > s) {
-            s = self.passwordStrengthLevel.strength;
+            s = [self.password getPasswordStrength];
             pw = [self.password getPasswordValue];
         }
     }
     //update the password display
-    [self.password setPasswordValue: pw];
     [self updatePasswordField];
     //Update the password strength - updateStrength takes 0-100 value
     [self.passwordStrengthLevel updateStrength:s * 100];
@@ -229,24 +216,6 @@
 }
 
 /**
- Radio button clicked on the pronounceable tab - generates password
-
- @param sender default sender
- */
-- (IBAction)pressPrononunceableRadio:(id)sender {
-    [self generatePassword];
-}
-
-/**
- Called when the length slider is changed - generates password
-
- @param sender default sender
- */
-- (IBAction)changeLength:(id)sender {
-    [self getPasswordLength];
-}
-
-/**
  Generate button was pressed
 
  @param sender default sender
@@ -255,92 +224,14 @@
     [self generatePassword];
 }
 
-/**
- Gets the set password length from the slider
- */
-- (void)getPasswordLength{
-    NSUInteger prevLength = self.passwordLength;
-    self.passwordLength = [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
-    NSLog(@"PREV %d, %d", prevLength, self.passwordLength);
-    if (prevLength != self.passwordLength) { //do not change password unless length changes
-        [self generatePassword];
-    }
-}
 
 /**
  Generates password in the proper format
  */
 - (void)generatePassword {
-    NSInteger row = self.passwordTypesTable.selectedRow;
-    PFPasswordType type = [self.password getPasswordTypeByIndex:row];
-    NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
-    //Generates different password formats based upon the selected tab
-    //set modifiers
-    if ([self.avoidAmbiguous isKindOfClass:[NSButton class]]) {
-        settings[@"avoidAmbiguous"] = @([self.avoidAmbiguous state]);
-    }
-    if ([self.useSymbols isKindOfClass:[NSButton class]]) {
-        settings[@"useSymbols"] = @([self.avoidAmbiguous state]);
-    }
-    settings[@"passwordLength"] = @(self.passwordLength);
-    [self.password setPasswordValue: @""];
-    switch (type) {
-        case PFRandomType: //random
-            if ([self.mixedCase state]) {
-                settings[@"caseType"] = @(PFMixed);
-            } else {
-                settings[@"caseType"] = @(PFLower);
-            }
-            break;
-        case PFPatternType: //pattern
-            settings[@"patternText"] = self.patternText.stringValue;
-            break;
-        case PFPronounceableType: //pronounceable
-            settings[@"caseType"] = @(PFLower); //TODO: add case type to pronounceable
-            settings[@"separatorType"] = @([self getPronounceableSeparatorType]);
-            break;
-        case PFPassphraseType: //passphrase:
-            settings[@"caseType"] = @([self getPassphraseCaseType]);
-            settings[@"separatorType"] = @([self getPassphraseSeparatorType]);
-            break;
-    }
-    [self.password generatePassword:type andSettings:settings];
+    [self.password generatePassword:[self getSelectedPasswordType]];
     [self updatePasswordField];
     [self setPasswordStrength];
-}
-
-/**
- Gets the passphrase separator type and adds the type to the shared defaults
-
- @return separator type
- */
-- (PFSeparatorType)getPassphraseSeparatorType {
-    PFSeparatorType type = (PFSeparatorType)[(NSButtonCell *)[self.passphraseSeparatorRadio selectedCell] tag];
-    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"passphraseSeparatorTagShared"];
-    return type;
-}
-
-/**
- Gets the passphrase case type and adds it to the shared defaults
-
- @return case type
- */
-- (PFCaseType)getPassphraseCaseType {
-    int type = (int)[(NSButtonCell *)[self.passphraseCaseRadio selectedCell] tag];
-    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"passphraseCaseTypeTagShared"];
-    return type;
-}
-
-/**
- Gets the pronounceable separator type and adds it to the shared defaults
-
- @return separator type
- */
-- (PFSeparatorType)getPronounceableSeparatorType {
-    PFSeparatorType type = (PFSeparatorType)[(NSButtonCell *)[self.pronounceableSeparatorRadio selectedCell] tag];
-    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"pronounceableSeparatorTagShared"];
-    return  type;
-
 }
 
 #pragma mark Password Display
@@ -350,13 +241,14 @@
  */
 - (void)updatePasswordField{
     [PreferencesViewController syncSharedDefaults];
-    if ([self.password getPasswordValue] == nil || [self.password getPasswordValue] == 0) {
+    NSString *currPassword = [self.password getPasswordValue];
+    if (currPassword == nil || currPassword.length == 0) {
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
         return;
     }
     //Just display the password
     if (!self.colorPasswordText) {
-        NSAttributedString *s = [[NSAttributedString alloc] initWithString:[self.password getPasswordValue] attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+        NSAttributedString *s = [[NSAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         [self.passwordField setAttributedStringValue: s];
     } else {
         //colors the password text based upon color wells in preferences
@@ -368,13 +260,13 @@
         NSColor *sColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]]];
         
         //uses AttributedString to color password
-        NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:[self.password getPasswordValue] attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+        NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
 
         //colorizing password label
         [s beginEditing];
         //loops through the string and sees if it is in each type of string to determine the color of the character
         //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
-        [[self.password getPasswordValue] enumerateSubstringsInRange:NSMakeRange(0, [self.password getPasswordValue].length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+        [currPassword enumerateSubstringsInRange:NSMakeRange(0, currPassword.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
             NSColor *c = self.defaultCharacterColor; //set a default color of the text to the default color
             if(substringRange.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
                 if ([self.password isCharacterType:PFUpperCaseLetters character:at]) { //are we an uppercase character
@@ -391,8 +283,6 @@
                 //set the character color
                 [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];
             }
-
-
         }];
 
         [s endEditing];
@@ -443,23 +333,6 @@
     self.crackTimeButton.alphaValue = (int)displayCTS;
 }
 
-/**
- Pressed passphrase separator radio button
-
- @param sender default sender
- */
-- (IBAction)pressPassphraseSeparatorRadio:(id)sender {
-    [self generatePassword];
-}
-
-/**
- Pressed passphrase case radio button
-
- @param sender default sender
- */
-- (IBAction)pressPassphraseCaseRadio:(id)sender {
-    [self generatePassword];
-}
 
 /**
  Toggles the display of the crack time in the strength bar
@@ -508,5 +381,7 @@
     self.passwordView.subviews = @[];
     [self.passwordView addSubview:vc.view];
     [self generatePassword];
+}
+- (IBAction)caseman:(id)sender {
 }
 @end

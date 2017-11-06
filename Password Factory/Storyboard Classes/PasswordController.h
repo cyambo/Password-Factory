@@ -9,10 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "constants.h"
 #import "PasswordFactory.h"
+#import "PasswordTypesViewController.h"
 @interface PasswordController : NSObject
 @property (nonatomic, assign) BOOL generateCrackTimeString;
 + (instancetype)get;
-- (void)generatePassword:(PFPasswordType)type andSettings:(NSDictionary *)settings;
+- (void)generatePassword:(PFPasswordType)type;
 - (void)setPasswordValue:(NSString *)passwordValue;
 - (NSString *)getPasswordValue;
 - (void)updatePasswordStrength;
@@ -23,5 +24,5 @@
 - (NSDictionary *)getAllPasswordTypes;
 - (PFPasswordType)getPasswordTypeByIndex:(NSInteger)index;
 - (NSUInteger)getIndexByPasswordType:(PFPasswordType)type;
-- (NSViewController *)getViewControllerForPasswordType:(PFPasswordType)type;
+- (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type;
 @end

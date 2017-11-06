@@ -724,7 +724,7 @@
         <!--Random Password-->
         <scene sceneID="n2b-a9-5Qq">
             <objects>
-                <viewController title="Random Password" storyboardIdentifier="RandomPassword" id="IdK-28-YZe" customClass="MasterViewController" sceneMemberID="viewController">
+                <viewController title="Random Password" storyboardIdentifier="RandomPassword" id="IdK-28-YZe" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="Ytk-2N-5TI">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -738,7 +738,6 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="generateAction:" target="X40-vW-2nF" id="yDu-Lp-Eqk"/>
-                                    <binding destination="ZgV-Co-VUK" name="value" keyPath="values.randomUseSymbols" id="djl-EU-Y8x"/>
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwi-vo-rzM">
@@ -750,7 +749,6 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="generateAction:" target="X40-vW-2nF" id="tif-B6-LPA"/>
-                                    <binding destination="ZgV-Co-VUK" name="value" keyPath="values.randomMixedCase" id="aEk-5K-iiJ"/>
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vn-D3-SSd">
@@ -762,7 +760,6 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="generateAction:" target="X40-vW-2nF" id="dRw-fG-DZU"/>
-                                    <binding destination="ZgV-Co-VUK" name="value" keyPath="values.randomAvoidAmbiguous" id="q0p-fD-tac"/>
                                 </connections>
                             </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VxG-08-KJ8">
@@ -771,7 +768,7 @@
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.26470588235294" tickMarkPosition="below" sliderType="linear" id="GSJ-UO-t3t"/>
                                 <accessibility description="Password Length Slider" identifier="passwordLengthSlider"/>
                                 <connections>
-                                    <action selector="changeLength:" target="IdK-28-YZe" id="L9E-r1-HnO"/>
+                                    <action selector="changeLength:" target="IdK-28-YZe" id="gFM-gu-INc"/>
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-mZ-cgj">
@@ -792,10 +789,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <accessibility description="Password Length" identifier="passwordLength"/>
-                                <connections>
-                                    <binding destination="ZgV-Co-VUK" name="value" keyPath="values.passwordLength" id="gnb-45-jfa"/>
-                                    <outlet property="formatter" destination="PGg-IK-Uyo" id="2WS-6C-CbD"/>
-                                </connections>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-NQ-5IA">
                                 <rect key="frame" x="157" y="67" width="83" height="18"/>
@@ -832,10 +825,12 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="passwordLengthSlider" destination="VxG-08-KJ8" id="Grw-2c-5lF"/>
+                        <outlet property="passwordLengthSlider" destination="VxG-08-KJ8" id="7OP-dn-rRH"/>
+                        <outlet property="passwordLengthText" destination="S1b-yo-daA" id="gE7-Oh-WiC"/>
                     </connections>
                 </viewController>
                 <customObject id="cRl-oE-2vO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="YSg-5d-gxN"/>
             </objects>
             <point key="canvasLocation" x="-863" y="525"/>
         </scene>
@@ -854,12 +849,12 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Random" identifier="401" id="bkQ-kJ-CPe">
-                                        <view key="view" id="AWP-eS-Hcr">
-                                            <rect key="frame" x="10" y="33" width="379" height="105"/>
+                                        <view key="view" ambiguous="YES" id="AWP-eS-Hcr">
+                                            <rect key="frame" x="10" y="33" width="294" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBk-Pg-QmY">
-                                                    <rect key="frame" x="37" y="54" width="304" height="18"/>
+                                                    <rect key="frame" x="37" y="-51" width="304" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5ds-SU-6Px">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -871,7 +866,7 @@
                                                     </connections>
                                                 </button>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XJ9-OQ-MIB">
-                                                    <rect key="frame" x="37" y="34" width="304" height="18"/>
+                                                    <rect key="frame" x="37" y="-71" width="304" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tov-c1-Nk7">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -883,7 +878,7 @@
                                                     </connections>
                                                 </button>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMn-Ee-CyW">
-                                                    <rect key="frame" x="37" y="14" width="304" height="18"/>
+                                                    <rect key="frame" x="37" y="-91" width="304" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Avoid Ambiguous Characters" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Khl-Uq-MdQ">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -895,7 +890,7 @@
                                                     </connections>
                                                 </button>
                                                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hr9-qn-LNz">
-                                                    <rect key="frame" x="88" y="79" width="224" height="19"/>
+                                                    <rect key="frame" x="88" y="-26" width="224" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.26470588235294" tickMarkPosition="below" sliderType="linear" id="YtT-d9-vAT"/>
                                                     <accessibility description="Password Length Slider" identifier="passwordLengthSlider"/>
@@ -905,7 +900,7 @@
                                                     </connections>
                                                 </slider>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8gD-GN-t8t">
-                                                    <rect key="frame" x="37" y="82" width="47" height="17"/>
+                                                    <rect key="frame" x="37" y="-23" width="47" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="HDl-pZ-Agw">
                                                         <font key="font" metaFont="system"/>
@@ -914,7 +909,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pzN-6W-2N9">
-                                                    <rect key="frame" x="306" y="75" width="32" height="22"/>
+                                                    <rect key="frame" x="306" y="-30" width="32" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="eCm-3A-nGz">
                                                         <font key="font" metaFont="system"/>
@@ -928,7 +923,7 @@
                                                     </connections>
                                                 </textField>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDl-nq-pKb">
-                                                    <rect key="frame" x="176" y="56" width="83" height="18"/>
+                                                    <rect key="frame" x="176" y="-49" width="83" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Use Emoji" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ANP-Tm-zh0">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -936,7 +931,7 @@
                                                     </buttonCell>
                                                 </button>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="veM-fF-ViF">
-                                                    <rect key="frame" x="294" y="37" width="88" height="18"/>
+                                                    <rect key="frame" x="294" y="-68" width="88" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="Uppercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hlR-KA-xPG">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -944,7 +939,7 @@
                                                     </buttonCell>
                                                 </button>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0A-up-KR8">
-                                                    <rect key="frame" x="294" y="15" width="87" height="18"/>
+                                                    <rect key="frame" x="294" y="-90" width="87" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="Lowercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="dV3-QY-Vjr">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -952,7 +947,7 @@
                                                     </buttonCell>
                                                 </button>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-QC-8Cu">
-                                                    <rect key="frame" x="294" y="-4" width="93" height="18"/>
+                                                    <rect key="frame" x="294" y="-109" width="93" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="kZk-Xl-RgM">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -963,7 +958,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Pattern" identifier="402" id="0kt-EQ-nwr">
-                                        <view key="view" ambiguous="YES" id="d53-89-Nlp">
+                                        <view key="view" id="d53-89-Nlp">
                                             <rect key="frame" x="10" y="33" width="379" height="105"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1436,7 +1431,7 @@ r - Random item</string>
         <!--Pattern Password-->
         <scene sceneID="NB8-q2-0EW">
             <objects>
-                <viewController title="Pattern Password" storyboardIdentifier="PatternPassword" id="sd3-yQ-tvi" customClass="MasterViewController" sceneMemberID="viewController">
+                <viewController title="Pattern Password" storyboardIdentifier="PatternPassword" id="sd3-yQ-tvi" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="RWw-tD-t37">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1491,7 +1486,7 @@ r - Random item</string>
         <!--Passphrase Password-->
         <scene sceneID="24U-Ut-agP">
             <objects>
-                <viewController title="Passphrase Password" storyboardIdentifier="PassphrasePassword" id="sdy-bB-1Ah" customClass="MasterViewController" sceneMemberID="viewController">
+                <viewController title="Passphrase Password" storyboardIdentifier="PassphrasePassword" id="sdy-bB-1Ah" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="ghD-Tp-1Cr">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1630,7 +1625,7 @@ r - Random item</string>
         <!--Pronounceable Password-->
         <scene sceneID="KiR-NM-WPk">
             <objects>
-                <viewController title="Pronounceable Password" storyboardIdentifier="PronounceablePassword" id="d6t-4y-fZf" customClass="MasterViewController" sceneMemberID="viewController">
+                <viewController title="Pronounceable Password" storyboardIdentifier="PronounceablePassword" id="d6t-4y-fZf" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="UQM-XU-SAd">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1688,7 +1683,6 @@ r - Random item</string>
                                     </connections>
                                 </sliderCell>
                                 <connections>
-                                    <action selector="changeLength:" target="X40-vW-2nF" id="eUK-xG-1KB"/>
                                     <binding destination="ZgV-Co-VUK" name="value" keyPath="values.passwordLength" id="ARd-4u-0uG"/>
                                 </connections>
                             </slider>
@@ -1724,7 +1718,7 @@ r - Random item</string>
         <!--Advanced Password-->
         <scene sceneID="5Qb-8n-QAs">
             <objects>
-                <viewController title="Advanced Password" storyboardIdentifier="AdvancedPassword" id="mtc-B4-HHs" customClass="MasterViewController" sceneMemberID="viewController">
+                <viewController title="Advanced Password" storyboardIdentifier="AdvancedPassword" id="mtc-B4-HHs" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="JLY-W8-K9C">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
