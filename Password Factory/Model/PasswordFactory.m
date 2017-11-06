@@ -699,6 +699,22 @@ static NSDictionary *passwordTypes;
     NSArray *keys = [[passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
     return (PFPasswordType)[[keys objectAtIndex:index] integerValue];
 }
+
+/**
+ Gets the index of the particular passsword type
+
+ @param type PFPasswordType
+ @return integer index
+ */
+-(NSUInteger)getIndexByPasswordType:(PFPasswordType)type {
+    NSArray *keys = [[passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
+    for(int i = 0; i < keys.count; i++) {
+        if ((PFPasswordType)keys[i] == type) {
+            return i;
+        }
+    }
+    return 0;
+}
 @end
 
 

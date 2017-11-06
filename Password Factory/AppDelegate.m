@@ -131,7 +131,8 @@
     //the tag of the menu item matches the identifier of the tabs so we can
     //just use the tag to select the proper tab
     if (tag >= 0) {
-        [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:tag];
+    //TODO: get menu working
+        //        [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:tag];
     }
 }
 
@@ -200,16 +201,16 @@
  @return the menu display status
  */
 - (BOOL)validateUserInterfaceItem:(id<NSValidatedUserInterfaceItem>)item {
-
+//TODO: get menu working
     NSMenuItem *m = (NSMenuItem *)item;
     //If we are in the 'Tabs' menu, then disable the currently selected tab
     if ([m.parentItem.title isEqualToString:@"Tabs"]) {
         //get the selected tab identifier
-        int selected = [[self.masterViewController passwordTypeTab].selectedTabViewItem.identifier intValue] - PFRandomType;
+//        int selected = [[self.masterViewController passwordTypeTab].selectedTabViewItem.identifier intValue] - PFRandomType;
         //the tab identifier and menu item tag match up
-        if(m.tag == selected) {
-            return NO;
-        }
+//        if(m.tag == selected) {
+//            return NO;
+//        }
     }
     //otherwise, enable the menu
     return YES;

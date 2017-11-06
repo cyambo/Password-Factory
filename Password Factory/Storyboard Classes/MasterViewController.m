@@ -7,20 +7,19 @@
 //
 
 #import "MasterViewController.h"
-#import "PasswordStrength.h"
 #import "PasswordFactory.h"
 #import "PreferencesViewController.h"
 #import "AppDelegate.h"
 #import "constants.h"
 #import "DefaultsManager.h"
-#import "constants.h"
 #import "StyleKit.h"
+#import "PasswordController.h"
+
 @interface MasterViewController () <NSTabViewDelegate, NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
 @property (nonatomic, strong) id clearClipboardTimer;
-@property (nonatomic, strong) Class timerClass;
-@property (nonatomic, strong) PasswordStrength *passwordStrength;
-
+@property (nonatomic, strong) PasswordController *password;
+@property (nonatomic, assign) NSUInteger passwordLength;
 @end
 
 @implementation MasterViewController
@@ -29,9 +28,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         //initialize everything
-        self.pf = [[PasswordFactory alloc] init];
-        self.passwordStrength = [[PasswordStrength alloc] init];
-        self.timerClass = [NSTimer class];
+        self.password = [PasswordController get];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
@@ -46,7 +43,7 @@
     //get the length from the slider
     [self getPasswordLength];
     //sets the delegates for the tab buttons
-    [self.passwordTypeTab setDelegate:self];
+
     [self.patternText setDelegate:self];
     [self.passwordField setDelegate:self];
     
@@ -117,11 +114,11 @@
         //choose the stronger one
         if (self.passwordStrengthLevel.strength  > s) {
             s = self.passwordStrengthLevel.strength;
-            pw = self.passwordValue;
+            pw = [self.password getPasswordValue];
         }
     }
     //update the password display
-    self.passwordValue = pw;
+    [self.password setPasswordValue: pw];
     [self updatePasswordField];
     //Update the password strength - updateStrength takes 0-100 value
     [self.passwordStrengthLevel updateStrength:s * 100];
@@ -167,7 +164,7 @@
 - (IBAction)copyToClipboard:(id)sender {
 
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    [self updatePasteboard:self.passwordValue];
+    [self updatePasteboard:[self.password getPasswordValue]];
     if ([d boolForKey:@"clearClipboard"]) {
         //setting up clear clipboard timer
         if ([self.clearClipboardTimer isValid]) {
@@ -222,24 +219,13 @@
     //if the change came from the passwordField, just reset the strength
     //otherwise generate the password
     if(obj.object == self.passwordField) {
-        self.passwordValue = self.passwordField.stringValue;
+        [self.password setPasswordValue: self.passwordField.stringValue];
         [self setPasswordStrength];
         [self updatePasswordField];
     } else {
         //the change came from the pattern text field - so generate the password
         [self generatePassword];
     }
-}
-
-/**
- Called when the tab view changes - will generate a new password every time
-
- @param tabView tabView
- @param tabViewItem item clicked
- */
-- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
-    //generate a new password
-    [self generatePassword];
 }
 
 /**
@@ -273,10 +259,10 @@
  Gets the set password length from the slider
  */
 - (void)getPasswordLength{
-    NSUInteger prevLength = self.pf.length;
-    self.pf.length = [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
-
-    if (prevLength != self.pf.length) { //do not change password unless length changes
+    NSUInteger prevLength = self.passwordLength;
+    self.passwordLength = [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
+    NSLog(@"PREV %d, %d", prevLength, self.passwordLength);
+    if (prevLength != self.passwordLength) { //do not change password unless length changes
         [self generatePassword];
     }
 }
@@ -285,34 +271,40 @@
  Generates password in the proper format
  */
 - (void)generatePassword {
-    PFPasswordType atTab = [self.passwordTypeTab.selectedTabViewItem.identifier intValue];
-    atTab = PFRandomType;
+    NSInteger row = self.passwordTypesTable.selectedRow;
+    PFPasswordType type = [self.password getPasswordTypeByIndex:row];
+    NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     //Generates different password formats based upon the selected tab
     //set modifiers
-    self.pf.avoidAmbiguous = [self.avoidAmbiguous state];
-    self.pf.useSymbols = [self.useSymbols state];
-    self.passwordValue = @"";
-    switch (atTab) {
+    if ([self.avoidAmbiguous isKindOfClass:[NSButton class]]) {
+        settings[@"avoidAmbiguous"] = @([self.avoidAmbiguous state]);
+    }
+    if ([self.useSymbols isKindOfClass:[NSButton class]]) {
+        settings[@"useSymbols"] = @([self.avoidAmbiguous state]);
+    }
+    settings[@"passwordLength"] = @(self.passwordLength);
+    [self.password setPasswordValue: @""];
+    switch (type) {
         case PFRandomType: //random
             if ([self.mixedCase state]) {
-                self.pf.caseType = PFMixed;
+                settings[@"caseType"] = @(PFMixed);
             } else {
-                self.pf.caseType = PFLower;
+                settings[@"caseType"] = @(PFLower);
             }
-            self.passwordValue = [self.pf generateRandom];
             break;
         case PFPatternType: //pattern
-            self.passwordValue = [self.pf generatePattern:self.patternText.stringValue];
+            settings[@"patternText"] = self.patternText.stringValue;
             break;
         case PFPronounceableType: //pronounceable
-            self.pf.caseType = PFLower; //TODO: add case type to pronounceable
-            self.passwordValue = [self.pf generatePronounceableWithSeparatorType:[self getPronounceableSeparatorType]];
+            settings[@"caseType"] = @(PFLower); //TODO: add case type to pronounceable
+            settings[@"separatorType"] = @([self getPronounceableSeparatorType]);
             break;
         case PFPassphraseType: //passphrase:
-            self.pf.caseType = [self getPassphraseCaseType];
-            self.passwordValue = [self.pf generatePassphraseWithSeparatorType:[self getPassphraseSeparatorType]];
+            settings[@"caseType"] = @([self getPassphraseCaseType]);
+            settings[@"separatorType"] = @([self getPassphraseSeparatorType]);
             break;
     }
+    [self.password generatePassword:type andSettings:settings];
     [self updatePasswordField];
     [self setPasswordStrength];
 }
@@ -358,13 +350,13 @@
  */
 - (void)updatePasswordField{
     [PreferencesViewController syncSharedDefaults];
-    if (self.passwordValue == nil || self.passwordValue.length == 0) {
+    if ([self.password getPasswordValue] == nil || [self.password getPasswordValue] == 0) {
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
         return;
     }
     //Just display the password
     if (!self.colorPasswordText) {
-        NSAttributedString *s = [[NSAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+        NSAttributedString *s = [[NSAttributedString alloc] initWithString:[self.password getPasswordValue] attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
         [self.passwordField setAttributedStringValue: s];
     } else {
         //colors the password text based upon color wells in preferences
@@ -376,22 +368,22 @@
         NSColor *sColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]]];
         
         //uses AttributedString to color password
-        NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.passwordValue attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+        NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:[self.password getPasswordValue] attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
 
         //colorizing password label
         [s beginEditing];
         //loops through the string and sees if it is in each type of string to determine the color of the character
         //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
-        [self.passwordValue enumerateSubstringsInRange:NSMakeRange(0, self.passwordValue.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+        [[self.password getPasswordValue] enumerateSubstringsInRange:NSMakeRange(0, [self.password getPasswordValue].length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
             NSColor *c = self.defaultCharacterColor; //set a default color of the text to the default color
             if(substringRange.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
-                if ([self.pf isCharacterType:PFUpperCaseLetters character:at]) { //are we an uppercase character
+                if ([self.password isCharacterType:PFUpperCaseLetters character:at]) { //are we an uppercase character
                     c = cColor;
-                } else if ([self.pf isCharacterType:PFLowerCaseLetters character:at]){ //lowercase character?
+                } else if ([self.password isCharacterType:PFLowerCaseLetters character:at]){ //lowercase character?
                     c = clColor;
-                } else if ([self.pf isCharacterType:PFNumbers character:at]){ //number?
+                } else if ([self.password isCharacterType:PFNumbers character:at]){ //number?
                     c = nColor;
-                } else if ([self.pf isCharacterType:PFSymbols character:at]){ //symbol?
+                } else if ([self.password isCharacterType:PFSymbols character:at]){ //symbol?
                     c = sColor;
                 } else {
                     c = self.defaultCharacterColor;
@@ -441,11 +433,11 @@
  */
 - (void)setPasswordStrength {
     BOOL displayCTS = [[NSUserDefaults standardUserDefaults] boolForKey:@"displayCrackTime"]; //do we want to display the crack time string?
-    [self.passwordStrength updatePasswordStrength:self.passwordValue withCrackTimeString:displayCTS];
-    [self.passwordStrengthLevel updateStrength:self.passwordStrength.strength];
+    self.password.generateCrackTimeString = displayCTS;
+    [self.passwordStrengthLevel updateStrength:[self.password getPasswordStrength]];
     //only display the crack time string if the user has it selected
     if (displayCTS) {
-        [self.crackTimeButton setTitle:[self.passwordStrength.crackTimeString uppercaseString]];
+        [self.crackTimeButton setTitle:[[self.password getCrackTimeString] uppercaseString]];
     }
     //display the button using the alpha value
     self.crackTimeButton.alphaValue = (int)displayCTS;
@@ -484,25 +476,37 @@
     }
     b.alphaValue = (int)showCT; //the int value of the bool matches the alpha value we need to show and hide the button
 }
+- (PFPasswordType)getSelectedPasswordType {
+    NSInteger row = self.passwordTypesTable.selectedRow;
+    return [self.password getPasswordTypeByIndex:row];
+}
+-(void)selectPaswordType:(PFPasswordType)type {
+    NSInteger row = self.passwordTypesTable.selectedRow;
+    PFPasswordType currType = [self.password getPasswordTypeByIndex:row];
+    if (currType == type) {
+        [self generatePassword];
+    } else {
+        NSIndexSet *set = [NSIndexSet indexSetWithIndex:[self.password getIndexByPasswordType:currType]];
+        [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
+    }
+}
 #pragma mark Table View
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [[self.pf getAllPasswordTypes] count];
+    return [[self.password getAllPasswordTypes] count];
 }
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSTableCellView *c = [tableView makeViewWithIdentifier:@"Password Type Cell" owner:nil];
-    PFPasswordType type = [self.pf getPasswordTypeByIndex:row];
-
-    c.textField.stringValue = [self.pf getNameForPasswordType:type];
+    PFPasswordType type = [self.password getPasswordTypeByIndex:row];
+    c.textField.stringValue = [self.password getNameForPasswordType:type];
     c.imageView.image = [StyleKit imageOfPreferencesButton];
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSInteger row = self.passwordTypesTable.selectedRow;
-    PFPasswordType type = [self.pf getPasswordTypeByIndex:row];
-    NSString *storyboardName = [NSString stringWithFormat:@"%@Password",[self.pf getNameForPasswordType:type]];
-    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSViewController *vc = [storyBoard instantiateControllerWithIdentifier:storyboardName];
+    PFPasswordType type = [self.password getPasswordTypeByIndex:row];
+    NSViewController *vc = [self.password getViewControllerForPasswordType:type];
     self.passwordView.subviews = @[];
     [self.passwordView addSubview:vc.view];
+    [self generatePassword];
 }
 @end

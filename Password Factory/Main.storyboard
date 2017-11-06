@@ -634,7 +634,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="170"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="VkS-fe-9Kh" viewBased="YES" id="6c5-Mk-eYC">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="VkS-fe-9Kh" viewBased="YES" id="6c5-Mk-eYC">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -682,7 +682,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="BgG-3K-KOz" id="ceR-xF-733"/>
+                                                <outlet property="dataSource" destination="BgG-3K-KOz" id="koM-oG-eoe"/>
                                                 <outlet property="delegate" destination="BgG-3K-KOz" id="UW2-Vj-Oks"/>
                                             </connections>
                                         </tableView>
@@ -719,7 +719,7 @@
                 </viewController>
                 <customObject id="nWj-xb-FxS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-942" y="139"/>
+            <point key="canvasLocation" x="-1013" y="67"/>
         </scene>
         <!--Random Password-->
         <scene sceneID="n2b-a9-5Qq">
@@ -771,8 +771,7 @@
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.26470588235294" tickMarkPosition="below" sliderType="linear" id="GSJ-UO-t3t"/>
                                 <accessibility description="Password Length Slider" identifier="passwordLengthSlider"/>
                                 <connections>
-                                    <action selector="changeLength:" target="IdK-28-YZe" id="ibl-vQ-UYQ"/>
-                                    <binding destination="ZgV-Co-VUK" name="value" keyPath="values.passwordLength" id="8tX-Q9-WAM"/>
+                                    <action selector="changeLength:" target="IdK-28-YZe" id="L9E-r1-HnO"/>
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-mZ-cgj">
@@ -832,10 +831,13 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="passwordLengthSlider" destination="VxG-08-KJ8" id="Grw-2c-5lF"/>
+                    </connections>
                 </viewController>
                 <customObject id="cRl-oE-2vO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-861" y="525"/>
+            <point key="canvasLocation" x="-863" y="525"/>
         </scene>
         <!--Master View Controller-->
         <scene sceneID="wYK-af-EjZ">
@@ -852,7 +854,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Random" identifier="401" id="bkQ-kJ-CPe">
-                                        <view key="view" ambiguous="YES" id="AWP-eS-Hcr">
+                                        <view key="view" id="AWP-eS-Hcr">
                                             <rect key="frame" x="10" y="33" width="379" height="105"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -961,7 +963,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Pattern" identifier="402" id="0kt-EQ-nwr">
-                                        <view key="view" id="d53-89-Nlp">
+                                        <view key="view" ambiguous="YES" id="d53-89-Nlp">
                                             <rect key="frame" x="10" y="33" width="379" height="105"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -973,9 +975,6 @@
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
-                                                    <connections>
-                                                        <binding destination="ZgV-Co-VUK" name="value" keyPath="values.userPattern" id="LXp-Ah-lKO"/>
-                                                    </connections>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twK-Ty-X7j">
                                                     <rect key="frame" x="26" y="-8" width="172" height="80"/>
@@ -1450,9 +1449,6 @@ r - Random item</string>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="ZgV-Co-VUK" name="value" keyPath="values.userPattern" id="eam-dR-2tE"/>
-                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ks4-KU-H6N">
                                 <rect key="frame" x="25" y="7" width="172" height="80"/>
@@ -1488,6 +1484,7 @@ r - Random item</string>
                     </view>
                 </viewController>
                 <customObject id="70x-At-AHg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="gGD-eL-eWq"/>
             </objects>
             <point key="canvasLocation" x="-449" y="525"/>
         </scene>

@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "PasswordFactory.h"
+#import "constants.h"
 #import "PreferencesViewController.h"
 #import "StrengthMeter.h"
 
@@ -25,12 +25,10 @@
 
 @property (weak) IBOutlet StrengthMeter *passwordStrengthLevel;
 
-@property (weak) IBOutlet NSTabView *passwordTypeTab;
 
 @property (weak) IBOutlet NSTextField *patternText;
 @property (weak) IBOutlet NSMatrix *pronounceableSeparatorRadio;
 
-@property (nonatomic, strong) PasswordFactory *pf;
 @property (nonatomic, strong) NSColor *defaultCharacterColor;
 @property (weak) IBOutlet NSButton *generateButton;
 @property (weak) IBOutlet NSButton *pasteboardButton;
@@ -41,7 +39,6 @@
 - (PFSeparatorType)getPronounceableSeparatorType;
 
 - (void)setPasswordStrength;
-@property (nonatomic, strong) NSString *passwordValue;
 - (void)generatePassword;
 
 - (void)clearClipboard;
@@ -66,4 +63,6 @@
 
 @property (weak) IBOutlet NSView *passwordView;
 @property (weak) IBOutlet NSTableView *passwordTypesTable;
+- (void)selectPaswordType:(PFPasswordType)type;
+- (PFPasswordType)getSelectedPasswordType;
 @end
