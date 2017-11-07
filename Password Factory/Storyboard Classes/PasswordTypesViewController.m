@@ -118,6 +118,9 @@
 - (IBAction)changeCaseType:(id)sender {
     [self callDelegate];
 }
+- (void)controlTextDidChange:(NSNotification *)obj {
+    [self callDelegate];
+}
 -(void)callDelegate {
     if(self.delegate) {
         [self.delegate controlChanged:self.passwordType settings:[self getPasswordSettings]];
