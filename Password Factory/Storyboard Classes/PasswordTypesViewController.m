@@ -50,7 +50,6 @@
     
 }
 -(void)setupRadios {
-
     //setting up caseType
     if(self.passwordType == PFRandomType || self.passwordType == PFPronounceableType || self.passwordType == PFPassphraseType) {
         NSString *defaultsName = [NSString stringWithFormat:@"%@CaseType", self.prefix];
@@ -81,8 +80,6 @@
             }
         }
     }
-
-    
 }
 -(id)testRadio:(NSButton *)toTest {
     if (toTest == nil) {

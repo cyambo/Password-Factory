@@ -48,5 +48,7 @@
 	<false/>
 	<key>displayCrackTime</key>
 	<false/>
+	<key>selectedPasswordType</key>
+	<integer>401</integer>
 </dict>
 </plist>

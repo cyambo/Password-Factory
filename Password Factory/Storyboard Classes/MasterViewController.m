@@ -41,6 +41,8 @@
     
 }
 -(void)viewWillAppear {
+    PFPasswordType type = (PFPasswordType)[[NSUserDefaults standardUserDefaults] integerForKey:@"selectedPasswordType"];
+    [self selectPaswordType:type];
     [self generatePassword];
 }
 #pragma mark Observers
@@ -173,7 +175,6 @@
             [window close];
         }
     }
-    
 }
 
 /**
@@ -211,7 +212,6 @@
         [self setPasswordStrength];
         [self updatePasswordField];
     } else {
-        //the change came from the pattern text field - so generate the password
         [self generatePassword];
     }
 }
@@ -224,7 +224,6 @@
 - (IBAction)generateAction:(id)sender {
     [self generatePassword];
 }
-
 
 /**
  Generates password in the proper format
@@ -361,10 +360,10 @@
 -(void)selectPaswordType:(PFPasswordType)type {
     NSInteger row = self.passwordTypesTable.selectedRow;
     PFPasswordType currType = [self.password getPasswordTypeByIndex:row];
-    if (currType == type) {
+    if (currType == type && row >= 0) {
         [self generatePassword];
     } else {
-        NSIndexSet *set = [NSIndexSet indexSetWithIndex:[self.password getIndexByPasswordType:currType]];
+        NSIndexSet *set = [NSIndexSet indexSetWithIndex:[self.password getIndexByPasswordType:type]];
         [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
     }
 }
@@ -382,6 +381,7 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSInteger row = self.passwordTypesTable.selectedRow;
     PFPasswordType type = [self.password getPasswordTypeByIndex:row];
+    [[NSUserDefaults standardUserDefaults] setInteger:type forKey:@"selectedPasswordType"];
     NSViewController *vc = [self.password getViewControllerForPasswordType:type];
     self.passwordView.subviews = @[];
     [self.passwordView addSubview:vc.view];
