@@ -52,7 +52,7 @@
 -(void)setupRadios {
 
     //setting up caseType
-    if(self.passwordType == PFRandomType || self.passwordType == PFPronounceableType) {
+    if(self.passwordType == PFRandomType || self.passwordType == PFPronounceableType || self.passwordType == PFPassphraseType) {
         NSString *defaultsName = [NSString stringWithFormat:@"%@CaseType", self.prefix];
         PFCaseType caseType = [[NSUserDefaults standardUserDefaults] integerForKey:defaultsName];
         for(NSNumber *key in self.caseTypeRadios) {
@@ -67,7 +67,7 @@
         }
     }
     //setting up separator type
-    if(self.passwordType == PFPronounceableType) {
+    if(self.passwordType == PFPronounceableType || self.passwordType == PFPassphraseType) {
         NSString *defaultsName = [NSString stringWithFormat:@"%@SeparatorType", self.prefix];
         PFSeparatorType sepType = [[NSUserDefaults standardUserDefaults] integerForKey:defaultsName];
         for(NSNumber *key in self.separatorTypeRadios) {

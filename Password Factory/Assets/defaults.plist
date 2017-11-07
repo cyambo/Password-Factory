@@ -38,7 +38,7 @@
 	<integer>101</integer>
 	<key>userPattern</key>
 	<string>w##</string>
-	<key>passphraseSeparator</key>
+	<key>passphraseSeparatorType</key>
 	<integer>202</integer>
 	<key>passphraseCaseType</key>
 	<integer>101</integer>
