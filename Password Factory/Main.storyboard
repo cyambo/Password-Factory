@@ -872,7 +872,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Random" identifier="401" id="bkQ-kJ-CPe">
-                                        <view key="view" id="AWP-eS-Hcr">
+                                        <view key="view" ambiguous="YES" id="AWP-eS-Hcr">
                                             <rect key="frame" x="10" y="33" width="379" height="105"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1028,7 +1028,7 @@ r - Random item</string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Pronounceable" identifier="403" id="CJb-Uq-ZZx">
-                                        <view key="view" ambiguous="YES" id="GmR-f1-3FG">
+                                        <view key="view" id="GmR-f1-3FG">
                                             <rect key="frame" x="10" y="33" width="379" height="105"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1664,50 +1664,6 @@ r - Random item</string>
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIh-mb-Dpt" userLabel="Pronounceable Separator Radio">
-                                <rect key="frame" x="20" y="22" width="312" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                <size key="cellSize" width="147" height="18"/>
-                                <size key="intercellSpacing" width="4" height="2"/>
-                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="2pt-7P-rpF">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <cells>
-                                    <column>
-                                        <buttonCell type="radio" title="Hyphen" imagePosition="left" alignment="left" state="on" tag="202" inset="2" id="ZhN-vL-ZKl">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <buttonCell type="radio" title="None" imagePosition="left" alignment="left" tag="201" inset="2" id="fxp-Tl-qJO">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <buttonCell type="radio" title="Characters                " imagePosition="left" alignment="left" tag="207" inset="2" id="Qxu-wy-cLm">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </column>
-                                    <column>
-                                        <buttonCell type="radio" title="Numbers" imagePosition="left" alignment="left" tag="205" inset="2" id="6m7-aD-XgD">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <buttonCell type="radio" title="Symbols" imagePosition="left" alignment="left" tag="206" inset="2" id="FW3-v9-Hv3">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <buttonCell type="radio" title="Spaces" imagePosition="left" alignment="left" tag="203" inset="2" id="Hte-Gq-ERj">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </column>
-                                </cells>
-                                <connections>
-                                    <action selector="pressPrononunceableRadio:" target="X40-vW-2nF" id="zMs-NT-YPH"/>
-                                </connections>
-                            </matrix>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50m-Ah-cqc">
                                 <rect key="frame" x="74" y="90" width="224" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1717,7 +1673,8 @@ r - Random item</string>
                                     </connections>
                                 </sliderCell>
                                 <connections>
-                                    <binding destination="ZgV-Co-VUK" name="value" keyPath="values.passwordLength" id="ARd-4u-0uG"/>
+                                    <action selector="changeLength:" target="d6t-4y-fZf" id="WUt-kH-D79"/>
+                                    <binding destination="WUy-a4-IIG" name="value" keyPath="values.passwordLength" id="pjl-IT-0UD"/>
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lbf-jU-qcI">
@@ -1738,16 +1695,176 @@ r - Random item</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="ZgV-Co-VUK" name="value" keyPath="values.passwordLength" id="HKL-6H-vKy"/>
-                                    <outlet property="formatter" destination="PGg-IK-Uyo" id="ciK-Z9-G9u"/>
+                                    <binding destination="WUy-a4-IIG" name="value" keyPath="values.passwordLength" id="ZAU-sL-1x3"/>
                                 </connections>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4e-M6-RXq">
+                                <rect key="frame" x="8" y="67" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="None" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="bnN-4x-W9P">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="7B3-FQ-bOK"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9W-EO-kbf">
+                                <rect key="frame" x="8" y="45" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Hyphen" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ObI-Uh-17K">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="JR5-Rq-KOo"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gob-Xp-p0c">
+                                <rect key="frame" x="8" y="23" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Space" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="FGl-KJ-rNI">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="0PD-hU-hvo"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EAL-Do-pBi">
+                                <rect key="frame" x="101" y="67" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Underscore" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="52v-1q-4eR">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="ymd-MR-S11"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Oi-mw-wJa">
+                                <rect key="frame" x="101" y="45" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Number" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="CRU-1q-8rg">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="wyc-9u-jiA"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7O-Li-fxP">
+                                <rect key="frame" x="101" y="23" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Symbol" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="OHS-kD-Ybc">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="0gB-Bw-u8P"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBl-pi-0WA">
+                                <rect key="frame" x="202" y="67" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Character" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="IB9-Ay-uY4">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="d6P-61-ngP"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1d-Xt-LWe">
+                                <rect key="frame" x="202" y="45" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Random" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="v3D-N7-gA6">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="b3w-fm-wFh"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fvt-4K-I8O">
+                                <rect key="frame" x="202" y="23" width="106" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Emoji" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="DZz-2N-faa">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="ODs-OH-w8O"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coM-jj-NdH">
+                                <rect key="frame" x="305" y="65" width="88" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Uppercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="2X8-yc-q28">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeCaseType:" target="d6t-4y-fZf" id="AWR-LG-Y1l"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tqa-Jo-Cdy">
+                                <rect key="frame" x="305" y="43" width="87" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Lowercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="5m2-3E-HTe">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeCaseType:" target="d6t-4y-fZf" id="QtM-Vv-hyp"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SW4-U8-HSP">
+                                <rect key="frame" x="305" y="24" width="93" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="eQR-Vh-Sx3">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeCaseType:" target="d6t-4y-fZf" id="aeu-kH-pSX"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brA-NK-nWX">
+                                <rect key="frame" x="305" y="2" width="83" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="radio" title="Title Case" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="MPe-uZ-K0B">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeCaseType:" target="d6t-4y-fZf" id="XpP-km-vzu"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="caseTypeLowerCase" destination="Tqa-Jo-Cdy" id="wyi-Fv-DH6"/>
+                        <outlet property="caseTypeMixedCase" destination="SW4-U8-HSP" id="3Ah-Na-LUI"/>
+                        <outlet property="caseTypeTitleCase" destination="brA-NK-nWX" id="Jl9-9E-HtH"/>
+                        <outlet property="caseTypeUpperCase" destination="coM-jj-NdH" id="WEL-R6-c9j"/>
+                        <outlet property="characterSeparator" destination="jBl-pi-0WA" id="tDx-jU-2q0"/>
+                        <outlet property="emojiSeparator" destination="Fvt-4K-I8O" id="7pe-CK-OsF"/>
+                        <outlet property="hyphenSeparator" destination="F9W-EO-kbf" id="coG-nc-coq"/>
+                        <outlet property="noSeparator" destination="x4e-M6-RXq" id="GNf-NE-ggm"/>
+                        <outlet property="numberSeparator" destination="2Oi-mw-wJa" id="uqF-Pd-cOS"/>
+                        <outlet property="passwordLengthSlider" destination="50m-Ah-cqc" id="Bdw-Bm-8bW"/>
+                        <outlet property="passwordLengthText" destination="yWf-3E-p7P" id="lOG-ek-Tgv"/>
+                        <outlet property="randomSeparator" destination="M1d-Xt-LWe" id="W2h-ES-QQA"/>
+                        <outlet property="spaceSeparator" destination="gob-Xp-p0c" id="iPe-gO-aY9"/>
+                        <outlet property="symbolSeparator" destination="w7O-Li-fxP" id="6Pa-NL-Xc6"/>
+                        <outlet property="underscoreSeparator" destination="EAL-Do-pBi" id="y3e-Qe-nX8"/>
+                    </connections>
                 </viewController>
                 <customObject id="K06-Eb-5Lo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="WUy-a4-IIG"/>
             </objects>
-            <point key="canvasLocation" x="-862" y="726"/>
+            <point key="canvasLocation" x="-862.5" y="726"/>
         </scene>
         <!--Advanced Password-->
         <scene sceneID="5Qb-8n-QAs">

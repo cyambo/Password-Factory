@@ -36,7 +36,7 @@
                                  @(PFHyphenSeparator): [self testRadio:self.hyphenSeparator],
                                  @(PFSpaceSeparator): [self testRadio:self.spaceSeparator],
                                  @(PFUnderscoreSeparator): [self testRadio:self.underscoreSeparator],
-                                 @(PFNumberSeparator): [self testRadio:self.underscoreSeparator],
+                                 @(PFNumberSeparator): [self testRadio:self.numberSeparator],
                                  @(PFSymbolSeparator): [self testRadio:self.symbolSeparator],
                                  @(PFCharacterSeparator): [self testRadio:self.characterSeparator],
                                  @(PFEmojiSeparator): [self testRadio:self.emojiSeparator],
@@ -52,13 +52,28 @@
 -(void)setupRadios {
 
     //setting up caseType
-    if(self.passwordType == PFRandomType) {
+    if(self.passwordType == PFRandomType || self.passwordType == PFPronounceableType) {
         NSString *defaultsName = [NSString stringWithFormat:@"%@CaseType", self.prefix];
         PFCaseType caseType = [[NSUserDefaults standardUserDefaults] integerForKey:defaultsName];
         for(NSNumber *key in self.caseTypeRadios) {
             if([self.caseTypeRadios[key] isKindOfClass:[NSButton class]]) {
                 NSButton *button = (NSButton *)self.caseTypeRadios[key];
                 if((PFCaseType)[key integerValue] == caseType) {
+                    [button setState:NSControlStateValueOn];
+                } else {
+                    [button setState:NSControlStateValueOff];
+                }
+            }
+        }
+    }
+    //setting up separator type
+    if(self.passwordType == PFPronounceableType) {
+        NSString *defaultsName = [NSString stringWithFormat:@"%@SeparatorType", self.prefix];
+        PFSeparatorType sepType = [[NSUserDefaults standardUserDefaults] integerForKey:defaultsName];
+        for(NSNumber *key in self.separatorTypeRadios) {
+            if([self.separatorTypeRadios[key] isKindOfClass:[NSButton class]]) {
+                NSButton *button = (NSButton *)self.separatorTypeRadios[key];
+                if((PFSeparatorType)[key integerValue] == sepType) {
                     [button setState:NSControlStateValueOn];
                 } else {
                     [button setState:NSControlStateValueOff];
@@ -126,6 +141,14 @@
     return PFLower;
 }
 -(PFSeparatorType)getSeparatorType {
+    for(NSNumber *key in self.separatorTypeRadios) {
+        if([self.separatorTypeRadios[key] isKindOfClass:[NSButton class]]) {
+            NSButton *radio = (NSButton*)self.separatorTypeRadios[key];
+            if(radio.state == NSOnState) {
+                return (PFSeparatorType)[key integerValue];
+            }
+        }
+    }
     return PFHyphenSeparator;
 }
 
@@ -140,13 +163,15 @@
     [self callDelegate];
 }
 - (IBAction)changeSeparatorType:(id)sender {
-    
+    NSString *defaultsName = [NSString stringWithFormat:@"%@SeparatorType", self.prefix];
+    PFSeparatorType type = [self getSeparatorType];
+    [[NSUserDefaults standardUserDefaults] setInteger:type forKey:defaultsName];
     [self callDelegate];
 }
 - (IBAction)changeCaseType:(id)sender {
     NSString *defaultsName = [NSString stringWithFormat:@"%@CaseType", self.prefix];
-    PFCaseType c = [self getCaseType];
-    [[NSUserDefaults standardUserDefaults] setInteger:c forKey:defaultsName];
+    PFCaseType type = [self getCaseType];
+    [[NSUserDefaults standardUserDefaults] setInteger:type forKey:defaultsName];
     [self callDelegate];
 }
 - (void)controlTextDidChange:(NSNotification *)obj {

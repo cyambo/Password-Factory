@@ -68,12 +68,12 @@
             break;
             
         case PFPronounceableType: //pronounceable
-            self.factory.caseType = (PFCaseType)settings[@"caseType"];
-            self.password = [self.factory generatePronounceableWithSeparatorType:(PFSeparatorType)settings[@"separatorType"]];
+            self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
+            self.password = [self.factory generatePronounceableWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
             break;
         case PFPassphraseType: //passphrase:
-            self.factory.caseType = (PFCaseType)settings[@"caseType"];
-            self.password = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)settings[@"separatorType"]];
+            self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
+            self.password = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
             break;
     }
     [self updatePasswordStrength];

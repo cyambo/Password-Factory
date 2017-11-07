@@ -32,8 +32,10 @@
 	<integer>103</integer>
 	<key>passwordLength</key>
 	<string>20</string>
-	<key>pronounceableSeparator</key>
+	<key>pronounceableSeparatorType</key>
 	<integer>202</integer>
+	<key>pronounceableCaseType</key>
+	<integer>101</integer>
 	<key>userPattern</key>
 	<string>w##</string>
 	<key>passphraseSeparator</key>

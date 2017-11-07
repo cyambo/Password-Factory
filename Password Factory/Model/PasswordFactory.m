@@ -61,7 +61,6 @@ static NSDictionary *passwordTypes;
  */
 - (NSString *)generatePronounceable {
     NSMutableString *p = [[NSMutableString alloc] init];
-    [self validateSeparator];
     NSString *separator = self.separator;
     int i = 0;
     while (p.length < self.length) {
@@ -159,7 +158,6 @@ static NSDictionary *passwordTypes;
  *  @return password based on passphrase settings and approximately the length property
  */
 -(NSString *)generatePassphrase {
-    [self validateSeparator];
     NSString *separator = self.separator;
     NSMutableString *p = [[NSMutableString alloc] init];
 
@@ -639,17 +637,6 @@ static NSDictionary *passwordTypes;
 }
 
 /**
- *  Sets separator to a length of one, will truncate anything longer than 1 character
- *
- *  @return single char separator or nothing
- */
--(void)validateSeparator {
-    //truncate
-    if (self.separator.length > 1) {
-        self.separator = [self.separator substringToIndex:1];
-    }
-}
-/**
  *  removes the trailing separator from a string
  *
  *  @param string    string to check
@@ -662,6 +649,7 @@ static NSDictionary *passwordTypes;
     if (separator.length == 0 | string.length == 0) {
         return string;
     }
+    //TODO: working with chars does not work with extended characters, switch to string based
     //checking last character to see if it is the same as separator, if it is, remove it
     char c = [string characterAtIndex:string.length - 1];
     if ([separator characterAtIndex:0] == c) {
