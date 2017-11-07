@@ -24,10 +24,12 @@
 	<false/>
 	<key>randomUseSymbols</key>
 	<true/>
-	<key>randomMixedCase</key>
-	<true/>
+	<key>randomUseEmoji</key>
+	<false/>
 	<key>randomAvoidAmbiguous</key>
 	<true/>
+	<key>randomCaseType</key>
+	<integer>103</integer>
 	<key>passwordLength</key>
 	<string>20</string>
 	<key>pronounceableSeparator</key>

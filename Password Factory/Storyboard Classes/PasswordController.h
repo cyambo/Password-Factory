@@ -10,8 +10,13 @@
 #import "constants.h"
 #import "PasswordFactory.h"
 #import "PasswordTypesViewController.h"
-@interface PasswordController : NSObject
+@class PasswordController;
+@protocol PasswordControllerDelegate <NSObject>
+-(void)passwordChanged:(NSString *)password;
+@end
+@interface PasswordController : NSObject <PasswordTypesViewControllerDelegate>
 @property (nonatomic, assign) BOOL generateCrackTimeString;
+@property (nonatomic, weak) id <PasswordControllerDelegate> delegate;
 + (instancetype)get;
 - (void)generatePassword:(PFPasswordType)type;
 - (void)setPasswordValue:(NSString *)passwordValue;

@@ -45,9 +45,10 @@ typedef NS_ENUM(NSInteger, PFPasswordType) {
     PFPassphraseType
 };
 
-
 #define PFPasswordMinLength 5
 #define PFPasswordMaxLength 150
+
+#define PFPasswordNumEmojiInRandom 10
 
 #define GenerateAndCopyLoops 20
 

@@ -11,11 +11,11 @@
 @interface PasswordFactory : NSObject
 
 @property (nonatomic, assign) NSUInteger length;
-@property (nonatomic, strong) NSString *separator;
 @property (nonatomic, assign) PFCaseType caseType;
 @property (nonatomic, assign) BOOL avoidAmbiguous;
 @property (nonatomic, assign) BOOL useSymbols;
 @property (nonatomic, assign) BOOL useEmoji;
+@property (nonatomic, assign) BOOL useNumbers;
 
 - (NSString *)generatePronounceableWithSeparatorType:(PFSeparatorType)separatorType;
 - (NSString *)generatePronounceable;

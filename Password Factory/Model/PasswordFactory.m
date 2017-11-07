@@ -10,6 +10,7 @@
 
 #import "NSString+RandomCase.h"
 #import "NSString+SymbolCase.h"
+
 static NSString *symbols;
 static NSString *upperCase;
 static NSString *lowerCase;
@@ -23,8 +24,10 @@ static NSArray *phoneticSoundsTwo;
 static NSArray *phoneticSoundsThree;
 static NSDictionary *passwordCharacterTypes;
 static NSDictionary *passwordTypes;
+
 @interface PasswordFactory ()
 
+@property (nonatomic, strong) NSString *separator;
 @property (nonatomic, strong) NSMutableArray *currentRange;
 @property (nonatomic, strong) NSArray *englishWords;
 @property (nonatomic, strong) NSArray *shortWords;
@@ -135,10 +138,10 @@ static NSDictionary *passwordTypes;
             sep = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
             break;
         case PFSymbolSeparator:
-            sep = [NSString stringWithFormat:@"%c",[self randomFromString:symbols]];
+            sep = [self randomFromString:symbols];
             break;
         case PFCharacterSeparator:
-            sep = [NSString stringWithFormat:@"%c",[self randomFromString:nonAmbiguousUpperCase]];
+            sep = [self randomFromString:nonAmbiguousUpperCase];
             break;
         case PFEmojiSeparator:
             sep = [self.emojis objectAtIndex:[self randomNumber:[self randomNumber:(uint)self.emojis.count]]];
@@ -241,11 +244,24 @@ static NSDictionary *passwordTypes;
         [tmp appendString:symbols];
     }
     if (self.avoidAmbiguous) {
-        [tmp appendString:nonAmbiguousLowerCase];
-        [tmp appendString:nonAmbiguousNumbers];
+        if (self.caseType == PFUpper) {
+            [tmp appendString:nonAmbiguousUpperCase];
+        } else {
+            [tmp appendString:nonAmbiguousLowerCase];
+        }
+        if (self.useNumbers) {
+            [tmp appendString:nonAmbiguousNumbers];
+        }
+        
     } else {
-        [tmp appendString:lowerCase];
-        [tmp appendString:numbers];
+        if(self.caseType == PFUpper) {
+            [tmp appendString:upperCase];
+        } else {
+            [tmp appendString:lowerCase];
+        }
+        if (self.useNumbers) {
+            [tmp appendString:numbers];
+        }
     }
     if (self.caseType == PFMixed) {
         if (self.avoidAmbiguous) {
@@ -254,12 +270,23 @@ static NSDictionary *passwordTypes;
             [tmp appendString:upperCase];
         }
     }
+
     NSMutableDictionary *d = [[NSMutableDictionary alloc] init];
+    //using a dictionary to make all the letters unique
     for(int i = 0; i < tmp.length; i++) {
         NSRange r = NSMakeRange(i, 1);
         d[[tmp substringWithRange:r]] = @(1);
     }
     self.currentRange = [[d allKeys] mutableCopy];
+    if (self.useEmoji) {
+        //only putting a small number of random emojis in the pool
+        //because if we use all of them it messes up the balance of characters and displays
+        //mostly emoji
+        for (int i = 0; i < PFPasswordNumEmojiInRandom; i++) {
+            [self.currentRange addObject:[self randomFromArray:self.emojis]];
+        }
+    }
+    
 }
 #pragma mark Pattern Password
 
@@ -270,10 +297,6 @@ static NSDictionary *passwordTypes;
  @return generated passwords
  */
 -(NSString *)generatePattern: (NSString *)pattern {
-    int l = (int)self.englishWords.count;
-    int sl = (int)self.shortWords.count;
-    int el = (int)self.emojis.count;
-    int pl = (int)phoneticSounds.count;
     __block NSMutableString *s = [[NSMutableString alloc] init];
     __block bool isEscaped = NO;
     
@@ -293,8 +316,7 @@ static NSDictionary *passwordTypes;
             isEscaped = NO;
             return;
         }
-        
-        char c;
+
         NSString *toAppend;
         //will replace the special pattern characters with their proper randomized value
         switch (patternType) {
@@ -305,49 +327,44 @@ static NSDictionary *passwordTypes;
                 toAppend = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
                 break;
             case 2: //w - Lowercase word
-                toAppend = [[self.englishWords objectAtIndex:[self randomNumber:l]] lowercaseString];
+                toAppend = [[self randomFromArray:self.englishWords] lowercaseString];
                 break;
             case 3: //W - Uppercase word
-                toAppend = [[self.englishWords objectAtIndex:[self randomNumber:l]] uppercaseString];
+                toAppend = [[self randomFromArray:self.englishWords] uppercaseString];
                 break;
             case 4: //S - Lowercase short word
-                toAppend = [[self.shortWords objectAtIndex:[self randomNumber:sl]] lowercaseString];
+                toAppend = [[self randomFromArray:self.shortWords] lowercaseString];
                 break;
             case 5: //s - Uppercase short word
-                toAppend = [[self.shortWords objectAtIndex:[self randomNumber:sl]] uppercaseString];
+                toAppend = [[self randomFromArray:self.shortWords] uppercaseString];
                 break;
             case 6:  //! - Symbol
-                c = [symbols characterAtIndex:([self randomNumber:(uint)symbols.length])];
-                toAppend = [NSString stringWithFormat:@"%c",c];
+                toAppend = [self randomFromString:symbols];
                 break;
             case 7: //c - Random lowercase character
-                c = [lowerCase characterAtIndex:([self randomNumber:(uint)lowerCase.length])];
-                toAppend = [NSString stringWithFormat:@"%c",c];
+                toAppend = [self randomFromString:lowerCase];
                 break;
             case 8: //C - Random uppercase character
-                c = [upperCase characterAtIndex:([self randomNumber:(uint)upperCase.length])];
-                toAppend = [NSString stringWithFormat:@"%c",c];
+                toAppend = [self randomFromString:upperCase];
                 break;
             case 9: // - Random non ambiguous lowercase
-                c = [nonAmbiguousLowerCase characterAtIndex:([self randomNumber:(uint)nonAmbiguousLowerCase.length])];
-                toAppend = [NSString stringWithFormat:@"%c",c];
+
+                toAppend = [self randomFromString:nonAmbiguousLowerCase];
                 break;
             case 10: // - Random non ambiguous uppercase
-                c = [nonAmbiguousUpperCase characterAtIndex:([self randomNumber:(uint)nonAmbiguousUpperCase.length])];
-                toAppend = [NSString stringWithFormat:@"%c",c];
+                toAppend = [self randomFromString:nonAmbiguousUpperCase];
                 break;
             case 11: //random non-ambiguous number
-                c = [nonAmbiguousNumbers characterAtIndex:[self randomNumber:(uint)nonAmbiguousNumbers.length]];
-                toAppend = [NSString stringWithFormat:@"%c",c];
+                toAppend = [self randomFromString:nonAmbiguousNumbers];
                 break;
             case 12: //random emoji
-                toAppend = [self.emojis objectAtIndex:[self randomNumber:el]];
+                toAppend = [self randomFromArray:self.emojis];
                 break;
             case 13: //random phonetic sound
-                toAppend = [[phoneticSounds objectAtIndex:[self randomNumber:pl]] lowercaseString];
+                toAppend = [[self randomFromArray:phoneticSounds] lowercaseString];
                 break;
             case 14: //random uppercase phonetic sound
-                toAppend = [[phoneticSounds objectAtIndex:[self randomNumber:pl]] uppercaseString];
+                toAppend = [[self randomFromArray:phoneticSounds] uppercaseString];
                 break;
             case 15: //random symbol
                 toAppend = [self generateRandomWithLength:1];
@@ -360,14 +377,15 @@ static NSDictionary *passwordTypes;
 
 #pragma mark Utility Methods
 /**
- *  get a random character from within a string
+ *  get a random character as NSString from within a string
  *
  *  @param source source string
  *
  *  @return random character from string
  */
-- (char)randomFromString:(NSString *)source {
-    return [source characterAtIndex:([self randomNumber:(uint)source.length])];
+- (NSString *)randomFromString:(NSString *)source {
+    char c = [source characterAtIndex:([self randomNumber:(uint)source.length])];
+    return [NSString stringWithFormat:@"%c",c];
 }
 /**
  *  get a random item from an array

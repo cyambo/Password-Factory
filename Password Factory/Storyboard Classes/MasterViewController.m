@@ -14,7 +14,7 @@
 #import "StyleKit.h"
 #import "PasswordController.h"
 
-@interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource>
+@interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, PasswordControllerDelegate>
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) PasswordController *password;
@@ -28,6 +28,7 @@
     if (self) {
         //initialize everything
         self.password = [PasswordController get];
+        self.password.delegate = self;
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
         [self setObservers];
@@ -233,7 +234,11 @@
     [self updatePasswordField];
     [self setPasswordStrength];
 }
-
+-(void)passwordChanged:(NSString *)password {
+    NSLog(@"%@",password);
+    [self updatePasswordField];
+    [self setPasswordStrength];
+}
 #pragma mark Password Display
 
 /**

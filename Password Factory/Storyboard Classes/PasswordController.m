@@ -28,23 +28,36 @@
         singleton.factory = [[PasswordFactory alloc] init];
         singleton.password = @"";
     });
-    
+
     return singleton;
 }
-/**
- Generates password in the proper format
- */
+
 - (void)generatePassword:(PFPasswordType)type {
-    //Generates different password formats based upon the selected tab
     NSDictionary *settings = [[self getViewControllerForPasswordType:type] getPasswordSettings];
-    if(settings[@"length"]) {
-        self.factory.length = (NSUInteger)settings[@"length"];
+    [self generatePassword:type withSettings:settings];
+
+}
+- (void)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings {
+    if(settings[@"passwordLength"]) {
+        self.factory.length = [(NSNumber *)settings[@"passwordLength"] integerValue];
+    }
+    if(settings[@"useSymbols"]) {
+        self.factory.useSymbols = [(NSNumber *)settings[@"useSymbols"] boolValue];
+    }
+    if(settings[@"avoidAmbiguous"]) {
+        self.factory.avoidAmbiguous = [(NSNumber *)settings[@"avoidAmbiguous"] boolValue];
+    }
+    if(settings[@"useEmoji"]) {
+        self.factory.useEmoji = [(NSNumber *)settings[@"useEmoji"] boolValue];
+    }
+    if(settings[@"useNumbers"]) {
+        self.factory.useNumbers = [(NSNumber *)settings[@"useNumbers"] boolValue];
     }
     self.password = @"";
     switch (type) {
         case PFRandomType: //random
             if (settings[@"caseType"]) {
-                self.factory.caseType = (PFCaseType)settings[@"caseType"];
+                self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
             } else {
                 self.factory.caseType = PFLower;
             }
@@ -53,7 +66,7 @@
         case PFPatternType: //pattern
             self.password = [self.factory generatePattern:settings[@"patternText"]];
             break;
-
+            
         case PFPronounceableType: //pronounceable
             self.factory.caseType = (PFCaseType)settings[@"caseType"];
             self.password = [self.factory generatePronounceableWithSeparatorType:(PFSeparatorType)settings[@"separatorType"]];
@@ -64,6 +77,9 @@
             break;
     }
     [self updatePasswordStrength];
+    if (self.delegate) {
+        [self.delegate passwordChanged:self.password];
+    }
 }
 - (void)initViewControllers {
     if (self.viewControllers == nil) {
@@ -75,6 +91,7 @@
             NSString *storyboardName = [NSString stringWithFormat:@"%@Password",name];
             PasswordTypesViewController *vc = [storyBoard instantiateControllerWithIdentifier:storyboardName];
             vc.passwordType = (PFPasswordType)[key integerValue];
+            vc.delegate = self;
             vcs[key] = vc;
         }
         self.viewControllers = vcs;
@@ -83,6 +100,9 @@
 - (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type {
     [self initViewControllers];
     return self.viewControllers[@(type)];
+}
+-(void)controlChanged:(PFPasswordType)type settings:(NSDictionary *)settings {
+    [self generatePassword:type withSettings:settings];
 }
 /**
  Updates the password strength meter and the crack time string
