@@ -7,11 +7,12 @@
 //
 
 #import "PasswordTypesViewController.h"
-
+#import "PasswordController.h"
 @interface PasswordTypesViewController () <NSTextFieldDelegate>
 @property (nonatomic, strong) NSDictionary *caseTypeRadios;
 @property (nonatomic, strong) NSDictionary *separatorTypeRadios;
 @property (nonatomic, assign) NSUInteger passwordLength;
+@property (nonatomic, strong) NSString *prefix;
 - (PFSeparatorType)getSeparatorType;
 - (PFCaseType)getCaseType;
 @end
@@ -41,6 +42,32 @@
                                  @(PFEmojiSeparator): [self testRadio:self.emojiSeparator],
                                  @(PFRandomSeparator): [self testRadio:self.randomSeparator]
                                  };
+    self.prefix = @"";
+    if([self.delegate isKindOfClass:[PasswordController class]]) {
+        self.prefix = [[(PasswordController *)self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
+    }
+    [self setupRadios];
+    
+}
+-(void)setupRadios {
+
+    //setting up caseType
+    if(self.passwordType == PFRandomType) {
+        NSString *defaultsName = [NSString stringWithFormat:@"%@CaseType", self.prefix];
+        PFCaseType caseType = [[NSUserDefaults standardUserDefaults] integerForKey:defaultsName];
+        for(NSNumber *key in self.caseTypeRadios) {
+            if([self.caseTypeRadios[key] isKindOfClass:[NSButton class]]) {
+                NSButton *button = (NSButton *)self.caseTypeRadios[key];
+                if((PFCaseType)[key integerValue] == caseType) {
+                    [button setState:NSControlStateValueOn];
+                } else {
+                    [button setState:NSControlStateValueOff];
+                }
+            }
+        }
+    }
+
+    
 }
 -(id)testRadio:(NSButton *)toTest {
     if (toTest == nil) {
@@ -113,9 +140,13 @@
     [self callDelegate];
 }
 - (IBAction)changeSeparatorType:(id)sender {
+    
     [self callDelegate];
 }
 - (IBAction)changeCaseType:(id)sender {
+    NSString *defaultsName = [NSString stringWithFormat:@"%@CaseType", self.prefix];
+    PFCaseType c = [self getCaseType];
+    [[NSUserDefaults standardUserDefaults] setInteger:c forKey:defaultsName];
     [self callDelegate];
 }
 - (void)controlTextDidChange:(NSNotification *)obj {
@@ -126,14 +157,7 @@
         [self.delegate controlChanged:self.passwordType settings:[self getPasswordSettings]];
     }
 }
-//- (void)getPasswordLength{
-//    NSUInteger prevLength = self.passwordLength;
-//    self.passwordLength = [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
-//    NSLog(@"PREV %d, %d", prevLength, self.passwordLength);
-//    if (prevLength != self.passwordLength) { //do not change password unless length changes
-//        [self generatePassword];
-//    }
-//}
+
 
 
 

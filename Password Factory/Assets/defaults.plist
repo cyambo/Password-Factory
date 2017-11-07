@@ -36,9 +36,9 @@
 	<integer>202</integer>
 	<key>userPattern</key>
 	<string>w##</string>
-	<key>passphraseRadioSeparator</key>
+	<key>passphraseSeparator</key>
 	<integer>202</integer>
-	<key>passphraseRadioCaseType</key>
+	<key>passphraseCaseType</key>
 	<integer>101</integer>
 	<key>enableAdvancedMode</key>
 	<false/>

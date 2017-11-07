@@ -10,6 +10,7 @@
 #import "constants.h"
 #import "PasswordFactory.h"
 #import "PasswordTypesViewController.h"
+
 @class PasswordController;
 @protocol PasswordControllerDelegate <NSObject>
 -(void)passwordChanged:(NSString *)password;

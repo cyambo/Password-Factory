@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "constants.h"
+
+
 @class PasswordTypesViewController;
 @protocol PasswordTypesViewControllerDelegate <NSObject>
 -(void)controlChanged:(PFPasswordType)type settings:(NSDictionary *)settings;
