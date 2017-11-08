@@ -690,7 +690,7 @@
                                 </buttonCell>
                                 <accessibility description="Display Crack Time" identifier="showCrackTime"/>
                                 <connections>
-                                    <action selector="toggleCrackTimeDisplay:" target="BgG-3K-KOz" id="ff3-rS-NWh"/>
+                                    <action selector="toggleCrackTimeDisplay:" target="BgG-3K-KOz" id="czk-7Q-2GI"/>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xR-jQ-tfH">
@@ -706,7 +706,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="crackTimeButton" destination="Ba5-fo-EG7" id="UVi-pN-iRy"/>
+                        <outlet property="crackTimeButton" destination="Ba5-fo-EG7" id="vGx-9B-iij"/>
                         <outlet property="generateButton" destination="BO3-Ac-9JC" id="Bfk-TO-XAY"/>
                         <outlet property="loadPreferencesButton" destination="MOm-g5-lgB" id="UEL-Zw-8Dx"/>
                         <outlet property="passwordField" destination="8xR-jQ-tfH" id="bck-AA-DVA"/>
