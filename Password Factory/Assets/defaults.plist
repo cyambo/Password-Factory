@@ -28,14 +28,14 @@
 	<false/>
 	<key>randomAvoidAmbiguous</key>
 	<true/>
-	<key>randomCaseType</key>
-	<integer>103</integer>
+	<key>randomCaseTypeIndex</key>
+	<integer>0</integer>
 	<key>passwordLength</key>
 	<string>20</string>
-	<key>pronounceableSeparatorType</key>
-	<integer>202</integer>
-	<key>pronounceableCaseType</key>
-	<integer>101</integer>
+	<key>pronounceableSeparatorTypeIndex</key>
+	<integer>1</integer>
+	<key>pronounceableCaseTypeIndex</key>
+	<integer>0</integer>
 	<key>userPattern</key>
 	<string>w##</string>
 	<key>passphraseSeparatorType</key>

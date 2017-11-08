@@ -729,7 +729,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4v-HK-3Pc">
-                                <rect key="frame" x="18" y="62" width="203" height="18"/>
+                                <rect key="frame" x="18" y="56" width="139" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vmd-7f-fe6">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -741,9 +741,9 @@
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vn-D3-SSd">
-                                <rect key="frame" x="18" y="25" width="212" height="18"/>
+                                <rect key="frame" x="18" y="36" width="139" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Avoid Ambiguous Characters" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KiJ-ak-PRL">
+                                <buttonCell key="cell" type="check" title="Avoid Ambiguous" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KiJ-ak-PRL">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -753,7 +753,7 @@
                                 </connections>
                             </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VxG-08-KJ8">
-                                <rect key="frame" x="69" y="90" width="224" height="19"/>
+                                <rect key="frame" x="18" y="103" width="334" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.26470588235294" tickMarkPosition="below" sliderType="linear" id="GSJ-UO-t3t"/>
                                 <accessibility description="Password Length Slider" identifier="passwordLengthSlider"/>
@@ -763,7 +763,7 @@
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-mZ-cgj">
-                                <rect key="frame" x="18" y="93" width="47" height="17"/>
+                                <rect key="frame" x="20" y="82" width="46" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="7b0-W3-raO">
                                     <font key="font" metaFont="system"/>
@@ -772,17 +772,17 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1b-yo-daA">
-                                <rect key="frame" x="287" y="86" width="32" height="22"/>
+                                <rect key="frame" x="287" y="71" width="66" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="7Tc-zU-o2V">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="32"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <accessibility description="Password Length" identifier="passwordLength"/>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-NQ-5IA">
-                                <rect key="frame" x="18" y="45" width="83" height="18"/>
+                                <rect key="frame" x="213" y="36" width="139" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Use Emoji" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OV7-bb-eHc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -793,41 +793,8 @@
                                     <binding destination="ZGa-yO-4eO" name="value" keyPath="values.randomUseEmoji" id="OZK-yp-DER"/>
                                 </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGw-0l-8VG">
-                                <rect key="frame" x="257" y="65" width="88" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Uppercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="PBY-RI-mJ0">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="IdK-28-YZe" id="1s0-wL-HnB"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BWa-eO-c7C">
-                                <rect key="frame" x="257" y="43" width="87" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Lowercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="swa-KX-GyV">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="IdK-28-YZe" id="fk9-mY-bAY"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jeW-Pm-h2X">
-                                <rect key="frame" x="257" y="24" width="93" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8Vc-33-5Yl">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="IdK-28-YZe" id="cWm-u5-fcu"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arR-e1-B8f">
-                                <rect key="frame" x="18" y="5" width="105" height="18"/>
+                                <rect key="frame" x="213" y="56" width="139" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Use Numbers" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u5v-ps-J9D">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -838,13 +805,39 @@
                                     <binding destination="ZGa-yO-4eO" name="value" keyPath="values.randomUseNumbers" id="y4b-us-aZ4"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-Kl-CVP" userLabel="Case Type">
+                                <rect key="frame" x="95" y="6" width="257" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Lowercase" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="101" imageScaling="proportionallyDown" inset="2" selectedItem="7c7-vZ-XEd" id="oLw-fA-zbk" userLabel="Types">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="Aei-LH-TSN">
+                                        <items>
+                                            <menuItem title="Lowercase" state="on" tag="101" id="7c7-vZ-XEd"/>
+                                            <menuItem title="Uppercase" tag="102" id="Bt5-PW-ApM"/>
+                                            <menuItem title="Mixed Case" tag="103" id="GM2-Gr-cbL"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="selectCaseType:" target="IdK-28-YZe" id="03g-0V-GrJ"/>
+                                    <binding destination="ZGa-yO-4eO" name="selectedIndex" keyPath="values.randomCaseTypeIndex" id="XmM-hP-pMm"/>
+                                </connections>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Pe-Vk-Zvh">
+                                <rect key="frame" x="18" y="11" width="68" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Case Type" id="Szr-6U-93k">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="avoidAmbiguous" destination="7Vn-D3-SSd" id="Wwg-Zn-J1Y"/>
-                        <outlet property="caseTypeLowerCase" destination="BWa-eO-c7C" id="CQ8-Rp-uz3"/>
-                        <outlet property="caseTypeMixedCase" destination="jeW-Pm-h2X" id="f2j-iC-OWN"/>
-                        <outlet property="caseTypeUpperCase" destination="sGw-0l-8VG" id="kwf-G1-iKU"/>
+                        <outlet property="caseTypeMenu" destination="FOV-Kl-CVP" id="L7S-de-uGT"/>
                         <outlet property="passwordLengthSlider" destination="VxG-08-KJ8" id="7OP-dn-rRH"/>
                         <outlet property="passwordLengthText" destination="S1b-yo-daA" id="gE7-Oh-WiC"/>
                         <outlet property="useEmoji" destination="Ki3-NQ-5IA" id="Nzh-Fc-8ua"/>
@@ -855,7 +848,7 @@
                 <customObject id="cRl-oE-2vO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="ZGa-yO-4eO"/>
             </objects>
-            <point key="canvasLocation" x="-603" y="307"/>
+            <point key="canvasLocation" x="-603.5" y="307"/>
         </scene>
         <!--Pattern Password-->
         <scene sceneID="NB8-q2-0EW">
@@ -885,15 +878,15 @@
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-22-F9f" userLabel="Insert Menu">
                                 <rect key="frame" x="18" y="22" width="341" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Insert" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hxv-hc-dKQ" id="wr0-Db-VUc" userLabel="Insert">
+                                <popUpButtonCell key="cell" type="push" title="Insert" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hxv-hc-dKQ" id="wr0-Db-VUc" userLabel="Insert">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="66s-zd-14r">
                                         <items>
-                                            <menuItem title="Insert" id="hxv-hc-dKQ">
+                                            <menuItem title="Insert" state="on" id="hxv-hc-dKQ">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
-                                            <menuItem title="# - Number" state="on" id="9uf-XR-1ns"/>
+                                            <menuItem title="# - Number" id="9uf-XR-1ns"/>
                                             <menuItem title="w - Lowercase Word" id="4Sn-VW-vAQ"/>
                                             <menuItem title="W - Uppercase Word" id="52H-hf-B1r"/>
                                             <menuItem title="s - Lowercase Short Word" id="8IL-vH-ow7">
@@ -960,7 +953,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWZ-h2-Uyw">
-                                <rect key="frame" x="82" y="92" width="224" height="19"/>
+                                <rect key="frame" x="18" y="103" width="335" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Sqd-6F-q5B"/>
                                 <connections>
@@ -969,7 +962,7 @@
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-3j-rGw">
-                                <rect key="frame" x="31" y="95" width="47" height="17"/>
+                                <rect key="frame" x="20" y="82" width="46" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="fCN-XW-SWR">
                                     <font key="font" metaFont="system"/>
@@ -978,180 +971,89 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSQ-Gw-dha">
-                                <rect key="frame" x="300" y="88" width="32" height="22"/>
+                                <rect key="frame" x="287" y="71" width="66" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="sXt-Sj-8TO">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="32"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dl8-eC-VA6">
-                                <rect key="frame" x="9" y="70" width="106" height="18"/>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mw-qA-yhB" userLabel="Separator">
+                                <rect key="frame" x="97" y="39" width="257" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="None" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="nxc-iI-Heu">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
+                                <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="201" imageScaling="proportionallyDown" inset="2" selectedItem="na0-ey-EFI" id="zUP-sb-Eet">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="0Cc-BT-m8d">
+                                        <items>
+                                            <menuItem title="None" state="on" tag="201" id="na0-ey-EFI"/>
+                                            <menuItem title="Hyphen" tag="202" id="XFF-c6-9ll"/>
+                                            <menuItem title="Space" tag="203" id="Wa9-ia-Af1"/>
+                                            <menuItem title="Underscore" tag="204" id="T1R-Tv-efc"/>
+                                            <menuItem title="Number" tag="205" id="BQI-2b-IuW"/>
+                                            <menuItem title="Symbol" tag="206" id="fhM-h8-Sbr"/>
+                                            <menuItem title="Character" tag="207" id="AeC-C5-1me"/>
+                                            <menuItem title="Random" tag="209" id="x83-jX-84Z"/>
+                                            <menuItem title="Emoji" tag="208" id="SLl-co-CL3"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="3DI-zH-rsr"/>
+                                    <action selector="selectSeparatorType:" target="sdy-bB-1Ah" id="uOu-Ew-Xjd"/>
+                                    <binding destination="Mal-f5-XKJ" name="selectedIndex" keyPath="values.pronounceableSeparatorTypeIndex" id="XmY-G9-CNc"/>
                                 </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Koa-2j-7Gy">
-                                <rect key="frame" x="9" y="48" width="106" height="18"/>
+                            </popUpButton>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oFN-We-zdE" userLabel="Case Type">
+                                <rect key="frame" x="97" y="8" width="257" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Hyphen" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="fDp-cP-28w">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
+                                <popUpButtonCell key="cell" type="push" title="Lowercase" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="101" imageScaling="proportionallyDown" inset="2" selectedItem="m9D-Wa-tve" id="bxO-jT-9d5">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="D6b-Cp-uFX">
+                                        <items>
+                                            <menuItem title="Lowercase" state="on" tag="101" id="m9D-Wa-tve"/>
+                                            <menuItem title="Uppercase" tag="102" id="1Dj-yq-Iii"/>
+                                            <menuItem title="Mixed Case" tag="103" id="mak-VE-F5m"/>
+                                            <menuItem title="Title Case" tag="104" id="erb-VF-uGW"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="cA6-D7-hRX"/>
+                                    <action selector="selectCaseType:" target="sdy-bB-1Ah" id="qOD-OG-MAD"/>
+                                    <binding destination="Mal-f5-XKJ" name="selectedIndex" keyPath="values.pronounceableCaseTypeIndex" id="hbw-qQ-jvs"/>
                                 </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obW-Ex-Iiv">
-                                <rect key="frame" x="9" y="26" width="106" height="18"/>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39E-g3-dd0">
+                                <rect key="frame" x="20" y="44" width="64" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Space" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="2vn-e9-5Yc">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Separator" id="s19-JE-uyw">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="tip-Ft-YrR"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdl-ev-aoz">
-                                <rect key="frame" x="102" y="70" width="106" height="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNa-Rm-cuu">
+                                <rect key="frame" x="20" y="13" width="68" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Underscore" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="DkE-a7-7Qd">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Case Type" id="RHP-h6-RGf">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="mTB-p4-lDc"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PRY-1y-D79">
-                                <rect key="frame" x="102" y="48" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Number" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="kZU-gO-l4t">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="5Ys-ek-Zpb"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4WV-Kc-zna">
-                                <rect key="frame" x="102" y="26" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Symbol" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="gyj-R9-xCV">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="ab4-JE-fyC"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftt-gd-4rJ">
-                                <rect key="frame" x="203" y="70" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Character" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="wEM-ba-oju">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="Rm3-Ep-adf"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WVt-Qv-UHM">
-                                <rect key="frame" x="203" y="48" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Random" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="LyO-9r-YPH">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="oS6-Di-gEu"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cl7-Xm-Dtz">
-                                <rect key="frame" x="203" y="26" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Emoji" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="yrd-bD-x4o">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="sdy-bB-1Ah" id="o4G-An-8nS"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esZ-Rf-JXd">
-                                <rect key="frame" x="306" y="68" width="88" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Uppercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="xhp-OK-LKU">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="sdy-bB-1Ah" id="TAS-Bl-sg5"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asj-aa-jao">
-                                <rect key="frame" x="306" y="46" width="87" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Lowercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="PlU-Ii-28u">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="sdy-bB-1Ah" id="q6g-UI-xZS"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DAT-fx-f1j">
-                                <rect key="frame" x="306" y="27" width="93" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="PVo-f2-Riw">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="sdy-bB-1Ah" id="2fa-tb-Qn9"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IXa-k6-Hyo">
-                                <rect key="frame" x="306" y="5" width="83" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Title Case" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="JSG-Qu-9Wu">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="sdy-bB-1Ah" id="JAf-BF-JVg"/>
-                                </connections>
-                            </button>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="caseTypeLowerCase" destination="asj-aa-jao" id="i4g-QY-TpW"/>
-                        <outlet property="caseTypeMixedCase" destination="DAT-fx-f1j" id="1e9-Dr-Cen"/>
-                        <outlet property="caseTypeTitleCase" destination="IXa-k6-Hyo" id="D3b-3D-c9D"/>
-                        <outlet property="caseTypeUpperCase" destination="esZ-Rf-JXd" id="c7x-ep-mlZ"/>
-                        <outlet property="characterSeparator" destination="ftt-gd-4rJ" id="7za-Za-0ZK"/>
-                        <outlet property="emojiSeparator" destination="Cl7-Xm-Dtz" id="32h-DV-wJ7"/>
-                        <outlet property="hyphenSeparator" destination="Koa-2j-7Gy" id="Nqn-ja-3Dt"/>
-                        <outlet property="noSeparator" destination="Dl8-eC-VA6" id="ATv-ki-3t5"/>
-                        <outlet property="numberSeparator" destination="PRY-1y-D79" id="iqR-JC-EfN"/>
+                        <outlet property="caseTypeMenu" destination="oFN-We-zdE" id="PDw-Il-ehU"/>
                         <outlet property="passwordLengthText" destination="TSQ-Gw-dha" id="mOb-rQ-Ps5"/>
-                        <outlet property="randomSeparator" destination="WVt-Qv-UHM" id="6ND-r4-fJA"/>
-                        <outlet property="spaceSeparator" destination="obW-Ex-Iiv" id="YvA-gm-aCf"/>
-                        <outlet property="symbolSeparator" destination="4WV-Kc-zna" id="UFH-x0-0vG"/>
-                        <outlet property="underscoreSeparator" destination="wdl-ev-aoz" id="aD6-AH-FD1"/>
+                        <outlet property="separatorTypeMenu" destination="9mw-qA-yhB" id="0WR-sz-No6"/>
                     </connections>
                 </viewController>
                 <customObject id="kIu-PF-oaH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="Mal-f5-XKJ"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="508"/>
+            <point key="canvasLocation" x="-190.5" y="508"/>
         </scene>
         <!--Pronounceable Password-->
         <scene sceneID="KiR-NM-WPk">
@@ -1162,199 +1064,108 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50m-Ah-cqc">
-                                <rect key="frame" x="74" y="90" width="224" height="19"/>
+                                <rect key="frame" x="18" y="103" width="335" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="above" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Ukq-gS-y0u"/>
+                                <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="22.5" tickMarkPosition="below" sliderType="linear" id="Ukq-gS-y0u"/>
                                 <connections>
                                     <action selector="changeLength:" target="d6t-4y-fZf" id="WUt-kH-D79"/>
                                     <binding destination="WUy-a4-IIG" name="value" keyPath="values.passwordLength" id="pjl-IT-0UD"/>
                                 </connections>
                             </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lbf-jU-qcI">
-                                <rect key="frame" x="23" y="93" width="47" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="LvP-h2-cLe">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWf-3E-p7P">
-                                <rect key="frame" x="292" y="86" width="32" height="22"/>
+                                <rect key="frame" x="287" y="71" width="66" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="awP-9E-xvw">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="32"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4e-M6-RXq">
-                                <rect key="frame" x="8" y="67" width="106" height="18"/>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8mf-EU-smN" userLabel="Separator">
+                                <rect key="frame" x="97" y="39" width="257" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="None" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="bnN-4x-W9P">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
+                                <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="201" imageScaling="proportionallyDown" inset="2" selectedItem="TQA-63-jSr" id="wCP-ph-x9D">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="aDc-uM-dfy">
+                                        <items>
+                                            <menuItem title="None" tag="201" id="TQA-63-jSr"/>
+                                            <menuItem title="Hyphen" tag="202" id="KHN-vg-Rvh"/>
+                                            <menuItem title="Space" tag="203" id="SUU-qo-2Go"/>
+                                            <menuItem title="Underscore" tag="204" id="tTs-Mb-VL5"/>
+                                            <menuItem title="Number" tag="205" id="RTD-mw-7L9"/>
+                                            <menuItem title="Symbol" tag="206" id="yE8-dQ-gjq"/>
+                                            <menuItem title="Character" tag="207" id="VAB-cn-I6P"/>
+                                            <menuItem title="Random" tag="209" id="IdE-GW-uKy"/>
+                                            <menuItem title="Emoji" tag="208" id="qk5-5E-5KX"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="7B3-FQ-bOK"/>
+                                    <action selector="selectSeparatorType:" target="d6t-4y-fZf" id="FAD-qs-TpA"/>
+                                    <binding destination="WUy-a4-IIG" name="selectedIndex" keyPath="values.pronounceableSeparatorTypeIndex" id="YTy-Dr-z4G"/>
                                 </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9W-EO-kbf">
-                                <rect key="frame" x="8" y="45" width="106" height="18"/>
+                            </popUpButton>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hzu-yh-ewX" userLabel="Case Type">
+                                <rect key="frame" x="97" y="8" width="257" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Hyphen" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ObI-Uh-17K">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
+                                <popUpButtonCell key="cell" type="push" title="Lowercase" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="101" imageScaling="proportionallyDown" inset="2" selectedItem="WqG-P6-PxB" id="ykr-dU-7a0">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="GTy-U9-tPI">
+                                        <items>
+                                            <menuItem title="Lowercase" tag="101" id="WqG-P6-PxB"/>
+                                            <menuItem title="Uppercase" tag="102" id="Lc0-mr-cAl"/>
+                                            <menuItem title="Mixed Case" tag="103" id="H7C-Kl-1fQ"/>
+                                            <menuItem title="Title Case" tag="104" id="j6R-4P-3mc"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="JR5-Rq-KOo"/>
+                                    <action selector="selectCaseType:" target="d6t-4y-fZf" id="bJe-YG-K1g"/>
+                                    <binding destination="WUy-a4-IIG" name="selectedIndex" keyPath="values.pronounceableCaseTypeIndex" id="6CP-eW-HXh"/>
                                 </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gob-Xp-p0c">
-                                <rect key="frame" x="8" y="23" width="106" height="18"/>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wif-2E-jkC">
+                                <rect key="frame" x="20" y="44" width="64" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Space" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="FGl-KJ-rNI">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Separator" id="yOY-wq-tHt">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="0PD-hU-hvo"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EAL-Do-pBi">
-                                <rect key="frame" x="101" y="67" width="106" height="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpO-9T-baA">
+                                <rect key="frame" x="20" y="13" width="68" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Underscore" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="52v-1q-4eR">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Case Type" id="ndz-mT-W6d">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="ymd-MR-S11"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Oi-mw-wJa">
-                                <rect key="frame" x="101" y="45" width="106" height="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kE-Pa-ZBy">
+                                <rect key="frame" x="20" y="82" width="46" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Number" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="CRU-1q-8rg">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="kIM-hN-5W6">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="wyc-9u-jiA"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7O-Li-fxP">
-                                <rect key="frame" x="101" y="23" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Symbol" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="OHS-kD-Ybc">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="0gB-Bw-u8P"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBl-pi-0WA">
-                                <rect key="frame" x="202" y="67" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Character" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="IB9-Ay-uY4">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="d6P-61-ngP"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1d-Xt-LWe">
-                                <rect key="frame" x="202" y="45" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Random" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="v3D-N7-gA6">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="b3w-fm-wFh"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fvt-4K-I8O">
-                                <rect key="frame" x="202" y="23" width="106" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Emoji" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="DZz-2N-faa">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeSeparatorType:" target="d6t-4y-fZf" id="ODs-OH-w8O"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coM-jj-NdH">
-                                <rect key="frame" x="305" y="65" width="88" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Uppercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="2X8-yc-q28">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="d6t-4y-fZf" id="AWR-LG-Y1l"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tqa-Jo-Cdy">
-                                <rect key="frame" x="305" y="43" width="87" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Lowercase" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="5m2-3E-HTe">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="d6t-4y-fZf" id="QtM-Vv-hyp"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SW4-U8-HSP">
-                                <rect key="frame" x="305" y="24" width="93" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Mixed Case" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="eQR-Vh-Sx3">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="d6t-4y-fZf" id="aeu-kH-pSX"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brA-NK-nWX">
-                                <rect key="frame" x="305" y="2" width="83" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Title Case" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="MPe-uZ-K0B">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeCaseType:" target="d6t-4y-fZf" id="XpP-km-vzu"/>
-                                </connections>
-                            </button>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="caseTypeLowerCase" destination="Tqa-Jo-Cdy" id="wyi-Fv-DH6"/>
-                        <outlet property="caseTypeMixedCase" destination="SW4-U8-HSP" id="3Ah-Na-LUI"/>
-                        <outlet property="caseTypeTitleCase" destination="brA-NK-nWX" id="Jl9-9E-HtH"/>
-                        <outlet property="caseTypeUpperCase" destination="coM-jj-NdH" id="WEL-R6-c9j"/>
-                        <outlet property="characterSeparator" destination="jBl-pi-0WA" id="tDx-jU-2q0"/>
-                        <outlet property="emojiSeparator" destination="Fvt-4K-I8O" id="7pe-CK-OsF"/>
-                        <outlet property="hyphenSeparator" destination="F9W-EO-kbf" id="coG-nc-coq"/>
-                        <outlet property="noSeparator" destination="x4e-M6-RXq" id="GNf-NE-ggm"/>
-                        <outlet property="numberSeparator" destination="2Oi-mw-wJa" id="uqF-Pd-cOS"/>
+                        <outlet property="caseTypeMenu" destination="hzu-yh-ewX" id="RiP-jU-b4S"/>
                         <outlet property="passwordLengthSlider" destination="50m-Ah-cqc" id="Bdw-Bm-8bW"/>
                         <outlet property="passwordLengthText" destination="yWf-3E-p7P" id="lOG-ek-Tgv"/>
-                        <outlet property="randomSeparator" destination="M1d-Xt-LWe" id="W2h-ES-QQA"/>
-                        <outlet property="spaceSeparator" destination="gob-Xp-p0c" id="iPe-gO-aY9"/>
-                        <outlet property="symbolSeparator" destination="w7O-Li-fxP" id="6Pa-NL-Xc6"/>
-                        <outlet property="underscoreSeparator" destination="EAL-Do-pBi" id="y3e-Qe-nX8"/>
+                        <outlet property="separatorTypeMenu" destination="8mf-EU-smN" id="oaf-h4-f74"/>
                     </connections>
                 </viewController>
                 <customObject id="K06-Eb-5Lo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="WUy-a4-IIG"/>
             </objects>
-            <point key="canvasLocation" x="-602" y="508"/>
+            <point key="canvasLocation" x="-602.5" y="508"/>
         </scene>
         <!--Advanced Password-->
         <scene sceneID="5Qb-8n-QAs">
@@ -1485,7 +1296,7 @@
                 </viewController>
                 <customObject id="OOS-gR-hXl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191" y="727"/>
+            <point key="canvasLocation" x="-191.5" y="727"/>
         </scene>
     </scenes>
     <resources>
