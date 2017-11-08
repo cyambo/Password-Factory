@@ -12,12 +12,11 @@
 #import "constants.h"
 #import "DefaultsManager.h"
 #import "StyleKit.h"
-#import "PasswordController.h"
+
 
 @interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, PasswordControllerDelegate>
 
 @property (nonatomic, strong) id clearClipboardTimer;
-@property (nonatomic, strong) PasswordController *password;
 @property (nonatomic, assign) NSUInteger passwordLength;
 @property (nonatomic, strong) NSDictionary *typeImages;
 @end

@@ -259,17 +259,18 @@
 }
 
 /**
- Create the dock menu with the four password types
+ Create the dock menu with the all the password types
 
  @param sender default sender
  @return dock menu
  */
 - (NSMenu *)applicationDockMenu:(NSApplication *)sender {
     NSMenu *dockMenu = [[NSMenu alloc] init];
-    //TODO: use model types for this list
-    NSArray *types = @[@"Random", @"Pattern", @"Pronounceable", @"Passphrase"];
-    for(int i = 0; i < types.count; i++) {
-        NSMenuItem *m = [[NSMenuItem alloc] initWithTitle:types[i] action:@selector(dockMenuItem:) keyEquivalent:@""];
+    NSDictionary *allTypes = [self.masterViewController.password getAllPasswordTypes];
+    for(int i = 0; i < allTypes.count; i++) {
+        PFPasswordType type = [self.masterViewController.password getPasswordTypeByIndex:i];
+        NSString *name = [self.masterViewController.password getNameForPasswordType:type];
+        NSMenuItem *m = [[NSMenuItem alloc] initWithTitle:name action:@selector(dockMenuItem:) keyEquivalent:@""];
         [dockMenu addItem:m];
         m.tag = -1; //setting a tag of -1 enables it
         m.identifier = @(i).stringValue; //set the identifier to match the tab type

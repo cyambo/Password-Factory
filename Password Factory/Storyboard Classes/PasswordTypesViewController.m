@@ -47,6 +47,7 @@
         self.prefix = [[(PasswordController *)self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
     }
     [self setupRadios];
+    [self changeLength:nil];
     
 }
 -(void)setupRadios {
@@ -152,6 +153,7 @@
 - (IBAction)changeLength:(id)sender {
     if ([self getPasswordLength] != self.passwordLength) {
         self.passwordLength = [self getPasswordLength];
+        [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
         [self callDelegate];
     }
     

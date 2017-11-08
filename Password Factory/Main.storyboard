@@ -780,9 +780,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <accessibility description="Password Length" identifier="passwordLength"/>
-                                <connections>
-                                    <binding destination="ZGa-yO-4eO" name="value" keyPath="values.passwordLength" id="EKS-gO-ymv"/>
-                                </connections>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-NQ-5IA">
                                 <rect key="frame" x="18" y="45" width="83" height="18"/>
@@ -960,9 +957,6 @@ r - Random item</string>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="Mal-f5-XKJ" name="value" keyPath="values.passwordLength" id="MU8-nP-B9P"/>
-                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dl8-eC-VA6">
                                 <rect key="frame" x="9" y="70" width="106" height="18"/>
@@ -1119,6 +1113,7 @@ r - Random item</string>
                         <outlet property="hyphenSeparator" destination="Koa-2j-7Gy" id="Nqn-ja-3Dt"/>
                         <outlet property="noSeparator" destination="Dl8-eC-VA6" id="ATv-ki-3t5"/>
                         <outlet property="numberSeparator" destination="PRY-1y-D79" id="iqR-JC-EfN"/>
+                        <outlet property="passwordLengthText" destination="TSQ-Gw-dha" id="mOb-rQ-Ps5"/>
                         <outlet property="randomSeparator" destination="WVt-Qv-UHM" id="6ND-r4-fJA"/>
                         <outlet property="spaceSeparator" destination="obW-Ex-Iiv" id="YvA-gm-aCf"/>
                         <outlet property="symbolSeparator" destination="4WV-Kc-zna" id="UFH-x0-0vG"/>
@@ -1164,9 +1159,6 @@ r - Random item</string>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="WUy-a4-IIG" name="value" keyPath="values.passwordLength" id="ZAU-sL-1x3"/>
-                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4e-M6-RXq">
                                 <rect key="frame" x="8" y="67" width="106" height="18"/>

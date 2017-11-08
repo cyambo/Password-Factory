@@ -12,7 +12,8 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    [StyleKit drawStrengthMeterWithStrengthColor:[self getStrengthColor] strength:self.strength size:dirtyRect.size];
+    float strength = self.strength + 0.01; // give a little size to zero strength
+    [StyleKit drawStrengthMeterWithStrengthColor:[self getStrengthColor] strength:strength size:dirtyRect.size];
 }
 
 @end
