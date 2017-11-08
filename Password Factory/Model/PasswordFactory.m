@@ -363,6 +363,25 @@
             case 15: //random symbol
                 toAppend = [self generateRandomWithLength:1];
                 break;
+            case 16: //random case word
+                toAppend = [[self randomFromArray:self.englishWords] randomCase];
+                break;
+            case 17: //title case word
+                toAppend = [[self randomFromArray:self.englishWords] capitalizedString];
+                break;
+            case 18: //random case short word
+                toAppend = [[self randomFromArray:self.shortWords] randomCase];
+                break;
+            case 19: //title case short word
+                toAppend = [[self randomFromArray:self.shortWords] capitalizedString];
+                break;
+            case 20: //random case phonetic sound
+                toAppend = [[self randomFromArray:self.c.phoneticSounds] randomCase];
+                break;
+            case 21: //title case phonetic sound
+                toAppend = [[self randomFromArray:self.c.phoneticSounds] capitalizedString];
+                break;
+                
         }
         [s appendString:toAppend];
     }];

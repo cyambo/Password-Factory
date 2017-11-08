@@ -39,4 +39,16 @@
 - (IBAction)selectCaseType:(id)sender;
 @property (weak) IBOutlet NSPopUpButton *caseTypeMenu;
 
+@property (weak) IBOutlet NSPopUpButton *advancedSource;
+@property (weak) IBOutlet NSSlider *advancedTruncate;
+@property (weak) IBOutlet NSButton *advancedRandomCase;
+@property (weak) IBOutlet NSButton *advancedReplaceAmbiguous;
+@property (weak) IBOutlet NSButton *advancedSymbolCase;
+@property (weak) IBOutlet NSButton *advancedAccentedCase;
+@property (weak) IBOutlet NSTextField *advancedPrefixPattern;
+@property (weak) IBOutlet NSTextField *advancedPostfixPattern;
+@property (weak) IBOutlet NSTextField *advancedFindRegex;
+@property (weak) IBOutlet NSTextField *advancedReplaceRegex;
+
+
 @end

@@ -86,12 +86,12 @@
                                         <menuItem isSeparatorItem="YES" id="MMn-7S-v10"/>
                                         <menuItem title="Cut" keyEquivalent="x" id="j3x-J8-L8X">
                                             <connections>
-                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="CqV-QH-JPN"/>
+                                                <action selector="menuCut:" target="jrw-Le-21b" id="tiL-7P-nBv"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Copy" keyEquivalent="c" id="R4Q-fN-6bs">
                                             <connections>
-                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="aYj-vt-pIb"/>
+                                                <action selector="menuCopy:" target="jrw-Le-21b" id="lmg-1c-Dd6"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Paste" keyEquivalent="v" id="fCl-4a-0qN">
@@ -171,7 +171,7 @@
                                         <menuItem title="Contact Support" tag="-1" id="XRw-eT-SYf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="DS2-g9-ir0"/>
+                                                <action selector="contactSupport:" target="jrw-Le-21b" id="LWW-Ed-YyY"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -761,7 +761,7 @@
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VxG-08-KJ8">
                                 <rect key="frame" x="18" y="103" width="334" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="14.26470588235294" tickMarkPosition="below" sliderType="linear" id="GSJ-UO-t3t"/>
+                                <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="60" doubleValue="14.26470588235294" tickMarkPosition="below" sliderType="linear" id="GSJ-UO-t3t"/>
                                 <accessibility description="Password Length Slider" identifier="passwordLengthSlider"/>
                                 <connections>
                                     <action selector="changeLength:" target="IdK-28-YZe" id="gFM-gu-INc"/>
@@ -895,10 +895,18 @@
                                             <menuItem title="# - Number" id="9uf-XR-1ns"/>
                                             <menuItem title="w - Lowercase Word" id="4Sn-VW-vAQ"/>
                                             <menuItem title="W - Uppercase Word" id="52H-hf-B1r"/>
+                                            <menuItem title="d - Random Case Word" id="nr8-CT-hCG"/>
+                                            <menuItem title="D - Title Case Word" id="vWm-ly-7Rr"/>
                                             <menuItem title="s - Lowercase Short Word" id="8IL-vH-ow7">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="S - Uppercase Short Word" id="xhI-Nt-YEt">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="h - Random Case Short Word" id="t1x-QF-10D">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="H - Title Case Short Word" id="fEd-mi-uKW">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="! - Symbol" id="5XW-rr-XtN">
@@ -926,6 +934,12 @@
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="P - Uppercase Phonetic Sound" id="RAd-9v-Q2g">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="t - Random Case Phonetic Sound" id="Gdu-Vu-c8n">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="T - Title Case Phonetic Sound" id="kgU-na-Sjp">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="r - Random Item" id="Gmd-YV-Cln">
@@ -961,7 +975,7 @@
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWZ-h2-Uyw">
                                 <rect key="frame" x="18" y="103" width="335" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Sqd-6F-q5B"/>
+                                <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="60" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Sqd-6F-q5B"/>
                                 <connections>
                                     <action selector="changeLength:" target="sdy-bB-1Ah" id="ju4-4R-tgl"/>
                                     <binding destination="Mal-f5-XKJ" name="value" keyPath="values.passwordLength" id="e4T-V2-5Ow"/>
@@ -1072,7 +1086,7 @@
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50m-Ah-cqc">
                                 <rect key="frame" x="18" y="103" width="335" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="40" doubleValue="22.5" tickMarkPosition="below" sliderType="linear" id="Ukq-gS-y0u"/>
+                                <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="60" doubleValue="22.5" tickMarkPosition="below" sliderType="linear" id="Ukq-gS-y0u"/>
                                 <connections>
                                     <action selector="changeLength:" target="d6t-4y-fZf" id="WUt-kH-D79"/>
                                     <binding destination="WUy-a4-IIG" name="value" keyPath="values.passwordLength" id="pjl-IT-0UD"/>
@@ -1090,12 +1104,12 @@
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8mf-EU-smN" userLabel="Separator">
                                 <rect key="frame" x="97" y="39" width="257" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="201" imageScaling="proportionallyDown" inset="2" selectedItem="TQA-63-jSr" id="wCP-ph-x9D">
+                                <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="201" imageScaling="proportionallyDown" inset="2" selectedItem="TQA-63-jSr" id="wCP-ph-x9D">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="aDc-uM-dfy">
                                         <items>
-                                            <menuItem title="None" tag="201" id="TQA-63-jSr"/>
+                                            <menuItem title="None" state="on" tag="201" id="TQA-63-jSr"/>
                                             <menuItem title="Hyphen" tag="202" id="KHN-vg-Rvh"/>
                                             <menuItem title="Space" tag="203" id="SUU-qo-2Go"/>
                                             <menuItem title="Underscore" tag="204" id="tTs-Mb-VL5"/>
@@ -1115,12 +1129,12 @@
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hzu-yh-ewX" userLabel="Case Type">
                                 <rect key="frame" x="97" y="8" width="257" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Lowercase" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="101" imageScaling="proportionallyDown" inset="2" selectedItem="WqG-P6-PxB" id="ykr-dU-7a0">
+                                <popUpButtonCell key="cell" type="push" title="Lowercase" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="101" imageScaling="proportionallyDown" inset="2" selectedItem="WqG-P6-PxB" id="ykr-dU-7a0">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="GTy-U9-tPI">
                                         <items>
-                                            <menuItem title="Lowercase" tag="101" id="WqG-P6-PxB"/>
+                                            <menuItem title="Lowercase" state="on" tag="101" id="WqG-P6-PxB"/>
                                             <menuItem title="Uppercase" tag="102" id="Lc0-mr-cAl"/>
                                             <menuItem title="Mixed Case" tag="103" id="H7C-Kl-1fQ"/>
                                             <menuItem title="Title Case" tag="104" id="j6R-4P-3mc"/>
@@ -1190,27 +1204,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6t-j0-Y1w">
-                                <rect key="frame" x="3" y="86" width="76" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Source" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Wjm-Lc-a2y" id="zNY-0r-uSF">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="gWt-Jh-bCv">
-                                        <items>
-                                            <menuItem title="Source" state="on" id="Wjm-Lc-a2y"/>
-                                            <menuItem title="Random" id="7aU-0J-wpm"/>
-                                            <menuItem title="Pattern" id="guc-7s-a8V"/>
-                                            <menuItem title="Pronounceable" id="UHS-Df-hyt">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Passphrase" id="Fty-PM-Dr9">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Dp-aA-vqM">
                                 <rect key="frame" x="106" y="90" width="171" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1248,6 +1241,9 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="mtc-B4-HHs" id="daB-3J-W2c"/>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMf-WX-Iqn">
                                 <rect key="frame" x="157" y="62" width="96" height="22"/>
@@ -1257,6 +1253,9 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="mtc-B4-HHs" id="RqV-KM-7wA"/>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdA-Lk-Dvd">
                                 <rect key="frame" x="157" y="37" width="98" height="22"/>
@@ -1266,6 +1265,9 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="mtc-B4-HHs" id="Ohq-ZH-n8b"/>
+                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hkZ-2c-5c1">
                                 <rect key="frame" x="13" y="-1" width="114" height="18"/>
@@ -1283,9 +1285,45 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="mtc-B4-HHs" id="DqD-4Y-Kcy"/>
+                                </connections>
                             </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6t-j0-Y1w">
+                                <rect key="frame" x="13" y="86" width="76" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Source" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Wjm-Lc-a2y" id="zNY-0r-uSF">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="gWt-Jh-bCv">
+                                        <items>
+                                            <menuItem title="Source" state="on" id="Wjm-Lc-a2y"/>
+                                            <menuItem title="Random" id="7aU-0J-wpm"/>
+                                            <menuItem title="Pattern" id="guc-7s-a8V"/>
+                                            <menuItem title="Pronounceable" id="UHS-Df-hyt">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="Passphrase" id="Fty-PM-Dr9">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="advancedAccentedCase" destination="hkZ-2c-5c1" id="ZsV-7q-Hll"/>
+                        <outlet property="advancedFindRegex" destination="Roy-Ax-8H4" id="DLA-Eb-b3t"/>
+                        <outlet property="advancedPostfixPattern" destination="hdA-Lk-Dvd" id="mqp-ym-6bW"/>
+                        <outlet property="advancedPrefixPattern" destination="iMf-WX-Iqn" id="BRw-1J-AsC"/>
+                        <outlet property="advancedRandomCase" destination="LEP-V7-5df" id="NJG-mB-s3y"/>
+                        <outlet property="advancedReplaceAmbiguous" destination="pTO-Xl-c8V" id="9Lr-kP-SGk"/>
+                        <outlet property="advancedReplaceRegex" destination="cZH-XC-Fp5" id="ou1-bW-P7R"/>
+                        <outlet property="advancedSource" destination="d6t-j0-Y1w" id="tgh-1K-pwM"/>
+                        <outlet property="advancedSymbolCase" destination="e4R-t7-yK5" id="zen-Ny-OGX"/>
+                        <outlet property="advancedTruncate" destination="9Dp-aA-vqM" id="vvd-Ak-WrZ"/>
+                    </connections>
                 </viewController>
                 <customObject id="rXD-kZ-olb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSString *nonAmbiguousLowerCase;
 @property (nonatomic, strong) NSString *nonAmbiguousNumbers;
 @property (nonatomic, strong) NSDictionary *characterPattern;
-@property (nonatomic, strong) NSDictionary *characterPatternNames;
 @property (nonatomic, strong) NSArray *phoneticSounds;
 @property (nonatomic, strong) NSArray *phoneticSoundsTwo;
 @property (nonatomic, strong) NSArray *phoneticSoundsThree;

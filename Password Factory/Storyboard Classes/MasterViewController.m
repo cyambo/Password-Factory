@@ -35,8 +35,8 @@
                             @(PFRandomType): [StyleKit imageOfRandomType],
                             @(PFPronounceableType): [StyleKit imageOfPronounceableType],
                             @(PFPassphraseType): [StyleKit imageOfPassphraseType],
-                            @(PFPatternType): [StyleKit imageOfPatternType]
-                            //ADVANCED HERE
+                            @(PFPatternType): [StyleKit imageOfPatternType],
+                            @(PFAdvancedType): [StyleKit imageOfAdvancedType]
                             };
         [self setObservers];
     }

@@ -27,6 +27,5 @@
 - (IBAction)menuCopy:(id)sender;
 - (IBAction)menuCut:(id)sender;
 
-
 +(BOOL)isDarkMode;
 @end
