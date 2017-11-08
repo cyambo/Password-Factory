@@ -18,6 +18,11 @@
 
 static NSImage* _imageOfPreferencesButton = nil;
 static NSImage* _imageOfMenuIcon = nil;
+static NSImage* _imageOfAdvancedType = nil;
+static NSImage* _imageOfPassphraseType = nil;
+static NSImage* _imageOfPatternType = nil;
+static NSImage* _imageOfPronounceableType = nil;
+static NSImage* _imageOfRandomType = nil;
 
 #pragma mark Initialization
 
@@ -42,48 +47,20 @@ static NSImage* _imageOfMenuIcon = nil;
     NSRect resizedFrame = StyleKitResizingBehaviorApply(resizing, NSMakeRect(0, 0, 400, 50), targetFrame);
     CGContextTranslateCTM(context, resizedFrame.origin.x, resizedFrame.origin.y);
     CGContextScaleCTM(context, resizedFrame.size.width / 400, resizedFrame.size.height / 50);
-    CGFloat resizedShadowScale = MIN(resizedFrame.size.width / 400, resizedFrame.size.height / 50);
 
 
     //// Color Declarations
     NSColor* transparent = [NSColor colorWithRed: 1 green: 1 blue: 1 alpha: 0];
 
-    //// Shadow Declarations
-    NSShadow* meterShadow = [[NSShadow alloc] init];
-    meterShadow.shadowColor = [NSColor.blackColor colorWithAlphaComponent: 0.12];
-    meterShadow.shadowOffset = NSMakeSize(0, 0);
-    meterShadow.shadowBlurRadius = 37;
-
     //// Background Drawing
+    [NSGraphicsContext saveGraphicsState];
+    CGContextSetAlpha(context, 0);
+
     NSBezierPath* backgroundPath = [NSBezierPath bezierPathWithRect: NSMakeRect(0, 0, size.width, size.height)];
     [transparent setFill];
     [backgroundPath fill];
 
-    ////// Background Inner Shadow
-    [NSGraphicsContext saveGraphicsState];
-    NSRectClip(backgroundPath.bounds);
-    CGContextSetShadowWithColor(context, NSZeroSize, 0, NULL);
-
-    CGContextSetAlpha(context, meterShadow.shadowColor.alphaComponent);
-    CGContextBeginTransparencyLayer(context, NULL);
-    {
-        NSShadow* opaqueShadow = [[NSShadow alloc] init];
-        opaqueShadow.shadowColor = [meterShadow.shadowColor colorWithAlphaComponent: 1];
-        opaqueShadow.shadowOffset = NSMakeSize(meterShadow.shadowOffset.width * resizedShadowScale, meterShadow.shadowOffset.height * resizedShadowScale);
-        opaqueShadow.shadowBlurRadius = meterShadow.shadowBlurRadius * resizedShadowScale;
-        [opaqueShadow set];
-
-        CGContextSetBlendMode(context, kCGBlendModeSourceOut);
-        CGContextBeginTransparencyLayer(context, NULL);
-
-        [opaqueShadow.shadowColor setFill];
-        [backgroundPath fill];
-
-        CGContextEndTransparencyLayer(context);
-    }
-    CGContextEndTransparencyLayer(context);
     [NSGraphicsContext restoreGraphicsState];
-
 
 
     //// Strength Level Drawing
@@ -237,6 +214,478 @@ static NSImage* _imageOfMenuIcon = nil;
     [rectanglePath fill];
 }
 
++ (void)drawAdvancedType
+{
+    [StyleKit drawAdvancedTypeWithFrame: NSMakeRect(0, 0, 250, 250) resizing: StyleKitResizingBehaviorAspectFit];
+}
+
++ (void)drawAdvancedTypeWithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing
+{
+    //// General Declarations
+    CGContextRef context = (CGContextRef)NSGraphicsContext.currentContext.graphicsPort;
+    
+    //// Resize to Target Frame
+    [NSGraphicsContext saveGraphicsState];
+    NSRect resizedFrame = StyleKitResizingBehaviorApply(resizing, NSMakeRect(0, 0, 250, 250), targetFrame);
+    CGContextTranslateCTM(context, resizedFrame.origin.x, resizedFrame.origin.y);
+    CGContextScaleCTM(context, resizedFrame.size.width / 250, resizedFrame.size.height / 250);
+
+
+    //// Color Declarations
+    NSColor* strokeColor = [NSColor colorWithRed: 0.309 green: 0.68 blue: 0.982 alpha: 1];
+
+    //// Polygon Drawing
+    [NSGraphicsContext saveGraphicsState];
+    CGContextTranslateCTM(context, 51, 201);
+    CGContextRotateCTM(context, 30 * M_PI/180);
+
+    NSBezierPath* polygonPath = [NSBezierPath bezierPath];
+    [polygonPath moveToPoint: NSMakePoint(0, 28.3)];
+    [polygonPath lineToPoint: NSMakePoint(24.51, 14.15)];
+    [polygonPath lineToPoint: NSMakePoint(24.51, -14.15)];
+    [polygonPath lineToPoint: NSMakePoint(0, -28.3)];
+    [polygonPath lineToPoint: NSMakePoint(-24.51, -14.15)];
+    [polygonPath lineToPoint: NSMakePoint(-24.51, 14.15)];
+    [polygonPath closePath];
+    [strokeColor setStroke];
+    polygonPath.lineWidth = 15;
+    [polygonPath stroke];
+
+    [NSGraphicsContext restoreGraphicsState];
+
+
+    //// Polygon 2 Drawing
+    [NSGraphicsContext saveGraphicsState];
+    CGContextTranslateCTM(context, 48.3, 55.5);
+    CGContextRotateCTM(context, 30 * M_PI/180);
+
+    NSBezierPath* polygon2Path = [NSBezierPath bezierPath];
+    [polygon2Path moveToPoint: NSMakePoint(0, 28.3)];
+    [polygon2Path lineToPoint: NSMakePoint(24.51, 14.15)];
+    [polygon2Path lineToPoint: NSMakePoint(24.51, -14.15)];
+    [polygon2Path lineToPoint: NSMakePoint(0, -28.3)];
+    [polygon2Path lineToPoint: NSMakePoint(-24.51, -14.15)];
+    [polygon2Path lineToPoint: NSMakePoint(-24.51, 14.15)];
+    [polygon2Path closePath];
+    [strokeColor setStroke];
+    polygon2Path.lineWidth = 15;
+    [polygon2Path stroke];
+
+    [NSGraphicsContext restoreGraphicsState];
+
+
+    //// Polygon 3 Drawing
+    [NSGraphicsContext saveGraphicsState];
+    CGContextTranslateCTM(context, 151.7, 197.5);
+    CGContextRotateCTM(context, 30 * M_PI/180);
+
+    NSBezierPath* polygon3Path = [NSBezierPath bezierPath];
+    [polygon3Path moveToPoint: NSMakePoint(0, 28.3)];
+    [polygon3Path lineToPoint: NSMakePoint(24.51, 14.15)];
+    [polygon3Path lineToPoint: NSMakePoint(24.51, -14.15)];
+    [polygon3Path lineToPoint: NSMakePoint(0, -28.3)];
+    [polygon3Path lineToPoint: NSMakePoint(-24.51, -14.15)];
+    [polygon3Path lineToPoint: NSMakePoint(-24.51, 14.15)];
+    [polygon3Path closePath];
+    [strokeColor setStroke];
+    polygon3Path.lineWidth = 15;
+    [polygon3Path stroke];
+
+    [NSGraphicsContext restoreGraphicsState];
+
+
+    //// Polygon 4 Drawing
+    [NSGraphicsContext saveGraphicsState];
+    CGContextTranslateCTM(context, 93.7, 118.5);
+    CGContextRotateCTM(context, 30 * M_PI/180);
+
+    NSBezierPath* polygon4Path = [NSBezierPath bezierPath];
+    [polygon4Path moveToPoint: NSMakePoint(0, 28.3)];
+    [polygon4Path lineToPoint: NSMakePoint(24.51, 14.15)];
+    [polygon4Path lineToPoint: NSMakePoint(24.51, -14.15)];
+    [polygon4Path lineToPoint: NSMakePoint(0, -28.3)];
+    [polygon4Path lineToPoint: NSMakePoint(-24.51, -14.15)];
+    [polygon4Path lineToPoint: NSMakePoint(-24.51, 14.15)];
+    [polygon4Path closePath];
+    [strokeColor setStroke];
+    polygon4Path.lineWidth = 15;
+    [polygon4Path stroke];
+
+    [NSGraphicsContext restoreGraphicsState];
+
+
+    //// Polygon 5 Drawing
+    [NSGraphicsContext saveGraphicsState];
+    CGContextTranslateCTM(context, 138.3, 44.5);
+    CGContextRotateCTM(context, 30 * M_PI/180);
+
+    NSBezierPath* polygon5Path = [NSBezierPath bezierPath];
+    [polygon5Path moveToPoint: NSMakePoint(0, 28.3)];
+    [polygon5Path lineToPoint: NSMakePoint(24.51, 14.15)];
+    [polygon5Path lineToPoint: NSMakePoint(24.51, -14.15)];
+    [polygon5Path lineToPoint: NSMakePoint(0, -28.3)];
+    [polygon5Path lineToPoint: NSMakePoint(-24.51, -14.15)];
+    [polygon5Path lineToPoint: NSMakePoint(-24.51, 14.15)];
+    [polygon5Path closePath];
+    [strokeColor setStroke];
+    polygon5Path.lineWidth = 15;
+    [polygon5Path stroke];
+
+    [NSGraphicsContext restoreGraphicsState];
+
+
+    //// Polygon 6 Drawing
+    [NSGraphicsContext saveGraphicsState];
+    CGContextTranslateCTM(context, 211.7, 94.5);
+    CGContextRotateCTM(context, 30 * M_PI/180);
+
+    NSBezierPath* polygon6Path = [NSBezierPath bezierPath];
+    [polygon6Path moveToPoint: NSMakePoint(0, 28.3)];
+    [polygon6Path lineToPoint: NSMakePoint(24.51, 14.15)];
+    [polygon6Path lineToPoint: NSMakePoint(24.51, -14.15)];
+    [polygon6Path lineToPoint: NSMakePoint(0, -28.3)];
+    [polygon6Path lineToPoint: NSMakePoint(-24.51, -14.15)];
+    [polygon6Path lineToPoint: NSMakePoint(-24.51, 14.15)];
+    [polygon6Path closePath];
+    [strokeColor setStroke];
+    polygon6Path.lineWidth = 15;
+    [polygon6Path stroke];
+
+    [NSGraphicsContext restoreGraphicsState];
+
+
+    //// Bezier Drawing
+    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
+    [bezierPath moveToPoint: NSMakePoint(137.57, 173)];
+    [bezierPath lineToPoint: NSMakePoint(107.86, 143)];
+    [strokeColor setStroke];
+    bezierPath.lineWidth = 15;
+    [bezierPath stroke];
+
+
+    //// Bezier 2 Drawing
+    NSBezierPath* bezier2Path = [NSBezierPath bezierPath];
+    [bezier2Path moveToPoint: NSMakePoint(65.14, 176.5)];
+    [bezier2Path lineToPoint: NSMakePoint(79.57, 143)];
+    [strokeColor setStroke];
+    bezier2Path.lineWidth = 15;
+    [bezier2Path stroke];
+
+
+    //// Bezier 3 Drawing
+    NSBezierPath* bezier3Path = [NSBezierPath bezierPath];
+    [bezier3Path moveToPoint: NSMakePoint(76.57, 55.5)];
+    [bezier3Path lineToPoint: NSMakePoint(110, 44.49)];
+    [strokeColor setStroke];
+    bezier3Path.lineWidth = 15;
+    [bezier3Path stroke];
+
+
+    //// Bezier 4 Drawing
+    NSBezierPath* bezier4Path = [NSBezierPath bezierPath];
+    [bezier4Path moveToPoint: NSMakePoint(166.57, 44.5)];
+    [bezier4Path lineToPoint: NSMakePoint(197.57, 70)];
+    [strokeColor setStroke];
+    bezier4Path.lineWidth = 15;
+    [bezier4Path stroke];
+
+
+    //// Bezier 5 Drawing
+    NSBezierPath* bezier5Path = [NSBezierPath bezierPath];
+    [bezier5Path moveToPoint: NSMakePoint(107.86, 94.01)];
+    [bezier5Path lineToPoint: NSMakePoint(124.14, 68.99)];
+    [strokeColor setStroke];
+    bezier5Path.lineWidth = 15;
+    [bezier5Path stroke];
+    
+    [NSGraphicsContext restoreGraphicsState];
+
+}
+
++ (void)drawPassphraseType
+{
+    [StyleKit drawPassphraseTypeWithFrame: NSMakeRect(0, 0, 250, 250) resizing: StyleKitResizingBehaviorAspectFit];
+}
+
++ (void)drawPassphraseTypeWithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing
+{
+    //// General Declarations
+    CGContextRef context = (CGContextRef)NSGraphicsContext.currentContext.graphicsPort;
+    
+    //// Resize to Target Frame
+    [NSGraphicsContext saveGraphicsState];
+    NSRect resizedFrame = StyleKitResizingBehaviorApply(resizing, NSMakeRect(0, 0, 250, 250), targetFrame);
+    CGContextTranslateCTM(context, resizedFrame.origin.x, resizedFrame.origin.y);
+    CGContextScaleCTM(context, resizedFrame.size.width / 250, resizedFrame.size.height / 250);
+
+
+    //// Color Declarations
+    NSColor* strokeColor = [NSColor colorWithRed: 0.309 green: 0.68 blue: 0.982 alpha: 1];
+
+    //// Bezier Drawing
+    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
+    [bezierPath moveToPoint: NSMakePoint(235, 151.67)];
+    [bezierPath curveToPoint: NSMakePoint(220, 136.67) controlPoint1: NSMakePoint(235, 143.42) controlPoint2: NSMakePoint(228.25, 136.67)];
+    [bezierPath lineToPoint: NSMakePoint(30, 136.67)];
+    [bezierPath curveToPoint: NSMakePoint(15, 151.67) controlPoint1: NSMakePoint(21.75, 136.67) controlPoint2: NSMakePoint(15, 143.42)];
+    [bezierPath curveToPoint: NSMakePoint(30, 166.67) controlPoint1: NSMakePoint(15, 159.92) controlPoint2: NSMakePoint(21.75, 166.67)];
+    [bezierPath lineToPoint: NSMakePoint(220, 166.67)];
+    [bezierPath curveToPoint: NSMakePoint(235, 151.67) controlPoint1: NSMakePoint(228.25, 166.67) controlPoint2: NSMakePoint(235, 159.92)];
+    [bezierPath closePath];
+    [strokeColor setStroke];
+    bezierPath.lineWidth = 15;
+    [bezierPath stroke];
+
+
+    //// Bezier 2 Drawing
+    NSBezierPath* bezier2Path = [NSBezierPath bezierPath];
+    [bezier2Path moveToPoint: NSMakePoint(200, 205)];
+    [bezier2Path curveToPoint: NSMakePoint(185, 190) controlPoint1: NSMakePoint(200, 196.75) controlPoint2: NSMakePoint(193.25, 190)];
+    [bezier2Path lineToPoint: NSMakePoint(45, 190)];
+    [bezier2Path curveToPoint: NSMakePoint(30, 205) controlPoint1: NSMakePoint(36.75, 190) controlPoint2: NSMakePoint(30, 196.75)];
+    [bezier2Path curveToPoint: NSMakePoint(45, 220) controlPoint1: NSMakePoint(30, 213.25) controlPoint2: NSMakePoint(36.75, 220)];
+    [bezier2Path lineToPoint: NSMakePoint(185, 220)];
+    [bezier2Path curveToPoint: NSMakePoint(200, 205) controlPoint1: NSMakePoint(193.25, 220) controlPoint2: NSMakePoint(200, 213.25)];
+    [bezier2Path closePath];
+    [strokeColor setStroke];
+    bezier2Path.lineWidth = 15;
+    [bezier2Path stroke];
+
+
+    //// Bezier 3 Drawing
+    NSBezierPath* bezier3Path = [NSBezierPath bezierPath];
+    [bezier3Path moveToPoint: NSMakePoint(235, 97.76)];
+    [bezier3Path curveToPoint: NSMakePoint(220.57, 83.33) controlPoint1: NSMakePoint(235, 89.82) controlPoint2: NSMakePoint(228.51, 83.33)];
+    [bezier3Path lineToPoint: NSMakePoint(64.43, 83.33)];
+    [bezier3Path curveToPoint: NSMakePoint(50, 97.76) controlPoint1: NSMakePoint(56.49, 83.33) controlPoint2: NSMakePoint(50, 89.82)];
+    [bezier3Path lineToPoint: NSMakePoint(50, 98.91)];
+    [bezier3Path curveToPoint: NSMakePoint(64.43, 113.33) controlPoint1: NSMakePoint(50, 106.84) controlPoint2: NSMakePoint(56.49, 113.33)];
+    [bezier3Path lineToPoint: NSMakePoint(220.57, 113.33)];
+    [bezier3Path curveToPoint: NSMakePoint(235, 98.91) controlPoint1: NSMakePoint(228.51, 113.33) controlPoint2: NSMakePoint(235, 106.84)];
+    [bezier3Path lineToPoint: NSMakePoint(235, 97.76)];
+    [bezier3Path closePath];
+    [strokeColor setStroke];
+    bezier3Path.lineWidth = 15;
+    [bezier3Path stroke];
+
+
+    //// Bezier 4 Drawing
+    NSBezierPath* bezier4Path = [NSBezierPath bezierPath];
+    [bezier4Path moveToPoint: NSMakePoint(170, 45)];
+    [bezier4Path curveToPoint: NSMakePoint(155, 30) controlPoint1: NSMakePoint(170, 36.75) controlPoint2: NSMakePoint(163.25, 30)];
+    [bezier4Path lineToPoint: NSMakePoint(35, 30)];
+    [bezier4Path curveToPoint: NSMakePoint(20, 45) controlPoint1: NSMakePoint(26.75, 30) controlPoint2: NSMakePoint(20, 36.75)];
+    [bezier4Path curveToPoint: NSMakePoint(35, 60) controlPoint1: NSMakePoint(20, 53.25) controlPoint2: NSMakePoint(26.75, 60)];
+    [bezier4Path lineToPoint: NSMakePoint(155, 60)];
+    [bezier4Path curveToPoint: NSMakePoint(170, 45) controlPoint1: NSMakePoint(163.25, 60) controlPoint2: NSMakePoint(170, 53.25)];
+    [bezier4Path closePath];
+    [strokeColor setStroke];
+    bezier4Path.lineWidth = 15;
+    [bezier4Path stroke];
+    
+    [NSGraphicsContext restoreGraphicsState];
+
+}
+
++ (void)drawPatternType
+{
+    [StyleKit drawPatternTypeWithFrame: NSMakeRect(0, 0, 250, 250) resizing: StyleKitResizingBehaviorAspectFit];
+}
+
++ (void)drawPatternTypeWithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing
+{
+    //// General Declarations
+    CGContextRef context = (CGContextRef)NSGraphicsContext.currentContext.graphicsPort;
+    
+    //// Resize to Target Frame
+    [NSGraphicsContext saveGraphicsState];
+    NSRect resizedFrame = StyleKitResizingBehaviorApply(resizing, NSMakeRect(0, 0, 250, 250), targetFrame);
+    CGContextTranslateCTM(context, resizedFrame.origin.x, resizedFrame.origin.y);
+    CGContextScaleCTM(context, resizedFrame.size.width / 250, resizedFrame.size.height / 250);
+
+
+    //// Color Declarations
+    NSColor* strokeColor = [NSColor colorWithRed: 0.309 green: 0.68 blue: 0.982 alpha: 1];
+
+    //// Oval Drawing
+    NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(169.5, 27.1, 53.4, 53.4)];
+    [strokeColor setStroke];
+    ovalPath.lineWidth = 15;
+    [ovalPath stroke];
+
+
+    //// Oval 2 Drawing
+    NSBezierPath* oval2Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(169.5, 98.3, 53.4, 53.4)];
+    [strokeColor setStroke];
+    oval2Path.lineWidth = 15;
+    [oval2Path stroke];
+
+
+    //// Oval 3 Drawing
+    NSBezierPath* oval3Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(169.5, 169.5, 53.4, 53.4)];
+    [strokeColor setStroke];
+    oval3Path.lineWidth = 15;
+    [oval3Path stroke];
+
+
+    //// Oval 4 Drawing
+    NSBezierPath* oval4Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(98.3, 27.1, 53.4, 53.4)];
+    [strokeColor setStroke];
+    oval4Path.lineWidth = 15;
+    [oval4Path stroke];
+
+
+    //// Oval 5 Drawing
+    NSBezierPath* oval5Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(98.3, 98.3, 53.4, 53.4)];
+    [strokeColor setStroke];
+    oval5Path.lineWidth = 15;
+    [oval5Path stroke];
+
+
+    //// Oval 6 Drawing
+    NSBezierPath* oval6Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(98.3, 169.5, 53.4, 53.4)];
+    [strokeColor setStroke];
+    oval6Path.lineWidth = 15;
+    [oval6Path stroke];
+
+
+    //// Oval 7 Drawing
+    NSBezierPath* oval7Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(27.1, 27.1, 53.4, 53.4)];
+    [strokeColor setStroke];
+    oval7Path.lineWidth = 15;
+    [oval7Path stroke];
+
+
+    //// Oval 8 Drawing
+    NSBezierPath* oval8Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(27.1, 98.3, 53.4, 53.4)];
+    [strokeColor setStroke];
+    oval8Path.lineWidth = 15;
+    [oval8Path stroke];
+
+
+    //// Oval 9 Drawing
+    NSBezierPath* oval9Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(27.1, 169.5, 53.4, 53.4)];
+    [strokeColor setStroke];
+    oval9Path.lineWidth = 15;
+    [oval9Path stroke];
+    
+    [NSGraphicsContext restoreGraphicsState];
+
+}
+
++ (void)drawPronounceableType
+{
+    [StyleKit drawPronounceableTypeWithFrame: NSMakeRect(0, 0, 250, 250) resizing: StyleKitResizingBehaviorAspectFit];
+}
+
++ (void)drawPronounceableTypeWithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing
+{
+    //// General Declarations
+    CGContextRef context = (CGContextRef)NSGraphicsContext.currentContext.graphicsPort;
+    
+    //// Resize to Target Frame
+    [NSGraphicsContext saveGraphicsState];
+    NSRect resizedFrame = StyleKitResizingBehaviorApply(resizing, NSMakeRect(0, 0, 250, 250), targetFrame);
+    CGContextTranslateCTM(context, resizedFrame.origin.x, resizedFrame.origin.y);
+    CGContextScaleCTM(context, resizedFrame.size.width / 250, resizedFrame.size.height / 250);
+
+
+    //// Color Declarations
+    NSColor* strokeColor = [NSColor colorWithRed: 0.309 green: 0.68 blue: 0.982 alpha: 1];
+
+    //// Bezier Drawing
+    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
+    [bezierPath moveToPoint: NSMakePoint(125.55, 205.8)];
+    [bezierPath curveToPoint: NSMakePoint(30.55, 130.8) controlPoint1: NSMakePoint(73.08, 205.8) controlPoint2: NSMakePoint(30.55, 172.22)];
+    [bezierPath curveToPoint: NSMakePoint(65.12, 72.93) controlPoint1: NSMakePoint(30.55, 107.5) controlPoint2: NSMakePoint(44, 86.69)];
+    [bezierPath curveToPoint: NSMakePoint(30.55, 45.8) controlPoint1: NSMakePoint(51.83, 56.74) controlPoint2: NSMakePoint(23.57, 47.2)];
+    [bezierPath curveToPoint: NSMakePoint(105.37, 57.5) controlPoint1: NSMakePoint(55.97, 40.72) controlPoint2: NSMakePoint(83.98, 48.56)];
+    [bezierPath curveToPoint: NSMakePoint(125.55, 55.8) controlPoint1: NSMakePoint(111.88, 56.39) controlPoint2: NSMakePoint(118.62, 55.8)];
+    [bezierPath curveToPoint: NSMakePoint(220.55, 130.8) controlPoint1: NSMakePoint(178.01, 55.8) controlPoint2: NSMakePoint(220.55, 89.38)];
+    [bezierPath curveToPoint: NSMakePoint(125.55, 205.8) controlPoint1: NSMakePoint(220.55, 172.22) controlPoint2: NSMakePoint(178.01, 205.8)];
+    [bezierPath closePath];
+    [strokeColor setStroke];
+    bezierPath.lineWidth = 15;
+    [bezierPath stroke];
+    
+    [NSGraphicsContext restoreGraphicsState];
+
+}
+
++ (void)drawRandomType
+{
+    [StyleKit drawRandomTypeWithFrame: NSMakeRect(0, 0, 250, 250) resizing: StyleKitResizingBehaviorAspectFit];
+}
+
++ (void)drawRandomTypeWithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing
+{
+    //// General Declarations
+    CGContextRef context = (CGContextRef)NSGraphicsContext.currentContext.graphicsPort;
+    
+    //// Resize to Target Frame
+    [NSGraphicsContext saveGraphicsState];
+    NSRect resizedFrame = StyleKitResizingBehaviorApply(resizing, NSMakeRect(0, 0, 250, 250), targetFrame);
+    CGContextTranslateCTM(context, resizedFrame.origin.x, resizedFrame.origin.y);
+    CGContextScaleCTM(context, resizedFrame.size.width / 250, resizedFrame.size.height / 250);
+
+
+    //// Color Declarations
+    NSColor* strokeColor = [NSColor colorWithRed: 0.309 green: 0.68 blue: 0.982 alpha: 1];
+
+    //// Rectangle Drawing
+    NSBezierPath* rectanglePath = [NSBezierPath bezierPathWithRect: NSMakeRect(65.75, 184.25, 39.5, 39.5)];
+    [strokeColor setStroke];
+    rectanglePath.lineWidth = 15;
+    [rectanglePath stroke];
+
+
+    //// Bezier Drawing
+    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
+    [bezierPath moveToPoint: NSMakePoint(184.25, 105.25)];
+    [bezierPath lineToPoint: NSMakePoint(144.75, 105.25)];
+    [bezierPath lineToPoint: NSMakePoint(144.75, 144.75)];
+    [bezierPath lineToPoint: NSMakePoint(184.25, 144.75)];
+    [bezierPath lineToPoint: NSMakePoint(184.25, 105.25)];
+    [bezierPath closePath];
+    [bezierPath moveToPoint: NSMakePoint(184.25, 184.25)];
+    [bezierPath lineToPoint: NSMakePoint(184.25, 223.75)];
+    [bezierPath lineToPoint: NSMakePoint(144.75, 223.75)];
+    [bezierPath lineToPoint: NSMakePoint(144.75, 184.25)];
+    [bezierPath lineToPoint: NSMakePoint(105.25, 184.25)];
+    [bezierPath lineToPoint: NSMakePoint(105.25, 144.75)];
+    [bezierPath lineToPoint: NSMakePoint(65.75, 144.75)];
+    [bezierPath lineToPoint: NSMakePoint(65.75, 105.25)];
+    [bezierPath lineToPoint: NSMakePoint(26.25, 105.25)];
+    [bezierPath lineToPoint: NSMakePoint(26.25, 65.75)];
+    [bezierPath lineToPoint: NSMakePoint(65.75, 65.75)];
+    [bezierPath lineToPoint: NSMakePoint(65.75, 26.25)];
+    [bezierPath lineToPoint: NSMakePoint(105.25, 26.25)];
+    [bezierPath lineToPoint: NSMakePoint(105.25, 65.75)];
+    [bezierPath lineToPoint: NSMakePoint(144.75, 65.75)];
+    [bezierPath lineToPoint: NSMakePoint(144.75, 26.25)];
+    [bezierPath lineToPoint: NSMakePoint(184.25, 26.25)];
+    [bezierPath lineToPoint: NSMakePoint(184.25, 65.75)];
+    [bezierPath lineToPoint: NSMakePoint(223.75, 65.75)];
+    [bezierPath lineToPoint: NSMakePoint(223.75, 105.25)];
+    [bezierPath lineToPoint: NSMakePoint(223.75, 144.75)];
+    [bezierPath lineToPoint: NSMakePoint(223.75, 184.25)];
+    [bezierPath lineToPoint: NSMakePoint(184.25, 184.25)];
+    [bezierPath closePath];
+    [strokeColor setStroke];
+    bezierPath.lineWidth = 15;
+    [bezierPath stroke];
+
+
+    //// Rectangle 2 Drawing
+    NSBezierPath* rectangle2Path = [NSBezierPath bezierPathWithRect: NSMakeRect(26.25, 144.75, 39.5, 39.5)];
+    [strokeColor setStroke];
+    rectangle2Path.lineWidth = 15;
+    [rectangle2Path stroke];
+    
+    [NSGraphicsContext restoreGraphicsState];
+
+}
+
 #pragma mark Generated Images
 
 + (NSImage*)imageOfPreferencesButton
@@ -267,6 +716,81 @@ static NSImage* _imageOfMenuIcon = nil;
     }];
 
     return _imageOfMenuIcon;
+}
+
++ (NSImage*)imageOfAdvancedType
+{
+    if (_imageOfAdvancedType)
+        return _imageOfAdvancedType;
+
+    _imageOfAdvancedType = [NSImage imageWithSize: NSMakeSize(250, 250) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    {
+        [StyleKit drawAdvancedType];
+
+        return YES;
+    }];
+
+    return _imageOfAdvancedType;
+}
+
++ (NSImage*)imageOfPassphraseType
+{
+    if (_imageOfPassphraseType)
+        return _imageOfPassphraseType;
+
+    _imageOfPassphraseType = [NSImage imageWithSize: NSMakeSize(250, 250) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    {
+        [StyleKit drawPassphraseType];
+
+        return YES;
+    }];
+
+    return _imageOfPassphraseType;
+}
+
++ (NSImage*)imageOfPatternType
+{
+    if (_imageOfPatternType)
+        return _imageOfPatternType;
+
+    _imageOfPatternType = [NSImage imageWithSize: NSMakeSize(250, 250) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    {
+        [StyleKit drawPatternType];
+
+        return YES;
+    }];
+
+    return _imageOfPatternType;
+}
+
++ (NSImage*)imageOfPronounceableType
+{
+    if (_imageOfPronounceableType)
+        return _imageOfPronounceableType;
+
+    _imageOfPronounceableType = [NSImage imageWithSize: NSMakeSize(250, 250) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    {
+        [StyleKit drawPronounceableType];
+
+        return YES;
+    }];
+
+    return _imageOfPronounceableType;
+}
+
++ (NSImage*)imageOfRandomType
+{
+    if (_imageOfRandomType)
+        return _imageOfRandomType;
+
+    _imageOfRandomType = [NSImage imageWithSize: NSMakeSize(250, 250) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    {
+        [StyleKit drawRandomType];
+
+        return YES;
+    }];
+
+    return _imageOfRandomType;
 }
 
 @end

@@ -19,6 +19,7 @@
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) PasswordController *password;
 @property (nonatomic, assign) NSUInteger passwordLength;
+@property (nonatomic, strong) NSDictionary *typeImages;
 @end
 
 @implementation MasterViewController
@@ -31,6 +32,13 @@
         self.password.delegate = self;
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
+        self.typeImages = @{
+                            @(PFRandomType): [StyleKit imageOfRandomType],
+                            @(PFPronounceableType): [StyleKit imageOfPronounceableType],
+                            @(PFPassphraseType): [StyleKit imageOfPassphraseType],
+                            @(PFPatternType): [StyleKit imageOfPatternType]
+                            //ADVANCED HERE
+                            };
         [self setObservers];
     }
     return self;
@@ -374,7 +382,7 @@
     NSTableCellView *c = [tableView makeViewWithIdentifier:@"Password Type Cell" owner:nil];
     PFPasswordType type = [self.password getPasswordTypeByIndex:row];
     c.textField.stringValue = [self.password getNameForPasswordType:type];
-    c.imageView.image = [StyleKit imageOfPreferencesButton];
+    c.imageView.image = self.typeImages[@(type)];
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {

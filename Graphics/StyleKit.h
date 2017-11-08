@@ -37,5 +37,10 @@ extern NSRect StyleKitResizingBehaviorApply(StyleKitResizingBehavior behavior, N
 // Generated Images
 + (NSImage*)imageOfPreferencesButton;
 + (NSImage*)imageOfMenuIcon;
++ (NSImage*)imageOfAdvancedType;
++ (NSImage*)imageOfPassphraseType;
++ (NSImage*)imageOfPatternType;
++ (NSImage*)imageOfPronounceableType;
++ (NSImage*)imageOfRandomType;
 
 @end
