@@ -10,12 +10,9 @@
 #import "StyleKit.h"
 @implementation StrengthMeter
 
-
-
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    [StyleKit drawStrengthMeterWithStrengthColor:[self getStrengthColor] strength:self.strength];
-
+    [StyleKit drawStrengthMeterWithStrengthColor:[self getStrengthColor] strength:self.strength size:dirtyRect.size];
 }
 
 @end

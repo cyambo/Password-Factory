@@ -33,7 +33,7 @@
 - (void)generateAndCopy;
 
 @property (nonatomic, weak) NSWindowController *prefsWindowController;
-
+- (IBAction)loadPreferencesWindow:(id)sender;
 @property (weak) IBOutlet NSButton *loadPreferencesButton;
 
 - (IBAction)generateAction:(id)sender;

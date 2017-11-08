@@ -234,7 +234,6 @@
     [self setPasswordStrength];
 }
 -(void)passwordChanged:(NSString *)password {
-    NSLog(@"%@",password);
     [self updatePasswordField];
     [self setPasswordStrength];
 }
@@ -386,7 +385,5 @@
     self.passwordView.subviews = @[];
     [self.passwordView addSubview:vc.view];
     [self generatePassword];
-}
-- (IBAction)caseman:(id)sender {
 }
 @end

@@ -116,7 +116,7 @@
 -(NSString *)getPasswordValue {
     return self.password;
 }
--(int)getPasswordStrength {
+-(float)getPasswordStrength {
     return self.passwordStrength.strength;
 }
 -(NSString *)getCrackTimeString {

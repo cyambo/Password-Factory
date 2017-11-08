@@ -10,6 +10,6 @@
 
 @interface PasswordStrength : NSObject
 @property (nonatomic, strong) NSString *crackTimeString;
-@property (nonatomic, assign) int strength;
+@property (nonatomic, assign) float strength;
 -(void)updatePasswordStrength:(NSString *)password withCrackTimeString:(BOOL)withCt;
 @end

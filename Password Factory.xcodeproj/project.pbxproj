@@ -34,10 +34,6 @@
 		409585D31B8112D600393B99 /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CE1B8112D600393B99 /* PreferencesWindowTests.m */; };
 		4095860F1B8112FD00393B99 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
 		409586101B8112FD00393B99 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 409585D61B8112FD00393B99 /* defaults.plist */; };
-		409586111B8112FD00393B99 /* menu-icon-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 409585D71B8112FD00393B99 /* menu-icon-inv.png */; };
-		409586121B8112FD00393B99 /* menu-icon-inv@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409585D81B8112FD00393B99 /* menu-icon-inv@2x.png */; };
-		409586131B8112FD00393B99 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 409585D91B8112FD00393B99 /* menu-icon.png */; };
-		409586141B8112FD00393B99 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409585DA1B8112FD00393B99 /* menu-icon@2x.png */; };
 		409586261B8112FD00393B99 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
 		409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F91B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m */; };
 		409586291B8112FD00393B99 /* PreferencesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585FE1B8112FD00393B99 /* PreferencesButton.m */; };
@@ -177,10 +173,6 @@
 		409585CE1B8112D600393B99 /* PreferencesWindowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowTests.m; sourceTree = "<group>"; };
 		409585D51B8112FD00393B99 /* bad_words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bad_words.json; sourceTree = "<group>"; };
 		409585D61B8112FD00393B99 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
-		409585D71B8112FD00393B99 /* menu-icon-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-inv.png"; sourceTree = "<group>"; };
-		409585D81B8112FD00393B99 /* menu-icon-inv@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-inv@2x.png"; sourceTree = "<group>"; };
-		409585D91B8112FD00393B99 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
-		409585DA1B8112FD00393B99 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 		409585F51B8112FD00393B99 /* StyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleKit.h; sourceTree = "<group>"; };
 		409585F61B8112FD00393B99 /* StyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleKit.m; sourceTree = "<group>"; };
 		409585F81B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+NSColorHexadecimalValue.h"; sourceTree = "<group>"; };
@@ -354,12 +346,6 @@
 				409586311B81131100393B99 /* PasswordFactory.help */,
 				409585D51B8112FD00393B99 /* bad_words.json */,
 				409585D61B8112FD00393B99 /* defaults.plist */,
-				409585D71B8112FD00393B99 /* menu-icon-inv.png */,
-				409585D81B8112FD00393B99 /* menu-icon-inv@2x.png */,
-				409585D91B8112FD00393B99 /* menu-icon.png */,
-				409585DA1B8112FD00393B99 /* menu-icon@2x.png */,
-				409585F51B8112FD00393B99 /* StyleKit.h */,
-				409585F61B8112FD00393B99 /* StyleKit.m */,
 				40C4C8AD1F9E9C0900F31070 /* emojis.txt */,
 			);
 			name = Assets;
@@ -496,6 +482,15 @@
 			path = "Password Factory iOSUITests";
 			sourceTree = "<group>";
 		};
+		40BA26EF1FB26E1400F7AF13 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				409585F51B8112FD00393B99 /* StyleKit.h */,
+				409585F61B8112FD00393B99 /* StyleKit.m */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
 		40C4C8B51F9EADC100F31070 /* Password FactoryUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +507,7 @@
 				40537D8C1F9419FD00D645B7 /* constants.m */,
 				409585D41B8112FD00393B99 /* Assets */,
 				402190AC1FAF797100BC9D49 /* Subclasses */,
+				40BA26EF1FB26E1400F7AF13 /* Graphics */,
 				409585F71B8112FD00393B99 /* Categories */,
 				409585FC1B8112FD00393B99 /* Controls */,
 				409586011B8112FD00393B99 /* MenuApp */,
@@ -920,16 +916,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				409586141B8112FD00393B99 /* menu-icon@2x.png in Resources */,
 				409586101B8112FD00393B99 /* defaults.plist in Resources */,
 				4095860F1B8112FD00393B99 /* bad_words.json in Resources */,
 				40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */,
-				409586121B8112FD00393B99 /* menu-icon-inv@2x.png in Resources */,
 				402A42831FAA316F00615A2E /* Main.storyboard in Resources */,
 				40FB0C261B810F10009193F8 /* Images.xcassets in Resources */,
-				409586131B8112FD00393B99 /* menu-icon.png in Resources */,
 				409586321B81131100393B99 /* PasswordFactory.help in Resources */,
-				409586111B8112FD00393B99 /* menu-icon-inv.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
