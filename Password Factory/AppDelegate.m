@@ -118,8 +118,8 @@
 
  @param sender default sender
  */
-- (IBAction)selectTabFromMenu:(NSMenuItem *)sender {
-    [self selectTabByTag:(int)sender.tag];
+- (IBAction)selectTypeFromMenu:(NSMenuItem *)sender {
+    [self selectTypeByTag:(int)sender.tag];
 }
 
 /**
@@ -127,12 +127,12 @@
 
  @param tag tag number of tab
  */
--(void)selectTabByTag:(int)tag {
-    //the tag of the menu item matches the identifier of the tabs so we can
+-(void)selectTypeByTag:(int)tag {
+    //the tag of the menu item matches the identifier of the type selection so we can
     //just use the tag to select the proper tab
     if (tag >= 0) {
-    //TODO: get menu working
-        //        [self.masterViewController.passwordTypeTab selectTabViewItemAtIndex:tag];
+        PFPasswordType type = tag + PFRandomType;
+        [self.masterViewController selectPaswordType:type];
     }
 }
 
@@ -201,16 +201,15 @@
  @return the menu display status
  */
 - (BOOL)validateUserInterfaceItem:(id<NSValidatedUserInterfaceItem>)item {
-//TODO: get menu working
     NSMenuItem *m = (NSMenuItem *)item;
     //If we are in the 'Tabs' menu, then disable the currently selected tab
-    if ([m.parentItem.title isEqualToString:@"Tabs"]) {
+    if ([m.parentItem.title isEqualToString:@"Types"]) {
         //get the selected tab identifier
-//        int selected = [[self.masterViewController passwordTypeTab].selectedTabViewItem.identifier intValue] - PFRandomType;
+        int selected = [self.masterViewController getSelectedPasswordType] - PFRandomType;
         //the tab identifier and menu item tag match up
-//        if(m.tag == selected) {
-//            return NO;
-//        }
+        if(m.tag == selected) {
+            return NO;
+        }
     }
     //otherwise, enable the menu
     return YES;
@@ -284,7 +283,7 @@
  @param sender default sender
  */
 - (void)dockMenuItem:(NSMenuItem *)sender {
-    [self selectTabByTag:[sender.identifier intValue]];
+    [self selectTypeByTag:[sender.identifier intValue]];
     [self.masterViewController generateAndCopy];
 }
 -(void)applicationWillFinishLaunching:(NSNotification *)aNotification {

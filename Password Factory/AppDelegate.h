@@ -18,7 +18,7 @@
 @property (nonatomic, weak) PreferencesViewController *prefsViewController;
 @property (nonatomic, weak) NSWindowController *prefsWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;
-- (IBAction)selectTabFromMenu:(NSMenuItem *)sender;
+- (IBAction)selectTypeFromMenu:(NSMenuItem *)sender;
 @property (weak) IBOutlet NSMenuItem *randomMenuItem;
 @property (weak) IBOutlet NSMenuItem *patternMenuItem;
 @property (weak) IBOutlet NSMenuItem *pronounceableMenuItem;

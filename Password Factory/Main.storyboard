@@ -80,18 +80,18 @@
                                     <items>
                                         <menuItem title="Generate Password" tag="-1" keyEquivalent="g" id="ahs-5I-44E">
                                             <connections>
-                                                <action selector="generatePasswordFromMenu:" target="jrw-Le-21b" id="KR3-eA-LZX"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="KR3-eA-LZX"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="MMn-7S-v10"/>
                                         <menuItem title="Cut" keyEquivalent="x" id="j3x-J8-L8X">
                                             <connections>
-                                                <action selector="menuCut:" target="jrw-Le-21b" id="CqV-QH-JPN"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="CqV-QH-JPN"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Copy" keyEquivalent="c" id="R4Q-fN-6bs">
                                             <connections>
-                                                <action selector="menuCopy:" target="jrw-Le-21b" id="aYj-vt-pIb"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="aYj-vt-pIb"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Paste" keyEquivalent="v" id="fCl-4a-0qN">
@@ -113,28 +113,28 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Tabs" id="0Vl-bn-7ao" userLabel="Tabs">
+                            <menuItem title="Types" id="0Vl-bn-7ao" userLabel="Tabs">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Tabs" id="aXI-ej-NW0">
+                                <menu key="submenu" title="Types" id="aXI-ej-NW0">
                                     <items>
                                         <menuItem title="Random" keyEquivalent="r" id="IAh-o3-NV2">
                                             <connections>
-                                                <action selector="selectTabFromMenu:" target="jrw-Le-21b" id="tFm-yF-i6Q"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="tFm-yF-i6Q"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Pattern" tag="1" keyEquivalent="t" id="qCg-rz-uyY">
                                             <connections>
-                                                <action selector="selectTabFromMenu:" target="jrw-Le-21b" id="fcd-58-HjN"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="fcd-58-HjN"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Pronounceable" tag="2" keyEquivalent="u" id="9dM-FI-K8M">
                                             <connections>
-                                                <action selector="selectTabFromMenu:" target="jrw-Le-21b" id="L0J-RX-vZe"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="L0J-RX-vZe"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Passphrase" tag="3" keyEquivalent="p" id="4HN-fl-PVL">
                                             <connections>
-                                                <action selector="selectTabFromMenu:" target="jrw-Le-21b" id="SMR-pm-KLN"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="SMR-pm-KLN"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -171,7 +171,7 @@
                                         <menuItem title="Contact Support" tag="-1" id="XRw-eT-SYf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="contactSupport:" target="jrw-Le-21b" id="DS2-g9-ir0"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="DS2-g9-ir0"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -1454,10 +1454,10 @@ r - Random item</string>
             </objects>
             <point key="canvasLocation" x="-862" y="945"/>
         </scene>
-        <!--View Controller-->
+        <!--Stored Password-->
         <scene sceneID="chS-3k-fmZ">
             <objects>
-                <viewController id="tOv-e7-BMt" sceneMemberID="viewController">
+                <viewController title="Stored Password" storyboardIdentifier="Stored Password" id="tOv-e7-BMt" sceneMemberID="viewController">
                     <view key="view" id="xKC-pF-soN">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>

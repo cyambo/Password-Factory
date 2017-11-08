@@ -61,21 +61,22 @@ static NSDictionary *passwordTypes;
  */
 - (NSString *)generatePronounceable {
     NSMutableString *p = [[NSMutableString alloc] init];
-    NSString *separator = self.separator;
+
     int i = 0;
     while (p.length < self.length) {
         NSString *append = [self caseString:[self getPronounceableForLength:(self.length - p.length)]];
         if ([append isEqual: @""]) {
             break;
         } else {
+            if (p.length) {
+                [p appendString:self.separator];
+            }
             [p appendString:append];
         }
-        if (i%2 == 1 && p.length < self.length) {
-            [p appendString:self.separator];
-        }
+
         i++;
     }
-    return [self removeTrailingSeparator:p separator:separator];
+    return p;
 }
 /**
  *  Generates a 'pronounceable' password
@@ -108,7 +109,15 @@ static NSDictionary *passwordTypes;
         return [self randomFromArray:phoneticSoundsThree];
     }
     else { //return any length sound
-        return [self randomFromArray:phoneticSounds];
+        NSUInteger numSyllables = [self randomNumber:3] + 1;
+        NSMutableString *sound = [[NSMutableString alloc] init];
+        for(int i = 0; i <= numSyllables; i++) {
+            [sound appendString:[self randomFromArray:phoneticSounds]];
+            if ((length - sound.length) < 3) {
+                break;
+            }
+        }
+        return sound;
     }
     return @"";
 }
@@ -160,19 +169,19 @@ static NSDictionary *passwordTypes;
 -(NSString *)generatePassphrase {
     NSString *separator = self.separator;
     NSMutableString *p = [[NSMutableString alloc] init];
-
     while (p.length < self.length) {
-
         NSString *append = [self caseString:[self getPassphraseForLength:(self.length - p.length)]];
         if ([append isEqual: @""]) {
             break;
         } else {
-
+            //don't start with the separator
+            if (p.length) {
+                [p appendString:separator];
+            }
             [p appendString:append];
-            [p appendString:separator];
         }
     }
-    return [self removeTrailingSeparator:p separator:separator];
+    return p;
 }
 
 /**
@@ -634,29 +643,6 @@ static NSDictionary *passwordTypes;
         }
     }
     return NO;
-}
-
-/**
- *  removes the trailing separator from a string
- *
- *  @param string    string to check
- *  @param separator separator to remove - only one character will be checked
- *
- *  @return string without trailing separator
- */
--(NSString *)removeTrailingSeparator:(NSString *)string separator:(NSString *)separator {
-    //don't need to do anything for empty separator, or empty string
-    if (separator.length == 0 | string.length == 0) {
-        return string;
-    }
-    //TODO: working with chars does not work with extended characters, switch to string based
-    //checking last character to see if it is the same as separator, if it is, remove it
-    char c = [string characterAtIndex:string.length - 1];
-    if ([separator characterAtIndex:0] == c) {
-        return [string substringToIndex:string.length -1];
-    }
-    //TODO: potential bug where the separator is the same as the last character of the password and is not the appended separator then it will be removed truncating the string
-    return string;
 }
 
 /**
