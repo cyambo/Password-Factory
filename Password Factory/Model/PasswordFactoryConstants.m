@@ -59,21 +59,22 @@
                          @"P" : @14, //random uppercase phonetic sound
                          @"r" : @15  //random item generated from random tab settings
                          };
-    self.characterPatternNames = @{@"#" : @"Number",
-                              @"w" : @"Lowercase Word",
-                              @"W" : @"Uppercase Word",
-                              @"s" : @"Lowercase Short Word",
-                              @"S" : @"Uppercase Short Word",
-                              @"!" : @"Symbol",
-                              @"c" : @"Lowercase Character",
-                              @"C" : @"Uppercase Character",
-                              @"a" : @"Non-Ambiguous Lowercase Character",
-                              @"A" : @"Non-Ambiguous Uppercase Character",
-                              @"N" : @"Non-Ambiguous Number",
-                              @"e" : @"Emoji",
-                              @"p" : @"Phonetic Sound",
-                              @"P" : @"Uppercase Phonetic Sound",
-                              @"r" : @"Random Item"
+    self.characterPatternNames = @{
+                                   @"#" : @"Number",
+                                   @"w" : @"Lowercase Word",
+                                   @"W" : @"Uppercase Word",
+                                   @"s" : @"Lowercase Short Word",
+                                   @"S" : @"Uppercase Short Word",
+                                   @"!" : @"Symbol",
+                                   @"c" : @"Lowercase Character",
+                                   @"C" : @"Uppercase Character",
+                                   @"a" : @"Non-Ambiguous Lowercase Character",
+                                   @"A" : @"Non-Ambiguous Uppercase Character",
+                                   @"N" : @"Non-Ambiguous Number",
+                                   @"e" : @"Emoji",
+                                   @"p" : @"Phonetic Sound",
+                                   @"P" : @"Uppercase Phonetic Sound",
+                                   @"r" : @"Random Item"
                               };
     self.passwordCharacterTypes = @{
                                @(PFSymbols): self.symbols,

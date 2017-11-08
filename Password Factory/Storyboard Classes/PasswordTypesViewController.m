@@ -168,7 +168,13 @@
     [self callDelegate];
 }
 - (IBAction)selectInsertMenuItem:(id)sender {
-    NSLog(@"YO");
+    if(self.insertMenu.indexOfSelectedItem != 0) {
+        char toInsert = [self.insertMenu.selectedItem.title characterAtIndex:0];
+        NSString *pattern = [NSString stringWithFormat:@"%@%c",self.patternText.stringValue,toInsert];
+        [self.patternText setStringValue:pattern];
+        [self.insertMenu selectItemAtIndex:0];
+        [self callDelegate];
+    }
 }
 
 - (IBAction)changeCaseType:(id)sender {
