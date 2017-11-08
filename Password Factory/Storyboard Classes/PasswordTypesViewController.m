@@ -167,6 +167,10 @@
     [[NSUserDefaults standardUserDefaults] setInteger:type forKey:defaultsName];
     [self callDelegate];
 }
+- (IBAction)selectInsertMenuItem:(id)sender {
+    NSLog(@"YO");
+}
+
 - (IBAction)changeCaseType:(id)sender {
     NSString *defaultsName = [NSString stringWithFormat:@"%@CaseType", self.prefix];
     PFCaseType type = [self getCaseType];

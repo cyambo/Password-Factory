@@ -7,23 +7,10 @@
 //
 
 #import "PasswordFactory.h"
-
+#import "PasswordFactoryConstants.h"
 #import "NSString+RandomCase.h"
 #import "NSString+SymbolCase.h"
 
-static NSString *symbols;
-static NSString *upperCase;
-static NSString *lowerCase;
-static NSString *numbers;
-static NSString *nonAmbiguousUpperCase;
-static NSString *nonAmbiguousLowerCase;
-static NSString *nonAmbiguousNumbers;
-static NSDictionary *characterPattern;
-static NSArray *phoneticSounds;
-static NSArray *phoneticSoundsTwo;
-static NSArray *phoneticSoundsThree;
-static NSDictionary *passwordCharacterTypes;
-static NSDictionary *passwordTypes;
 
 @interface PasswordFactory ()
 
@@ -34,7 +21,7 @@ static NSDictionary *passwordTypes;
 @property (nonatomic, strong) NSDictionary *wordsByLength;
 @property (nonatomic, strong) NSArray *emojis;
 @property (nonatomic, strong) NSArray *badWords;
-
+@property (nonatomic, strong) PasswordFactoryConstants *c;
 @end
 
 @implementation PasswordFactory
@@ -44,7 +31,7 @@ static NSDictionary *passwordTypes;
         // Initialization code here.
         
         [self loadWords];
-        [self setStatics];
+        self.c = [PasswordFactoryConstants get];
 
         self.length = 5;
     }
@@ -104,15 +91,15 @@ static NSDictionary *passwordTypes;
         return @"";
     }
     else if (length == 2) { //return a two length sound
-        return [self randomFromArray:phoneticSoundsTwo];
+        return [self randomFromArray:self.c.phoneticSoundsTwo];
     } else if (length == 3) { //return a three length sound
-        return [self randomFromArray:phoneticSoundsThree];
+        return [self randomFromArray:self.c.phoneticSoundsThree];
     }
     else { //return any length sound
         NSUInteger numSyllables = [self randomNumber:3] + 1;
         NSMutableString *sound = [[NSMutableString alloc] init];
         for(int i = 0; i <= numSyllables; i++) {
-            [sound appendString:[self randomFromArray:phoneticSounds]];
+            [sound appendString:[self randomFromArray:self.c.phoneticSounds]];
             if ((length - sound.length) < 3) {
                 break;
             }
@@ -146,10 +133,10 @@ static NSDictionary *passwordTypes;
             sep = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
             break;
         case PFSymbolSeparator:
-            sep = [self randomFromString:symbols];
+            sep = [self randomFromString:self.c.symbols];
             break;
         case PFCharacterSeparator:
-            sep = [self randomFromString:nonAmbiguousUpperCase];
+            sep = [self randomFromString:self.c.nonAmbiguousUpperCase];
             break;
         case PFEmojiSeparator:
             sep = [self.emojis objectAtIndex:[self randomNumber:[self randomNumber:(uint)self.emojis.count]]];
@@ -248,33 +235,33 @@ static NSDictionary *passwordTypes;
 - (void)setCharacterRange {
     NSMutableString *tmp = [[NSMutableString alloc] init];
     if (self.useSymbols) {
-        [tmp appendString:symbols];
+        [tmp appendString:self.c.symbols];
     }
     if (self.avoidAmbiguous) {
         if (self.caseType == PFUpper) {
-            [tmp appendString:nonAmbiguousUpperCase];
+            [tmp appendString:self.c.nonAmbiguousUpperCase];
         } else {
-            [tmp appendString:nonAmbiguousLowerCase];
+            [tmp appendString:self.c.nonAmbiguousLowerCase];
         }
         if (self.useNumbers) {
-            [tmp appendString:nonAmbiguousNumbers];
+            [tmp appendString:self.c.nonAmbiguousNumbers];
         }
         
     } else {
         if(self.caseType == PFUpper) {
-            [tmp appendString:upperCase];
+            [tmp appendString:self.c.upperCase];
         } else {
-            [tmp appendString:lowerCase];
+            [tmp appendString:self.c.lowerCase];
         }
         if (self.useNumbers) {
-            [tmp appendString:numbers];
+            [tmp appendString:self.c.numbers];
         }
     }
     if (self.caseType == PFMixed) {
         if (self.avoidAmbiguous) {
-            [tmp appendString:nonAmbiguousUpperCase];
+            [tmp appendString:self.c.nonAmbiguousUpperCase];
         } else {
-            [tmp appendString:upperCase];
+            [tmp appendString:self.c.upperCase];
         }
     }
 
@@ -312,7 +299,7 @@ static NSDictionary *passwordTypes;
     [pattern enumerateSubstringsInRange:NSMakeRange(0, pattern.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
         
         //check to see if the character is one of the special pattern characters (#!wW etc)
-        int patternType = (int)[[characterPattern objectForKey:character] integerValue];
+        int patternType = (int)[[self.c.characterPattern objectForKey:character] integerValue];
         //dealing with escape - skip to next and place it
         if ([character isEqualToString:@"\\"]) { //the slash will escape the next character and display it exactly as typed
             isEscaped = YES;
@@ -346,32 +333,32 @@ static NSDictionary *passwordTypes;
                 toAppend = [[self randomFromArray:self.shortWords] uppercaseString];
                 break;
             case 6:  //! - Symbol
-                toAppend = [self randomFromString:symbols];
+                toAppend = [self randomFromString:self.c.symbols];
                 break;
             case 7: //c - Random lowercase character
-                toAppend = [self randomFromString:lowerCase];
+                toAppend = [self randomFromString:self.c.lowerCase];
                 break;
             case 8: //C - Random uppercase character
-                toAppend = [self randomFromString:upperCase];
+                toAppend = [self randomFromString:self.c.upperCase];
                 break;
             case 9: // - Random non ambiguous lowercase
 
-                toAppend = [self randomFromString:nonAmbiguousLowerCase];
+                toAppend = [self randomFromString:self.c.nonAmbiguousLowerCase];
                 break;
             case 10: // - Random non ambiguous uppercase
-                toAppend = [self randomFromString:nonAmbiguousUpperCase];
+                toAppend = [self randomFromString:self.c.nonAmbiguousUpperCase];
                 break;
             case 11: //random non-ambiguous number
-                toAppend = [self randomFromString:nonAmbiguousNumbers];
+                toAppend = [self randomFromString:self.c.nonAmbiguousNumbers];
                 break;
             case 12: //random emoji
                 toAppend = [self randomFromArray:self.emojis];
                 break;
             case 13: //random phonetic sound
-                toAppend = [[self randomFromArray:phoneticSounds] lowercaseString];
+                toAppend = [[self randomFromArray:self.c.phoneticSounds] lowercaseString];
                 break;
             case 14: //random uppercase phonetic sound
-                toAppend = [[self randomFromArray:phoneticSounds] uppercaseString];
+                toAppend = [[self randomFromArray:self.c.phoneticSounds] uppercaseString];
                 break;
             case 15: //random symbol
                 toAppend = [self generateRandomWithLength:1];
@@ -421,54 +408,7 @@ static NSDictionary *passwordTypes;
             break;
     }
 }
-/**
- *  building out the static variables used to generate password
- */
-- (void)setStatics {
-    symbols = @"!@#$%^&*(){}[];:.\"<>?/\\-_+=|\'";
-    upperCase = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    lowerCase = @"abcdefghijklmnopqrstuvwxyz";
-    nonAmbiguousUpperCase = @"ABCDEFGHJKLMNPQRSTUVWXYZ";
-    nonAmbiguousLowerCase = @"abcdefghijkmnpqrstuvwxyz";
-    numbers = @"0123456789";
-    nonAmbiguousNumbers = @"23456789";
-    phoneticSoundsTwo = @[@"BA",@"BE",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"FA",@"FE",@"FI",@"FO",@"FU",@"GA",@"GE",@"GI",@"GO",@"GU",@"HA",@"HE",@"HI",@"HO",@"HU",@"JA",@"JE",@"JI",@"JO",@"JU",@"KA",@"KE",@"KI",@"KO",@"KU",@"LA",@"LE",@"LI",@"LO",@"LU",@"MA",@"ME",@"MI",@"MO",@"MU",@"NA",@"NE",@"NI",@"NO",@"NU",@"PA",@"PE",@"PI",@"PO",@"PU",@"RA",@"RE",@"RI",@"RO",@"RU",@"SA",@"SE",@"SI",@"SO",@"SU",@"TA",@"TE",@"TI",@"TO",@"TU",@"VA",@"VE",@"VI",@"VO",@"VU"];
-    phoneticSoundsThree = @[@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
-    phoneticSounds = [phoneticSoundsTwo arrayByAddingObjectsFromArray:phoneticSoundsThree];
-    
-    
-    characterPattern = @{@"#" : @1,  //Number
-                         @"w" : @2,  //Lowercase Word
-                         @"W" : @3,  //Uppercase word
-                         @"s" : @4,  //lowercase short word
-                         @"S" : @5,  //uppercase short word
-                         @"!" : @6,  //symbol
-                         @"c" : @7,  //random character
-                         @"C" : @8,  //random uppercase char
-                         @"a" : @9,  //random non-ambiguous char
-                         @"A" : @10, //random non-ambiguous uppercase char
-                         @"N" : @11, //random non-ambiguous number
-                         @"e" : @12, //random emoji
-                         @"p" : @13, //random phonetic sound
-                         @"P" : @14, //random uppercase phonetic sound
-                         @"r" : @15  //random item generated from random tab settings
-                         };
-    passwordCharacterTypes = @{
-                               @(PFSymbols): symbols,
-                               @(PFUpperCaseLetters): upperCase,
-                               @(PFLowerCaseLetters): lowerCase,
-                               @(PFNonAmbiguousUpperCaseLetters): nonAmbiguousUpperCase,
-                               @(PFNonAmbiguousLowerCaseLetters): nonAmbiguousLowerCase,
-                               @(PFNumbers): numbers,
-                               @(PFNonAmbiguousNumbers): nonAmbiguousNumbers,
-                             };
-    passwordTypes = @{
-                      @(PFRandomType): @"Random",
-                      @(PFPatternType): @"Pattern",
-                      @(PFPassphraseType): @"Passphrase",
-                      @(PFPronounceableType): @"Pronounceable"
-                     };
-}
+
 /**
  Gets the strings that are used to build up the passwords
 
@@ -477,11 +417,11 @@ static NSDictionary *passwordTypes;
  */
 - (NSString *)getPasswordCharacterType:(PFCharacterType)type {
     if (type != PFAllCharacters) {
-        return passwordCharacterTypes[@(type)];
+        return self.c.passwordCharacterTypes[@(type)];
     } else {
         NSMutableString *all = [[NSMutableString alloc] init];
-        for (id key in [passwordCharacterTypes allKeys]) {
-            [all appendString:passwordCharacterTypes[key]];
+        for (id key in [self.c.passwordCharacterTypes allKeys]) {
+            [all appendString:self.c.passwordCharacterTypes[key]];
         }
         return all;
     }
@@ -495,7 +435,7 @@ static NSDictionary *passwordTypes;
  @return true if character is part of builder item
  */
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character {
-    return [(NSString *)passwordCharacterTypes[@(type)] containsString:character];
+    return [(NSString *)self.c.passwordCharacterTypes[@(type)] containsString:character];
 }
 /**
  *  Loads up our dictionary, and removes 'bad' words to generate pattern passwords.
@@ -669,7 +609,7 @@ static NSDictionary *passwordTypes;
  @return String of name
  */
 -(NSString *)getNameForPasswordType:(PFPasswordType)type {
-    return [passwordTypes objectForKey:@(type)];
+    return [self.c.passwordTypes objectForKey:@(type)];
 }
 
 /**
@@ -678,7 +618,7 @@ static NSDictionary *passwordTypes;
  @return all password types
  */
 -(NSDictionary *)getAllPasswordTypes {
-    return passwordTypes;
+    return self.c.passwordTypes;
 }
 
 /**
@@ -689,7 +629,7 @@ static NSDictionary *passwordTypes;
  */
 -(PFPasswordType)getPasswordTypeByIndex:(NSInteger)index {
     
-    NSArray *keys = [[passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
+    NSArray *keys = [[self.c.passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
     if (index >= 0 && index < keys.count) {
         return (PFPasswordType)[(NSNumber *)keys[index] integerValue];
     }
@@ -703,7 +643,7 @@ static NSDictionary *passwordTypes;
  @return integer index
  */
 -(NSUInteger)getIndexByPasswordType:(PFPasswordType)type {
-    NSArray *keys = [[passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
+    NSArray *keys = [[self.c.passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
     for(int i = 0; i < keys.count; i++) {
         if ((PFPasswordType)[(NSNumber *)keys[i] integerValue] == type) {
             return i;

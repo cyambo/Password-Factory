@@ -30,6 +30,9 @@
 - (IBAction)changeLength:(id)sender;
 
 @property (weak) IBOutlet NSTextField *patternText;
+@property (weak) IBOutlet NSPopUpButton *insertMenu;
+- (IBAction)selectInsertMenuItem:(id)sender;
+
 
 - (IBAction)changeCaseType:(id)sender;
 @property (weak) IBOutlet NSButton *caseTypeUpperCase;

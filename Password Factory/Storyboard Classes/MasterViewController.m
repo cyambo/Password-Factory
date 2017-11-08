@@ -216,6 +216,7 @@
     //otherwise generate the password
     if(obj.object == self.passwordField) {
         [self.password setPasswordValue: self.passwordField.stringValue];
+        [self.password updatePasswordStrength];
         [self setPasswordStrength];
         [self updatePasswordField];
     } else {

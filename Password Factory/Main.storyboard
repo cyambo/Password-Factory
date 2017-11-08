@@ -866,10 +866,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grE-FA-64P">
-                                <rect key="frame" x="20" y="95" width="336" height="22"/>
+                                <rect key="frame" x="20" y="66" width="336" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Pattern" drawsBackground="YES" id="RaX-4I-wdw">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="32"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -882,46 +882,74 @@
                                     <outlet property="delegate" destination="sd3-yQ-tvi" id="b06-kn-T4D"/>
                                 </connections>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ks4-KU-H6N">
-                                <rect key="frame" x="25" y="7" width="172" height="80"/>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-22-F9f" userLabel="Insert Menu">
+                                <rect key="frame" x="18" y="22" width="341" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="WdT-UC-8h4">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <string key="title"># - Number
-! - Symbol
-w - Lowercase Word
-W - Uppercase Word
-p - Lowercase Sound
-P - Uppercase Sound</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJk-gB-kEh">
-                                <rect key="frame" x="188" y="7" width="172" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="vz7-cc-Tg5">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <string key="title">s - Short Word
-S - Short Uppercase Word
-c - Lowercase Character
-C - Uppercase Character
-e - Emoji
-r - Random item</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                <popUpButtonCell key="cell" type="push" title="Insert" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hxv-hc-dKQ" id="wr0-Db-VUc" userLabel="Insert">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="66s-zd-14r">
+                                        <items>
+                                            <menuItem title="Insert" id="hxv-hc-dKQ">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="# - Number" state="on" id="9uf-XR-1ns"/>
+                                            <menuItem title="w - Lowercase Word" id="4Sn-VW-vAQ"/>
+                                            <menuItem title="W - Uppercase Word" id="52H-hf-B1r"/>
+                                            <menuItem title="s - Lowercase Short Word" id="8IL-vH-ow7">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="S - Uppercase Short Word" id="xhI-Nt-YEt">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="! - Symbol" id="5XW-rr-XtN">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="c - Lowercase Character" id="5hg-lJ-FNE">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="C - Uppercase Character" id="AZE-nC-t7w">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="a - Non-Ambiguous Character" id="pJG-9u-twF">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="A - Non-Ambiguous Uppercase Character" id="zcJ-HG-SMd">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="N - Non-Ambiguous Number" id="Pw6-Cm-sQY">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="e - Emoji" id="RTR-In-FU5">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="p - Lowercase Phonetic Sound" id="pgn-yt-dMi">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="P - Uppercase Phonetic Sound" id="RAd-9v-Q2g">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="r - Random Item" id="Gmd-YV-Cln">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="selectInsertMenuItem:" target="sd3-yQ-tvi" id="4nP-K9-79z"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="insertMenu" destination="hUB-22-F9f" id="f0m-qI-erN"/>
                         <outlet property="patternText" destination="grE-FA-64P" id="JYd-d2-1Na"/>
                     </connections>
                 </viewController>
                 <customObject id="70x-At-AHg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="m3K-k4-akT"/>
             </objects>
-            <point key="canvasLocation" x="-189" y="307"/>
+            <point key="canvasLocation" x="-189.5" y="307"/>
         </scene>
         <!--Passphrase Password-->
         <scene sceneID="24U-Ut-agP">
