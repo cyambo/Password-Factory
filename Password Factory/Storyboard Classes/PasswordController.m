@@ -18,6 +18,12 @@
 @end
 
 @implementation PasswordController
+
+/**
+ Gets the password controller singleton
+
+ @return PasswordController instance
+ */
 + (instancetype)get {
     static dispatch_once_t once = 0;
     static PasswordController *singleton = nil;
@@ -32,11 +38,23 @@
     return singleton;
 }
 
+/**
+ Generate password based on type and settings from view controller
+
+ @param type PFPasswordType
+ */
 - (void)generatePassword:(PFPasswordType)type {
     NSDictionary *settings = [[self getViewControllerForPasswordType:type] getPasswordSettings];
     [self generatePassword:type withSettings:settings];
 
 }
+
+/**
+ Generates password
+
+ @param type PFPasswordType
+ @param settings dictionary containing password generation settings
+ */
 - (void)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings {
     if(settings[@"passwordLength"]) {
         self.factory.length = [(NSNumber *)settings[@"passwordLength"] integerValue];
@@ -81,6 +99,10 @@
         [self.delegate passwordChanged:self.password];
     }
 }
+
+/**
+ Initialize the PasswordTypesViewControllers for all the types
+ */
 - (void)initViewControllers {
     if (self.viewControllers == nil) {
         NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -97,10 +119,24 @@
         self.viewControllers = vcs;
     }
 }
+
+/**
+ Gets the viewController for PFPasswordType
+
+ @param type PFPasswordType
+ @return ViewController matching type
+ */
 - (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type {
     [self initViewControllers];
     return self.viewControllers[@(type)];
 }
+
+/**
+ PasswordTypesViewControllerDelegate method, called when a control has changed in the PasswordTypesViewController instances
+
+ @param type PFPasswordType changed
+ @param settings settings from viewController where control was changed
+ */
 -(void)controlChanged:(PFPasswordType)type settings:(NSDictionary *)settings {
     [self generatePassword:type withSettings:settings];
 }
@@ -122,6 +158,7 @@
 -(NSString *)getCrackTimeString {
     return self.passwordStrength.crackTimeString;
 }
+#pragma mark PasswordFactory methods
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character {
     return [self.factory isCharacterType:type character:character];
 }
@@ -130,7 +167,6 @@
 }
 - (NSDictionary *)getAllPasswordTypes {
     return [self.factory getAllPasswordTypes];
-    
 }
 - (PFPasswordType)getPasswordTypeByIndex:(NSInteger)index {
     return [self.factory getPasswordTypeByIndex:index];

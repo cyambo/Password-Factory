@@ -29,16 +29,13 @@
         self.prefix = [[(PasswordController *)self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
     }
     [self changeLength:nil];
-    
 }
 
--(id)testRadio:(NSButton *)toTest {
-    if (toTest == nil) {
-        return [NSNull null];
-    } else {
-        return toTest;
-    }
-}
+/**
+ Gets the password generation settings based upon controls
+
+ @return dictionary of settings
+ */
 -(NSDictionary *)getPasswordSettings {
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     //Generates different password formats based upon the selected tab
@@ -78,6 +75,11 @@
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
 }
 
+/**
+ Called when length slider is updated and sets all related lentgh values
+
+ @param sender default sender
+ */
 - (IBAction)changeLength:(id)sender {
     if ([self getPasswordLength] != self.passwordLength) {
         self.passwordLength = [self getPasswordLength];
@@ -86,10 +88,21 @@
     }
     
 }
+
+/**
+ Called when checkboxes are updaed
+
+ @param sender default sender
+ */
 - (IBAction)changeOptions:(id)sender {
     [self callDelegate];
 }
 
+/**
+ Inserts a value into the pattern field
+
+ @param sender default sender
+ */
 - (IBAction)selectInsertMenuItem:(id)sender {
     if(self.insertMenu.indexOfSelectedItem != 0) {
         char toInsert = [self.insertMenu.selectedItem.title characterAtIndex:0];
@@ -100,17 +113,36 @@
     }
 }
 
+/**
+ Sets the separator type based upon the dropdown
+
+ @param sender default sender
+ */
 - (IBAction)selectSeparatorType:(id)sender {
     [self callDelegate];
 }
 
+/**
+ Sets the case type based upon the dropdown
+
+ @param sender default sender
+ */
 - (IBAction)selectCaseType:(id)sender {
     [self callDelegate];
 }
 
+/**
+ delegate method for text field
+
+ @param obj default sender
+ */
 - (void)controlTextDidChange:(NSNotification *)obj {
     [self callDelegate];
 }
+
+/**
+ Calls our delegate method with settings
+ */
 -(void)callDelegate {
     if(self.delegate) {
         [self.delegate controlChanged:self.passwordType settings:[self getPasswordSettings]];

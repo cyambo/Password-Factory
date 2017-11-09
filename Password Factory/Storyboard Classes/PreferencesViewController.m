@@ -336,7 +336,6 @@ static NSDictionary *prefsPlist;
             self.loginController.enabled = NO;
         }
     }
-    
 }
 
 /**
