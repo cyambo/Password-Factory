@@ -389,11 +389,14 @@
                                             <rect key="frame" x="170" y="140" width="23" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="changeColor:" target="2B8-vP-6ly" id="Bvg-6c-cWP"/>
+                                            </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ona-YN-B0M" customClass="TextField">
-                                            <rect key="frame" x="46" y="143" width="84" height="17"/>
+                                            <rect key="frame" x="46" y="143" width="66" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default Color" id="Zpk-7E-bK5">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Text Color" id="Zpk-7E-bK5">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -552,12 +555,12 @@
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pP9-dW-q13" userLabel="Sound Select">
                                             <rect key="frame" x="91" y="9" width="108" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="Basso" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HOR-Rf-1Uc" id="s7E-j3-rbf">
+                                            <popUpButtonCell key="cell" type="push" title="Basso" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HOR-Rf-1Uc" id="s7E-j3-rbf">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="OcD-oh-WOJ">
                                                     <items>
-                                                        <menuItem title="Basso" id="HOR-Rf-1Uc"/>
+                                                        <menuItem title="Basso" state="on" id="HOR-Rf-1Uc"/>
                                                         <menuItem title="Blow" id="QtM-LK-uea"/>
                                                         <menuItem title="Bottle" id="Tv3-YK-ixe"/>
                                                         <menuItem title="Frog" id="aW8-ga-RY9"/>
@@ -575,10 +578,12 @@
                                                 </menu>
                                             </popUpButtonCell>
                                             <connections>
-                                                <binding destination="oO3-K1-8yU" name="selectedIndex" keyPath="values.notificationSoundIndex" id="tjx-G1-UMq"/>
+                                                <action selector="selectSound:" target="2B8-vP-6ly" id="t4J-S6-Txk"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="eNP-cR-E9p"/>
+                                                <binding destination="DGa-ye-VaM" name="selectedIndex" keyPath="values.notificationSoundIndex" id="tjx-G1-UMq"/>
                                             </connections>
                                         </popUpButton>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mUV-mS-YnQ">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mUV-mS-YnQ" customClass="TextField">
                                             <rect key="frame" x="44" y="14" width="43" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sound" id="S6N-jm-Wwv">
@@ -586,6 +591,9 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="YNC-aY-YZO"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </view>
@@ -598,6 +606,7 @@
                         <outlet property="clearTime" destination="zea-F5-oph" id="1xm-dY-ci2"/>
                         <outlet property="clearTimeLabel" destination="ZoL-o6-QXE" id="SrK-5m-bgg"/>
                         <outlet property="colorPasswordText" destination="INO-jc-SFw" id="iCJ-W2-FOB"/>
+                        <outlet property="defaultColor" destination="dcr-yy-tEl" id="GVu-UI-fLL"/>
                         <outlet property="displayNotification" destination="O8W-vk-w7r" id="Kak-50-Qta"/>
                         <outlet property="enableGlobalHotkey" destination="y6L-bI-CPK" id="mvw-uh-0ot"/>
                         <outlet property="lowercaseTextColor" destination="8wy-JD-kmX" id="kiY-SJ-A8S"/>
@@ -610,8 +619,7 @@
                     </connections>
                 </viewController>
                 <customObject id="5A0-3l-x8K" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="DGa-ye-VaM"/>
-                <userDefaultsController id="oO3-K1-8yU"/>
+                <userDefaultsController representsSharedInstance="YES" id="DGa-ye-VaM"/>
             </objects>
             <point key="canvasLocation" x="152" y="195"/>
         </scene>

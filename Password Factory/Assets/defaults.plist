@@ -12,6 +12,8 @@
 	<string>922890</string>
 	<key>numberTextColor</key>
 	<string>FF4CFC</string>
+	<key>defaultTextColor</key>
+	<string>000000</string>
 	<key>clearClipboard</key>
 	<false/>
 	<key>clearClipboardTime</key>

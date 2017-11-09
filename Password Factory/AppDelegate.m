@@ -244,7 +244,7 @@
  @param sender default sender
  */
 - (IBAction)loadPrefrences:(id)sender {
-//    [self.prefsWindowController showWindow:self];
+    [self.prefsWindowController showWindow:self];
 }
 
 /**

@@ -17,6 +17,7 @@
 @property (weak) IBOutlet NSColorWell *lowercaseTextColor;
 @property (weak) IBOutlet NSColorWell *numbersColor;
 @property (weak) IBOutlet NSColorWell *symbolsColor;
+@property (weak) IBOutlet NSColorWell *defaultColor;
 - (IBAction)changeColor:(id)sender;
 
 @property (weak) IBOutlet NSButton *automaticallyClearClipboard;
@@ -47,4 +48,8 @@
 @property (weak) IBOutlet NSButton *addToLoginItems;
 - (IBAction)changeLoginItem:(NSButton *)sender;
 @property (nonatomic, strong) StartAtLoginController *loginController;
+
+- (IBAction)selectSound:(NSPopUpButton *)sender;
+
+
 @end

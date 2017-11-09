@@ -90,6 +90,7 @@ static NSDictionary *prefsPlist;
     [self.lowercaseTextColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"lowerTextColor"]]];
     [self.symbolsColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]]];
     [self.numbersColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
+    [self.defaultColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"defaultTextColor"]]];
 }
 /**
  Makes sure our preferences are loaded only at launch
@@ -186,6 +187,8 @@ static NSDictionary *prefsPlist;
         [d setObject:[self.numbersColor.color hexadecimalValueOfAnNSColor] forKey:@"numberTextColor"];
     } else if ([sender isEqualTo:self.symbolsColor]) {
         [d setObject:[self.symbolsColor.color hexadecimalValueOfAnNSColor] forKey:@"symbolTextColor"];
+    } else if ([sender isEqualTo:self.defaultColor]) {
+        [d setObject:[self.defaultColor.color hexadecimalValueOfAnNSColor] forKey:@"defaultTextColor"];
     } else if ([sender isEqualTo: self.colorPasswordText]){
         [d setBool:(BOOL)self.colorPasswordText.state forKey:@"colorPasswordText"];
     }
@@ -330,5 +333,9 @@ static NSDictionary *prefsPlist;
         }
     }
     
+}
+- (IBAction)selectSound:(NSPopUpButton *)sender {
+    NSString *soundName = [sender selectedItem].title;
+    [[NSSound soundNamed:soundName] play];
 }
 @end

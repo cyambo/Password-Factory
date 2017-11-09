@@ -18,8 +18,6 @@
 
 @property (weak) IBOutlet StrengthMeter *passwordStrengthLevel;
 
-@property (nonatomic, strong) NSColor *defaultCharacterColor;
-
 @property (weak) IBOutlet NSButton *generateButton;
 @property (weak) IBOutlet NSButton *pasteboardButton;
 - (IBAction)copyToClipboard:(id)sender;

@@ -43,7 +43,7 @@
     return self;
 }
 - (void)awakeFromNib {
-    self.defaultCharacterColor = [NSColor blackColor]; //set the default color of non-highlighted text
+
     [self.passwordField setDelegate:self];
     
 }
@@ -74,6 +74,10 @@
         self.colorPasswordText = [object boolForKey:keyPath];
         [self updatePasswordField];
     }
+    //update the color if the default color changes
+    if ([keyPath isEqualToString:@"defaultTextColor"]) {
+        [self updatePasswordField];
+    }
     //Updating the password field when the color well changes to enable live color updating
     if (self.colorPasswordText &&
         ([keyPath isEqualToString:@"upperTextColor"] ||
@@ -81,7 +85,7 @@
          [keyPath isEqualToString:@"numberTextColor"] ||
          [keyPath isEqualToString:@"symbolTextColor"])
         ) {
-        [self updatePasswordField];
+        ;
     }
     
 }
@@ -252,6 +256,8 @@
  */
 - (void)updatePasswordField{
     [PreferencesViewController syncSharedDefaults];
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSColor *dColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"defaultTextColor"]]];
     NSString *currPassword = [self.password getPasswordValue];
     if (currPassword == nil || currPassword.length == 0) {
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
@@ -259,11 +265,14 @@
     }
     //Just display the password
     if (!self.colorPasswordText) {
-        NSAttributedString *s = [[NSAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+        NSDictionary *attributes = @{
+                                     NSForegroundColorAttributeName: dColor,
+                                     NSFontAttributeName: [NSFont systemFontOfSize:13]
+                                     };
+        NSAttributedString *s = [[NSAttributedString alloc] initWithString:currPassword attributes:attributes];
         [self.passwordField setAttributedStringValue: s];
     } else {
         //colors the password text based upon color wells in preferences
-        NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         
         NSColor *nColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"numberTextColor"]]];
         NSColor *cColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"upperTextColor"]]];
@@ -271,6 +280,7 @@
         NSColor *sColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]]];
         
         //uses AttributedString to color password
+        
         NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
 
         //colorizing password label
@@ -278,7 +288,7 @@
         //loops through the string and sees if it is in each type of string to determine the color of the character
         //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
         [currPassword enumerateSubstringsInRange:NSMakeRange(0, currPassword.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
-            NSColor *c = self.defaultCharacterColor; //set a default color of the text to the default color
+            NSColor *c = dColor; //set a default color of the text to the default color
             if(substringRange.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
                 if ([self.password isCharacterType:PFUpperCaseLetters character:at]) { //are we an uppercase character
                     c = cColor;
@@ -289,7 +299,7 @@
                 } else if ([self.password isCharacterType:PFSymbols character:at]){ //symbol?
                     c = sColor;
                 } else {
-                    c = self.defaultCharacterColor;
+                    c = dColor;
                 }
                 //set the character color
                 [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];
