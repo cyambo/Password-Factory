@@ -28,29 +28,29 @@
 + (void)loadPreferencesFromPlist;
 + (void)getPrefsFromPlist;
 + (void)syncSharedDefaults;
+
 + (NSColor*)colorWithHexColorString:(NSString*)inColorString;
 
 @property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
 @property (weak) IBOutlet NSButton *displayNotification;
 @property (weak) IBOutlet NSButton *playNotificationSound;
 @property (weak) IBOutlet NSButton *enableGlobalHotkey;
+- (IBAction)selectSound:(NSPopUpButton *)sender;
+@property (weak) IBOutlet NSPopUpButton *soundSelector;
+- (void)resetShortcutRegistration;
 
 - (IBAction)quitOrRestartApplication:(id)sender;
-
 @property (nonatomic, assign) int initialMenuState;
 @property (nonatomic, assign) int initialDockState;
 @property (weak) IBOutlet NSButton *quitButton;
 - (IBAction)menuCheckBoxesChanged:(id)sender;
 
-- (void)resetShortcutRegistration;
 - (IBAction)showHelp:(id)sender;
 
 @property (weak) IBOutlet NSButton *addToLoginItems;
 - (IBAction)changeLoginItem:(NSButton *)sender;
 @property (nonatomic, strong) StartAtLoginController *loginController;
 
-- (IBAction)selectSound:(NSPopUpButton *)sender;
-@property (weak) IBOutlet NSPopUpButton *soundSelector;
-
+@property (weak) IBOutlet NSTextField *maxPasswordLength;
 
 @end

@@ -54,5 +54,11 @@
 	<integer>401</integer>
 	<key>notificationSound</key>
 	<string>Hero</string>
+	<key>maxPasswordLength</key>
+	<integer>50</integer>
+	<key>enableAdvanced</key>
+	<false/>
+	<key>storePasswords</key>
+	<false/>
 </dict>
 </plist>

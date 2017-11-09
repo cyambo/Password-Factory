@@ -618,7 +618,7 @@
     } else {
         NSLog(@"SecRandomCopyBytes failed for some reason");
     }
-    return 0;
+    return 1;
 }
 
 /**

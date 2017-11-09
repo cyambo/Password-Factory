@@ -10,4 +10,7 @@
 
 @interface OnlyIntegerFormatter : NSNumberFormatter
 
+@property (assign, nonatomic) IBInspectable NSInteger minValue;
+@property (assign, nonatomic) IBInspectable NSInteger maxValue;
+
 @end

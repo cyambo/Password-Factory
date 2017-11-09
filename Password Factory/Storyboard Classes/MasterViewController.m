@@ -19,6 +19,7 @@
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, assign) NSUInteger passwordLength;
 @property (nonatomic, strong) NSDictionary *typeImages;
+@property (nonatomic, weak) PasswordTypesViewController *currentPasswordTypeViewController;
 @end
 
 @implementation MasterViewController
@@ -63,7 +64,6 @@
     for (NSString *k in p) {
         [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
     }
-    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -83,9 +83,22 @@
          [keyPath isEqualToString:@"numberTextColor"] ||
          [keyPath isEqualToString:@"symbolTextColor"])
         ) {
-        ;
+        [self updatePasswordField];
     }
-    
+    if ([keyPath isEqualToString:@"maxPasswordLength"]) {
+        if (self.currentPasswordTypeViewController.passwordLengthSlider) {
+            float new = [(NSNumber *)change[@"new"] floatValue];
+            NSSlider *slider = self.currentPasswordTypeViewController.passwordLengthSlider;
+            if (slider.maxValue != new) {
+                float currValue = slider.floatValue;
+                if (currValue > new) {
+                    [[NSUserDefaults standardUserDefaults] setFloat:new forKey:@"passwordLength"];
+                }
+                slider.maxValue = new;
+                [self.currentPasswordTypeViewController changeLength:slider];
+            }
+        }
+    }
 }
 #pragma mark Clipboard Handling
 
@@ -106,7 +119,6 @@
  Generates many passwords and chooses the strongest and then copies it to the clipboard
  */
 - (void)generateAndCopy {
-    NSString *pw;
     float s = -1;
     //set the max password generations to GenerateAndCopyLoops
     for(int i = 0; i < GenerateAndCopyLoops; i++) {
@@ -114,7 +126,7 @@
         //choose the stronger one
         if (self.passwordStrengthLevel.strength  > s) {
             s = [self.password getPasswordStrength];
-            pw = [self.password getPasswordValue];
+            [self.password getPasswordValue];
         }
     }
     //update the password display
@@ -414,7 +426,8 @@
     NSInteger row = self.passwordTypesTable.selectedRow;
     PFPasswordType type = [self.password getPasswordTypeByIndex:row];
     [[NSUserDefaults standardUserDefaults] setInteger:type forKey:@"selectedPasswordType"];
-    NSViewController *vc = [self.password getViewControllerForPasswordType:type];
+    PasswordTypesViewController *vc = [self.password getViewControllerForPasswordType:type];
+    self.currentPasswordTypeViewController = vc;
     self.passwordView.subviews = @[];
     [self.passwordView addSubview:vc.view];
     [self generatePassword];

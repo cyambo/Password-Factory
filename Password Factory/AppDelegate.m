@@ -24,6 +24,9 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+// delete prefs
+//    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+//    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     //load default preferences from our plist
     [PreferencesViewController loadPreferencesFromPlist];
     //init prefs window

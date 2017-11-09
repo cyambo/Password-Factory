@@ -28,6 +28,18 @@
     if([self.delegate isKindOfClass:[PasswordController class]]) {
         self.prefix = [[(PasswordController *)self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
     }
+    if (self.passwordLengthSlider) {
+        //setting the max password length
+        NSUInteger length = [self getPasswordLength]; //but we have to get the original length
+        float maxValue = [[NSUserDefaults standardUserDefaults] floatForKey:@"maxPasswordLength"];
+        self.passwordLengthSlider.maxValue = maxValue;
+        //if our length is greater than the max, set it to max
+        if (length > maxValue) {
+            length = floor(maxValue);
+            [[NSUserDefaults standardUserDefaults] setFloat:(float)length forKey:@"maxPasswordLength"];
+        }
+        [self.passwordLengthSlider setIntValue:(int)length]; //and set it back because the changing of maxValue messes up the slider
+    }
     [self changeLength:nil];
 }
 
@@ -86,7 +98,6 @@
         [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
         [self callDelegate];
     }
-    
 }
 
 /**
