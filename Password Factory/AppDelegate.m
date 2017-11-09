@@ -32,7 +32,7 @@
     NSWindowController *windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
     self.prefsWindowController = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
     self.prefsViewController = (PreferencesViewController *)self.prefsWindowController.window.contentViewController;
-    
+
     //Set properties
     self.currWindow = windowController.window;
     self.masterViewController = (MasterViewController *)windowController.window.contentViewController;
@@ -40,6 +40,7 @@
 
     [self.prefsViewController resetShortcutRegistration]; //setting up global shortcut when app launches
     [self.prefsViewController changeLoginItem:nil]; //set the login item to the current state
+    
     //doing magic for the app if it is in the menu
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
         //hiding the dock icon if specified

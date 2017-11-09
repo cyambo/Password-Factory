@@ -16,7 +16,7 @@
 @property (nonatomic, weak) NSWindow *currWindow;
 @property (nonatomic, weak) MasterViewController *masterViewController;
 @property (nonatomic, weak) PreferencesViewController *prefsViewController;
-@property (nonatomic, weak) NSWindowController *prefsWindowController;
+@property (nonatomic, strong) NSWindowController *prefsWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;
 - (IBAction)selectTypeFromMenu:(NSMenuItem *)sender;
 @property (weak) IBOutlet NSMenuItem *randomMenuItem;

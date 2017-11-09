@@ -223,7 +223,7 @@
         <scene sceneID="GJT-II-y8b">
             <objects>
                 <windowController storyboardIdentifier="PreferencesWindowController" id="65G-m9-MUQ" customClass="PreferencesWindowController" sceneMemberID="viewController">
-                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oth-DO-Nbl">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oth-DO-Nbl" customClass="MainWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="610" y="362" width="212" height="149"/>
@@ -580,7 +580,6 @@
                                             <connections>
                                                 <action selector="selectSound:" target="2B8-vP-6ly" id="t4J-S6-Txk"/>
                                                 <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="eNP-cR-E9p"/>
-                                                <binding destination="DGa-ye-VaM" name="selectedIndex" keyPath="values.notificationSoundIndex" id="tjx-G1-UMq"/>
                                             </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mUV-mS-YnQ" customClass="TextField">
@@ -614,6 +613,7 @@
                         <outlet property="playNotificationSound" destination="DeC-TX-RaX" id="gyx-pb-Aa2"/>
                         <outlet property="quitButton" destination="gTY-3a-D4r" id="8FU-Wz-683"/>
                         <outlet property="shortcutView" destination="a2T-my-TdI" id="voD-6B-A97"/>
+                        <outlet property="soundSelector" destination="pP9-dW-q13" id="0yL-bg-cq3"/>
                         <outlet property="symbolsColor" destination="LHi-qb-Klf" id="UhR-yl-VZz"/>
                         <outlet property="uppercaseTextColor" destination="Uj9-zk-COr" id="e1J-PK-ZKV"/>
                     </connections>

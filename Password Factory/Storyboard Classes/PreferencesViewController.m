@@ -42,6 +42,10 @@ static NSDictionary *prefsPlist;
     
     //initting login item
     self.loginController = [[StartAtLoginController alloc] initWithIdentifier:HelperIdentifier];
+    
+    //setting up notification sound
+    NSString *sound = [[NSUserDefaults standardUserDefaults] stringForKey:@"notificationSound"];
+    [self.soundSelector selectItemWithTitle:sound];
 }
 
 - (void)viewWillAppear {
@@ -334,8 +338,15 @@ static NSDictionary *prefsPlist;
     }
     
 }
+
+/**
+ Called when sound is changed
+
+ @param sender default sender
+ */
 - (IBAction)selectSound:(NSPopUpButton *)sender {
     NSString *soundName = [sender selectedItem].title;
+    [[NSUserDefaults standardUserDefaults] setObject:soundName forKey:@"notificationSound"];
     [[NSSound soundNamed:soundName] play];
 }
 @end

@@ -50,6 +50,7 @@
 @property (nonatomic, strong) StartAtLoginController *loginController;
 
 - (IBAction)selectSound:(NSPopUpButton *)sender;
+@property (weak) IBOutlet NSPopUpButton *soundSelector;
 
 
 @end

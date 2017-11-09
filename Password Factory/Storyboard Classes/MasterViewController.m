@@ -43,9 +43,7 @@
     return self;
 }
 - (void)awakeFromNib {
-
     [self.passwordField setDelegate:self];
-    
 }
 -(void)viewWillAppear {
     PFPasswordType type = (PFPasswordType)[[NSUserDefaults standardUserDefaults] integerForKey:@"selectedPasswordType"];
@@ -135,7 +133,7 @@
     
     //or play the sound
     } else if ([d boolForKey:@"globalHotkeyPlaySound"]) {
-        [[NSSound soundNamed:NotificationSoundName] play];
+        [[NSSound soundNamed:[self getSelectedSoundName]] play];
     }
     
 }
@@ -150,13 +148,25 @@
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     //Set the sound if the user configured it
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"globalHotkeyPlaySound"]) {
-        [notification setSoundName:NotificationSoundName];
+        [notification setSoundName:[self getSelectedSoundName]];
     }
     
     NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
     [center scheduleNotification:notification];
 }
 
+/**
+ Gets the selected notification sound name, or returns the default
+
+ @return notification sound
+ */
+-(NSString *)getSelectedSoundName {
+    NSString *soundName = [[NSUserDefaults standardUserDefaults] stringForKey:@"notificationSound"];
+    if (soundName) {
+        return soundName;
+    }
+    return NotificationSoundName;
+}
 /**
  Copies to clipboard, sets up the clear clipboard timer and closes the window if it is in the menu
 
@@ -194,10 +204,8 @@
  @param sender IBAction sender
  */
 - (IBAction)loadPreferencesWindow:(id)sender {
-    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSWindowController *w = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
-    [w showWindow:sender];
-    w.window.restorable = YES;
+    [self.prefsWindowController showWindow:sender];
+    self.prefsWindowController.window.restorable = YES;
 
     [NSApp activateIgnoringOtherApps:YES]; //brings it to front
 }
@@ -245,6 +253,12 @@
     [self updatePasswordField];
     [self setPasswordStrength];
 }
+
+/**
+ Password Controller Delegate method called when password is updated in PasswordController
+
+ @param password updated password
+ */
 -(void)passwordChanged:(NSString *)password {
     [self updatePasswordField];
     [self setPasswordStrength];
@@ -257,6 +271,7 @@
 - (void)updatePasswordField{
     [PreferencesViewController syncSharedDefaults];
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    //default text color from prefs
     NSColor *dColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"defaultTextColor"]]];
     NSString *currPassword = [self.password getPasswordValue];
     if (currPassword == nil || currPassword.length == 0) {

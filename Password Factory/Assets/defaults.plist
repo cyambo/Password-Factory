@@ -52,7 +52,7 @@
 	<false/>
 	<key>selectedPasswordType</key>
 	<integer>401</integer>
-	<key>notificationSoundIndex</key>
-	<integer>6</integer>
+	<key>notificationSound</key>
+	<string>Hero</string>
 </dict>
 </plist>
