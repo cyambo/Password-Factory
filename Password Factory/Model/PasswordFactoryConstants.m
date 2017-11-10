@@ -82,7 +82,8 @@
                       @(PFPatternType): @"Pattern",
                       @(PFPassphraseType): @"Passphrase",
                       @(PFPronounceableType): @"Pronounceable",
-                      @(PFAdvancedType): @"Advanced"
+                      @(PFAdvancedType): @"Advanced",
+                      @(PFStoredType): @"Stored"
                       };
     
 }

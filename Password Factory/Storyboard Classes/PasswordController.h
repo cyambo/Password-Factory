@@ -28,7 +28,9 @@
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character;
 - (NSString *)getNameForPasswordType: (PFPasswordType)type;
 - (NSDictionary *)getAllPasswordTypes;
+- (NSDictionary *)getFilteredPasswordTypes;
 - (PFPasswordType)getPasswordTypeByIndex:(NSInteger)index;
 - (NSUInteger)getIndexByPasswordType:(PFPasswordType)type;
 - (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type;
+- (void)enableOptionalPasswordTypes:(BOOL)advanced storePasswords:(BOOL)stored;
 @end

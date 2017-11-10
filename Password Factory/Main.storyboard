@@ -137,6 +137,16 @@
                                                 <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="SMR-pm-KLN"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Advanced" tag="4" keyEquivalent="d" id="HbZ-n3-Uz9" userLabel="Advanced Menu Item">
+                                            <connections>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="Vb0-zw-FU9"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Stored" tag="5" keyEquivalent="o" id="SUA-Uf-SLR" userLabel="Stored Menu Item">
+                                            <connections>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="HKm-P9-Ytp"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -696,14 +706,14 @@
                                 <rect key="frame" x="0.0" y="168" width="508" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
-                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-4P-hvT">
+                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-4P-hvT">
                                 <rect key="frame" x="0.0" y="10" width="130" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="n76-hK-pzF">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" id="6c5-Mk-eYC">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="23" viewBased="YES" id="6c5-Mk-eYC">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -1455,10 +1465,21 @@
         <!--Stored Password-->
         <scene sceneID="chS-3k-fmZ">
             <objects>
-                <viewController title="Stored Password" storyboardIdentifier="Stored Password" id="tOv-e7-BMt" sceneMemberID="viewController">
+                <viewController title="Stored Password" storyboardIdentifier="StoredPassword" id="tOv-e7-BMt" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="xKC-pF-soN">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bux-gB-3gF">
+                                <rect key="frame" x="156" y="56" width="59" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="STORED " id="pqJ-cU-cy3">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="OOS-gR-hXl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

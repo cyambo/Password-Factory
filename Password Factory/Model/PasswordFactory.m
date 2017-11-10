@@ -622,6 +622,21 @@
 }
 
 /**
+ Returns the password types dictionary with Advanced or Stored filtered out because they are optional
+
+ @return dictionary of password types
+ */
+- (NSDictionary *)getFilteredPasswordTypes {
+    NSMutableDictionary *types = [self.c.passwordTypes mutableCopy];
+    if (!self.enableAdvanced) {
+        [types removeObjectForKey:@(PFAdvancedType)];
+    }
+    if (!self.enabledStored) {
+        [types removeObjectForKey:@(PFStoredType)];
+    }
+    return types;
+}
+/**
  Gets name of password type for PFPasswordType
 
  @param type PFPasswordType
@@ -648,7 +663,7 @@
  */
 -(PFPasswordType)getPasswordTypeByIndex:(NSInteger)index {
     
-    NSArray *keys = [[self.c.passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
+    NSArray *keys = [[[self getFilteredPasswordTypes] allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
     if (index >= 0 && index < keys.count) {
         return (PFPasswordType)[(NSNumber *)keys[index] integerValue];
     }
@@ -662,7 +677,7 @@
  @return integer index
  */
 -(NSUInteger)getIndexByPasswordType:(PFPasswordType)type {
-    NSArray *keys = [[self.c.passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
+    NSArray *keys = [[[self getFilteredPasswordTypes] allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
     for(int i = 0; i < keys.count; i++) {
         if ((PFPasswordType)[(NSNumber *)keys[i] integerValue] == type) {
             return i;

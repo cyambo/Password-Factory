@@ -106,7 +106,7 @@
 - (void)initViewControllers {
     if (self.viewControllers == nil) {
         NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-        NSDictionary *types = self.factory.getAllPasswordTypes;
+        NSDictionary *types = [self.factory getAllPasswordTypes];
         NSMutableDictionary *vcs = [[NSMutableDictionary alloc] init];
         for(NSNumber *key in types) {
             NSString *name = types[key];
@@ -146,6 +146,11 @@
 - (void)updatePasswordStrength {
     [self.passwordStrength updatePasswordStrength:self.password withCrackTimeString:self.generateCrackTimeString];
 }
+- (void)enableOptionalPasswordTypes:(BOOL)advanced storePasswords:(BOOL)stored {
+    self.factory.enableAdvanced = advanced;
+    self.factory.enabledStored = stored;
+    
+}
 -(void)setPasswordValue:(NSString *)password {
     self.password = password;
 }
@@ -173,5 +178,8 @@
 }
 - (NSUInteger)getIndexByPasswordType:(PFPasswordType)type {
     return [self.factory getIndexByPasswordType:type];
+}
+- (NSDictionary *)getFilteredPasswordTypes {
+    return [self.factory getFilteredPasswordTypes];
 }
 @end

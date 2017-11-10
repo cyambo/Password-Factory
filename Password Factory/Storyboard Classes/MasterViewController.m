@@ -30,6 +30,7 @@
         //initialize everything
         self.password = [PasswordController get];
         self.password.delegate = self;
+        [self setOptionalTypes];
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
         self.typeImages = @{
@@ -47,10 +48,12 @@
     [self.passwordField setDelegate:self];
 }
 -(void)viewWillAppear {
+    [self setOptionalTypes];
     PFPasswordType type = (PFPasswordType)[[NSUserDefaults standardUserDefaults] integerForKey:@"selectedPasswordType"];
     [self selectPaswordType:type];
     [self generatePassword];
 }
+
 #pragma mark Observers
 
 /**
@@ -99,6 +102,11 @@
             }
         }
     }
+    if ([keyPath isEqualToString:@"enableAdvanced"] || [keyPath isEqualToString:@"storePasswords"]) {
+        [self setOptionalTypes];
+        [self.passwordTypesTable reloadData];
+    }
+
 }
 #pragma mark Clipboard Handling
 
@@ -383,6 +391,14 @@
 
 
 /**
+ Sets the optional password types in the Password controller so that the type display works properly
+ */
+-(void)setOptionalTypes {
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    [self.password enableOptionalPasswordTypes:[d boolForKey:@"enableAdvanced"] storePasswords:[d boolForKey:@"storePasswords"]];
+}
+
+/**
  Toggles the display of the crack time in the strength bar
 
  @param sender default sender
@@ -413,7 +429,7 @@
 }
 #pragma mark Table View
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [[self.password getAllPasswordTypes] count];
+    return [[self.password getFilteredPasswordTypes] count];
 }
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSTableCellView *c = [tableView makeViewWithIdentifier:@"Password Type Cell" owner:nil];

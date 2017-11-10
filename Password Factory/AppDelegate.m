@@ -270,7 +270,7 @@
  */
 - (NSMenu *)applicationDockMenu:(NSApplication *)sender {
     NSMenu *dockMenu = [[NSMenu alloc] init];
-    NSDictionary *allTypes = [self.masterViewController.password getAllPasswordTypes];
+    NSDictionary *allTypes = [self.masterViewController.password getAllPasswordTypes]; 
     for(int i = 0; i < allTypes.count; i++) {
         PFPasswordType type = [self.masterViewController.password getPasswordTypeByIndex:i];
         NSString *name = [self.masterViewController.password getNameForPasswordType:type];

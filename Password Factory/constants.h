@@ -43,7 +43,8 @@ typedef NS_ENUM(NSInteger, PFPasswordType) {
     PFPatternType,
     PFPronounceableType,
     PFPassphraseType,
-    PFAdvancedType
+    PFAdvancedType,
+    PFStoredType
 };
 
 #define PFPasswordMinLength 5
