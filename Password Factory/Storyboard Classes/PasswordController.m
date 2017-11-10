@@ -93,6 +93,8 @@
             self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
             self.password = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
             break;
+        case PFAdvancedType:
+            break;
     }
     [self updatePasswordStrength];
     if (self.delegate) {

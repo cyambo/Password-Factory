@@ -38,6 +38,7 @@
 
 - (IBAction)selectCaseType:(id)sender;
 @property (weak) IBOutlet NSPopUpButton *caseTypeMenu;
+- (IBAction)changedAdvancedSource:(NSPopUpButton *)sender;
 
 @property (weak) IBOutlet NSPopUpButton *advancedSource;
 @property (weak) IBOutlet NSSlider *advancedTruncate;
@@ -49,6 +50,7 @@
 @property (weak) IBOutlet NSTextField *advancedPostfixPattern;
 @property (weak) IBOutlet NSTextField *advancedFindRegex;
 @property (weak) IBOutlet NSTextField *advancedReplaceRegex;
+
 
 
 @end

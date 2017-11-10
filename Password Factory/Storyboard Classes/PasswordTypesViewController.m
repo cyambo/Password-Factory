@@ -28,6 +28,7 @@
     if([self.delegate isKindOfClass:[PasswordController class]]) {
         self.prefix = [[(PasswordController *)self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
     }
+
     if (self.passwordLengthSlider) {
         //setting the max password length
         NSUInteger length = [self getPasswordLength]; //but we have to get the original length
@@ -52,17 +53,18 @@
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     //Generates different password formats based upon the selected tab
     //set modifiers
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     if ([self.avoidAmbiguous isKindOfClass:[NSButton class]]) {
-        settings[@"avoidAmbiguous"] = @([self.avoidAmbiguous state]);
+        settings[@"avoidAmbiguous"] = @([d boolForKey:@"randomAvoidAmbiguous"]);
     }
     if ([self.useSymbols isKindOfClass:[NSButton class]]) {
-        settings[@"useSymbols"] = @([self.useSymbols state]);
+        settings[@"useSymbols"] = @([d boolForKey:@"randomUseSymbols"]);
     }
     if ([self.useEmoji isKindOfClass:[NSButton class]]) {
-        settings[@"useEmoji"] = @([self.useEmoji state]);
+        settings[@"useEmoji"] = @([d boolForKey:@"randomUseEmoji"]);;
     }
     if ([self.useNumbers isKindOfClass:[NSButton class]]) {
-        settings[@"useNumbers"] = @([self.useNumbers state]);
+        settings[@"useNumbers"] = @([d boolForKey:@"randomUseNumbers"]);;
     }
     settings[@"passwordLength"] = @([self getPasswordLength]);
     switch (self.passwordType) {
@@ -70,7 +72,7 @@
             settings[@"caseType"] = @((PFCaseType)self.caseTypeMenu.selectedItem.tag);
             break;
         case PFPatternType: //pattern
-            settings[@"patternText"] = self.patternText.stringValue;
+            settings[@"patternText"] = [d stringForKey:@"userPattern"];
             break;
         case PFPronounceableType: //pronounceable
             settings[@"caseType"] = @((PFCaseType)self.caseTypeMenu.selectedItem.tag);
@@ -79,6 +81,9 @@
         case PFPassphraseType: //passphrase:
             settings[@"caseType"] = @((PFCaseType)self.caseTypeMenu.selectedItem.tag);
             settings[@"separatorType"] = @((PFSeparatorType)self.separatorTypeMenu.selectedItem.tag);
+            break;
+        case PFAdvancedType: //advanced
+            settings[@"advancedSource"] = @((PFPasswordType)self.advancedSource.selectedTag);
             break;
     }
     return settings;
@@ -93,6 +98,11 @@
  @param sender default sender
  */
 - (IBAction)changeLength:(id)sender {
+    NSEvent *event = [[NSApplication sharedApplication] currentEvent];
+    if (event.type == NSLeftMouseUp) {
+        //TODO: store password here
+        NSLog(@"STORE");
+    }
     if ([self getPasswordLength] != self.passwordLength) {
         self.passwordLength = [self getPasswordLength];
         [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
@@ -150,6 +160,14 @@
 - (void)controlTextDidChange:(NSNotification *)obj {
     [self callDelegate];
 }
+/**
+ Called when source is changed in advanced
+ 
+ @param sender default sender
+ */
+- (IBAction)changedAdvancedSource:(NSPopUpButton *)sender {
+    [self callDelegate];
+}
 
 /**
  Calls our delegate method with settings
@@ -159,7 +177,6 @@
         [self.delegate controlChanged:self.passwordType settings:[self getPasswordSettings]];
     }
 }
-
 
 
 
@@ -196,4 +213,5 @@
 //    return  type;
 //
 //}
+
 @end

@@ -1153,7 +1153,7 @@
                                 </popUpButtonCell>
                                 <connections>
                                     <action selector="selectSeparatorType:" target="sdy-bB-1Ah" id="uOu-Ew-Xjd"/>
-                                    <binding destination="Mal-f5-XKJ" name="selectedIndex" keyPath="values.pronounceableSeparatorTypeIndex" id="XmY-G9-CNc"/>
+                                    <binding destination="Mal-f5-XKJ" name="selectedIndex" keyPath="values.passphraseSeparatorTypeIndex" id="kZ1-cs-T1C"/>
                                 </connections>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oFN-We-zdE" userLabel="Case Type">
@@ -1173,7 +1173,7 @@
                                 </popUpButtonCell>
                                 <connections>
                                     <action selector="selectCaseType:" target="sdy-bB-1Ah" id="qOD-OG-MAD"/>
-                                    <binding destination="Mal-f5-XKJ" name="selectedIndex" keyPath="values.pronounceableCaseTypeIndex" id="hbw-qQ-jvs"/>
+                                    <binding destination="Mal-f5-XKJ" name="selectedIndex" keyPath="values.passphraseCaseTypeIndex" id="6vF-kd-JRo"/>
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39E-g3-dd0">
@@ -1423,25 +1423,43 @@
                                 </connections>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6t-j0-Y1w">
-                                <rect key="frame" x="13" y="86" width="76" height="26"/>
+                                <rect key="frame" x="13" y="99" width="103" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Source" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Wjm-Lc-a2y" id="zNY-0r-uSF">
+                                <popUpButtonCell key="cell" type="push" title="Random" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="401" imageScaling="proportionallyDown" inset="2" selectedItem="7aU-0J-wpm" id="zNY-0r-uSF">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="gWt-Jh-bCv">
                                         <items>
-                                            <menuItem title="Source" state="on" id="Wjm-Lc-a2y"/>
-                                            <menuItem title="Random" id="7aU-0J-wpm"/>
-                                            <menuItem title="Pattern" id="guc-7s-a8V"/>
-                                            <menuItem title="Pronounceable" id="UHS-Df-hyt">
+                                            <menuItem title="Random" state="on" tag="401" id="7aU-0J-wpm"/>
+                                            <menuItem title="Pattern" tag="402" id="guc-7s-a8V"/>
+                                            <menuItem title="Pronounceable" tag="403" id="UHS-Df-hyt">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
-                                            <menuItem title="Passphrase" id="Fty-PM-Dr9">
+                                            <menuItem title="Passphrase" tag="404" id="Fty-PM-Dr9">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="changedAdvancedSource:" target="mtc-B4-HHs" id="KHx-PU-ISz"/>
+                                </connections>
+                            </popUpButton>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EvD-dj-Crk">
+                                <rect key="frame" x="246" y="106" width="76" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="iaV-ya-xEP">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="waY-yo-seS"/>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="Uvy-Xc-7sE" name="contentValues" keyPath="values.testValues" id="T0R-pt-Tq3">
+                                        <dictionary key="options">
+                                            <integer key="NSContentPlacementTag" value="401"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </popUpButton>
                         </subviews>
                     </view>
@@ -1459,8 +1477,9 @@
                     </connections>
                 </viewController>
                 <customObject id="rXD-kZ-olb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="Uvy-Xc-7sE"/>
             </objects>
-            <point key="canvasLocation" x="-602" y="727"/>
+            <point key="canvasLocation" x="-602.5" y="727"/>
         </scene>
         <!--Stored Password-->
         <scene sceneID="chS-3k-fmZ">

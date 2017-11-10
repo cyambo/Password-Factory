@@ -32,6 +32,8 @@
 	<true/>
 	<key>randomCaseTypeIndex</key>
 	<integer>0</integer>
+	<key>randomUseNumbers</key>
+	<true/>
 	<key>passwordLength</key>
 	<string>20</string>
 	<key>pronounceableSeparatorTypeIndex</key>
@@ -40,10 +42,10 @@
 	<integer>0</integer>
 	<key>userPattern</key>
 	<string>w##</string>
-	<key>passphraseSeparatorType</key>
-	<integer>202</integer>
-	<key>passphraseCaseType</key>
-	<integer>101</integer>
+	<key>passphraseSeparatorTypeIndex</key>
+	<integer>1</integer>
+	<key>passphraseCaseTypeIndex</key>
+	<integer>0</integer>
 	<key>enableAdvancedMode</key>
 	<false/>
 	<key>addToLoginItems</key>
@@ -60,5 +62,12 @@
 	<false/>
 	<key>storePasswords</key>
 	<false/>
+	<key>advancedSourceIndex</key>
+	<integer>0</integer>
+	<key>testValues</key>
+	<array>
+		<string>HEllo</string>
+		<string>GoODByE</string>
+	</array>
 </dict>
 </plist>
