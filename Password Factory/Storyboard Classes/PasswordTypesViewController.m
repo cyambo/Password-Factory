@@ -8,10 +8,13 @@
 
 #import "PasswordTypesViewController.h"
 #import "PasswordController.h"
+#import "PasswordFactoryConstants.h"
+
 @interface PasswordTypesViewController () <NSTextFieldDelegate>
 
 @property (nonatomic, assign) NSUInteger passwordLength;
 @property (nonatomic, strong) NSString *prefix;
+@property (nonatomic, strong) PasswordFactoryConstants *c;
 
 @end
 
@@ -20,6 +23,7 @@
 -(instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     self.passwordLength = 0;
+    self.c = [PasswordFactoryConstants get];
     return self;
 }
 -(void)viewWillAppear {
@@ -43,7 +47,11 @@
     }
     [self changeLength:nil];
 }
-
+-(void)setupPopUpButtons {
+    if (self.caseTypeMenu) {
+        
+    }
+}
 /**
  Gets the password generation settings based upon controls
 
@@ -129,6 +137,7 @@
         char toInsert = [self.insertMenu.selectedItem.title characterAtIndex:0];
         NSString *pattern = [NSString stringWithFormat:@"%@%c",self.patternText.stringValue,toInsert];
         [self.patternText setStringValue:pattern];
+        [[NSUserDefaults standardUserDefaults] setObject:pattern forKey:@"userPattern"]; // update defaults because setting the text does not update bindings
         [self.insertMenu selectItemAtIndex:0];
         [self callDelegate];
     }

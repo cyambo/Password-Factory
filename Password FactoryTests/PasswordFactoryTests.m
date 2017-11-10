@@ -38,10 +38,10 @@ const int LONG_PASSWORD_LENGTH = 100;
                            };
     NSDictionary *regexCase = @{
 
-                             @(PFLower):@"[a-z]+",
-                             @(PFTitle):@"[A-Z][a-z]+",
-                             @(PFUpper):@"[A-Z]+",
-                             @(PFMixed):@"[a-zA-Z]"
+                             @(PFLowerCase):@"[a-z]+",
+                             @(PFTitleCase):@"[A-Z][a-z]+",
+                             @(PFUpperCase):@"[A-Z]+",
+                             @(PFMixedCase):@"[a-zA-Z]"
                              };
     for (NSNumber *rSeparator in [regexSep allKeys]) {
         for(NSNumber *rCase in [regexCase allKeys]) {
@@ -58,7 +58,7 @@ const int LONG_PASSWORD_LENGTH = 100;
 
 - (void)testGeneratePronounceable {
     self.pg.length = LONG_PASSWORD_LENGTH;
-    self.pg.caseType = PFLower;
+    self.pg.caseType = PFLowerCase;
     [self regexReplaceTest:@"([a-z]+-?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Hyphen"
              generateBlock:^{
@@ -138,7 +138,7 @@ const int LONG_PASSWORD_LENGTH = 100;
     
     //testing password lengths
     self.pg.length = 5;
-    self.pg.caseType = PFMixed;
+    self.pg.caseType = PFMixedCase;
     self.pg.avoidAmbiguous = YES;
     self.pg.useSymbols = YES;
     XCTAssertTrue([self.pg generateRandom].length == 5, @"Password Length not 5");
@@ -154,7 +154,7 @@ const int LONG_PASSWORD_LENGTH = 100;
     [self regexCheckHasMatchesTest:@"[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]"
                       errorMessage:@"Symbol found when useSymbols == NO"
                      generateBlock:^{
-                         self.pg.caseType = PFMixed;
+                         self.pg.caseType = PFMixedCase;
                          self.pg.avoidAmbiguous = YES;
                          self.pg.useSymbols = NO;
                          return [self.pg generateRandom];
@@ -165,7 +165,7 @@ const int LONG_PASSWORD_LENGTH = 100;
     [self regexCheckHasMatchesTest:@"[A-Z]"
                       errorMessage:@"Capitals found when mixedCase == NO"
                      generateBlock:^{
-                         self.pg.caseType = PFLower;
+                         self.pg.caseType = PFLowerCase;
                          self.pg.avoidAmbiguous = NO;
                          self.pg.useSymbols = NO;
                          return [self.pg generateRandom];
@@ -176,7 +176,7 @@ const int LONG_PASSWORD_LENGTH = 100;
     [self regexCheckHasMatchesTest:@"[lo]"
                       errorMessage:@"Ambiguous Lowercase found when avoidAmbiguous = YES"
                      generateBlock:^{
-                         self.pg.caseType = PFLower;
+                         self.pg.caseType = PFLowerCase;
                          self.pg.avoidAmbiguous = YES;
                          self.pg.useSymbols = NO;
                          return [self.pg generateRandom];

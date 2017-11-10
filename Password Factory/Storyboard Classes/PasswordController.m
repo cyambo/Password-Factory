@@ -9,12 +9,13 @@
 #import "PasswordController.h"
 #import "PasswordStrength.h"
 #import "PasswordTypesViewController.h"
-
+#import "PasswordFactoryConstants.h"
 @interface PasswordController()
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
 @property (nonatomic, strong) PasswordFactory *factory;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSDictionary *viewControllers;
+@property (nonatomic, strong) PasswordFactoryConstants *c;
 @end
 
 @implementation PasswordController
@@ -32,6 +33,7 @@
         singleton = [[PasswordController alloc] init];
         singleton.passwordStrength = [[PasswordStrength alloc] init];
         singleton.factory = [[PasswordFactory alloc] init];
+        singleton.c = [PasswordFactoryConstants get];
         singleton.password = @"";
     });
 
@@ -77,7 +79,7 @@
             if (settings[@"caseType"]) {
                 self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
             } else {
-                self.factory.caseType = PFLower;
+                self.factory.caseType = PFLowerCase;
             }
             self.password = [self.factory generateRandom];
             break;
@@ -108,7 +110,7 @@
 - (void)initViewControllers {
     if (self.viewControllers == nil) {
         NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-        NSDictionary *types = [self.factory getAllPasswordTypes];
+        NSDictionary *types = self.c.passwordTypes;
         NSMutableDictionary *vcs = [[NSMutableDictionary alloc] init];
         for(NSNumber *key in types) {
             NSString *name = types[key];
@@ -148,11 +150,7 @@
 - (void)updatePasswordStrength {
     [self.passwordStrength updatePasswordStrength:self.password withCrackTimeString:self.generateCrackTimeString];
 }
-- (void)enableOptionalPasswordTypes:(BOOL)advanced storePasswords:(BOOL)stored {
-    self.factory.enableAdvanced = advanced;
-    self.factory.enabledStored = stored;
-    
-}
+
 -(void)setPasswordValue:(NSString *)password {
     self.password = password;
 }
@@ -170,18 +168,58 @@
     return [self.factory isCharacterType:type character:character];
 }
 - (NSString *)getNameForPasswordType: (PFPasswordType)type {
-    return [self.factory getNameForPasswordType:type];
+    return [self.c getNameForPasswordType:type];
 }
 - (NSDictionary *)getAllPasswordTypes {
-    return [self.factory getAllPasswordTypes];
+    return self.c.passwordTypes;
 }
-- (PFPasswordType)getPasswordTypeByIndex:(NSInteger)index {
-    return [self.factory getPasswordTypeByIndex:index];
+
+
+/**
+ Gets the password type by index (0, 1, etc) whih sorts by the PFPasswordType value
+ 
+ @param index Index - 0, 1, 2 etc
+ @return PFPasswordType matching index
+ */
+-(PFPasswordType)getPasswordTypeByIndex:(NSUInteger)index {
+    
+    NSArray *keys = [[[self getFilteredPasswordTypes] allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
+    if (index < keys.count) {
+        return (PFPasswordType)[(NSNumber *)keys[index] integerValue];
+    }
+    return PFRandomType;
 }
-- (NSUInteger)getIndexByPasswordType:(PFPasswordType)type {
-    return [self.factory getIndexByPasswordType:type];
+/**
+ Gets the index of the particular passsword type
+ 
+ @param type PFPasswordType
+ @return integer index
+ */
+-(NSUInteger)getIndexByPasswordType:(PFPasswordType)type {
+    NSArray *keys = [[[self getFilteredPasswordTypes] allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
+    for(int i = 0; i < keys.count; i++) {
+        if ((PFPasswordType)[(NSNumber *)keys[i] integerValue] == type) {
+            return i;
+        }
+    }
+    return 0;
 }
+
+/**
+ Returns the password types dictionary with Advanced or Stored filtered out because they are optional
+ 
+ @return dictionary of password types
+ */
 - (NSDictionary *)getFilteredPasswordTypes {
-    return [self.factory getFilteredPasswordTypes];
+    NSMutableDictionary *types = [self.c.passwordTypes mutableCopy];
+    if (!self.useAdvancedType) {
+        [types removeObjectForKey:@(PFAdvancedType)];
+    }
+    if (!self.useStoredType) {
+        [types removeObjectForKey:@(PFStoredType)];
+    }
+    return types;
 }
+
+
 @end

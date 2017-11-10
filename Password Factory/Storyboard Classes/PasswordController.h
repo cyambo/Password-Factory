@@ -18,6 +18,8 @@
 @interface PasswordController : NSObject <PasswordTypesViewControllerDelegate>
 @property (nonatomic, assign) BOOL generateCrackTimeString;
 @property (nonatomic, weak) id <PasswordControllerDelegate> delegate;
+@property (nonatomic, assign) BOOL useStoredType;
+@property (nonatomic, assign) BOOL useAdvancedType;
 + (instancetype)get;
 - (void)generatePassword:(PFPasswordType)type;
 - (void)setPasswordValue:(NSString *)passwordValue;
@@ -29,8 +31,8 @@
 - (NSString *)getNameForPasswordType: (PFPasswordType)type;
 - (NSDictionary *)getAllPasswordTypes;
 - (NSDictionary *)getFilteredPasswordTypes;
-- (PFPasswordType)getPasswordTypeByIndex:(NSInteger)index;
+- (PFPasswordType)getPasswordTypeByIndex:(NSUInteger)index;
 - (NSUInteger)getIndexByPasswordType:(PFPasswordType)type;
 - (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type;
-- (void)enableOptionalPasswordTypes:(BOOL)advanced storePasswords:(BOOL)stored;
+
 @end

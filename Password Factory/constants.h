@@ -11,10 +11,10 @@
 #define Password_Factory_constants_h
 
 typedef NS_ENUM(NSInteger, PFCaseType) {
-    PFLower = 101,
-    PFUpper,
-    PFMixed,
-    PFTitle
+    PFLowerCase = 101,
+    PFUpperCase,
+    PFMixedCase,
+    PFTitleCase
 };
 typedef NS_ENUM(NSInteger,PFSeparatorType) {
     PFNoSeparator = 201,
@@ -46,7 +46,29 @@ typedef NS_ENUM(NSInteger, PFPasswordType) {
     PFAdvancedType,
     PFStoredType
 };
-
+typedef NS_ENUM(NSInteger, PFPatternTypeItem) {
+    PFNumberType = 501,
+    PFLowerCaseWordType,
+    PFUpperCaseWordType,
+    PFRandomCaseWordType,
+    PFTitleCaseWordType,
+    PFLowerCaseShortWordType,
+    PFUpperCaseShortWordType,
+    PFRandomCaseShortWordType,
+    PFTitleCaseShortWordType,
+    PFSymbolType,
+    PFLowerCaseCharacterType,
+    PFUpperCaseCharacterType,
+    PFNonAmbiguousCharacterType,
+    PFNonAmbiguousUpperCaseCharacterType,
+    PFNonAmbiguousNumberType,
+    PFLowerCasePhoneticSoundType,
+    PFUpperCasePhoneticSoundType,
+    PFRandomCasePhoneticSoundType,
+    PFTitleCasePhoneticSoundType,
+    PFEmojiType,
+    PFRandomItemType
+};
 #define PFPasswordMinLength 5
 #define PFPasswordMaxLength 150
 

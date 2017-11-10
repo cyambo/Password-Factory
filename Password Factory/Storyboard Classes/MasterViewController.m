@@ -395,7 +395,8 @@
  */
 -(void)setOptionalTypes {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    [self.password enableOptionalPasswordTypes:[d boolForKey:@"enableAdvanced"] storePasswords:[d boolForKey:@"storePasswords"]];
+    self.password.useStoredType = [d boolForKey:@"storePasswords"];
+    self.password.useAdvancedType = [d boolForKey:@"enableAdvanced"];
 }
 
 /**

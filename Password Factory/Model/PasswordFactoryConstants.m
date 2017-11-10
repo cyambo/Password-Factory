@@ -11,6 +11,11 @@
 @interface PasswordFactoryConstants ()
 
 @property (nonatomic, strong) NSDictionary *constants;
+@property (nonatomic, strong) NSDictionary *patternBase;
+@property (nonatomic, strong) NSArray *passwordTypesIndex;
+@property (nonatomic, strong) NSArray *caseTypeIndex;
+@property (nonatomic, strong) NSArray *separatorTypeIndex;
+@property (nonatomic, strong) NSArray *patternTypeIndex;
 
 @end
 
@@ -28,6 +33,7 @@
 - (instancetype)init {
     self = [super init];
     [self setConstants];
+    [self buildIndexes];
     return self;
 }
 - (void)setConstants {
@@ -42,31 +48,6 @@
     self.phoneticSoundsTwo = @[@"BA",@"BE",@"BO",@"BU",@"BY",@"DA",@"DE",@"DI",@"DO",@"DU",@"FA",@"FE",@"FI",@"FO",@"FU",@"GA",@"GE",@"GI",@"GO",@"GU",@"HA",@"HE",@"HI",@"HO",@"HU",@"JA",@"JE",@"JI",@"JO",@"JU",@"KA",@"KE",@"KI",@"KO",@"KU",@"LA",@"LE",@"LI",@"LO",@"LU",@"MA",@"ME",@"MI",@"MO",@"MU",@"NA",@"NE",@"NI",@"NO",@"NU",@"PA",@"PE",@"PI",@"PO",@"PU",@"RA",@"RE",@"RI",@"RO",@"RU",@"SA",@"SE",@"SI",@"SO",@"SU",@"TA",@"TE",@"TI",@"TO",@"TU",@"VA",@"VE",@"VI",@"VO",@"VU"];
     self.phoneticSoundsThree = @[@"BRA",@"BRE",@"BRI",@"BRO",@"BRU",@"BRY",@"DRA",@"DRE",@"DRI",@"DRO",@"DRU",@"DRY",@"FRA",@"FRE",@"FRI",@"FRO",@"FRU",@"FRY",@"GRA",@"GRE",@"GRI",@"GRO",@"GRU",@"GRY",@"PRA",@"PRE",@"PRI",@"PRO",@"PRU",@"PRY",@"STA",@"STE",@"STI",@"STO",@"STU",@"STY",@"TRA",@"TRE"];
     self.phoneticSounds = [self.phoneticSoundsTwo arrayByAddingObjectsFromArray:self.phoneticSoundsThree];
-    
-    self.characterPattern = @{
-                              @"#" : @1,  //Number
-                              @"w" : @2,  //Lowercase Word
-                              @"W" : @3,  //Uppercase word
-                              @"s" : @4,  //lowercase short word
-                              @"S" : @5,  //uppercase short word
-                              @"!" : @6,  //symbol
-                              @"c" : @7,  //random character
-                              @"C" : @8,  //random uppercase char
-                              @"a" : @9,  //random non-ambiguous char
-                              @"A" : @10, //random non-ambiguous uppercase char
-                              @"N" : @11, //random non-ambiguous number
-                              @"e" : @12, //random emoji
-                              @"p" : @13, //random phonetic sound
-                              @"P" : @14, //random uppercase phonetic sound
-                              @"r" : @15,  //random item generated from random tab settings
-                              @"d" : @16,  //random case word
-                              @"D" : @17,  //title case word
-                              @"h" : @18,  //random case short word
-                              @"H" : @19,  //title case short word
-                              @"t" : @20,  //random case phonetic sound
-                              @"T" : @21  //title case phonetic sound
-                        
-                         };
 
     self.passwordCharacterTypes = @{
                                @(PFSymbols): self.symbols,
@@ -85,6 +66,91 @@
                       @(PFAdvancedType): @"Advanced",
                       @(PFStoredType): @"Stored"
                       };
-    
+    self.caseTypes = @{
+                       @(PFLowerCase): @"Lowercase",
+                       @(PFUpperCase): @"Uppercase",
+                       @(PFMixedCase): @"Mixed Case",
+                       @(PFTitleCase): @"Title Case"
+                       };
+    self.separatorTypes = @{
+                            @(PFNoSeparator) : @"None",
+                            @(PFHyphenSeparator) : @"Hyphen",
+                            @(PFSpaceSeparator) : @"Space",
+                            @(PFUnderscoreSeparator) : @"Underscore",
+                            @(PFNumberSeparator) : @"Number",
+                            @(PFSymbolSeparator) : @"Symbol",
+                            @(PFCharacterSeparator) : @"Character",
+                            @(PFEmojiSeparator) : @"Random",
+                            @(PFRandomSeparator) : @"Emoji",
+                            
+                            };
+    self.patternBase = @{
+                        @(PFNumberType): @[@"#",@"Number"],
+                        @(PFLowerCaseWordType): @[@"w",@"Lowercase Word"],
+                        @(PFUpperCaseWordType): @[@"W",@"Uppercase Word"],
+                        @(PFRandomCaseWordType): @[@"d",@"Random Case Word"],
+                        @(PFTitleCaseWordType): @[@"D",@"Title Case Word"],
+                        @(PFLowerCaseShortWordType): @[@"s",@"Lowercase Short Word"],
+                        @(PFUpperCaseShortWordType): @[@"S",@"Uppercase Short Word"],
+                        @(PFRandomCaseShortWordType): @[@"h",@"Random Case Short Word"],
+                        @(PFTitleCaseShortWordType): @[@"H",@"Title Case Short Word"],
+                        @(PFSymbolType): @[@"!",@"Symbol"],
+                        @(PFLowerCaseCharacterType): @[@"c",@"Lowercase Character"],
+                        @(PFUpperCaseCharacterType): @[@"C",@"Uppercase Character"],
+                        @(PFNonAmbiguousCharacterType): @[@"a",@"Non-Ambiguous Lowercase Character"],
+                        @(PFNonAmbiguousUpperCaseCharacterType): @[@"A",@"Non-Ambiguous Uppercase Character"],
+                        @(PFNonAmbiguousNumberType): @[@"N",@"Non-Ambiguous Number"],
+                        @(PFLowerCasePhoneticSoundType): @[@"p",@"Lowercase Phonetic Sound"],
+                        @(PFUpperCasePhoneticSoundType): @[@"P",@"Uppercase Phonetic Sound"],
+                        @(PFRandomCasePhoneticSoundType): @[@"t",@"Random Case Phonetic Sound"],
+                        @(PFTitleCasePhoneticSoundType): @[@"T",@"Title Case Phonetic Sound"],
+                        @(PFEmojiType): @[@"e",@"Emoji"],
+                        @(PFRandomItemType): @[@"r",@"Random Item"]
+                        
+                        };
 }
+
+/**
+ Builds out indexes for use in getting types by order as well as building out pattern dictionaries
+ */
+-(void)buildIndexes {
+    //get indexes
+    self.passwordTypesIndex = [[self.passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    self.caseTypeIndex = [[self.caseTypes allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    self.separatorTypeIndex = [[self.separatorTypes allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    self.patternTypeIndex = [[self.patternBase allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    //build out pattern dictionaries
+    NSMutableDictionary *pc = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *pn = [[NSMutableDictionary alloc] init];
+    for(NSNumber *key in self.patternBase) {
+        NSString *c = self.patternBase[key][0];
+        NSString *name = self.patternBase[key][1];
+        pc[c] = key;
+        pn[key] = name;
+    }
+    self.patternCharacterToType = pc;
+    self.patternTypeToName = pn;
+}
+-(PFCaseType)getCaseTypeByIndex:(NSUInteger)index {
+    return (PFCaseType)[(NSNumber *)self.caseTypeIndex[index] integerValue];
+}
+-(PFSeparatorType)getSeparatorTypeByIndex:(NSUInteger)index {
+    return (PFSeparatorType)[(NSNumber *)self.separatorTypeIndex[index] integerValue];
+}
+-(PFPatternTypeItem)getPatternTypeByIndex:(NSUInteger)index {
+    return (PFPatternTypeItem)[(NSNumber *)self.patternTypeIndex[index] integerValue];
+}
+-(PFPasswordType)getPasswordTypeByIndex:(NSUInteger)index {
+    return (PFPasswordType)[(NSNumber *)self.passwordTypesIndex[index] integerValue];
+}
+/**
+ Gets name of password type for PFPasswordType
+ 
+ @param type PFPasswordType
+ @return String of name
+ */
+-(NSString *)getNameForPasswordType:(PFPasswordType)type {
+    return [self.passwordTypes objectForKey:@(type)];
+}
+
 @end

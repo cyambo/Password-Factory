@@ -168,9 +168,9 @@
     
     self.factory.useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];
     if ([[sd objectForKey:@"randomMixedCaseShared"] boolValue]) {
-        self.factory.caseType = PFMixed;
+        self.factory.caseType = PFMixedCase;
     } else {
-        self.factory.caseType = PFLower;
+        self.factory.caseType = PFLowerCase;
     }
     self.factory.avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
     

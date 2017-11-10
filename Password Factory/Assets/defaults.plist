@@ -64,10 +64,5 @@
 	<false/>
 	<key>advancedSourceIndex</key>
 	<integer>0</integer>
-	<key>testValues</key>
-	<array>
-		<string>HEllo</string>
-		<string>GoODByE</string>
-	</array>
 </dict>
 </plist>

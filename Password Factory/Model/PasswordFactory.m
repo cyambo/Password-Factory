@@ -238,7 +238,7 @@
         [tmp appendString:self.c.symbols];
     }
     if (self.avoidAmbiguous) {
-        if (self.caseType == PFUpper) {
+        if (self.caseType == PFUpperCase) {
             [tmp appendString:self.c.nonAmbiguousUpperCase];
         } else {
             [tmp appendString:self.c.nonAmbiguousLowerCase];
@@ -248,7 +248,7 @@
         }
         
     } else {
-        if(self.caseType == PFUpper) {
+        if(self.caseType == PFUpperCase) {
             [tmp appendString:self.c.upperCase];
         } else {
             [tmp appendString:self.c.lowerCase];
@@ -257,7 +257,7 @@
             [tmp appendString:self.c.numbers];
         }
     }
-    if (self.caseType == PFMixed) {
+    if (self.caseType == PFMixedCase) {
         if (self.avoidAmbiguous) {
             [tmp appendString:self.c.nonAmbiguousUpperCase];
         } else {
@@ -298,8 +298,7 @@
     //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
     [pattern enumerateSubstringsInRange:NSMakeRange(0, pattern.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
         
-        //check to see if the character is one of the special pattern characters (#!wW etc)
-        int patternType = (int)[[self.c.characterPattern objectForKey:character] integerValue];
+
         //dealing with escape - skip to next and place it
         if ([character isEqualToString:@"\\"]) { //the slash will escape the next character and display it exactly as typed
             isEscaped = YES;
@@ -313,76 +312,79 @@
 
         NSString *toAppend;
         //will replace the special pattern characters with their proper randomized value
-        switch (patternType) {
-            case 0: //is not a pattern character, so append directly to the password
-                toAppend = character;
-                break;
-            case 1: //# - Random Number
-                toAppend = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
-                break;
-            case 2: //w - Lowercase word
-                toAppend = [[self randomFromArray:self.englishWords] lowercaseString];
-                break;
-            case 3: //W - Uppercase word
-                toAppend = [[self randomFromArray:self.englishWords] uppercaseString];
-                break;
-            case 4: //S - Lowercase short word
-                toAppend = [[self randomFromArray:self.shortWords] lowercaseString];
-                break;
-            case 5: //s - Uppercase short word
-                toAppend = [[self randomFromArray:self.shortWords] uppercaseString];
-                break;
-            case 6:  //! - Symbol
-                toAppend = [self randomFromString:self.c.symbols];
-                break;
-            case 7: //c - Random lowercase character
-                toAppend = [self randomFromString:self.c.lowerCase];
-                break;
-            case 8: //C - Random uppercase character
-                toAppend = [self randomFromString:self.c.upperCase];
-                break;
-            case 9: // - Random non ambiguous lowercase
-
-                toAppend = [self randomFromString:self.c.nonAmbiguousLowerCase];
-                break;
-            case 10: // - Random non ambiguous uppercase
-                toAppend = [self randomFromString:self.c.nonAmbiguousUpperCase];
-                break;
-            case 11: //random non-ambiguous number
-                toAppend = [self randomFromString:self.c.nonAmbiguousNumbers];
-                break;
-            case 12: //random emoji
-                toAppend = [self randomFromArray:self.emojis];
-                break;
-            case 13: //random phonetic sound
-                toAppend = [[self randomFromArray:self.c.phoneticSounds] lowercaseString];
-                break;
-            case 14: //random uppercase phonetic sound
-                toAppend = [[self randomFromArray:self.c.phoneticSounds] uppercaseString];
-                break;
-            case 15: //random symbol
-                toAppend = [self generateRandomWithLength:1];
-                break;
-            case 16: //random case word
-                toAppend = [[self randomFromArray:self.englishWords] randomCase];
-                break;
-            case 17: //title case word
-                toAppend = [[self randomFromArray:self.englishWords] capitalizedString];
-                break;
-            case 18: //random case short word
-                toAppend = [[self randomFromArray:self.shortWords] randomCase];
-                break;
-            case 19: //title case short word
-                toAppend = [[self randomFromArray:self.shortWords] capitalizedString];
-                break;
-            case 20: //random case phonetic sound
-                toAppend = [[self randomFromArray:self.c.phoneticSounds] randomCase];
-                break;
-            case 21: //title case phonetic sound
-                toAppend = [[self randomFromArray:self.c.phoneticSounds] capitalizedString];
-                break;
-                
+        if(self.c.patternCharacterToType[character]) {
+            PFPatternTypeItem patternType = (PFPatternTypeItem)[(NSNumber *)self.c.patternCharacterToType[character] integerValue];
+            switch (patternType) {
+                case PFNumberType: //# - Random Number
+                    toAppend = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
+                    break;
+                case PFLowerCaseWordType: //w - Lowercase word
+                    toAppend = [[self randomFromArray:self.englishWords] lowercaseString];
+                    break;
+                case PFUpperCaseWordType: //W - Uppercase word
+                    toAppend = [[self randomFromArray:self.englishWords] uppercaseString];
+                    break;
+                case PFRandomCaseWordType: //d - random case word
+                    toAppend = [[self randomFromArray:self.englishWords] randomCase];
+                    break;
+                case PFTitleCaseWordType: //D title case word
+                    toAppend = [[self randomFromArray:self.englishWords] capitalizedString];
+                    break;
+                case PFLowerCaseShortWordType: //S - Lowercase short word
+                    toAppend = [[self randomFromArray:self.shortWords] lowercaseString];
+                    break;
+                case PFUpperCaseShortWordType: //s - Uppercase short word
+                    toAppend = [[self randomFromArray:self.shortWords] uppercaseString];
+                    break;
+                case PFRandomCaseShortWordType: //h - random case short word
+                    toAppend = [[self randomFromArray:self.shortWords] randomCase];
+                    break;
+                case PFTitleCaseShortWordType: //H - title case short word
+                    toAppend = [[self randomFromArray:self.shortWords] capitalizedString];
+                    break;
+                case PFSymbolType:  //! - Symbol
+                    toAppend = [self randomFromString:self.c.symbols];
+                    break;
+                case PFLowerCaseCharacterType: //c - Random lowercase character
+                    toAppend = [self randomFromString:self.c.lowerCase];
+                    break;
+                case PFUpperCaseCharacterType: //C - Random uppercase character
+                    toAppend = [self randomFromString:self.c.upperCase];
+                    break;
+                case PFNonAmbiguousCharacterType: //a - Random non ambiguous lowercase
+                    toAppend = [self randomFromString:self.c.nonAmbiguousLowerCase];
+                    break;
+                case PFNonAmbiguousUpperCaseCharacterType: //A - Random non ambiguous uppercase
+                    toAppend = [self randomFromString:self.c.nonAmbiguousUpperCase];
+                    break;
+                case PFNonAmbiguousNumberType: //N - random non-ambiguous number
+                    toAppend = [self randomFromString:self.c.nonAmbiguousNumbers];
+                    break;
+                case PFEmojiType: //e - random emoji
+                    toAppend = [self randomFromArray:self.emojis];
+                    break;
+                case PFLowerCasePhoneticSoundType: //p - random phonetic sound
+                    toAppend = [[self randomFromArray:self.c.phoneticSounds] lowercaseString];
+                    break;
+                case PFUpperCasePhoneticSoundType: //P - random uppercase phonetic sound
+                    toAppend = [[self randomFromArray:self.c.phoneticSounds] uppercaseString];
+                    break;
+                case PFRandomCasePhoneticSoundType: //t - random case phonetic sound
+                    toAppend = [[self randomFromArray:self.c.phoneticSounds] randomCase];
+                    break;
+                case PFTitleCasePhoneticSoundType: //T - title case phonetic sound
+                    toAppend = [[self randomFromArray:self.c.phoneticSounds] capitalizedString];
+                    break;
+                case PFRandomItemType: //r - random symbol
+                    toAppend = [self generateRandomWithLength:1];
+                    break;
+                    
+            }
+        } else {
+            //not a pattern character, so just append
+            toAppend = character;
         }
+
         [s appendString:toAppend];
     }];
     return s;
@@ -412,16 +414,16 @@
 }
 -(NSString *)caseString:(NSString *)toCase {
     switch (self.caseType) {
-        case PFUpper:
+        case PFUpperCase:
             return [toCase uppercaseString];
             break;
-        case PFMixed:
+        case PFMixedCase:
             return [toCase randomCase];
             break;
-        case PFTitle:
+        case PFTitleCase:
             return [toCase capitalizedString];
             break;
-        case PFLower:
+        case PFLowerCase:
         default:
             return [toCase lowercaseString];
             break;
@@ -621,30 +623,6 @@
     return 1;
 }
 
-/**
- Returns the password types dictionary with Advanced or Stored filtered out because they are optional
-
- @return dictionary of password types
- */
-- (NSDictionary *)getFilteredPasswordTypes {
-    NSMutableDictionary *types = [self.c.passwordTypes mutableCopy];
-    if (!self.enableAdvanced) {
-        [types removeObjectForKey:@(PFAdvancedType)];
-    }
-    if (!self.enabledStored) {
-        [types removeObjectForKey:@(PFStoredType)];
-    }
-    return types;
-}
-/**
- Gets name of password type for PFPasswordType
-
- @param type PFPasswordType
- @return String of name
- */
--(NSString *)getNameForPasswordType:(PFPasswordType)type {
-    return [self.c.passwordTypes objectForKey:@(type)];
-}
 
 /**
  Returns all the passsword types in a dictionary keyed by PFPasswordType
@@ -655,36 +633,6 @@
     return self.c.passwordTypes;
 }
 
-/**
- Gets the password type by index (0, 1, etc) whih sorts by the PFPasswordType value
-
- @param index Index - 0, 1, 2 etc
- @return PFPasswordType matching index
- */
--(PFPasswordType)getPasswordTypeByIndex:(NSInteger)index {
-    
-    NSArray *keys = [[[self getFilteredPasswordTypes] allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
-    if (index >= 0 && index < keys.count) {
-        return (PFPasswordType)[(NSNumber *)keys[index] integerValue];
-    }
-    return PFRandomType;
-}
-
-/**
- Gets the index of the particular passsword type
-
- @param type PFPasswordType
- @return integer index
- */
--(NSUInteger)getIndexByPasswordType:(PFPasswordType)type {
-    NSArray *keys = [[[self getFilteredPasswordTypes] allKeys] sortedArrayUsingSelector:@selector(compare:)]; //get sorted keys
-    for(int i = 0; i < keys.count; i++) {
-        if ((PFPasswordType)[(NSNumber *)keys[i] integerValue] == type) {
-            return i;
-        }
-    }
-    return 0;
-}
 @end
 
 

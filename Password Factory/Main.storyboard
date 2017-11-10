@@ -1443,22 +1443,7 @@
                                 </popUpButtonCell>
                                 <connections>
                                     <action selector="changedAdvancedSource:" target="mtc-B4-HHs" id="KHx-PU-ISz"/>
-                                </connections>
-                            </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EvD-dj-Crk">
-                                <rect key="frame" x="246" y="106" width="76" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="iaV-ya-xEP">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="waY-yo-seS"/>
-                                </popUpButtonCell>
-                                <connections>
-                                    <binding destination="Uvy-Xc-7sE" name="contentValues" keyPath="values.testValues" id="T0R-pt-Tq3">
-                                        <dictionary key="options">
-                                            <integer key="NSContentPlacementTag" value="401"/>
-                                        </dictionary>
-                                    </binding>
+                                    <binding destination="Uvy-Xc-7sE" name="selectedIndex" keyPath="values.advancedSourceIndex" id="WPQ-Bx-zdZ"/>
                                 </connections>
                             </popUpButton>
                         </subviews>

@@ -17,11 +17,21 @@
 @property (nonatomic, strong) NSString *nonAmbiguousUpperCase;
 @property (nonatomic, strong) NSString *nonAmbiguousLowerCase;
 @property (nonatomic, strong) NSString *nonAmbiguousNumbers;
-@property (nonatomic, strong) NSDictionary *characterPattern;
 @property (nonatomic, strong) NSArray *phoneticSounds;
 @property (nonatomic, strong) NSArray *phoneticSoundsTwo;
 @property (nonatomic, strong) NSArray *phoneticSoundsThree;
 @property (nonatomic, strong) NSDictionary *passwordCharacterTypes;
 @property (nonatomic, strong) NSDictionary *passwordTypes;
+@property (nonatomic, strong) NSDictionary *caseTypes;
+@property (nonatomic, strong) NSDictionary *separatorTypes;
+@property (nonatomic, strong) NSDictionary *patternCharacterToType;
+@property (nonatomic, strong) NSDictionary *patternTypeToName;
+
+-(PFPasswordType)getPasswordTypeByIndex:(NSUInteger)index;
+-(PFCaseType)getCaseTypeByIndex:(NSUInteger)index;
+-(PFSeparatorType)getSeparatorTypeByIndex:(NSUInteger)index;
+-(PFPatternTypeItem)getPatternTypeByIndex:(NSUInteger)index;
+-(NSString *)getNameForPasswordType:(PFPasswordType)type;
+
 + (instancetype)get;
 @end

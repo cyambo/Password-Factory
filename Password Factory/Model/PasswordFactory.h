@@ -16,8 +16,7 @@
 @property (nonatomic, assign) BOOL useSymbols;
 @property (nonatomic, assign) BOOL useEmoji;
 @property (nonatomic, assign) BOOL useNumbers;
-@property (nonatomic, assign) BOOL enableAdvanced;
-@property (nonatomic, assign) BOOL enabledStored;
+
 
 - (NSString *)generatePronounceableWithSeparatorType:(PFSeparatorType)separatorType;
 - (NSString *)generatePronounceable;
@@ -28,9 +27,4 @@
 - (uint)randomNumber:(uint)limit;
 - (NSString *)getPasswordCharacterType:(PFCharacterType)type;
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character;
-- (NSString *)getNameForPasswordType: (PFPasswordType)type;
-- (NSDictionary *)getAllPasswordTypes;
-- (NSDictionary *)getFilteredPasswordTypes;
-- (PFPasswordType)getPasswordTypeByIndex:(NSInteger)index;
-- (NSUInteger)getIndexByPasswordType:(PFPasswordType)type;
 @end
