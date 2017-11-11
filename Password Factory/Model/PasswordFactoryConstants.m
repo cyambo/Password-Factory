@@ -12,10 +12,6 @@
 
 @property (nonatomic, strong) NSDictionary *constants;
 @property (nonatomic, strong) NSDictionary *patternBase;
-@property (nonatomic, strong) NSArray *passwordTypesIndex;
-@property (nonatomic, strong) NSArray *caseTypeIndex;
-@property (nonatomic, strong) NSArray *separatorTypeIndex;
-@property (nonatomic, strong) NSArray *patternTypeIndex;
 
 @end
 
@@ -80,8 +76,8 @@
                             @(PFNumberSeparator) : @"Number",
                             @(PFSymbolSeparator) : @"Symbol",
                             @(PFCharacterSeparator) : @"Character",
-                            @(PFEmojiSeparator) : @"Random",
-                            @(PFRandomSeparator) : @"Emoji",
+                            @(PFEmojiSeparator) : @"Emoji",
+                            @(PFRandomSeparator) : @"Random",
                             
                             };
     self.patternBase = @{
@@ -122,11 +118,12 @@
     //build out pattern dictionaries
     NSMutableDictionary *pc = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *pn = [[NSMutableDictionary alloc] init];
+
     for(NSNumber *key in self.patternBase) {
         NSString *c = self.patternBase[key][0];
         NSString *name = self.patternBase[key][1];
         pc[c] = key;
-        pn[key] = name;
+        pn[key] = [NSString stringWithFormat:@"%@ - %@",c,name];
     }
     self.patternCharacterToType = pc;
     self.patternTypeToName = pn;
@@ -150,7 +147,16 @@
  @return String of name
  */
 -(NSString *)getNameForPasswordType:(PFPasswordType)type {
-    return [self.passwordTypes objectForKey:@(type)];
+    return self.passwordTypes[@(type)];
 }
 
+-(NSString *)getNameForCaseType:(PFCaseType)type {
+    return self.caseTypes[@(type)];
+}
+-(NSString *)getNameForSeparatorType:(PFSeparatorType)type {
+    return self.separatorTypes[@(type)];
+}
+-(NSString *)getNameForPatternTypeItem:(PFPatternTypeItem)type {
+    return self.patternTypeToName[@(type)];
+}
 @end

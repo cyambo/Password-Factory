@@ -26,12 +26,18 @@
 @property (nonatomic, strong) NSDictionary *separatorTypes;
 @property (nonatomic, strong) NSDictionary *patternCharacterToType;
 @property (nonatomic, strong) NSDictionary *patternTypeToName;
-
+@property (nonatomic, strong) NSArray *passwordTypesIndex;
+@property (nonatomic, strong) NSArray *caseTypeIndex;
+@property (nonatomic, strong) NSArray *separatorTypeIndex;
+@property (nonatomic, strong) NSArray *patternTypeIndex;
 -(PFPasswordType)getPasswordTypeByIndex:(NSUInteger)index;
 -(PFCaseType)getCaseTypeByIndex:(NSUInteger)index;
 -(PFSeparatorType)getSeparatorTypeByIndex:(NSUInteger)index;
 -(PFPatternTypeItem)getPatternTypeByIndex:(NSUInteger)index;
 -(NSString *)getNameForPasswordType:(PFPasswordType)type;
+-(NSString *)getNameForCaseType:(PFCaseType)type;
+-(NSString *)getNameForPatternTypeItem:(PFPatternTypeItem)type;
+-(NSString *)getNameForSeparatorType:(PFSeparatorType)type;
 
 + (instancetype)get;
 @end

@@ -45,11 +45,47 @@
         }
         [self.passwordLengthSlider setIntValue:(int)length]; //and set it back because the changing of maxValue messes up the slider
     }
+    [self setupPopUpButtons];
     [self changeLength:nil];
 }
+
+/**
+ Fills in the popup buttons with defaults from PF Constants
+ */
 -(void)setupPopUpButtons {
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     if (self.caseTypeMenu) {
-        
+        [self.caseTypeMenu removeAllItems];
+        for(int i = 0; i < self.c.caseTypeIndex.count; i++){
+            PFCaseType t = [(NSNumber *)self.c.caseTypeIndex[i] integerValue];
+            //don't display title case in random because it doesn't make sense
+            if (self.passwordType == PFRandomType && t == PFTitleCase) {
+                continue;
+            }
+            [self.caseTypeMenu addItemWithTitle:[self.c getNameForCaseType:t]];
+            [self.caseTypeMenu itemAtIndex:i].tag = t;
+        }
+        NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",self.prefix];
+        [self.caseTypeMenu selectItemAtIndex:[d integerForKey:name]];
+    }
+    if (self.separatorTypeMenu) {
+        [self.separatorTypeMenu removeAllItems];
+        for(int i = 0; i < self.c.separatorTypeIndex.count; i++){
+            PFSeparatorType t = [(NSNumber *)self.c.separatorTypeIndex[i] integerValue];
+            [self.separatorTypeMenu addItemWithTitle:[self.c getNameForSeparatorType:t]];
+            [self.separatorTypeMenu itemAtIndex:i].tag = t;
+        }
+        NSString *name = [NSString stringWithFormat:@"%@SeparatorTypeIndex",self.prefix];
+        [self.separatorTypeMenu selectItemAtIndex:[d integerForKey:name]];
+    }
+    if (self.insertMenu) {
+        [self.insertMenu removeAllItems];
+        [self.insertMenu addItemWithTitle:@"Insert"];
+        for(int i = 0; i < self.c.patternTypeIndex.count; i++) {
+            PFPatternTypeItem t = [(NSNumber *)self.c.patternTypeIndex[i] integerValue];
+            [self.insertMenu addItemWithTitle:[self.c getNameForPatternTypeItem:t]];
+            [self.insertMenu itemAtIndex:i].tag = t;
+        }
     }
 }
 /**
@@ -101,17 +137,17 @@
 }
 
 /**
- Called when length slider is updated and sets all related lentgh values
+ Called when length slider is updated and sets all related length values
 
  @param sender default sender
  */
 - (IBAction)changeLength:(id)sender {
-    NSEvent *event = [[NSApplication sharedApplication] currentEvent];
-    if (event.type == NSLeftMouseUp) {
-        //TODO: store password here
-        NSLog(@"STORE");
-    }
     if ([self getPasswordLength] != self.passwordLength) {
+        NSEvent *event = [[NSApplication sharedApplication] currentEvent];
+        if (event.type == NSLeftMouseUp) {
+            //TODO: store password here
+            NSLog(@"STORE");
+        }
         self.passwordLength = [self getPasswordLength];
         [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
         [self callDelegate];

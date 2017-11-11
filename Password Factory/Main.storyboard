@@ -951,9 +951,7 @@
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="Aei-LH-TSN">
                                         <items>
-                                            <menuItem title="Lowercase" state="on" tag="101" id="7c7-vZ-XEd"/>
-                                            <menuItem title="Uppercase" tag="102" id="Bt5-PW-ApM"/>
-                                            <menuItem title="Mixed Case" tag="103" id="GM2-Gr-cbL"/>
+                                            <menuItem title="Lowercase" state="on" tag="101" id="7c7-vZ-XEd" userLabel="Case Type"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>

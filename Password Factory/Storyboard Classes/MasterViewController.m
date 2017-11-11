@@ -38,7 +38,8 @@
                             @(PFPronounceableType): [StyleKit imageOfPronounceableType],
                             @(PFPassphraseType): [StyleKit imageOfPassphraseType],
                             @(PFPatternType): [StyleKit imageOfPatternType],
-                            @(PFAdvancedType): [StyleKit imageOfAdvancedType]
+                            @(PFAdvancedType): [StyleKit imageOfAdvancedType],
+                            @(PFStoredType): [StyleKit imageOfStoredType]
                             };
         [self setObservers];
     }
