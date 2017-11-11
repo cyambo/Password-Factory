@@ -113,18 +113,17 @@
     settings[@"passwordLength"] = @([self getPasswordLength]);
     switch (self.passwordType) {
         case PFRandomType: //random
-            settings[@"caseType"] = @((PFCaseType)self.caseTypeMenu.selectedItem.tag);
+            settings[@"caseType"] = @([self getCaseType]);
             break;
         case PFPatternType: //pattern
             settings[@"patternText"] = [d stringForKey:@"userPattern"];
             break;
         case PFPronounceableType: //pronounceable
-            settings[@"caseType"] = @((PFCaseType)self.caseTypeMenu.selectedItem.tag);
-            settings[@"separatorType"] = @((PFSeparatorType)self.separatorTypeMenu.selectedItem.tag);
-            break;
+            settings[@"caseType"] = @([self getCaseType]);
+            settings[@"separatorType"] = @([self getSeparatorType]);
         case PFPassphraseType: //passphrase:
-            settings[@"caseType"] = @((PFCaseType)self.caseTypeMenu.selectedItem.tag);
-            settings[@"separatorType"] = @((PFSeparatorType)self.separatorTypeMenu.selectedItem.tag);
+            settings[@"caseType"] = @([self getCaseType]);
+            settings[@"separatorType"] = @([self getSeparatorType]);
             break;
         case PFAdvancedType: //advanced
             settings[@"advancedSource"] = @((PFPasswordType)self.advancedSource.selectedTag);
@@ -135,7 +134,19 @@
 -(NSUInteger)getPasswordLength {
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
 }
-
+-(PFCaseType)getCaseType {
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",self.prefix];
+    NSUInteger index = [d integerForKey:name];
+    return [self.c getCaseTypeByIndex:index];
+}
+-(PFSeparatorType)getSeparatorType {
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSString *name = [NSString stringWithFormat:@"%@SeparatorTypeIndex",self.prefix];
+    NSUInteger index = [d integerForKey:name];
+    return [self.c getSeparatorTypeByIndex:index];
+    
+}
 /**
  Called when length slider is updated and sets all related length values
 
