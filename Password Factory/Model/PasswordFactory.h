@@ -17,7 +17,7 @@
 @property (nonatomic, assign) BOOL useEmoji;
 @property (nonatomic, assign) BOOL useNumbers;
 
-
++ (instancetype)get;
 - (NSString *)generatePronounceableWithSeparatorType:(PFSeparatorType)separatorType;
 - (NSString *)generatePronounceable;
 - (NSString *)generateRandom;

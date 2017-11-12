@@ -64,5 +64,23 @@
 	<false/>
 	<key>advancedSourceIndex</key>
 	<integer>0</integer>
+	<key>advancedSymbolCasePercent</key>
+	<integer>0</integer>
+	<key>advancedAccentedCasePercent</key>
+	<integer>0</integer>
+	<key>advancedTruncateAt</key>
+	<integer>0</integer>
+	<key>advancedReplaceAmbiguous</key>
+	<false/>
+	<key>advancedRandomCase</key>
+	<false/>
+	<key>advancedPrefixPattern</key>
+	<string></string>
+	<key>advancedPostfixPattern</key>
+	<string></string>
+	<key>advancedFindRegex</key>
+	<string></string>
+	<key>advancedReplaceRegex</key>
+	<string></string>
 </dict>
 </plist>

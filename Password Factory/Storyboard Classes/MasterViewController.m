@@ -89,18 +89,21 @@
         ) {
         [self updatePasswordField];
     }
-    if ([keyPath isEqualToString:@"maxPasswordLength"]) {
+    
+    //updates the max length for the currerntly visible password type
+    if ([keyPath isEqualToString:@"maxPasswordLength"] && change[@"new"] != nil && change[@"new"] != [NSNull null]) {
+        float new = [(NSNumber *)change[@"new"] floatValue];
+        //updating the max password length slider when the max password length value has changed from preferences
         if (self.currentPasswordTypeViewController.passwordLengthSlider) {
-            float new = [(NSNumber *)change[@"new"] floatValue];
             NSSlider *slider = self.currentPasswordTypeViewController.passwordLengthSlider;
-            if (slider.maxValue != new) {
-                float currValue = slider.floatValue;
-                if (currValue > new) {
-                    [[NSUserDefaults standardUserDefaults] setFloat:new forKey:@"passwordLength"];
-                }
-                slider.maxValue = new;
-                [self.currentPasswordTypeViewController changeLength:slider];
-            }
+            [self updateForMaxPasswordLength:new slider:slider key:@"passwordLength"];
+            [self.currentPasswordTypeViewController changeLength:slider];
+        }
+        //updating the truncate slider
+        if (self.currentPasswordTypeViewController.advancedTruncate) {
+            NSSlider *slider = self.currentPasswordTypeViewController.advancedTruncate;
+            [self updateForMaxPasswordLength:new slider:slider key:@"advancedTruncateAt"];
+            [self.currentPasswordTypeViewController changeAdvancedTruncate:slider];
         }
     }
     if ([keyPath isEqualToString:@"enableAdvanced"] || [keyPath isEqualToString:@"storePasswords"]) {
@@ -109,8 +112,16 @@
     }
 
 }
+-(void)updateForMaxPasswordLength:(float)new slider:(NSSlider *)slider key:(NSString *)key {
+    if (slider.maxValue != new) {
+        float currValue = slider.floatValue;
+        if (currValue > new) {
+            [[NSUserDefaults standardUserDefaults] setFloat:new forKey:key];
+        }
+        slider.maxValue = new;
+    }
+}
 #pragma mark Clipboard Handling
-
 /**
  Sends string to clipboard
 

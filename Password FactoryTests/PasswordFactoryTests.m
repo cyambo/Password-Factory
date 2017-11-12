@@ -18,7 +18,7 @@ const int LONG_PASSWORD_LENGTH = 100;
 
 - (void)setUp {
     [super setUp];
-    self.pg = [[PasswordFactory alloc] init];
+    self.pg = [PasswordFactory get];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 

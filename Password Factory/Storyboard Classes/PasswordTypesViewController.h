@@ -12,7 +12,9 @@
 
 @class PasswordTypesViewController;
 @protocol PasswordTypesViewControllerDelegate <NSObject>
--(void)controlChanged:(PFPasswordType)type settings:(NSDictionary *)settings;
+- (void)controlChanged:(PFPasswordType)type settings:(NSDictionary *)settings;
+- (NSString *)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings;
+- (NSString *)getNameForPasswordType: (PFPasswordType)type;
 @end
 @interface PasswordTypesViewController : NSViewController
 @property (nonatomic, weak) id <PasswordTypesViewControllerDelegate> delegate;
@@ -44,12 +46,15 @@
 @property (weak) IBOutlet NSSlider *advancedTruncate;
 @property (weak) IBOutlet NSButton *advancedRandomCase;
 @property (weak) IBOutlet NSButton *advancedReplaceAmbiguous;
-@property (weak) IBOutlet NSButton *advancedSymbolCase;
-@property (weak) IBOutlet NSButton *advancedAccentedCase;
 @property (weak) IBOutlet NSTextField *advancedPrefixPattern;
 @property (weak) IBOutlet NSTextField *advancedPostfixPattern;
 @property (weak) IBOutlet NSTextField *advancedFindRegex;
 @property (weak) IBOutlet NSTextField *advancedReplaceRegex;
+@property (weak) IBOutlet NSStepper *advancedSymbolCasePercentStepper;
+@property (weak) IBOutlet NSStepper *advancedAccentedCasePercentStepper;
+- (IBAction)changeAdvancedStepper:(NSStepper *)sender;
+@property (weak) IBOutlet NSTextField *advancedTruncateText;
+- (IBAction)changeAdvancedTruncate:(NSSlider *)sender;
 
 
 

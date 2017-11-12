@@ -32,7 +32,7 @@
     dispatch_once(&once, ^ {
         singleton = [[PasswordController alloc] init];
         singleton.passwordStrength = [[PasswordStrength alloc] init];
-        singleton.factory = [[PasswordFactory alloc] init];
+        singleton.factory = [PasswordFactory get];
         singleton.c = [PasswordFactoryConstants get];
         singleton.password = @"";
     });
@@ -57,7 +57,15 @@
  @param type PFPasswordType
  @param settings dictionary containing password generation settings
  */
-- (void)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings {
+
+/**
+ Generates password
+
+ @param type PFPasswordType
+ @param settings settings dictionary containing password generation settings
+ @return generated password
+ */
+- (NSString *)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings {
     if(settings[@"passwordLength"]) {
         self.factory.length = [(NSNumber *)settings[@"passwordLength"] integerValue];
     }
@@ -96,12 +104,14 @@
             self.password = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
             break;
         case PFAdvancedType:
+            self.password = settings[@"generatedPassword"];
             break;
     }
     [self updatePasswordStrength];
     if (self.delegate) {
         [self.delegate passwordChanged:self.password];
     }
+    return self.password;
 }
 
 /**

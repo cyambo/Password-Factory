@@ -25,6 +25,24 @@
 @end
 
 @implementation PasswordFactory
+
+/**
+ Singleton Get Method
+
+ @return PaswordFactory 
+ */
++ (instancetype)get {
+    static dispatch_once_t once = 0;
+    static PasswordFactory *singleton = nil;
+    
+    dispatch_once(&once, ^ {
+        singleton = [[PasswordFactory alloc] init];
+
+    });
+    
+    return singleton;
+
+}
 - (id)init {
     self = [super init];
     if (self) {
