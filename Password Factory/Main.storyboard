@@ -1344,18 +1344,6 @@
                                     <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedTruncateAt" id="nnU-sa-BmX"/>
                                 </connections>
                             </slider>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEP-V7-5df">
-                                <rect key="frame" x="4" y="58" width="107" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Random Case" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="RbR-c3-tLy">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="smallSystem"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeOptions:" target="mtc-B4-HHs" id="iUg-QE-tMw"/>
-                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedRandomCase" id="M9L-DY-7hM"/>
-                                </connections>
-                            </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTO-Xl-c8V">
                                 <rect key="frame" x="4" y="79" width="144" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1571,6 +1559,32 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OBr-NM-KL7">
+                                <rect key="frame" x="7" y="61" width="37" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Case" id="mdZ-eP-EsD">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zju-iI-n35">
+                                <rect key="frame" x="38" y="58" width="77" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fv5-eN-JW0" id="oEg-Ar-uVN">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <menu key="menu" id="VBc-H6-Eto">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="fv5-eN-JW0" userLabel="Case"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="selectCaseType:" target="mtc-B4-HHs" id="BKT-AI-Zti"/>
+                                    <binding destination="Uvy-Xc-7sE" name="selectedIndex" keyPath="values.advancedCaseTypeIndex" id="1uy-IT-QtT"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                     </view>
                     <connections>
@@ -1578,13 +1592,13 @@
                         <outlet property="advancedFindRegex" destination="Roy-Ax-8H4" id="DLA-Eb-b3t"/>
                         <outlet property="advancedPostfixPattern" destination="hdA-Lk-Dvd" id="mqp-ym-6bW"/>
                         <outlet property="advancedPrefixPattern" destination="iMf-WX-Iqn" id="BRw-1J-AsC"/>
-                        <outlet property="advancedRandomCase" destination="LEP-V7-5df" id="NJG-mB-s3y"/>
                         <outlet property="advancedReplaceAmbiguous" destination="pTO-Xl-c8V" id="9Lr-kP-SGk"/>
                         <outlet property="advancedReplaceRegex" destination="cZH-XC-Fp5" id="ou1-bW-P7R"/>
                         <outlet property="advancedSource" destination="d6t-j0-Y1w" id="tgh-1K-pwM"/>
                         <outlet property="advancedSymbolCasePercentStepper" destination="Vth-fo-hq8" id="u7A-ZH-VeR"/>
                         <outlet property="advancedTruncate" destination="9Dp-aA-vqM" id="lfA-w7-g3k"/>
                         <outlet property="advancedTruncateText" destination="XV9-cu-WIs" id="5uR-5a-JS9"/>
+                        <outlet property="caseTypeMenu" destination="zju-iI-n35" id="QFk-OG-IZR"/>
                     </connections>
                 </viewController>
                 <customObject id="rXD-kZ-olb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

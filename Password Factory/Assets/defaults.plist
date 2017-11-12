@@ -82,5 +82,7 @@
 	<string></string>
 	<key>advancedReplaceRegex</key>
 	<string></string>
+	<key>advancedCaseTypeIndex</key>
+	<integer>0</integer>
 </dict>
 </plist>

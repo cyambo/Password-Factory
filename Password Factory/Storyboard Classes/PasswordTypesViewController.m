@@ -65,14 +65,20 @@
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     if (self.caseTypeMenu) {
         [self.caseTypeMenu removeAllItems];
+
         for(int i = 0; i < self.c.caseTypeIndex.count; i++){
             PFCaseType t = [(NSNumber *)self.c.caseTypeIndex[i] integerValue];
-            //don't display title case in random because it doesn't make sense
-            if (self.passwordType == PFRandomType && t == PFTitleCase) {
+            //don't display title case in random or advanced because it doesn't make sense
+            if ((self.passwordType == PFRandomType || self.passwordType == PFAdvancedType) && t == PFTitleCase) {
                 continue;
             }
             [self.caseTypeMenu addItemWithTitle:[self.c getNameForCaseType:t]];
             [self.caseTypeMenu itemAtIndex:i].tag = t;
+        }
+        //add a no change item to advanced type
+        if (self.passwordType == PFAdvancedType) {
+            [self.caseTypeMenu insertItemWithTitle:@"No Change" atIndex:0];
+            [self.caseTypeMenu itemAtIndex:0].tag = 0;
         }
         NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",self.prefix];
         [self.caseTypeMenu selectItemAtIndex:[d integerForKey:name]];
@@ -159,15 +165,27 @@
     self.prefix = [[self.delegate getNameForPasswordType:sourceType] lowercaseString];
     NSDictionary *sourceSettings = [self getPasswordSettingsByType:sourceType];
     NSString *password = [self.delegate generatePassword:sourceType withSettings:sourceSettings];
-    self.prefix = @"advanced"; //setting back to advanced
+    
     settings[@"generatedPassword"] = password;
     settings[@"truncateAt"] = @([self.advancedTruncate integerValue]);
-    if ([self.advancedPrefixPattern stringValue].length) {
-        settings[@"prefixPattern"] = [self.advancedPrefixPattern stringValue];
+    
+    //generating the prefix and the postfix
+    NSString *pre = [self.advancedPrefixPattern stringValue];
+    NSString *post = [self.advancedPostfixPattern stringValue];
+    if (pre.length || post.length) {
+        self.prefix = @"pattern";
+        NSMutableDictionary *patternSettings = [[self getPasswordSettingsByType:PFPatternType] mutableCopy];
+        if(pre.length) {
+            patternSettings[@"patternText"] = [self.advancedPrefixPattern stringValue];
+            settings[@"prefix"] = [self.delegate generatePassword:PFPatternType withSettings:patternSettings];
+        }
+        if(post.length) {
+            patternSettings[@"patternText"] = [self.advancedPostfixPattern stringValue];
+            settings[@"postfix"] = [self.delegate generatePassword:PFPatternType withSettings:patternSettings];
+        }
+        self.prefix = @"advanced";
     }
-    if ([self.advancedPostfixPattern stringValue].length) {
-        settings[@"postfixPattern"] = [self.advancedPostfixPattern stringValue];
-    }
+
     if ([self.advancedFindRegex stringValue].length) {
         settings[@"findRegex"] = [self.advancedFindRegex stringValue];
     }
@@ -176,8 +194,12 @@
     }
     settings[@"accentedCasePercent"] = @([self.advancedAccentedCasePercentStepper integerValue]);
     settings[@"symbolCasePercent"] = @([self.advancedSymbolCasePercentStepper integerValue]);
-    settings[@"randomCaseify"] = @([d boolForKey:@"advancedRandomCase"]);
     settings[@"replaceAmbiguous"] = @([d boolForKey:@"advancedReplaceAmbiguous"]);
+    //set the case type
+    if(self.caseTypeMenu.selectedTag != 0) { //no change has a tag of zero
+        settings[@"caseType"] = @(self.caseTypeMenu.selectedTag);
+    }
+    self.prefix = @"advanced"; //setting back to advanced
     return settings;
 }
 

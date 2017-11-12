@@ -44,7 +44,6 @@
 
 @property (weak) IBOutlet NSPopUpButton *advancedSource;
 @property (weak) IBOutlet NSSlider *advancedTruncate;
-@property (weak) IBOutlet NSButton *advancedRandomCase;
 @property (weak) IBOutlet NSButton *advancedReplaceAmbiguous;
 @property (weak) IBOutlet NSTextField *advancedPrefixPattern;
 @property (weak) IBOutlet NSTextField *advancedPostfixPattern;
@@ -52,9 +51,12 @@
 @property (weak) IBOutlet NSTextField *advancedReplaceRegex;
 @property (weak) IBOutlet NSStepper *advancedSymbolCasePercentStepper;
 @property (weak) IBOutlet NSStepper *advancedAccentedCasePercentStepper;
+
 - (IBAction)changeAdvancedStepper:(NSStepper *)sender;
-@property (weak) IBOutlet NSTextField *advancedTruncateText;
+
 - (IBAction)changeAdvancedTruncate:(NSSlider *)sender;
+@property (weak) IBOutlet NSTextField *advancedTruncateText;
+
 
 
 
