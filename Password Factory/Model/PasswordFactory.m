@@ -11,6 +11,7 @@
 #import "NSString+RandomCase.h"
 #import "NSString+SymbolCase.h"
 #import "NSString+AccentedCase.h"
+#import "NSString+ReplaceAmbiguous.h"
 
 
 @interface PasswordFactory ()
@@ -420,8 +421,20 @@
     if(accent > 0) {
         s = [s accentedCase:accent];
     }
+
+    if(self.truncate) {
+        __block int i = 0;
+        __block NSMutableString *ns = [[NSMutableString alloc] init];
+        [s enumerateSubstringsInRange:NSMakeRange(0, s.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+            if (i < self.truncate) {
+                [ns appendString:character];
+            }
+            i++;
+        }];
+        s = ns;
+    }
     if(self.replaceAmbiguous) {
-        
+        s = [s replaceAmbiguous];
     }
     return s;
 }

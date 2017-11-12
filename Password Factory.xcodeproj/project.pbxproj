@@ -77,6 +77,7 @@
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
 		40FB0C241B810F10009193F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C231B810F10009193F8 /* main.m */; };
 		40FB0C261B810F10009193F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
+		40FB929B1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB929A1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m */; };
 		4F1ED79D12270B1711884AF9 /* libPods-Password Factory Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39728CFBCBE26EDF076FD6 /* libPods-Password Factory Widget.a */; };
 		5902001B6C472E037A69C066 /* libPods-Password FactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */; };
 		629FF80EF3AE7ECEE253EF57 /* libPods-Password Factory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C166078E13798FABDD114 /* libPods-Password Factory.a */; };
@@ -248,6 +249,8 @@
 		40FB0C251B810F10009193F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		40FB0C2E1B810F10009193F8 /* Password FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB0C331B810F10009193F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40FB92991FB90F6600BFF50B /* NSString+ReplaceAmbiguous.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ReplaceAmbiguous.h"; sourceTree = "<group>"; };
+		40FB929A1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReplaceAmbiguous.m"; sourceTree = "<group>"; };
 		48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D56B0CCBE7731ACB294CA25 /* Pods-Password FactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.release.xcconfig"; sourceTree = "<group>"; };
 		8388D3084A5960812CCBE3DA /* Pods-Password FactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 				4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */,
 				4051C9CC1FA7D6E90097CDD9 /* NSString+AccentedCase.h */,
 				4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */,
+				40FB92991FB90F6600BFF50B /* NSString+ReplaceAmbiguous.h */,
+				40FB929A1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m */,
 				4051C9D01FA7D7780097CDD9 /* NSString+MapCase.h */,
 				4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */,
 			);
@@ -1200,6 +1205,7 @@
 				40511D661C125348005BE5BE /* PasswordStrength.m in Sources */,
 				40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */,
 				40EADD451FB3AC55007CBDCB /* BorderedButton.m in Sources */,
+				40FB929B1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m in Sources */,
 				409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */,
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,
 				40BA26F21FB389D300F7AF13 /* PasswordFactoryConstants.m in Sources */,

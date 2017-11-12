@@ -12,8 +12,8 @@
 #import "PasswordFactory.h"
 @interface PasswordTypesViewController () <NSTextFieldDelegate>
 
-@property (nonatomic, assign) NSUInteger passwordLength;
-@property (nonatomic, assign) NSUInteger truncateLength;
+@property (nonatomic, assign) NSInteger passwordLength;
+@property (nonatomic, assign) NSInteger truncateLength;
 @property (nonatomic, strong) NSString *prefix;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @end
@@ -22,8 +22,8 @@
 
 -(instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
-    self.passwordLength = 0;
-    self.truncateLength = 0;
+    self.passwordLength = -1;
+    self.truncateLength = -1;
     self.c = [PasswordFactoryConstants get];
     return self;
 }
@@ -337,7 +337,12 @@
             NSLog(@"STORE");
         }
         self.truncateLength = [self getTruncateLength];
-        [self.advancedTruncateText setStringValue:[NSString stringWithFormat:@"%lu",self.truncateLength]];
+        if(self.truncateLength) {
+            [self.advancedTruncateText setStringValue:[NSString stringWithFormat:@"%lu",self.truncateLength]];
+        } else {
+            [self.advancedTruncateText setStringValue:@"None"];
+        }
+        
         [self callDelegate];
     }
 }

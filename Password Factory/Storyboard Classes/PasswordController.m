@@ -112,7 +112,7 @@
                 self.factory.prefix = settings[@"prefix"];
             }
             if (settings[@"postfix"]) {
-                self.factory.prefix = settings[@"postfix"];
+                self.factory.postfix = settings[@"postfix"];
             }
 
             self.factory.replaceAmbiguous = [settings[@"replaceAmbiguous"] boolValue];
