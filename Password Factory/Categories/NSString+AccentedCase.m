@@ -10,7 +10,7 @@
 #import "NSString+MapCase.h"
 static NSDictionary *map = nil;
 @implementation NSString (AccentedCase)
--(NSString *)accentedCase:(float)percent {
+-(NSString *)accentedCase:(NSUInteger)percent {
     
     map = @{
             @"a" : @[@"à",@"á",@"â",@"ã",@"ā",@"ă",@"ȧ",@"ä",@"ả",@"å",@"ǎ",@"ȁ",@"ȃ",@"ą",@"ạ",@"ḁ",@"ầ",@"ấ",@"ẫ",@"ẩ",@"ằ",@"ắ",@"ẵ",@"ẳ",@"ǡ",@"ǟ",@"ǻ",@"ậ",@"ặ",@"ⱥ",@"ɐ"],

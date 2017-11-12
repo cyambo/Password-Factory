@@ -10,6 +10,7 @@
 #import "PasswordFactoryConstants.h"
 #import "NSString+RandomCase.h"
 #import "NSString+SymbolCase.h"
+#import "NSString+AccentedCase.h"
 
 
 @interface PasswordFactory ()
@@ -50,8 +51,9 @@
         
         [self loadWords];
         self.c = [PasswordFactoryConstants get];
-
         self.length = 5;
+        self.prefix = @"";
+        self.postfix = @"";
     }
     return self;
 }
@@ -407,7 +409,22 @@
     }];
     return s;
 }
-
+#pragma mark Transform Password
+-(NSString *)transformPassword:(NSString *)source symbolCasePrecent:(NSUInteger)symbol accentedCasePercent:(NSUInteger)accent {
+    //add prefix and postfix
+    NSString *s = [NSString stringWithFormat:@"%@%@%@",self.prefix,source,self.postfix];
+    s = [self caseString:s];
+    if (symbol > 0) {
+        s = [s symbolCase:symbol];
+    }
+    if(accent > 0) {
+        s = [s accentedCase:accent];
+    }
+    if(self.replaceAmbiguous) {
+        
+    }
+    return s;
+}
 #pragma mark Utility Methods
 /**
  *  get a random character as NSString from within a string
@@ -442,8 +459,10 @@
             return [toCase capitalizedString];
             break;
         case PFLowerCase:
-        default:
             return [toCase lowercaseString];
+            break;
+        default:
+            return toCase;
             break;
     }
 }

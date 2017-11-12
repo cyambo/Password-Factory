@@ -104,7 +104,20 @@
             self.password = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
             break;
         case PFAdvancedType:
-            self.password = settings[@"generatedPassword"];
+            self.factory.caseType = 0;
+            if (settings[@"caseType"]) {
+                self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
+            }
+            if (settings[@"prefix"]) {
+                self.factory.prefix = settings[@"prefix"];
+            }
+            if (settings[@"postfix"]) {
+                self.factory.prefix = settings[@"postfix"];
+            }
+
+            self.factory.replaceAmbiguous = [settings[@"replaceAmbiguous"] boolValue];
+            self.factory.truncate = [settings[@"truncateAt"] integerValue];
+            self.password = [self.factory transformPassword:settings[@"generatedPassword"] symbolCasePrecent:[settings[@"symbolCasePercent"] integerValue] accentedCasePercent:[settings[@"accentedCasePercent"] integerValue]];
             break;
     }
     [self updatePasswordStrength];

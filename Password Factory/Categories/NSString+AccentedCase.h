@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (AccentedCase)
--(NSString *)accentedCase:(float)percent;
+-(NSString *)accentedCase:(NSUInteger)percent;
 @end

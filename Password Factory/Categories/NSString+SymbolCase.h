@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (SymbolCase)
--(NSString *)symbolCase:(float)percent;
+-(NSString *)symbolCase:(NSUInteger)percent;
 @end

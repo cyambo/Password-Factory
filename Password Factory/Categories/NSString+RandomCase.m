@@ -10,17 +10,16 @@
 
 @implementation NSString (RandomCase)
 - (NSString *)randomCase {
-    NSMutableString *r = [[NSMutableString alloc] init];
-    for (int i = 0; i < self.length; i++) {
+    __block NSMutableString *r = [[NSMutableString alloc] init];
+    [self enumerateSubstringsInRange:NSMakeRange(0, self.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
         int yn = arc4random() % 2;
-        char c = [self characterAtIndex:i];
         if (yn) {
-            c = tolower(c);
+            character = [character lowercaseString];
         } else {
-            c = toupper(c);
+            character = [character uppercaseString];
         }
-        [r appendFormat:@"%c",c];
-    }
+        [r appendString:character];
+    }];
     return r;
 }
 @end

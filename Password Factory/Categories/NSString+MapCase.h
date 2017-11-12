@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (MapCase)
--(NSString *)mapCase:(float)percent map:(NSDictionary *)map;
+-(NSString *)mapCase:(NSUInteger)percent map:(NSDictionary *)map;
 @end
