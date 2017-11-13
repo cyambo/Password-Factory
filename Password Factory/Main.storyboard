@@ -1447,7 +1447,7 @@
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vth-fo-hq8">
                                 <rect key="frame" x="46" y="32" width="15" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="PaH-9j-miL"/>
+                                <stepperCell key="cell" controlSize="small" alignment="left" maxValue="100" id="PaH-9j-miL"/>
                                 <connections>
                                     <action selector="changeAdvancedStepper:" target="mtc-B4-HHs" id="4Lh-Bd-khE"/>
                                     <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedSymbolCasePercent" id="0KJ-b7-XIG"/>
@@ -1490,7 +1490,7 @@
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D43-w1-kQS">
                                 <rect key="frame" x="46" y="9" width="15" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="aiJ-Rz-PKZ"/>
+                                <stepperCell key="cell" controlSize="small" alignment="left" maxValue="100" id="aiJ-Rz-PKZ"/>
                                 <connections>
                                     <action selector="changeAdvancedStepper:" target="mtc-B4-HHs" id="jjW-Xg-9Ln"/>
                                     <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedAccentedCasePercent" id="gWd-2E-vdb"/>
