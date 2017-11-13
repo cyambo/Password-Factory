@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainWindow.h"
 #import "PreferencesViewController.h"
+#import "DefaultsManager.h"
 #import "StyleKit.h"
 #import "constants.h"
 
@@ -24,13 +25,10 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-// delete prefs
-//    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-//    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    //load default preferences from our plist
-    [PreferencesViewController loadPreferencesFromPlist];
-    //init prefs window
     
+
+    //init prefs window
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
     NSWindowController *windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
     self.prefsWindowController = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
@@ -45,9 +43,9 @@
     [self.prefsViewController changeLoginItem:nil]; //set the login item to the current state
     
     //doing magic for the app if it is in the menu
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
+    if ([d boolForKey:@"isMenuApp"]) {
         //hiding the dock icon if specified
-        if([[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
+        if([d boolForKey:@"hideDockIcon"]) {
             [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
         }
         
@@ -83,7 +81,7 @@
         [windowController showWindow:self];
     }
     //save window state
-    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"NSQuitAlwaysKeepsWindows"];
+    [d setObject:@YES forKey:@"NSQuitAlwaysKeepsWindows"];
     self.currWindow.restorable = YES;
     
     //set the launched flag to true
@@ -239,7 +237,7 @@
 }
 -(void)applicationWillTerminate:(NSNotification *)notification {
     //Sync preferences when closing
-    [PreferencesViewController syncSharedDefaults];
+    [[DefaultsManager get] syncSharedDefaults];
 }
 
 /**
@@ -259,7 +257,7 @@
  */
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     //if it is a menuApp then don't kill app when window is closed
-    return ![[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"];
+    return ![[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"];
 }
 
 /**
@@ -298,7 +296,7 @@
                            andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                          forEventClass:kInternetEventClass andEventID:kAEGetURL];
     //remove enter full screen menu item
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
+    [[DefaultsManager standardDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
 }
 
 /**
@@ -313,7 +311,7 @@
         if (self.launched) {
             [self loadPrefrences:nil];
             //Load up the main window as well 
-            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
+            if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
                 [self showPopover:nil];
             } else {
                 [self.currWindow makeKeyAndOrderFront:self];
@@ -333,7 +331,7 @@
  @return yes if it is dark, no if it isnt
  */
 +(BOOL)isDarkMode {
-    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    NSString *osxMode = [[DefaultsManager standardDefaults] stringForKey:@"AppleInterfaceStyle"];
     return [osxMode isEqualToString:@"Dark"];
 }
 @end

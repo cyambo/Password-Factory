@@ -8,6 +8,7 @@
 
 #import "MasterViewController.h"
 #import "PreferencesViewController.h"
+#import "DefaultsManager.h"
 #import "AppDelegate.h"
 #import "constants.h"
 #import "DefaultsManager.h"
@@ -31,7 +32,7 @@
         self.password = [PasswordController get];
         self.password.delegate = self;
         [self setOptionalTypes];
-        NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+        NSUserDefaults *d = [DefaultsManager standardDefaults];
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
         self.typeImages = @{
                             @(PFRandomType): [StyleKit imageOfRandomType],
@@ -50,7 +51,7 @@
 }
 -(void)viewWillAppear {
     [self setOptionalTypes];
-    PFPasswordType type = (PFPasswordType)[[NSUserDefaults standardUserDefaults] integerForKey:@"selectedPasswordType"];
+    PFPasswordType type = (PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"];
     [self selectPaswordType:type];
     [self generatePassword];
 }
@@ -63,7 +64,7 @@
 - (void)setObservers {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
     NSDictionary *p = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     //setting observers for all the items in our defaults plist
     for (NSString *k in p) {
         [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
@@ -116,7 +117,7 @@
     if (slider.maxValue != new) {
         float currValue = slider.floatValue;
         if (currValue > new) {
-            [[NSUserDefaults standardUserDefaults] setFloat:new forKey:key];
+            [[DefaultsManager standardDefaults] setFloat:new forKey:key];
         }
         slider.maxValue = new;
     }
@@ -157,7 +158,7 @@
     //copy to pasteboard
     [self copyToClipboard:nil];
     
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
 
     //show the notification ,
     if ([d boolForKey:@"globalHotkeyShowNotification"]) {
@@ -179,7 +180,7 @@
     [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.floatValue ]];
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     //Set the sound if the user configured it
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"globalHotkeyPlaySound"]) {
+    if ([[DefaultsManager standardDefaults] boolForKey:@"globalHotkeyPlaySound"]) {
         [notification setSoundName:[self getSelectedSoundName]];
     }
     
@@ -193,7 +194,7 @@
  @return notification sound
  */
 -(NSString *)getSelectedSoundName {
-    NSString *soundName = [[NSUserDefaults standardUserDefaults] stringForKey:@"notificationSound"];
+    NSString *soundName = [[DefaultsManager standardDefaults] stringForKey:@"notificationSound"];
     if (soundName) {
         return soundName;
     }
@@ -206,7 +207,7 @@
  */
 - (IBAction)copyToClipboard:(id)sender {
 
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     [self updatePasteboard:[self.password getPasswordValue]];
     if ([d boolForKey:@"clearClipboard"]) {
         //setting up clear clipboard timer
@@ -222,7 +223,7 @@
         
     }
     //closing window if it is a menuApp
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
+    if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
         NSWindow *window = [[NSApplication sharedApplication] mainWindow];
         if (window.isVisible) {
             [window close];
@@ -301,8 +302,8 @@
  Updates the password field and colors it if user asks
  */
 - (void)updatePasswordField{
-    [PreferencesViewController syncSharedDefaults];
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    [[DefaultsManager get] syncSharedDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     //default text color from prefs
     NSColor *dColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"defaultTextColor"]]];
     NSString *currPassword = [self.password getPasswordValue];
@@ -368,7 +369,7 @@
 -(NSString *)swapColorForDisplay:(NSString *)color {
     NSString *white = @"FFFFFF";
     NSString *black  = @"000000";
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMenuApp"]) {
+    if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
         if ([AppDelegate isDarkMode]) {
             if ([color isEqualToString:black]) {
                 return white;
@@ -390,7 +391,7 @@
  Updates the password strength meter and the crack time string
  */
 - (void)setPasswordStrength {
-    BOOL displayCTS = [[NSUserDefaults standardUserDefaults] boolForKey:@"displayCrackTime"]; //do we want to display the crack time string?
+    BOOL displayCTS = [[DefaultsManager standardDefaults] boolForKey:@"displayCrackTime"]; //do we want to display the crack time string?
     self.password.generateCrackTimeString = displayCTS;
     [self.passwordStrengthLevel updateStrength:[self.password getPasswordStrength]];
     //only display the crack time string if the user has it selected
@@ -406,7 +407,7 @@
  Sets the optional password types in the Password controller so that the type display works properly
  */
 -(void)setOptionalTypes {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     self.password.useStoredType = [d boolForKey:@"storePasswords"];
     self.password.useAdvancedType = [d boolForKey:@"enableAdvanced"];
 }
@@ -417,7 +418,7 @@
  @param sender default sender
  */
 - (IBAction)toggleCrackTimeDisplay:(id)sender {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSButton *b = self.crackTimeButton;
     BOOL showCT = ![d boolForKey:@"displayCrackTime"];
     [d setBool:showCT forKey:@"displayCrackTime"]; //manually setting defaults because bindings don't work for this
@@ -454,7 +455,7 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSInteger row = self.passwordTypesTable.selectedRow;
     PFPasswordType type = [self.password getPasswordTypeByIndex:row];
-    [[NSUserDefaults standardUserDefaults] setInteger:type forKey:@"selectedPasswordType"];
+    [[DefaultsManager standardDefaults] setInteger:type forKey:@"selectedPasswordType"];
     PasswordTypesViewController *vc = [self.password getViewControllerForPasswordType:type];
     self.currentPasswordTypeViewController = vc;
     self.passwordView.subviews = @[];

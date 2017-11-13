@@ -16,8 +16,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
 @implementation PreferencesViewController
 
-static BOOL loadedPrefs;
-static NSDictionary *prefsPlist;
+
 
 -(instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
@@ -26,12 +25,12 @@ static NSDictionary *prefsPlist;
 }
 - (void)awakeFromNib {
 
-    [PreferencesViewController loadPreferencesFromPlist];
+    
     [self updatePrefsUI];
     
     
     //setup shortcut handler
-    [self.shortcutView bind:@"enabled" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
+    [self.shortcutView bind:@"enabled" toObject:[DefaultsManager standardDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
     
     // Shortcut view will follow and modify user preferences automatically
     self.shortcutView.associatedUserDefaultsKey = MASPreferenceKeyShortcut;
@@ -44,7 +43,7 @@ static NSDictionary *prefsPlist;
     self.loginController = [[StartAtLoginController alloc] initWithIdentifier:HelperIdentifier];
     
     //setting up notification sound
-    NSString *sound = [[NSUserDefaults standardUserDefaults] stringForKey:@"notificationSound"];
+    NSString *sound = [[DefaultsManager standardDefaults] stringForKey:@"notificationSound"];
     [self.soundSelector selectItemWithTitle:sound];
 }
 
@@ -58,7 +57,7 @@ static NSDictionary *prefsPlist;
  Sets the observers for the class
  */
 -(void)setObservers {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     //sets the observer for the global shortcut key
     [d addObserver:self
         forKeyPath:MASPreferenceKeyShortcutEnabled
@@ -67,7 +66,7 @@ static NSDictionary *prefsPlist;
 
 }
 -(void)unsetObservers {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     //remove observer
     [d removeObserver:self forKeyPath:MASPreferenceKeyShortcutEnabled];
 }
@@ -85,7 +84,7 @@ static NSDictionary *prefsPlist;
  Setup for the prefs window to fill in the set values
  */
 -(void)updatePrefsUI {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     //Loading up the erase clipboard timer
     [self.clearTimeLabel setIntValue:(int)[d integerForKey:@"clearClipboardTime"]];
     
@@ -96,58 +95,8 @@ static NSDictionary *prefsPlist;
     [self.numbersColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
     [self.defaultColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"defaultTextColor"]]];
 }
-/**
- Makes sure our preferences are loaded only at launch
- */
-+(void)loadPreferencesFromPlist {
-    if (!loadedPrefs) {
-        [PreferencesViewController getPrefsFromPlist];
-        loadedPrefs = YES;
-    }
 
-}
-/**
- Loads our defaults.plist into a dictionary
- */
-+(void)loadDefaultsPlist {
-    if (prefsPlist == nil) {
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
-        prefsPlist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    }
-}
-/**
- Takes our defaults plist dictionary and merges it with standardUserDefaults so that our prefs are always set
- */
-+ (void)getPrefsFromPlist {
-    [PreferencesViewController loadDefaultsPlist];
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 
-    //taking plist and filling in defaults if none set
-    for (NSString *k in prefsPlist) {
-        if (![d objectForKey:k]) {
-            [d setObject:[prefsPlist objectForKey:k] forKey:k];
-            
-        }
-    }
-    [PreferencesViewController syncSharedDefaults];
-}
-/**
- Syncs our plist with the sharedDefaults manager for use in the today extension
- */
-+(void)syncSharedDefaults {
-    [PreferencesViewController loadDefaultsPlist];
-    NSUserDefaults *sharedDefaults = [DefaultsManager sharedDefaults];
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    for (NSString *key in prefsPlist) {
-        NSString *k = [key stringByAppendingString:@"Shared"]; //Appending shared to shared defaults because KVO will cause the observer to be called
-        //syncing to shared defaults
-        if([sharedDefaults objectForKey:k] != [d objectForKey:key]) {
-            [sharedDefaults setObject:[d objectForKey:key] forKey:k];
-        }
-    }
-    //saving selected tab manually
-    [sharedDefaults setObject:[d objectForKey:@"selectedTabIndex"]  forKey:@"selectedTabIndexShared"];
-}
 #pragma mark colors
 /**
  Converts a hex color string into an NSColor
@@ -182,7 +131,7 @@ static NSDictionary *prefsPlist;
  @param sender default sender from IBAction
  */
 - (IBAction)changeColor:(id)sender {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     if ([sender isEqualTo:self.uppercaseTextColor]) {
            [d setObject:[self.uppercaseTextColor.color hexadecimalValueOfAnNSColor] forKey:@"upperTextColor"];
     } else if ([sender isEqualTo:self.lowercaseTextColor]) {
@@ -235,8 +184,8 @@ static NSDictionary *prefsPlist;
  @param sender default sender
  */
 - (IBAction)menuCheckBoxesChanged:(NSButton*)sender {
-    int isMenuApp = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"isMenuApp"];
-    int hideDockIcon = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"hideDockIcon"];
+    int isMenuApp = (int)[[DefaultsManager standardDefaults] integerForKey:@"isMenuApp"];
+    int hideDockIcon = (int)[[DefaultsManager standardDefaults] integerForKey:@"hideDockIcon"];
 
     [self.quitButton setTitle:@"Quit"];
     
@@ -265,7 +214,7 @@ static NSDictionary *prefsPlist;
  */
 - (void)resetShortcutRegistration {
     //The global shortcut was set, so setup the callback
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
+    if ([[DefaultsManager standardDefaults] boolForKey:MASPreferenceKeyShortcutEnabled]) {
 
         [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut
                      toAction:^{
@@ -298,7 +247,7 @@ static NSDictionary *prefsPlist;
 - (IBAction)changeLoginItem:(NSButton *)sender {
     //get the login item status from preferences and change the checkbox state
 
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     BOOL isLoginItem = [self.loginController startAtLogin];
     if(sender == nil) {
         //called from viewWillAppear
@@ -345,7 +294,7 @@ static NSDictionary *prefsPlist;
  */
 - (IBAction)selectSound:(NSPopUpButton *)sender {
     NSString *soundName = [sender selectedItem].title;
-    [[NSUserDefaults standardUserDefaults] setObject:soundName forKey:@"notificationSound"];
+    [[DefaultsManager standardDefaults] setObject:soundName forKey:@"notificationSound"];
     [[NSSound soundNamed:soundName] play];
 }
 @end

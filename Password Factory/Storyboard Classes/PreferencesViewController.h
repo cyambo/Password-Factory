@@ -25,9 +25,6 @@
 @property (weak) IBOutlet NSTextField *clearTimeLabel;
 - (IBAction)changeClearTime:(id)sender;
 
-+ (void)loadPreferencesFromPlist;
-+ (void)getPrefsFromPlist;
-+ (void)syncSharedDefaults;
 
 + (NSColor*)colorWithHexColorString:(NSString*)inColorString;
 

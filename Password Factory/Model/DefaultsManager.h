@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface DefaultsManager : NSObject
++(instancetype) get;
 +(NSUserDefaults *)sharedDefaults;
++(NSUserDefaults *)standardDefaults;
++(void)deleteUserDefaults;
+-(void)syncSharedDefaults;
 @end

@@ -10,6 +10,7 @@
 #import "PasswordController.h"
 #import "PasswordFactoryConstants.h"
 #import "PasswordFactory.h"
+#import "DefaultsManager.h"
 @interface PasswordTypesViewController () <NSTextFieldDelegate>
 
 @property (nonatomic, assign) NSInteger passwordLength;
@@ -32,7 +33,7 @@
 
     self.prefix = [[self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
     //setting the max password length
-    NSUInteger maxValue = [[NSUserDefaults standardUserDefaults] integerForKey:@"maxPasswordLength"];
+    NSUInteger maxValue = [[DefaultsManager standardDefaults] integerForKey:@"maxPasswordLength"];
     if (self.passwordLengthSlider) {
         NSUInteger length = [self getPasswordLength]; //but we have to get the original length
 
@@ -40,7 +41,7 @@
         //if our length is greater than the max, set it to max
         if (length > maxValue) {
             length = maxValue;
-            [[NSUserDefaults standardUserDefaults] setInteger:maxValue forKey:@"passwordLength"];
+            [[DefaultsManager standardDefaults] setInteger:maxValue forKey:@"passwordLength"];
         }
         [self.passwordLengthSlider setIntegerValue:length]; //and set it back because the changing of maxValue messes up the slider
     }
@@ -50,7 +51,7 @@
         NSUInteger truncateLength = [self getTruncateLength];
         if (truncateLength > maxValue) {
             truncateLength = maxValue;
-            [[NSUserDefaults standardUserDefaults] setInteger:maxValue forKey:@"advancedTruncateAt"];
+            [[DefaultsManager standardDefaults] setInteger:maxValue forKey:@"advancedTruncateAt"];
         }
         [self.advancedTruncate setIntegerValue:truncateLength];
         [self changeAdvancedTruncate:nil];
@@ -63,7 +64,7 @@
  Fills in the popup buttons with defaults from PF Constants
  */
 -(void)setupPopUpButtons {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     if (self.caseTypeMenu) {
         [self.caseTypeMenu removeAllItems];
 
@@ -116,7 +117,7 @@
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     //Generates different password formats based upon the selected tab
     //set modifiers
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     if ([self.avoidAmbiguous isKindOfClass:[NSButton class]]) {
         settings[@"avoidAmbiguous"] = @([d boolForKey:@"randomAvoidAmbiguous"]);
     }
@@ -159,7 +160,7 @@
  */
 -(NSMutableDictionary *)generateAdvancedPasswordSettings {
     PFPasswordType sourceType;
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     sourceType = (PFPasswordType)self.advancedSource.selectedTag;
     //changing the prefix to the source type so that we get the proper settings
@@ -209,11 +210,11 @@
  @return password length
  */
 -(NSUInteger)getPasswordLength {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:@"passwordLength"];
+    return [[DefaultsManager standardDefaults] integerForKey:@"passwordLength"];
 }
 
 -(NSUInteger)getTruncateLength {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:@"advancedTruncateAt"];
+    return [[DefaultsManager standardDefaults] integerForKey:@"advancedTruncateAt"];
 }
 /**
  Gets the case type for the selected password type
@@ -221,7 +222,7 @@
  @return PFCaseType
  */
 -(PFCaseType)getCaseType {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",self.prefix];
     NSUInteger index = [d integerForKey:name];
     return [self.c getCaseTypeByIndex:index];
@@ -233,7 +234,7 @@
  @return PFSeparatorType
  */
 -(PFSeparatorType)getSeparatorType {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSString *name = [NSString stringWithFormat:@"%@SeparatorTypeIndex",self.prefix];
     NSUInteger index = [d integerForKey:name];
     return [self.c getSeparatorTypeByIndex:index];
@@ -276,7 +277,7 @@
         char toInsert = [self.insertMenu.selectedItem.title characterAtIndex:0];
         NSString *pattern = [NSString stringWithFormat:@"%@%c",self.patternText.stringValue,toInsert];
         [self.patternText setStringValue:pattern];
-        [[NSUserDefaults standardUserDefaults] setObject:pattern forKey:@"userPattern"]; // update defaults because setting the text does not update bindings
+        [[DefaultsManager standardDefaults] setObject:pattern forKey:@"userPattern"]; // update defaults because setting the text does not update bindings
         [self.insertMenu selectItemAtIndex:0];
         [self callDelegate];
     }
