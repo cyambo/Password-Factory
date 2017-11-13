@@ -108,6 +108,8 @@
             if (settings[@"caseType"]) {
                 self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
             }
+            self.factory.prefix = @"";
+            self.factory.postfix = @"";
             if (settings[@"prefix"]) {
                 self.factory.prefix = settings[@"prefix"];
             }

@@ -57,7 +57,6 @@
     [self selectPaswordType:type];
     [self generatePassword];
     self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
-    NSLog(@"CURRENT FONT SIZE %d",self.currentFontSize);
 }
 
 #pragma mark Observers
@@ -311,6 +310,13 @@
     //default text color from prefs
     NSColor *dColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"defaultTextColor"]]];
     NSString *currPassword = [self.password getPasswordValue];
+    
+    __block int i = 0;
+    //using enumeration to get string length because that is as far as I know the only way to get the proper length with unicode strings
+    [currPassword enumerateSubstringsInRange:NSMakeRange(0, currPassword.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+        i++;
+    }];
+    [self.displayedPasswordLength setStringValue:[NSString stringWithFormat:@"%d",i]];
     if (currPassword == nil || currPassword.length == 0) {
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
         return;
@@ -458,13 +464,18 @@
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSInteger row = self.passwordTypesTable.selectedRow;
     PFPasswordType type = [self.password getPasswordTypeByIndex:row];
-    [[DefaultsManager standardDefaults] setInteger:type forKey:@"selectedPasswordType"];
-    PasswordTypesViewController *vc = [self.password getViewControllerForPasswordType:type];
-    self.currentPasswordTypeViewController = vc;
-    self.passwordView.subviews = @[];
-    [self.passwordView addSubview:vc.view];
-    [self generatePassword];
+    //only change if the type selection changed, or we have no subviews (meaning nothing loaded)
+    if (type != [d integerForKey:@"selectedPasswordType"] || self.passwordView.subviews.count == 0) {
+        [d setInteger:type forKey:@"selectedPasswordType"];
+        PasswordTypesViewController *vc = [self.password getViewControllerForPasswordType:type];
+        self.currentPasswordTypeViewController = vc;
+        self.passwordView.subviews = @[];
+        [self.passwordView addSubview:vc.view];
+        [self generatePassword];
+    }
+
 }
 @end

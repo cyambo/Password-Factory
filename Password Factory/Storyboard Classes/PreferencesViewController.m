@@ -193,7 +193,6 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     if (self.initialMenuState == 2 && self.initialDockState == 2) {
         self.initialDockState = isMenuApp;
         self.initialMenuState = hideDockIcon;
-        NSLog(@"%@",sender.title);
         //since the values get changed when they are clicked, flip the one that was clicked to make it the same as the initial state
         if ([sender.title isEqualToString:@"Hide Dock Icon"]) {
             self.initialDockState = !hideDockIcon;

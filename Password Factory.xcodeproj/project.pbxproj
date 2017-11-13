@@ -73,7 +73,6 @@
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
 		40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
-		40EADD451FB3AC55007CBDCB /* BorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EADD441FB3AC55007CBDCB /* BorderedButton.m */; };
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
 		40FB0C241B810F10009193F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C231B810F10009193F8 /* main.m */; };
 		40FB0C261B810F10009193F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
@@ -239,8 +238,6 @@
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
-		40EADD431FB3AC55007CBDCB /* BorderedButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BorderedButton.h; sourceTree = "<group>"; };
-		40EADD441FB3AC55007CBDCB /* BorderedButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderedButton.m; sourceTree = "<group>"; };
 		40FB0C1B1B810F10009193F8 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB0C1F1B810F10009193F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40FB0C201B810F10009193F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -397,8 +394,6 @@
 				4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */,
 				4099B3DD1FAB839300CE826D /* TextField.h */,
 				4099B3DE1FAB839300CE826D /* TextField.m */,
-				40EADD431FB3AC55007CBDCB /* BorderedButton.h */,
-				40EADD441FB3AC55007CBDCB /* BorderedButton.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1204,7 +1199,6 @@
 			files = (
 				40511D661C125348005BE5BE /* PasswordStrength.m in Sources */,
 				40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */,
-				40EADD451FB3AC55007CBDCB /* BorderedButton.m in Sources */,
 				40FB929B1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m in Sources */,
 				409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */,
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,
