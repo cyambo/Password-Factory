@@ -345,6 +345,7 @@
  Tests that the password field gets updated and highlighted based on color settings
  */
 - (void)testColorPasswordField {
+
     id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
     //returning password field for object propery
     [[[mockNotification stub] andReturn:self.mvc.passwordField] object];

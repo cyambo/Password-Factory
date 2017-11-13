@@ -118,18 +118,11 @@
     //Generates different password formats based upon the selected tab
     //set modifiers
     NSUserDefaults *d = [DefaultsManager standardDefaults];
-    if ([self.avoidAmbiguous isKindOfClass:[NSButton class]]) {
-        settings[@"avoidAmbiguous"] = @([d boolForKey:@"randomAvoidAmbiguous"]);
-    }
-    if ([self.useSymbols isKindOfClass:[NSButton class]]) {
-        settings[@"useSymbols"] = @([d boolForKey:@"randomUseSymbols"]);
-    }
-    if ([self.useEmoji isKindOfClass:[NSButton class]]) {
-        settings[@"useEmoji"] = @([d boolForKey:@"randomUseEmoji"]);;
-    }
-    if ([self.useNumbers isKindOfClass:[NSButton class]]) {
-        settings[@"useNumbers"] = @([d boolForKey:@"randomUseNumbers"]);;
-    }
+
+    settings[@"avoidAmbiguous"] = @([d boolForKey:@"randomAvoidAmbiguous"]);
+    settings[@"useSymbols"] = @([d boolForKey:@"randomUseSymbols"]);
+    settings[@"useEmoji"] = @([d boolForKey:@"randomUseEmoji"]);
+    settings[@"useNumbers"] = @([d boolForKey:@"randomUseNumbers"]);
     settings[@"passwordLength"] = @([self getPasswordLength]);
     
     switch (type) {

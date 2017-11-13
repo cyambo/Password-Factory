@@ -21,6 +21,7 @@
 @property (nonatomic, assign) NSUInteger passwordLength;
 @property (nonatomic, strong) NSDictionary *typeImages;
 @property (nonatomic, weak) PasswordTypesViewController *currentPasswordTypeViewController;
+@property (nonatomic, assign) NSUInteger currentFontSize;
 @end
 
 @implementation MasterViewController
@@ -42,6 +43,7 @@
                             @(PFAdvancedType): [StyleKit imageOfAdvancedType],
                             @(PFStoredType): [StyleKit imageOfStoredType]
                             };
+        self.currentFontSize = 13;
         [self setObservers];
     }
     return self;
@@ -54,6 +56,8 @@
     PFPasswordType type = (PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"];
     [self selectPaswordType:type];
     [self generatePassword];
+    self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
+    NSLog(@"CURRENT FONT SIZE %d",self.currentFontSize);
 }
 
 #pragma mark Observers
@@ -311,11 +315,12 @@
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
         return;
     }
+    
     //Just display the password
     if (!self.colorPasswordText) {
         NSDictionary *attributes = @{
                                      NSForegroundColorAttributeName: dColor,
-                                     NSFontAttributeName: [NSFont systemFontOfSize:13]
+                                     NSFontAttributeName: [NSFont systemFontOfSize:self.currentFontSize]
                                      };
         NSAttributedString *s = [[NSAttributedString alloc] initWithString:currPassword attributes:attributes];
         [self.passwordField setAttributedStringValue: s];
@@ -329,7 +334,7 @@
         
         //uses AttributedString to color password
         
-        NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:13]}];
+        NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:self.currentFontSize]}];
 
         //colorizing password label
         [s beginEditing];
