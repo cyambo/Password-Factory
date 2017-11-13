@@ -114,7 +114,12 @@
             if (settings[@"postfix"]) {
                 self.factory.postfix = settings[@"postfix"];
             }
-
+            if(settings[@"findRegex"]) {
+                self.factory.find = settings[@"findRegex"];
+                self.factory.replace = settings[@"replacePattern"];
+            } else {
+                self.factory.find = nil;
+            }
             self.factory.replaceAmbiguous = [settings[@"replaceAmbiguous"] boolValue];
             self.factory.truncate = [settings[@"truncateAt"] integerValue];
             self.password = [self.factory transformPassword:settings[@"generatedPassword"] symbolCasePrecent:[settings[@"symbolCasePercent"] integerValue] accentedCasePercent:[settings[@"accentedCasePercent"] integerValue]];

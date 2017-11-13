@@ -16,6 +16,7 @@
 @property (nonatomic, assign) NSInteger truncateLength;
 @property (nonatomic, strong) NSString *prefix;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
+@property (nonatomic, strong) NSRegularExpression *findRegex;
 @end
 
 @implementation PasswordTypesViewController
@@ -186,18 +187,17 @@
         self.prefix = @"advanced";
     }
 
-    if ([self.advancedFindRegex stringValue].length) {
-        settings[@"findRegex"] = [self.advancedFindRegex stringValue];
-    }
-    if ([self.advancedReplaceRegex stringValue].length) {
-        settings[@"replaceRegex"] = [self.advancedReplaceRegex stringValue];
-    }
     settings[@"accentedCasePercent"] = @([self.advancedAccentedCasePercentStepper integerValue]);
     settings[@"symbolCasePercent"] = @([self.advancedSymbolCasePercentStepper integerValue]);
     settings[@"replaceAmbiguous"] = @([d boolForKey:@"advancedReplaceAmbiguous"]);
     //set the case type
     if(self.caseTypeMenu.selectedTag != 0) { //no change has a tag of zero
         settings[@"caseType"] = @(self.caseTypeMenu.selectedTag);
+    }
+    [self setAdvancedRegex];
+    if( self.findRegex ) {
+        settings[@"findRegex"] = self.findRegex;
+        settings[@"replacePattern"] = [self.advancedReplaceRegex stringValue];
     }
     self.prefix = @"advanced"; //setting back to advanced
     return settings;
@@ -306,6 +306,10 @@
  @param obj default sender
  */
 - (void)controlTextDidChange:(NSNotification *)obj {
+    //if our regex has changed validate it
+    if (obj.object == self.advancedFindRegex) {
+        [self setAdvancedRegex];
+    }
     [self callDelegate];
 }
 /**
@@ -326,9 +330,20 @@
     }
 }
 
+/**
+ Called when one of the steppers on the advanced page is clicked
+
+ @param sender default sender
+ */
 - (IBAction)changeAdvancedStepper:(NSStepper *)sender {
     [self callDelegate];
 }
+
+/**
+ Called when truncate slider is changed
+
+ @param sender default sender
+ */
 - (IBAction)changeAdvancedTruncate:(NSSlider *)sender {
     if ([self getTruncateLength] != self.truncateLength) {
         NSEvent *event = [[NSApplication sharedApplication] currentEvent];
@@ -345,6 +360,21 @@
         
         [self callDelegate];
     }
+}
+-(void)setAdvancedRegex {
+    NSError *error = NULL;
+    NSString *r = [self.advancedFindRegex stringValue];
+    NSColor *color = [NSColor blackColor];
+    self.findRegex = nil;
+    if (r.length) {
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:r options:0 error:&error];
+        if (error) {
+            color = [NSColor redColor];
+        } else {
+            self.findRegex = regex;
+        }
+    }
+    self.advancedFindRegex.textColor = color;
 }
 /**
  Gets the passphrase separator type and adds the type to the shared defaults

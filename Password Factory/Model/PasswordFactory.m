@@ -421,7 +421,13 @@
     if(accent > 0) {
         s = [s accentedCase:accent];
     }
-
+    if(self.find) {
+        NSMutableString *replaced = [[NSMutableString alloc] initWithString:s];
+        NSUInteger matches = [self.find replaceMatchesInString:replaced options:0 range:NSMakeRange(0,replaced.length) withTemplate:self.replace];
+        if(matches) {
+            s = replaced;
+        }
+    }
     if(self.truncate) {
         __block int i = 0;
         __block NSMutableString *ns = [[NSMutableString alloc] init];
