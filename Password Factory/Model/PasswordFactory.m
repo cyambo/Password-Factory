@@ -411,6 +411,15 @@
     return s;
 }
 #pragma mark Transform Password
+
+/**
+ Transforms the passed in password
+
+ @param source password to transform
+ @param symbol percent of symbolCase to use
+ @param accent percent of accentedCase to use
+ @return transformed password
+ */
 -(NSString *)transformPassword:(NSString *)source symbolCasePrecent:(NSUInteger)symbol accentedCasePercent:(NSUInteger)accent {
     //add prefix and postfix
     NSString *s = [NSString stringWithFormat:@"%@%@%@",self.prefix,source,self.postfix];
@@ -421,16 +430,21 @@
     if(accent > 0) {
         s = [s accentedCase:accent];
     }
-    if(self.find) {
+    //checking the find regex
+    if(self.find && [self.find isKindOfClass:[NSRegularExpression class]]) {
+        //setting up the regex
         NSMutableString *replaced = [[NSMutableString alloc] initWithString:s];
         NSUInteger matches = [self.find replaceMatchesInString:replaced options:0 range:NSMakeRange(0,replaced.length) withTemplate:self.replace];
+        //if we found any matches, update the password
         if(matches) {
             s = replaced;
         }
     }
+    //truncate the passweord
     if(self.truncate) {
         __block int i = 0;
         __block NSMutableString *ns = [[NSMutableString alloc] init];
+        //need to use enumeration because of the extended characters
         [s enumerateSubstringsInRange:NSMakeRange(0, s.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
             if (i < self.truncate) {
                 [ns appendString:character];
@@ -466,6 +480,13 @@
 - (id)randomFromArray:(NSArray *)source {
     return [source objectAtIndex:([self randomNumber:(uint)source.count])];
 }
+
+/**
+ Changes the case of the string based upon self.caseType
+
+ @param toCase string to
+ @return cased string
+ */
 -(NSString *)caseString:(NSString *)toCase {
     switch (self.caseType) {
         case PFUpperCase:

@@ -12,6 +12,6 @@
 +(instancetype) get;
 +(NSUserDefaults *)sharedDefaults;
 +(NSUserDefaults *)standardDefaults;
-+(void)deleteUserDefaults;
++(void)restoreUserDefaults;
 -(void)syncSharedDefaults;
 @end

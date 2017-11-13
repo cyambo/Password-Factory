@@ -13,6 +13,7 @@
 #import "constants.h"
 #import "DefaultsManager.h"
 #import "StyleKit.h"
+#import "NSString+ColorWithHexColorString.h"
 
 
 @interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, PasswordControllerDelegate>
@@ -116,6 +117,14 @@
     }
 
 }
+
+/**
+ Updates slider when the maxPasswordLength changed
+
+ @param new new max
+ @param slider NSSlider to update
+ @param key defaults key
+ */
 -(void)updateForMaxPasswordLength:(float)new slider:(NSSlider *)slider key:(NSString *)key {
     if (slider.maxValue != new) {
         float currValue = slider.floatValue;
@@ -308,7 +317,7 @@
     [[DefaultsManager get] syncSharedDefaults];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     //default text color from prefs
-    NSColor *dColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"defaultTextColor"]]];
+    NSColor *dColor = [[self swapColorForDisplay:[d objectForKey:@"defaultTextColor"]] colorWithHexColorString];
     NSString *currPassword = [self.password getPasswordValue];
     
     __block int i = 0;
@@ -333,10 +342,10 @@
     } else {
         //colors the password text based upon color wells in preferences
         
-        NSColor *nColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"numberTextColor"]]];
-        NSColor *cColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"upperTextColor"]]];
-        NSColor *clColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"lowerTextColor"]]];
-        NSColor *sColor = [PreferencesViewController colorWithHexColorString:[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]]];
+        NSColor *nColor = [[self swapColorForDisplay:[d objectForKey:@"numberTextColor"]] colorWithHexColorString];
+        NSColor *cColor = [[self swapColorForDisplay:[d objectForKey:@"upperTextColor"]] colorWithHexColorString];
+        NSColor *clColor = [[self swapColorForDisplay:[d objectForKey:@"lowerTextColor"]] colorWithHexColorString];
+        NSColor *sColor = [[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]] colorWithHexColorString];
         
         //uses AttributedString to color password
         

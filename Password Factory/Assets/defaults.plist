@@ -24,6 +24,8 @@
 	<false/>
 	<key>isMenuApp</key>
 	<false/>
+	<key>hideDockIcon</key>
+	<false/>
 	<key>randomUseSymbols</key>
 	<true/>
 	<key>randomUseEmoji</key>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
+		4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
@@ -146,6 +148,8 @@
 
 /* Begin PBXFileReference section */
 		097270D42A6F1CBA8198EDFE /* Pods-Password Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.release.xcconfig"; sourceTree = "<group>"; };
+		4004F1D41FBA4E200093DA3F /* NSString+ColorWithHexColorString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ColorWithHexColorString.h"; sourceTree = "<group>"; };
+		4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ColorWithHexColorString.m"; sourceTree = "<group>"; };
 		4012E50E1B9750FA00BAF217 /* NSString+SymbolCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymbolCase.h"; sourceTree = "<group>"; };
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
@@ -374,6 +378,8 @@
 				40FB929A1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m */,
 				4051C9D01FA7D7780097CDD9 /* NSString+MapCase.h */,
 				4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */,
+				4004F1D41FBA4E200093DA3F /* NSString+ColorWithHexColorString.h */,
+				4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */,
 			);
 			name = Categories;
 			path = "Password Factory/Categories";
@@ -1152,6 +1158,7 @@
 				4051C9CF1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
 				40537D8E1F941C1700D645B7 /* constants.m in Sources */,
+				4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
 				40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */,
 				406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */,
 				406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */,
@@ -1203,6 +1210,7 @@
 				409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */,
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,
 				40BA26F21FB389D300F7AF13 /* PasswordFactoryConstants.m in Sources */,
+				4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
 				4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */,
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,
 				4051C9D21FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,

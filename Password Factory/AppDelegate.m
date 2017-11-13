@@ -26,7 +26,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-
+//    [DefaultsManager restoreUserDefaults];
     //init prefs window
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];

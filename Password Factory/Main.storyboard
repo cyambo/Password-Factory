@@ -456,6 +456,9 @@
                                                     <binding destination="DGa-ye-VaM" name="value" keyPath="values.clearClipboard" id="lqY-Ui-EnZ"/>
                                                 </connections>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="jdz-ce-Fzk"/>
+                                            </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xSy-Iy-xp9" customClass="TextField">
                                             <rect key="frame" x="133" y="13" width="91" height="17"/>
@@ -535,6 +538,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="nK7-UK-Sy6"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.MASPGShortcutEnabled" id="YBG-nq-PP8"/>
                                             </connections>
                                         </button>
@@ -546,6 +550,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="5LJ-2X-feN"/>
                                                 <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="KvI-Ve-7HP"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.globalHotkeyPlaySound" id="pe1-wA-Sol"/>
                                             </connections>
@@ -558,6 +563,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="n06-4p-EuX"/>
                                                 <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="epF-5K-tZx"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.globalHotkeyShowNotification" id="5lg-7C-e0Z"/>
                                             </connections>
@@ -631,6 +637,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="ncQ-b1-hDp"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.enableAdvanced" id="wwq-K9-SAh"/>
                                             </connections>
                                         </button>
@@ -642,6 +649,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="jfe-lA-owJ"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.storePasswords" id="9Oh-G1-tB0"/>
                                             </connections>
                                         </button>
@@ -650,6 +658,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <stepperCell key="cell" continuous="YES" alignment="left" minValue="6" maxValue="100" doubleValue="6" id="FaI-M1-zJi"/>
                                             <connections>
+                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="vwl-se-FqA"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxPasswordLength" id="pC0-c7-Xox"/>
                                             </connections>
                                         </stepper>
@@ -1369,10 +1378,10 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Roy-Ax-8H4">
-                                <rect key="frame" x="245" y="29" width="118" height="19"/>
+                                <rect key="frame" x="246" y="29" width="118" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="MxW-J4-Mr3">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1419,7 +1428,7 @@
                                 </connections>
                             </popUpButton>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMf-WX-Iqn">
-                                <rect key="frame" x="245" y="75" width="118" height="19"/>
+                                <rect key="frame" x="246" y="75" width="118" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="V0l-uV-LHF">
                                     <font key="font" metaFont="smallSystem"/>
@@ -1459,7 +1468,7 @@
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vth-fo-hq8">
                                 <rect key="frame" x="46" y="27" width="15" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <stepperCell key="cell" controlSize="small" alignment="left" maxValue="100" id="PaH-9j-miL"/>
+                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="PaH-9j-miL"/>
                                 <connections>
                                     <action selector="changeAdvancedStepper:" target="mtc-B4-HHs" id="4Lh-Bd-khE"/>
                                     <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedSymbolCasePercent" id="0KJ-b7-XIG"/>
@@ -1502,7 +1511,7 @@
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D43-w1-kQS">
                                 <rect key="frame" x="46" y="4" width="15" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <stepperCell key="cell" controlSize="small" alignment="left" maxValue="100" id="aiJ-Rz-PKZ"/>
+                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="aiJ-Rz-PKZ"/>
                                 <connections>
                                     <action selector="changeAdvancedStepper:" target="mtc-B4-HHs" id="jjW-Xg-9Ln"/>
                                     <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedAccentedCasePercent" id="gWd-2E-vdb"/>
@@ -1545,7 +1554,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ic-Pl-nan">
-                                <rect key="frame" x="155" y="31" width="84" height="14"/>
+                                <rect key="frame" x="157" y="31" width="84" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Find Regex" id="sre-m7-vOc">
                                     <font key="font" metaFont="smallSystem"/>

@@ -8,6 +8,7 @@
 
 #import "PreferencesViewController.h"
 #import "NSColor+NSColorHexadecimalValue.h"
+#import "NSString+ColorWithHexColorString.h"
 #import "AppDelegate.h"
 #import "DefaultsManager.h"
 #import "constants.h"
@@ -25,9 +26,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 }
 - (void)awakeFromNib {
 
-    
     [self updatePrefsUI];
-    
     
     //setup shortcut handler
     [self.shortcutView bind:@"enabled" toObject:[DefaultsManager standardDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
@@ -89,42 +88,16 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     [self.clearTimeLabel setIntValue:(int)[d integerForKey:@"clearClipboardTime"]];
     
     //setting the color wells
-    [self.uppercaseTextColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"upperTextColor"]]];
-    [self.lowercaseTextColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"lowerTextColor"]]];
-    [self.symbolsColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"symbolTextColor"]]];
-    [self.numbersColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"numberTextColor"]]];
-    [self.defaultColor setColor: [PreferencesViewController colorWithHexColorString:[d objectForKey:@"defaultTextColor"]]];
+    [self.uppercaseTextColor setColor: [[d stringForKey:@"upperTextColor"] colorWithHexColorString]];
+    [self.lowercaseTextColor setColor: [[d stringForKey:@"lowerTextColor"] colorWithHexColorString]];
+    [self.symbolsColor setColor: [[d stringForKey:@"symbolTextColor"] colorWithHexColorString]];
+    [self.numbersColor setColor: [[d stringForKey:@"numberTextColor"] colorWithHexColorString]];
+    [self.defaultColor setColor: [[d stringForKey:@"defaultTextColor"] colorWithHexColorString]];
 }
 
 
 #pragma mark colors
-/**
- Converts a hex color string into an NSColor
- From http://stackoverflow.com/questions/8697205/convert-hex-color-code-to-nscolor
 
- @param inColorString hex color string
- @return NSColor made from hex color string
- */
-+ (NSColor*)colorWithHexColorString:(NSString*)inColorString {
-    NSColor* result = nil;
-    unsigned colorCode = 0;
-    unsigned char redByte, greenByte, blueByte;
-    
-    if (nil != inColorString) {
-        NSScanner* scanner = [NSScanner scannerWithString:inColorString];
-        (void) [scanner scanHexInt:&colorCode]; // ignore error
-    }
-    redByte = (unsigned char)(colorCode >> 16);
-    greenByte = (unsigned char)(colorCode >> 8);
-    blueByte = (unsigned char)(colorCode); // masks off high bits
-    
-    result = [NSColor
-              colorWithCalibratedRed:(CGFloat)redByte / 0xff
-              green:(CGFloat)greenByte / 0xff
-              blue:(CGFloat)blueByte / 0xff
-              alpha:1.0];
-    return result;
-}
 /**
  Action taken whenever any of thethe color wells are changed
 
@@ -146,6 +119,10 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         [d setBool:(BOOL)self.colorPasswordText.state forKey:@"colorPasswordText"];
     }
 }
+
+- (IBAction)changeOptions:(id)sender {
+    [self updatedPrefs];
+}
 #pragma mark auto clear clipboard
 /**
  Clipboard erase time slider action
@@ -155,7 +132,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 - (IBAction)changeClearTime:(id)sender {
     //changes the label for the clipboard erase time
     [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
-
+    [self updatedPrefs];
 }
 /**
  Quits or restarts the application depending on the checkboxes for the menu bar state
@@ -206,6 +183,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     if ((isMenuApp ^ self.initialMenuState) || (isMenuApp && (hideDockIcon ^ self.initialDockState))) {
         [self.quitButton setTitle:@"Restart"];
     }
+    [self updatedPrefs];
 }
 #pragma mark - Custom shortcut
 /**
@@ -228,6 +206,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         [[MASShortcutBinder sharedBinder] breakBindingWithDefaultsKey:MASPreferenceKeyShortcut];
     }
 }
+
 
 /**
  Shows help window
@@ -284,6 +263,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             self.loginController.enabled = NO;
         }
     }
+    [self updatedPrefs];
 }
 
 /**
@@ -295,5 +275,9 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     NSString *soundName = [sender selectedItem].title;
     [[DefaultsManager standardDefaults] setObject:soundName forKey:@"notificationSound"];
     [[NSSound soundNamed:soundName] play];
+    [self updatedPrefs];
+}
+-(void)updatedPrefs {
+    [[DefaultsManager get] syncSharedDefaults];
 }
 @end

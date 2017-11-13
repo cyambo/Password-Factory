@@ -20,13 +20,13 @@
 @property (weak) IBOutlet NSColorWell *defaultColor;
 - (IBAction)changeColor:(id)sender;
 
+- (IBAction)changeOptions:(id)sender;
+
+
 @property (weak) IBOutlet NSButton *automaticallyClearClipboard;
 @property (weak) IBOutlet NSSlider *clearTime;
 @property (weak) IBOutlet NSTextField *clearTimeLabel;
 - (IBAction)changeClearTime:(id)sender;
-
-
-+ (NSColor*)colorWithHexColorString:(NSString*)inColorString;
 
 @property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
 @property (weak) IBOutlet NSButton *displayNotification;
