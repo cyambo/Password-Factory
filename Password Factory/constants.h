@@ -76,6 +76,11 @@ typedef NS_ENUM(NSInteger, PFPatternTypeItem) {
 
 #define GenerateAndCopyLoops 20
 
+#define PFZoomSmallFontSize 32
+#define PFZoomMediumFontSize 48
+#define PFZoomLargeFontSize 72
+#define PFZoomXLargeFontSize 128
+
 extern NSString * const SupportEmailAddress;
 extern NSString * const SharedDefaultsAppGroup;
 extern NSString * const NotificationSoundName;
@@ -86,5 +91,6 @@ extern NSString * const EnglishWordsArchiveFilename;
 extern NSString * const ShortWordsArchiveFilename;
 extern NSString * const WordsByLengthWordsArchiveFilename;
 extern NSString * const EmojiArchiveFilename;
+extern NSString * const ZoomFontName;
 #endif
 

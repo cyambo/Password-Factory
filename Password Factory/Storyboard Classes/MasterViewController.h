@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "constants.h"
 #import "PreferencesViewController.h"
+#import "ZoomViewController.h"
 #import "StrengthMeter.h"
 #import "PasswordController.h"
 
@@ -33,6 +34,8 @@
 - (void)generateAndCopy;
 
 @property (nonatomic, weak) NSWindowController *prefsWindowController;
+@property (nonatomic, weak) NSWindowController *zoomWindowController;
+
 - (IBAction)loadPreferencesWindow:(id)sender;
 @property (weak) IBOutlet NSButton *loadPreferencesButton;
 
@@ -40,6 +43,7 @@
 
 @property (weak) IBOutlet NSButton *crackTimeButton;
 - (IBAction)toggleCrackTimeDisplay:(id)sender;
+- (IBAction)zoomPassword:(id)sender;
 
 @property (weak) IBOutlet NSView *passwordView;
 @property (weak) IBOutlet NSTableView *passwordTypesTable;

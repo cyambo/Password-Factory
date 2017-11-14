@@ -27,17 +27,24 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
 //    [DefaultsManager restoreUserDefaults];
-    //init prefs window
+
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
     NSWindowController *windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
+    
+    //init prefs window
     self.prefsWindowController = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
     self.prefsViewController = (PreferencesViewController *)self.prefsWindowController.window.contentViewController;
 
+    //init zoom window
+    self.zoomWindowController = [storyBoard instantiateControllerWithIdentifier:@"ZoomWindowController"];
+    self.zoomViewController = (ZoomViewController *)self.zoomWindowController.window.contentViewController;
+    
     //Set properties
     self.currWindow = windowController.window;
     self.masterViewController = (MasterViewController *)windowController.window.contentViewController;
     self.masterViewController.prefsWindowController = self.prefsWindowController;
+    self.masterViewController.zoomWindowController = self.zoomWindowController;
 
     [self.prefsViewController resetShortcutRegistration]; //setting up global shortcut when app launches
     [self.prefsViewController changeLoginItem:nil]; //set the login item to the current state
@@ -89,7 +96,7 @@
     //show the prefs if we need to show them on launch
     if (self.showPrefs) {
         self.showPrefs = NO;
-        [self loadPrefrences:nil];
+        [self loadPreferences:nil];
     }
 }
 
@@ -245,7 +252,7 @@
 
  @param sender default sender
  */
-- (IBAction)loadPrefrences:(id)sender {
+- (IBAction)loadPreferences:(id)sender {
     [self.prefsWindowController showWindow:self];
 }
 
@@ -309,7 +316,7 @@
     NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
     if([url.host isEqualToString:@"settings"]) {
         if (self.launched) {
-            [self loadPrefrences:nil];
+            [self loadPreferences:nil];
             //Load up the main window as well 
             if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
                 [self showPopover:nil];

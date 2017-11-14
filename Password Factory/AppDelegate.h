@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #include "MasterViewController.h"
 #include "PreferencesViewController.h"
-
+#import "ZoomViewController.h"
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 
@@ -17,6 +17,8 @@
 @property (nonatomic, weak) MasterViewController *masterViewController;
 @property (nonatomic, weak) PreferencesViewController *prefsViewController;
 @property (nonatomic, strong) NSWindowController *prefsWindowController;
+@property (nonatomic, weak) ZoomViewController *zoomViewController;
+@property (nonatomic, strong) NSWindowController *zoomWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;
 - (IBAction)selectTypeFromMenu:(NSMenuItem *)sender;
 @property (weak) IBOutlet NSMenuItem *randomMenuItem;

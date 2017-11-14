@@ -114,6 +114,7 @@
     if ([keyPath isEqualToString:@"enableAdvanced"] || [keyPath isEqualToString:@"storePasswords"]) {
         [self setOptionalTypes];
         [self.passwordTypesTable reloadData];
+        [self selectPaswordType:[self getSelectedPasswordType]];
     }
 
 }
@@ -315,9 +316,9 @@
  */
 - (void)updatePasswordField{
     [[DefaultsManager get] syncSharedDefaults];
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    NSUserDefaults *defaults = [DefaultsManager standardDefaults];
     //default text color from prefs
-    NSColor *dColor = [[self swapColorForDisplay:[d objectForKey:@"defaultTextColor"]] colorWithHexColorString];
+    NSColor *dColor = [[self swapColorForDisplay:[defaults objectForKey:@"defaultTextColor"]] colorWithHexColorString];
     NSString *currPassword = [self.password getPasswordValue];
     
     __block int i = 0;
@@ -342,10 +343,10 @@
     } else {
         //colors the password text based upon color wells in preferences
         
-        NSColor *nColor = [[self swapColorForDisplay:[d objectForKey:@"numberTextColor"]] colorWithHexColorString];
-        NSColor *cColor = [[self swapColorForDisplay:[d objectForKey:@"upperTextColor"]] colorWithHexColorString];
-        NSColor *clColor = [[self swapColorForDisplay:[d objectForKey:@"lowerTextColor"]] colorWithHexColorString];
-        NSColor *sColor = [[self swapColorForDisplay:[d objectForKey:@"symbolTextColor"]] colorWithHexColorString];
+        NSColor *nColor = [[self swapColorForDisplay:[defaults objectForKey:@"numberTextColor"]] colorWithHexColorString];
+        NSColor *cColor = [[self swapColorForDisplay:[defaults objectForKey:@"upperTextColor"]] colorWithHexColorString];
+        NSColor *clColor = [[self swapColorForDisplay:[defaults objectForKey:@"lowerTextColor"]] colorWithHexColorString];
+        NSColor *sColor = [[self swapColorForDisplay:[defaults objectForKey:@"symbolTextColor"]] colorWithHexColorString];
         
         //uses AttributedString to color password
         
@@ -446,6 +447,14 @@
         [self setPasswordStrength];
     }
     b.alphaValue = (int)showCT; //the int value of the bool matches the alpha value we need to show and hide the button
+}
+
+- (IBAction)zoomPassword:(id)sender {
+    [self.zoomWindowController showWindow:sender];
+    self.zoomWindowController.window.restorable = YES;
+    ZoomViewController *zv = (ZoomViewController *)self.zoomWindowController.contentViewController;
+    [zv updatePassword:[self.passwordField attributedStringValue]];
+    [NSApp activateIgnoringOtherApps:YES]; //brings it to front
 }
 - (PFPasswordType)getSelectedPasswordType {
     NSInteger row = self.passwordTypesTable.selectedRow;

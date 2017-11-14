@@ -191,6 +191,10 @@
     return self.passwordStrength.strength;
 }
 -(NSString *)getCrackTimeString {
+    NSString * cts = self.passwordStrength.crackTimeString;
+    if (!cts.length) {
+        [self updatePasswordStrength];
+    }
     return self.passwordStrength.crackTimeString;
 }
 #pragma mark PasswordFactory methods

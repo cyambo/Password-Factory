@@ -111,7 +111,6 @@ static NSDictionary *prefsPlist;
         id obj = [d objectForKey:key];
         //syncing to shared defaults
         if(![self compareDefaultsObject:[sharedDefaults objectForKey:k] two:obj]) {
-            NSLog(@"SHARED KEY %@",k);
             [sharedDefaults setObject:[d objectForKey:key] forKey:k];
         }
     }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
 		4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
+		4004F1DA1FBB63290093DA3F /* ZoomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D91FBB63290093DA3F /* ZoomButton.m */; };
+		4004F1DB1FBB63290093DA3F /* ZoomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D91FBB63290093DA3F /* ZoomButton.m */; };
+		4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */; };
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
@@ -60,6 +63,7 @@
 		40AAB5DB1F8EC67F00324759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D91F8EC67F00324759 /* LaunchScreen.storyboard */; };
 		40AAB5E61F8EC68000324759 /* Password_Factory_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5E51F8EC68000324759 /* Password_Factory_iOSTests.swift */; };
 		40AAB5F11F8EC68000324759 /* Password_Factory_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5F01F8EC68000324759 /* Password_Factory_iOSUITests.swift */; };
+		40AFC65E1FBB7D3600CB5BDA /* ZoomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */; };
 		40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
 		40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		40B9AD081FB0EC50003F7580 /* PasswordTypesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9AD071FB0EC50003F7580 /* PasswordTypesViewController.m */; };
@@ -150,6 +154,10 @@
 		097270D42A6F1CBA8198EDFE /* Pods-Password Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.release.xcconfig"; sourceTree = "<group>"; };
 		4004F1D41FBA4E200093DA3F /* NSString+ColorWithHexColorString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ColorWithHexColorString.h"; sourceTree = "<group>"; };
 		4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ColorWithHexColorString.m"; sourceTree = "<group>"; };
+		4004F1D81FBB63290093DA3F /* ZoomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomButton.h; sourceTree = "<group>"; };
+		4004F1D91FBB63290093DA3F /* ZoomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomButton.m; sourceTree = "<group>"; };
+		4004F1DC1FBB759A0093DA3F /* ZoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
+		4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
 		4012E50E1B9750FA00BAF217 /* NSString+SymbolCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymbolCase.h"; sourceTree = "<group>"; };
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
@@ -225,6 +233,8 @@
 		40AAB5EC1F8EC68000324759 /* Password Factory iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Factory iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AAB5F01F8EC68000324759 /* Password_Factory_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Factory_iOSUITests.swift; sourceTree = "<group>"; };
 		40AAB5F21F8EC68000324759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40AFC65C1FBB7D3600CB5BDA /* ZoomWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomWindow.h; sourceTree = "<group>"; };
+		40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomWindow.m; sourceTree = "<group>"; };
 		40B9AD061FB0EC50003F7580 /* PasswordTypesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordTypesViewController.h; sourceTree = "<group>"; };
 		40B9AD071FB0EC50003F7580 /* PasswordTypesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordTypesViewController.m; sourceTree = "<group>"; };
 		40BA26F01FB389D300F7AF13 /* PasswordFactoryConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordFactoryConstants.h; sourceTree = "<group>"; };
@@ -390,6 +400,8 @@
 			children = (
 				409585FD1B8112FD00393B99 /* PreferencesButton.h */,
 				409585FE1B8112FD00393B99 /* PreferencesButton.m */,
+				4004F1D81FBB63290093DA3F /* ZoomButton.h */,
+				4004F1D91FBB63290093DA3F /* ZoomButton.m */,
 				409585FF1B8112FD00393B99 /* StrengthMeter.h */,
 				409586001B8112FD00393B99 /* StrengthMeter.m */,
 				409DEE3B1B84476F00727FDB /* StrengthBox.h */,
@@ -442,6 +454,10 @@
 				40C87A281FAE2D3100D784B0 /* PasswordController.m */,
 				40B9AD061FB0EC50003F7580 /* PasswordTypesViewController.h */,
 				40B9AD071FB0EC50003F7580 /* PasswordTypesViewController.m */,
+				4004F1DC1FBB759A0093DA3F /* ZoomViewController.h */,
+				4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */,
+				40AFC65C1FBB7D3600CB5BDA /* ZoomWindow.h */,
+				40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */,
 			);
 			name = "Storyboard Classes";
 			path = "Password Factory/Storyboard Classes";
@@ -1157,6 +1173,7 @@
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
 				4051C9CF1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
+				4004F1DB1FBB63290093DA3F /* ZoomButton.m in Sources */,
 				40537D8E1F941C1700D645B7 /* constants.m in Sources */,
 				4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
 				40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */,
@@ -1208,9 +1225,11 @@
 				40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */,
 				40FB929B1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m in Sources */,
 				409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */,
+				4004F1DA1FBB63290093DA3F /* ZoomButton.m in Sources */,
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,
 				40BA26F21FB389D300F7AF13 /* PasswordFactoryConstants.m in Sources */,
 				4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
+				40AFC65E1FBB7D3600CB5BDA /* ZoomWindow.m in Sources */,
 				4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */,
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,
 				4051C9D21FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
@@ -1218,6 +1237,7 @@
 				40FB0C241B810F10009193F8 /* main.m in Sources */,
 				4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */,
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
+				4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */,
 				4099B3DC1FAB7CB500CE826D /* PreferencesWindowController.m in Sources */,
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
 				40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */,

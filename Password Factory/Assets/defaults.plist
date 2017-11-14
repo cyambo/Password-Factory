@@ -53,7 +53,7 @@
 	<key>addToLoginItems</key>
 	<false/>
 	<key>displayCrackTime</key>
-	<false/>
+	<true/>
 	<key>selectedPasswordType</key>
 	<integer>401</integer>
 	<key>notificationSound</key>
