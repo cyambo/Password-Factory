@@ -232,11 +232,11 @@
             <objects>
                 <viewController id="irM-d9-8Ei" customClass="ZoomViewController" sceneMemberID="viewController">
                     <view key="view" id="sXh-jP-NsD">
-                        <rect key="frame" x="0.0" y="0.0" width="552" height="132"/>
+                        <rect key="frame" x="0.0" y="0.0" width="552" height="122"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6U-qg-vwc">
-                                <rect key="frame" x="8" y="15" width="536" height="102"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6U-qg-vwc">
+                                <rect key="frame" x="8" y="10" width="536" height="102"/>
                                 <gestureRecognizers>
                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="ZGW-P4-opF">
                                         <connections>
@@ -244,7 +244,7 @@
                                         </connections>
                                     </clickGestureRecognizer>
                                 </gestureRecognizers>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="jPZ1" allowsEditingTextAttributes="YES" id="gwB-1y-Qel">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="PASSWORD" allowsEditingTextAttributes="YES" id="gwB-1y-Qel">
                                     <font key="font" size="72" name="Menlo-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -252,7 +252,7 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="d6U-qg-vwc" secondAttribute="bottom" constant="20" id="0Ef-qg-IWA"/>
+                            <constraint firstAttribute="bottom" secondItem="d6U-qg-vwc" secondAttribute="bottom" constant="10" id="0Ef-qg-IWA"/>
                             <constraint firstItem="d6U-qg-vwc" firstAttribute="top" secondItem="sXh-jP-NsD" secondAttribute="top" constant="10" id="KDn-HB-BcB"/>
                             <constraint firstAttribute="trailing" secondItem="d6U-qg-vwc" secondAttribute="trailing" constant="10" id="SpO-hh-aD0"/>
                             <constraint firstItem="d6U-qg-vwc" firstAttribute="leading" secondItem="sXh-jP-NsD" secondAttribute="leading" constant="10" id="x19-2T-qro"/>

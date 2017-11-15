@@ -43,6 +43,7 @@ extern NSRect StyleKitResizingBehaviorApply(StyleKitResizingBehavior behavior, N
 + (NSImage*)imageOfPronounceableType;
 + (NSImage*)imageOfRandomType;
 + (NSImage*)imageOfStoredType;
++ (NSImage*)imageOfZoom1;
 + (NSImage*)imageOfZoom;
 
 @end

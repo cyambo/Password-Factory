@@ -24,6 +24,7 @@ static NSImage* _imageOfPatternType = nil;
 static NSImage* _imageOfPronounceableType = nil;
 static NSImage* _imageOfRandomType = nil;
 static NSImage* _imageOfStoredType = nil;
+static NSImage* _imageOfZoom1 = nil;
 static NSImage* _imageOfZoom = nil;
 
 #pragma mark Initialization
@@ -711,6 +712,55 @@ static NSImage* _imageOfZoom = nil;
 
 }
 
++ (void)drawZoom1
+{
+    [StyleKit drawZoom1WithFrame: NSMakeRect(0, 0, 21, 21) resizing: StyleKitResizingBehaviorAspectFit];
+}
+
++ (void)drawZoom1WithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing
+{
+    //// General Declarations
+    CGContextRef context = (CGContextRef)NSGraphicsContext.currentContext.graphicsPort;
+    
+    //// Resize to Target Frame
+    [NSGraphicsContext saveGraphicsState];
+    NSRect resizedFrame = StyleKitResizingBehaviorApply(resizing, NSMakeRect(0, 0, 21, 21), targetFrame);
+    CGContextTranslateCTM(context, resizedFrame.origin.x, resizedFrame.origin.y);
+    CGContextScaleCTM(context, resizedFrame.size.width / 21, resizedFrame.size.height / 21);
+
+
+    //// Color Declarations
+    NSColor* strokeColor2 = [NSColor colorWithRed: 0.137 green: 0.122 blue: 0.125 alpha: 1];
+    NSColor* fillColor = [NSColor colorWithRed: 0.996 green: 0.996 blue: 0.995 alpha: 1];
+
+    //// Oval Drawing
+    NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(2.5, 2.5, 16, 16)];
+    [strokeColor2 setStroke];
+    ovalPath.lineWidth = 1;
+    [ovalPath stroke];
+
+
+    //// Bezier Drawing
+    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
+    [bezierPath moveToPoint: NSMakePoint(6.35, 6.35)];
+    [bezierPath lineToPoint: NSMakePoint(9.18, 9.18)];
+    [fillColor setFill];
+    [bezierPath fill];
+    [strokeColor2 setStroke];
+    bezierPath.lineWidth = 2;
+    [bezierPath stroke];
+
+
+    //// Oval 2 Drawing
+    NSBezierPath* oval2Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(8.25, 8.25, 6.4, 6.4)];
+    [strokeColor2 setStroke];
+    oval2Path.lineWidth = 1;
+    [oval2Path stroke];
+    
+    [NSGraphicsContext restoreGraphicsState];
+
+}
+
 + (void)drawZoom
 {
     [StyleKit drawZoomWithFrame: NSMakeRect(0, 0, 21, 21) resizing: StyleKitResizingBehaviorAspectFit];
@@ -755,6 +805,28 @@ static NSImage* _imageOfZoom = nil;
     [strokeColor2 setStroke];
     oval2Path.lineWidth = 1;
     [oval2Path stroke];
+
+
+    //// Bezier 2 Drawing
+    NSBezierPath* bezier2Path = [NSBezierPath bezierPath];
+    [bezier2Path moveToPoint: NSMakePoint(11.45, 13.01)];
+    [bezier2Path lineToPoint: NSMakePoint(11.45, 9.89)];
+    [fillColor setFill];
+    [bezier2Path fill];
+    [strokeColor2 setStroke];
+    bezier2Path.lineWidth = 0.75;
+    [bezier2Path stroke];
+
+
+    //// Bezier 3 Drawing
+    NSBezierPath* bezier3Path = [NSBezierPath bezierPath];
+    [bezier3Path moveToPoint: NSMakePoint(13, 11.45)];
+    [bezier3Path lineToPoint: NSMakePoint(9.89, 11.45)];
+    [fillColor setFill];
+    [bezier3Path fill];
+    [strokeColor2 setStroke];
+    bezier3Path.lineWidth = 0.75;
+    [bezier3Path stroke];
     
     [NSGraphicsContext restoreGraphicsState];
 
@@ -880,6 +952,21 @@ static NSImage* _imageOfZoom = nil;
     }];
 
     return _imageOfStoredType;
+}
+
++ (NSImage*)imageOfZoom1
+{
+    if (_imageOfZoom1)
+        return _imageOfZoom1;
+
+    _imageOfZoom1 = [NSImage imageWithSize: NSMakeSize(21, 21) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    {
+        [StyleKit drawZoom1];
+
+        return YES;
+    }];
+
+    return _imageOfZoom1;
 }
 
 + (NSImage*)imageOfZoom
