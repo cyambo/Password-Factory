@@ -56,6 +56,9 @@
 		409E13C41B8258170041541B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409E13C31B8258170041541B /* TodayViewController.m */; };
 		409E13C61B8258170041541B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 409E13C51B8258170041541B /* TodayViewController.xib */; };
 		409E13C91B8258170041541B /* Password Factory Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 409E13B81B8258170041541B /* Password Factory Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		40A0A3B41FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3B21FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld */; };
+		40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
+		40A0A3CC1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
 		40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5D01F8EC67F00324759 /* AppDelegate.swift */; };
 		40AAB5D31F8EC67F00324759 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5D21F8EC67F00324759 /* ViewController.swift */; };
 		40AAB5D61F8EC67F00324759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D41F8EC67F00324759 /* Main.storyboard */; };
@@ -79,6 +82,8 @@
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
 		40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
+		40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
+		40F07A8A1FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
 		40FB0C241B810F10009193F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C231B810F10009193F8 /* main.m */; };
 		40FB0C261B810F10009193F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
@@ -219,6 +224,11 @@
 		409E13C21B8258170041541B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		409E13C31B8258170041541B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		409E13C51B8258170041541B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		40A0A3B31FBBC902009CEB5E /* StoredPasswordModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoredPasswordModel.xcdatamodel; sourceTree = "<group>"; };
+		40A0A3C71FBBCDAC009CEB5E /* Passwords+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Passwords+CoreDataProperties.h"; sourceTree = "<group>"; };
+		40A0A3C81FBBCDAC009CEB5E /* Passwords+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Passwords+CoreDataClass.h"; sourceTree = "<group>"; };
+		40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Passwords+CoreDataClass.m"; sourceTree = "<group>"; };
+		40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Passwords+CoreDataProperties.m"; sourceTree = "<group>"; };
 		40A2E3DC1F92756A0044E2A1 /* frequency_lists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = frequency_lists.json; path = Pods/ZXCVBN/tools/generated/frequency_lists.json; sourceTree = SOURCE_ROOT; };
 		40AAB5CE1F8EC67F00324759 /* Password Factory iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AAB5D01F8EC67F00324759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +262,8 @@
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		40F07A871FBBD23B008AFE29 /* PasswordStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordStorage.h; sourceTree = "<group>"; };
+		40F07A881FBBD23B008AFE29 /* PasswordStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordStorage.m; sourceTree = "<group>"; };
 		40FB0C1B1B810F10009193F8 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB0C1F1B810F10009193F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40FB0C201B810F10009193F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -416,15 +428,7 @@
 			path = "Password Factory/Controls";
 			sourceTree = "<group>";
 		};
-		409586011B8112FD00393B99 /* MenuApp */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = MenuApp;
-			path = "Password Factory/MenuApp";
-			sourceTree = "<group>";
-		};
-		409586051B8112FD00393B99 /* Model */ = {
+		409586051B8112FD00393B99 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				40BA26F01FB389D300F7AF13 /* PasswordFactoryConstants.h */,
@@ -435,9 +439,11 @@
 				40DAB57F1B843734003F5C3D /* DefaultsManager.m */,
 				40511D641C125348005BE5BE /* PasswordStrength.h */,
 				40511D651C125348005BE5BE /* PasswordStrength.m */,
+				40F07A871FBBD23B008AFE29 /* PasswordStorage.h */,
+				40F07A881FBBD23B008AFE29 /* PasswordStorage.m */,
 			);
-			name = Model;
-			path = "Password Factory/Model";
+			name = Models;
+			path = "Password Factory/Models";
 			sourceTree = "<group>";
 		};
 		409586081B8112FD00393B99 /* Storyboard Classes */ = {
@@ -481,6 +487,18 @@
 				409E13BF1B8258170041541B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		40A0A3B51FBBCBF4009CEB5E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				40A0A3C71FBBCDAC009CEB5E /* Passwords+CoreDataProperties.h */,
+				40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */,
+				40A0A3C81FBBCDAC009CEB5E /* Passwords+CoreDataClass.h */,
+				40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */,
+				40A0A3B21FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		40AAB5CF1F8EC67F00324759 /* Password Factory iOS */ = {
@@ -539,12 +557,12 @@
 				40537D8C1F9419FD00D645B7 /* constants.m */,
 				409585D61B8112FD00393B99 /* defaults.plist */,
 				409585D41B8112FD00393B99 /* Assets */,
+				40A0A3B51FBBCBF4009CEB5E /* Data */,
 				402190AC1FAF797100BC9D49 /* Subclasses */,
 				40BA26EF1FB26E1400F7AF13 /* Graphics */,
 				409585F71B8112FD00393B99 /* Categories */,
 				409585FC1B8112FD00393B99 /* Controls */,
-				409586011B8112FD00393B99 /* MenuApp */,
-				409586051B8112FD00393B99 /* Model */,
+				409586051B8112FD00393B99 /* Models */,
 				409586081B8112FD00393B99 /* Storyboard Classes */,
 				40FB0C1D1B810F10009193F8 /* Password Factory */,
 				4058DF251F92995800CCB6E7 /* Password Factory Helper */,
@@ -852,6 +870,7 @@
 					40FB0C1A1B810F10009193F8 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = XWE2VMM384;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -1178,6 +1197,7 @@
 				4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
 				40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */,
 				406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */,
+				40F07A8A1FBBD23B008AFE29 /* PasswordStorage.m in Sources */,
 				406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */,
 				406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */,
 				406C388A1B844D0100F471E7 /* StyleKit.m in Sources */,
@@ -1235,6 +1255,7 @@
 				4051C9D21FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40B9AD081FB0EC50003F7580 /* PasswordTypesViewController.m in Sources */,
 				40FB0C241B810F10009193F8 /* main.m in Sources */,
+				40A0A3CC1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m in Sources */,
 				4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */,
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
 				4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */,
@@ -1243,13 +1264,16 @@
 				40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */,
 				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,
 				40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */,
+				40A0A3B41FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld in Sources */,
 				40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */,
 				4099B3DF1FAB839300CE826D /* TextField.m in Sources */,
 				4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */,
 				4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */,
 				40537D8D1F9419FD00D645B7 /* constants.m in Sources */,
 				4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
+				40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
+				40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1786,6 +1810,7 @@
 			baseConfigurationReference = B267C54F034B19376A024C8C /* Pods-Password Factory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1799,6 +1824,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1807,6 +1835,7 @@
 			baseConfigurationReference = 097270D42A6F1CBA8198EDFE /* Pods-Password Factory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1820,6 +1849,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1948,6 +1979,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		40A0A3B21FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				40A0A3B31FBBC902009CEB5E /* StoredPasswordModel.xcdatamodel */,
+			);
+			currentVersion = 40A0A3B31FBBC902009CEB5E /* StoredPasswordModel.xcdatamodel */;
+			path = StoredPasswordModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 40FB0C131B810F10009193F8 /* Project object */;
 }

@@ -105,9 +105,14 @@
     //enumerate through the string
     [password.string enumerateSubstringsInRange:NSMakeRange(0, password.string.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
         NSDictionary *d = [password attributesAtIndex:i effectiveRange:nil];
-        //transfer the color from the original string
+        //transferring the color from the original string
         if(d[@"NSColor"]) {
-            [s addAttribute:NSForegroundColorAttributeName value:d[@"NSColor"] range:substringRange];
+            NSColor *color = (NSColor *)d[@"NSColor"];
+            //if the text color is white, change it to black so we can see it 
+            if ([color isEqual:[NSColor whiteColor]]) {
+                color = [NSColor blackColor];
+            }
+            [s addAttribute:NSForegroundColorAttributeName value:color range:substringRange];
         }
         //add a bg on alternate letters
         if ((i % 2) == 0) {

@@ -240,11 +240,6 @@
  */
 - (IBAction)changeLength:(id)sender {
     if ([self getPasswordLength] != self.passwordLength) {
-        NSEvent *event = [[NSApplication sharedApplication] currentEvent];
-        if (event.type == NSLeftMouseUp) {
-            //TODO: store password here
-            NSLog(@"STORE");
-        }
         self.passwordLength = [self getPasswordLength];
         [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
         [self callDelegate];
@@ -340,11 +335,7 @@
  */
 - (IBAction)changeAdvancedTruncate:(NSSlider *)sender {
     if ([self getTruncateLength] != self.truncateLength) {
-        NSEvent *event = [[NSApplication sharedApplication] currentEvent];
-        if (event.type == NSLeftMouseUp) {
-            //TODO: store password here
-            NSLog(@"STORE");
-        }
+
         self.truncateLength = [self getTruncateLength];
         if(self.truncateLength) {
             [self.advancedTruncateText setStringValue:[NSString stringWithFormat:@"%lu",self.truncateLength]];
@@ -370,40 +361,5 @@
     }
     self.advancedFindRegex.textColor = color;
 }
-/**
- Gets the passphrase separator type and adds the type to the shared defaults
- 
- @return separator type
- */
-//- (PFSeparatorType)getPassphraseSeparatorType {
-//    PFSeparatorType type = (PFSeparatorType)[(NSButtonCell *)[self.passphraseSeparatorRadio selectedCell] tag];
-//    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"passphraseSeparatorTagShared"];
-//    return type;
-//}
-
-/**
- Gets the passphrase case type and adds it to the shared defaults
- 
- @return case type
- */
-//- (PFCaseType)getPassphraseCaseType {
-//    int type = (int)[(NSButtonCell *)[self.passphraseCaseRadio selectedCell] tag];
-//    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"passphraseCaseTypeTagShared"];
-//    return type;
-//}
-
-/**
- Gets the pronounceable separator type and adds it to the shared defaults
- 
- @return separator type
- */
-//- (PFSeparatorType)getPronounceableSeparatorType {
-//    PFSeparatorType type = (PFSeparatorType)[(NSButtonCell *)[self.pronounceableSeparatorRadio selectedCell] tag];
-//    [[DefaultsManager sharedDefaults] setInteger:type forKey:@"pronounceableSeparatorTagShared"];
-//    return  type;
-//
-//}
-
-
 
 @end

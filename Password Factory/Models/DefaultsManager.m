@@ -34,6 +34,8 @@ static NSDictionary *prefsPlist;
         dm.standardDefaults = [NSUserDefaults standardUserDefaults];
         [dm loadPreferencesFromPlist];
     });
+    //always sync shared defaults on get
+    [dm syncSharedDefaults];
     return dm;
 }
 
@@ -43,7 +45,9 @@ static NSDictionary *prefsPlist;
  @return shared defaults
  */
 +(NSUserDefaults *)sharedDefaults {
-    return [DefaultsManager get].sharedDefaults;
+    NSUserDefaults *s = [DefaultsManager get].sharedDefaults;
+    [s synchronize];
+    return s;
 }
 
 /**
@@ -52,7 +56,9 @@ static NSDictionary *prefsPlist;
  @return standard defaults
  */
 +(NSUserDefaults *)standardDefaults {
-    return [DefaultsManager get].standardDefaults;
+    NSUserDefaults *s = [DefaultsManager get].standardDefaults;
+    [s synchronize];
+    return s;
 }
 
 /**
@@ -92,7 +98,6 @@ static NSDictionary *prefsPlist;
     //taking plist and filling in defaults if none set
     for (NSString *k in prefsPlist) {
         if (initialize || ([d objectForKey:k] == nil)) {
-            NSLog(@"KEY %@",k);
             [d setObject:[prefsPlist objectForKey:k] forKey:k];
             
         }

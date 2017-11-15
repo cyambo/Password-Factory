@@ -2,20 +2,25 @@ PODS:
   - MASShortcut (2.3.6)
   - OCMock (3.4)
   - StartAtLoginController (0.0.1)
+  - SyncKit (0.5.2):
+    - SyncKit/Core (= 0.5.2)
+  - SyncKit/Core (0.5.2)
   - ZXCVBN (1.0.5)
 
 DEPENDENCIES:
   - MASShortcut
   - OCMock
   - StartAtLoginController
+  - SyncKit
   - ZXCVBN
 
 SPEC CHECKSUMS:
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
   StartAtLoginController: 9ff14295bab38f7cba164a838349f6c0a2d83020
+  SyncKit: c421bee4b7addec4212c5bac8b84bca052a8c1c7
   ZXCVBN: f3888e3f6363b8cf57bcc32857a9bc09f9f9e18e
 
-PODFILE CHECKSUM: d876796af0cb600ffa9accf4f1902ecf86f9a60b
+PODFILE CHECKSUM: 8f855e96ce1297d14b6141c7e1d09521fa15c257
 
 COCOAPODS: 1.3.1

@@ -14,7 +14,7 @@
 #import "DefaultsManager.h"
 #import "StyleKit.h"
 #import "NSString+ColorWithHexColorString.h"
-
+#import "PasswordStorage.h"
 
 @interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, PasswordControllerDelegate>
 
@@ -23,11 +23,17 @@
 @property (nonatomic, strong) NSDictionary *typeImages;
 @property (nonatomic, weak) PasswordTypesViewController *currentPasswordTypeViewController;
 @property (nonatomic, assign) NSUInteger currentFontSize;
+@property (nonatomic, assign) NSTimeInterval lastGenerated;
+@property (nonatomic, strong) NSTimer *passwordCheckTimer;
+@property (nonatomic, assign) BOOL stored;
+@property (nonatomic, strong) NSString *lastStoredPassword;
+@property (nonatomic, strong) PasswordStorage *storage;
 @end
 
 @implementation MasterViewController
 
 - (instancetype)initWithCoder:(NSCoder *)coder{
+    
     self = [super initWithCoder:coder];
     if (self) {
         //initialize everything
@@ -46,7 +52,10 @@
                             };
         self.currentFontSize = 13;
         [self setObservers];
+        self.stored = NO;
+        self.storage = [PasswordStorage get];
     }
+    
     return self;
 }
 - (void)awakeFromNib {
@@ -58,8 +67,15 @@
     [self selectPaswordType:type];
     [self generatePassword];
     self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
+    //setting a timer that will check the password field every second to see if it was updated
+    //I am using a timer because we don't want to store passwords while sliders, or steppers are being used
+    self.passwordCheckTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self storePassword];
+    }];
 }
-
+-(void)viewWillDisappear {
+    [self.passwordCheckTimer invalidate];
+}
 #pragma mark Observers
 
 /**
@@ -244,17 +260,7 @@
     }
 }
 
-/**
- Loads the preferences window
 
- @param sender IBAction sender
- */
-- (IBAction)loadPreferencesWindow:(id)sender {
-    [self.prefsWindowController showWindow:sender];
-    self.prefsWindowController.window.restorable = YES;
-
-    [NSApp activateIgnoringOtherApps:YES]; //brings it to front
-}
 
 /**
  clears the clipboard
@@ -315,7 +321,9 @@
  Updates the password field and colors it if user asks
  */
 - (void)updatePasswordField{
-    [[DefaultsManager get] syncSharedDefaults];
+    //set properties for the password storage timer
+    self.lastGenerated = [[NSDate date] timeIntervalSince1970];
+    self.stored = NO;
     NSUserDefaults *defaults = [DefaultsManager standardDefaults];
     //default text color from prefs
     NSColor *dColor = [[self swapColorForDisplay:[defaults objectForKey:@"defaultTextColor"]] colorWithHexColorString];
@@ -448,7 +456,23 @@
     }
     b.alphaValue = (int)showCT; //the int value of the bool matches the alpha value we need to show and hide the button
 }
+#pragma mark Utilities
+/**
+ Loads the preferences window
+ 
+ @param sender IBAction sender
+ */
+- (IBAction)loadPreferencesWindow:(id)sender {
+    [self.prefsWindowController showWindow:sender];
+    self.prefsWindowController.window.restorable = YES;
+    
+    [NSApp activateIgnoringOtherApps:YES]; //brings it to front
+}
+/**
+ Called when the zoom password button is pressed, will display the ZoomWindow
 
+ @param sender default sender
+ */
 - (IBAction)zoomPassword:(id)sender {
     [self.zoomWindowController showWindow:sender];
     self.zoomWindowController.window.restorable = YES;
@@ -456,10 +480,22 @@
     [zv updatePassword:[self.passwordField attributedStringValue]];
     [NSApp activateIgnoringOtherApps:YES]; //brings it to front
 }
+
+/**
+ Gets the current password type
+
+ @return current PFPasswordType
+ */
 - (PFPasswordType)getSelectedPasswordType {
     NSInteger row = self.passwordTypesTable.selectedRow;
     return [self.password getPasswordTypeByIndex:row];
 }
+
+/**
+ Selects the password type in the type selection table
+
+ @param type PFPasswordType to select
+ */
 -(void)selectPaswordType:(PFPasswordType)type {
     NSInteger row = self.passwordTypesTable.selectedRow;
     PFPasswordType currType = [self.password getPasswordTypeByIndex:row];
@@ -468,6 +504,27 @@
     } else {
         NSIndexSet *set = [NSIndexSet indexSetWithIndex:[self.password getIndexByPasswordType:type]];
         [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
+    }
+}
+
+/**
+ Stores the password in PasswordStorage
+ */
+-(void)storePassword {
+    //did we store it?
+    if (!self.stored) {
+        NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+        //was it after the last time? (but not too soon, because if we just used a greater than it will store way more than we need
+        if ((now - self.lastGenerated) > 0.1){
+            //check to see if we stored the same password before
+            NSString *curr = [self.password getPasswordValue];
+            if (![curr isEqualToString:self.lastStoredPassword]) {
+                //all good, so store it
+                [self.storage storePassword:curr strength:[self.password getPasswordStrength] type:[self getSelectedPasswordType]];
+                self.stored = YES;
+            }
+            
+        }
     }
 }
 #pragma mark Table View

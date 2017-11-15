@@ -6,10 +6,12 @@ target 'Password Factory'  do
     pod 'ZXCVBN'
     pod 'MASShortcut'
     pod 'StartAtLoginController'
+    pod 'SyncKit'
 end
 
 target 'Password Factory Widget' do
     pod 'ZXCVBN'
+    pod 'SyncKit'
 end;
 
 target 'Password FactoryTests' do
