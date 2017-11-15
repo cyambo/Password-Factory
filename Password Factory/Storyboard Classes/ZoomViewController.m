@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSDictionary *fonts;
 @property (nonatomic, strong) NSArray *sizeOrder;
 @property (nonatomic, assign) NSRect screenRect;
+@property (nonatomic, strong) NSEvent *windowEvent;
 @end
 
 @implementation ZoomViewController
@@ -33,6 +34,12 @@
         NSMutableAttributedString *sizeString = [[NSMutableAttributedString alloc] initWithString:@"W" attributes:@{NSFontAttributeName:self.fonts[size]}];
         s[size] = [NSValue valueWithSize:sizeString.size];
     }
+    //set event to close when you click outside the windwo
+    self.windowEvent = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDown handler:^(NSEvent *event) {
+        if ([self.view.window isVisible]) {
+            [self.view.window close];
+        }
+    }];
     self.sizes = s;
     
     return self;

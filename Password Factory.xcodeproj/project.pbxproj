@@ -366,7 +366,6 @@
 				40A2E3DC1F92756A0044E2A1 /* frequency_lists.json */,
 				409586311B81131100393B99 /* PasswordFactory.help */,
 				409585D51B8112FD00393B99 /* bad_words.json */,
-				409585D61B8112FD00393B99 /* defaults.plist */,
 				40C4C8AD1F9E9C0900F31070 /* emojis.txt */,
 			);
 			name = Assets;
@@ -538,6 +537,7 @@
 			children = (
 				408673D51F91D04B00C189AB /* constants.h */,
 				40537D8C1F9419FD00D645B7 /* constants.m */,
+				409585D61B8112FD00393B99 /* defaults.plist */,
 				409585D41B8112FD00393B99 /* Assets */,
 				402190AC1FAF797100BC9D49 /* Subclasses */,
 				40BA26EF1FB26E1400F7AF13 /* Graphics */,
@@ -578,10 +578,10 @@
 		40FB0C1D1B810F10009193F8 /* Password Factory */ = {
 			isa = PBXGroup;
 			children = (
-				406E50611B81481B00A170CF /* Password Factory.entitlements */,
 				402A42821FAA316F00615A2E /* Main.storyboard */,
 				40FB0C201B810F10009193F8 /* AppDelegate.h */,
 				40FB0C211B810F10009193F8 /* AppDelegate.m */,
+				406E50611B81481B00A170CF /* Password Factory.entitlements */,
 				40FB0C251B810F10009193F8 /* Images.xcassets */,
 				40FB0C1E1B810F10009193F8 /* Supporting Files */,
 			);

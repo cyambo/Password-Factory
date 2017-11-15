@@ -72,11 +72,10 @@
         self.statusItem.button.action = @selector(togglePopover:);
         
         //Registering for events so the popover can be closed when we click outside the window
-        self.popoverEvent = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDown
-                                                                   handler:^(NSEvent *event) {
-                                                                       if (self.popover.shown) {
-                                                                           [self closePopover:event];
-                                                                       }
+        self.popoverEvent = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDown handler:^(NSEvent *event) {
+           if (self.popover.shown) {
+               [self closePopover:event];
+           }
         }];
     } else {
         //set window appearance and settings
