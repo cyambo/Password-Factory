@@ -125,9 +125,11 @@
     //resize the window to match the password size
     NSRect wf = self.view.window.frame;
     wf.size = s.size;
+    //set window posution to be x centered and slightly above center on y
+    wf.origin.x = (self.screenRect.size.width - s.size.width)/2;
+    wf.origin.y = (self.screenRect.size.height - s.size.height)/2 + (self.screenRect.size.height * 0.1);
     //display the window
     [self.view.window setFrame:wf display:YES];
-    //center it on screen
-    [self.view.window center];
+
 }
 @end
