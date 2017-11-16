@@ -22,7 +22,10 @@
     // Drawing code here.
 }
 -(NSColor *)getStrengthColor {
-    float hue = self.strength *.3;
+    return [StrengthControl getStrengthColorForStrength:self.strength];
+}
++(NSColor *)getStrengthColorForStrength:(float)strength {
+    float hue = strength *.3;
     NSColor *_strengthColors = [NSColor colorWithCalibratedRed: 0.848 green: 0.077 blue: 0.077 alpha: 1];
     return [NSColor colorWithCalibratedHue: hue saturation: _strengthColors.saturationComponent brightness: _strengthColors.brightnessComponent alpha: _strengthColors.alphaComponent];
 }

@@ -15,12 +15,12 @@
 #import "StyleKit.h"
 #import "NSString+ColorWithHexColorString.h"
 #import "PasswordStorage.h"
-
+#import "PasswordFactoryConstants.h"
+#import "TypeIcons.h"
 @interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, PasswordControllerDelegate>
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, assign) NSUInteger passwordLength;
-@property (nonatomic, strong) NSDictionary *typeImages;
 @property (nonatomic, weak) PasswordTypesViewController *currentPasswordTypeViewController;
 @property (nonatomic, assign) NSUInteger currentFontSize;
 @property (nonatomic, assign) NSTimeInterval lastGenerated;
@@ -28,6 +28,7 @@
 @property (nonatomic, assign) BOOL stored;
 @property (nonatomic, strong) NSString *lastStoredPassword;
 @property (nonatomic, strong) PasswordStorage *storage;
+@property (nonatomic, strong) PasswordFactoryConstants *c;
 @end
 
 @implementation MasterViewController
@@ -42,18 +43,11 @@
         [self setOptionalTypes];
         NSUserDefaults *d = [DefaultsManager standardDefaults];
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
-        self.typeImages = @{
-                            @(PFRandomType): [StyleKit imageOfRandomType],
-                            @(PFPronounceableType): [StyleKit imageOfPronounceableType],
-                            @(PFPassphraseType): [StyleKit imageOfPassphraseType],
-                            @(PFPatternType): [StyleKit imageOfPatternType],
-                            @(PFAdvancedType): [StyleKit imageOfAdvancedType],
-                            @(PFStoredType): [StyleKit imageOfStoredType]
-                            };
         self.currentFontSize = 13;
         [self setObservers];
         self.stored = NO;
         self.storage = [PasswordStorage get];
+        self.c = [PasswordFactoryConstants get];
     }
     
     return self;
@@ -69,7 +63,7 @@
     self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
     //setting a timer that will check the password field every second to see if it was updated
     //I am using a timer because we don't want to store passwords while sliders, or steppers are being used
-    self.passwordCheckTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    self.passwordCheckTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
         [self storePassword];
     }];
 }
@@ -516,14 +510,17 @@
         NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
         //was it after the last time? (but not too soon, because if we just used a greater than it will store way more than we need
         if ((now - self.lastGenerated) > 0.1){
-            //check to see if we stored the same password before
-            NSString *curr = [self.password getPasswordValue];
-            if (![curr isEqualToString:self.lastStoredPassword]) {
-                //all good, so store it
-                [self.storage storePassword:curr strength:[self.password getPasswordStrength] type:[self getSelectedPasswordType]];
-                self.stored = YES;
+            PFPasswordType currType = [self getSelectedPasswordType];
+            //don't store anything if we are on the stored type
+            if (currType != PFStoredType) {
+                //check to see if we stored the same password before
+                NSString *curr = [self.password getPasswordValue];
+                if (![curr isEqualToString:self.lastStoredPassword]) {
+                    //all good, so store it
+                    [self.storage storePassword:curr strength:[self.password getPasswordStrength] type:currType];
+                    self.stored = YES;
+                }
             }
-            
         }
     }
 }
@@ -535,7 +532,7 @@
     NSTableCellView *c = [tableView makeViewWithIdentifier:@"Password Type Cell" owner:nil];
     PFPasswordType type = [self.password getPasswordTypeByIndex:row];
     c.textField.stringValue = [self.password getNameForPasswordType:type];
-    c.imageView.image = self.typeImages[@(type)];
+    c.imageView.image = [TypeIcons getTypeIcon:type];
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {

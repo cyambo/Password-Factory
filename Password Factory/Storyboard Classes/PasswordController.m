@@ -126,6 +126,9 @@
             self.factory.truncate = [settings[@"truncateAt"] integerValue];
             self.password = [self.factory transformPassword:settings[@"generatedPassword"] symbolCasePrecent:[settings[@"symbolCasePercent"] integerValue] accentedCasePercent:[settings[@"accentedCasePercent"] integerValue]];
             break;
+        case PFStoredType:
+            self.password = settings[@"storedPassword"];
+            break;
     }
     [self updatePasswordStrength];
     if (self.delegate) {
@@ -178,7 +181,11 @@
  Updates the password strength meter and the crack time string
  */
 - (void)updatePasswordStrength {
-    [self.passwordStrength updatePasswordStrength:self.password withCrackTimeString:self.generateCrackTimeString];
+    NSString *curr = @"";
+    if (self.password != nil) {
+        curr = self.password;
+    }
+    [self.passwordStrength updatePasswordStrength:curr withCrackTimeString:self.generateCrackTimeString];
 }
 
 -(void)setPasswordValue:(NSString *)password {

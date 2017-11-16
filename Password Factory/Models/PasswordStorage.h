@@ -13,5 +13,6 @@
 @property (nonatomic, assign) NSUInteger maximumPasswordsStored;
 -(NSUInteger)count;
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type;
--(NSArray *)passwordAtIndex:(NSUInteger)index;
+-(NSDictionary *)passwordAtIndex:(NSUInteger)index;
+-(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor;
 @end

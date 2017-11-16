@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "constants.h"
-
+#import "StyleKit.h"
 
 @class PasswordTypesViewController;
-@protocol PasswordTypesViewControllerDelegate <NSObject>
+@protocol PasswordTypesViewControllerDelegate <NSObject, NSTableViewDelegate>
 - (void)controlChanged:(PFPasswordType)type settings:(NSDictionary *)settings;
 - (NSString *)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings;
 - (NSString *)getNameForPasswordType: (PFPasswordType)type;
@@ -57,6 +57,7 @@
 - (IBAction)changeAdvancedTruncate:(NSSlider *)sender;
 @property (weak) IBOutlet NSTextField *advancedTruncateText;
 
+@property (weak) IBOutlet NSTableView *storedPasswordTable;
 
 
 

@@ -11,6 +11,9 @@
 #import "PasswordFactoryConstants.h"
 #import "PasswordFactory.h"
 #import "DefaultsManager.h"
+#import "PasswordStorage.h"
+#import "TypeIcons.h"
+#import "StrengthControl.h"
 @interface PasswordTypesViewController () <NSTextFieldDelegate>
 
 @property (nonatomic, assign) NSInteger passwordLength;
@@ -18,6 +21,7 @@
 @property (nonatomic, strong) NSString *prefix;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @property (nonatomic, strong) NSRegularExpression *findRegex;
+@property (nonatomic, strong) PasswordStorage *storage;
 @end
 
 @implementation PasswordTypesViewController
@@ -27,6 +31,7 @@
     self.passwordLength = -1;
     self.truncateLength = -1;
     self.c = [PasswordFactoryConstants get];
+    self.storage = [PasswordStorage get];
     return self;
 }
 -(void)viewWillAppear {
@@ -58,6 +63,15 @@
     }
     [self setupPopUpButtons];
     [self changeLength:nil];
+    if (self.storedPasswordTable) {
+        //reload the table data because stored passwords may have been updated
+        [self.storedPasswordTable reloadData];
+        if ([self.storage count]) {
+            //select the first one if we have any data
+            NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
+            [self.storedPasswordTable selectRowIndexes:set byExtendingSelection:false];
+        }
+    }
 }
 
 /**
@@ -140,8 +154,10 @@
             settings[@"separatorType"] = @([self getSeparatorType]);
             break;
         case PFAdvancedType: //advanced
-            settings = [self generateAdvancedPasswordSettings];
+            [settings addEntriesFromDictionary:[self generateAdvancedPasswordSettings]];
             break;
+        case PFStoredType: //stored
+            settings[@"storedPassword"] = [self.storage passwordAtIndex:self.storedPasswordTable.selectedRow][@"password"];
     }
     return settings;
 }
@@ -361,5 +377,43 @@
     }
     self.advancedFindRegex.textColor = color;
 }
+#pragma mark Table View
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return [self.storage count];
+}
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSTableCellView *c;
+    NSDictionary *curr = [self.storage passwordAtIndex:row];
 
+    if ([tableColumn.identifier isEqualToString:@"Type"]) {
+        c = [tableView makeViewWithIdentifier:@"PasswordTypeCell" owner:nil];
+        PFPasswordType type = [(NSNumber *)curr[@"type"] integerValue];
+        c.imageView.image = [TypeIcons getAlternateTypeIcon:type];
+    } else if ([tableColumn.identifier isEqualToString:@"Password"]) {
+        c = [tableView makeViewWithIdentifier:@"PasswordCell" owner:nil];
+        [c.textField setStringValue:curr[@"password"]];
+    } else if ([tableColumn.identifier isEqualToString:@"Strength"]) {
+        c = [tableView makeViewWithIdentifier:@"StrengthCell" owner:nil];
+        float strength = [(NSNumber *)curr[@"strength"] floatValue];
+        [c.textField setStringValue: [NSString stringWithFormat:@"%d",(int)strength]];
+        NSColor *strengthColor = [StrengthControl getStrengthColorForStrength:strength/100];
+        NSMutableAttributedString *a = [[NSMutableAttributedString alloc] initWithAttributedString:c.textField.attributedStringValue];
+        [a addAttribute:NSForegroundColorAttributeName value:strengthColor range:NSMakeRange(0, a.length)];
+        [c.textField setAttributedStringValue:a];
+    }
+    
+
+    return c;
+}
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    [self callDelegate];
+}
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors {
+    if (tableView.sortDescriptors.count) {
+        self.storage.sortDescriptor = tableView.sortDescriptors[0];
+    } else {
+        self.storage.sortDescriptor = nil;
+    }
+    [tableView reloadData];
+}
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "PasswordFactoryConstants.h"
-
+#import "StyleKit.h"
 @interface PasswordFactoryConstants ()
 
 @property (nonatomic, strong) NSDictionary *constants;
@@ -104,6 +104,7 @@
                         @(PFRandomItemType): @[@"r",@"Random Item"]
                         
                         };
+
 }
 
 /**
