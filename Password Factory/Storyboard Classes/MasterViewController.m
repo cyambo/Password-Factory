@@ -59,7 +59,6 @@
     [self setOptionalTypes];
     PFPasswordType type = (PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"];
     [self selectPaswordType:type];
-    [self generatePassword];
     self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
     [self setStorePasswordTimer];
 }

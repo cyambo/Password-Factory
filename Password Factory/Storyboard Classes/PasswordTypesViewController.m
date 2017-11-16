@@ -14,6 +14,7 @@
 #import "PasswordStorage.h"
 #import "TypeIcons.h"
 #import "StrengthControl.h"
+#import "SecureRandom.h"
 @interface PasswordTypesViewController () <NSTextFieldDelegate>
 
 @property (nonatomic, assign) NSInteger passwordLength;
@@ -22,6 +23,8 @@
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @property (nonatomic, strong) NSRegularExpression *findRegex;
 @property (nonatomic, strong) PasswordStorage *storage;
+@property (nonatomic, assign) BOOL didViewAppear;
+
 @end
 
 @implementation PasswordTypesViewController
@@ -32,10 +35,11 @@
     self.truncateLength = -1;
     self.c = [PasswordFactoryConstants get];
     self.storage = [PasswordStorage get];
+    self.didViewAppear = NO;
     return self;
 }
 -(void)viewWillAppear {
-
+    self.didViewAppear = NO;
     self.prefix = [[self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
     //setting the max password length
     NSUInteger maxValue = [[DefaultsManager standardDefaults] integerForKey:@"maxPasswordLength"];
@@ -67,14 +71,35 @@
         //reload the table data because stored passwords may have been updated
         [self.storage loadSavedData];
         [self.storedPasswordTable reloadData];
-        if ([self.storage count]) {
-            //select the first one if we have any data
-            NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
-            [self.storedPasswordTable selectRowIndexes:set byExtendingSelection:false];
-        }
+        //select the first one if we have any data
+        [self selectFromStored:0];
     }
 }
+-(void)viewDidAppear {
+    self.didViewAppear = YES;
+}
 
+/**
+ Selects an item at index from stored password table
+
+ @param index index to select
+ */
+-(void)selectFromStored:(NSUInteger)index {
+    if (!self.didViewAppear) {
+        index = 0; //only select the first one until the view is actually on screen
+    }
+    NSIndexSet *set = [NSIndexSet indexSetWithIndex:index];
+    [self.storedPasswordTable selectRowIndexes:set byExtendingSelection:false];
+    [self.storedPasswordTable scrollRowToVisible:index];
+}
+
+/**
+ Selects random item from the stored password table
+ */
+-(void)selectRandomFromStored {
+    uint index = [SecureRandom randomInt:(uint)[self.storage count]];
+    [self selectFromStored:index];
+}
 /**
  Fills in the popup buttons with defaults from PF Constants
  */
@@ -158,7 +183,7 @@
             [settings addEntriesFromDictionary:[self generateAdvancedPasswordSettings]];
             break;
         case PFStoredType: //stored
-            if (self.storedPasswordTable.selectedRow >= 0) {
+            if ([self.storage count] && self.storedPasswordTable.selectedRow >=0) {
                 settings[@"storedPassword"] = [self.storage passwordAtIndex:self.storedPasswordTable.selectedRow].password;
             } else {
                 settings[@"storedPassword"] = @"";
@@ -264,7 +289,10 @@
     if ([self getPasswordLength] != self.passwordLength) {
         self.passwordLength = [self getPasswordLength];
         [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
-        [self callDelegate];
+        //do not call the delegate if sender is nil
+        if (sender != nil) {
+            [self callDelegate];
+        }
     }
 }
 
@@ -364,8 +392,10 @@
         } else {
             [self.advancedTruncateText setStringValue:@"None"];
         }
-        
-        [self callDelegate];
+        //do not call the delegate if sender is nil
+        if (sender != nil) {
+            [self callDelegate];
+        }
     }
 }
 -(void)setAdvancedRegex {
@@ -421,5 +451,6 @@
         self.storage.sortDescriptor = nil;
     }
     [tableView reloadData];
+    [self selectFromStored:0]; //select the first
 }
 @end

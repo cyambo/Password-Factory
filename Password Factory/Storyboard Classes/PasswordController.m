@@ -46,8 +46,14 @@
  @param type PFPasswordType
  */
 - (void)generatePassword:(PFPasswordType)type {
-    NSDictionary *settings = [[self getViewControllerForPasswordType:type] getPasswordSettings];
-    [self generatePassword:type withSettings:settings];
+    PasswordTypesViewController *vc = [self getViewControllerForPasswordType:type];
+    if (type != PFStoredType) {
+         NSDictionary *settings = [vc getPasswordSettings];
+        [self generatePassword:type withSettings:settings];
+    } else {
+        [vc selectRandomFromStored];
+    }
+    
 
 }
 

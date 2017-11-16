@@ -59,6 +59,7 @@
 
 @property (weak) IBOutlet NSTableView *storedPasswordTable;
 
+-(void)selectRandomFromStored;
 
 
 @end

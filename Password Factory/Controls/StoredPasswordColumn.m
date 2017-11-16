@@ -25,7 +25,6 @@
         } else if ([self.columnType isEqualToString:@"password"]) {
             c.image = [StyleKit imageOfPasswordHeader];
         }
-
     }
     return c;
 }

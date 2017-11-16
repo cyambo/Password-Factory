@@ -19,6 +19,12 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @end
 @implementation PasswordStorage
+
+/**
+ Singleon Get
+
+ @return PasswordStorage singleton
+ */
 +(instancetype) get {
     static PasswordStorage *ps = nil;
     static dispatch_once_t once = 0;
@@ -44,16 +50,33 @@
     [self deleteOverMaxItems];
     return self;
 }
+
+/**
+ Stores the password in Core Data
+
+ @param password Password to be stored
+ @param strength strength of password
+ @param type PFPasswordType of password
+ */
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type {
-    Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
-    pw.password = password;
-    pw.strength = strength;
-    pw.type = type;
-    pw.time = [NSDate date];
-    [self saveContext];
-    [self loadSavedData];
-    [self deleteOverMaxItems];
+    if (password && password.length) { //don't store 0 length passwords
+        //setup the core data class
+        Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
+        pw.password = password;
+        pw.strength = strength;
+        pw.type = type;
+        pw.time = [NSDate date];
+        //save it
+        [self saveContext];
+        [self loadSavedData];
+        [self deleteOverMaxItems];
+    }
+
 }
+
+/**
+ Deletes any items over the max number of stored passwords set
+ */
 -(void)deleteOverMaxItems {
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     self.maximumPasswordsStored = [d integerForKey:@"maxStoredPasswords"];
@@ -74,6 +97,10 @@
     }
 
 }
+
+/**
+ Saves any updates
+ */
 -(void)saveContext {
     if (self.container.viewContext.hasChanges) {
         NSError *error = nil;
@@ -83,6 +110,10 @@
         }
     }
 }
+
+/**
+ Loads saved passwords with sorting
+ */
 -(void)loadSavedData {
     NSFetchRequest *r = [Passwords fetchRequest];
     if (self.sort) {
@@ -99,19 +130,41 @@
         NSLog(@"FETCH FAILED %@",error.localizedDescription);
     }
 }
+
+/**
+ Gets the number of objects stored
+
+ @return number of objects
+ */
 -(NSUInteger)count {
     return self.fetchedResultsController.sections[0].numberOfObjects;
 }
+
+/**
+ Gets the password at the current index
+
+ @param index 0 based index of passwords
+ @return Passwords object
+ */
 -(Passwords *)passwordAtIndex:(NSUInteger)index {
     NSUInteger indexArr[] = {0,index};
     NSIndexPath *p = [[NSIndexPath alloc] initWithIndexes:indexArr length:2];
     return [self.fetchedResultsController objectAtIndexPath:p];
 }
 
+/**
+ Changes the sort descriptor
+
+ @param sortDescriptor to sort
+ */
 -(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor {
     self.sort = sortDescriptor;
     [self loadSavedData];
 }
+
+/**
+ Deletes everything from the Core Data db
+ */
 -(void)deleteAllEntities {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Passwords"];
     NSBatchDeleteRequest *delete = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];

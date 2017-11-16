@@ -12,7 +12,7 @@
 #import "NSString+SymbolCase.h"
 #import "NSString+AccentedCase.h"
 #import "NSString+ReplaceAmbiguous.h"
-
+#import "SecureRandom.h"
 
 @interface PasswordFactory ()
 
@@ -117,7 +117,7 @@
         return [self randomFromArray:self.c.phoneticSoundsThree];
     }
     else { //return any length sound
-        NSUInteger numSyllables = [self randomNumber:3] + 1;
+        NSUInteger numSyllables = [SecureRandom randomInt:3] + 1;
         NSMutableString *sound = [[NSMutableString alloc] init];
         for(int i = 0; i <= numSyllables; i++) {
             [sound appendString:[self randomFromArray:self.c.phoneticSounds]];
@@ -151,7 +151,7 @@
             sep = @"_";
             break;
         case PFNumberSeparator:
-            sep = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
+            sep = [NSString stringWithFormat:@"%d",[SecureRandom randomInt:10]];
             break;
         case PFSymbolSeparator:
             sep = [self randomFromString:self.c.symbols];
@@ -160,7 +160,7 @@
             sep = [self randomFromString:self.c.nonAmbiguousUpperCase];
             break;
         case PFEmojiSeparator:
-            sep = [self.emojis objectAtIndex:[self randomNumber:[self randomNumber:(uint)self.emojis.count]]];
+            sep = [self.emojis objectAtIndex:[SecureRandom randomInt:[SecureRandom randomInt:(uint)self.emojis.count]]];
             break;
         case PFRandomSeparator:
             sep = [self generateRandomWithLength:1];
@@ -216,10 +216,10 @@
 
     while (!found && spun <= 40) {
         spun ++;
-        int currLength = [self randomNumber:8] + 4;
+        int currLength = [SecureRandom randomInt:8] + 4;
         NSArray *curr = self.wordsByLength[@(currLength)];
         if (curr) {
-            found = curr[[self randomNumber:(uint)curr.count]];
+            found = curr[[SecureRandom randomInt:(uint)curr.count]];
         }
     }
     return found;
@@ -244,7 +244,7 @@
     [self setCharacterRange];
     NSMutableString *curr = [[NSMutableString alloc] init];
     for(int i=0;i<length;i++){
-        int at = [self randomNumber:(uint)self.currentRange.count];
+        int at = [SecureRandom randomInt:(uint)self.currentRange.count];
         [curr appendString:[self.currentRange objectAtIndex:at]];
     }
     return curr;
@@ -337,7 +337,7 @@
             PFPatternTypeItem patternType = (PFPatternTypeItem)[(NSNumber *)self.c.patternCharacterToType[character] integerValue];
             switch (patternType) {
                 case PFNumberType: //# - Random Number
-                    toAppend = [NSString stringWithFormat:@"%d",[self randomNumber:10]];
+                    toAppend = [NSString stringWithFormat:@"%d",[SecureRandom randomInt:10]];
                     break;
                 case PFLowerCaseWordType: //w - Lowercase word
                     toAppend = [[self randomFromArray:self.englishWords] lowercaseString];
@@ -467,7 +467,7 @@
  *  @return random character from string
  */
 - (NSString *)randomFromString:(NSString *)source {
-    char c = [source characterAtIndex:([self randomNumber:(uint)source.length])];
+    char c = [source characterAtIndex:([SecureRandom randomInt:(uint)source.length])];
     return [NSString stringWithFormat:@"%c",c];
 }
 /**
@@ -478,7 +478,7 @@
  *  @return random item from array
  */
 - (id)randomFromArray:(NSArray *)source {
-    return [source objectAtIndex:([self randomNumber:(uint)source.count])];
+    return [source objectAtIndex:([SecureRandom randomInt:(uint)source.count])];
 }
 
 /**
@@ -682,24 +682,6 @@
     }
     return NO;
 }
-
-/**
- Generates a cryptographic random number
-
- @param limit upper limit of number
- @return random uint
- */
--(uint)randomNumber:(uint)limit {
-    int32_t randomNumber = 0;
-    uint result = SecRandomCopyBytes(kSecRandomDefault, 4, (uint8_t*) &randomNumber);
-    if(result == 0) {
-        return randomNumber % limit;
-    } else {
-        NSLog(@"SecRandomCopyBytes failed for some reason");
-    }
-    return 1;
-}
-
 
 /**
  Returns all the passsword types in a dictionary keyed by PFPasswordType

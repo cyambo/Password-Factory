@@ -32,6 +32,8 @@ static NSDictionary *prefsPlist;
         dm = [[DefaultsManager alloc] init];
         dm.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
         dm.standardDefaults = [NSUserDefaults standardUserDefaults];
+        NSLog(@"SHARED DEFAULTS %@",dm.sharedDefaults);
+        NSLog(@"STANDARD DEFAULTS %@",dm.standardDefaults);
         [dm loadPreferencesFromPlist];
     });
     //always sync shared defaults on get

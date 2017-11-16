@@ -31,7 +31,6 @@
 - (NSString *)generatePassphrase;
 - (NSString *)generatePassphraseWithSeparatorType:(PFSeparatorType)separatorType;
 - (NSString *)transformPassword:(NSString *)source symbolCasePrecent:(NSUInteger)symbol accentedCasePercent:(NSUInteger)accent;
-- (uint)randomNumber:(uint)limit;
 - (NSString *)getPasswordCharacterType:(PFCharacterType)type;
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character;
 @end

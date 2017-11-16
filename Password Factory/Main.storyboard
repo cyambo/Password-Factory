@@ -742,8 +742,8 @@
                                             <stepperCell key="cell" continuous="YES" alignment="left" increment="5" minValue="10" maxValue="500" doubleValue="100" id="0gQ-yc-DI5"/>
                                             <connections>
                                                 <action selector="changeOptions:" target="2B8-vP-6ly" id="glh-7r-dSh"/>
-                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.storePasswords" id="pNt-hf-PY7"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxStoredPasswords" id="bFt-c1-kXm"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.storePasswords" id="pNt-hf-PY7"/>
                                             </connections>
                                         </stepper>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MOy-mQ-dx9" customClass="TextField">
@@ -755,8 +755,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.storePasswords" id="snd-4a-0RW"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxStoredPasswords" id="hzS-O2-ebD"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.storePasswords" id="snd-4a-0RW"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -1738,7 +1738,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="366" height="125"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="VzJ-vo-MNv" viewBased="YES" id="ehq-kH-pDM">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="VzJ-vo-MNv" viewBased="YES" id="ehq-kH-pDM">
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -1764,7 +1764,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yba-9a-oO0">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="17" height="17"/>
+                                                                    <rect key="frame" x="9" y="0.0" width="17" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="tb0-tb-neJ"/>
                                                                 </imageView>
@@ -1862,6 +1862,7 @@
                                             </connections>
                                         </tableView>
                                     </subviews>
+                                    <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Mwp-uD-T28">
                                     <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
