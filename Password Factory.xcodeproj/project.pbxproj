@@ -357,15 +357,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		402190AC1FAF797100BC9D49 /* Subclasses */ = {
-			isa = PBXGroup;
-			children = (
-				40DFFEE21B811F470047CF90 /* MainWindow.h */,
-				40DFFEE31B811F470047CF90 /* MainWindow.m */,
-			);
-			path = Subclasses;
-			sourceTree = "<group>";
-		};
 		4058DF251F92995800CCB6E7 /* Password Factory Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,15 +553,24 @@
 			path = "Password FactoryUITests";
 			sourceTree = "<group>";
 		};
+		40CBF1781FBD5D0D00048B0C /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				40DFFEE21B811F470047CF90 /* MainWindow.h */,
+				40DFFEE31B811F470047CF90 /* MainWindow.m */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
 		40FB0C121B810F10009193F8 = {
 			isa = PBXGroup;
 			children = (
+				40CBF1781FBD5D0D00048B0C /* Window */,
 				408673D51F91D04B00C189AB /* constants.h */,
 				40537D8C1F9419FD00D645B7 /* constants.m */,
 				409585D61B8112FD00393B99 /* defaults.plist */,
 				409585D41B8112FD00393B99 /* Assets */,
 				40A0A3B51FBBCBF4009CEB5E /* Data */,
-				402190AC1FAF797100BC9D49 /* Subclasses */,
 				40BA26EF1FB26E1400F7AF13 /* Graphics */,
 				409585F71B8112FD00393B99 /* Categories */,
 				409585FC1B8112FD00393B99 /* Controls */,

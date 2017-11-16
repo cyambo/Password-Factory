@@ -506,7 +506,7 @@
     if ([d boolForKey:@"storePasswords"]) {
         //setting a timer that will check the password field every second to see if it was updated
         //I am using a timer because we don't want to store passwords while sliders, or steppers are being used
-        self.passwordCheckTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        self.passwordCheckTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
             [self storePasswordFromTimer];
         }];
     }

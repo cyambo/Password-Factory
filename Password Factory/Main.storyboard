@@ -27,7 +27,7 @@
                                         <menuItem isSeparatorItem="YES" id="5Bs-EW-k1b"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="JSx-qg-Y2q">
                                             <connections>
-                                                <action selector="loadPrefrences:" target="KmA-Lw-G8a" id="zcT-Jp-xZ0"/>
+                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="cbT-LQ-pjG"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="Vyu-TP-e2F"/>
@@ -80,18 +80,18 @@
                                     <items>
                                         <menuItem title="Generate Password" tag="-1" keyEquivalent="g" id="ahs-5I-44E">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="Jis-RJ-rB2"/>
+                                                <action selector="generatePasswordFromMenu:" target="jrw-Le-21b" id="9T3-qZ-0NN"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="MMn-7S-v10"/>
                                         <menuItem title="Cut" keyEquivalent="x" id="j3x-J8-L8X">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="tiL-7P-nBv"/>
+                                                <action selector="menuCut:" target="jrw-Le-21b" id="Z4Y-Rq-4Zo"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Copy" keyEquivalent="c" id="R4Q-fN-6bs">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="lmg-1c-Dd6"/>
+                                                <action selector="menuCopy:" target="jrw-Le-21b" id="Hyj-KS-s6U"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Paste" keyEquivalent="v" id="fCl-4a-0qN">
@@ -119,32 +119,32 @@
                                     <items>
                                         <menuItem title="Random" keyEquivalent="r" id="IAh-o3-NV2">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="tFm-yF-i6Q"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="ZNe-W6-VEK"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Pattern" tag="1" keyEquivalent="t" id="qCg-rz-uyY">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="fcd-58-HjN"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="Op9-JM-lTF"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Pronounceable" tag="2" keyEquivalent="u" id="9dM-FI-K8M">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="L0J-RX-vZe"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="no0-C9-7u4"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Passphrase" tag="3" keyEquivalent="p" id="4HN-fl-PVL">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="SMR-pm-KLN"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="qup-aC-1Yb"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Advanced" tag="4" keyEquivalent="d" id="HbZ-n3-Uz9" userLabel="Advanced Menu Item">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="Vb0-zw-FU9"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="ZFd-Zi-lK4"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Stored" tag="5" keyEquivalent="o" id="SUA-Uf-SLR" userLabel="Stored Menu Item">
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="HKm-P9-Ytp"/>
+                                                <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="lOb-Ri-tUy"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -181,7 +181,7 @@
                                         <menuItem title="Contact Support" tag="-1" id="XRw-eT-SYf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="loadPreferences:" target="jrw-Le-21b" id="LWW-Ed-YyY"/>
+                                                <action selector="contactSupport:" target="jrw-Le-21b" id="vvf-bZ-s7I"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -197,10 +197,12 @@
                 <customObject id="LuO-q2-tba" customClass="NSFontManager"/>
                 <customObject id="jrw-Le-21b" userLabel="App Delegate" customClass="AppDelegate">
                     <connections>
+                        <outlet property="advancedMenuItem" destination="HbZ-n3-Uz9" id="TVt-Ws-ERb"/>
                         <outlet property="passphraseMenuItem" destination="4HN-fl-PVL" id="BW4-Rv-rBy"/>
                         <outlet property="patternMenuItem" destination="qCg-rz-uyY" id="hvi-Sx-mSh"/>
                         <outlet property="pronounceableMenuItem" destination="9dM-FI-K8M" id="tZS-6Z-Ggi"/>
                         <outlet property="randomMenuItem" destination="IAh-o3-NV2" id="vn3-Zr-Nnk"/>
+                        <outlet property="storedMenuItem" destination="SUA-Uf-SLR" id="nY2-se-hCp"/>
                     </connections>
                 </customObject>
             </objects>
