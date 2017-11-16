@@ -122,6 +122,14 @@
 }
 
 /**
+ Called when delete stored password is selected in the edit menu
+
+ @param sender default sender
+ */
+- (IBAction)deleteStoredPassword:(NSMenuItem *)sender {
+    [self.masterViewController deleteStoredPassword];
+}
+/**
  Called when an item in the tab menu is selected, and will switch to that tab
 
  @param sender default sender

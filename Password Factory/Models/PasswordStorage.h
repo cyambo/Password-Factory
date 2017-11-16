@@ -17,6 +17,7 @@
 -(NSUInteger)count;
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type;
 -(Passwords *)passwordAtIndex:(NSUInteger)index;
+-(void)deleteItemAtIndex:(NSUInteger)index;
 -(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor;
 -(void)loadSavedData;
 -(void)deleteAllEntities;

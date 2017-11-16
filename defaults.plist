@@ -37,7 +37,7 @@
 	<key>randomUseNumbers</key>
 	<true/>
 	<key>passwordLength</key>
-	<string>20</string>
+	<integer>20</integer>
 	<key>pronounceableSeparatorTypeIndex</key>
 	<integer>1</integer>
 	<key>pronounceableCaseTypeIndex</key>

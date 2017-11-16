@@ -83,6 +83,14 @@
                                                 <action selector="generatePasswordFromMenu:" target="jrw-Le-21b" id="9T3-qZ-0NN"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Delete Stored Password" id="W2a-lU-wCO">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                            <connections>
+                                                <action selector="deleteStoredPassword:" target="jrw-Le-21b" id="zEm-40-gl2"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="MMn-7S-v10"/>
                                         <menuItem title="Cut" keyEquivalent="x" id="j3x-J8-L8X">
                                             <connections>
@@ -888,7 +896,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                             <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-0C-c6O">
-                                <rect key="frame" x="128" y="10" width="5" height="150"/>
+                                <rect key="frame" x="128" y="10" width="4" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">

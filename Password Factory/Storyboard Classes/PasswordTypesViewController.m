@@ -42,7 +42,8 @@
     self.didViewAppear = NO;
     self.prefix = [[self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
     //setting the max password length
-    NSUInteger maxValue = [[DefaultsManager standardDefaults] integerForKey:@"maxPasswordLength"];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    NSUInteger maxValue = [d integerForKey:@"maxPasswordLength"];
     if (self.passwordLengthSlider) {
         NSUInteger length = [self getPasswordLength]; //but we have to get the original length
 
@@ -50,7 +51,7 @@
         //if our length is greater than the max, set it to max
         if (length > maxValue) {
             length = maxValue;
-            [[DefaultsManager standardDefaults] setInteger:maxValue forKey:@"passwordLength"];
+            [d setInteger:maxValue forKey:@"passwordLength"];
         }
         [self.passwordLengthSlider setIntegerValue:length]; //and set it back because the changing of maxValue messes up the slider
     }
@@ -60,7 +61,7 @@
         NSUInteger truncateLength = [self getTruncateLength];
         if (truncateLength > maxValue) {
             truncateLength = maxValue;
-            [[DefaultsManager standardDefaults] setInteger:maxValue forKey:@"advancedTruncateAt"];
+            [d setInteger:maxValue forKey:@"advancedTruncateAt"];
         }
         [self.advancedTruncate setIntegerValue:truncateLength];
         [self changeAdvancedTruncate:nil];

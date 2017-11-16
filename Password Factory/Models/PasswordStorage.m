@@ -153,6 +153,16 @@
 }
 
 /**
+ Deletes the item at index
+
+ @param index index of item to delete
+ */
+-(void)deleteItemAtIndex:(NSUInteger)index {
+    Passwords *curr = [self passwordAtIndex:index];
+    [self.container.viewContext deleteObject:curr];
+    [self loadSavedData];
+}
+/**
  Changes the sort descriptor
 
  @param sortDescriptor to sort

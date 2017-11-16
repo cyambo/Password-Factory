@@ -51,4 +51,5 @@
 - (PFPasswordType)getSelectedPasswordType;
 -(void)enableStoredPasswords;
 -(void)disableStoredPasswords;
+-(void)deleteStoredPassword;
 @end

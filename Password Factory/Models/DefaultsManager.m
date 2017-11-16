@@ -48,7 +48,6 @@ static NSDictionary *prefsPlist;
  */
 +(NSUserDefaults *)sharedDefaults {
     NSUserDefaults *s = [DefaultsManager get].sharedDefaults;
-    [s synchronize];
     return s;
 }
 
@@ -59,7 +58,6 @@ static NSDictionary *prefsPlist;
  */
 +(NSUserDefaults *)standardDefaults {
     NSUserDefaults *s = [DefaultsManager get].standardDefaults;
-    [s synchronize];
     return s;
 }
 

@@ -351,7 +351,7 @@
         
         //uses AttributedString to color password
         
-        NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:self.currentFontSize]}];
+        __block NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:self.currentFontSize]}];
 
         //colorizing password label
         [s beginEditing];
@@ -556,7 +556,14 @@
         }
         self.stored = YES;
     }
-
+}
+-(void)deleteStoredPassword {
+    PFPasswordType currType = [self getSelectedPasswordType];
+    if (currType == PFStoredType) {
+        NSUInteger index = self.currentPasswordTypeViewController.storedPasswordTable.selectedRow;
+        [self.storage deleteItemAtIndex:index];
+        [self.currentPasswordTypeViewController.storedPasswordTable reloadData];
+    }
 }
 #pragma mark Table View
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {

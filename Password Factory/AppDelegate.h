@@ -21,6 +21,9 @@
 @property (nonatomic, strong) NSWindowController *zoomWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;
 - (IBAction)selectTypeFromMenu:(NSMenuItem *)sender;
+- (IBAction)deleteStoredPassword:(NSMenuItem *)sender;
+
+
 @property (weak) IBOutlet NSMenuItem *randomMenuItem;
 @property (weak) IBOutlet NSMenuItem *patternMenuItem;
 @property (weak) IBOutlet NSMenuItem *pronounceableMenuItem;
