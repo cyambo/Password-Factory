@@ -65,6 +65,7 @@
     [self changeLength:nil];
     if (self.storedPasswordTable) {
         //reload the table data because stored passwords may have been updated
+        [self.storage loadSavedData];
         [self.storedPasswordTable reloadData];
         if ([self.storage count]) {
             //select the first one if we have any data
@@ -157,7 +158,12 @@
             [settings addEntriesFromDictionary:[self generateAdvancedPasswordSettings]];
             break;
         case PFStoredType: //stored
-            settings[@"storedPassword"] = [self.storage passwordAtIndex:self.storedPasswordTable.selectedRow][@"password"];
+            if (self.storedPasswordTable.selectedRow >= 0) {
+                settings[@"storedPassword"] = [self.storage passwordAtIndex:self.storedPasswordTable.selectedRow].password;
+            } else {
+                settings[@"storedPassword"] = @"";
+            }
+            
     }
     return settings;
 }
@@ -383,18 +389,18 @@
 }
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSTableCellView *c;
-    NSDictionary *curr = [self.storage passwordAtIndex:row];
-
+    Passwords *p = [self.storage passwordAtIndex:row];
+    
     if ([tableColumn.identifier isEqualToString:@"Type"]) {
         c = [tableView makeViewWithIdentifier:@"PasswordTypeCell" owner:nil];
-        PFPasswordType type = [(NSNumber *)curr[@"type"] integerValue];
+        PFPasswordType type = p.type;
         c.imageView.image = [TypeIcons getAlternateTypeIcon:type];
     } else if ([tableColumn.identifier isEqualToString:@"Password"]) {
         c = [tableView makeViewWithIdentifier:@"PasswordCell" owner:nil];
-        [c.textField setStringValue:curr[@"password"]];
+        [c.textField setStringValue:p.password];
     } else if ([tableColumn.identifier isEqualToString:@"Strength"]) {
         c = [tableView makeViewWithIdentifier:@"StrengthCell" owner:nil];
-        float strength = [(NSNumber *)curr[@"strength"] floatValue];
+        float strength = p.strength;
         [c.textField setStringValue: [NSString stringWithFormat:@"%d",(int)strength]];
         NSColor *strengthColor = [StrengthControl getStrengthColorForStrength:strength/100];
         NSMutableAttributedString *a = [[NSMutableAttributedString alloc] initWithAttributedString:c.textField.attributedStringValue];

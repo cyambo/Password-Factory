@@ -12,7 +12,7 @@
 #import "DefaultsManager.h"
 #import "StyleKit.h"
 #import "constants.h"
-
+#import "PasswordStorage.h"
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
@@ -27,7 +27,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
 //    [DefaultsManager restoreUserDefaults];
-
+//    [[PasswordStorage get] deleteAllEntities];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
     NSWindowController *windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];

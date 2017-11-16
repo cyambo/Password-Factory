@@ -7,12 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "constants.h"
-@interface PasswordStorage : NSObject
+#import "Passwords+CoreDataProperties.h"
+
+@interface PasswordStorage : NSObject <NSFetchedResultsControllerDelegate>
 +(instancetype) get;
 @property (nonatomic, assign) NSUInteger maximumPasswordsStored;
 -(NSUInteger)count;
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type;
--(NSDictionary *)passwordAtIndex:(NSUInteger)index;
+-(Passwords *)passwordAtIndex:(NSUInteger)index;
 -(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor;
+-(void)loadSavedData;
+-(void)deleteAllEntities;
 @end

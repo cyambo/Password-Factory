@@ -36,6 +36,8 @@
 		406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585FE1B8112FD00393B99 /* PreferencesButton.m */; };
 		40855E0A1FBCEEA8005BD8F4 /* StoredPasswordColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */; };
 		40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E0C1FBD1628005BD8F4 /* TypeIcons.m */; };
+		40855E0E1FBD2D10005BD8F4 /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
+		40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
 		409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CD1B8112D600393B99 /* PreferencesWindowTestClass.m */; };
 		409585D31B8112D600393B99 /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CE1B8112D600393B99 /* PreferencesWindowTests.m */; };
@@ -1197,6 +1199,7 @@
 				4051C9D31FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */,
 				40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */,
+				40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */,
 				40511D671C125348005BE5BE /* PasswordStrength.m in Sources */,
 				40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */,
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
@@ -1208,6 +1211,7 @@
 				40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */,
 				406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */,
 				40F07A8A1FBBD23B008AFE29 /* PasswordStorage.m in Sources */,
+				40855E0E1FBD2D10005BD8F4 /* Passwords+CoreDataProperties.m in Sources */,
 				406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */,
 				406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */,
 				406C388A1B844D0100F471E7 /* StyleKit.m in Sources */,

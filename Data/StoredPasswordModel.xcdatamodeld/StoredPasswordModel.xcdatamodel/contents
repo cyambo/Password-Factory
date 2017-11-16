@@ -3,8 +3,10 @@
     <entity name="Passwords" representedClassName="Passwords" syncable="YES">
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="strength" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Passwords" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Passwords" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>
