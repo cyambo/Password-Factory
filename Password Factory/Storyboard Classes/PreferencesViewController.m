@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "DefaultsManager.h"
 #import "constants.h"
+
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
@@ -117,6 +118,16 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         [d setObject:[self.defaultColor.color hexadecimalValueOfAnNSColor] forKey:@"defaultTextColor"];
     } else if ([sender isEqualTo: self.colorPasswordText]){
         [d setBool:(BOOL)self.colorPasswordText.state forKey:@"colorPasswordText"];
+    }
+}
+
+- (IBAction)changeStoredPassword:(NSButton *)sender {
+    AppDelegate *d = [NSApplication sharedApplication].delegate;
+
+    if(sender.state == NSControlStateValueOn) {
+        [d.masterViewController enableStoredPasswords];
+    } else {
+        [d.masterViewController disableStoredPasswords];
     }
 }
 

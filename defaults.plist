@@ -86,5 +86,7 @@
 	<string></string>
 	<key>advancedCaseTypeIndex</key>
 	<integer>0</integer>
+	<key>maxStoredPasswords</key>
+	<integer>100</integer>
 </dict>
 </plist>

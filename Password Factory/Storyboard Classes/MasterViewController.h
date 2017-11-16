@@ -49,4 +49,6 @@
 @property (weak) IBOutlet NSTableView *passwordTypesTable;
 - (void)selectPaswordType:(PFPasswordType)type;
 - (PFPasswordType)getSelectedPasswordType;
+-(void)enableStoredPasswords;
+-(void)disableStoredPasswords;
 @end

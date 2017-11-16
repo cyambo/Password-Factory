@@ -709,7 +709,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="jfe-lA-owJ"/>
+                                                <action selector="changeStoredPassword:" target="2B8-vP-6ly" id="gHH-rh-2t4"/>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.storePasswords" id="9Oh-G1-tB0"/>
                                             </connections>
                                         </button>
@@ -732,6 +732,29 @@
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxPasswordLength" id="aRp-YL-XQs"/>
+                                            </connections>
+                                        </textField>
+                                        <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TlR-35-7fX">
+                                            <rect key="frame" x="216" y="2" width="19" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <stepperCell key="cell" continuous="YES" alignment="left" increment="5" minValue="10" maxValue="500" doubleValue="100" id="0gQ-yc-DI5"/>
+                                            <connections>
+                                                <action selector="changeOptions:" target="2B8-vP-6ly" id="glh-7r-dSh"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.storePasswords" id="pNt-hf-PY7"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxStoredPasswords" id="bFt-c1-kXm"/>
+                                            </connections>
+                                        </stepper>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MOy-mQ-dx9" customClass="TextField">
+                                            <rect key="frame" x="182" y="7" width="37" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="dKM-cE-VXT">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.storePasswords" id="snd-4a-0RW"/>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxStoredPasswords" id="hzS-O2-ebD"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -1839,7 +1862,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Mwp-uD-T28">
-                                    <rect key="frame" x="0.0" y="109" width="366" height="16"/>
+                                    <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ozi-iT-ItH">

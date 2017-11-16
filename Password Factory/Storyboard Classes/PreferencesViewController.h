@@ -18,10 +18,11 @@
 @property (weak) IBOutlet NSColorWell *numbersColor;
 @property (weak) IBOutlet NSColorWell *symbolsColor;
 @property (weak) IBOutlet NSColorWell *defaultColor;
+
 - (IBAction)changeColor:(id)sender;
+- (IBAction)changeStoredPassword:(NSButton *)sender;
 
 - (IBAction)changeOptions:(id)sender;
-
 
 @property (weak) IBOutlet NSButton *automaticallyClearClipboard;
 @property (weak) IBOutlet NSSlider *clearTime;
@@ -49,5 +50,6 @@
 @property (nonatomic, strong) StartAtLoginController *loginController;
 
 @property (weak) IBOutlet NSTextField *maxPasswordLength;
+
 
 @end

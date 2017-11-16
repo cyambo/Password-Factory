@@ -61,14 +61,10 @@
     [self selectPaswordType:type];
     [self generatePassword];
     self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
-    //setting a timer that will check the password field every second to see if it was updated
-    //I am using a timer because we don't want to store passwords while sliders, or steppers are being used
-    self.passwordCheckTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self storePasswordFromTimer];
-    }];
+    [self setStorePasswordTimer];
 }
 -(void)viewWillDisappear {
-    [self.passwordCheckTimer invalidate];
+    [self unsetStorePasswordTimer];
 }
 #pragma mark Observers
 
@@ -504,7 +500,23 @@
         [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
     }
 }
+#pragma mark Password Storage
+-(void)setStorePasswordTimer {
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    if ([d boolForKey:@"storePasswords"]) {
+        //setting a timer that will check the password field every second to see if it was updated
+        //I am using a timer because we don't want to store passwords while sliders, or steppers are being used
+        self.passwordCheckTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [self storePasswordFromTimer];
+        }];
+    }
 
+}
+-(void)unsetStorePasswordTimer {
+    if (self.passwordCheckTimer) {
+        [self.passwordCheckTimer invalidate];
+    }
+}
 /**
  Stores the password in PasswordStorage (called from timer, so checks are done to make sure we need to store it
  */
@@ -518,24 +530,34 @@
         }
     }
 }
-
+-(void)enableStoredPasswords {
+    [self setStorePasswordTimer];
+}
+-(void)disableStoredPasswords {
+    [self unsetStorePasswordTimer];
+    [self.storage deleteAllEntities];
+}
 /**
  Store a password in PasswordStorage
  */
 -(void)storePassword {
-    PFPasswordType currType = [self getSelectedPasswordType];
-    //don't store anything if we are on the stored type
-    if (currType != PFStoredType) {
-        //check to see if we stored the same password before
-        NSString *curr = [self.password getPasswordValue];
-        if (![curr isEqualToString:self.lastStoredPassword]) {
-            //all good, so store it
-            self.stored = YES;
-            [self.storage storePassword:curr strength:[self.password getPasswordStrength] type:currType];
-            self.lastStoredPassword = curr;
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    if ([d boolForKey:@"storePasswords"]) {
+        PFPasswordType currType = [self getSelectedPasswordType];
+        //don't store anything if we are on the stored type
+        if (currType != PFStoredType) {
+            //check to see if we stored the same password before
+            NSString *curr = [self.password getPasswordValue];
+            if (![curr isEqualToString:self.lastStoredPassword]) {
+                //all good, so store it
+                self.stored = YES;
+                [self.storage storePassword:curr strength:[self.password getPasswordStrength] type:currType];
+                self.lastStoredPassword = curr;
+            }
         }
+        self.stored = YES;
     }
-    self.stored = YES;
+
 }
 #pragma mark Table View
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {

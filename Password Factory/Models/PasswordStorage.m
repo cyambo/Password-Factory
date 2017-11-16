@@ -10,6 +10,7 @@
 
 #import "PasswordStorage.h"
 #import "constants.h"
+#import "DefaultsManager.h"
 @interface PasswordStorage ()
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
@@ -29,7 +30,6 @@
 }
 -(instancetype)init {
     self = [super init];
-    self.maximumPasswordsStored = 100;
     self.container = [[NSPersistentContainer alloc] initWithName:@"StoredPasswordModel"];
     [self.container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDescription, NSError * _Nullable error) {
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
@@ -55,6 +55,8 @@
     [self deleteOverMaxItems];
 }
 -(void)deleteOverMaxItems {
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    self.maximumPasswordsStored = [d integerForKey:@"maxStoredPasswords"];
     if ([self count] > self.maximumPasswordsStored) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Passwords"];
         
