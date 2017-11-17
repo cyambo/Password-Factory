@@ -18,6 +18,7 @@
 #import "PasswordStorage.h"
 #import "PasswordFactoryConstants.h"
 #import "TypeIcons.h"
+
 @interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, PasswordControllerDelegate>
 
 @property (nonatomic, strong) id clearClipboardTimer;
@@ -135,7 +136,7 @@
         [self.passwordTypeControl setSegmentCount:count];
         for(NSUInteger i = 0; i < count; i++) {
             PFPasswordType type = [self.password getPasswordTypeByIndex:i];
-            [self.passwordTypeControl setImage:[TypeIcons getTypeIcon:type] forSegment:i];
+            [self.passwordTypeControl setImage:[TypeIcons getAlternateTypeIcon:type] forSegment:i];
             [self.passwordTypeControl setWidth:48.0 forSegment:i];
 //            [self.passwordTypeControl setLabel:[self.password getNameForPasswordType:type]  forSegment:i];
         }
@@ -517,6 +518,7 @@
             [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
         } else if (self.passwordTypeControl) {
             NSUInteger index = [self.password getIndexByPasswordType:type];
+            
             [self.passwordTypeControl setSelectedSegment:index];
             [self changeSelectionTypeByIndex:index];
         }

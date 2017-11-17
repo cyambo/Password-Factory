@@ -13,6 +13,7 @@
 #import "StrengthMeter.h"
 #import "PasswordController.h"
 
+
 @interface MasterViewController : NSViewController 
 @property (nonatomic, strong) PasswordController *password;
 @property (weak) IBOutlet NSTextField *passwordField;

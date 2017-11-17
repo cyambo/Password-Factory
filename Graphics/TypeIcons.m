@@ -60,6 +60,9 @@
  */
 +(NSImage *)getAlternateTypeIcon:(PFPasswordType)type {
     NSColor *c = [NSColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
-    return [TypeIcons getTypeIconWithColor:c type:type];
+    NSImage *image = [TypeIcons getTypeIconWithColor:c type:type];
+    [image setTemplate:YES];
+    return image;
 }
+
 @end

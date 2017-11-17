@@ -916,40 +916,6 @@ CA
                                 <rect key="frame" x="128" y="10" width="4" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">
-                                <rect key="frame" x="141" y="0.0" width="160" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xfT-nW-gNK">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="generateAction:" target="BgG-3K-KOz" id="4fd-xH-k3e"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-1N-efq">
-                                <rect key="frame" x="321" y="0.0" width="160" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mud-1V-YAU">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="copyToClipboard:" target="BgG-3K-KOz" id="bD2-GA-Sc7"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MOm-g5-lgB" customClass="PreferencesButton">
-                                <rect key="frame" x="483" y="7" width="19" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d6O-yz-uwc">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <accessibility description="Load Preferences" identifier="loadPreferences"/>
-                                <connections>
-                                    <action selector="loadPreferencesWindow:" target="BgG-3K-KOz" id="ysn-UK-wxc"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ba5-fo-EG7">
                                 <rect key="frame" x="57" y="173" width="394" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -982,13 +948,34 @@ CA
                                     <action selector="zoomPassword:" target="BgG-3K-KOz" id="wLM-zK-ACy"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">
+                                <rect key="frame" x="152" y="0.0" width="160" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xfT-nW-gNK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="generateAction:" target="BgG-3K-KOz" id="4fd-xH-k3e"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-1N-efq">
+                                <rect key="frame" x="332" y="0.0" width="160" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mud-1V-YAU">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="copyToClipboard:" target="BgG-3K-KOz" id="bD2-GA-Sc7"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="crackTimeButton" destination="Ba5-fo-EG7" id="vGx-9B-iij"/>
                         <outlet property="displayedPasswordLength" destination="6qP-55-Enn" id="g5Y-cK-OPd"/>
                         <outlet property="generateButton" destination="BO3-Ac-9JC" id="Bfk-TO-XAY"/>
-                        <outlet property="loadPreferencesButton" destination="MOm-g5-lgB" id="UEL-Zw-8Dx"/>
                         <outlet property="passwordField" destination="8xR-jQ-tfH" id="bck-AA-DVA"/>
                         <outlet property="passwordStrengthLevel" destination="cFt-nd-3qd" id="uoJ-Jn-xSB"/>
                         <outlet property="passwordTypesTable" destination="6c5-Mk-eYC" id="0TL-TI-nnZ"/>
@@ -1952,7 +1939,7 @@ CA
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6mf-gM-r7g">
-                                <rect key="frame" x="184" y="0.0" width="160" height="32"/>
+                                <rect key="frame" x="182" y="0.0" width="160" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EH7-KO-weF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1986,13 +1973,13 @@ CA
                                     <action selector="toggleCrackTimeDisplay:" target="dD8-aZ-j4o" id="uKV-bU-Ps8"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHJ-vd-xHD">
-                                <rect key="frame" x="321" y="166" width="37" height="21"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHJ-vd-xHD" customClass="TextField">
+                                <rect key="frame" x="323" y="166" width="33" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="hVk-fr-9qV">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="right" title="999" drawsBackground="YES" id="hVk-fr-9qV">
                                     <font key="font" metaFont="system" size="17"/>
-                                    <color key="textColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="deviceWhite"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78o-FE-JcD" customClass="ZoomButton">
@@ -2007,8 +1994,8 @@ CA
                                 </connections>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCc-Xq-aX4">
-                                <rect key="frame" x="15" y="245" width="344" height="23"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="texturedRounded" trackingMode="selectOne" id="kwv-Js-aab">
+                                <rect key="frame" x="15" y="245" width="344" height="24"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="kwv-Js-aab">
                                     <font key="font" metaFont="system"/>
                                     <segments>
                                         <segment width="55"/>
