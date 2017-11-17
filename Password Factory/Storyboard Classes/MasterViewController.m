@@ -251,8 +251,6 @@
     }
 }
 
-
-
 /**
  clears the clipboard
  */
@@ -295,7 +293,6 @@
  */
 - (void)generatePassword {
     [self.password generatePassword:[self getSelectedPasswordType]];
-    [self updatePasswordField];
     [self setPasswordStrength];
 }
 
