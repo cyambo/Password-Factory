@@ -666,7 +666,15 @@ CA
                                             </popUpButtonCell>
                                             <connections>
                                                 <action selector="selectSound:" target="2B8-vP-6ly" id="t4J-S6-Txk"/>
-                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="eNP-cR-E9p"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled2" keyPath="values.MASPGShortcutEnabled" previousBinding="bgL-cC-FM3" id="rxc-HH-L9e">
+                                                    <dictionary key="options">
+                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.globalHotkeyPlaySound" id="bgL-cC-FM3"/>
                                             </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mUV-mS-YnQ" customClass="TextField">
@@ -678,7 +686,15 @@ CA
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="YNC-aY-YZO"/>
+                                                <binding destination="DGa-ye-VaM" name="enabled2" keyPath="values.MASPGShortcutEnabled" previousBinding="EwC-xD-m0o" id="G7h-2J-x0a">
+                                                    <dictionary key="options">
+                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.globalHotkeyPlaySound" id="EwC-xD-m0o"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -897,7 +913,7 @@ CA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                             <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-0C-c6O">
-                                <rect key="frame" x="128" y="10" width="4" height="150"/>
+                                <rect key="frame" x="128" y="10" width="5" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">

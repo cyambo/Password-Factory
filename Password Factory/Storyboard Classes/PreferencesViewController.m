@@ -23,17 +23,6 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 -(instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     [self setObservers];
-    return self;
-}
-- (void)awakeFromNib {
-
-    [self updatePrefsUI];
-    
-    //setup shortcut handler
-    [self.shortcutView bind:@"enabled" toObject:[DefaultsManager standardDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
-    
-    // Shortcut view will follow and modify user preferences automatically
-    self.shortcutView.associatedUserDefaultsKey = MASPreferenceKeyShortcut;
     
     //setting the initial checkbox states for the menu and dock checkboxes to an unset state
     self.initialMenuState = 2;
@@ -41,15 +30,24 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     
     //initting login item
     self.loginController = [[StartAtLoginController alloc] initWithIdentifier:HelperIdentifier];
+    return self;
+}
+- (void)awakeFromNib {
+
+    //setup shortcut handler
+    [self.shortcutView bind:@"enabled" toObject:[DefaultsManager standardDefaults] withKeyPath:MASPreferenceKeyShortcutEnabled options:nil];
     
-    //setting up notification sound
-    NSString *sound = [[DefaultsManager standardDefaults] stringForKey:@"notificationSound"];
-    [self.soundSelector selectItemWithTitle:sound];
+    // Shortcut view will follow and modify user preferences automatically
+    self.shortcutView.associatedUserDefaultsKey = MASPreferenceKeyShortcut;
 }
 
 - (void)viewWillAppear {
+    [self updatePrefsUI];
     [self resetShortcutRegistration];
     [self changeLoginItem:nil];
+    //setting up notification sound
+    NSString *sound = [[DefaultsManager standardDefaults] stringForKey:@"notificationSound"];
+    [self.soundSelector selectItemWithTitle:sound];
 }
 
 #pragma mark observers
@@ -284,10 +282,14 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  */
 - (IBAction)selectSound:(NSPopUpButton *)sender {
     NSString *soundName = [sender selectedItem].title;
-    [[DefaultsManager standardDefaults] setObject:soundName forKey:@"notificationSound"];
-    [[NSSound soundNamed:soundName] play];
+    [[DefaultsManager standardDefaults] setObject:soundName forKey:@"notificationSound"]; //store it in defaults
+    [[NSSound soundNamed:soundName] play]; //play the sound
     [self updatedPrefs];
 }
+
+/**
+ Called when any preferences are updated
+ */
 -(void)updatedPrefs {
     [[DefaultsManager get] syncSharedDefaults];
 }

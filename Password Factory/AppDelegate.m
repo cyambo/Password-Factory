@@ -291,6 +291,7 @@
 - (NSMenu *)applicationDockMenu:(NSApplication *)sender {
     NSMenu *dockMenu = [[NSMenu alloc] init];
     NSDictionary *allTypes = [self.masterViewController.password getFilteredPasswordTypes];
+    PFPasswordType selected = [self.masterViewController getSelectedPasswordType];
     for(int i = 0; i < allTypes.count; i++) {
         PFPasswordType type = [self.masterViewController.password getPasswordTypeByIndex:i];
         NSString *name = [self.masterViewController.password getNameForPasswordType:type];
@@ -298,6 +299,10 @@
         [dockMenu addItem:m];
         m.tag = type;
         m.identifier = name; //set the identifier to match the tab type
+        //put a checkmark next to currently selected item
+        if (selected == type) {
+            [m setState:NSOnState];
+        }
     }
     return dockMenu;
 }

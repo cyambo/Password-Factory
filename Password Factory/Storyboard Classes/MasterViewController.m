@@ -179,17 +179,16 @@
     
     NSUserDefaults *d = [DefaultsManager standardDefaults];
 
-    //show the notification ,
+    //show the notification
     if ([d boolForKey:@"globalHotkeyShowNotification"]) {
         [self displayCopyNotification];
-    
-    //or play the sound
-    } else if ([d boolForKey:@"globalHotkeyPlaySound"]) {
+    }
+    //play the sound
+    if ([d boolForKey:@"globalHotkeyPlaySound"]) {
         [[NSSound soundNamed:[self getSelectedSoundName]] play];
     }
     //store password because we wanted to generate it
     [self storePassword];
-    
 }
 
 /**
