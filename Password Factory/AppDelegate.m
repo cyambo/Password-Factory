@@ -135,22 +135,9 @@
  @param sender default sender
  */
 - (IBAction)selectTypeFromMenu:(NSMenuItem *)sender {
-    [self selectTypeByTag:(int)sender.tag];
+    [self.masterViewController selectPaswordType:(int)sender.tag];
 }
 
-/**
- Selects the tab in the main window by tag id
-
- @param tag tag number of tab
- */
--(void)selectTypeByTag:(int)tag {
-    //the tag of the menu item matches the identifier of the type selection so we can
-    //just use the tag to select the proper tab
-    if (tag >= 0) {
-        PFPasswordType type = tag + PFRandomType;
-        [self.masterViewController selectPaswordType:type];
-    }
-}
 
 /**
  Called when the user presses copy on the menu
@@ -218,14 +205,35 @@
  */
 - (BOOL)validateUserInterfaceItem:(id<NSValidatedUserInterfaceItem>)item {
     NSMenuItem *m = (NSMenuItem *)item;
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    PFPasswordType selected = [self.masterViewController getSelectedPasswordType];
     //If we are in the 'Tabs' menu, then disable the currently selected tab
     if ([m.parentItem.title isEqualToString:@"Types"]) {
         //get the selected tab identifier
-        int selected = [self.masterViewController getSelectedPasswordType] - PFRandomType;
-        //the tab identifier and menu item tag match up
+        
+        //enable and disable Advanced and Stored based on settings
+        if (m.tag == PFStoredType && selected != PFStoredType) {
+            if ([d boolForKey:@"storePasswords"]) {
+                return YES;
+            } else {
+                return NO;
+            }
+        }
+        if (m.tag == PFAdvancedType && selected != PFAdvancedType) {
+            if ([d boolForKey:@"enableAdvanced"]) {
+                return YES;
+            } else {
+                return NO;
+            }
+        }
+        //if we are on the currently selected item, disable the menu
         if(m.tag == selected) {
             return NO;
         }
+    }
+    //disable the 'Delete Stored Item' menu item unless we are on Stored
+    if (m.tag == 901 && selected != PFStoredType) {
+        return NO;
     }
     //otherwise, enable the menu
     return YES;
@@ -282,14 +290,14 @@
  */
 - (NSMenu *)applicationDockMenu:(NSApplication *)sender {
     NSMenu *dockMenu = [[NSMenu alloc] init];
-    NSDictionary *allTypes = [self.masterViewController.password getAllPasswordTypes]; 
+    NSDictionary *allTypes = [self.masterViewController.password getFilteredPasswordTypes];
     for(int i = 0; i < allTypes.count; i++) {
         PFPasswordType type = [self.masterViewController.password getPasswordTypeByIndex:i];
         NSString *name = [self.masterViewController.password getNameForPasswordType:type];
         NSMenuItem *m = [[NSMenuItem alloc] initWithTitle:name action:@selector(dockMenuItem:) keyEquivalent:@""];
         [dockMenu addItem:m];
-        m.tag = -1; //setting a tag of -1 enables it
-        m.identifier = @(i).stringValue; //set the identifier to match the tab type
+        m.tag = type;
+        m.identifier = name; //set the identifier to match the tab type
     }
     return dockMenu;
 }
@@ -300,7 +308,7 @@
  @param sender default sender
  */
 - (void)dockMenuItem:(NSMenuItem *)sender {
-    [self selectTypeByTag:[sender.identifier intValue]];
+    [self.masterViewController selectPaswordType:sender.tag];
     [self.masterViewController generateAndCopy];
 }
 -(void)applicationWillFinishLaunching:(NSNotification *)aNotification {

@@ -159,6 +159,7 @@
  */
 - (void)generateAndCopy {
     float s = -1;
+    
     //set the max password generations to GenerateAndCopyLoops
     for(int i = 0; i < GenerateAndCopyLoops; i++) {
         [self generatePassword];

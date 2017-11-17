@@ -83,7 +83,7 @@
                                                 <action selector="generatePasswordFromMenu:" target="jrw-Le-21b" id="9T3-qZ-0NN"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Delete Stored Password" id="W2a-lU-wCO">
+                                        <menuItem title="Delete Stored Password" tag="901" id="W2a-lU-wCO">
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>
@@ -121,36 +121,36 @@ CA
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Types" id="0Vl-bn-7ao" userLabel="Tabs">
+                            <menuItem title="Types" id="0Vl-bn-7ao">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Types" id="aXI-ej-NW0">
                                     <items>
-                                        <menuItem title="Random" keyEquivalent="r" id="IAh-o3-NV2">
+                                        <menuItem title="Random" tag="401" keyEquivalent="r" id="IAh-o3-NV2">
                                             <connections>
                                                 <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="ZNe-W6-VEK"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Pattern" tag="1" keyEquivalent="t" id="qCg-rz-uyY">
+                                        <menuItem title="Pattern" tag="402" keyEquivalent="t" id="qCg-rz-uyY">
                                             <connections>
                                                 <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="Op9-JM-lTF"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Pronounceable" tag="2" keyEquivalent="u" id="9dM-FI-K8M">
+                                        <menuItem title="Pronounceable" tag="403" keyEquivalent="u" id="9dM-FI-K8M">
                                             <connections>
                                                 <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="no0-C9-7u4"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Passphrase" tag="3" keyEquivalent="p" id="4HN-fl-PVL">
+                                        <menuItem title="Passphrase" tag="404" keyEquivalent="p" id="4HN-fl-PVL">
                                             <connections>
                                                 <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="qup-aC-1Yb"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Advanced" tag="4" keyEquivalent="d" id="HbZ-n3-Uz9" userLabel="Advanced Menu Item">
+                                        <menuItem title="Advanced" tag="405" keyEquivalent="d" id="HbZ-n3-Uz9" userLabel="Advanced Menu Item">
                                             <connections>
                                                 <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="ZFd-Zi-lK4"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Stored" tag="5" keyEquivalent="o" id="SUA-Uf-SLR" userLabel="Stored Menu Item">
+                                        <menuItem title="Stored" tag="406" keyEquivalent="o" id="SUA-Uf-SLR" userLabel="Stored Menu Item">
                                             <connections>
                                                 <action selector="selectTypeFromMenu:" target="jrw-Le-21b" id="lOb-Ri-tUy"/>
                                             </connections>
@@ -213,6 +213,7 @@ CA
                         <outlet property="storedMenuItem" destination="SUA-Uf-SLR" id="nY2-se-hCp"/>
                     </connections>
                 </customObject>
+                <userDefaultsController id="LOa-xX-ySf"/>
             </objects>
             <point key="canvasLocation" x="29" y="-525"/>
         </scene>
