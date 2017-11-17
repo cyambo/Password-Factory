@@ -58,9 +58,13 @@
 }
 -(void)viewWillAppear {
     [self setOptionalTypes];
-    PFPasswordType type = (PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"];
-    [self selectPaswordType:type];
+//    PFPasswordType type = (PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"];
+//    [self selectPaswordType:type];
     [self setStorePasswordTimer];
+    [self loadTypes];
+}
+- (void)viewDidAppear {
+    [self selectPaswordType:(PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"]];
 }
 -(void)viewWillDisappear {
     [self unsetStorePasswordTimer];
@@ -118,12 +122,25 @@
     }
     if ([keyPath isEqualToString:@"enableAdvanced"] || [keyPath isEqualToString:@"storePasswords"]) {
         [self setOptionalTypes];
-        [self.passwordTypesTable reloadData];
+        [self loadTypes];
         [self selectPaswordType:[self getSelectedPasswordType]];
     }
 
 }
-
+-(void)loadTypes {
+    if(self.passwordTypesTable) {
+        [self.passwordTypesTable reloadData];
+    } else if (self.passwordTypeControl) {
+        NSUInteger count = [[self.password getFilteredPasswordTypes] count];
+        [self.passwordTypeControl setSegmentCount:count];
+        for(NSUInteger i = 0; i < count; i++) {
+            PFPasswordType type = [self.password getPasswordTypeByIndex:i];
+            [self.passwordTypeControl setImage:[TypeIcons getTypeIcon:type] forSegment:i];
+            [self.passwordTypeControl setWidth:48.0 forSegment:i];
+//            [self.passwordTypeControl setLabel:[self.password getNameForPasswordType:type]  forSegment:i];
+        }
+    }
+}
 /**
  Updates slider when the maxPasswordLength changed
 
@@ -474,8 +491,14 @@
  @return current PFPasswordType
  */
 - (PFPasswordType)getSelectedPasswordType {
-    NSInteger row = self.passwordTypesTable.selectedRow;
-    return [self.password getPasswordTypeByIndex:row];
+    NSUInteger index = 0;
+    if (self.passwordTypesTable) {
+        index = self.passwordTypesTable.selectedRow;
+    } else if (self.passwordTypeControl) {
+        index = self.passwordTypeControl.selectedSegment;
+    }
+
+    return [self.password getPasswordTypeByIndex:index];
 }
 
 /**
@@ -484,13 +507,20 @@
  @param type PFPasswordType to select
  */
 -(void)selectPaswordType:(PFPasswordType)type {
-    NSInteger row = self.passwordTypesTable.selectedRow;
-    PFPasswordType currType = [self.password getPasswordTypeByIndex:row];
-    if (currType == type && row >= 0) {
+
+    PFPasswordType currType = [self getSelectedPasswordType];
+    if (currType == type && self.passwordView.subviews.count) {
         [self generatePassword];
     } else {
-        NSIndexSet *set = [NSIndexSet indexSetWithIndex:[self.password getIndexByPasswordType:type]];
-        [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
+        if (self.passwordTypesTable) {
+            NSIndexSet *set = [NSIndexSet indexSetWithIndex:[self.password getIndexByPasswordType:type]];
+            [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
+        } else if (self.passwordTypeControl) {
+            NSUInteger index = [self.password getIndexByPasswordType:type];
+            [self.passwordTypeControl setSelectedSegment:index];
+            [self changeSelectionTypeByIndex:index];
+        }
+
     }
 }
 #pragma mark Password Storage
@@ -559,6 +589,29 @@
         [self.currentPasswordTypeViewController.storedPasswordTable reloadData];
     }
 }
+
+- (IBAction)changePasswordTypeControl:(NSSegmentedControl *)sender {
+    [self changeSelectionTypeByIndex:sender.selectedSegment];
+}
+
+/**
+ Changes the current selection type view by index
+
+ @param index index of selected item
+ */
+- (void)changeSelectionTypeByIndex:(NSUInteger)index {
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    PFPasswordType type = [self.password getPasswordTypeByIndex:index];
+    //only change if the type selection changed, or we have no subviews (meaning nothing loaded)
+    if (type != [d integerForKey:@"selectedPasswordType"] || self.passwordView.subviews.count == 0) {
+        [d setInteger:type forKey:@"selectedPasswordType"];
+        PasswordTypesViewController *vc = [self.password getViewControllerForPasswordType:type];
+        self.currentPasswordTypeViewController = vc;
+        self.passwordView.subviews = @[];
+        [self.passwordView addSubview:vc.view];
+        [self generatePassword];
+    }
+}
 #pragma mark Table View
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [[self.password getFilteredPasswordTypes] count];
@@ -571,18 +624,8 @@
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSInteger row = self.passwordTypesTable.selectedRow;
-    PFPasswordType type = [self.password getPasswordTypeByIndex:row];
-    //only change if the type selection changed, or we have no subviews (meaning nothing loaded)
-    if (type != [d integerForKey:@"selectedPasswordType"] || self.passwordView.subviews.count == 0) {
-        [d setInteger:type forKey:@"selectedPasswordType"];
-        PasswordTypesViewController *vc = [self.password getViewControllerForPasswordType:type];
-        self.currentPasswordTypeViewController = vc;
-        self.passwordView.subviews = @[];
-        [self.passwordView addSubview:vc.view];
-        [self generatePassword];
-    }
+    [self changeSelectionTypeByIndex:row];
 
 }
 @end

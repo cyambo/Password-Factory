@@ -20,7 +20,7 @@
 @property (nonatomic, strong) NSEvent *popoverEvent;
 @property (nonatomic, assign) BOOL showPrefs;
 @property (nonatomic, assign) BOOL launched;
-
+@property (nonatomic, strong) MasterViewController *menuViewController;
 @end
 @implementation AppDelegate
 
@@ -30,7 +30,18 @@
 //    [[PasswordStorage get] deleteAllEntities];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSWindowController *windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
+    NSWindowController *windowController;
+    if (![d boolForKey:@"isMenuApp"]) {
+        //load the main window controller if we are not a menu app
+        windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
+        self.masterViewController = (MasterViewController *)windowController.window.contentViewController;
+        self.currWindow = windowController.window;
+    } else {
+        //load the menu view controller if we are a menu app
+        self.masterViewController = [storyBoard instantiateControllerWithIdentifier:@"MenuViewController"];
+        //setting to menuViewController because that is a strong property, and it won't deallocate
+        self.menuViewController = self.masterViewController;
+    }
     
     //init prefs window
     self.prefsWindowController = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
@@ -41,8 +52,6 @@
     self.zoomViewController = (ZoomViewController *)self.zoomWindowController.window.contentViewController;
     
     //Set properties
-    self.currWindow = windowController.window;
-    self.masterViewController = (MasterViewController *)windowController.window.contentViewController;
     self.masterViewController.prefsWindowController = self.prefsWindowController;
     self.masterViewController.zoomWindowController = self.zoomWindowController;
 
@@ -58,8 +67,8 @@
         
         //Showing popover
         self.popover = [[NSPopover alloc] init];
-        self.popover.contentViewController = self.masterViewController;
-        self.popover.contentSize = (CGSize)self.masterViewController.view.frame.size;
+        self.popover.contentViewController = self.menuViewController;
+        self.popover.contentSize = (CGSize)self.menuViewController.view.frame.size;
         self.popover.behavior = NSPopoverBehaviorTransient;
         //setting the status bar size
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -74,7 +83,9 @@
         //Registering for events so the popover can be closed when we click outside the window
         self.popoverEvent = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDown handler:^(NSEvent *event) {
            if (self.popover.shown) {
-               [self closePopover:event];
+               if (event.window == nil) { //only close if we are not in our window
+                   [self closePopover:event];
+               }
            }
         }];
     } else {
@@ -85,10 +96,11 @@
         self.currWindow.movableByWindowBackground = YES;
         //not a menu app so show the the window
         [windowController showWindow:self];
+        self.currWindow.restorable = YES;
     }
     //save window state
     [d setObject:@YES forKey:@"NSQuitAlwaysKeepsWindows"];
-    self.currWindow.restorable = YES;
+    
     
     //set the launched flag to true
     self.launched = YES;

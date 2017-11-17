@@ -49,7 +49,11 @@
 @property (weak) IBOutlet NSTableView *passwordTypesTable;
 - (void)selectPaswordType:(PFPasswordType)type;
 - (PFPasswordType)getSelectedPasswordType;
--(void)enableStoredPasswords;
--(void)disableStoredPasswords;
--(void)deleteStoredPassword;
+- (void)enableStoredPasswords;
+- (void)disableStoredPasswords;
+- (void)deleteStoredPassword;
+- (IBAction)changePasswordTypeControl:(NSSegmentedControl *)sender;
+
+@property (weak) IBOutlet NSSegmentedControl *passwordTypeControl;
+
 @end
