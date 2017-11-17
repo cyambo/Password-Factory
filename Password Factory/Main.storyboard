@@ -284,10 +284,10 @@ CA
                     <window key="window" title="Password Factory" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="U5Z-KO-ffe" customClass="MainWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="295" y="340" width="508" height="252"/>
+                        <rect key="contentRect" x="295" y="340" width="503" height="246"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
-                        <value key="minSize" type="size" width="508" height="252"/>
-                        <value key="maxSize" type="size" width="508" height="252"/>
+                        <value key="minSize" type="size" width="503" height="246"/>
+                        <value key="maxSize" type="size" width="503" height="246"/>
                         <connections>
                             <outlet property="delegate" destination="WOt-nU-SAU" id="vgh-i5-jN8"/>
                         </connections>
@@ -818,15 +818,15 @@ CA
             <objects>
                 <viewController title="Main Interface" id="BgG-3K-KOz" customClass="MasterViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="bk8-v2-EyE">
-                        <rect key="frame" x="0.0" y="0.0" width="508" height="252"/>
+                        <rect key="frame" x="0.0" y="0.0" width="503" height="246"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFt-nd-3qd" customClass="StrengthMeter">
-                                <rect key="frame" x="0.0" y="168" width="508" height="84"/>
+                                <rect key="frame" x="0.0" y="162" width="503" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xR-jQ-tfH">
-                                        <rect key="frame" x="15" y="29" width="478" height="26"/>
+                                        <rect key="frame" x="16" y="29" width="471" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="PASSWORD" drawsBackground="YES" allowsEditingTextAttributes="YES" id="UnN-Cm-acd">
                                             <font key="font" metaFont="system" size="17"/>
@@ -835,10 +835,61 @@ CA
                                         </textFieldCell>
                                         <accessibility description="Password Value" identifier="passwordValue"/>
                                     </textField>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ba5-fo-EG7">
+                                        <rect key="frame" x="54" y="5" width="394" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" title="CRACK TIME" bezelStyle="shadowlessSquare" alignment="center" scrollable="YES" lineBreakMode="clipping" imageScaling="proportionallyDown" inset="2" id="zOV-yx-Hav">
+                                            <behavior key="behavior" lightByContents="YES"/>
+                                            <font key="font" metaFont="systemLight" size="9"/>
+                                        </buttonCell>
+                                        <accessibility description="Display Crack Time" identifier="showCrackTime"/>
+                                        <connections>
+                                            <action selector="toggleCrackTimeDisplay:" target="BgG-3K-KOz" id="czk-7Q-2GI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbT-gw-Wm1">
+                                <rect key="frame" x="132" y="32" width="371" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </customView>
+                            <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-0C-c6O">
+                                <rect key="frame" x="128" y="6" width="4" height="148"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">
+                                <rect key="frame" x="152" y="-2" width="160" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xfT-nW-gNK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="generateAction:" target="BgG-3K-KOz" id="4fd-xH-k3e"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qP-55-Enn">
+                                <rect key="frame" x="451" y="169" width="37" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="8DD-0o-NSY">
+                                    <font key="font" metaFont="system" size="17"/>
+                                    <color key="textColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Xr-yZ-Ylf" customClass="ZoomButton">
+                                <rect key="frame" x="17" y="169" width="21" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Cl-Yz-tLB">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="zoomPassword:" target="BgG-3K-KOz" id="wLM-zK-ACy"/>
+                                </connections>
+                            </button>
                             <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-4P-hvT">
-                                <rect key="frame" x="0.0" y="10" width="130" height="150"/>
+                                <rect key="frame" x="0.0" y="4" width="130" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="n76-hK-pzF">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
@@ -908,59 +959,8 @@ CA
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbT-gw-Wm1">
-                                <rect key="frame" x="137" y="30" width="371" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </customView>
-                            <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-0C-c6O">
-                                <rect key="frame" x="128" y="10" width="4" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </box>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ba5-fo-EG7">
-                                <rect key="frame" x="57" y="173" width="394" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="CRACK TIME" bezelStyle="shadowlessSquare" alignment="center" scrollable="YES" lineBreakMode="clipping" imageScaling="proportionallyDown" inset="2" id="zOV-yx-Hav">
-                                    <behavior key="behavior" lightByContents="YES"/>
-                                    <font key="font" metaFont="systemLight" size="9"/>
-                                </buttonCell>
-                                <accessibility description="Display Crack Time" identifier="showCrackTime"/>
-                                <connections>
-                                    <action selector="toggleCrackTimeDisplay:" target="BgG-3K-KOz" id="czk-7Q-2GI"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qP-55-Enn">
-                                <rect key="frame" x="458" y="175" width="37" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="8DD-0o-NSY">
-                                    <font key="font" metaFont="system" size="17"/>
-                                    <color key="textColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Xr-yZ-Ylf" customClass="ZoomButton">
-                                <rect key="frame" x="16" y="175" width="21" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Cl-Yz-tLB">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="zoomPassword:" target="BgG-3K-KOz" id="wLM-zK-ACy"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">
-                                <rect key="frame" x="152" y="0.0" width="160" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xfT-nW-gNK">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="generateAction:" target="BgG-3K-KOz" id="4fd-xH-k3e"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-1N-efq">
-                                <rect key="frame" x="332" y="0.0" width="160" height="32"/>
+                                <rect key="frame" x="332" y="-2" width="160" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mud-1V-YAU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -985,7 +985,7 @@ CA
                 </viewController>
                 <customObject id="nWj-xb-FxS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-541" y="-1"/>
+            <point key="canvasLocation" x="-541.5" y="-1"/>
         </scene>
         <!--Random Password-->
         <scene sceneID="n2b-a9-5Qq">
@@ -1744,14 +1744,14 @@ CA
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-VG-dd5">
-                                <rect key="frame" x="0.0" y="5" width="366" height="125"/>
+                                <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="6MT-1k-TTW">
-                                    <rect key="frame" x="0.0" y="0.0" width="366" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="VzJ-vo-MNv" viewBased="YES" id="ehq-kH-pDM">
-                                            <rect key="frame" x="0.0" y="0.0" width="366" height="102"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="371" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1791,7 +1791,7 @@ CA
                                                     </userDefinedRuntimeAttributes>
                                                     <accessibility identifier="Password Type"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="Password" width="291" minWidth="40" maxWidth="1000" id="Wse-iP-CX1" userLabel="Password" customClass="StoredPasswordColumn">
+                                                <tableColumn identifier="Password" width="296" minWidth="40" maxWidth="1000" id="Wse-iP-CX1" userLabel="Password" customClass="StoredPasswordColumn">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1806,11 +1806,11 @@ CA
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="PasswordCell" id="4iu-nA-pP0">
-                                                            <rect key="frame" x="37" y="1" width="291" height="17"/>
+                                                            <rect key="frame" x="37" y="1" width="296" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AsK-bQ-MO5">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Password" id="84C-WL-TXC">
                                                                         <font key="font" metaFont="system"/>
@@ -1844,7 +1844,7 @@ CA
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="StrengthCell" id="N1D-M7-Bup">
-                                                            <rect key="frame" x="331" y="1" width="33" height="17"/>
+                                                            <rect key="frame" x="336" y="1" width="33" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uas-QP-OID">
@@ -1877,7 +1877,7 @@ CA
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Mwp-uD-T28">
-                                    <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
+                                    <rect key="frame" x="0.0" y="114" width="371" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ozi-iT-ItH">
@@ -1885,7 +1885,7 @@ CA
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="VzJ-vo-MNv">
-                                    <rect key="frame" x="0.0" y="0.0" width="366" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="371" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -1993,8 +1993,8 @@ CA
                                     <action selector="zoomPassword:" target="dD8-aZ-j4o" id="FiH-Z3-Gy5"/>
                                 </connections>
                             </button>
-                            <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCc-Xq-aX4">
-                                <rect key="frame" x="15" y="245" width="344" height="24"/>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aCc-Xq-aX4">
+                                <rect key="frame" x="14" y="245" width="344" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="kwv-Js-aab">
                                     <font key="font" metaFont="system"/>
                                     <segments>
