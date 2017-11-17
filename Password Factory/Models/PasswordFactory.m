@@ -13,7 +13,7 @@
 #import "NSString+AccentedCase.h"
 #import "NSString+ReplaceAmbiguous.h"
 #import "SecureRandom.h"
-
+#import "NSString+UnicodeLength.h"
 @interface PasswordFactory ()
 
 @property (nonatomic, strong) NSString *separator;
@@ -71,12 +71,13 @@
     NSMutableString *p = [[NSMutableString alloc] init];
 
     int i = 0;
-    while (p.length < self.length) {
-        NSString *append = [self caseString:[self getPronounceableForLength:(self.length - p.length)]];
+
+    while ([p getUnicodeLength] < self.length) {
+        NSString *append = [self caseString:[self getPronounceableForLength:(self.length - [p getUnicodeLength])]];
         if ([append isEqual: @""]) {
             break;
         } else {
-            if (p.length) {
+            if ([p getUnicodeLength]) {
                 [p appendString:self.separator];
             }
             [p appendString:append];
@@ -177,13 +178,13 @@
 -(NSString *)generatePassphrase {
     NSString *separator = self.separator;
     NSMutableString *p = [[NSMutableString alloc] init];
-    while (p.length < self.length) {
-        NSString *append = [self caseString:[self getPassphraseForLength:(self.length - p.length)]];
+    while ([p getUnicodeLength] < self.length) {
+        NSString *append = [self caseString:[self getPassphraseForLength:(self.length - [p getUnicodeLength])]];
         if ([append isEqual: @""]) {
             break;
         } else {
             //don't start with the separator
-            if (p.length) {
+            if ([p getUnicodeLength]) {
                 [p appendString:separator];
             }
             [p appendString:append];

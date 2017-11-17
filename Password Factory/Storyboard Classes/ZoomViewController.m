@@ -8,6 +8,7 @@
 
 
 #import "ZoomViewController.h"
+#import "NSString+UnicodeLength.h"
 #import "constants.h"
 @interface ZoomViewController ()
 @property (nonatomic, strong) NSDictionary *sizes;
@@ -81,7 +82,7 @@
  */
 -(void)updatePassword:(NSAttributedString *)password {
     NSUInteger screenWidth = self.screenRect.size.width;
-    NSUInteger passwordLength = password.length;
+    NSUInteger passwordLength = [password.string getUnicodeLength];
     NSUInteger whichFont = PFZoomSmallFontSize;
     //determine which font to use
     for(NSNumber *size in self.sizeOrder) {

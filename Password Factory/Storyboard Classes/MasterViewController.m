@@ -14,6 +14,7 @@
 #import "DefaultsManager.h"
 #import "StyleKit.h"
 #import "NSString+ColorWithHexColorString.h"
+#import "NSString+UnicodeLength.h"
 #import "PasswordStorage.h"
 #import "PasswordFactoryConstants.h"
 #import "TypeIcons.h"
@@ -59,7 +60,6 @@
     [self setOptionalTypes];
     PFPasswordType type = (PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"];
     [self selectPaswordType:type];
-    self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
     [self setStorePasswordTimer];
 }
 -(void)viewWillDisappear {
@@ -314,17 +314,14 @@
     //set properties for the password storage timer
     self.lastGenerated = [[NSDate date] timeIntervalSince1970];
     self.stored = NO;
+    self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
     NSUserDefaults *defaults = [DefaultsManager standardDefaults];
     //default text color from prefs
     NSColor *dColor = [[self swapColorForDisplay:[defaults objectForKey:@"defaultTextColor"]] colorWithHexColorString];
     NSString *currPassword = [self.password getPasswordValue];
     
-    __block int i = 0;
-    //using enumeration to get string length because that is as far as I know the only way to get the proper length with unicode strings
-    [currPassword enumerateSubstringsInRange:NSMakeRange(0, currPassword.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
-        i++;
-    }];
-    [self.displayedPasswordLength setStringValue:[NSString stringWithFormat:@"%d",i]];
+
+    [self.displayedPasswordLength setStringValue:[NSString stringWithFormat:@"%lu",[currPassword getUnicodeLength]]];
     if (currPassword == nil || currPassword.length == 0) {
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
         return;

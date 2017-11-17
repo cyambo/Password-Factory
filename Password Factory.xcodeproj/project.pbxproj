@@ -17,6 +17,8 @@
 		402759B81FBE26B300B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
 		402759B91FBE26B700B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
+		404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
+		404B6D611FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */; };
@@ -176,6 +178,8 @@
 		402759B61FBE26B300B26F03 /* SecureRandom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecureRandom.h; sourceTree = "<group>"; };
 		402759B71FBE26B300B26F03 /* SecureRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecureRandom.m; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		404B6D5E1FBE76CB00B281E5 /* NSString+UnicodeLength.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+UnicodeLength.h"; sourceTree = "<group>"; };
+		404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeLength.m"; sourceTree = "<group>"; };
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
 		40511D651C125348005BE5BE /* PasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrength.m; sourceTree = "<group>"; };
 		4051C9CC1FA7D6E90097CDD9 /* NSString+AccentedCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AccentedCase.h"; sourceTree = "<group>"; };
@@ -404,6 +408,8 @@
 				4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */,
 				4004F1D41FBA4E200093DA3F /* NSString+ColorWithHexColorString.h */,
 				4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */,
+				404B6D5E1FBE76CB00B281E5 /* NSString+UnicodeLength.h */,
+				404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */,
 			);
 			name = Categories;
 			path = "Password Factory/Categories";
@@ -1222,6 +1228,7 @@
 				406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */,
 				406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */,
 				406C388A1B844D0100F471E7 /* StyleKit.m in Sources */,
+				404B6D611FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,6 +1298,7 @@
 				40A0A3B41FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld in Sources */,
 				40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */,
 				4099B3DF1FAB839300CE826D /* TextField.m in Sources */,
+				404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */,
 				4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */,
 				4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */,
 				40537D8D1F9419FD00D645B7 /* constants.m in Sources */,
