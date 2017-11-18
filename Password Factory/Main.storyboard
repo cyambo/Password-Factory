@@ -1616,7 +1616,11 @@ CA
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedFindRegex" id="OV1-fU-mL5"/>
+                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedFindRegex" id="L4T-SL-aYJ">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                     <outlet property="delegate" destination="mtc-B4-HHs" id="daB-3J-W2c"/>
                                 </connections>
                             </textField>
@@ -1628,7 +1632,11 @@ CA
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedReplaceRegex" id="DBh-1V-CeM"/>
+                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedReplaceRegex" id="jqI-vv-Dn3">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                     <outlet property="delegate" destination="mtc-B4-HHs" id="DqD-4Y-Kcy"/>
                                 </connections>
                             </textField>
@@ -1663,7 +1671,11 @@ CA
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedPrefixPattern" id="Qx1-My-PCL"/>
+                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedPrefixPattern" id="ns3-Gg-kvx">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                     <outlet property="delegate" destination="mtc-B4-HHs" id="RqV-KM-7wA"/>
                                 </connections>
                             </textField>
@@ -1675,7 +1687,11 @@ CA
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedPostfixPattern" id="fUV-PC-Iwe"/>
+                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedPostfixPattern" id="Xcs-fa-oBW">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                     <outlet property="delegate" destination="mtc-B4-HHs" id="Ohq-ZH-n8b"/>
                                 </connections>
                             </textField>

@@ -564,6 +564,10 @@
         NSUInteger index = self.currentPasswordTypeViewController.storedPasswordTable.selectedRow;
         [self.storage deleteItemAtIndex:index];
         [self.currentPasswordTypeViewController.storedPasswordTable reloadData];
+        NSUInteger count = [self.storage count];
+        if (count && index < count) {
+            [self.currentPasswordTypeViewController selectFromStored:index];
+        }
     }
 }
 

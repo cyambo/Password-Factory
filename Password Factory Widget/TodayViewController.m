@@ -11,7 +11,7 @@
 #import "PasswordFactory.h"
 #import "DefaultsManager.h"
 #import "PasswordStrength.h"
-
+#import "PasswordFactoryConstants.h"
 
 /**
  Displays a today widget showing a simplified app
@@ -22,6 +22,7 @@
 @property (nonatomic, strong) PasswordFactory *factory;
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
+
 
 @end
 
@@ -90,25 +91,9 @@
  */
 - (void)changeLabel {
     NSUserDefaults *sd = [DefaultsManager sharedDefaults];
-    PFPasswordType index = (PFPasswordType)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
-    
-    NSString *label;
+    PFPasswordType type = (PFPasswordType)[[sd objectForKey:@"selectedPasswordTypeShared"] integerValue];
 
-    switch(index) {
-        case PFRandomType:
-            label = @"Random:";
-            break;
-        case PFPatternType:
-            label = @"Pattern:";
-            break;
-        case PFPronounceableType:
-            label = @"Pronounceable:";
-            break;
-        case PFPassphraseType:
-            label = @"Passphrase:";
-            break;
-    }
-    [self.passwordType setStringValue:label];
+    [self.passwordType setStringValue:[[PasswordFactoryConstants get] getNameForPasswordType:type]];
 }
 
 /**

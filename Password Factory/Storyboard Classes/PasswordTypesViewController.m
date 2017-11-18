@@ -213,26 +213,27 @@
     settings[@"truncateAt"] = @([self.advancedTruncate integerValue]);
     
     //generating the prefix and the postfix
-    NSString *pre = [self.advancedPrefixPattern stringValue];
-    NSString *post = [self.advancedPostfixPattern stringValue];
+    NSString *pre = [d stringForKey:@"advancedPrefixPattern"];
+    NSString *post = [d stringForKey:@"advancedPostfixPattern"];
     if (pre.length || post.length) {
         self.prefix = @"pattern";
         NSMutableDictionary *patternSettings = [[self getPasswordSettingsByType:PFPatternType] mutableCopy];
         if(pre.length) {
-            patternSettings[@"patternText"] = [self.advancedPrefixPattern stringValue];
+            patternSettings[@"patternText"] = pre;
             settings[@"prefix"] = [self.delegate generatePassword:PFPatternType withSettings:patternSettings];
         }
         if(post.length) {
-            patternSettings[@"patternText"] = [self.advancedPostfixPattern stringValue];
+            patternSettings[@"patternText"] = post;
             settings[@"postfix"] = [self.delegate generatePassword:PFPatternType withSettings:patternSettings];
         }
         self.prefix = @"advanced";
     }
 
-    settings[@"accentedCasePercent"] = @([self.advancedAccentedCasePercentStepper integerValue]);
-    settings[@"symbolCasePercent"] = @([self.advancedSymbolCasePercentStepper integerValue]);
+    settings[@"accentedCasePercent"] = @([d integerForKey:@"advancedAccentedCasePercent"]);
+    settings[@"symbolCasePercent"] = @([d integerForKey:@"advancedSymbolCasePercent"]);
     settings[@"replaceAmbiguous"] = @([d boolForKey:@"advancedReplaceAmbiguous"]);
     //set the case type
+    NSUInteger caseTypeIndex = [d integerForKey:@"advancedCaseTypeIndex"];
     if(self.caseTypeMenu.selectedTag != 0) { //no change has a tag of zero
         settings[@"caseType"] = @(self.caseTypeMenu.selectedTag);
     }

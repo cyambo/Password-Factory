@@ -16,6 +16,9 @@
  @return random uint
  */
 +(uint)randomInt:(uint)limit {
+    if (limit == 0) {
+        return 0;
+    }
     int32_t randomNumber = 0;
     uint result = SecRandomCopyBytes(kSecRandomDefault, 4, (uint8_t*) &randomNumber);
     if(result == 0) {

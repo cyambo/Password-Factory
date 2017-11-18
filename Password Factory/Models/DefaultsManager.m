@@ -119,7 +119,6 @@ static NSDictionary *prefsPlist;
             [sharedDefaults setObject:[d objectForKey:key] forKey:k];
         }
     }
-    //TODO: save table selection
 }
 
 /**

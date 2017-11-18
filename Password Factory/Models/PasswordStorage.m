@@ -94,8 +94,8 @@
         for(Passwords *p in items) {
             [self.container.viewContext deleteObject:p];
         }
+        [self saveContext];
     }
-
 }
 
 /**
@@ -147,9 +147,15 @@
  @return Passwords object
  */
 -(Passwords *)passwordAtIndex:(NSUInteger)index {
-    NSUInteger indexArr[] = {0,index};
-    NSIndexPath *p = [[NSIndexPath alloc] initWithIndexes:indexArr length:2];
-    return [self.fetchedResultsController objectAtIndexPath:p];
+    if (index < [self count]) {
+        NSUInteger indexArr[] = {0,index};
+        NSIndexPath *p = [[NSIndexPath alloc] initWithIndexes:indexArr length:2];
+        return [self.fetchedResultsController objectAtIndexPath:p];
+    } else {
+        //return nil if we are over count
+        return nil;
+    }
+
 }
 
 /**
@@ -160,7 +166,9 @@
 -(void)deleteItemAtIndex:(NSUInteger)index {
     Passwords *curr = [self passwordAtIndex:index];
     [self.container.viewContext deleteObject:curr];
+    [self saveContext];
     [self loadSavedData];
+    
 }
 /**
  Changes the sort descriptor
