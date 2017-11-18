@@ -1574,19 +1574,19 @@ CA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="brx-DF-bwP">
-                                <rect key="frame" x="126" y="106" width="58" height="14"/>
+                                <rect key="frame" x="129" y="106" width="58" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="PCc-8P-PQs"/>
                                     <constraint firstAttribute="height" constant="14" id="vlh-AC-oHz"/>
                                 </constraints>
-                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Truncate" id="dPr-kk-f4H">
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Truncate" id="dPr-kk-f4H">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Dp-aA-vqM">
-                                <rect key="frame" x="190" y="105" width="137" height="15"/>
+                                <rect key="frame" x="193" y="105" width="134" height="15"/>
                                 <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="amG-XX-toJ"/>
                                 <connections>
                                     <action selector="changeAdvancedTruncate:" target="mtc-B4-HHs" id="sAs-tq-OyX"/>
@@ -1609,7 +1609,7 @@ CA
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Roy-Ax-8H4">
-                                <rect key="frame" x="250" y="29" width="114" height="19"/>
+                                <rect key="frame" x="255" y="29" width="109" height="19"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="MxW-J4-Mr3">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1621,7 +1621,7 @@ CA
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZH-XC-Fp5">
-                                <rect key="frame" x="250" y="6" width="114" height="19"/>
+                                <rect key="frame" x="255" y="6" width="109" height="19"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="0MA-G0-IDi">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1633,7 +1633,7 @@ CA
                                 </connections>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d6t-j0-Y1w">
-                                <rect key="frame" x="10" y="101" width="113" height="22"/>
+                                <rect key="frame" x="10" y="101" width="116" height="22"/>
                                 <popUpButtonCell key="cell" type="push" title="Random" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="401" imageScaling="proportionallyDown" inset="2" selectedItem="7aU-0J-wpm" id="zNY-0r-uSF">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
@@ -1656,7 +1656,7 @@ CA
                                 </connections>
                             </popUpButton>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iMf-WX-Iqn">
-                                <rect key="frame" x="250" y="75" width="114" height="19"/>
+                                <rect key="frame" x="255" y="75" width="109" height="19"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="V0l-uV-LHF">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1668,7 +1668,7 @@ CA
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdA-Lk-Dvd">
-                                <rect key="frame" x="250" y="52" width="114" height="19"/>
+                                <rect key="frame" x="255" y="52" width="109" height="19"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="e8J-DN-nT9">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1754,7 +1754,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="enH-q5-uMU">
-                                <rect key="frame" x="157" y="78" width="88" height="14"/>
+                                <rect key="frame" x="162" y="78" width="88" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Prefix Pattern" id="KfA-FJ-VDR">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1762,7 +1762,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nmy-fV-T6E">
-                                <rect key="frame" x="157" y="55" width="88" height="14"/>
+                                <rect key="frame" x="162" y="55" width="88" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Postfix Pattern" id="vvk-Zz-FV6">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1770,7 +1770,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Ic-Pl-nan">
-                                <rect key="frame" x="157" y="31" width="88" height="14"/>
+                                <rect key="frame" x="162" y="31" width="88" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Find Regex" id="sre-m7-vOc">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1778,7 +1778,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iBs-Kn-p9B">
-                                <rect key="frame" x="157" y="9" width="88" height="14"/>
+                                <rect key="frame" x="162" y="9" width="88" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Replace Pattern" id="eEU-JA-RUE">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1798,10 +1798,9 @@ CA
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zju-iI-n35">
-                                <rect key="frame" x="45" y="50" width="111" height="22"/>
+                                <rect key="frame" x="45" y="50" width="116" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="sf7-VE-5EJ"/>
-                                    <constraint firstAttribute="width" constant="105" id="uZB-16-2Ib"/>
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fv5-eN-JW0" id="oEg-Ar-uVN">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1864,6 +1863,7 @@ CA
                             <constraint firstItem="d6t-j0-Y1w" firstAttribute="leading" secondItem="JLY-W8-K9C" secondAttribute="leading" constant="13" id="Z61-Yx-yfd"/>
                             <constraint firstItem="nmy-fV-T6E" firstAttribute="top" secondItem="enH-q5-uMU" secondAttribute="bottom" constant="9" id="ZfL-nV-eCh"/>
                             <constraint firstItem="9Dp-aA-vqM" firstAttribute="leading" secondItem="brx-DF-bwP" secondAttribute="trailing" constant="8" id="a6U-AP-eCh"/>
+                            <constraint firstItem="iMf-WX-Iqn" firstAttribute="width" secondItem="zju-iI-n35" secondAttribute="width" id="b1G-U9-lIu"/>
                             <constraint firstItem="TQs-bD-pAF" firstAttribute="leading" secondItem="qR3-hq-dO2" secondAttribute="trailing" constant="1" id="bLA-bd-CAj"/>
                             <constraint firstItem="iMf-WX-Iqn" firstAttribute="width" secondItem="hdA-Lk-Dvd" secondAttribute="width" id="bqT-xS-M55"/>
                             <constraint firstItem="5Ic-Pl-nan" firstAttribute="height" secondItem="iBs-Kn-p9B" secondAttribute="height" id="d4l-iC-x9p"/>
@@ -1885,6 +1885,7 @@ CA
                             <constraint firstItem="hdA-Lk-Dvd" firstAttribute="width" secondItem="Roy-Ax-8H4" secondAttribute="width" id="r9n-mq-Zkq"/>
                             <constraint firstItem="OBr-NM-KL7" firstAttribute="top" secondItem="JLY-W8-K9C" secondAttribute="top" constant="61" id="rXD-kz-YHr"/>
                             <constraint firstItem="enH-q5-uMU" firstAttribute="width" secondItem="nmy-fV-T6E" secondAttribute="width" id="s8f-CD-axJ"/>
+                            <constraint firstItem="zju-iI-n35" firstAttribute="width" secondItem="d6t-j0-Y1w" secondAttribute="width" id="sHh-er-Qtv"/>
                             <constraint firstItem="zju-iI-n35" firstAttribute="top" secondItem="JLY-W8-K9C" secondAttribute="top" constant="59" id="ub8-0k-9Zg"/>
                             <constraint firstItem="Roy-Ax-8H4" firstAttribute="height" secondItem="cZH-XC-Fp5" secondAttribute="height" id="uha-vl-7zQ"/>
                             <constraint firstItem="zju-iI-n35" firstAttribute="leading" secondItem="OBr-NM-KL7" secondAttribute="trailing" constant="2" id="vqL-kp-Hrr"/>
