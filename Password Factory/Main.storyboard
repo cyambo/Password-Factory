@@ -854,7 +854,7 @@ CA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                             <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-0C-c6O">
-                                <rect key="frame" x="128" y="6" width="4" height="148"/>
+                                <rect key="frame" x="128" y="6" width="5" height="148"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">
@@ -868,13 +868,13 @@ CA
                                     <action selector="generateAction:" target="BgG-3K-KOz" id="4fd-xH-k3e"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qP-55-Enn">
-                                <rect key="frame" x="451" y="169" width="37" height="21"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qP-55-Enn" customClass="TextField">
+                                <rect key="frame" x="453" y="169" width="33" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="8DD-0o-NSY">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="right" title="999" drawsBackground="YES" id="8DD-0o-NSY">
                                     <font key="font" metaFont="system" size="17"/>
-                                    <color key="textColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Xr-yZ-Ylf" customClass="ZoomButton">
@@ -1877,7 +1877,7 @@ CA
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Mwp-uD-T28">
-                                    <rect key="frame" x="0.0" y="114" width="371" height="16"/>
+                                    <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ozi-iT-ItH">
@@ -1904,31 +1904,29 @@ CA
             <objects>
                 <viewController title="Menu Interface" storyboardIdentifier="MenuViewController" id="dD8-aZ-j4o" userLabel="Menu Window" customClass="MasterViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="DdO-29-3kQ">
-                        <rect key="frame" x="0.0" y="0.0" width="371" height="273"/>
+                        <rect key="frame" x="0.0" y="0.0" width="371" height="279"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g4C-yd-AGs" customClass="StrengthMeter">
-                                <rect key="frame" x="0.0" y="159" width="371" height="84"/>
+                                <rect key="frame" x="0.0" y="165" width="371" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n64-rk-Me9">
-                                        <rect key="frame" x="15" y="29" width="341" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="PASSWORD" drawsBackground="YES" allowsEditingTextAttributes="YES" id="t8u-45-EPb">
-                                            <font key="font" metaFont="system" size="17"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <accessibility description="Password Value" identifier="passwordValue"/>
-                                    </textField>
-                                </subviews>
                             </customView>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n64-rk-Me9">
+                                <rect key="frame" x="15" y="196" width="341" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="PASSWORD" drawsBackground="YES" allowsEditingTextAttributes="YES" id="t8u-45-EPb">
+                                    <font key="font" metaFont="system" size="17"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <accessibility description="Password Value" identifier="passwordValue"/>
+                            </textField>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1L5-WK-D8b">
-                                <rect key="frame" x="0.0" y="30" width="371" height="130"/>
+                                <rect key="frame" x="0.0" y="36" width="371" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1C-78-LuC">
-                                <rect key="frame" x="4" y="0.0" width="160" height="32"/>
+                                <rect key="frame" x="1" y="1" width="160" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O5H-aR-kSA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1939,7 +1937,7 @@ CA
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6mf-gM-r7g">
-                                <rect key="frame" x="182" y="0.0" width="160" height="32"/>
+                                <rect key="frame" x="184" y="1" width="160" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EH7-KO-weF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1950,7 +1948,7 @@ CA
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWj-ev-HVw" customClass="PreferencesButton">
-                                <rect key="frame" x="346" y="8" width="19" height="19"/>
+                                <rect key="frame" x="345" y="9" width="19" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rLJ-ZX-AVX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1961,29 +1959,38 @@ CA
                                     <action selector="loadPreferencesWindow:" target="dD8-aZ-j4o" id="NwJ-6q-lsc"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uwg-Wc-qLa" userLabel="Password Type" customClass="ModeTextField">
+                                <rect key="frame" x="18" y="227" width="335" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="PASSWORD TYPE" id="d1b-2D-u5S">
+                                    <font key="font" metaFont="system" size="11"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Wc-fT-aTv">
-                                <rect key="frame" x="54" y="164" width="260" height="26"/>
+                                <rect key="frame" x="54" y="170" width="260" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="CRACK TIME" bezelStyle="shadowlessSquare" alignment="center" scrollable="YES" lineBreakMode="clipping" imageScaling="proportionallyDown" inset="2" id="m6X-Df-6t5">
                                     <behavior key="behavior" lightByContents="YES"/>
-                                    <font key="font" metaFont="systemLight" size="9"/>
+                                    <font key="font" metaFont="system" size="9"/>
                                 </buttonCell>
                                 <accessibility description="Display Crack Time" identifier="showCrackTime"/>
                                 <connections>
                                     <action selector="toggleCrackTimeDisplay:" target="dD8-aZ-j4o" id="uKV-bU-Ps8"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHJ-vd-xHD" customClass="TextField">
-                                <rect key="frame" x="323" y="166" width="33" height="21"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHJ-vd-xHD" customClass="ModeTextField">
+                                <rect key="frame" x="323" y="172" width="33" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="right" title="999" drawsBackground="YES" id="hVk-fr-9qV">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="hVk-fr-9qV">
                                     <font key="font" metaFont="system" size="17"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="deviceWhite"/>
-                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78o-FE-JcD" customClass="ZoomButton">
-                                <rect key="frame" x="14" y="166" width="21" height="21"/>
+                                <rect key="frame" x="14" y="172" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1uS-Ez-kwa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1994,7 +2001,7 @@ CA
                                 </connections>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aCc-Xq-aX4">
-                                <rect key="frame" x="14" y="245" width="344" height="24"/>
+                                <rect key="frame" x="14" y="251" width="344" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="kwv-Js-aab">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -2024,6 +2031,7 @@ CA
                         <outlet property="passwordField" destination="n64-rk-Me9" id="N2s-Kb-45X"/>
                         <outlet property="passwordStrengthLevel" destination="g4C-yd-AGs" id="XgQ-Ce-QwX"/>
                         <outlet property="passwordTypeControl" destination="aCc-Xq-aX4" id="dHC-VB-5zD"/>
+                        <outlet property="passwordTypeLabel" destination="Uwg-Wc-qLa" id="Fhb-CO-ycb"/>
                         <outlet property="passwordView" destination="1L5-WK-D8b" id="Qnv-2O-xFB"/>
                         <outlet property="pasteboardButton" destination="6mf-gM-r7g" id="2J7-ss-39W"/>
                     </connections>

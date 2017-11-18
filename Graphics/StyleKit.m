@@ -16,10 +16,7 @@
 
 #pragma mark Cache
 
-static NSImage* _imageOfPreferencesButton = nil;
 static NSImage* _imageOfMenuIcon = nil;
-static NSImage* _imageOfZoom1 = nil;
-static NSImage* _imageOfZoom = nil;
 static NSImage* _imageOfPasswordHeader = nil;
 static NSImage* _imageOfPasswordStrengthHeader = nil;
 static NSImage* _imageOfPasswordTypeHeader = nil;
@@ -63,87 +60,85 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
 
 }
 
-+ (void)drawPreferencesButton
++ (void)drawPreferencesButtonWithStrokeColor: (NSColor*)strokeColor
 {
-    //// Color Declarations
-    NSColor* strokeColor = [NSColor colorWithRed: 0.31 green: 0.678 blue: 0.984 alpha: 1];
 
     //// Bezier Drawing
     NSBezierPath* bezierPath = [NSBezierPath bezierPath];
-    [bezierPath moveToPoint: NSMakePoint(21, 13.67)];
-    [bezierPath curveToPoint: NSMakePoint(13.67, 21) controlPoint1: NSMakePoint(16.95, 13.67) controlPoint2: NSMakePoint(13.67, 16.95)];
-    [bezierPath curveToPoint: NSMakePoint(21, 28.33) controlPoint1: NSMakePoint(13.67, 25.05) controlPoint2: NSMakePoint(16.95, 28.33)];
-    [bezierPath curveToPoint: NSMakePoint(28.33, 21) controlPoint1: NSMakePoint(25.05, 28.33) controlPoint2: NSMakePoint(28.33, 25.05)];
-    [bezierPath curveToPoint: NSMakePoint(21, 13.67) controlPoint1: NSMakePoint(28.33, 16.95) controlPoint2: NSMakePoint(25.05, 13.67)];
+    [bezierPath moveToPoint: NSMakePoint(9.5, 6.12)];
+    [bezierPath curveToPoint: NSMakePoint(6.12, 9.5) controlPoint1: NSMakePoint(7.63, 6.12) controlPoint2: NSMakePoint(6.12, 7.63)];
+    [bezierPath curveToPoint: NSMakePoint(9.5, 12.88) controlPoint1: NSMakePoint(6.12, 11.37) controlPoint2: NSMakePoint(7.63, 12.88)];
+    [bezierPath curveToPoint: NSMakePoint(12.88, 9.5) controlPoint1: NSMakePoint(11.37, 12.88) controlPoint2: NSMakePoint(12.88, 11.37)];
+    [bezierPath curveToPoint: NSMakePoint(9.5, 6.12) controlPoint1: NSMakePoint(12.88, 7.63) controlPoint2: NSMakePoint(11.37, 6.12)];
     [bezierPath closePath];
-    [bezierPath moveToPoint: NSMakePoint(40, 18.16)];
-    [bezierPath curveToPoint: NSMakePoint(40.5, 18.9) controlPoint1: NSMakePoint(40.27, 18.27) controlPoint2: NSMakePoint(40.5, 18.6)];
-    [bezierPath lineToPoint: NSMakePoint(40.5, 23.1)];
-    [bezierPath curveToPoint: NSMakePoint(40, 23.84) controlPoint1: NSMakePoint(40.5, 23.4) controlPoint2: NSMakePoint(40.27, 23.73)];
-    [bezierPath lineToPoint: NSMakePoint(36.16, 25.38)];
-    [bezierPath curveToPoint: NSMakePoint(35.48, 26.09) controlPoint1: NSMakePoint(35.88, 25.49) controlPoint2: NSMakePoint(35.58, 25.81)];
-    [bezierPath lineToPoint: NSMakePoint(34.83, 27.64)];
-    [bezierPath curveToPoint: NSMakePoint(34.81, 28.62) controlPoint1: NSMakePoint(34.71, 27.91) controlPoint2: NSMakePoint(34.7, 28.35)];
-    [bezierPath lineToPoint: NSMakePoint(36.44, 32.43)];
-    [bezierPath curveToPoint: NSMakePoint(36.27, 33.3) controlPoint1: NSMakePoint(36.56, 32.7) controlPoint2: NSMakePoint(36.48, 33.09)];
-    [bezierPath lineToPoint: NSMakePoint(33.3, 36.27)];
-    [bezierPath curveToPoint: NSMakePoint(32.43, 36.44) controlPoint1: NSMakePoint(33.09, 36.48) controlPoint2: NSMakePoint(32.7, 36.56)];
-    [bezierPath lineToPoint: NSMakePoint(28.62, 34.81)];
-    [bezierPath curveToPoint: NSMakePoint(27.64, 34.83) controlPoint1: NSMakePoint(28.35, 34.7) controlPoint2: NSMakePoint(27.91, 34.71)];
-    [bezierPath lineToPoint: NSMakePoint(26.09, 35.48)];
-    [bezierPath curveToPoint: NSMakePoint(25.38, 36.16) controlPoint1: NSMakePoint(25.81, 35.58) controlPoint2: NSMakePoint(25.49, 35.88)];
-    [bezierPath lineToPoint: NSMakePoint(23.84, 40)];
-    [bezierPath curveToPoint: NSMakePoint(23.1, 40.5) controlPoint1: NSMakePoint(23.73, 40.27) controlPoint2: NSMakePoint(23.4, 40.5)];
-    [bezierPath lineToPoint: NSMakePoint(18.9, 40.5)];
-    [bezierPath curveToPoint: NSMakePoint(18.16, 40) controlPoint1: NSMakePoint(18.6, 40.5) controlPoint2: NSMakePoint(18.27, 40.27)];
-    [bezierPath lineToPoint: NSMakePoint(16.62, 36.16)];
-    [bezierPath curveToPoint: NSMakePoint(15.91, 35.48) controlPoint1: NSMakePoint(16.51, 35.88) controlPoint2: NSMakePoint(16.19, 35.58)];
-    [bezierPath lineToPoint: NSMakePoint(14.36, 34.83)];
-    [bezierPath curveToPoint: NSMakePoint(13.38, 34.81) controlPoint1: NSMakePoint(14.09, 34.71) controlPoint2: NSMakePoint(13.65, 34.7)];
-    [bezierPath lineToPoint: NSMakePoint(9.57, 36.44)];
-    [bezierPath curveToPoint: NSMakePoint(8.7, 36.27) controlPoint1: NSMakePoint(9.3, 36.56) controlPoint2: NSMakePoint(8.91, 36.48)];
-    [bezierPath lineToPoint: NSMakePoint(5.73, 33.3)];
-    [bezierPath curveToPoint: NSMakePoint(5.56, 32.43) controlPoint1: NSMakePoint(5.52, 33.09) controlPoint2: NSMakePoint(5.44, 32.7)];
-    [bezierPath lineToPoint: NSMakePoint(7.19, 28.62)];
-    [bezierPath curveToPoint: NSMakePoint(7.17, 27.64) controlPoint1: NSMakePoint(7.3, 28.35) controlPoint2: NSMakePoint(7.29, 27.91)];
-    [bezierPath lineToPoint: NSMakePoint(6.52, 26.09)];
-    [bezierPath curveToPoint: NSMakePoint(5.84, 25.38) controlPoint1: NSMakePoint(6.42, 25.81) controlPoint2: NSMakePoint(6.12, 25.49)];
-    [bezierPath lineToPoint: NSMakePoint(2, 23.84)];
-    [bezierPath curveToPoint: NSMakePoint(1.5, 23.1) controlPoint1: NSMakePoint(1.73, 23.73) controlPoint2: NSMakePoint(1.5, 23.4)];
-    [bezierPath lineToPoint: NSMakePoint(1.5, 18.9)];
-    [bezierPath curveToPoint: NSMakePoint(2, 18.16) controlPoint1: NSMakePoint(1.5, 18.6) controlPoint2: NSMakePoint(1.73, 18.27)];
-    [bezierPath lineToPoint: NSMakePoint(5.84, 16.62)];
-    [bezierPath curveToPoint: NSMakePoint(6.52, 15.91) controlPoint1: NSMakePoint(6.12, 16.51) controlPoint2: NSMakePoint(6.42, 16.19)];
-    [bezierPath lineToPoint: NSMakePoint(7.17, 14.36)];
-    [bezierPath curveToPoint: NSMakePoint(7.19, 13.38) controlPoint1: NSMakePoint(7.29, 14.09) controlPoint2: NSMakePoint(7.3, 13.65)];
-    [bezierPath lineToPoint: NSMakePoint(5.56, 9.57)];
-    [bezierPath curveToPoint: NSMakePoint(5.73, 8.7) controlPoint1: NSMakePoint(5.44, 9.3) controlPoint2: NSMakePoint(5.52, 8.91)];
-    [bezierPath lineToPoint: NSMakePoint(8.7, 5.73)];
-    [bezierPath curveToPoint: NSMakePoint(9.57, 5.56) controlPoint1: NSMakePoint(8.91, 5.52) controlPoint2: NSMakePoint(9.3, 5.44)];
-    [bezierPath lineToPoint: NSMakePoint(13.38, 7.19)];
-    [bezierPath curveToPoint: NSMakePoint(14.36, 7.17) controlPoint1: NSMakePoint(13.65, 7.3) controlPoint2: NSMakePoint(14.09, 7.29)];
-    [bezierPath lineToPoint: NSMakePoint(15.91, 6.52)];
-    [bezierPath curveToPoint: NSMakePoint(16.62, 5.84) controlPoint1: NSMakePoint(16.19, 6.42) controlPoint2: NSMakePoint(16.51, 6.12)];
-    [bezierPath lineToPoint: NSMakePoint(18.16, 2)];
-    [bezierPath curveToPoint: NSMakePoint(18.9, 1.5) controlPoint1: NSMakePoint(18.27, 1.73) controlPoint2: NSMakePoint(18.6, 1.5)];
-    [bezierPath lineToPoint: NSMakePoint(23.1, 1.5)];
-    [bezierPath curveToPoint: NSMakePoint(23.84, 2) controlPoint1: NSMakePoint(23.4, 1.5) controlPoint2: NSMakePoint(23.73, 1.73)];
-    [bezierPath lineToPoint: NSMakePoint(25.38, 5.84)];
-    [bezierPath curveToPoint: NSMakePoint(26.09, 6.52) controlPoint1: NSMakePoint(25.49, 6.12) controlPoint2: NSMakePoint(25.81, 6.42)];
-    [bezierPath lineToPoint: NSMakePoint(27.64, 7.17)];
-    [bezierPath curveToPoint: NSMakePoint(28.62, 7.19) controlPoint1: NSMakePoint(27.91, 7.29) controlPoint2: NSMakePoint(28.35, 7.3)];
-    [bezierPath lineToPoint: NSMakePoint(32.43, 5.56)];
-    [bezierPath curveToPoint: NSMakePoint(33.3, 5.73) controlPoint1: NSMakePoint(32.7, 5.44) controlPoint2: NSMakePoint(33.09, 5.52)];
-    [bezierPath lineToPoint: NSMakePoint(36.27, 8.7)];
-    [bezierPath curveToPoint: NSMakePoint(36.44, 9.57) controlPoint1: NSMakePoint(36.48, 8.91) controlPoint2: NSMakePoint(36.56, 9.3)];
-    [bezierPath lineToPoint: NSMakePoint(34.81, 13.38)];
-    [bezierPath curveToPoint: NSMakePoint(34.83, 14.36) controlPoint1: NSMakePoint(34.7, 13.65) controlPoint2: NSMakePoint(34.71, 14.09)];
-    [bezierPath lineToPoint: NSMakePoint(35.48, 15.91)];
-    [bezierPath curveToPoint: NSMakePoint(36.16, 16.62) controlPoint1: NSMakePoint(35.58, 16.19) controlPoint2: NSMakePoint(35.88, 16.51)];
-    [bezierPath lineToPoint: NSMakePoint(40, 18.16)];
+    [bezierPath moveToPoint: NSMakePoint(18.27, 8.19)];
+    [bezierPath curveToPoint: NSMakePoint(18.5, 8.53) controlPoint1: NSMakePoint(18.4, 8.24) controlPoint2: NSMakePoint(18.5, 8.39)];
+    [bezierPath lineToPoint: NSMakePoint(18.5, 10.47)];
+    [bezierPath curveToPoint: NSMakePoint(18.27, 10.81) controlPoint1: NSMakePoint(18.5, 10.61) controlPoint2: NSMakePoint(18.4, 10.76)];
+    [bezierPath lineToPoint: NSMakePoint(16.5, 11.52)];
+    [bezierPath curveToPoint: NSMakePoint(16.18, 11.85) controlPoint1: NSMakePoint(16.37, 11.57) controlPoint2: NSMakePoint(16.23, 11.72)];
+    [bezierPath lineToPoint: NSMakePoint(15.88, 12.56)];
+    [bezierPath curveToPoint: NSMakePoint(15.88, 13.02) controlPoint1: NSMakePoint(15.83, 12.69) controlPoint2: NSMakePoint(15.82, 12.89)];
+    [bezierPath lineToPoint: NSMakePoint(16.63, 14.77)];
+    [bezierPath curveToPoint: NSMakePoint(16.55, 15.18) controlPoint1: NSMakePoint(16.68, 14.9) controlPoint2: NSMakePoint(16.65, 15.08)];
+    [bezierPath lineToPoint: NSMakePoint(15.18, 16.55)];
+    [bezierPath curveToPoint: NSMakePoint(14.77, 16.63) controlPoint1: NSMakePoint(15.08, 16.65) controlPoint2: NSMakePoint(14.9, 16.68)];
+    [bezierPath lineToPoint: NSMakePoint(13.02, 15.88)];
+    [bezierPath curveToPoint: NSMakePoint(12.56, 15.88) controlPoint1: NSMakePoint(12.89, 15.82) controlPoint2: NSMakePoint(12.69, 15.83)];
+    [bezierPath lineToPoint: NSMakePoint(11.85, 16.18)];
+    [bezierPath curveToPoint: NSMakePoint(11.52, 16.5) controlPoint1: NSMakePoint(11.72, 16.23) controlPoint2: NSMakePoint(11.57, 16.37)];
+    [bezierPath lineToPoint: NSMakePoint(10.81, 18.27)];
+    [bezierPath curveToPoint: NSMakePoint(10.47, 18.5) controlPoint1: NSMakePoint(10.76, 18.4) controlPoint2: NSMakePoint(10.61, 18.5)];
+    [bezierPath lineToPoint: NSMakePoint(8.53, 18.5)];
+    [bezierPath curveToPoint: NSMakePoint(8.19, 18.27) controlPoint1: NSMakePoint(8.39, 18.5) controlPoint2: NSMakePoint(8.24, 18.4)];
+    [bezierPath lineToPoint: NSMakePoint(7.48, 16.5)];
+    [bezierPath curveToPoint: NSMakePoint(7.15, 16.18) controlPoint1: NSMakePoint(7.43, 16.37) controlPoint2: NSMakePoint(7.28, 16.23)];
+    [bezierPath lineToPoint: NSMakePoint(6.44, 15.88)];
+    [bezierPath curveToPoint: NSMakePoint(5.98, 15.88) controlPoint1: NSMakePoint(6.31, 15.83) controlPoint2: NSMakePoint(6.11, 15.82)];
+    [bezierPath lineToPoint: NSMakePoint(4.23, 16.63)];
+    [bezierPath curveToPoint: NSMakePoint(3.82, 16.55) controlPoint1: NSMakePoint(4.1, 16.68) controlPoint2: NSMakePoint(3.92, 16.65)];
+    [bezierPath lineToPoint: NSMakePoint(2.45, 15.18)];
+    [bezierPath curveToPoint: NSMakePoint(2.37, 14.77) controlPoint1: NSMakePoint(2.35, 15.08) controlPoint2: NSMakePoint(2.32, 14.9)];
+    [bezierPath lineToPoint: NSMakePoint(3.12, 13.02)];
+    [bezierPath curveToPoint: NSMakePoint(3.12, 12.56) controlPoint1: NSMakePoint(3.18, 12.89) controlPoint2: NSMakePoint(3.17, 12.69)];
+    [bezierPath lineToPoint: NSMakePoint(2.82, 11.85)];
+    [bezierPath curveToPoint: NSMakePoint(2.5, 11.52) controlPoint1: NSMakePoint(2.77, 11.72) controlPoint2: NSMakePoint(2.63, 11.57)];
+    [bezierPath lineToPoint: NSMakePoint(0.73, 10.81)];
+    [bezierPath curveToPoint: NSMakePoint(0.5, 10.47) controlPoint1: NSMakePoint(0.6, 10.76) controlPoint2: NSMakePoint(0.5, 10.61)];
+    [bezierPath lineToPoint: NSMakePoint(0.5, 8.53)];
+    [bezierPath curveToPoint: NSMakePoint(0.73, 8.19) controlPoint1: NSMakePoint(0.5, 8.39) controlPoint2: NSMakePoint(0.6, 8.24)];
+    [bezierPath lineToPoint: NSMakePoint(2.5, 7.48)];
+    [bezierPath curveToPoint: NSMakePoint(2.82, 7.15) controlPoint1: NSMakePoint(2.63, 7.43) controlPoint2: NSMakePoint(2.77, 7.28)];
+    [bezierPath lineToPoint: NSMakePoint(3.12, 6.44)];
+    [bezierPath curveToPoint: NSMakePoint(3.12, 5.98) controlPoint1: NSMakePoint(3.17, 6.31) controlPoint2: NSMakePoint(3.18, 6.11)];
+    [bezierPath lineToPoint: NSMakePoint(2.37, 4.23)];
+    [bezierPath curveToPoint: NSMakePoint(2.45, 3.82) controlPoint1: NSMakePoint(2.32, 4.1) controlPoint2: NSMakePoint(2.35, 3.92)];
+    [bezierPath lineToPoint: NSMakePoint(3.82, 2.45)];
+    [bezierPath curveToPoint: NSMakePoint(4.23, 2.37) controlPoint1: NSMakePoint(3.92, 2.35) controlPoint2: NSMakePoint(4.1, 2.32)];
+    [bezierPath lineToPoint: NSMakePoint(5.98, 3.12)];
+    [bezierPath curveToPoint: NSMakePoint(6.44, 3.12) controlPoint1: NSMakePoint(6.11, 3.18) controlPoint2: NSMakePoint(6.31, 3.17)];
+    [bezierPath lineToPoint: NSMakePoint(7.15, 2.82)];
+    [bezierPath curveToPoint: NSMakePoint(7.48, 2.5) controlPoint1: NSMakePoint(7.28, 2.77) controlPoint2: NSMakePoint(7.43, 2.63)];
+    [bezierPath lineToPoint: NSMakePoint(8.19, 0.73)];
+    [bezierPath curveToPoint: NSMakePoint(8.53, 0.5) controlPoint1: NSMakePoint(8.24, 0.6) controlPoint2: NSMakePoint(8.39, 0.5)];
+    [bezierPath lineToPoint: NSMakePoint(10.47, 0.5)];
+    [bezierPath curveToPoint: NSMakePoint(10.81, 0.73) controlPoint1: NSMakePoint(10.61, 0.5) controlPoint2: NSMakePoint(10.76, 0.6)];
+    [bezierPath lineToPoint: NSMakePoint(11.52, 2.5)];
+    [bezierPath curveToPoint: NSMakePoint(11.85, 2.82) controlPoint1: NSMakePoint(11.57, 2.63) controlPoint2: NSMakePoint(11.72, 2.77)];
+    [bezierPath lineToPoint: NSMakePoint(12.56, 3.12)];
+    [bezierPath curveToPoint: NSMakePoint(13.02, 3.12) controlPoint1: NSMakePoint(12.69, 3.17) controlPoint2: NSMakePoint(12.89, 3.18)];
+    [bezierPath lineToPoint: NSMakePoint(14.77, 2.37)];
+    [bezierPath curveToPoint: NSMakePoint(15.18, 2.45) controlPoint1: NSMakePoint(14.9, 2.32) controlPoint2: NSMakePoint(15.08, 2.35)];
+    [bezierPath lineToPoint: NSMakePoint(16.55, 3.82)];
+    [bezierPath curveToPoint: NSMakePoint(16.63, 4.23) controlPoint1: NSMakePoint(16.65, 3.92) controlPoint2: NSMakePoint(16.68, 4.1)];
+    [bezierPath lineToPoint: NSMakePoint(15.88, 5.98)];
+    [bezierPath curveToPoint: NSMakePoint(15.88, 6.44) controlPoint1: NSMakePoint(15.82, 6.11) controlPoint2: NSMakePoint(15.83, 6.31)];
+    [bezierPath lineToPoint: NSMakePoint(16.18, 7.15)];
+    [bezierPath curveToPoint: NSMakePoint(16.5, 7.48) controlPoint1: NSMakePoint(16.23, 7.28) controlPoint2: NSMakePoint(16.37, 7.43)];
+    [bezierPath lineToPoint: NSMakePoint(18.27, 8.19)];
     [bezierPath closePath];
     [strokeColor setStroke];
-    bezierPath.lineWidth = 2;
+    bezierPath.lineWidth = 1;
     [bezierPath stroke];
 }
 
@@ -657,12 +652,12 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
 
 }
 
-+ (void)drawZoom1
++ (void)drawZoom1WithZoomStroke: (NSColor*)zoomStroke
 {
-    [StyleKit drawZoom1WithFrame: NSMakeRect(0, 0, 21, 21) resizing: StyleKitResizingBehaviorAspectFit];
+    [StyleKit drawZoom1WithFrame: NSMakeRect(0, 0, 21, 21) resizing: StyleKitResizingBehaviorAspectFit zoomStroke: zoomStroke];
 }
 
-+ (void)drawZoom1WithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing
++ (void)drawZoom1WithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing zoomStroke: (NSColor*)zoomStroke
 {
     //// General Declarations
     CGContextRef context = (CGContextRef)NSGraphicsContext.currentContext.graphicsPort;
@@ -674,12 +669,9 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
     CGContextScaleCTM(context, resizedFrame.size.width / 21, resizedFrame.size.height / 21);
 
 
-    //// Color Declarations
-    NSColor* iconStroke = [NSColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
-
     //// Oval Drawing
     NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(2.5, 2.5, 16, 16)];
-    [iconStroke setStroke];
+    [zoomStroke setStroke];
     ovalPath.lineWidth = 1;
     [ovalPath stroke];
 
@@ -688,14 +680,14 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
     NSBezierPath* bezierPath = [NSBezierPath bezierPath];
     [bezierPath moveToPoint: NSMakePoint(6.35, 6.35)];
     [bezierPath lineToPoint: NSMakePoint(9.18, 9.18)];
-    [iconStroke setStroke];
+    [zoomStroke setStroke];
     bezierPath.lineWidth = 2;
     [bezierPath stroke];
 
 
     //// Oval 2 Drawing
     NSBezierPath* oval2Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(8.25, 8.25, 6.4, 6.4)];
-    [iconStroke setStroke];
+    [zoomStroke setStroke];
     oval2Path.lineWidth = 1;
     [oval2Path stroke];
     
@@ -703,12 +695,12 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
 
 }
 
-+ (void)drawZoom
++ (void)drawZoomWithZoomStroke: (NSColor*)zoomStroke
 {
-    [StyleKit drawZoomWithFrame: NSMakeRect(0, 0, 21, 21) resizing: StyleKitResizingBehaviorAspectFit];
+    [StyleKit drawZoomWithFrame: NSMakeRect(0, 0, 21, 21) resizing: StyleKitResizingBehaviorAspectFit zoomStroke: zoomStroke];
 }
 
-+ (void)drawZoomWithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing
++ (void)drawZoomWithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing zoomStroke: (NSColor*)zoomStroke
 {
     //// General Declarations
     CGContextRef context = (CGContextRef)NSGraphicsContext.currentContext.graphicsPort;
@@ -720,12 +712,9 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
     CGContextScaleCTM(context, resizedFrame.size.width / 21, resizedFrame.size.height / 21);
 
 
-    //// Color Declarations
-    NSColor* iconStroke = [NSColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
-
     //// Oval Drawing
     NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(2.5, 2.5, 16, 16)];
-    [iconStroke setStroke];
+    [zoomStroke setStroke];
     ovalPath.lineWidth = 1;
     [ovalPath stroke];
 
@@ -734,14 +723,14 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
     NSBezierPath* bezierPath = [NSBezierPath bezierPath];
     [bezierPath moveToPoint: NSMakePoint(6.35, 6.35)];
     [bezierPath lineToPoint: NSMakePoint(9.18, 9.18)];
-    [iconStroke setStroke];
+    [zoomStroke setStroke];
     bezierPath.lineWidth = 2;
     [bezierPath stroke];
 
 
     //// Oval 2 Drawing
     NSBezierPath* oval2Path = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(8.25, 8.25, 6.4, 6.4)];
-    [iconStroke setStroke];
+    [zoomStroke setStroke];
     oval2Path.lineWidth = 1;
     [oval2Path stroke];
 
@@ -750,7 +739,7 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
     NSBezierPath* bezier2Path = [NSBezierPath bezierPath];
     [bezier2Path moveToPoint: NSMakePoint(11.45, 13.01)];
     [bezier2Path lineToPoint: NSMakePoint(11.45, 9.89)];
-    [iconStroke setStroke];
+    [zoomStroke setStroke];
     bezier2Path.lineWidth = 0.75;
     [bezier2Path stroke];
 
@@ -759,7 +748,7 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
     NSBezierPath* bezier3Path = [NSBezierPath bezierPath];
     [bezier3Path moveToPoint: NSMakePoint(13, 11.45)];
     [bezier3Path lineToPoint: NSMakePoint(9.89, 11.45)];
-    [iconStroke setStroke];
+    [zoomStroke setStroke];
     bezier3Path.lineWidth = 0.75;
     [bezier3Path stroke];
     
@@ -1074,19 +1063,14 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
 
 #pragma mark Generated Images
 
-+ (NSImage*)imageOfPreferencesButton
++ (NSImage*)imageOfPreferencesButtonWithStrokeColor: (NSColor*)strokeColor
 {
-    if (_imageOfPreferencesButton)
-        return _imageOfPreferencesButton;
-
-    _imageOfPreferencesButton = [NSImage imageWithSize: NSMakeSize(42, 42) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    return [NSImage imageWithSize: NSMakeSize(19, 19) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
     {
-        [StyleKit drawPreferencesButton];
+        [StyleKit drawPreferencesButtonWithStrokeColor: strokeColor];
 
         return YES;
     }];
-
-    return _imageOfPreferencesButton;
 }
 
 + (NSImage*)imageOfMenuIcon
@@ -1164,34 +1148,24 @@ static NSImage* _imageOfPasswordTypeHeader = nil;
     }];
 }
 
-+ (NSImage*)imageOfZoom1
++ (NSImage*)imageOfZoom1WithZoomStroke: (NSColor*)zoomStroke
 {
-    if (_imageOfZoom1)
-        return _imageOfZoom1;
-
-    _imageOfZoom1 = [NSImage imageWithSize: NSMakeSize(21, 21) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    return [NSImage imageWithSize: NSMakeSize(21, 21) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
     {
-        [StyleKit drawZoom1];
+        [StyleKit drawZoom1WithZoomStroke: zoomStroke];
 
         return YES;
     }];
-
-    return _imageOfZoom1;
 }
 
-+ (NSImage*)imageOfZoom
++ (NSImage*)imageOfZoomWithZoomStroke: (NSColor*)zoomStroke
 {
-    if (_imageOfZoom)
-        return _imageOfZoom;
-
-    _imageOfZoom = [NSImage imageWithSize: NSMakeSize(21, 21) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
+    return [NSImage imageWithSize: NSMakeSize(21, 21) flipped: NO drawingHandler: ^(__unused NSRect dstRect)
     {
-        [StyleKit drawZoom];
+        [StyleKit drawZoomWithZoomStroke: zoomStroke];
 
         return YES;
     }];
-
-    return _imageOfZoom;
 }
 
 + (NSImage*)imageOfPasswordHeader

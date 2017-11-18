@@ -8,6 +8,7 @@
 
 #import "ZoomButton.h"
 #import "StyleKit.h"
+#import "Utilities.h"
 @implementation ZoomButton
 
 -(instancetype)initWithCoder:(NSCoder *)coder {
@@ -16,10 +17,18 @@
     self.imagePosition = NSImageOnly;
     [self setButtonType:NSMomentaryChangeButton];
     self.bezelStyle = NSRegularSquareBezelStyle;
-    self.image = [StyleKit imageOfZoom];
-    [self setAlphaValue:0.25];
+
+
     return self;
     
 }
-
+-(void)viewWillDraw {
+    if ([Utilities isDarkMode]) {
+        self.image = [StyleKit imageOfZoomWithZoomStroke:[NSColor whiteColor]];
+        
+    } else {
+        self.image = [StyleKit imageOfZoomWithZoomStroke:[NSColor blackColor]];
+    }
+    [self setAlphaValue:0.5];
+}
 @end

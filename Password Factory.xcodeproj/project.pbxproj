@@ -85,6 +85,10 @@
 		40C4C8B71F9EADC100F31070 /* Password_FactoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C4C8B61F9EADC100F31070 /* Password_FactoryUITests.swift */; };
 		40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C87A281FAE2D3100D784B0 /* PasswordController.m */; };
 		40CC4D881F91B4620093A9B8 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */; };
+		40D428DA1FBFBE310024965B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428D91FBFBE310024965B /* Utilities.m */; };
+		40D428DB1FBFBE310024965B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428D91FBFBE310024965B /* Utilities.m */; };
+		40D428DE1FBFC8B10024965B /* ModeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428DD1FBFC8B10024965B /* ModeTextField.m */; };
+		40D428DF1FBFC8B10024965B /* ModeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428DD1FBFC8B10024965B /* ModeTextField.m */; };
 		40D970EF1F92A3C1007677D6 /* Password Factory Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4058DF241F92995800CCB6E7 /* Password Factory Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
@@ -274,6 +278,10 @@
 		40C87A271FAE2D3100D784B0 /* PasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordController.h; sourceTree = "<group>"; };
 		40C87A281FAE2D3100D784B0 /* PasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordController.m; sourceTree = "<group>"; };
 		40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		40D428D81FBFBE310024965B /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		40D428D91FBFBE310024965B /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		40D428DC1FBFC8B10024965B /* ModeTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModeTextField.h; sourceTree = "<group>"; };
+		40D428DD1FBFC8B10024965B /* ModeTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModeTextField.m; sourceTree = "<group>"; };
 		40DAB57E1B843734003F5C3D /* DefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultsManager.h; sourceTree = "<group>"; };
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
@@ -434,6 +442,8 @@
 				4099B3DE1FAB839300CE826D /* TextField.m */,
 				40855E081FBCEEA8005BD8F4 /* StoredPasswordColumn.h */,
 				40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */,
+				40D428DC1FBFC8B10024965B /* ModeTextField.h */,
+				40D428DD1FBFC8B10024965B /* ModeTextField.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -570,6 +580,8 @@
 				40DFFEE31B811F470047CF90 /* MainWindow.m */,
 				402759B61FBE26B300B26F03 /* SecureRandom.h */,
 				402759B71FBE26B300B26F03 /* SecureRandom.m */,
+				40D428D81FBFBE310024965B /* Utilities.h */,
+				40D428D91FBFBE310024965B /* Utilities.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1208,12 +1220,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40D428DF1FBFC8B10024965B /* ModeTextField.m in Sources */,
 				4051C9D31FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */,
 				40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */,
 				40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */,
 				40511D671C125348005BE5BE /* PasswordStrength.m in Sources */,
 				40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */,
+				40D428DB1FBFBE310024965B /* Utilities.m in Sources */,
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
 				4051C9CF1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
@@ -1285,6 +1299,7 @@
 				40B9AD081FB0EC50003F7580 /* PasswordTypesViewController.m in Sources */,
 				402759B81FBE26B300B26F03 /* SecureRandom.m in Sources */,
 				40FB0C241B810F10009193F8 /* main.m in Sources */,
+				40D428DE1FBFC8B10024965B /* ModeTextField.m in Sources */,
 				40A0A3CC1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m in Sources */,
 				40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */,
 				4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */,
@@ -1293,6 +1308,7 @@
 				4099B3DC1FAB7CB500CE826D /* PreferencesWindowController.m in Sources */,
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
 				40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */,
+				40D428DA1FBFBE310024965B /* Utilities.m in Sources */,
 				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,
 				40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */,
 				40A0A3B41FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld in Sources */,

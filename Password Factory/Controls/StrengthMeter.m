@@ -8,6 +8,7 @@
 
 #import "StrengthMeter.h"
 #import "StyleKit.h"
+#import "Utilities.h"
 @implementation StrengthMeter
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -15,5 +16,11 @@
     float strength = self.strength + 0.01; // give a little size to zero strength
     [StyleKit drawStrengthMeterWithStrengthColor:[self getStrengthColor] strength:strength size:dirtyRect.size];
 }
-
+-(void)viewWillDraw {
+    if ([Utilities isDarkMode]) {
+        [self setAlphaValue:0.25];
+    } else {
+        [self setAlphaValue:1];
+    }
+}
 @end

@@ -362,15 +362,4 @@
         
     }
 }
-#pragma mark Util
-
-/**
- Static method that returns the dark mode state
-
- @return yes if it is dark, no if it isnt
- */
-+(BOOL)isDarkMode {
-    NSString *osxMode = [[DefaultsManager standardDefaults] stringForKey:@"AppleInterfaceStyle"];
-    return [osxMode isEqualToString:@"Dark"];
-}
 @end

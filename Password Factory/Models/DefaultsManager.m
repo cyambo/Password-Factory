@@ -100,7 +100,6 @@ static NSDictionary *prefsPlist;
     for (NSString *k in prefsPlist) {
         if (initialize || ([d objectForKey:k] == nil)) {
             [d setObject:[prefsPlist objectForKey:k] forKey:k];
-            
         }
     }
     [self syncSharedDefaults];

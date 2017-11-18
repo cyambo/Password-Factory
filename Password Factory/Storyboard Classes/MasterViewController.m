@@ -18,6 +18,7 @@
 #import "PasswordStorage.h"
 #import "PasswordFactoryConstants.h"
 #import "TypeIcons.h"
+#import "Utilities.h"
 
 @interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, PasswordControllerDelegate>
 
@@ -56,13 +57,13 @@
 }
 - (void)awakeFromNib {
     [self.passwordField setDelegate:self];
+
 }
 -(void)viewWillAppear {
     [self setOptionalTypes];
-//    PFPasswordType type = (PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"];
-//    [self selectPaswordType:type];
     [self setStorePasswordTimer];
     [self loadTypes];
+
 }
 - (void)viewDidAppear {
     [self selectPaswordType:(PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"]];
@@ -335,7 +336,7 @@
     self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
     NSUserDefaults *defaults = [DefaultsManager standardDefaults];
     //default text color from prefs
-    NSColor *dColor = [[self swapColorForDisplay:[defaults objectForKey:@"defaultTextColor"]] colorWithHexColorString];
+    NSColor *dColor = [[defaults objectForKey:@"defaultTextColor"] colorWithHexColorString];
     NSString *currPassword = [self.password getPasswordValue];
     
 
@@ -356,10 +357,10 @@
     } else {
         //colors the password text based upon color wells in preferences
         
-        NSColor *nColor = [[self swapColorForDisplay:[defaults objectForKey:@"numberTextColor"]] colorWithHexColorString];
-        NSColor *cColor = [[self swapColorForDisplay:[defaults objectForKey:@"upperTextColor"]] colorWithHexColorString];
-        NSColor *clColor = [[self swapColorForDisplay:[defaults objectForKey:@"lowerTextColor"]] colorWithHexColorString];
-        NSColor *sColor = [[self swapColorForDisplay:[defaults objectForKey:@"symbolTextColor"]] colorWithHexColorString];
+        NSColor *nColor = [[defaults objectForKey:@"numberTextColor"] colorWithHexColorString];
+        NSColor *cColor = [[defaults objectForKey:@"upperTextColor"] colorWithHexColorString];
+        NSColor *clColor = [[defaults objectForKey:@"lowerTextColor"] colorWithHexColorString];
+        NSColor *sColor = [[defaults objectForKey:@"symbolTextColor"] colorWithHexColorString];
         
         //uses AttributedString to color password
         
@@ -394,31 +395,6 @@
     }
 }
 
-/**
- Swaps white and black when depending on dark or light mode, so white will be black on normal, and black will be white on dark
-
- @param color color to swap
- @return possibly swapped color
- */
--(NSString *)swapColorForDisplay:(NSString *)color {
-    NSString *white = @"FFFFFF";
-    NSString *black  = @"000000";
-    if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
-        if ([AppDelegate isDarkMode]) {
-            if ([color isEqualToString:black]) {
-                return white;
-            }
-        } else {
-            if ([color isEqualToString:white]) {
-                return black;
-            }
-        }
-    } else if ([color isEqualToString:white]) {
-        return black;
-    }
-
-    return color;
-}
 #pragma mark Password Strength
 
 /**
@@ -518,12 +494,11 @@
             [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
         } else if (self.passwordTypeControl) {
             NSUInteger index = [self.password getIndexByPasswordType:type];
-            
             [self.passwordTypeControl setSelectedSegment:index];
             [self changeSelectionTypeByIndex:index];
         }
-
     }
+
 }
 #pragma mark Password Storage
 -(void)setStorePasswordTimer {
@@ -612,6 +587,9 @@
         self.passwordView.subviews = @[];
         [self.passwordView addSubview:vc.view];
         [self generatePassword];
+    }
+    if(self.passwordTypeLabel) {
+        [self.passwordTypeLabel setStringValue:[[self.password getNameForPasswordType:type] uppercaseString]];
     }
 }
 #pragma mark Table View

@@ -30,12 +30,12 @@ extern NSRect StyleKitResizingBehaviorApply(StyleKitResizingBehavior behavior, N
 // Drawing Methods
 + (void)drawStrengthMeterWithStrengthColor: (NSColor*)strengthColor strength: (CGFloat)strength size: (NSSize)size;
 + (void)drawStrengthMeterWithFrame: (NSRect)targetFrame resizing: (StyleKitResizingBehavior)resizing strengthColor: (NSColor*)strengthColor strength: (CGFloat)strength size: (NSSize)size;
-+ (void)drawPreferencesButton;
++ (void)drawPreferencesButtonWithStrokeColor: (NSColor*)strokeColor;
 + (void)drawMenuIcon;
 + (void)drawStrengthBoxWithStrengthColor: (NSColor*)strengthColor;
 
 // Generated Images
-+ (NSImage*)imageOfPreferencesButton;
++ (NSImage*)imageOfPreferencesButtonWithStrokeColor: (NSColor*)strokeColor;
 + (NSImage*)imageOfMenuIcon;
 + (NSImage*)imageOfAdvancedTypeWithTypeColor: (NSColor*)typeColor;
 + (NSImage*)imageOfPassphraseTypeWithTypeColor: (NSColor*)typeColor;
@@ -43,8 +43,8 @@ extern NSRect StyleKitResizingBehaviorApply(StyleKitResizingBehavior behavior, N
 + (NSImage*)imageOfPronounceableTypeWithTypeColor: (NSColor*)typeColor;
 + (NSImage*)imageOfRandomTypeWithTypeColor: (NSColor*)typeColor;
 + (NSImage*)imageOfStoredTypeWithTypeColor: (NSColor*)typeColor;
-+ (NSImage*)imageOfZoom1;
-+ (NSImage*)imageOfZoom;
++ (NSImage*)imageOfZoom1WithZoomStroke: (NSColor*)zoomStroke;
++ (NSImage*)imageOfZoomWithZoomStroke: (NSColor*)zoomStroke;
 + (NSImage*)imageOfPasswordHeader;
 + (NSImage*)imageOfPasswordStrengthHeader;
 + (NSImage*)imageOfPasswordTypeHeader;

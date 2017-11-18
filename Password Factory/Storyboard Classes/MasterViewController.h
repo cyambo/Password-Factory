@@ -18,6 +18,7 @@
 @property (nonatomic, strong) PasswordController *password;
 @property (weak) IBOutlet NSTextField *passwordField;
 @property (weak) IBOutlet NSTextField *displayedPasswordLength;
+@property (weak) IBOutlet NSTextField *passwordTypeLabel;
 
 @property (weak) IBOutlet StrengthMeter *passwordStrengthLevel;
 
