@@ -1032,9 +1032,8 @@ CA
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4v-HK-3Pc">
-                                <rect key="frame" x="18" y="56" width="139" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="h4v-HK-3Pc">
+                                <rect key="frame" x="18" y="56" width="140" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use Symbols" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vmd-7f-fe6">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1044,9 +1043,8 @@ CA
                                     <binding destination="ZGa-yO-4eO" name="value" keyPath="values.randomUseSymbols" id="3ui-vm-iey"/>
                                 </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vn-D3-SSd">
-                                <rect key="frame" x="18" y="36" width="139" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="7Vn-D3-SSd">
+                                <rect key="frame" x="18" y="36" width="140" height="18"/>
                                 <buttonCell key="cell" type="check" title="Avoid Ambiguous" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KiJ-ak-PRL">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1056,9 +1054,8 @@ CA
                                     <binding destination="ZGa-yO-4eO" name="value" keyPath="values.randomAvoidAmbiguous" id="10E-0R-ayQ"/>
                                 </connections>
                             </button>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VxG-08-KJ8">
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VxG-08-KJ8">
                                 <rect key="frame" x="18" y="103" width="334" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="60" doubleValue="14.26470588235294" tickMarkPosition="below" sliderType="linear" id="GSJ-UO-t3t"/>
                                 <accessibility description="Password Length Slider" identifier="passwordLengthSlider"/>
                                 <connections>
@@ -1066,18 +1063,24 @@ CA
                                     <binding destination="ZGa-yO-4eO" name="value" keyPath="values.passwordLength" id="CTx-is-Ple"/>
                                 </connections>
                             </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-mZ-cgj">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-mZ-cgj">
                                 <rect key="frame" x="20" y="82" width="46" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="aLo-HK-z5h"/>
+                                    <constraint firstAttribute="width" constant="42" id="tFn-1p-EU7"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length" id="7b0-W3-raO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1b-yo-daA">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S1b-yo-daA">
                                 <rect key="frame" x="287" y="71" width="66" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="VKN-83-087"/>
+                                    <constraint firstAttribute="height" constant="39" id="eIE-Ll-43J"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="right" title="50" id="7Tc-zU-o2V">
                                     <font key="font" metaFont="system" size="32"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1085,9 +1088,8 @@ CA
                                 </textFieldCell>
                                 <accessibility description="Password Length" identifier="passwordLength"/>
                             </textField>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-NQ-5IA">
-                                <rect key="frame" x="213" y="36" width="139" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-NQ-5IA">
+                                <rect key="frame" x="214" y="36" width="139" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use Emoji" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OV7-bb-eHc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1097,9 +1099,8 @@ CA
                                     <binding destination="ZGa-yO-4eO" name="value" keyPath="values.randomUseEmoji" id="OZK-yp-DER"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arR-e1-B8f">
-                                <rect key="frame" x="213" y="56" width="139" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="arR-e1-B8f">
+                                <rect key="frame" x="214" y="56" width="139" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use Numbers" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u5v-ps-J9D">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1109,9 +1110,8 @@ CA
                                     <binding destination="ZGa-yO-4eO" name="value" keyPath="values.randomUseNumbers" id="y4b-us-aZ4"/>
                                 </connections>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-Kl-CVP" userLabel="Case Type">
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-Kl-CVP" userLabel="Case Type">
                                 <rect key="frame" x="95" y="6" width="257" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Lowercase" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="101" imageScaling="proportionallyDown" inset="2" selectedItem="7c7-vZ-XEd" id="oLw-fA-zbk" userLabel="Types">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -1126,9 +1126,12 @@ CA
                                     <binding destination="ZGa-yO-4eO" name="selectedIndex" keyPath="values.randomCaseTypeIndex" id="XmM-hP-pMm"/>
                                 </connections>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Pe-Vk-Zvh">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Pe-Vk-Zvh">
                                 <rect key="frame" x="18" y="11" width="68" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="gCd-jX-EHt"/>
+                                    <constraint firstAttribute="height" constant="17" id="qNO-cP-xEH"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Case Type" id="Szr-6U-93k">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1136,6 +1139,36 @@ CA
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="arR-e1-B8f" firstAttribute="top" secondItem="Ytk-2N-5TI" secondAttribute="top" constant="58" id="0dt-yX-CvT"/>
+                            <constraint firstItem="cvo-mZ-cgj" firstAttribute="top" secondItem="Ytk-2N-5TI" secondAttribute="top" constant="31" id="123-Y3-zST"/>
+                            <constraint firstItem="FOV-Kl-CVP" firstAttribute="top" secondItem="Ytk-2N-5TI" secondAttribute="top" constant="100" id="97u-RN-m8q"/>
+                            <constraint firstItem="VxG-08-KJ8" firstAttribute="top" secondItem="Ytk-2N-5TI" secondAttribute="top" constant="10" id="BPe-nV-aXk"/>
+                            <constraint firstItem="0Pe-Vk-Zvh" firstAttribute="top" secondItem="Ytk-2N-5TI" secondAttribute="top" constant="102" id="BQE-RK-WCP"/>
+                            <constraint firstItem="arR-e1-B8f" firstAttribute="width" secondItem="Ki3-NQ-5IA" secondAttribute="width" id="BWg-Kx-7yC"/>
+                            <constraint firstAttribute="trailing" secondItem="S1b-yo-daA" secondAttribute="trailing" constant="20" id="DO7-v4-71x"/>
+                            <constraint firstItem="h4v-HK-3Pc" firstAttribute="height" secondItem="7Vn-D3-SSd" secondAttribute="height" id="Dky-nu-EAc"/>
+                            <constraint firstItem="h4v-HK-3Pc" firstAttribute="leading" secondItem="Ytk-2N-5TI" secondAttribute="leading" constant="20" id="GlT-YX-anQ"/>
+                            <constraint firstItem="S1b-yo-daA" firstAttribute="top" secondItem="Ytk-2N-5TI" secondAttribute="top" constant="20" id="IRc-oZ-wKb"/>
+                            <constraint firstItem="0Pe-Vk-Zvh" firstAttribute="leading" secondItem="Ytk-2N-5TI" secondAttribute="leading" constant="20" id="KR8-Mg-0RD"/>
+                            <constraint firstItem="h4v-HK-3Pc" firstAttribute="top" secondItem="Ytk-2N-5TI" secondAttribute="top" constant="58" id="LbI-7q-Rce"/>
+                            <constraint firstItem="VxG-08-KJ8" firstAttribute="leading" secondItem="Ytk-2N-5TI" secondAttribute="leading" constant="20" id="ONo-An-5Hu"/>
+                            <constraint firstAttribute="trailing" secondItem="Ki3-NQ-5IA" secondAttribute="trailing" constant="20" id="VYW-yM-pqA"/>
+                            <constraint firstItem="Ki3-NQ-5IA" firstAttribute="leading" secondItem="7Vn-D3-SSd" secondAttribute="trailing" constant="60" id="YTQ-fJ-hpn"/>
+                            <constraint firstItem="7Vn-D3-SSd" firstAttribute="leading" secondItem="Ytk-2N-5TI" secondAttribute="leading" constant="20" id="Z3t-cw-Xxh"/>
+                            <constraint firstAttribute="trailing" secondItem="FOV-Kl-CVP" secondAttribute="trailing" constant="22" id="Z8A-yW-cCR"/>
+                            <constraint firstAttribute="trailing" secondItem="VxG-08-KJ8" secondAttribute="trailing" constant="21" id="ZKF-Bj-ma4"/>
+                            <constraint firstItem="arR-e1-B8f" firstAttribute="width" secondItem="h4v-HK-3Pc" secondAttribute="width" id="Zb1-Kc-RPy"/>
+                            <constraint firstItem="cvo-mZ-cgj" firstAttribute="leading" secondItem="Ytk-2N-5TI" secondAttribute="leading" constant="22" id="bZk-Of-oWl"/>
+                            <constraint firstItem="arR-e1-B8f" firstAttribute="height" secondItem="h4v-HK-3Pc" secondAttribute="height" id="bf7-sB-ITi"/>
+                            <constraint firstItem="arR-e1-B8f" firstAttribute="leading" secondItem="h4v-HK-3Pc" secondAttribute="trailing" constant="60" id="clN-bG-Kx1"/>
+                            <constraint firstAttribute="trailing" secondItem="arR-e1-B8f" secondAttribute="trailing" constant="20" id="cpB-e8-fYD"/>
+                            <constraint firstItem="FOV-Kl-CVP" firstAttribute="leading" secondItem="0Pe-Vk-Zvh" secondAttribute="trailing" constant="13" id="fUG-vR-s1G"/>
+                            <constraint firstItem="h4v-HK-3Pc" firstAttribute="width" secondItem="7Vn-D3-SSd" secondAttribute="width" id="ltz-aF-a4R"/>
+                            <constraint firstItem="arR-e1-B8f" firstAttribute="height" secondItem="Ki3-NQ-5IA" secondAttribute="height" id="wo4-5x-XsG"/>
+                            <constraint firstItem="Ki3-NQ-5IA" firstAttribute="top" secondItem="arR-e1-B8f" secondAttribute="bottom" constant="6" id="x0d-VE-IeA"/>
+                            <constraint firstItem="7Vn-D3-SSd" firstAttribute="top" secondItem="h4v-HK-3Pc" secondAttribute="bottom" constant="6" id="xDe-Rd-WEw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="avoidAmbiguous" destination="7Vn-D3-SSd" id="Wwg-Zn-J1Y"/>
