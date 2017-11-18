@@ -52,7 +52,7 @@
 - (void)generatePassword:(PFPasswordType)type {
     PasswordTypesViewController *vc = [self getViewControllerForPasswordType:type];
     if (type != PFStoredType) {
-         NSDictionary *settings = [self getPasswordSettingsByType:type];
+        NSDictionary *settings = [self getPasswordSettingsByType:type];
         [self generatePassword:type withSettings:settings];
     } else {
         [vc selectRandomFromStored];
@@ -183,7 +183,8 @@
  @param type PFPasswordType changed
  */
 -(void)controlChanged:(PFPasswordType)type{
-    [self generatePassword:type];
+    NSDictionary *settings = [self getPasswordSettingsByType:type];
+    [self generatePassword:type withSettings:settings];
 }
 /**
  Updates the password strength meter and the crack time string
