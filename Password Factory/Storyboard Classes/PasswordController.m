@@ -10,12 +10,15 @@
 #import "PasswordStrength.h"
 #import "PasswordTypesViewController.h"
 #import "PasswordFactoryConstants.h"
+#import "DefaultsManager.h"
+#import "PasswordStorage.h"
 @interface PasswordController()
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
 @property (nonatomic, strong) PasswordFactory *factory;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSDictionary *viewControllers;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
+@property (nonatomic, strong) PasswordStorage *storage;
 @end
 
 @implementation PasswordController
@@ -34,6 +37,7 @@
         singleton.passwordStrength = [[PasswordStrength alloc] init];
         singleton.factory = [PasswordFactory get];
         singleton.c = [PasswordFactoryConstants get];
+        singleton.storage = [PasswordStorage get];
         singleton.password = @"";
     });
 
@@ -48,13 +52,11 @@
 - (void)generatePassword:(PFPasswordType)type {
     PasswordTypesViewController *vc = [self getViewControllerForPasswordType:type];
     if (type != PFStoredType) {
-         NSDictionary *settings = [vc getPasswordSettings];
+         NSDictionary *settings = [self getPasswordSettingsByType:type];
         [self generatePassword:type withSettings:settings];
     } else {
         [vc selectRandomFromStored];
     }
-    
-
 }
 
 /**
@@ -156,6 +158,7 @@
             NSString *storyboardName = [NSString stringWithFormat:@"%@Password",name];
             PasswordTypesViewController *vc = [storyBoard instantiateControllerWithIdentifier:storyboardName];
             vc.passwordType = (PFPasswordType)[key integerValue];
+            vc.prefix = [[self getNameForPasswordType:vc.passwordType] lowercaseString];
             vc.delegate = self;
             vcs[key] = vc;
         }
@@ -178,10 +181,9 @@
  PasswordTypesViewControllerDelegate method, called when a control has changed in the PasswordTypesViewController instances
 
  @param type PFPasswordType changed
- @param settings settings from viewController where control was changed
  */
--(void)controlChanged:(PFPasswordType)type settings:(NSDictionary *)settings {
-    [self generatePassword:type withSettings:settings];
+-(void)controlChanged:(PFPasswordType)type{
+    [self generatePassword:type];
 }
 /**
  Updates the password strength meter and the crack time string
@@ -268,5 +270,134 @@
     return types;
 }
 
+- (NSDictionary *)getPasswordSettingsByType:(PFPasswordType)type {
+    NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
+    //Generates different password formats based upon the selected tab
+    //set modifiers
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    
+    settings[@"avoidAmbiguous"] = @([d boolForKey:@"randomAvoidAmbiguous"]);
+    settings[@"useSymbols"] = @([d boolForKey:@"randomUseSymbols"]);
+    settings[@"useEmoji"] = @([d boolForKey:@"randomUseEmoji"]);
+    settings[@"useNumbers"] = @([d boolForKey:@"randomUseNumbers"]);
+    settings[@"passwordLength"] = @([self getPasswordLength]);
+    
+    switch (type) {
+        case PFRandomType: //random
+            settings[@"caseType"] = @([self getCaseTypeForType:type]);
+            break;
+        case PFPatternType: //pattern
+            settings[@"patternText"] = [d stringForKey:@"userPattern"];
+            break;
+        case PFPronounceableType: //pronounceable
+            settings[@"caseType"] = @([self getCaseTypeForType:type]);
+            settings[@"separatorType"] = @([self getSeparatorTypeForType:type]);
+        case PFPassphraseType: //passphrase:
+            settings[@"caseType"] = @([self getCaseTypeForType:type]);
+            settings[@"separatorType"] = @([self getSeparatorTypeForType:type]);
+            break;
+        case PFAdvancedType: //advanced
+            [settings addEntriesFromDictionary:[self generateAdvancedPasswordSettings]];
+            break;
+        case PFStoredType: //stored
 
+            if ([self.storage count] && [d integerForKey:@"storedPasswordTableSelectedRow"] >=0) {
+                settings[@"storedPassword"] = [self.storage passwordAtIndex:[d integerForKey:@"storedPasswordTableSelectedRow"]].password;
+            } else {
+                settings[@"storedPassword"] = @"";
+            }
+    
+    }
+    return settings;
+}
+/**
+ Generates the advanced password settings for password generation
+ 
+ @return settings dictionary
+ */
+-(NSMutableDictionary *)generateAdvancedPasswordSettings {
+    PFPasswordType sourceType;
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
+    sourceType = (PFPasswordType)([d integerForKey:@"advancedSourceIndex"] + PFRandomType);
+    //changing the prefix to the source type so that we get the proper settings
+    NSDictionary *sourceSettings = [self getPasswordSettingsByType:sourceType];
+    NSString *password = [self generatePassword:sourceType withSettings:sourceSettings];
+    
+    settings[@"generatedPassword"] = password;
+    settings[@"truncateAt"] = @([d integerForKey:@"advancedTruncateAt"]);
+    
+    //generating the prefix and the postfix
+    NSString *pre = [d stringForKey:@"advancedPrefixPattern"];
+    NSString *post = [d stringForKey:@"advancedPostfixPattern"];
+    if (pre.length || post.length) {
+        NSMutableDictionary *patternSettings = [[self getPasswordSettingsByType:PFPatternType] mutableCopy];
+        if(pre.length) {
+            patternSettings[@"patternText"] = pre;
+            settings[@"prefix"] = [self generatePassword:PFPatternType withSettings:patternSettings];
+        }
+        if(post.length) {
+            patternSettings[@"patternText"] = post;
+            settings[@"postfix"] = [self generatePassword:PFPatternType withSettings:patternSettings];
+        }
+    }
+    
+    settings[@"accentedCasePercent"] = @([d integerForKey:@"advancedAccentedCasePercent"]);
+    settings[@"symbolCasePercent"] = @([d integerForKey:@"advancedSymbolCasePercent"]);
+    settings[@"replaceAmbiguous"] = @([d boolForKey:@"advancedReplaceAmbiguous"]);
+    //set the case type
+    NSUInteger caseTypeIndex = [d integerForKey:@"advancedCaseTypeIndex"];
+    
+    if(caseTypeIndex != 0) { //no change has a tag of zero
+        settings[@"caseType"] = @((caseTypeIndex + PFLowerCase -1));
+    }
+    NSString *find = [d stringForKey:@"advancedFindRegex"];
+    if( find  && find.length) {
+        NSError *error = nil;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:find options:0 error:&error];
+        if (!error) {
+            settings[@"findRegex"] = regex;
+            settings[@"replacePattern"] = [d stringForKey:@"advancedReplacePattern"];
+        }
+    }
+    return settings;
+}
+/**
+ Gets the set password length
+ 
+ @return password length
+ */
+-(NSUInteger)getPasswordLength {
+    return [[DefaultsManager standardDefaults] integerForKey:@"passwordLength"];
+}
+
+-(NSUInteger)getTruncateLength {
+    return [[DefaultsManager standardDefaults] integerForKey:@"advancedTruncateAt"];
+}
+/**
+ Gets the case type for the selected password type
+ 
+ @return PFCaseType
+ */
+-(PFCaseType)getCaseTypeForType:(PFPasswordType)type {
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    NSString *typeName = [[self getNameForPasswordType:type] lowercaseString];
+    NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",typeName];
+    NSUInteger index = [d integerForKey:name];
+    return [self.c getCaseTypeByIndex:index];
+}
+
+/**
+ Gets the separator type for the selected password type
+ 
+ @return PFSeparatorType
+ */
+-(PFSeparatorType)getSeparatorTypeForType:(PFPasswordType)type {
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    NSString *typeName = [[self getNameForPasswordType:type] lowercaseString];
+    NSString *name = [NSString stringWithFormat:@"%@SeparatorTypeIndex",typeName];
+    NSUInteger index = [d integerForKey:name];
+    return [self.c getSeparatorTypeByIndex:index];
+    
+}
 @end

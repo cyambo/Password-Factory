@@ -12,15 +12,15 @@
 
 @class PasswordTypesViewController;
 @protocol PasswordTypesViewControllerDelegate <NSObject, NSTableViewDelegate>
-- (void)controlChanged:(PFPasswordType)type settings:(NSDictionary *)settings;
-- (NSString *)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings;
-- (NSString *)getNameForPasswordType: (PFPasswordType)type;
+- (void)controlChanged:(PFPasswordType)type;
+- (NSUInteger)getPasswordLength;
+- (NSUInteger)getTruncateLength;
 @end
 @interface PasswordTypesViewController : NSViewController
 @property (nonatomic, weak) id <PasswordTypesViewControllerDelegate> delegate;
-- (NSDictionary *)getPasswordSettings;
-@property (nonatomic, assign) PFPasswordType passwordType;
 
+@property (nonatomic, assign) PFPasswordType passwordType;
+@property (nonatomic, strong) NSString *prefix;
 - (IBAction)changeOptions:(id)sender;
 @property (weak) IBOutlet NSButton *useNumbers;
 @property (weak) IBOutlet NSButton *useSymbols;
@@ -48,7 +48,7 @@
 @property (weak) IBOutlet NSTextField *advancedPrefixPattern;
 @property (weak) IBOutlet NSTextField *advancedPostfixPattern;
 @property (weak) IBOutlet NSTextField *advancedFindRegex;
-@property (weak) IBOutlet NSTextField *advancedReplaceRegex;
+@property (weak) IBOutlet NSTextField *advancedReplacePattern;
 @property (weak) IBOutlet NSStepper *advancedSymbolCasePercentStepper;
 @property (weak) IBOutlet NSStepper *advancedAccentedCasePercentStepper;
 

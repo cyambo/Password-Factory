@@ -1632,7 +1632,7 @@ CA
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedReplaceRegex" id="jqI-vv-Dn3">
+                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedReplacePattern" id="ZzT-3L-6B9">
                                         <dictionary key="options">
                                             <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                         </dictionary>
@@ -1708,7 +1708,7 @@ CA
                             </textField>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vth-fo-hq8">
                                 <rect key="frame" x="46" y="27" width="15" height="22"/>
-                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="PaH-9j-miL"/>
+                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" increment="5" maxValue="100" id="PaH-9j-miL"/>
                                 <connections>
                                     <action selector="changeAdvancedStepper:" target="mtc-B4-HHs" id="4Lh-Bd-khE"/>
                                     <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedSymbolCasePercent" id="0KJ-b7-XIG"/>
@@ -1747,7 +1747,7 @@ CA
                             </textField>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D43-w1-kQS">
                                 <rect key="frame" x="46" y="4" width="15" height="22"/>
-                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="aiJ-Rz-PKZ"/>
+                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" increment="5" maxValue="100" id="aiJ-Rz-PKZ"/>
                                 <connections>
                                     <action selector="changeAdvancedStepper:" target="mtc-B4-HHs" id="jjW-Xg-9Ln"/>
                                     <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedAccentedCasePercent" id="gWd-2E-vdb"/>
@@ -1918,7 +1918,7 @@ CA
                         <outlet property="advancedPostfixPattern" destination="hdA-Lk-Dvd" id="mqp-ym-6bW"/>
                         <outlet property="advancedPrefixPattern" destination="iMf-WX-Iqn" id="BRw-1J-AsC"/>
                         <outlet property="advancedReplaceAmbiguous" destination="pTO-Xl-c8V" id="9Lr-kP-SGk"/>
-                        <outlet property="advancedReplaceRegex" destination="cZH-XC-Fp5" id="ou1-bW-P7R"/>
+                        <outlet property="advancedReplacePattern" destination="cZH-XC-Fp5" id="ou1-bW-P7R"/>
                         <outlet property="advancedSource" destination="d6t-j0-Y1w" id="tgh-1K-pwM"/>
                         <outlet property="advancedSymbolCasePercentStepper" destination="Vth-fo-hq8" id="u7A-ZH-VeR"/>
                         <outlet property="advancedTruncate" destination="9Dp-aA-vqM" id="lfA-w7-g3k"/>
@@ -2164,7 +2164,7 @@ CA
                                 <rect key="frame" x="18" y="227" width="335" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="PASSWORD TYPE" id="d1b-2D-u5S">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -2174,7 +2174,7 @@ CA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="CRACK TIME" bezelStyle="shadowlessSquare" alignment="center" scrollable="YES" lineBreakMode="clipping" imageScaling="proportionallyDown" inset="2" id="m6X-Df-6t5">
                                     <behavior key="behavior" lightByContents="YES"/>
-                                    <font key="font" metaFont="system" size="9"/>
+                                    <font key="font" metaFont="miniSystem"/>
                                 </buttonCell>
                                 <accessibility description="Display Crack Time" identifier="showCrackTime"/>
                                 <connections>

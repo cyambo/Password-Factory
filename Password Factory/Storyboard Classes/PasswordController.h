@@ -34,5 +34,5 @@
 - (PFPasswordType)getPasswordTypeByIndex:(NSUInteger)index;
 - (NSUInteger)getIndexByPasswordType:(PFPasswordType)type;
 - (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type;
-
+- (NSDictionary *)getPasswordSettingsByType:(PFPasswordType)type;
 @end

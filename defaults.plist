@@ -82,11 +82,13 @@
 	<string></string>
 	<key>advancedFindRegex</key>
 	<string></string>
-	<key>advancedReplaceRegex</key>
+	<key>advancedReplacePattern</key>
 	<string></string>
 	<key>advancedCaseTypeIndex</key>
 	<integer>0</integer>
 	<key>maxStoredPasswords</key>
 	<integer>100</integer>
+	<key>storedPasswordTableSelectedRow</key>
+	<integer>0</integer>
 </dict>
 </plist>

@@ -19,12 +19,12 @@
 
 @property (nonatomic, assign) NSInteger passwordLength;
 @property (nonatomic, assign) NSInteger truncateLength;
-@property (nonatomic, strong) NSString *prefix;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @property (nonatomic, strong) NSRegularExpression *findRegex;
 @property (nonatomic, strong) PasswordStorage *storage;
 @property (nonatomic, assign) BOOL didViewAppear;
-
+@property (nonatomic, assign) NSUInteger previousAccentedCasePercent;
+@property (nonatomic, assign) NSUInteger previousSymbolCasePercent;
 @end
 
 @implementation PasswordTypesViewController
@@ -40,28 +40,27 @@
 }
 -(void)viewWillAppear {
     self.didViewAppear = NO;
-    self.prefix = [[self.delegate getNameForPasswordType:self.passwordType] lowercaseString];
     //setting the max password length
     NSUserDefaults *d = [DefaultsManager standardDefaults];
-    NSUInteger maxValue = [d integerForKey:@"maxPasswordLength"];
+    NSUInteger maxPasswordLength = [d integerForKey:@"maxPasswordLength"];
     if (self.passwordLengthSlider) {
-        NSUInteger length = [self getPasswordLength]; //but we have to get the original length
+        NSUInteger length = [self.delegate getPasswordLength]; //but we have to get the original length
 
-        self.passwordLengthSlider.maxValue = maxValue;
+        self.passwordLengthSlider.maxValue = maxPasswordLength;
         //if our length is greater than the max, set it to max
-        if (length > maxValue) {
-            length = maxValue;
-            [d setInteger:maxValue forKey:@"passwordLength"];
+        if (length > maxPasswordLength) {
+            length = maxPasswordLength;
+            [d setInteger:maxPasswordLength forKey:@"passwordLength"];
         }
         [self.passwordLengthSlider setIntegerValue:length]; //and set it back because the changing of maxValue messes up the slider
     }
     //setting the advanced truncate max to maxPasswordLength
     if(self.advancedTruncate) {
-        self.advancedTruncate.maxValue = maxValue;
-        NSUInteger truncateLength = [self getTruncateLength];
-        if (truncateLength > maxValue) {
-            truncateLength = maxValue;
-            [d setInteger:maxValue forKey:@"advancedTruncateAt"];
+        self.advancedTruncate.maxValue = maxPasswordLength;
+        NSUInteger truncateLength = [self.delegate getTruncateLength];
+        if (truncateLength > maxPasswordLength) {
+            truncateLength = maxPasswordLength;
+            [d setInteger:maxPasswordLength forKey:@"advancedTruncateAt"];
         }
         [self.advancedTruncate setIntegerValue:truncateLength];
         [self changeAdvancedTruncate:nil];
@@ -75,6 +74,7 @@
         //select the first one if we have any data
         [self selectFromStored:0];
     }
+    [self setAdvancedRegex];
 }
 -(void)viewDidAppear {
     self.didViewAppear = YES;
@@ -146,150 +146,20 @@
         }
     }
 }
-/**
- Gets the password generation settings based upon controls
 
- @return dictionary of settings
- */
--(NSDictionary *)getPasswordSettings {
-    return [self getPasswordSettingsByType:self.passwordType];
-}
--(NSDictionary *)getPasswordSettingsByType:(PFPasswordType)type {
-    NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
-    //Generates different password formats based upon the selected tab
-    //set modifiers
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
 
-    settings[@"avoidAmbiguous"] = @([d boolForKey:@"randomAvoidAmbiguous"]);
-    settings[@"useSymbols"] = @([d boolForKey:@"randomUseSymbols"]);
-    settings[@"useEmoji"] = @([d boolForKey:@"randomUseEmoji"]);
-    settings[@"useNumbers"] = @([d boolForKey:@"randomUseNumbers"]);
-    settings[@"passwordLength"] = @([self getPasswordLength]);
-    
-    switch (type) {
-        case PFRandomType: //random
-            settings[@"caseType"] = @([self getCaseType]);
-            break;
-        case PFPatternType: //pattern
-            settings[@"patternText"] = [d stringForKey:@"userPattern"];
-            break;
-        case PFPronounceableType: //pronounceable
-            settings[@"caseType"] = @([self getCaseType]);
-            settings[@"separatorType"] = @([self getSeparatorType]);
-        case PFPassphraseType: //passphrase:
-            settings[@"caseType"] = @([self getCaseType]);
-            settings[@"separatorType"] = @([self getSeparatorType]);
-            break;
-        case PFAdvancedType: //advanced
-            [settings addEntriesFromDictionary:[self generateAdvancedPasswordSettings]];
-            break;
-        case PFStoredType: //stored
-            if ([self.storage count] && self.storedPasswordTable.selectedRow >=0) {
-                settings[@"storedPassword"] = [self.storage passwordAtIndex:self.storedPasswordTable.selectedRow].password;
-            } else {
-                settings[@"storedPassword"] = @"";
-            }
-            
-    }
-    return settings;
-}
 
-/**
- Generates the advanced password settings for password generation
 
- @return settings dictionary
- */
--(NSMutableDictionary *)generateAdvancedPasswordSettings {
-    PFPasswordType sourceType;
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
-    NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
-    sourceType = (PFPasswordType)self.advancedSource.selectedTag;
-    //changing the prefix to the source type so that we get the proper settings
-    self.prefix = [[self.delegate getNameForPasswordType:sourceType] lowercaseString];
-    NSDictionary *sourceSettings = [self getPasswordSettingsByType:sourceType];
-    NSString *password = [self.delegate generatePassword:sourceType withSettings:sourceSettings];
-    
-    settings[@"generatedPassword"] = password;
-    settings[@"truncateAt"] = @([self.advancedTruncate integerValue]);
-    
-    //generating the prefix and the postfix
-    NSString *pre = [d stringForKey:@"advancedPrefixPattern"];
-    NSString *post = [d stringForKey:@"advancedPostfixPattern"];
-    if (pre.length || post.length) {
-        self.prefix = @"pattern";
-        NSMutableDictionary *patternSettings = [[self getPasswordSettingsByType:PFPatternType] mutableCopy];
-        if(pre.length) {
-            patternSettings[@"patternText"] = pre;
-            settings[@"prefix"] = [self.delegate generatePassword:PFPatternType withSettings:patternSettings];
-        }
-        if(post.length) {
-            patternSettings[@"patternText"] = post;
-            settings[@"postfix"] = [self.delegate generatePassword:PFPatternType withSettings:patternSettings];
-        }
-        self.prefix = @"advanced";
-    }
 
-    settings[@"accentedCasePercent"] = @([d integerForKey:@"advancedAccentedCasePercent"]);
-    settings[@"symbolCasePercent"] = @([d integerForKey:@"advancedSymbolCasePercent"]);
-    settings[@"replaceAmbiguous"] = @([d boolForKey:@"advancedReplaceAmbiguous"]);
-    //set the case type
-    NSUInteger caseTypeIndex = [d integerForKey:@"advancedCaseTypeIndex"];
-    if(self.caseTypeMenu.selectedTag != 0) { //no change has a tag of zero
-        settings[@"caseType"] = @(self.caseTypeMenu.selectedTag);
-    }
-    [self setAdvancedRegex];
-    if( self.findRegex ) {
-        settings[@"findRegex"] = self.findRegex;
-        settings[@"replacePattern"] = [self.advancedReplaceRegex stringValue];
-    }
-    self.prefix = @"advanced"; //setting back to advanced
-    return settings;
-}
 
-/**
- Gets the set password length
-
- @return password length
- */
--(NSUInteger)getPasswordLength {
-    return [[DefaultsManager standardDefaults] integerForKey:@"passwordLength"];
-}
-
--(NSUInteger)getTruncateLength {
-    return [[DefaultsManager standardDefaults] integerForKey:@"advancedTruncateAt"];
-}
-/**
- Gets the case type for the selected password type
-
- @return PFCaseType
- */
--(PFCaseType)getCaseType {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
-    NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",self.prefix];
-    NSUInteger index = [d integerForKey:name];
-    return [self.c getCaseTypeByIndex:index];
-}
-
-/**
- Gets the separator type for the selected password type
-
- @return PFSeparatorType
- */
--(PFSeparatorType)getSeparatorType {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
-    NSString *name = [NSString stringWithFormat:@"%@SeparatorTypeIndex",self.prefix];
-    NSUInteger index = [d integerForKey:name];
-    return [self.c getSeparatorTypeByIndex:index];
-    
-}
 /**
  Called when length slider is updated and sets all related length values
 
  @param sender default sender
  */
 - (IBAction)changeLength:(id)sender {
-    if ([self getPasswordLength] != self.passwordLength) {
-        self.passwordLength = [self getPasswordLength];
+    if ([self.delegate getPasswordLength] != self.passwordLength) {
+        self.passwordLength = [self.delegate getPasswordLength];
         [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
         //do not call the delegate if sender is nil
         if (sender != nil) {
@@ -367,7 +237,7 @@
  */
 -(void)callDelegate {
     if(self.delegate) {
-        [self.delegate controlChanged:self.passwordType settings:[self getPasswordSettings]];
+        [self.delegate controlChanged:self.passwordType];
     }
 }
 
@@ -377,6 +247,21 @@
  @param sender default sender
  */
 - (IBAction)changeAdvancedStepper:(NSStepper *)sender {
+    //do not call the delegate if the previous value was the same
+    //this is so that when you hit 0 or 100 it doesn't keep repeating
+    if(sender == self.advancedSymbolCasePercentStepper) {
+        if (sender.integerValue == self.previousSymbolCasePercent) {
+            return;
+        } else {
+            self.previousSymbolCasePercent = sender.integerValue;
+        }
+    } else if (sender == self.advancedAccentedCasePercentStepper) {
+        if (sender.integerValue == self.previousAccentedCasePercent) {
+            return;
+        } else {
+            self.previousAccentedCasePercent = sender.integerValue;
+        }
+    }
     [self callDelegate];
 }
 
@@ -386,9 +271,8 @@
  @param sender default sender
  */
 - (IBAction)changeAdvancedTruncate:(NSSlider *)sender {
-    if ([self getTruncateLength] != self.truncateLength) {
-
-        self.truncateLength = [self getTruncateLength];
+    if ([self.delegate getTruncateLength] != self.truncateLength) {
+        self.truncateLength = [self.delegate getTruncateLength];
         if(self.truncateLength) {
             [self.advancedTruncateText setStringValue:[NSString stringWithFormat:@"%lu",self.truncateLength]];
         } else {
@@ -400,6 +284,10 @@
         }
     }
 }
+
+/**
+ Checks to see if the regex is valid, and if it is not, turn the regex field red
+ */
 -(void)setAdvancedRegex {
     NSError *error = NULL;
     NSString *r = [self.advancedFindRegex stringValue];
@@ -444,6 +332,8 @@
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSLog(@"SELLL");
+    [[DefaultsManager standardDefaults] setInteger:self.storedPasswordTable.selectedRow forKey:@"storedPasswordTableSelectedRow"];
     [self callDelegate];
 }
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors {
