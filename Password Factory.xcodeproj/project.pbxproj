@@ -89,6 +89,8 @@
 		40D428DB1FBFBE310024965B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428D91FBFBE310024965B /* Utilities.m */; };
 		40D428DE1FBFC8B10024965B /* ModeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428DD1FBFC8B10024965B /* ModeTextField.m */; };
 		40D428DF1FBFC8B10024965B /* ModeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428DD1FBFC8B10024965B /* ModeTextField.m */; };
+		40D428E21FBFD9D40024965B /* StoredPasswordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */; };
+		40D428E31FBFD9D40024965B /* StoredPasswordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */; };
 		40D970EF1F92A3C1007677D6 /* Password Factory Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4058DF241F92995800CCB6E7 /* Password Factory Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
@@ -282,6 +284,8 @@
 		40D428D91FBFBE310024965B /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		40D428DC1FBFC8B10024965B /* ModeTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModeTextField.h; sourceTree = "<group>"; };
 		40D428DD1FBFC8B10024965B /* ModeTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModeTextField.m; sourceTree = "<group>"; };
+		40D428E01FBFD9D40024965B /* StoredPasswordTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoredPasswordTableView.h; sourceTree = "<group>"; };
+		40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoredPasswordTableView.m; sourceTree = "<group>"; };
 		40DAB57E1B843734003F5C3D /* DefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultsManager.h; sourceTree = "<group>"; };
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
@@ -444,6 +448,8 @@
 				40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */,
 				40D428DC1FBFC8B10024965B /* ModeTextField.h */,
 				40D428DD1FBFC8B10024965B /* ModeTextField.m */,
+				40D428E01FBFD9D40024965B /* StoredPasswordTableView.h */,
+				40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1223,6 +1229,7 @@
 				40D428DF1FBFC8B10024965B /* ModeTextField.m in Sources */,
 				4051C9D31FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */,
+				40D428E31FBFD9D40024965B /* StoredPasswordTableView.m in Sources */,
 				40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */,
 				40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */,
 				40511D671C125348005BE5BE /* PasswordStrength.m in Sources */,
@@ -1320,6 +1327,7 @@
 				40537D8D1F9419FD00D645B7 /* constants.m in Sources */,
 				4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */,
+				40D428E21FBFD9D40024965B /* StoredPasswordTableView.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,

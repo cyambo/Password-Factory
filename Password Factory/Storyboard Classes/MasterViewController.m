@@ -585,7 +585,17 @@
         PasswordTypesViewController *vc = [self.password getViewControllerForPasswordType:type];
         self.currentPasswordTypeViewController = vc;
         self.passwordView.subviews = @[];
+
         [self.passwordView addSubview:vc.view];
+        
+        //set constraints so that the PasswordTypes view fills the passwordView
+        NSDictionary *views = @{@"ptvc":vc.view};
+        [vc.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+        NSArray *h = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[ptvc]|" options:0 metrics:nil views:views];
+        NSArray *v = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[ptvc]|" options:0 metrics:nil views:views];
+        [self.passwordView addConstraints:h];
+        [self.passwordView addConstraints:v];
+
         [self generatePassword];
     }
     if(self.passwordTypeLabel) {

@@ -281,13 +281,12 @@ CA
         <scene sceneID="wYJ-g3-zNB">
             <objects>
                 <windowController storyboardIdentifier="MainWindowController" id="WOt-nU-SAU" userLabel="Main Window" sceneMemberID="viewController">
-                    <window key="window" title="Password Factory" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="U5Z-KO-ffe" customClass="MainWindow">
+                    <window key="window" title="Password Factory" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="PasswordFactoryMainWindow" animationBehavior="default" titlebarAppearsTransparent="YES" id="U5Z-KO-ffe" customClass="MainWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="295" y="340" width="503" height="246"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
                         <value key="minSize" type="size" width="503" height="246"/>
-                        <value key="maxSize" type="size" width="503" height="246"/>
                         <connections>
                             <outlet property="delegate" destination="WOt-nU-SAU" id="vgh-i5-jN8"/>
                         </connections>
@@ -304,7 +303,7 @@ CA
         <scene sceneID="GJT-II-y8b">
             <objects>
                 <windowController storyboardIdentifier="PreferencesWindowController" id="65G-m9-MUQ" userLabel="Preferences Window" customClass="PreferencesWindowController" sceneMemberID="viewController">
-                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oth-DO-Nbl" customClass="MainWindow">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="PasswordFactoryPreferencesWindow" animationBehavior="default" id="oth-DO-Nbl" customClass="MainWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="610" y="362" width="212" height="149"/>
@@ -821,13 +820,11 @@ CA
                         <rect key="frame" x="0.0" y="0.0" width="503" height="246"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFt-nd-3qd" customClass="StrengthMeter">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cFt-nd-3qd" customClass="StrengthMeter">
                                 <rect key="frame" x="0.0" y="162" width="503" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xR-jQ-tfH">
+                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xR-jQ-tfH">
                                         <rect key="frame" x="16" y="29" width="471" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="PASSWORD" drawsBackground="YES" allowsEditingTextAttributes="YES" id="UnN-Cm-acd">
                                             <font key="font" metaFont="system" size="17"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -835,9 +832,11 @@ CA
                                         </textFieldCell>
                                         <accessibility description="Password Value" identifier="passwordValue"/>
                                     </textField>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ba5-fo-EG7">
-                                        <rect key="frame" x="54" y="5" width="394" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ba5-fo-EG7">
+                                        <rect key="frame" x="61" y="2" width="381" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="umW-gP-ka6"/>
+                                        </constraints>
                                         <buttonCell key="cell" type="square" title="CRACK TIME" bezelStyle="shadowlessSquare" alignment="center" scrollable="YES" lineBreakMode="clipping" imageScaling="proportionallyDown" inset="2" id="zOV-yx-Hav">
                                             <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="systemLight" size="9"/>
@@ -848,18 +847,21 @@ CA
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8xR-jQ-tfH" secondAttribute="trailing" constant="16" id="GVn-3d-fw9"/>
+                                    <constraint firstAttribute="height" constant="84" id="Q5h-08-iqc"/>
+                                    <constraint firstItem="8xR-jQ-tfH" firstAttribute="leading" secondItem="cFt-nd-3qd" secondAttribute="leading" constant="16" id="bbV-ld-zpa"/>
+                                    <constraint firstItem="8xR-jQ-tfH" firstAttribute="top" secondItem="cFt-nd-3qd" secondAttribute="top" constant="29" id="t2J-im-ULd"/>
+                                </constraints>
                             </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbT-gw-Wm1">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="WbT-gw-Wm1">
                                 <rect key="frame" x="132" y="32" width="371" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
-                            <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-0C-c6O">
+                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-0C-c6O">
                                 <rect key="frame" x="128" y="6" width="5" height="148"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">
-                                <rect key="frame" x="152" y="-2" width="160" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-Ac-9JC">
+                                <rect key="frame" x="152" y="-2" width="157" height="32"/>
                                 <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xfT-nW-gNK">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -868,18 +870,24 @@ CA
                                     <action selector="generateAction:" target="BgG-3K-KOz" id="4fd-xH-k3e"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qP-55-Enn" customClass="TextField">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6qP-55-Enn" customClass="TextField">
                                 <rect key="frame" x="453" y="169" width="33" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="jkB-gO-bj2"/>
+                                    <constraint firstAttribute="height" constant="21" id="tW7-LJ-ATH"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="right" title="999" drawsBackground="YES" id="8DD-0o-NSY">
                                     <font key="font" metaFont="system" size="17"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Xr-yZ-Ylf" customClass="ZoomButton">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Xr-yZ-Ylf" customClass="ZoomButton">
                                 <rect key="frame" x="17" y="169" width="21" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="Tch-Kj-ELo"/>
+                                    <constraint firstAttribute="height" constant="21" id="iom-90-QPt"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Cl-Yz-tLB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -888,10 +896,9 @@ CA
                                     <action selector="zoomPassword:" target="BgG-3K-KOz" id="wLM-zK-ACy"/>
                                 </connections>
                             </button>
-                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-4P-hvT">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-4P-hvT">
                                 <rect key="frame" x="0.0" y="4" width="130" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="n76-hK-pzF">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="n76-hK-pzF">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -950,6 +957,9 @@ CA
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="MH1-2s-bkp"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Ga2-o2-TYh">
                                     <rect key="frame" x="0.0" y="-16" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -959,9 +969,8 @@ CA
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-1N-efq">
-                                <rect key="frame" x="332" y="-2" width="160" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-1N-efq">
+                                <rect key="frame" x="325" y="-2" width="156" height="32"/>
                                 <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mud-1V-YAU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -971,6 +980,34 @@ CA
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="BO3-Ac-9JC" firstAttribute="width" secondItem="T3Y-1N-efq" secondAttribute="width" id="3Zk-du-hDi"/>
+                            <constraint firstAttribute="trailing" secondItem="T3Y-1N-efq" secondAttribute="trailing" constant="28" id="4dk-oU-pOW"/>
+                            <constraint firstItem="Ba5-fo-EG7" firstAttribute="top" secondItem="bk8-v2-EyE" secondAttribute="top" constant="56" id="4kv-Kt-udz"/>
+                            <constraint firstItem="2Vy-4P-hvT" firstAttribute="top" secondItem="bk8-v2-EyE" secondAttribute="top" constant="92" id="7aK-mX-rA6"/>
+                            <constraint firstItem="WbT-gw-Wm1" firstAttribute="leading" secondItem="bk8-v2-EyE" secondAttribute="leading" constant="132" id="Gaf-Oi-G6D"/>
+                            <constraint firstItem="2Vy-4P-hvT" firstAttribute="leading" secondItem="bk8-v2-EyE" secondAttribute="leading" id="HdM-Kh-EB3"/>
+                            <constraint firstItem="cFt-nd-3qd" firstAttribute="top" secondItem="bk8-v2-EyE" secondAttribute="top" id="MeR-eD-sHB"/>
+                            <constraint firstAttribute="trailing" secondItem="cFt-nd-3qd" secondAttribute="trailing" id="MjK-eR-jl3"/>
+                            <constraint firstItem="T3Y-1N-efq" firstAttribute="leading" secondItem="BO3-Ac-9JC" secondAttribute="trailing" constant="28" id="P6x-9g-xfQ"/>
+                            <constraint firstItem="n2v-0C-c6O" firstAttribute="leading" secondItem="bk8-v2-EyE" secondAttribute="leading" constant="130" id="Pdu-Oq-yZq"/>
+                            <constraint firstAttribute="bottom" secondItem="2Vy-4P-hvT" secondAttribute="bottom" constant="4" id="Pxw-VT-Slb"/>
+                            <constraint firstAttribute="bottom" secondItem="WbT-gw-Wm1" secondAttribute="bottom" constant="32" id="Q5p-Dt-Ehs"/>
+                            <constraint firstItem="4Xr-yZ-Ylf" firstAttribute="top" secondItem="bk8-v2-EyE" secondAttribute="top" constant="56" id="Rpb-FK-4Ia"/>
+                            <constraint firstAttribute="bottom" secondItem="n2v-0C-c6O" secondAttribute="bottom" constant="6" id="TBR-GP-9bl"/>
+                            <constraint firstAttribute="bottom" secondItem="BO3-Ac-9JC" secondAttribute="bottom" constant="5" id="WFG-UW-NsL"/>
+                            <constraint firstItem="6qP-55-Enn" firstAttribute="top" secondItem="bk8-v2-EyE" secondAttribute="top" constant="56" id="Yky-W2-5Co"/>
+                            <constraint firstItem="cFt-nd-3qd" firstAttribute="leading" secondItem="bk8-v2-EyE" secondAttribute="leading" id="YrF-Wz-hPP"/>
+                            <constraint firstAttribute="bottom" secondItem="T3Y-1N-efq" secondAttribute="bottom" constant="5" id="bLA-gd-6Z3"/>
+                            <constraint firstItem="Ba5-fo-EG7" firstAttribute="leading" secondItem="bk8-v2-EyE" secondAttribute="leading" constant="61" id="dS6-Rn-Yjb"/>
+                            <constraint firstAttribute="trailing" secondItem="Ba5-fo-EG7" secondAttribute="trailing" constant="61" id="gwk-c4-0q1"/>
+                            <constraint firstAttribute="trailing" secondItem="WbT-gw-Wm1" secondAttribute="trailing" id="lWg-wz-iEd"/>
+                            <constraint firstItem="4Xr-yZ-Ylf" firstAttribute="leading" secondItem="bk8-v2-EyE" secondAttribute="leading" constant="17" id="lpY-fu-rlA"/>
+                            <constraint firstAttribute="trailing" secondItem="6qP-55-Enn" secondAttribute="trailing" constant="17" id="lyB-Jw-Tg7"/>
+                            <constraint firstItem="n2v-0C-c6O" firstAttribute="top" secondItem="bk8-v2-EyE" secondAttribute="top" constant="92" id="sON-7b-oc0"/>
+                            <constraint firstItem="BO3-Ac-9JC" firstAttribute="leading" secondItem="6c5-Mk-eYC" secondAttribute="trailing" constant="28" id="t0Y-ah-xkt"/>
+                            <constraint firstItem="WbT-gw-Wm1" firstAttribute="top" secondItem="bk8-v2-EyE" secondAttribute="top" constant="84" id="xnG-3n-Xjw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="crackTimeButton" destination="Ba5-fo-EG7" id="vGx-9B-iij"/>
@@ -993,7 +1030,7 @@ CA
                 <viewController title="Random Password" storyboardIdentifier="RandomPassword" id="IdK-28-YZe" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="Ytk-2N-5TI">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4v-HK-3Pc">
                                 <rect key="frame" x="18" y="56" width="139" height="18"/>
@@ -1121,11 +1158,13 @@ CA
                 <viewController title="Pattern Password" storyboardIdentifier="PatternPassword" id="sd3-yQ-tvi" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="RWw-tD-t37">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grE-FA-64P">
-                                <rect key="frame" x="20" y="66" width="336" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="grE-FA-64P">
+                                <rect key="frame" x="20" y="66" width="331" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JQ2-IZ-gf7"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Pattern" drawsBackground="YES" id="RaX-4I-wdw">
                                     <font key="font" metaFont="system" size="32"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1140,9 +1179,8 @@ CA
                                     <outlet property="delegate" destination="sd3-yQ-tvi" id="b06-kn-T4D"/>
                                 </connections>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-22-F9f" userLabel="Insert Menu">
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-22-F9f" userLabel="Insert Menu">
                                 <rect key="frame" x="18" y="22" width="341" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Insert" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hxv-hc-dKQ" id="wr0-Db-VUc" userLabel="Insert">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -1212,6 +1250,14 @@ CA
                                 </connections>
                             </popUpButton>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hUB-22-F9f" secondAttribute="trailing" constant="15" id="JtW-UG-gdB"/>
+                            <constraint firstItem="hUB-22-F9f" firstAttribute="leading" secondItem="RWw-tD-t37" secondAttribute="leading" constant="20" id="KOF-K3-CtU"/>
+                            <constraint firstItem="hUB-22-F9f" firstAttribute="top" secondItem="grE-FA-64P" secondAttribute="bottom" constant="20" id="RlA-7b-SmL"/>
+                            <constraint firstItem="grE-FA-64P" firstAttribute="top" secondItem="RWw-tD-t37" secondAttribute="top" constant="20" id="SZ2-cM-Yaz"/>
+                            <constraint firstAttribute="trailing" secondItem="grE-FA-64P" secondAttribute="trailing" constant="20" id="bSi-Fs-PFk"/>
+                            <constraint firstItem="grE-FA-64P" firstAttribute="leading" secondItem="RWw-tD-t37" secondAttribute="leading" constant="20" id="ldn-lM-pBf"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="insertMenu" destination="hUB-22-F9f" id="f0m-qI-erN"/>
@@ -1229,7 +1275,7 @@ CA
                 <viewController title="Passphrase Password" storyboardIdentifier="PassphrasePassword" id="sdy-bB-1Ah" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="ghD-Tp-1Cr">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWZ-h2-Uyw">
                                 <rect key="frame" x="18" y="103" width="335" height="19"/>
@@ -1341,7 +1387,7 @@ CA
                 <viewController title="Pronounceable Password" storyboardIdentifier="PronounceablePassword" id="d6t-4y-fZf" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="UQM-XU-SAd">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50m-Ah-cqc">
                                 <rect key="frame" x="18" y="103" width="335" height="19"/>
@@ -1453,7 +1499,7 @@ CA
                 <viewController title="Advanced Password" storyboardIdentifier="AdvancedPassword" id="mtc-B4-HHs" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="JLY-W8-K9C">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brx-DF-bwP">
                                 <rect key="frame" x="117" y="106" width="58" height="14"/>
@@ -1741,23 +1787,22 @@ CA
                 <viewController title="Stored Password" storyboardIdentifier="StoredPassword" id="tOv-e7-BMt" customClass="PasswordTypesViewController" sceneMemberID="viewController">
                     <view key="view" id="xKC-pF-soN">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-VG-dd5">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-VG-dd5">
                                 <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="6MT-1k-TTW">
+                                <clipView key="contentView" drawsBackground="NO" id="6MT-1k-TTW">
                                     <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="VzJ-vo-MNv" viewBased="YES" id="ehq-kH-pDM">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="VzJ-vo-MNv" viewBased="YES" id="ehq-kH-pDM" customClass="StoredPasswordTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="371" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="Type" width="33" minWidth="20" maxWidth="1000" id="91t-d3-NYM" userLabel="Type" customClass="StoredPasswordColumn">
+                                                <tableColumn identifier="Type" width="33" minWidth="33" maxWidth="33" id="91t-d3-NYM" userLabel="Type" customClass="StoredPasswordColumn">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1773,7 +1818,7 @@ CA
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="PasswordTypeCell" id="e93-gA-AGl">
                                                             <rect key="frame" x="1" y="1" width="33" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yba-9a-oO0">
                                                                     <rect key="frame" x="9" y="0.0" width="17" height="17"/>
@@ -1791,7 +1836,7 @@ CA
                                                     </userDefinedRuntimeAttributes>
                                                     <accessibility identifier="Password Type"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="Password" width="296" minWidth="40" maxWidth="1000" id="Wse-iP-CX1" userLabel="Password" customClass="StoredPasswordColumn">
+                                                <tableColumn identifier="Password" width="296" minWidth="296" maxWidth="3000" id="Wse-iP-CX1" userLabel="Password" customClass="StoredPasswordColumn">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1829,7 +1874,7 @@ CA
                                                     </userDefinedRuntimeAttributes>
                                                     <accessibility identifier="Password"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="Strength" width="33" minWidth="10" maxWidth="3.4028234663852886e+38" id="HBJ-zz-pQy" userLabel="Strength" customClass="StoredPasswordColumn">
+                                                <tableColumn identifier="Strength" width="33" minWidth="33" maxWidth="33" id="HBJ-zz-pQy" userLabel="Strength" customClass="StoredPasswordColumn">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1877,7 +1922,7 @@ CA
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Mwp-uD-T28">
-                                    <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
+                                    <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ozi-iT-ItH">
@@ -1890,6 +1935,12 @@ CA
                                 </tableHeaderView>
                             </scrollView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="gfE-VG-dd5" firstAttribute="top" secondItem="xKC-pF-soN" secondAttribute="top" id="HZx-bQ-cKZ"/>
+                            <constraint firstItem="gfE-VG-dd5" firstAttribute="leading" secondItem="xKC-pF-soN" secondAttribute="leading" id="eOs-dq-GFa"/>
+                            <constraint firstAttribute="trailing" secondItem="gfE-VG-dd5" secondAttribute="trailing" id="vvM-X7-SKk"/>
+                            <constraint firstAttribute="bottom" secondItem="gfE-VG-dd5" secondAttribute="bottom" id="yd6-Dj-bgr"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="storedPasswordTable" destination="ehq-kH-pDM" id="ChE-FR-mMT"/>
@@ -1981,7 +2032,7 @@ CA
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHJ-vd-xHD" customClass="ModeTextField">
-                                <rect key="frame" x="323" y="172" width="33" height="21"/>
+                                <rect key="frame" x="321" y="172" width="37" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="hVk-fr-9qV">
                                     <font key="font" metaFont="system" size="17"/>
