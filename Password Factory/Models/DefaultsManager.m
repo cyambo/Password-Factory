@@ -58,7 +58,7 @@ static NSDictionary *prefsPlist;
  */
 +(NSUserDefaults *)standardDefaults {
     NSUserDefaults *s = [DefaultsManager get].standardDefaults;
-    assert([s objectForKey:@"passwordLength"] != nil);
+//    assert([s objectForKey:@"passwordLength"] != nil);
     return s;
 }
 
@@ -70,6 +70,63 @@ static NSDictionary *prefsPlist;
     [[DefaultsManager standardDefaults] removePersistentDomainForName:appDomain];
     [[DefaultsManager sharedDefaults] removePersistentDomainForName:SharedDefaultsAppGroup];
     [[DefaultsManager get] getPrefsFromPlist:true];
+}
+
+
+/**
+ Gets the key and adds 'Shared' if we are using shared
+
+ @param key key to get
+ @return returned key
+ */
+-(NSString *)getKey:(NSString *)key {
+    if (self.useShared) {
+        return [NSString stringWithFormat:@"%@Shared",key];
+    } else {
+        return key;
+    }
+}
+
+/**
+ Gets shared or standard defaults based on useShared
+
+ @return defaults
+ */
+- (NSUserDefaults *)getDefaults {
+    if(self.useShared) {
+        return self.sharedDefaults;
+    } else {
+        return self.standardDefaults;
+    }
+}
+
+/**
+ stringForKey on defaults
+
+ @param key key to get
+ @return String from defaults
+ */
+- (NSString *)stringForKey:(NSString *)key {
+    return [[self getDefaults] stringForKey:[self getKey:key]];
+}
+/**
+ integerForKey on defaults
+ 
+ @param key key to get
+ @return integer from defaults
+ */
+- (NSInteger)integerForKey:(NSString *)key {
+    return [[self getDefaults] integerForKey:[self getKey:key]];
+}
+
+/**
+ boolForKey on defaults
+ 
+ @param key key to get
+ @return bool from defaults
+ */
+- (BOOL)boolForKey:(NSString *)key {
+    return [[self getDefaults] boolForKey:[self getKey:key]];
 }
 /**
  Makes sure our preferences are loaded only at launch

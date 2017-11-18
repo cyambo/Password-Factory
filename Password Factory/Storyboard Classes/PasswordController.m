@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSDictionary *viewControllers;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @property (nonatomic, strong) PasswordStorage *storage;
+@property (nonatomic, strong) DefaultsManager *defaults;
 @end
 
 @implementation PasswordController
@@ -38,6 +39,8 @@
         singleton.factory = [PasswordFactory get];
         singleton.c = [PasswordFactoryConstants get];
         singleton.storage = [PasswordStorage get];
+        singleton.defaults = [DefaultsManager get];
+        singleton.defaults.useShared = NO;
         singleton.password = @"";
     });
 
@@ -224,7 +227,9 @@
     return self.c.passwordTypes;
 }
 
-
+- (void)enableShared:(BOOL)enable {
+    self.defaults.useShared = enable;
+}
 /**
  Gets the password type by index (0, 1, etc) whih sorts by the PFPasswordType value
  
@@ -275,7 +280,7 @@
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     //Generates different password formats based upon the selected tab
     //set modifiers
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = self.defaults;
     
     settings[@"avoidAmbiguous"] = @([d boolForKey:@"randomAvoidAmbiguous"]);
     settings[@"useSymbols"] = @([d boolForKey:@"randomUseSymbols"]);
@@ -318,7 +323,7 @@
  */
 -(NSMutableDictionary *)generateAdvancedPasswordSettings {
     PFPasswordType sourceType;
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = self.defaults;
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     sourceType = (PFPasswordType)([d integerForKey:@"advancedSourceIndex"] + PFRandomType);
     //changing the prefix to the source type so that we get the proper settings
@@ -369,11 +374,11 @@
  @return password length
  */
 -(NSUInteger)getPasswordLength {
-    return [[DefaultsManager standardDefaults] integerForKey:@"passwordLength"];
+    return [self.defaults integerForKey:@"passwordLength"];
 }
 
 -(NSUInteger)getTruncateLength {
-    return [[DefaultsManager standardDefaults] integerForKey:@"advancedTruncateAt"];
+    return [self.defaults integerForKey:@"advancedTruncateAt"];
 }
 /**
  Gets the case type for the selected password type
@@ -381,7 +386,7 @@
  @return PFCaseType
  */
 -(PFCaseType)getCaseTypeForType:(PFPasswordType)type {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = self.defaults;
     NSString *typeName = [[self getNameForPasswordType:type] lowercaseString];
     NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",typeName];
     NSUInteger index = [d integerForKey:name];
@@ -394,7 +399,7 @@
  @return PFSeparatorType
  */
 -(PFSeparatorType)getSeparatorTypeForType:(PFPasswordType)type {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = self.defaults;
     NSString *typeName = [[self getNameForPasswordType:type] lowercaseString];
     NSString *name = [NSString stringWithFormat:@"%@SeparatorTypeIndex",typeName];
     NSUInteger index = [d integerForKey:name];

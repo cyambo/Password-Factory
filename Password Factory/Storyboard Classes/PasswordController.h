@@ -35,4 +35,5 @@
 - (NSUInteger)getIndexByPasswordType:(PFPasswordType)type;
 - (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type;
 - (NSDictionary *)getPasswordSettingsByType:(PFPasswordType)type;
+- (void)enableShared:(BOOL)enable;
 @end
