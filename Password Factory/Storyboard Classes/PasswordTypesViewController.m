@@ -99,8 +99,14 @@
  Selects random item from the stored password table
  */
 -(void)selectRandomFromStored {
-    uint index = [SecureRandom randomInt:(uint)[self.storage count]];
-    [self selectFromStored:index];
+    if ([self.storage count]) {
+        uint index = [SecureRandom randomInt:(uint)[self.storage count]];
+        [self selectFromStored:index];
+    } else {
+        //nothing in the table so just call the delegate to set the password and strength to nothing
+        [self callDelegate];
+    }
+
 }
 /**
  Fills in the popup buttons with defaults from PF Constants
@@ -335,7 +341,6 @@
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    NSLog(@"SELLL");
     [[DefaultsManager standardDefaults] setInteger:self.storedPasswordTable.selectedRow forKey:@"storedPasswordTableSelectedRow"];
     [self callDelegate];
 }
