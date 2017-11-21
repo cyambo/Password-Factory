@@ -55,6 +55,8 @@
 		4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860A1B8112FD00393B99 /* MasterViewController.m */; };
 		4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4095860D1B8112FD00393B99 /* PreferencesViewController.m */; };
 		409586321B81131100393B99 /* PasswordFactory.help in Resources */ = {isa = PBXBuildFile; fileRef = 409586311B81131100393B99 /* PasswordFactory.help */; };
+		409732F91FC0CB9200CCEF1A /* PasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C87A281FAE2D3100D784B0 /* PasswordController.m */; };
+		409732FA1FC0CC6D00CCEF1A /* StoredPasswordModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3B21FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld */; };
 		4099B3DC1FAB7CB500CE826D /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4099B3DB1FAB7CB500CE826D /* PreferencesWindowController.m */; };
 		4099B3DF1FAB839300CE826D /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4099B3DE1FAB839300CE826D /* TextField.m */; };
 		409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3C1B84476F00727FDB /* StrengthBox.m */; };
@@ -1226,6 +1228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				409732FA1FC0CC6D00CCEF1A /* StoredPasswordModel.xcdatamodeld in Sources */,
 				40D428DF1FBFC8B10024965B /* ModeTextField.m in Sources */,
 				4051C9D31FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */,
@@ -1238,6 +1241,7 @@
 				409E13C41B8258170041541B /* TodayViewController.m in Sources */,
 				4051C9CF1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
+				409732F91FC0CB9200CCEF1A /* PasswordController.m in Sources */,
 				402759B91FBE26B700B26F03 /* SecureRandom.m in Sources */,
 				4004F1DB1FBB63290093DA3F /* ZoomButton.m in Sources */,
 				40537D8E1F941C1700D645B7 /* constants.m in Sources */,

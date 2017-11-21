@@ -18,7 +18,7 @@
 - (IBAction)backToApp:(id)sender;
 
 @property (weak) IBOutlet StrengthBox *strengthBox;
-
-@property (weak) IBOutlet NSTextField *passwordType;
+@property (weak) IBOutlet NSPopUpButton *passwordType;
+- (IBAction)changePasswordType:(NSPopUpButton *)sender;
 
 @end

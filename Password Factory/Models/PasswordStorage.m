@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSSortDescriptor *sort;
 @property (nonatomic, strong) NSPersistentContainer *container;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) DefaultsManager *d;
 @end
 @implementation PasswordStorage
 
@@ -30,17 +31,26 @@
     static dispatch_once_t once = 0;
     dispatch_once(&once, ^ {
         ps = [[PasswordStorage alloc] init];
+        
     });
     
     return ps;
 }
 -(instancetype)init {
     self = [super init];
-    self.container = [[NSPersistentContainer alloc] initWithName:@"StoredPasswordModel"];
+    self.d = [DefaultsManager get];
+    NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:SharedDefaultsAppGroup];
+    containerURL = [containerURL URLByAppendingPathComponent:@"database.sqlite"];
+    NSPersistentStoreDescription *description = [[NSPersistentStoreDescription alloc] initWithURL:containerURL];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"StoredPasswordModel" withExtension:@"momd"];
+    NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    self.container = [[NSPersistentContainer alloc] initWithName:@"StoredPasswordModel" managedObjectModel:model];
+    self.container.persistentStoreDescriptions = @[description];
     [self.container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDescription, NSError * _Nullable error) {
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
+        
         if(error) {
-            NSLog(@"CORE DATA LOAD ERROR");
+            NSLog(@"CORE DATA LOAD ERROR %@",error.localizedDescription);
         }
     }];
     NSLog(@"%@",self.container.persistentStoreDescriptions.firstObject.URL);
@@ -78,8 +88,7 @@
  Deletes any items over the max number of stored passwords set
  */
 -(void)deleteOverMaxItems {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
-    self.maximumPasswordsStored = [d integerForKey:@"maxStoredPasswords"];
+    self.maximumPasswordsStored = [self.d integerForKey:@"maxStoredPasswords"];
     if ([self count] > self.maximumPasswordsStored) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Passwords"];
         

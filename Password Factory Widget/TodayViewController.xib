@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
             <connections>
                 <outlet property="passwordField" destination="3ob-i2-V6T" id="bht-2e-R8v"/>
-                <outlet property="passwordType" destination="s57-gu-QtJ" id="f3J-aa-kTV"/>
+                <outlet property="passwordType" destination="jK7-T9-cWj" id="eft-zq-aNq"/>
                 <outlet property="strengthBox" destination="9Gx-gN-5HI" id="pez-fA-gns"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -19,8 +19,8 @@
         <customView wantsLayer="YES" simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="294" height="48"/>
             <subviews>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
-                    <rect key="frame" x="105" y="26" width="175" height="22"/>
+                <textField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
+                    <rect key="frame" x="122" y="26" width="158" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="hJs-Rc-bRv"/>
                     </constraints>
@@ -51,8 +51,8 @@
                         <action selector="backToApp:" target="-2" id="nF7-is-9jN"/>
                     </connections>
                 </button>
-                <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-Xk-p8m">
-                    <rect key="frame" x="112" y="-7" width="116" height="32"/>
+                <button wantsLayer="YES" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-Xk-p8m">
+                    <rect key="frame" x="116" y="-7" width="112" height="32"/>
                     <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p9W-qG-QOh">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -61,19 +61,8 @@
                         <action selector="generatePassword:" target="-2" id="gE5-1R-7Zn"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="s57-gu-QtJ">
-                    <rect key="frame" x="4" y="28" width="95" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="91" id="Sz6-6T-jyp"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Pronounceable" id="3Gx-C0-db1">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d86-9W-hIU">
-                    <rect key="frame" x="0.0" y="-7" width="117" height="32"/>
+                <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d86-9W-hIU">
+                    <rect key="frame" x="8" y="-7" width="113" height="32"/>
                     <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xek-rO-QG8">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -82,27 +71,44 @@
                         <action selector="copyPassword:" target="-2" id="qIg-B5-Pmp"/>
                     </connections>
                 </button>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jK7-T9-cWj">
+                    <rect key="frame" x="12" y="22" width="106" height="26"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="IdD-Fn-MfY" userLabel="Type">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="Gvq-cK-MZm"/>
+                        <connections>
+                            <binding destination="IjA-b3-xTd" name="selectedIndex" keyPath="values.selectedWidgetPassword" id="7B8-s5-Az7"/>
+                        </connections>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changePasswordType:" target="-2" id="SLo-lH-Xsc"/>
+                        <binding destination="IjA-b3-xTd" name="selectedIndex" keyPath="values.widgetSelectedPasswordType" id="xp3-bN-HHU"/>
+                    </connections>
+                </popUpButton>
             </subviews>
             <constraints>
-                <constraint firstItem="9Gx-gN-5HI" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="5" id="197-TG-cEb"/>
-                <constraint firstItem="3ob-i2-V6T" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="3fj-ba-LMb"/>
                 <constraint firstItem="d86-9W-hIU" firstAttribute="width" secondItem="4Ya-Xk-p8m" secondAttribute="width" id="96c-BC-lvW"/>
                 <constraint firstItem="9Gx-gN-5HI" firstAttribute="centerY" secondItem="cOE-n1-oHo" secondAttribute="centerY" id="97D-YQ-f0E"/>
                 <constraint firstItem="9Gx-gN-5HI" firstAttribute="leading" secondItem="cOE-n1-oHo" secondAttribute="trailing" constant="8" id="BS7-b4-KG4"/>
+                <constraint firstItem="3ob-i2-V6T" firstAttribute="leading" secondItem="jK7-T9-cWj" secondAttribute="trailing" constant="7" id="CHn-6F-cqN"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="centerY" secondItem="d86-9W-hIU" secondAttribute="centerY" id="DhX-HT-tqB"/>
+                <constraint firstAttribute="trailing" secondItem="3ob-i2-V6T" secondAttribute="trailing" constant="14" id="DwC-PY-Jk8"/>
                 <constraint firstItem="cOE-n1-oHo" firstAttribute="centerY" secondItem="4Ya-Xk-p8m" secondAttribute="centerY" id="Hcc-xP-OY9"/>
-                <constraint firstAttribute="trailing" secondItem="3ob-i2-V6T" secondAttribute="trailing" constant="14" id="KfS-ok-Zr4"/>
+                <constraint firstItem="d86-9W-hIU" firstAttribute="top" secondItem="jK7-T9-cWj" secondAttribute="bottom" constant="4" id="Lfh-rx-e8T"/>
                 <constraint firstAttribute="bottom" secondItem="d86-9W-hIU" secondAttribute="bottom" id="MUs-zH-F9n"/>
+                <constraint firstItem="4Ya-Xk-p8m" firstAttribute="top" secondItem="3ob-i2-V6T" secondAttribute="bottom" constant="5" id="QgF-Pc-yOz"/>
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="leading" secondItem="d86-9W-hIU" secondAttribute="trailing" constant="7" id="Uqc-Kb-rvX"/>
-                <constraint firstItem="s57-gu-QtJ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="6" id="Uxw-Fw-cbs"/>
                 <constraint firstAttribute="bottom" secondItem="9Gx-gN-5HI" secondAttribute="bottom" id="WzE-5w-Nqz"/>
                 <constraint firstAttribute="trailing" secondItem="9Gx-gN-5HI" secondAttribute="trailing" constant="14" id="YNS-0g-kAN"/>
-                <constraint firstItem="3ob-i2-V6T" firstAttribute="centerY" secondItem="s57-gu-QtJ" secondAttribute="centerY" id="ZGx-9h-X9P"/>
-                <constraint firstItem="d86-9W-hIU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="6" id="lub-m6-eAr"/>
+                <constraint firstItem="jK7-T9-cWj" firstAttribute="width" secondItem="d86-9W-hIU" secondAttribute="width" id="jTF-65-ADd"/>
+                <constraint firstItem="d86-9W-hIU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="14" id="lub-m6-eAr"/>
                 <constraint firstItem="cOE-n1-oHo" firstAttribute="leading" secondItem="4Ya-Xk-p8m" secondAttribute="trailing" constant="8" id="o0L-CY-uhD"/>
-                <constraint firstItem="3ob-i2-V6T" firstAttribute="leading" secondItem="s57-gu-QtJ" secondAttribute="trailing" constant="8" id="tv1-VY-qKf"/>
+                <constraint firstItem="jK7-T9-cWj" firstAttribute="leading" secondItem="d86-9W-hIU" secondAttribute="leading" id="oTj-qb-uQF"/>
+                <constraint firstItem="jK7-T9-cWj" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="tXO-kX-2A7"/>
             </constraints>
-            <point key="canvasLocation" x="320" y="-166"/>
+            <point key="canvasLocation" x="-67" y="-250"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="IjA-b3-xTd"/>
     </objects>
 </document>

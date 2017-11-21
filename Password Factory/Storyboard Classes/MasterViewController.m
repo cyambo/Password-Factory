@@ -41,7 +41,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         //initialize everything
-        self.password = [PasswordController get];
+        self.password = [PasswordController get:NO];
         self.password.delegate = self;
         [self setOptionalTypes];
         NSUserDefaults *d = [DefaultsManager standardDefaults];

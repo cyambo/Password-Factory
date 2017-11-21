@@ -15,6 +15,7 @@
 +(void)restoreUserDefaults;
 -(void)syncSharedDefaults;
 @property (nonatomic, assign) BOOL useShared;
+- (void)enableShared:(BOOL)enable;
 - (NSString *)stringForKey:(NSString *)key;
 - (NSInteger)integerForKey:(NSString *)key;
 - (BOOL)boolForKey:(NSString *)key;

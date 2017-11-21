@@ -20,7 +20,8 @@
 @property (nonatomic, weak) id <PasswordControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL useStoredType;
 @property (nonatomic, assign) BOOL useAdvancedType;
-+ (instancetype)get;
+@property (nonatomic, strong) NSString *password;
++ (instancetype)get:(BOOL)useShared;
 - (void)generatePassword:(PFPasswordType)type;
 - (void)setPasswordValue:(NSString *)passwordValue;
 - (NSString *)getPasswordValue;
@@ -35,5 +36,4 @@
 - (NSUInteger)getIndexByPasswordType:(PFPasswordType)type;
 - (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type;
 - (NSDictionary *)getPasswordSettingsByType:(PFPasswordType)type;
-- (void)enableShared:(BOOL)enable;
 @end

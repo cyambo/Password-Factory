@@ -15,7 +15,6 @@
 @interface PasswordController()
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
 @property (nonatomic, strong) PasswordFactory *factory;
-@property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSDictionary *viewControllers;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @property (nonatomic, strong) PasswordStorage *storage;
@@ -29,35 +28,42 @@
 
  @return PasswordController instance
  */
-+ (instancetype)get {
++ (instancetype)get:(BOOL)useShared {
     static dispatch_once_t once = 0;
     static PasswordController *singleton = nil;
     
     dispatch_once(&once, ^ {
-        singleton = [[PasswordController alloc] init];
-        singleton.passwordStrength = [[PasswordStrength alloc] init];
-        singleton.factory = [PasswordFactory get];
-        singleton.c = [PasswordFactoryConstants get];
-        singleton.storage = [PasswordStorage get];
-        singleton.defaults = [DefaultsManager get];
-        singleton.defaults.useShared = NO;
-        singleton.password = @"";
+        singleton = [[PasswordController alloc] initWithShared:useShared];
+
     });
 
     return singleton;
 }
-
+-(instancetype)initWithShared:(BOOL)useShared {
+    self = [super init];
+    self.defaults = [DefaultsManager get];
+    [self.defaults enableShared:useShared];
+    
+    self.passwordStrength = [[PasswordStrength alloc] init];
+    self.factory = [PasswordFactory get];
+    self.c = [PasswordFactoryConstants get];
+    self.storage = [PasswordStorage get];
+    
+    self.password = @"";
+    return self;
+}
 /**
  Generate password based on type and settings from view controller
 
  @param type PFPasswordType
  */
 - (void)generatePassword:(PFPasswordType)type {
-    PasswordTypesViewController *vc = [self getViewControllerForPasswordType:type];
+    
     if (type != PFStoredType) {
         NSDictionary *settings = [self getPasswordSettingsByType:type];
         [self generatePassword:type withSettings:settings];
     } else {
+        PasswordTypesViewController *vc = [self getViewControllerForPasswordType:type];
         [vc selectRandomFromStored];
     }
 }
@@ -227,9 +233,6 @@
     return self.c.passwordTypes;
 }
 
-- (void)enableShared:(BOOL)enable {
-    self.defaults.useShared = enable;
-}
 /**
  Gets the password type by index (0, 1, etc) whih sorts by the PFPasswordType value
  

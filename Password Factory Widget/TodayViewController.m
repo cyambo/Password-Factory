@@ -8,34 +8,42 @@
 #import "constants.h"
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
-#import "PasswordFactory.h"
 #import "DefaultsManager.h"
 #import "PasswordStrength.h"
 #import "PasswordFactoryConstants.h"
-
+#import "PasswordController.h"
+#import "PasswordStorage.h"
 /**
  Displays a today widget showing a simplified app
  Uses the shared defaults system to get data and configuration from the main app
  */
 @interface TodayViewController () <NCWidgetProviding>
 
-@property (nonatomic, strong) PasswordFactory *factory;
+
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
-
-
+@property (nonatomic, strong) PasswordController *passwordController;
+@property (nonatomic, strong) DefaultsManager *d;
+@property (nonatomic, strong) PasswordStorage *storage;
 @end
 
 @implementation TodayViewController
+- (instancetype)init {
+    self = [super init];
+    self.d = [DefaultsManager get];
+    self.passwordController = [PasswordController get:YES];
+    self.passwordStrength = [[PasswordStrength alloc] init];
+    self.storage = [PasswordStorage get];
+    self.d.useShared = YES;
 
+    return self;
+}
 /**
  Initialize the model and update interface
  */
 - (void)viewWillAppear {
-    if(!self.factory) {
-        self.factory = [[PasswordFactory alloc] init];
-    }
-    [self changeLabel];
+
+    [self setupTypesPopup];
     [self generatePassword];
 }
 
@@ -43,7 +51,7 @@
  Change the label when the view changes
  */
 -(void)viewDidLayout {
-    [self changeLabel];
+    
 }
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
     // Update your data and prepare for a snapshot. Call completion handler when you are done
@@ -53,7 +61,25 @@
     [self generatePassword];
     completionHandler(NCUpdateResultNoData);
 }
-
+-(void)setupTypesPopup {
+    self.passwordController.useStoredType = [self.d boolForKey:@"storePasswords"];
+    self.passwordController.useAdvancedType = [self.d boolForKey:@"enableAdvanced"];
+    [self.passwordType removeAllItems];
+    NSDictionary *types = [self.passwordController getFilteredPasswordTypes];
+    int i = 0;
+    for(NSNumber *t in [[types allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
+        PFPasswordType type = (PFPasswordType)[t integerValue];
+        if (type != PFStoredType) {
+            NSString *name = types[t];
+            [self.passwordType addItemWithTitle:name];
+            [self.passwordType itemAtIndex:i].tag = type;
+            i++;
+        }
+    }
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSInteger sel = [d integerForKey:@"widgetSelectedPasswordType"];
+    [self.passwordType selectItemAtIndex:sel];
+}
 /**
  Pressed the 'generate' button
 
@@ -69,15 +95,14 @@
  @param sender default sender
  */
 - (IBAction)copyPassword:(id)sender {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     [self updatePasteboard:[self.passwordField stringValue]];
-    if ([d boolForKey:@"clearClipboardShared"]) {
+    if ([self.d boolForKey:@"clearClipboard"]) {
         //setting up clear clipboard timer
         if ([self.clearClipboardTimer isValid]) {
             [self.clearClipboardTimer invalidate];
         }
         self.clearClipboardTimer =
-        [NSTimer scheduledTimerWithTimeInterval:[d integerForKey:@"clearClipboardTime"]
+        [NSTimer scheduledTimerWithTimeInterval:[self.d integerForKey:@"clearClipboardTime"]
                                          target:self
                                        selector:@selector(clearClipboard)
                                        userInfo:nil
@@ -86,15 +111,6 @@
     }
 }
 
-/**
- Changes the label showing which type of password is being generated
- */
-- (void)changeLabel {
-    NSUserDefaults *sd = [DefaultsManager sharedDefaults];
-    PFPasswordType type = (PFPasswordType)[[sd objectForKey:@"selectedPasswordTypeShared"] integerValue];
-
-    [self.passwordType setStringValue:[[PasswordFactoryConstants get] getNameForPasswordType:type]];
-}
 
 /**
  Clear the clipboard
@@ -132,7 +148,7 @@
 
  @param sender default sender
  */
-- (IBAction)changePasswordType:(id)sender {
+- (IBAction)changePasswordType:(NSPopUpButton *)sender {
     [self generatePassword];
 }
 
@@ -140,59 +156,40 @@
  Generate a password based upon the main app's settings
  */
 -(void)generatePassword {
-    
-    if(!self.factory) {
-        self.factory = [[PasswordFactory alloc] init];
+    PFPasswordType type = (PFPasswordType)self.passwordType.selectedTag;
+    if (type > 0) {
+        [self.passwordController generatePassword:type];
+        
+        [self updateStrength:self.passwordController.password];
+        [self.passwordField setStringValue:self.passwordController.password];
     }
-    NSUserDefaults *sd = [DefaultsManager sharedDefaults];
+    [self storePassword];
 
-    int index = (int)[[sd objectForKey:@"selectedTabIndexShared"] integerValue];
-    NSString *password;
-    
-    self.factory.length = [[sd objectForKey:@"passwordLengthShared"] integerValue];
-    
-    self.factory.useSymbols = [[sd objectForKey:@"randomUseSymbolsShared"] boolValue];
-    if ([[sd objectForKey:@"randomMixedCaseShared"] boolValue]) {
-        self.factory.caseType = PFMixedCase;
-    } else {
-        self.factory.caseType = PFLowerCase;
-    }
-    self.factory.avoidAmbiguous = [[sd objectForKey:@"randomAvoidAmbiguousShared"] boolValue];
-    
-    //TODO: not getting all values for caseType etc from defaults
-    
-    switch(index) {
-        case PFRandomType:
-            password = [self.factory generateRandom];
-            break;
-        case PFPatternType:
-            password = [self.factory generatePattern:[sd objectForKey:@"userPatternShared"]];
-            break;
-        case PFPronounceableType:
-            password = [self.factory generatePronounceableWithSeparatorType:(PFSeparatorType)[sd integerForKey:@"pronounceableSeparatorTagShared"]];
-            break;
-        case PFPassphraseType:
-            password = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[sd integerForKey:@"passphraseSeparatorTagShared"]];
-
-            break;
-    }
-    [self changeLabel];
-    [self updateStrength:password index:index];
-    [self.passwordField setStringValue:password];
  }
 
+/**
+ Stores password in database
+ */
+-(void)storePassword {
+    if ([self.d boolForKey:@"storePasswords"]) {
+        PFPasswordType currType = (PFPasswordType)self.passwordType.selectedTag;
+        //don't store anything if we are on the stored type
+        if (currType != PFStoredType) {
+            [self.storage storePassword:self.passwordController.password strength:self.passwordStrength.strength type:currType];
+
+        }
+    }
+}
 /**
  Updates the color of the strength box depending on the password strength
 
  @param password password to check
- @param index selected tab index to change the strength type based upon what type of password is generated
+
  */
--(void)updateStrength:(NSString *)password index:(int)index {
-    if (!self.passwordStrength) {
-        self.passwordStrength = [[PasswordStrength alloc] init];
-    }
+-(void)updateStrength:(NSString *)password {
     [self.passwordStrength updatePasswordStrength:password withCrackTimeString:NO];
     [self.strengthBox updateStrength:self.passwordStrength.strength];
 }
+
 @end
 
