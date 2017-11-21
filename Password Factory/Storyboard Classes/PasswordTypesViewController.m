@@ -15,6 +15,7 @@
 #import "TypeIcons.h"
 #import "StrengthControl.h"
 #import "SecureRandom.h"
+#import "Utilities.h"
 @interface PasswordTypesViewController () <NSTextFieldDelegate>
 
 @property (nonatomic, assign) NSInteger passwordLength;
@@ -317,7 +318,9 @@
         c.imageView.image = [TypeIcons getAlternateTypeIcon:type];
     } else if ([tableColumn.identifier isEqualToString:@"Password"]) {
         c = [tableView makeViewWithIdentifier:@"PasswordCell" owner:nil];
-        [c.textField setStringValue:p.password];
+        NSInteger fontSize = [(NSNumber *)[[c.textField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
+        NSAttributedString *passwordString = [Utilities colorText:p.password size:fontSize];
+        [c.textField setAttributedStringValue:passwordString];
     } else if ([tableColumn.identifier isEqualToString:@"Strength"]) {
         c = [tableView makeViewWithIdentifier:@"StrengthCell" owner:nil];
         float strength = p.strength;
