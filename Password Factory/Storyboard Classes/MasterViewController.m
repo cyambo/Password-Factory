@@ -334,65 +334,15 @@
     self.lastGenerated = [[NSDate date] timeIntervalSince1970];
     self.stored = NO;
     self.currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
-    NSUserDefaults *defaults = [DefaultsManager standardDefaults];
-    //default text color from prefs
-    NSColor *dColor = [[defaults objectForKey:@"defaultTextColor"] colorWithHexColorString];
     NSString *currPassword = [self.password getPasswordValue];
-    
 
     [self.displayedPasswordLength setStringValue:[NSString stringWithFormat:@"%lu",[currPassword getUnicodeLength]]];
     if (currPassword == nil || currPassword.length == 0) {
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
         return;
     }
-    
-    //Just display the password
-    if (!self.colorPasswordText) {
-        NSDictionary *attributes = @{
-                                     NSForegroundColorAttributeName: dColor,
-                                     NSFontAttributeName: [NSFont systemFontOfSize:self.currentFontSize]
-                                     };
-        NSAttributedString *s = [[NSAttributedString alloc] initWithString:currPassword attributes:attributes];
-        [self.passwordField setAttributedStringValue: s];
-    } else {
-        //colors the password text based upon color wells in preferences
-        
-        NSColor *nColor = [[defaults objectForKey:@"numberTextColor"] colorWithHexColorString];
-        NSColor *cColor = [[defaults objectForKey:@"upperTextColor"] colorWithHexColorString];
-        NSColor *clColor = [[defaults objectForKey:@"lowerTextColor"] colorWithHexColorString];
-        NSColor *sColor = [[defaults objectForKey:@"symbolTextColor"] colorWithHexColorString];
-        
-        //uses AttributedString to color password
-        
-        __block NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:currPassword attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:self.currentFontSize]}];
-
-        //colorizing password label
-        [s beginEditing];
-        //loops through the string and sees if it is in each type of string to determine the color of the character
-        //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
-        [currPassword enumerateSubstringsInRange:NSMakeRange(0, currPassword.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable at, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
-            NSColor *c = dColor; //set a default color of the text to the default color
-            if(substringRange.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
-                if ([self.password isCharacterType:PFUpperCaseLetters character:at]) { //are we an uppercase character
-                    c = cColor;
-                } else if ([self.password isCharacterType:PFLowerCaseLetters character:at]){ //lowercase character?
-                    c = clColor;
-                } else if ([self.password isCharacterType:PFNumbers character:at]){ //number?
-                    c = nColor;
-                } else if ([self.password isCharacterType:PFSymbols character:at]){ //symbol?
-                    c = sColor;
-                } else {
-                    c = dColor;
-                }
-                //set the character color
-                [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];
-            }
-        }];
-
-        [s endEditing];
-        //update the password field
-        [self.passwordField setAttributedStringValue:s];
-    }
+    NSAttributedString *s = [Utilities colorText:currPassword highlighted:self.colorPasswordText size:self.currentFontSize];
+    [self.passwordField setAttributedStringValue:s];
 }
 
 #pragma mark Password Strength

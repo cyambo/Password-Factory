@@ -24,7 +24,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="hJs-Rc-bRv"/>
                     </constraints>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title=" " drawsBackground="YES" id="k2G-xb-uyj">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title=" " drawsBackground="YES" allowsEditingTextAttributes="YES" id="k2G-xb-uyj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

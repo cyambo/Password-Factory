@@ -10,4 +10,5 @@
 
 @interface Utilities : NSObject
 +(BOOL)isDarkMode;
++(NSAttributedString *)colorText:(NSString *)text highlighted:(BOOL)highlighted size:(NSUInteger)size;
 @end

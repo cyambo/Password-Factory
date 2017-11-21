@@ -13,6 +13,7 @@
 #import "PasswordFactoryConstants.h"
 #import "PasswordController.h"
 #import "PasswordStorage.h"
+#import "Utilities.h"
 /**
  Displays a today widget showing a simplified app
  Uses the shared defaults system to get data and configuration from the main app
@@ -161,7 +162,10 @@
         [self.passwordController generatePassword:type];
         
         [self updateStrength:self.passwordController.password];
-        [self.passwordField setStringValue:self.passwordController.password];
+        BOOL highlighted = [self.d boolForKey:@"colorPasswordText"];
+        NSInteger currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
+        NSAttributedString *s = [Utilities colorText:self.passwordController.password highlighted:highlighted size:currentFontSize];
+        [self.passwordField setAttributedStringValue:s];
     }
     [self storePassword];
 
