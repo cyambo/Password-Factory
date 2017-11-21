@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "StrengthBox.h"
+#import "StrengthMeter.h"
 
 @interface TodayViewController : NSViewController
 
@@ -17,7 +17,8 @@
 - (IBAction)copyPassword:(id)sender;
 - (IBAction)backToApp:(id)sender;
 
-@property (weak) IBOutlet StrengthBox *strengthBox;
+@property (weak) IBOutlet StrengthMeter *strengthMeter;
+
 @property (weak) IBOutlet NSPopUpButton *passwordType;
 - (IBAction)changePasswordType:(NSPopUpButton *)sender;
 - (IBAction)zoomPassword:(id)sender;

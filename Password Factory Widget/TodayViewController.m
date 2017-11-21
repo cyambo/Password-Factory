@@ -43,7 +43,9 @@
  Initialize the model and update interface
  */
 - (void)viewWillAppear {
-
+    self.strengthMeter.wantsLayer = YES;
+    self.strengthMeter.layer.backgroundColor = [[NSColor colorWithWhite:0.73 alpha:0.1] CGColor];
+    self.strengthMeter.layer.cornerRadius = 10.0;
     [self setupTypesPopup];
     [self generatePassword];
 }
@@ -201,7 +203,7 @@
  */
 -(void)updateStrength:(NSString *)password {
     [self.passwordStrength updatePasswordStrength:password withCrackTimeString:NO];
-    [self.strengthBox updateStrength:self.passwordStrength.strength];
+    [self.strengthMeter updateStrength:self.passwordStrength.strength];
 }
 
 @end
