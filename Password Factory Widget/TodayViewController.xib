@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="294" height="48"/>
             <subviews>
                 <textField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-i2-V6T">
-                    <rect key="frame" x="122" y="26" width="158" height="22"/>
+                    <rect key="frame" x="107" y="26" width="173" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="hJs-Rc-bRv"/>
                     </constraints>
@@ -37,7 +37,7 @@
                         <constraint firstAttribute="height" constant="21" id="mNT-Qn-78V"/>
                     </constraints>
                 </customView>
-                <button alphaValue="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="cOE-n1-oHo" customClass="PreferencesButton">
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="cOE-n1-oHo" customClass="PreferencesButton">
                     <rect key="frame" x="230" y="0.0" width="21" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="21" id="mhg-sd-B0v"/>
@@ -52,7 +52,7 @@
                     </connections>
                 </button>
                 <button wantsLayer="YES" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-Xk-p8m">
-                    <rect key="frame" x="116" y="-7" width="112" height="32"/>
+                    <rect key="frame" x="101" y="-7" width="98" height="32"/>
                     <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p9W-qG-QOh">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -62,7 +62,7 @@
                     </connections>
                 </button>
                 <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d86-9W-hIU">
-                    <rect key="frame" x="8" y="-7" width="113" height="32"/>
+                    <rect key="frame" x="8" y="-7" width="98" height="32"/>
                     <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xek-rO-QG8">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -72,10 +72,10 @@
                     </connections>
                 </button>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jK7-T9-cWj">
-                    <rect key="frame" x="12" y="22" width="106" height="26"/>
+                    <rect key="frame" x="12" y="22" width="91" height="26"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="IdD-Fn-MfY" userLabel="Type">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="system"/>
                         <menu key="menu" id="Gvq-cK-MZm"/>
                         <connections>
                             <binding destination="IjA-b3-xTd" name="selectedIndex" keyPath="values.selectedWidgetPassword" id="7B8-s5-Az7"/>
@@ -86,6 +86,20 @@
                         <binding destination="IjA-b3-xTd" name="selectedIndex" keyPath="values.widgetSelectedPasswordType" id="xp3-bN-HHU"/>
                     </connections>
                 </popUpButton>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qAa-MV-xxA" customClass="ZoomButton">
+                    <rect key="frame" x="201" y="0.0" width="21" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="21" id="fGO-VS-tnC"/>
+                        <constraint firstAttribute="height" constant="21" id="kdG-eO-CJI"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hsj-IU-QWf">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="zoomPassword:" target="-2" id="yyn-Sa-DMX"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="d86-9W-hIU" firstAttribute="width" secondItem="4Ya-Xk-p8m" secondAttribute="width" id="96c-BC-lvW"/>
@@ -101,11 +115,13 @@
                 <constraint firstItem="4Ya-Xk-p8m" firstAttribute="leading" secondItem="d86-9W-hIU" secondAttribute="trailing" constant="7" id="Uqc-Kb-rvX"/>
                 <constraint firstAttribute="bottom" secondItem="9Gx-gN-5HI" secondAttribute="bottom" id="WzE-5w-Nqz"/>
                 <constraint firstAttribute="trailing" secondItem="9Gx-gN-5HI" secondAttribute="trailing" constant="14" id="YNS-0g-kAN"/>
+                <constraint firstItem="qAa-MV-xxA" firstAttribute="centerY" secondItem="cOE-n1-oHo" secondAttribute="centerY" id="bsG-dO-ejp"/>
                 <constraint firstItem="jK7-T9-cWj" firstAttribute="width" secondItem="d86-9W-hIU" secondAttribute="width" id="jTF-65-ADd"/>
                 <constraint firstItem="d86-9W-hIU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="14" id="lub-m6-eAr"/>
-                <constraint firstItem="cOE-n1-oHo" firstAttribute="leading" secondItem="4Ya-Xk-p8m" secondAttribute="trailing" constant="8" id="o0L-CY-uhD"/>
+                <constraint firstItem="cOE-n1-oHo" firstAttribute="leading" secondItem="qAa-MV-xxA" secondAttribute="trailing" constant="8" id="nzI-jy-glc"/>
                 <constraint firstItem="jK7-T9-cWj" firstAttribute="leading" secondItem="d86-9W-hIU" secondAttribute="leading" id="oTj-qb-uQF"/>
                 <constraint firstItem="jK7-T9-cWj" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="tXO-kX-2A7"/>
+                <constraint firstItem="qAa-MV-xxA" firstAttribute="leading" secondItem="4Ya-Xk-p8m" secondAttribute="trailing" constant="8" id="vSc-98-BKx"/>
             </constraints>
             <point key="canvasLocation" x="-67" y="-250"/>
         </customView>

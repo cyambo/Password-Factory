@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSPopover *popover;
 @property (nonatomic, strong) NSEvent *popoverEvent;
 @property (nonatomic, assign) BOOL showPrefs;
+@property (nonatomic, strong) NSString *passwordToZoom;
 @property (nonatomic, assign) BOOL launched;
 @property (nonatomic, strong) MasterViewController *menuViewController;
 @end
@@ -101,7 +102,6 @@
     //save window state
     [d setObject:@YES forKey:@"NSQuitAlwaysKeepsWindows"];
     
-    
     //set the launched flag to true
     self.launched = YES;
     //show the prefs if we need to show them on launch
@@ -109,8 +109,15 @@
         self.showPrefs = NO;
         [self loadPreferences:nil];
     }
-}
 
+}
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    //show the zoomed password if we set one from the url scheme
+    if(self.passwordToZoom) {
+        [self.masterViewController zoomPassword:self.passwordToZoom];
+        self.passwordToZoom = nil;
+    }
+}
 /**
  Toggles the display of the popover in the menu app
 
@@ -283,6 +290,9 @@
     [self.prefsWindowController showWindow:self];
 }
 
+-(void)zoomPassword:(NSString *)password {
+    [self.masterViewController zoomPassword:password];
+}
 /**
  Will kill the app when the last window is closed if it is not a menu app, if it is, it will keep running
 
@@ -346,18 +356,28 @@
  */
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
     NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
-    if([url.host isEqualToString:@"settings"]) {
+    BOOL showPreferences = [url.host isEqualToString:@"settings"];
+    BOOL zoomPassword = [url.host isEqualToString:@"zoom"];
+    if(showPreferences || zoomPassword) {
         if (self.launched) {
-            [self loadPreferences:nil];
-            //Load up the main window as well 
-            if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
-                [self showPopover:nil];
+            if (showPreferences) {
+                [self loadPreferences:nil];
+                //Load up the main window as well
+                if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
+                    [self showPopover:nil];
+                } else {
+                    [self.currWindow makeKeyAndOrderFront:self];
+                }
             } else {
-                [self.currWindow makeKeyAndOrderFront:self];
+                //zoom password
+                [self.masterViewController zoomPassword:url.lastPathComponent];
             }
-            
+
         } else {
-            self.showPrefs = YES;
+            self.showPrefs = showPreferences;
+            if (zoomPassword) {
+                self.passwordToZoom = url.lastPathComponent;
+            }
         }
         
     }

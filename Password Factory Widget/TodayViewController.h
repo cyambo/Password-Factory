@@ -20,5 +20,5 @@
 @property (weak) IBOutlet StrengthBox *strengthBox;
 @property (weak) IBOutlet NSPopUpButton *passwordType;
 - (IBAction)changePasswordType:(NSPopUpButton *)sender;
-
+- (IBAction)zoomPassword:(id)sender;
 @end

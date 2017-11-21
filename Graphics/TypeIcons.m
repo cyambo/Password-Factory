@@ -38,6 +38,7 @@
         case PFAdvancedType:
             return [StyleKit imageOfAdvancedTypeWithTypeColor:color];
             break;
+ 
     }
 }
 

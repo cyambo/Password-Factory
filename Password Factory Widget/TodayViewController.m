@@ -26,6 +26,7 @@
 @property (nonatomic, strong) PasswordController *passwordController;
 @property (nonatomic, strong) DefaultsManager *d;
 @property (nonatomic, strong) PasswordStorage *storage;
+
 @end
 
 @implementation TodayViewController
@@ -36,7 +37,6 @@
     self.passwordStrength = [[PasswordStrength alloc] init];
     self.storage = [PasswordStorage get];
     self.d.useShared = YES;
-
     return self;
 }
 /**
@@ -162,9 +162,8 @@
         [self.passwordController generatePassword:type];
         
         [self updateStrength:self.passwordController.password];
-        BOOL highlighted = [self.d boolForKey:@"colorPasswordText"];
         NSInteger currentFontSize = [(NSNumber *)[[self.passwordField font].fontDescriptor objectForKey:NSFontSizeAttribute] integerValue];
-        NSAttributedString *s = [Utilities colorText:self.passwordController.password highlighted:highlighted size:currentFontSize];
+        NSAttributedString *s = [Utilities colorText:self.passwordController.password size:currentFontSize];
         [self.passwordField setAttributedStringValue:s];
     }
     [self storePassword];
@@ -183,6 +182,16 @@
 
         }
     }
+}
+/**
+ Called when the zoom password button is pressed, will display the ZoomWindow
+ 
+ @param sender default sender
+ */
+- (IBAction)zoomPassword:(id)sender {
+    NSURL *u = [[NSURL alloc] initWithString:ZoomPasswordURL];
+    u = [u URLByAppendingPathComponent:self.passwordController.password];
+    [[NSWorkspace sharedWorkspace] openURL:u];
 }
 /**
  Updates the color of the strength box depending on the password strength
