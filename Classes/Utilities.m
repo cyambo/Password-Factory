@@ -25,9 +25,10 @@
         return NO;
     }
 }
-+(NSAttributedString *)colorText:(NSString *)text highlighted:(BOOL)highlighted size:(NSUInteger)size {
++(NSAttributedString *)colorText:(NSString *)text size:(NSUInteger)size {
     DefaultsManager *d = [DefaultsManager get];
     //default text color from prefs
+    BOOL highlighted = [d boolForKey:@"colorPasswordText"];
     NSColor *dColor = [[d stringForKey:@"defaultTextColor"] colorWithHexColorString];
     if (!highlighted) {
         NSDictionary *attributes = @{

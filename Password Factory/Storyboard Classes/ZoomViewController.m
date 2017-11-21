@@ -10,6 +10,7 @@
 #import "ZoomViewController.h"
 #import "NSString+UnicodeLength.h"
 #import "constants.h"
+#import "Utilities.h"
 @interface ZoomViewController ()
 @property (nonatomic, strong) NSDictionary *sizes;
 @property (nonatomic, strong) NSDictionary *fonts;
@@ -80,9 +81,9 @@
 
  @param password attributed string of current password
  */
--(void)updatePassword:(NSAttributedString *)password {
+-(void)updatePassword:(NSString *)password {
     NSUInteger screenWidth = self.screenRect.size.width;
-    NSUInteger passwordLength = [password.string getUnicodeLength];
+    NSUInteger passwordLength = [password getUnicodeLength];
     NSUInteger whichFont = PFZoomSmallFontSize;
     //determine which font to use
     for(NSNumber *size in self.sizeOrder) {
@@ -96,29 +97,22 @@
             break;
         }
     }
+    __block NSMutableAttributedString *s = [[Utilities colorText:password size:whichFont] mutableCopy];
     //set the bg color to use for alternate letters
     NSColor *bg = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.05];
     //get our font
     NSFont *f = [NSFont fontWithName:ZoomFontName size:whichFont];
-    __block NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:password.string attributes:@{NSFontAttributeName:f}];
+    
     __block NSUInteger i = 0;
     [s beginEditing];
     //enumerate through the string
-    [password.string enumerateSubstringsInRange:NSMakeRange(0, password.string.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
-        NSDictionary *d = [password attributesAtIndex:i effectiveRange:nil];
-        //transferring the color from the original string
-        if(d[@"NSColor"]) {
-            NSColor *color = (NSColor *)d[@"NSColor"];
-            //if the text color is white, change it to black so we can see it 
-            if ([color isEqual:[NSColor whiteColor]]) {
-                color = [NSColor blackColor];
-            }
-            [s addAttribute:NSForegroundColorAttributeName value:color range:substringRange];
-        }
+    [password enumerateSubstringsInRange:NSMakeRange(0, password.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+
         //add a bg on alternate letters
         if ((i % 2) == 0) {
             [s addAttribute:NSBackgroundColorAttributeName value:bg range:substringRange];
         }
+        [s addAttribute:NSFontAttributeName value:f range:substringRange];
         i++;
     }];
     [s endEditing];

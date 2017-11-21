@@ -341,7 +341,7 @@
         [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
         return;
     }
-    NSAttributedString *s = [Utilities colorText:currPassword highlighted:self.colorPasswordText size:self.currentFontSize];
+    NSAttributedString *s = [Utilities colorText:currPassword size:self.currentFontSize];
     [self.passwordField setAttributedStringValue:s];
 }
 
@@ -408,7 +408,7 @@
     [self.zoomWindowController showWindow:sender];
     self.zoomWindowController.window.restorable = YES;
     ZoomViewController *zv = (ZoomViewController *)self.zoomWindowController.contentViewController;
-    [zv updatePassword:[self.passwordField attributedStringValue]];
+    [zv updatePassword:[self.passwordField stringValue]];
     [NSApp activateIgnoringOtherApps:YES]; //brings it to front
 }
 

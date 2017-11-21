@@ -10,6 +10,6 @@
 
 @interface ZoomViewController : NSViewController
 - (IBAction)clickedWindow:(NSClickGestureRecognizer *)sender;
-- (void)updatePassword:(NSAttributedString *)password;
+- (void)updatePassword:(NSString *)password;
 @property (weak) IBOutlet NSTextField *zoomedPassword;
 @end
