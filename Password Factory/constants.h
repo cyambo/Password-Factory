@@ -85,6 +85,7 @@ extern NSString * const SupportEmailAddress;
 extern NSString * const SharedDefaultsAppGroup;
 extern NSString * const NotificationSoundName;
 extern NSString * const HelperIdentifier;
+extern NSString * const AppIdentifier;
 extern NSString * const OpenSettingsURL;
 extern NSString * const ZoomPasswordURL;
 

@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <MASShortcut/Shortcut.h>
-#import "StartAtLoginController.h"
+
 
 @interface PreferencesViewController : NSViewController <NSTextFieldDelegate>
 
@@ -47,7 +47,6 @@
 
 @property (weak) IBOutlet NSButton *addToLoginItems;
 - (IBAction)changeLoginItem:(NSButton *)sender;
-@property (nonatomic, strong) StartAtLoginController *loginController;
 
 @property (weak) IBOutlet NSTextField *maxPasswordLength;
 

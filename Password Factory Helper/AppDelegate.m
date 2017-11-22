@@ -19,7 +19,7 @@
     BOOL alreadyRunning = NO;
     NSArray *running = [[NSWorkspace sharedWorkspace] runningApplications];
     for (NSRunningApplication *app in running) {
-        if ([[app bundleIdentifier] isEqualToString:HelperIdentifier]) {
+        if ([[app bundleIdentifier] isEqualToString:AppIdentifier]) {
             alreadyRunning = YES;
         }
     }

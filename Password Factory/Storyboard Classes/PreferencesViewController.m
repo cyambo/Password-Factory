@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "DefaultsManager.h"
 #import "constants.h"
+#import <ServiceManagement/ServiceManagement.h>
 
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
@@ -27,9 +28,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     //setting the initial checkbox states for the menu and dock checkboxes to an unset state
     self.initialMenuState = 2;
     self.initialDockState = 2;
-    
-    //initting login item
-    self.loginController = [[StartAtLoginController alloc] initWithIdentifier:HelperIdentifier];
+
     return self;
 }
 - (void)awakeFromNib {
@@ -235,7 +234,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     //get the login item status from preferences and change the checkbox state
 
     NSUserDefaults *d = [DefaultsManager standardDefaults];
-    BOOL isLoginItem = [self.loginController startAtLogin];
+    BOOL isLoginItem = [self isLoginItem];
     if(sender == nil) {
         //called from viewWillAppear
         //checks to see if the item has been manually removed or added from login items and changes the state to match
@@ -247,8 +246,9 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             [d setBool:NO forKey:@"addToLoginItems"];
         }
     } else {
-        NSArray *applicationPath = [[[[NSProcessInfo processInfo] arguments] objectAtIndex:0] pathComponents];
-        if (![applicationPath[1] isEqualToString:@"Applications"]) {
+
+        
+        if (![self isInApplicationsDirectory]) {
             //check to see if app is in Applications because login items only work from there
             self.addToLoginItems.state = NSControlStateValueOff;
             [d setBool:NO forKey:@"addToLoginItems"];
@@ -261,20 +261,57 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             return;
         }
     }
-    //turns on or off depending on checkbox state
-    if ([d boolForKey:@"addToLoginItems"]) {
-        //login item on
-        if(!isLoginItem) {
-            self.loginController.startAtLogin = YES;
-        }
-    } else {
-        if(isLoginItem) {
-            self.loginController.enabled = NO;
+    //only do this if we are in Applications
+    if ([self isInApplicationsDirectory]) {
+        //turns on or off depending on checkbox state
+        if ([d boolForKey:@"addToLoginItems"]) {
+            //login item on
+            if(!isLoginItem) {
+                NSURL *url = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"Contents/Library/Password Factory Helper.app" isDirectory:NO];
+                NSLog(@"URL PATH %@",url);
+                // Registering helper app
+                if (LSRegisterURL((__bridge CFURLRef)url, true) != noErr) {
+                    NSLog(@"LSRegisterURL failed!");
+                } else {
+                    NSLog(@"LSRegisterURL succeeded!");
+                }
+                if (!SMLoginItemSetEnabled((__bridge CFStringRef)HelperIdentifier, YES)) {
+                    NSLog(@"SET LOGIN FAILED");
+                } else {
+                    NSLog(@"SET LOGIN succeeded!");
+                }
+            }
+        } else {
+            if(isLoginItem) {
+                if (!SMLoginItemSetEnabled((__bridge CFStringRef)HelperIdentifier, NO)) {
+                    NSLog(@"UNSET LOGIN FAILED");
+                } else {
+                    NSLog(@"UNSET LOGIN succeeded!");
+                }
+            }
         }
     }
+
     [self updatedPrefs];
 }
-
+-(BOOL)isInApplicationsDirectory {
+    NSArray *applicationPath = [[[[NSProcessInfo processInfo] arguments] objectAtIndex:0] pathComponents];
+    return [applicationPath[1] isEqualToString:@"Applications"];
+}
+-(BOOL) isLoginItem {
+    // the easy and sane method (SMJobCopyDictionary) can pose problems when sandboxed. -_-
+    CFArrayRef cfJobDicts = SMCopyAllJobDictionaries(kSMDomainUserLaunchd);
+    NSArray* jobDicts = CFBridgingRelease(cfJobDicts);
+    
+    if (jobDicts && [jobDicts count] > 0) {
+        for (NSDictionary* job in jobDicts) {
+            if ([HelperIdentifier isEqualToString:[job objectForKey:@"Label"]]) {
+                return [[job objectForKey:@"OnDemand"] boolValue];
+            }
+        }
+    }
+    return NO;
+}
 /**
  Called when sound is changed
 

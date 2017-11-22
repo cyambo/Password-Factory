@@ -5,7 +5,6 @@ platform :osx, '10.11'
 target 'Password Factory'  do
     pod 'ZXCVBN'
     pod 'MASShortcut'
-    pod 'StartAtLoginController'
     pod 'SyncKit'
 end
 

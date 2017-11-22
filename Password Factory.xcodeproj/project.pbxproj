@@ -70,6 +70,7 @@
 		40A0A3B41FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3B21FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld */; };
 		40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
 		40A0A3CC1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
+		40A82C2E1FC50728007F603A /* Password Factory Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4058DF241F92995800CCB6E7 /* Password Factory Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5D01F8EC67F00324759 /* AppDelegate.swift */; };
 		40AAB5D31F8EC67F00324759 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5D21F8EC67F00324759 /* ViewController.swift */; };
 		40AAB5D61F8EC67F00324759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D41F8EC67F00324759 /* Main.storyboard */; };
@@ -94,9 +95,9 @@
 		40D428DF1FBFC8B10024965B /* ModeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428DD1FBFC8B10024965B /* ModeTextField.m */; };
 		40D428E21FBFD9D40024965B /* StoredPasswordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */; };
 		40D428E31FBFD9D40024965B /* StoredPasswordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */; };
-		40D970EF1F92A3C1007677D6 /* Password Factory Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4058DF241F92995800CCB6E7 /* Password Factory Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
+		40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
 		40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
 		40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
@@ -166,7 +167,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				40D970EF1F92A3C1007677D6 /* Password Factory Helper.app in CopyFiles */,
+				40A82C2E1FC50728007F603A /* Password Factory Helper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +211,6 @@
 		40855E0B1FBD1628005BD8F4 /* TypeIcons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeIcons.h; sourceTree = "<group>"; };
 		40855E0C1FBD1628005BD8F4 /* TypeIcons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeIcons.m; sourceTree = "<group>"; };
 		408673D51F91D04B00C189AB /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = "Password Factory/constants.h"; sourceTree = "<group>"; };
-		408673DA1F91D0DF00C189AB /* Password Factory Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = "Password Factory Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		409585CA1B8112D600393B99 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTests.m; sourceTree = "<group>"; };
 		409585CB1B8112D600393B99 /* PasswordFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactoryTests.m; sourceTree = "<group>"; };
 		409585CC1B8112D600393B99 /* PreferencesWindowTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowTestClass.h; sourceTree = "<group>"; };
@@ -699,7 +699,6 @@
 			children = (
 				40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */,
 				409E13B91B8258170041541B /* NotificationCenter.framework */,
-				408673DA1F91D0DF00C189AB /* Password Factory Helper.app */,
 				E52C166078E13798FABDD114 /* libPods-Password Factory.a */,
 				EE39728CFBCBE26EDF076FD6 /* libPods-Password Factory Widget.a */,
 				48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */,
@@ -962,6 +961,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */,
 				4058DF2A1F92995800CCB6E7 /* Assets.xcassets in Resources */,
 				4058DF2D1F92995800CCB6E7 /* MainMenu.xib in Resources */,
 			);
@@ -1429,7 +1429,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XWE2VMM384;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Password Factory Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1438,7 +1438,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -1455,7 +1455,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XWE2VMM384;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Password Factory Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
