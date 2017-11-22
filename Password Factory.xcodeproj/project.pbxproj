@@ -105,6 +105,9 @@
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
 		40FB0C241B810F10009193F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C231B810F10009193F8 /* main.m */; };
 		40FB0C261B810F10009193F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
+		40FB84181FC5F63E00474B94 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB84171FC5F63E00474B94 /* AlertViewController.m */; };
+		40FB841B1FC5F66A00474B94 /* AlertWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB841A1FC5F66A00474B94 /* AlertWindow.m */; };
+		40FB84221FC5F8AF00474B94 /* AlertWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB84211FC5F8AF00474B94 /* AlertWindowController.m */; };
 		40FB929B1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB929A1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m */; };
 		4F1ED79D12270B1711884AF9 /* libPods-Password Factory Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39728CFBCBE26EDF076FD6 /* libPods-Password Factory Widget.a */; };
 		5902001B6C472E037A69C066 /* libPods-Password FactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */; };
@@ -303,6 +306,12 @@
 		40FB0C251B810F10009193F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		40FB0C2E1B810F10009193F8 /* Password FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB0C331B810F10009193F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40FB84161FC5F63E00474B94 /* AlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		40FB84171FC5F63E00474B94 /* AlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		40FB84191FC5F66A00474B94 /* AlertWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertWindow.h; sourceTree = "<group>"; };
+		40FB841A1FC5F66A00474B94 /* AlertWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertWindow.m; sourceTree = "<group>"; };
+		40FB84201FC5F8AF00474B94 /* AlertWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertWindowController.h; sourceTree = "<group>"; };
+		40FB84211FC5F8AF00474B94 /* AlertWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertWindowController.m; sourceTree = "<group>"; };
 		40FB92991FB90F6600BFF50B /* NSString+ReplaceAmbiguous.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ReplaceAmbiguous.h"; sourceTree = "<group>"; };
 		40FB929A1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReplaceAmbiguous.m"; sourceTree = "<group>"; };
 		48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -479,20 +488,9 @@
 		409586081B8112FD00393B99 /* Storyboard Classes */ = {
 			isa = PBXGroup;
 			children = (
-				409586091B8112FD00393B99 /* MasterViewController.h */,
-				4095860A1B8112FD00393B99 /* MasterViewController.m */,
-				4099B3DA1FAB7CB500CE826D /* PreferencesWindowController.h */,
-				4099B3DB1FAB7CB500CE826D /* PreferencesWindowController.m */,
-				4095860C1B8112FD00393B99 /* PreferencesViewController.h */,
-				4095860D1B8112FD00393B99 /* PreferencesViewController.m */,
-				40C87A271FAE2D3100D784B0 /* PasswordController.h */,
-				40C87A281FAE2D3100D784B0 /* PasswordController.m */,
-				40B9AD061FB0EC50003F7580 /* PasswordTypesViewController.h */,
-				40B9AD071FB0EC50003F7580 /* PasswordTypesViewController.m */,
-				4004F1DC1FBB759A0093DA3F /* ZoomViewController.h */,
-				4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */,
-				40AFC65C1FBB7D3600CB5BDA /* ZoomWindow.h */,
-				40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */,
+				40FB841F1FC5F88F00474B94 /* Window Controllers */,
+				40FB841E1FC5F86F00474B94 /* View Controllers */,
+				40FB841D1FC5F82B00474B94 /* Windows */,
 			);
 			name = "Storyboard Classes";
 			path = "Password Factory/Storyboard Classes";
@@ -607,6 +605,7 @@
 				40BA26EF1FB26E1400F7AF13 /* Graphics */,
 				409585F71B8112FD00393B99 /* Categories */,
 				409585FC1B8112FD00393B99 /* Controls */,
+				40FB841C1FC5F81300474B94 /* Controllers */,
 				409586051B8112FD00393B99 /* Models */,
 				409586081B8112FD00393B99 /* Storyboard Classes */,
 				40FB0C1D1B810F10009193F8 /* Password Factory */,
@@ -679,6 +678,54 @@
 				40FB0C331B810F10009193F8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		40FB841C1FC5F81300474B94 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				40C87A271FAE2D3100D784B0 /* PasswordController.h */,
+				40C87A281FAE2D3100D784B0 /* PasswordController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		40FB841D1FC5F82B00474B94 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				40AFC65C1FBB7D3600CB5BDA /* ZoomWindow.h */,
+				40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */,
+				40FB84191FC5F66A00474B94 /* AlertWindow.h */,
+				40FB841A1FC5F66A00474B94 /* AlertWindow.m */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
+		40FB841E1FC5F86F00474B94 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4004F1DC1FBB759A0093DA3F /* ZoomViewController.h */,
+				4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */,
+				409586091B8112FD00393B99 /* MasterViewController.h */,
+				4095860A1B8112FD00393B99 /* MasterViewController.m */,
+				4095860C1B8112FD00393B99 /* PreferencesViewController.h */,
+				4095860D1B8112FD00393B99 /* PreferencesViewController.m */,
+				40B9AD061FB0EC50003F7580 /* PasswordTypesViewController.h */,
+				40B9AD071FB0EC50003F7580 /* PasswordTypesViewController.m */,
+				40FB84161FC5F63E00474B94 /* AlertViewController.h */,
+				40FB84171FC5F63E00474B94 /* AlertViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		40FB841F1FC5F88F00474B94 /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4099B3DA1FAB7CB500CE826D /* PreferencesWindowController.h */,
+				4099B3DB1FAB7CB500CE826D /* PreferencesWindowController.m */,
+				40FB84201FC5F8AF00474B94 /* AlertWindowController.h */,
+				40FB84211FC5F8AF00474B94 /* AlertWindowController.m */,
+			);
+			path = "Window Controllers";
 			sourceTree = "<group>";
 		};
 		468C9FB99BC59FBDCAAEB2F7 /* Pods */ = {
@@ -1304,6 +1351,7 @@
 				4004F1DA1FBB63290093DA3F /* ZoomButton.m in Sources */,
 				409586291B8112FD00393B99 /* PreferencesButton.m in Sources */,
 				40BA26F21FB389D300F7AF13 /* PasswordFactoryConstants.m in Sources */,
+				40FB841B1FC5F66A00474B94 /* AlertWindow.m in Sources */,
 				4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
 				40AFC65E1FBB7D3600CB5BDA /* ZoomWindow.m in Sources */,
 				4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */,
@@ -1319,7 +1367,9 @@
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
 				4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */,
 				4099B3DC1FAB7CB500CE826D /* PreferencesWindowController.m in Sources */,
+				40FB84181FC5F63E00474B94 /* AlertViewController.m in Sources */,
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
+				40FB84221FC5F8AF00474B94 /* AlertWindowController.m in Sources */,
 				40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */,
 				40D428DA1FBFBE310024965B /* Utilities.m in Sources */,
 				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,

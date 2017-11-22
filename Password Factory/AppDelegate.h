@@ -10,6 +10,7 @@
 #include "MasterViewController.h"
 #include "PreferencesViewController.h"
 #import "ZoomViewController.h"
+#import "AlertWindowController.h"
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) NSWindowController *prefsWindowController;
 @property (nonatomic, weak) ZoomViewController *zoomViewController;
 @property (nonatomic, strong) NSWindowController *zoomWindowController;
+@property (nonatomic, strong) AlertWindowController *alertWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;
 - (IBAction)selectTypeFromMenu:(NSMenuItem *)sender;
 - (IBAction)deleteStoredPassword:(NSMenuItem *)sender;

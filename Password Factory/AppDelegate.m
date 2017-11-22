@@ -51,11 +51,14 @@
     //init zoom window
     self.zoomWindowController = [storyBoard instantiateControllerWithIdentifier:@"ZoomWindowController"];
     self.zoomViewController = (ZoomViewController *)self.zoomWindowController.window.contentViewController;
-    
+    //init alert window
+    self.alertWindowController = (AlertWindowController *)[storyBoard instantiateControllerWithIdentifier:@"AlertWindowController"];
     //Set properties
     self.masterViewController.prefsWindowController = self.prefsWindowController;
     self.masterViewController.zoomWindowController = self.zoomWindowController;
-
+    self.masterViewController.alertWindowController = self.alertWindowController;
+    
+    
     [self.prefsViewController resetShortcutRegistration]; //setting up global shortcut when app launches
     [self.prefsViewController changeLoginItem:nil]; //set the login item to the current state
     

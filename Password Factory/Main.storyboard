@@ -277,6 +277,100 @@ CA
             </objects>
             <point key="canvasLocation" x="-1654" y="-130"/>
         </scene>
+        <!--Alert Window-->
+        <scene sceneID="Zxe-yW-o90">
+            <objects>
+                <windowController storyboardIdentifier="AlertWindowController" id="7qC-qW-QXA" userLabel="Alert Window" customClass="AlertWindowController" sceneMemberID="viewController">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="cJu-nB-lRo" customClass="AlertWindow">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="362" width="486" height="138"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <value key="minSize" type="size" width="486" height="138"/>
+                        <connections>
+                            <outlet property="delegate" destination="7qC-qW-QXA" id="pgj-m1-tNo"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="k3z-Af-ETS" kind="relationship" relationship="window.shadowedContentViewController" id="e3z-CY-pdS"/>
+                    </connections>
+                </windowController>
+                <customObject id="HZh-V8-cXn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1764" y="256"/>
+        </scene>
+        <!--Alert View Controller-->
+        <scene sceneID="uo2-9B-ldK">
+            <objects>
+                <viewController id="k3z-Af-ETS" userLabel="Alert View Controller" customClass="AlertViewController" sceneMemberID="viewController">
+                    <view key="view" id="mu8-Jj-zCt">
+                        <rect key="frame" x="0.0" y="0.0" width="486" height="138"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nBl-ch-DdQ">
+                                <rect key="frame" x="18" y="18" width="218" height="18"/>
+                                <buttonCell key="cell" type="check" title="Do not show this message again" bezelStyle="regularSquare" imagePosition="left" inset="2" id="6Qt-P6-2C1">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeHideCheckbox:" target="k3z-Af-ETS" id="Qxr-Zu-TQh"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="vUo-Ts-Dp2">
+                                <rect key="frame" x="102" y="54" width="366" height="64"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="ALERT TEXT" id="4y5-cC-L8r">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cyj-aH-bKQ">
+                                <rect key="frame" x="413" y="9" width="59" height="32"/>
+                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k9L-m4-mlt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clickedOK:" target="k3z-Af-ETS" id="d26-kq-T8i"/>
+                                </connections>
+                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FGz-4T-y11">
+                                <rect key="frame" x="20" y="54" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="W4n-8y-dNv"/>
+                                    <constraint firstAttribute="width" constant="64" id="XVs-OA-CBo"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Key Icon" id="X1k-0z-wks"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Cyj-aH-bKQ" secondAttribute="bottom" constant="16" id="GB1-ks-Ru7"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FGz-4T-y11" secondAttribute="bottom" constant="54" id="Gw9-aj-Zb3"/>
+                            <constraint firstItem="FGz-4T-y11" firstAttribute="leading" secondItem="mu8-Jj-zCt" secondAttribute="leading" constant="20" id="JqD-Kq-MXB"/>
+                            <constraint firstItem="vUo-Ts-Dp2" firstAttribute="top" secondItem="mu8-Jj-zCt" secondAttribute="top" constant="20" id="N4p-wo-rnR"/>
+                            <constraint firstAttribute="bottom" secondItem="nBl-ch-DdQ" secondAttribute="bottom" constant="20" id="SM8-3A-2GZ"/>
+                            <constraint firstItem="FGz-4T-y11" firstAttribute="top" secondItem="mu8-Jj-zCt" secondAttribute="top" constant="20" id="aIV-Hz-y4M"/>
+                            <constraint firstAttribute="trailing" secondItem="Cyj-aH-bKQ" secondAttribute="trailing" constant="20" id="aJ8-FO-lBF"/>
+                            <constraint firstItem="vUo-Ts-Dp2" firstAttribute="leading" secondItem="FGz-4T-y11" secondAttribute="trailing" constant="20" id="bsA-P1-Blf"/>
+                            <constraint firstAttribute="trailing" secondItem="vUo-Ts-Dp2" secondAttribute="trailing" constant="20" id="itr-tu-gfz"/>
+                            <constraint firstItem="nBl-ch-DdQ" firstAttribute="top" secondItem="vUo-Ts-Dp2" secondAttribute="bottom" constant="20" id="jNE-I9-9M2"/>
+                            <constraint firstItem="nBl-ch-DdQ" firstAttribute="leading" secondItem="mu8-Jj-zCt" secondAttribute="leading" constant="20" id="ozh-1Y-4XD"/>
+                            <constraint firstItem="Cyj-aH-bKQ" firstAttribute="top" secondItem="vUo-Ts-Dp2" secondAttribute="bottom" constant="17" id="pak-sG-sWh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alertText" destination="vUo-Ts-Dp2" id="O58-K7-A08"/>
+                        <outlet property="hideCheckbox" destination="nBl-ch-DdQ" id="2xx-62-DDW"/>
+                    </connections>
+                </viewController>
+                <customObject id="IMj-Xg-Hea" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1676" y="542"/>
+        </scene>
         <!--Main Window-->
         <scene sceneID="wYJ-g3-zNB">
             <objects>
@@ -2243,6 +2337,7 @@ CA
         </scene>
     </scenes>
     <resources>
+        <image name="Key Icon" width="1024" height="1024"/>
         <image name="NSActionTemplate" width="14" height="14"/>
     </resources>
 </document>
