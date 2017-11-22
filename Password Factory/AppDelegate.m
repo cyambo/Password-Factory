@@ -27,8 +27,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-//    [DefaultsManager restoreUserDefaults];
-//    [[PasswordStorage get] deleteAllEntities];
+    [DefaultsManager restoreUserDefaults];
+    [[PasswordStorage get] deleteAllEntities];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
     NSWindowController *windowController;
@@ -61,6 +61,7 @@
     
     [self.prefsViewController resetShortcutRegistration]; //setting up global shortcut when app launches
     [self.prefsViewController changeLoginItem:nil]; //set the login item to the current state
+    self.prefsViewController.alertWindowController = self.alertWindowController;
     
     //doing magic for the app if it is in the menu
     if ([d boolForKey:@"isMenuApp"]) {

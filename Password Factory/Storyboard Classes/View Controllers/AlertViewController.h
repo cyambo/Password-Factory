@@ -7,13 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "AlertWindowController.h"
 @interface AlertViewController : NSViewController
 @property (nonatomic, strong) NSString *defaultsKey;
 @property (weak) IBOutlet NSTextField *alertText;
 @property (weak) IBOutlet NSButton *hideCheckbox;
-@property (weak) NSWindow *currentWindow;
+@property (weak) AlertWindowController *alertWindowController;
 - (IBAction)changeHideCheckbox:(NSButton *)sender;
 - (IBAction)clickedOK:(NSButton *)sender;
+- (IBAction)clickedCancel:(NSButton *)sender;
+@property (weak) IBOutlet NSButton *cancelButton;
 
 @end

@@ -11,6 +11,7 @@
 
 @interface PasswordFactoryConstants : NSObject
 @property (nonatomic, strong) NSString *symbols;
+@property (nonatomic, strong) NSString *escapedSymbols;
 @property (nonatomic, strong) NSString *upperCase;
 @property (nonatomic, strong) NSString *lowerCase;
 @property (nonatomic, strong) NSString *numbers;

@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <MASShortcut/Shortcut.h>
-
+#import "AlertWindowController.h"
 
 @interface PreferencesViewController : NSViewController <NSTextFieldDelegate>
 
@@ -21,6 +21,7 @@
 
 - (IBAction)changeColor:(id)sender;
 - (IBAction)changeStoredPassword:(NSButton *)sender;
+@property (weak) IBOutlet NSButton *storedPasswordCheckbox;
 
 - (IBAction)changeOptions:(id)sender;
 
@@ -49,6 +50,6 @@
 - (IBAction)changeLoginItem:(NSButton *)sender;
 
 @property (weak) IBOutlet NSTextField *maxPasswordLength;
-
+@property (weak) AlertWindowController *alertWindowController;
 
 @end

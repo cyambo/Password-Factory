@@ -34,6 +34,7 @@
 }
 - (void)setConstants {
     self.symbols = @"!@#$%^&*(){}[];:.\"<>?/\\-_+=|\'";
+
     self.upperCase = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     self.lowerCase = @"abcdefghijklmnopqrstuvwxyz";
     self.nonAmbiguousUpperCase = @"ABCDEFGHJKLMNPQRSTUVWXYZ";
@@ -102,8 +103,12 @@
                         @(PFTitleCasePhoneticSoundType): @[@"T",@"Title Case Phonetic Sound"],
                         @(PFEmojiType): @[@"e",@"Emoji"],
                         @(PFRandomItemType): @[@"r",@"Random Item"]
-                        
                         };
+    NSMutableString *e = [[NSMutableString alloc] init];
+    for(int i = 0; i < self.symbols.length; i++) {
+        [e appendString:[NSString stringWithFormat:@"\\%c",[self.symbols characterAtIndex:i]]];
+    }
+    self.escapedSymbols = e;
 
 }
 

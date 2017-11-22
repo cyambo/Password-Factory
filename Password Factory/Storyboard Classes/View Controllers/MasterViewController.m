@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSString *lastStoredPassword;
 @property (nonatomic, strong) PasswordStorage *storage;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
+@property (nonatomic, strong) NSRegularExpression *extendedCharacterRegex;
 @end
 
 @implementation MasterViewController
@@ -51,6 +52,10 @@
         self.stored = NO;
         self.storage = [PasswordStorage get];
         self.c = [PasswordFactoryConstants get];
+        NSString *regex = [NSString stringWithFormat:@"([^A-Za-z0-9%@])",self.c.escapedSymbols];
+        NSError *error;
+        self.extendedCharacterRegex = [[NSRegularExpression alloc] initWithPattern:regex options:NSRegularExpressionCaseInsensitive error:&error];
+        NSLog(@"ERROR %@",error.localizedDescription);
     }
     
     return self;
@@ -342,6 +347,15 @@
         return;
     }
     NSAttributedString *s = [Utilities colorText:currPassword size:self.currentFontSize];
+    
+    //don't run the check if we are hiding the warning
+    if(![[DefaultsManager standardDefaults] boolForKey:@"hideExtendedCharacterWarning"]) {
+        NSArray *m = [self.extendedCharacterRegex matchesInString:currPassword options:0 range:NSMakeRange(0, currPassword.length)];
+        if (m.count) {
+            [self.alertWindowController displayAlert:ExtendedCharacterWarning defaultsKey:@"hideExtendedCharacterWarning"];
+        }
+    }
+
     [self.passwordField setAttributedStringValue:s];
 }
 

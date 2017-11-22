@@ -90,5 +90,13 @@
 	<integer>100</integer>
 	<key>storedPasswordTableSelectedRow</key>
 	<integer>0</integer>
+	<key>hideExtendedCharacterWarning</key>
+	<false/>
+	<key>hideStartAtLoginNotInApplicationsWarning</key>
+	<false/>
+	<key>hideStoredPasswordOnWarning</key>
+	<false/>
+	<key>hideStoredPasswordOffWarning</key>
+	<false/>
 </dict>
 </plist>

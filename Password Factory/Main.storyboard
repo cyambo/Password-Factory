@@ -346,24 +346,41 @@ DQ
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Key Icon" id="X1k-0z-wks"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-57-KMQ">
+                                <rect key="frame" x="323" y="9" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rco-RH-wL6">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clickedCancel:" target="k3z-Af-ETS" id="JYQ-W7-u2c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="f5j-57-KMQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nBl-ch-DdQ" secondAttribute="trailing" constant="20" id="Daq-0t-AJ2"/>
                             <constraint firstAttribute="bottom" secondItem="Cyj-aH-bKQ" secondAttribute="bottom" constant="16" id="GB1-ks-Ru7"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FGz-4T-y11" secondAttribute="bottom" constant="54" id="Gw9-aj-Zb3"/>
                             <constraint firstItem="FGz-4T-y11" firstAttribute="leading" secondItem="mu8-Jj-zCt" secondAttribute="leading" constant="20" id="JqD-Kq-MXB"/>
                             <constraint firstItem="vUo-Ts-Dp2" firstAttribute="top" secondItem="mu8-Jj-zCt" secondAttribute="top" constant="20" id="N4p-wo-rnR"/>
+                            <constraint firstItem="f5j-57-KMQ" firstAttribute="centerY" secondItem="Cyj-aH-bKQ" secondAttribute="centerY" id="NIz-qx-KG3"/>
                             <constraint firstAttribute="bottom" secondItem="nBl-ch-DdQ" secondAttribute="bottom" constant="20" id="SM8-3A-2GZ"/>
                             <constraint firstItem="FGz-4T-y11" firstAttribute="top" secondItem="mu8-Jj-zCt" secondAttribute="top" constant="20" id="aIV-Hz-y4M"/>
                             <constraint firstAttribute="trailing" secondItem="Cyj-aH-bKQ" secondAttribute="trailing" constant="20" id="aJ8-FO-lBF"/>
                             <constraint firstItem="vUo-Ts-Dp2" firstAttribute="leading" secondItem="FGz-4T-y11" secondAttribute="trailing" constant="20" id="bsA-P1-Blf"/>
                             <constraint firstAttribute="trailing" secondItem="vUo-Ts-Dp2" secondAttribute="trailing" constant="20" id="itr-tu-gfz"/>
                             <constraint firstItem="nBl-ch-DdQ" firstAttribute="top" secondItem="vUo-Ts-Dp2" secondAttribute="bottom" constant="20" id="jNE-I9-9M2"/>
+                            <constraint firstItem="Cyj-aH-bKQ" firstAttribute="leading" secondItem="f5j-57-KMQ" secondAttribute="trailing" constant="20" id="lBQ-dx-6Va"/>
                             <constraint firstItem="nBl-ch-DdQ" firstAttribute="leading" secondItem="mu8-Jj-zCt" secondAttribute="leading" constant="20" id="ozh-1Y-4XD"/>
                             <constraint firstItem="Cyj-aH-bKQ" firstAttribute="top" secondItem="vUo-Ts-Dp2" secondAttribute="bottom" constant="17" id="pak-sG-sWh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="alertText" destination="vUo-Ts-Dp2" id="O58-K7-A08"/>
+                        <outlet property="cancelButton" destination="f5j-57-KMQ" id="39w-AL-Rcd"/>
                         <outlet property="hideCheckbox" destination="nBl-ch-DdQ" id="2xx-62-DDW"/>
                     </connections>
                 </viewController>
@@ -897,6 +914,7 @@ DQ
                         <outlet property="quitButton" destination="gTY-3a-D4r" id="8FU-Wz-683"/>
                         <outlet property="shortcutView" destination="a2T-my-TdI" id="voD-6B-A97"/>
                         <outlet property="soundSelector" destination="pP9-dW-q13" id="0yL-bg-cq3"/>
+                        <outlet property="storedPasswordCheckbox" destination="FFH-Ml-qNn" id="s6Y-Yy-or3"/>
                         <outlet property="symbolsColor" destination="LHi-qb-Klf" id="UhR-yl-VZz"/>
                         <outlet property="uppercaseTextColor" destination="Uj9-zk-COr" id="e1J-PK-ZKV"/>
                     </connections>

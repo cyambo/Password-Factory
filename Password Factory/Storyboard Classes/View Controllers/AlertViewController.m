@@ -22,10 +22,13 @@
 - (IBAction)changeHideCheckbox:(NSButton *)sender {
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     [d setBool:(sender.state == NSControlStateValueOn) forKey:self.defaultsKey];
-    
 }
 
 - (IBAction)clickedOK:(NSButton *)sender {
-    [self.currentWindow close];
+    [self.alertWindowController closeWindow:NO];
+}
+
+- (IBAction)clickedCancel:(NSButton *)sender {
+    [self.alertWindowController closeWindow:YES];
 }
 @end

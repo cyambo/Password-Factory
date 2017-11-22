@@ -119,12 +119,26 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 }
 
 - (IBAction)changeStoredPassword:(NSButton *)sender {
-    AppDelegate *d = [NSApplication sharedApplication].delegate;
-
+    AppDelegate *appDelegate = [NSApplication sharedApplication].delegate;
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
     if(sender.state == NSControlStateValueOn) {
-        [d.masterViewController enableStoredPasswords];
+        [appDelegate.masterViewController enableStoredPasswords];
+        [self.alertWindowController displayAlertWithBlock:StoredPasswordOnWarning defaultsKey:@"hideStoredPasswordOnWarning" closeBlock:^(BOOL cancelled) {
+            if(cancelled) {
+                [d setBool:NO forKey:@"storePasswords"];
+            } else {
+                [appDelegate.masterViewController enableStoredPasswords];
+            }
+        }];
+
     } else {
-        [d.masterViewController disableStoredPasswords];
+        [self.alertWindowController displayAlertWithBlock:StoredPasswordOffWarning defaultsKey:@"hideStoredPasswordOffWarning" closeBlock:^(BOOL cancelled) {
+            if(cancelled) {
+                [d setBool:YES forKey:@"storePasswords"];
+            } else {
+                [appDelegate.masterViewController disableStoredPasswords];
+            }
+        }];
     }
 }
 
@@ -252,12 +266,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             //check to see if app is in Applications because login items only work from there
             self.addToLoginItems.state = NSControlStateValueOff;
             [d setBool:NO forKey:@"addToLoginItems"];
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:@"OK"];
-            [alert setMessageText:@"Error"];
-            [alert setInformativeText:@"Password Factory must be installed in Applications to add to Login Items"];
-            [alert setAlertStyle:NSWarningAlertStyle];
-            [alert runModal];
+            [self.alertWindowController displayAlert:StartAtLoginNotInApplicationsWarning defaultsKey:@"hideStartAtLoginNotInApplicationsWarning"];
             return;
         }
     }
