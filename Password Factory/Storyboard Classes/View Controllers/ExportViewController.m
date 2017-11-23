@@ -144,7 +144,9 @@
     if(self.showType) {
         [output addObject:typeName];
     }
-    //TODO: escape password so that it doesnt break csv with commas
+    //escaping quotes so we don't break the csv file
+    password = [password stringByReplacingOccurrencesOfString:@"\"" withString:@"\"\""];
+    password = [NSString stringWithFormat:@"\"%@\"",password];
     [output addObject:password];
     if(self.showStrength) {
            [output addObject:strength];
