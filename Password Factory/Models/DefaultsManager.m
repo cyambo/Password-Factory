@@ -65,7 +65,7 @@ static NSDictionary *prefsPlist;
  */
 +(NSUserDefaults *)standardDefaults {
     NSUserDefaults *s = [DefaultsManager get].standardDefaults;
-    assert([s objectForKey:@"passwordLength"] != nil);
+//    assert([s objectForKey:@"passwordLength"] != nil);
     return s;
 }
 

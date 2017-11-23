@@ -94,9 +94,11 @@ extern NSString * const ShortWordsArchiveFilename;
 extern NSString * const WordsByLengthWordsArchiveFilename;
 extern NSString * const EmojiArchiveFilename;
 extern NSString * const ZoomFontName;
+
 extern NSString * const ExtendedCharacterWarning;
 extern NSString * const StartAtLoginNotInApplicationsWarning;
 extern NSString * const StoredPasswordOffWarning;
 extern NSString * const StoredPasswordOnWarning;
+extern NSString * const ResetToDefaultsWarning;
 #endif
 

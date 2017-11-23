@@ -51,5 +51,6 @@
 
 @property (weak) IBOutlet NSTextField *maxPasswordLength;
 @property (weak) AlertWindowController *alertWindowController;
+- (IBAction)resetToDefaults:(NSButton *)sender;
 
 @end

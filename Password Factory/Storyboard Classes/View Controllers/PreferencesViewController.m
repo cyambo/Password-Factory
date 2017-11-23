@@ -13,7 +13,7 @@
 #import "DefaultsManager.h"
 #import "constants.h"
 #import <ServiceManagement/ServiceManagement.h>
-
+#import "PasswordStorage.h"
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
@@ -338,5 +338,13 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  */
 -(void)updatedPrefs {
     [[DefaultsManager get] syncSharedDefaults];
+}
+- (IBAction)resetToDefaults:(NSButton *)sender {
+    [self.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:@"hideResetToDefaultsWarning" closeBlock:^(BOOL cancelled) {
+        if(!cancelled) {
+            [DefaultsManager restoreUserDefaults];
+            [[PasswordStorage get] deleteAllEntities];
+        }
+    }];
 }
 @end

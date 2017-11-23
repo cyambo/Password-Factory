@@ -442,11 +442,11 @@ Gw
             <objects>
                 <viewController storyboardIdentifier="PreferencesViewController" id="2B8-vP-6ly" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="J6I-It-7aA">
-                        <rect key="frame" x="0.0" y="0.0" width="276" height="739"/>
+                        <rect key="frame" x="0.0" y="0.0" width="566" height="739"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Menu Bar (changes require restart)" translatesAutoresizingMaskIntoConstraints="NO" id="cA6-cI-Ug0">
-                                <rect key="frame" x="17" y="97" width="244" height="83"/>
+                                <rect key="frame" x="19" y="411" width="244" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="gZt-DZ-wBf">
                                     <rect key="frame" x="1" y="1" width="242" height="67"/>
@@ -481,7 +481,7 @@ Gw
                                 </view>
                             </box>
                             <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Password Display" translatesAutoresizingMaskIntoConstraints="NO" id="5We-To-gMi">
-                                <rect key="frame" x="17" y="430" width="242" height="188"/>
+                                <rect key="frame" x="275" y="531" width="242" height="188"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="9gE-PN-3sU">
                                     <rect key="frame" x="1" y="1" width="240" height="172"/>
@@ -603,7 +603,7 @@ Gw
                                 </view>
                             </box>
                             <box fixedFrame="YES" title="Login Items" translatesAutoresizingMaskIntoConstraints="NO" id="Phv-jl-3mh">
-                                <rect key="frame" x="16" y="43" width="243" height="51"/>
+                                <rect key="frame" x="20" y="350" width="243" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="Suc-SW-GJr">
                                     <rect key="frame" x="2" y="2" width="239" height="34"/>
@@ -627,7 +627,7 @@ Gw
                                 </view>
                             </box>
                             <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Clipboard Handling" translatesAutoresizingMaskIntoConstraints="NO" id="xZI-u2-CgG">
-                                <rect key="frame" x="18" y="183" width="242" height="83"/>
+                                <rect key="frame" x="19" y="506" width="242" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="ir8-mr-ipm">
                                     <rect key="frame" x="1" y="1" width="240" height="67"/>
@@ -684,30 +684,8 @@ Gw
                                     </subviews>
                                 </view>
                             </box>
-                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-V4-dQq">
-                                <rect key="frame" x="233" y="14" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CV0-T1-coC">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="showHelp:" target="2B8-vP-6ly" id="G56-qe-oAa"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-3a-D4r" userLabel="Restart_Quit">
-                                <rect key="frame" x="19" y="14" width="192" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundRect" title="Quit" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4nW-sV-lzw">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="quitOrRestartApplication:" target="2B8-vP-6ly" id="bWL-QW-IK4"/>
-                                </connections>
-                            </button>
                             <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Generate and Copy Hotkey" translatesAutoresizingMaskIntoConstraints="NO" id="WGg-rs-2Jm">
-                                <rect key="frame" x="18" y="270" width="242" height="156"/>
+                                <rect key="frame" x="275" y="365" width="242" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="edb-dT-gmU">
                                     <rect key="frame" x="1" y="1" width="240" height="140"/>
@@ -816,15 +794,15 @@ Gw
                                     </subviews>
                                 </view>
                             </box>
-                            <box fixedFrame="YES" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="d1K-Oe-uwe">
-                                <rect key="frame" x="18" y="637" width="243" height="102"/>
+                            <box fixedFrame="YES" title="Global" translatesAutoresizingMaskIntoConstraints="NO" id="d1K-Oe-uwe">
+                                <rect key="frame" x="18" y="602" width="243" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="MJb-1X-s8W">
-                                    <rect key="frame" x="2" y="2" width="239" height="85"/>
+                                    <rect key="frame" x="2" y="2" width="239" height="100"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DOG-J5-c1L">
-                                            <rect key="frame" x="32" y="56" width="137" height="17"/>
+                                            <rect key="frame" x="32" y="71" width="137" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Max Password Length" id="N9h-OI-znS">
                                                 <font key="font" metaFont="system"/>
@@ -833,7 +811,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G9M-iD-qFg">
-                                            <rect key="frame" x="32" y="32" width="127" height="18"/>
+                                            <rect key="frame" x="32" y="47" width="127" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Enable Advanced" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IJi-PM-w1k">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -845,7 +823,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FFH-Ml-qNn">
-                                            <rect key="frame" x="32" y="6" width="123" height="18"/>
+                                            <rect key="frame" x="32" y="21" width="123" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Store Passwords" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="csI-G9-6cf">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -857,7 +835,7 @@ Gw
                                             </connections>
                                         </button>
                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-Wd-A8k">
-                                            <rect key="frame" x="216" y="50" width="19" height="27"/>
+                                            <rect key="frame" x="216" y="65" width="19" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <stepperCell key="cell" continuous="YES" alignment="left" minValue="6" maxValue="100" doubleValue="6" id="FaI-M1-zJi"/>
                                             <connections>
@@ -866,7 +844,7 @@ Gw
                                             </connections>
                                         </stepper>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBY-ph-p9a">
-                                            <rect key="frame" x="182" y="55" width="37" height="17"/>
+                                            <rect key="frame" x="182" y="70" width="37" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="iGF-yu-lbU">
                                                 <font key="font" metaFont="system"/>
@@ -878,7 +856,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TlR-35-7fX">
-                                            <rect key="frame" x="216" y="2" width="19" height="27"/>
+                                            <rect key="frame" x="216" y="17" width="19" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <stepperCell key="cell" continuous="YES" alignment="left" increment="5" minValue="10" maxValue="500" doubleValue="100" id="0gQ-yc-DI5"/>
                                             <connections>
@@ -888,7 +866,7 @@ Gw
                                             </connections>
                                         </stepper>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MOy-mQ-dx9" customClass="TextField">
-                                            <rect key="frame" x="182" y="7" width="37" height="17"/>
+                                            <rect key="frame" x="182" y="22" width="37" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="dKM-cE-VXT">
                                                 <font key="font" metaFont="system"/>
@@ -903,6 +881,49 @@ Gw
                                     </subviews>
                                 </view>
                             </box>
+                            <box fixedFrame="YES" title="Defaults" translatesAutoresizingMaskIntoConstraints="NO" id="54e-9a-guj">
+                                <rect key="frame" x="20" y="286" width="243" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="fZe-I4-cEZ">
+                                    <rect key="frame" x="2" y="2" width="239" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="94H-KT-sT1">
+                                            <rect key="frame" x="46" y="1" width="147" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Reset To Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lBz-g9-MVz">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="resetToDefaults:" target="2B8-vP-6ly" id="oTC-wi-mNp"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </box>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-V4-dQq">
+                                <rect key="frame" x="492" y="329" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CV0-T1-coC">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showHelp:" target="2B8-vP-6ly" id="G56-qe-oAa"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-3a-D4r" userLabel="Restart_Quit">
+                                <rect key="frame" x="278" y="329" width="192" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="roundRect" title="Quit" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4nW-sV-lzw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quitOrRestartApplication:" target="2B8-vP-6ly" id="bWL-QW-IK4"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -928,7 +949,7 @@ Gw
                 <customObject id="5A0-3l-x8K" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="DGa-ye-VaM"/>
             </objects>
-            <point key="canvasLocation" x="152" y="234.5"/>
+            <point key="canvasLocation" x="297" y="234.5"/>
         </scene>
         <!--Main Interface-->
         <scene sceneID="7wB-ic-Wgz">
