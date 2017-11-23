@@ -92,6 +92,9 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (change[@"new"] == [NSNull null]) {
+        return;
+    }
     //if the color password checkbox was changed update the display of the password field
     if ([keyPath isEqualToString:@"colorPasswordText"]) {
         self.colorPasswordText = [object boolForKey:keyPath];

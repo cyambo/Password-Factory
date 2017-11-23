@@ -21,6 +21,7 @@
 @property (nonatomic, weak) ZoomViewController *zoomViewController;
 @property (nonatomic, strong) NSWindowController *zoomWindowController;
 @property (nonatomic, strong) AlertWindowController *alertWindowController;
+@property (nonatomic, strong) NSWindowController *exportWindowController;
 - (IBAction)generatePasswordFromMenu:(id)sender;
 - (IBAction)selectTypeFromMenu:(NSMenuItem *)sender;
 - (IBAction)deleteStoredPassword:(NSMenuItem *)sender;
@@ -34,6 +35,7 @@
 @property (weak) IBOutlet NSMenuItem *storedMenuItem;
 
 
+- (IBAction)exportPasswords:(id)sender;
 - (IBAction)contactSupport:(id)sender;
 - (IBAction)menuCopy:(id)sender;
 - (IBAction)menuCut:(id)sender;

@@ -13,7 +13,6 @@
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    
     //setting min and max based upon the IBInspectable values
     if (self.minValue ) {
         self.minimum = @(self.minValue);

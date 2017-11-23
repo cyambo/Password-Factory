@@ -148,7 +148,7 @@
             break;
     }
     [self updatePasswordStrength];
-    if (self.delegate) {
+    if (self.delegate && !settings[@"noDisplay"]) {
         [self.delegate passwordChanged:self.password];
     }
     return self.password;
@@ -330,7 +330,8 @@
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     sourceType = (PFPasswordType)([d integerForKey:@"advancedSourceIndex"] + PFRandomType);
     //changing the prefix to the source type so that we get the proper settings
-    NSDictionary *sourceSettings = [self getPasswordSettingsByType:sourceType];
+    NSMutableDictionary *sourceSettings = [[self getPasswordSettingsByType:sourceType] mutableCopy];
+    sourceSettings[@"noDisplay"] = @(YES);
     NSString *password = [self generatePassword:sourceType withSettings:sourceSettings];
     
     settings[@"generatedPassword"] = password;
@@ -341,6 +342,7 @@
     NSString *post = [d stringForKey:@"advancedPostfixPattern"];
     if (pre.length || post.length) {
         NSMutableDictionary *patternSettings = [[self getPasswordSettingsByType:PFPatternType] mutableCopy];
+        patternSettings[@"noDisplay"] = @(YES);
         if(pre.length) {
             patternSettings[@"patternText"] = pre;
             settings[@"prefix"] = [self generatePassword:PFPatternType withSettings:patternSettings];

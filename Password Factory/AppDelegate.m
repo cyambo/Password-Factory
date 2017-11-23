@@ -13,6 +13,8 @@
 #import "StyleKit.h"
 #import "constants.h"
 #import "PasswordStorage.h"
+#import "ExportViewController.h"
+
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
@@ -27,8 +29,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-    [DefaultsManager restoreUserDefaults];
-    [[PasswordStorage get] deleteAllEntities];
+//    [DefaultsManager restoreUserDefaults];
+//    [[PasswordStorage get] deleteAllEntities];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
     NSWindowController *windowController;
@@ -53,6 +55,9 @@
     self.zoomViewController = (ZoomViewController *)self.zoomWindowController.window.contentViewController;
     //init alert window
     self.alertWindowController = (AlertWindowController *)[storyBoard instantiateControllerWithIdentifier:@"AlertWindowController"];
+    //set export window
+    self.exportWindowController = [storyBoard instantiateControllerWithIdentifier:@"ExportWindowController"];
+    
     //Set properties
     self.masterViewController.prefsWindowController = self.prefsWindowController;
     self.masterViewController.zoomWindowController = self.zoomWindowController;
@@ -210,7 +215,10 @@
     }
     return false;
 }
+-(IBAction)exportPasswords:(id)sender {
 
+    [self.exportWindowController showWindow:nil];
+}
 /**
  Sends an email to support
 

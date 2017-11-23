@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *password;
 + (instancetype)get:(BOOL)useShared;
 - (void)generatePassword:(PFPasswordType)type;
+- (NSString *)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings;
 - (void)setPasswordValue:(NSString *)passwordValue;
 - (NSString *)getPasswordValue;
 - (void)updatePasswordStrength;

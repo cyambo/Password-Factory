@@ -43,6 +43,7 @@
 		40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E0C1FBD1628005BD8F4 /* TypeIcons.m */; };
 		40855E0E1FBD2D10005BD8F4 /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
 		40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
+		40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40940E291FC6249300CA1261 /* ExportViewController.m */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
 		409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CD1B8112D600393B99 /* PreferencesWindowTestClass.m */; };
 		409585D31B8112D600393B99 /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CE1B8112D600393B99 /* PreferencesWindowTests.m */; };
@@ -214,6 +215,8 @@
 		40855E0B1FBD1628005BD8F4 /* TypeIcons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeIcons.h; sourceTree = "<group>"; };
 		40855E0C1FBD1628005BD8F4 /* TypeIcons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeIcons.m; sourceTree = "<group>"; };
 		408673D51F91D04B00C189AB /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = "Password Factory/constants.h"; sourceTree = "<group>"; };
+		40940E281FC6249300CA1261 /* ExportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportViewController.h; sourceTree = "<group>"; };
+		40940E291FC6249300CA1261 /* ExportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportViewController.m; sourceTree = "<group>"; };
 		409585CA1B8112D600393B99 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTests.m; sourceTree = "<group>"; };
 		409585CB1B8112D600393B99 /* PasswordFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactoryTests.m; sourceTree = "<group>"; };
 		409585CC1B8112D600393B99 /* PreferencesWindowTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowTestClass.h; sourceTree = "<group>"; };
@@ -713,6 +716,8 @@
 				40B9AD071FB0EC50003F7580 /* PasswordTypesViewController.m */,
 				40FB84161FC5F63E00474B94 /* AlertViewController.h */,
 				40FB84171FC5F63E00474B94 /* AlertViewController.m */,
+				40940E281FC6249300CA1261 /* ExportViewController.h */,
+				40940E291FC6249300CA1261 /* ExportViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1387,6 +1392,7 @@
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
+				40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,6 +66,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="SYN-6R-gn4">
                                     <items>
+                                        <menuItem title="Export" keyEquivalent="e" id="nGT-t3-L6C" userLabel="Export">
+                                            <connections>
+                                                <action selector="exportPasswords:" target="jrw-Le-21b" id="TGL-ng-x4P"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="mEB-Q2-vZQ"/>
                                         <menuItem title="Close" keyEquivalent="w" id="ig7-U6-Cin">
                                             <connections>
                                                 <action selector="performClose:" target="KmA-Lw-G8a" id="YiG-Fv-72a"/>
@@ -1547,6 +1553,165 @@ Gw
                 <userDefaultsController representsSharedInstance="YES" id="Mal-f5-XKJ"/>
             </objects>
             <point key="canvasLocation" x="-190.5" y="508"/>
+        </scene>
+        <!--Export Window Controller-->
+        <scene sceneID="S8b-SG-5Lc">
+            <objects>
+                <windowController storyboardIdentifier="ExportWindowController" id="77c-bs-EmC" userLabel="Export Window Controller" sceneMemberID="viewController">
+                    <window key="window" title="Export Passwords" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mFP-wr-Ley">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="362" width="260" height="156"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <value key="minSize" type="size" width="260" height="156"/>
+                        <value key="maxSize" type="size" width="260" height="156"/>
+                        <connections>
+                            <outlet property="delegate" destination="77c-bs-EmC" id="891-Cb-cor"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="GiG-PY-xiX" kind="relationship" relationship="window.shadowedContentViewController" id="0cB-cO-Blr"/>
+                    </connections>
+                </windowController>
+                <customObject id="KE4-JF-Nkd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1147" y="407"/>
+        </scene>
+        <!--Export View Controller-->
+        <scene sceneID="6HL-GO-WVi">
+            <objects>
+                <viewController id="GiG-PY-xiX" userLabel="Export View Controller" customClass="ExportViewController" sceneMemberID="viewController">
+                    <view key="view" id="Z2l-Cm-Vy1">
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="156"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MlY-Ey-cQY">
+                                <rect key="frame" x="18" y="117" width="79" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Export From" id="mUg-bF-p3S">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tLL-6u-arJ">
+                                <rect key="frame" x="101" y="112" width="142" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dUt-Lo-vFz" id="Rww-M8-JAO">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="huX-Y6-nk9">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="dUt-Lo-vFz"/>
+                                            <menuItem title="Item 2" id="9rY-TN-vff"/>
+                                            <menuItem title="Item 3" id="K59-Xx-KHm"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="changePasswordType:" target="GiG-PY-xiX" id="Ltd-Nq-Pir"/>
+                                </connections>
+                            </popUpButton>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6vx-T3-MiB">
+                                <rect key="frame" x="135" y="83" width="105" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="50" drawsBackground="YES" id="ju9-pF-tTs">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="formatter" destination="1HD-0l-K5T" id="VKV-CB-1jx"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9yR-k5-Xsq">
+                                <rect key="frame" x="18" y="86" width="111" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Amount to Export" id="aa9-4X-nbJ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S8L-f0-vLA">
+                                <rect key="frame" x="111" y="53" width="52" height="18"/>
+                                <buttonCell key="cell" type="check" title="Type" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="w9V-QS-HPR">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fe4-hn-qkx">
+                                <rect key="frame" x="167" y="53" width="75" height="18"/>
+                                <buttonCell key="cell" type="check" title="Strength" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Edx-7E-8uY">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qUJ-pQ-Jjb">
+                                <rect key="frame" x="166" y="13" width="80" height="32"/>
+                                <buttonCell key="cell" type="push" title="Export" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6pt-FV-Dxy">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="export:" target="GiG-PY-xiX" id="hYo-6f-0wS"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zBt-rh-uDC">
+                                <rect key="frame" x="18" y="54" width="89" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Info To Export" id="wSH-QR-alZ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="GQl-OV-mm2">
+                                <rect key="frame" x="20" y="23" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="GQl-OV-mm2" firstAttribute="centerY" secondItem="qUJ-pQ-Jjb" secondAttribute="centerY" id="5LA-wZ-iAC"/>
+                            <constraint firstItem="zBt-rh-uDC" firstAttribute="leading" secondItem="Z2l-Cm-Vy1" secondAttribute="leading" constant="20" id="7ML-sT-vUx"/>
+                            <constraint firstItem="qUJ-pQ-Jjb" firstAttribute="top" secondItem="Fe4-hn-qkx" secondAttribute="bottom" constant="14" id="B1L-Jd-8Mc"/>
+                            <constraint firstAttribute="trailing" secondItem="qUJ-pQ-Jjb" secondAttribute="trailing" constant="20" id="C6I-sN-TAo"/>
+                            <constraint firstItem="6vx-T3-MiB" firstAttribute="top" secondItem="tLL-6u-arJ" secondAttribute="bottom" constant="10" id="GuO-5s-YRD"/>
+                            <constraint firstAttribute="trailing" secondItem="Fe4-hn-qkx" secondAttribute="trailing" constant="20" id="NCb-nG-b2R"/>
+                            <constraint firstItem="Fe4-hn-qkx" firstAttribute="top" secondItem="6vx-T3-MiB" secondAttribute="bottom" constant="14" id="STL-N0-sII"/>
+                            <constraint firstAttribute="trailing" secondItem="6vx-T3-MiB" secondAttribute="trailing" constant="20" id="UpT-bc-qEt"/>
+                            <constraint firstItem="S8L-f0-vLA" firstAttribute="centerY" secondItem="Fe4-hn-qkx" secondAttribute="centerY" id="VuD-jA-ahi"/>
+                            <constraint firstItem="tLL-6u-arJ" firstAttribute="top" secondItem="Z2l-Cm-Vy1" secondAttribute="top" constant="20" id="YES-Vd-gCt"/>
+                            <constraint firstItem="MlY-Ey-cQY" firstAttribute="top" secondItem="Z2l-Cm-Vy1" secondAttribute="top" constant="22" id="Zff-HI-KGj"/>
+                            <constraint firstAttribute="bottom" secondItem="qUJ-pQ-Jjb" secondAttribute="bottom" constant="20" id="ZsJ-fQ-PXy"/>
+                            <constraint firstItem="Fe4-hn-qkx" firstAttribute="leading" secondItem="S8L-f0-vLA" secondAttribute="trailing" constant="8" id="a4s-Sd-I6N"/>
+                            <constraint firstItem="GQl-OV-mm2" firstAttribute="leading" secondItem="Z2l-Cm-Vy1" secondAttribute="leading" constant="20" id="c59-bW-5AP"/>
+                            <constraint firstItem="6vx-T3-MiB" firstAttribute="leading" secondItem="9yR-k5-Xsq" secondAttribute="trailing" constant="8" id="eo2-1K-FOW"/>
+                            <constraint firstItem="S8L-f0-vLA" firstAttribute="leading" secondItem="zBt-rh-uDC" secondAttribute="trailing" constant="8" id="irH-sk-omF"/>
+                            <constraint firstItem="tLL-6u-arJ" firstAttribute="leading" secondItem="MlY-Ey-cQY" secondAttribute="trailing" constant="8" id="jz0-jA-l5H"/>
+                            <constraint firstAttribute="trailing" secondItem="tLL-6u-arJ" secondAttribute="trailing" constant="20" id="oTn-q4-he0"/>
+                            <constraint firstItem="S8L-f0-vLA" firstAttribute="centerY" secondItem="zBt-rh-uDC" secondAttribute="centerY" id="p35-C0-6QA"/>
+                            <constraint firstItem="9yR-k5-Xsq" firstAttribute="leading" secondItem="Z2l-Cm-Vy1" secondAttribute="leading" constant="20" id="q6X-5n-hsG"/>
+                            <constraint firstItem="MlY-Ey-cQY" firstAttribute="leading" secondItem="Z2l-Cm-Vy1" secondAttribute="leading" constant="20" id="stQ-cS-UgJ"/>
+                            <constraint firstItem="6vx-T3-MiB" firstAttribute="centerY" secondItem="9yR-k5-Xsq" secondAttribute="centerY" id="znU-n4-coc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="exportAmount" destination="6vx-T3-MiB" id="sEc-yK-1GX"/>
+                        <outlet property="exportButton" destination="qUJ-pQ-Jjb" id="dG7-HW-rUs"/>
+                        <outlet property="exportStrength" destination="Fe4-hn-qkx" id="sYf-2V-2xw"/>
+                        <outlet property="exportType" destination="S8L-f0-vLA" id="teN-vN-Nq2"/>
+                        <outlet property="passwordTypes" destination="tLL-6u-arJ" id="ttZ-y0-VOv"/>
+                        <outlet property="progress" destination="GQl-OV-mm2" id="fZq-JA-0hX"/>
+                    </connections>
+                </viewController>
+                <customObject id="163-in-ebw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="1HD-0l-K5T" customClass="OnlyIntegerFormatter">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                            <integer key="value" value="9999"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="-1147" y="698"/>
         </scene>
         <!--Pronounceable Password-->
         <scene sceneID="KiR-NM-WPk">

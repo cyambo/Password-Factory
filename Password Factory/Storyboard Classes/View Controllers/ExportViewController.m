@@ -1,0 +1,161 @@
+//
+//  ExportViewController.m
+//  Password Factory
+//
+//  Created by Cristiana Yambo on 11/22/17.
+//  Copyright © 2017 Cristiana Yambo. All rights reserved.
+//
+
+#import "ExportViewController.h"
+#import "PasswordController.h"
+#import "constants.h"
+#import "PasswordStorage.h"
+
+@interface ExportViewController ()
+@property (nonatomic, strong) NSOperationQueue *queue;
+@property (nonatomic, assign) BOOL showType;
+@property (nonatomic, assign) BOOL showStrength;
+
+@end
+
+@implementation ExportViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do view setup here.
+}
+-(void)viewWillAppear {
+    NSDictionary *types = [[PasswordController get:NO] getFilteredPasswordTypes];
+    NSArray *keys = [[types allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    [self.passwordTypes removeAllItems];
+    for(int i = 0; i < keys.count; i++) {
+        PFPasswordType t = [(NSNumber *)keys[i] integerValue];
+        NSString *name = types[keys[i]];
+        [self.passwordTypes addItemWithTitle:name];
+        [self.passwordTypes itemAtIndex:i].tag = t;
+    }
+    [self.progress stopAnimation:nil];
+    self.queue = [[NSOperationQueue alloc] init];
+    
+}
+- (IBAction)export:(NSButton *)sender {
+    if (self.queue.operations.firstObject) {
+        //already running an export, so cancel
+        [self.queue cancelAllOperations];
+
+        [self.exportButton setTitle:@"Export"];
+    } else {
+        NSSavePanel *panel = [NSSavePanel savePanel];
+        panel.allowedFileTypes = @[@"csv"];
+        NSInteger clicked = [panel runModal];
+
+        if (clicked == NSFileHandlingPanelOKButton) {
+            [self.exportButton setTitle:@"Cancel"];
+            NSString *path = panel.URL.path;
+            if ([[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil]) {
+                __block NSOutputStream *stream = [[NSOutputStream alloc] initToFileAtPath:path append:YES];
+                [stream open];
+                PFPasswordType type = self.passwordTypes.selectedItem.tag;
+                NSUInteger amount = [self.exportAmount integerValue];
+                self.showType = self.exportType.state == NSControlStateValueOn;
+                self.showStrength = self.exportStrength.state == NSControlStateValueOn;
+                [self.progress startAnimation:nil];
+                if (type != PFStoredType) {
+                    [self generatePasswords:type stream:stream amount:amount];
+                } else {
+                    [self exportStored:stream];
+                }
+            } else {
+                //TODO: show error
+                NSLog(@"COULDNT SAVE PASSWORD ERROR");
+            }
+
+        }
+
+    }
+
+}
+-(void)exportStored:(NSOutputStream *)stream {
+    __block PasswordStorage *storage = [PasswordStorage get];
+    __block PasswordController *pvc = [PasswordController get:NO];
+    __block ExportViewController *s = self;
+    __block NSOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+        //write header line
+        [s writeStringToStream:stream string:[s getCSVLine:@"Password" typeName:@"Type" strength:@"Strength"]];
+        for(int i = 0; i < [storage count]; i++) {
+            if ([op isCancelled]) { //stop if we are cancelled
+                break;
+            }
+            Passwords *p = [storage passwordAtIndex:i];
+            if (p.password != nil) {
+                NSString *strength = [[NSNumber numberWithInteger:(int)p.strength] stringValue];
+                NSString *typeName = [pvc getNameForPasswordType:(PFPasswordType)p.type];
+                [s writeStringToStream:stream string:[s getCSVLine:p.password typeName:typeName strength:strength]];
+            }
+        }
+        [stream close];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [s.exportButton setTitle:@"Export"];
+            [s.progress stopAnimation:nil];
+        });
+    }];
+    
+    [self.queue addOperation:op];
+}
+-(void)generatePasswords:(PFPasswordType)type stream:(NSOutputStream *)stream amount:(NSInteger)amount {
+    __block PasswordController *p = [PasswordController get:NO];
+    NSString *typeName = [p getNameForPasswordType:type];
+    __block NSMutableDictionary *settings = [[p getPasswordSettingsByType:type] mutableCopy];
+    settings[@"noDisplay"] = @(YES);
+    __block ExportViewController *s = self;
+    __block NSOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+        //write header line
+        [s writeStringToStream:stream string:[s getCSVLine:@"Password" typeName:@"Type" strength:@"Strength"]];
+        for(int i = 0; i < amount; i++) {
+            if ([op isCancelled]) { //stop if we are cancelled
+                break;
+            }
+            
+            [p generatePassword:type withSettings:settings];
+            NSString *strength = [[NSNumber numberWithInteger:(int)[p getPasswordStrength]] stringValue];
+            [s writeStringToStream:stream string:[s getCSVLine:p.password typeName:typeName strength:strength]];
+            
+            if (type == PFAdvancedType) {
+                //get new settings every time for advanced type
+                settings = [[p getPasswordSettingsByType:type] mutableCopy];
+                settings[@"noDisplay"] = @(YES);
+            }
+        }
+        [stream close];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [s.exportButton setTitle:@"Export"];
+            [s.progress stopAnimation:nil];
+        });
+    }];
+    
+    [self.queue addOperation:op];
+}
+-(void)writeStringToStream:(NSOutputStream *)stream string:(NSString *)string {
+    NSData *data = [string dataUsingEncoding:NSUTF16StringEncoding];
+    [stream write:[data bytes] maxLength:data.length];
+}
+-(NSString *)getCSVLine:(NSString *)password typeName:(NSString *)typeName strength:(NSString *)strength {
+    NSMutableArray *output = [[NSMutableArray alloc] init];
+    if(self.showType) {
+        [output addObject:typeName];
+    }
+    //TODO: escape password so that it doesnt break csv with commas
+    [output addObject:password];
+    if(self.showStrength) {
+           [output addObject:strength];
+    }
+    return [NSString stringWithFormat:@"%@\n",[output componentsJoinedByString:@","]];
+}
+- (IBAction)changePasswordType:(NSPopUpButton *)sender {
+    if(self.passwordTypes.selectedItem.tag == PFStoredType) {
+        [self.exportAmount setEnabled:NO];
+    } else {
+        [self.exportAmount setEnabled:YES];
+    }
+}
+@end
