@@ -356,7 +356,7 @@
     if(![[DefaultsManager standardDefaults] boolForKey:@"hideExtendedCharacterWarning"]) {
         NSArray *m = [self.extendedCharacterRegex matchesInString:currPassword options:0 range:NSMakeRange(0, currPassword.length)];
         if (m.count) {
-            [self.alertWindowController displayAlert:ExtendedCharacterWarning defaultsKey:@"hideExtendedCharacterWarning"];
+            [self.alertWindowController displayAlert:ExtendedCharacterWarning defaultsKey:@"hideExtendedCharacterWarning" window:self.view.window];
         }
     }
 

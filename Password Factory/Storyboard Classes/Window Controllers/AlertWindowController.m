@@ -27,15 +27,14 @@
  @param alert Alert to show
  @param defaultsKey key to check in defaults that will show and hide alert (if nil it will hide the checkbox to hide the alert)
  */
--(void)displayAlert:(NSString *)alert defaultsKey:(NSString *)defaultsKey {
-    [self displayAlertWithBlock:alert defaultsKey:defaultsKey closeBlock:nil];
+-(void)displayAlert:(NSString *)alert defaultsKey:(NSString *)defaultsKey window:(NSWindow *)window {
+    [self displayAlertWithBlock:alert defaultsKey:defaultsKey window:window closeBlock:nil];
 }
--(void)displayAlertWithBlock:(NSString *)alert defaultsKey:(NSString *)defaultsKey closeBlock:(void (^)(BOOL cancelled))closeBlock {
+-(void)displayAlertWithBlock:(NSString *)alert defaultsKey:(NSString *)defaultsKey window:(NSWindow *)window closeBlock:(void (^)(BOOL cancelled))closeBlock {
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     //check to see if we want it hidden
     if (defaultsKey == nil || ![d boolForKey:defaultsKey]) {
         AlertViewController *a = (AlertViewController *)self.contentViewController;
-        [a.cancelButton setHidden:YES];
         [a.alertText setStringValue:alert];
         a.defaultsKey = defaultsKey;
         a.alertWindowController = self;
@@ -45,7 +44,7 @@
         } else {
             [a.cancelButton setHidden:YES];
         }
-        [NSApp runModalForWindow:self.window];
+        [window beginSheet:self.window completionHandler:nil];
     }
     //hidden, so do nothing
     

@@ -123,7 +123,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     if(sender.state == NSControlStateValueOn) {
         [appDelegate.masterViewController enableStoredPasswords];
-        [self.alertWindowController displayAlertWithBlock:StoredPasswordOnWarning defaultsKey:@"hideStoredPasswordOnWarning" closeBlock:^(BOOL cancelled) {
+        [self.alertWindowController displayAlertWithBlock:StoredPasswordOnWarning defaultsKey:@"hideStoredPasswordOnWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
             if(cancelled) {
                 [d setBool:NO forKey:@"storePasswords"];
             } else {
@@ -132,7 +132,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         }];
 
     } else {
-        [self.alertWindowController displayAlertWithBlock:StoredPasswordOffWarning defaultsKey:@"hideStoredPasswordOffWarning" closeBlock:^(BOOL cancelled) {
+        [self.alertWindowController displayAlertWithBlock:StoredPasswordOffWarning defaultsKey:@"hideStoredPasswordOffWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
             if(cancelled) {
                 [d setBool:YES forKey:@"storePasswords"];
             } else {
@@ -266,7 +266,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             //check to see if app is in Applications because login items only work from there
             self.addToLoginItems.state = NSControlStateValueOff;
             [d setBool:NO forKey:@"addToLoginItems"];
-            [self.alertWindowController displayAlert:StartAtLoginNotInApplicationsWarning defaultsKey:@"hideStartAtLoginNotInApplicationsWarning"];
+            [self.alertWindowController displayAlert:StartAtLoginNotInApplicationsWarning defaultsKey:@"hideStartAtLoginNotInApplicationsWarning" window:self.view.window];
             return;
         }
     }
@@ -346,7 +346,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  @param sender default sender
  */
 - (IBAction)resetToDefaults:(NSButton *)sender {
-    [self.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:nil closeBlock:^(BOOL cancelled) {
+    [self.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
             [DefaultsManager restoreUserDefaults];
             [[PasswordStorage get] deleteAllEntities];
@@ -355,7 +355,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 }
 
 - (IBAction)resetAllDialogs:(NSButton *)sender {
-    [self.alertWindowController displayAlertWithBlock:ResetAllDialogsWarning defaultsKey:nil closeBlock:^(BOOL cancelled) {
+    [self.alertWindowController displayAlertWithBlock:ResetAllDialogsWarning defaultsKey:nil  window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
             [[DefaultsManager get] resetDialogs];
         }
