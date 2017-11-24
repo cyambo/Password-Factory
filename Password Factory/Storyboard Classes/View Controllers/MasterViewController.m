@@ -138,6 +138,10 @@
     }
 
 }
+
+/**
+ Loads the types for the types table
+ */
 -(void)loadTypes {
     if(self.passwordTypesTable) {
         [self.passwordTypesTable reloadData];
@@ -148,7 +152,6 @@
             PFPasswordType type = [self.password getPasswordTypeByIndex:i];
             [self.passwordTypeControl setImage:[TypeIcons getAlternateTypeIcon:type] forSegment:i];
             [self.passwordTypeControl setWidth:48.0 forSegment:i];
-//            [self.passwordTypeControl setLabel:[self.password getNameForPasswordType:type]  forSegment:i];
         }
     }
 }
@@ -356,7 +359,8 @@
     if(![[DefaultsManager standardDefaults] boolForKey:@"hideExtendedCharacterWarning"]) {
         NSArray *m = [self.extendedCharacterRegex matchesInString:currPassword options:0 range:NSMakeRange(0, currPassword.length)];
         if (m.count) {
-            [self.alertWindowController displayAlert:ExtendedCharacterWarning defaultsKey:@"hideExtendedCharacterWarning" window:self.view.window];
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.alertWindowController displayAlert:ExtendedCharacterWarning defaultsKey:@"hideExtendedCharacterWarning" window:self.view.window];
         }
     }
 
@@ -477,6 +481,10 @@
 
 }
 #pragma mark Password Storage
+
+/**
+ Sets the timer that will run and determine if the password was changed
+ */
 -(void)setStorePasswordTimer {
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     if ([d boolForKey:@"storePasswords"]) {
@@ -488,6 +496,10 @@
     }
 
 }
+
+/**
+ Stops store password timer
+ */
 -(void)unsetStorePasswordTimer {
     if (self.passwordCheckTimer) {
         [self.passwordCheckTimer invalidate];
@@ -506,9 +518,17 @@
         }
     }
 }
+
+/**
+ Enable stored passwords
+ */
 -(void)enableStoredPasswords {
     [self setStorePasswordTimer];
 }
+
+/**
+ Disable stored passwords
+ */
 -(void)disableStoredPasswords {
     [self unsetStorePasswordTimer];
     [self.storage deleteAllEntities];
@@ -534,6 +554,10 @@
         self.stored = YES;
     }
 }
+
+/**
+ Deletes selected stored password
+ */
 -(void)deleteStoredPassword {
     PFPasswordType currType = [self getSelectedPasswordType];
     if (currType == PFStoredType) {
@@ -547,6 +571,11 @@
     }
 }
 
+/**
+ Called when types segmented control is changed (used when in a menu app)
+
+ @param sender default sender
+ */
 - (IBAction)changePasswordTypeControl:(NSSegmentedControl *)sender {
     [self changeSelectionTypeByIndex:sender.selectedSegment];
 }

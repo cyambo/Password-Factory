@@ -10,7 +10,6 @@
 #import "constants.h"
 #import "PreferencesViewController.h"
 #import "ZoomViewController.h"
-#import "AlertWindowController.h"
 #import "StrengthMeter.h"
 #import "PasswordController.h"
 
@@ -38,7 +37,7 @@
 
 @property (nonatomic, weak) NSWindowController *prefsWindowController;
 @property (nonatomic, weak) NSWindowController *zoomWindowController;
-@property (nonatomic, weak) AlertWindowController *alertWindowController;
+
 
 - (IBAction)loadPreferencesWindow:(id)sender;
 @property (weak) IBOutlet NSButton *loadPreferencesButton;

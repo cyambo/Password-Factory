@@ -9,27 +9,32 @@
 #import "AlertWindowController.h"
 #import "DefaultsManager.h"
 #import "AlertViewController.h"
+#import "PreferencesWindow.h"
 @interface AlertWindowController ()
 @property (nonatomic, copy) void (^closeBlock)(BOOL cancelled);
 @end
 
 @implementation AlertWindowController
 
-- (void)windowDidLoad {
-    [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-}
-
 /**
  Displays the alert message if we did not explicitly turn it off
 
- @param alert Alert to show
- @param defaultsKey key to check in defaults that will show and hide alert (if nil it will hide the checkbox to hide the alert)
+ @param alert alert message to show
+ @param defaultsKey  key to check in defaults that will show and hide alert (if nil it will hide the checkbox to hide the alert)
+ @param window window to show sheet on
  */
 -(void)displayAlert:(NSString *)alert defaultsKey:(NSString *)defaultsKey window:(NSWindow *)window {
     [self displayAlertWithBlock:alert defaultsKey:defaultsKey window:window closeBlock:nil];
 }
+
+/**
+ Displays the alert message if we did not explicitly turn it off
+ 
+ @param alert alert message to show
+ @param defaultsKey  key to check in defaults that will show and hide alert (if nil it will hide the checkbox to hide the alert)
+ @param window window to show sheet on
+ @param closeBlock block that is called on close, will send YES if the operation was cancelled
+ */
 -(void)displayAlertWithBlock:(NSString *)alert defaultsKey:(NSString *)defaultsKey window:(NSWindow *)window closeBlock:(void (^)(BOOL cancelled))closeBlock {
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     //check to see if we want it hidden
@@ -44,7 +49,13 @@
         } else {
             [a.cancelButton setHidden:YES];
         }
-        [window beginSheet:self.window completionHandler:nil];
+        if (![d boolForKey:@"isMenuApp"] || [window isKindOfClass:[PreferencesWindow class]]) {
+            [window beginSheet:self.window completionHandler:nil];
+        } else {
+            [self showWindow:nil];
+            [self.window makeKeyAndOrderFront:nil];
+        }
+        
     }
     //hidden, so do nothing
     

@@ -26,15 +26,30 @@
     }
 }
 
+/**
+ Called when the hide checkbox is updated
+
+ @param sender default sender
+ */
 - (IBAction)changeHideCheckbox:(NSButton *)sender {
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     [d setBool:(sender.state == NSControlStateValueOn) forKey:self.defaultsKey];
 }
 
+/**
+ Clicked OK and closes window
+
+ @param sender default sender
+ */
 - (IBAction)clickedOK:(NSButton *)sender {
     [self.alertWindowController closeWindow:NO];
 }
 
+/**
+ Clicked cancel and closes window
+ 
+ @param sender default sender
+ */
 - (IBAction)clickedCancel:(NSButton *)sender {
     [self.alertWindowController closeWindow:YES];
 }

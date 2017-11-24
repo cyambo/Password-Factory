@@ -154,11 +154,6 @@
     }
 }
 
-
-
-
-
-
 /**
  Called when length slider is updated and sets all related length values
 

@@ -19,8 +19,6 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
 @implementation PreferencesViewController
 
-
-
 -(instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     [self setObservers];
@@ -118,12 +116,17 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     }
 }
 
+/**
+ Disables or enables password storage
+
+ @param sender default sender
+ */
 - (IBAction)changeStoredPassword:(NSButton *)sender {
     AppDelegate *appDelegate = [NSApplication sharedApplication].delegate;
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     if(sender.state == NSControlStateValueOn) {
         [appDelegate.masterViewController enableStoredPasswords];
-        [self.alertWindowController displayAlertWithBlock:StoredPasswordOnWarning defaultsKey:@"hideStoredPasswordOnWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
+        [appDelegate.alertWindowController displayAlertWithBlock:StoredPasswordOnWarning defaultsKey:@"hideStoredPasswordOnWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
             if(cancelled) {
                 [d setBool:NO forKey:@"storePasswords"];
             } else {
@@ -132,7 +135,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         }];
 
     } else {
-        [self.alertWindowController displayAlertWithBlock:StoredPasswordOffWarning defaultsKey:@"hideStoredPasswordOffWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
+        [appDelegate.alertWindowController displayAlertWithBlock:StoredPasswordOffWarning defaultsKey:@"hideStoredPasswordOffWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
             if(cancelled) {
                 [d setBool:YES forKey:@"storePasswords"];
             } else {
@@ -142,6 +145,11 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     }
 }
 
+/**
+ Called when checkboxes are updated
+
+ @param sender default sender
+ */
 - (IBAction)changeOptions:(id)sender {
     [self updatedPrefs];
 }
@@ -164,19 +172,25 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 - (IBAction)quitOrRestartApplication:(id)sender {
     if ([self.quitButton.title isEqualToString:@"Restart"]) {
         //Restart the app if any of the menu checkboxes were changed
-        NSURL *u = [[NSURL alloc] initFileURLWithPath:NSBundle.mainBundle.resourcePath];
-        NSString *path = [[u URLByDeletingLastPathComponent] URLByDeletingLastPathComponent].absoluteString;
-        
-        NSTask *t = [[NSTask alloc] init];
-        t.launchPath = @"/usr/bin/open";
-        t.arguments = @[path];
-        [t launch];
-        exit(0);
+        [self restartApplication];
     }
     //Quit the app if the checkbox state does not require a restart
     [[NSApplication sharedApplication] terminate:nil];
 }
 
+/**
+ Restarts the application
+ */
+-(void)restartApplication {
+    NSURL *u = [[NSURL alloc] initFileURLWithPath:NSBundle.mainBundle.resourcePath];
+    NSString *path = [[u URLByDeletingLastPathComponent] URLByDeletingLastPathComponent].absoluteString;
+    
+    NSTask *t = [[NSTask alloc] init];
+    t.launchPath = @"/usr/bin/open";
+    t.arguments = @[path];
+    [t launch];
+    exit(0);
+}
 /**
  Called whenever the checkboxes controlling the menu bar state are called
 
@@ -266,7 +280,8 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             //check to see if app is in Applications because login items only work from there
             self.addToLoginItems.state = NSControlStateValueOff;
             [d setBool:NO forKey:@"addToLoginItems"];
-            [self.alertWindowController displayAlert:StartAtLoginNotInApplicationsWarning defaultsKey:@"hideStartAtLoginNotInApplicationsWarning" window:self.view.window];
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.alertWindowController displayAlert:StartAtLoginNotInApplicationsWarning defaultsKey:@"hideStartAtLoginNotInApplicationsWarning" window:self.view.window];
             return;
         }
     }
@@ -303,10 +318,22 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
     [self updatedPrefs];
 }
+
+/**
+ Checks to see if the app is in the Applications directory
+
+ @return YES if it is in /Applications
+ */
 -(BOOL)isInApplicationsDirectory {
     NSArray *applicationPath = [[[[NSProcessInfo processInfo] arguments] objectAtIndex:0] pathComponents];
     return [applicationPath[1] isEqualToString:@"Applications"];
 }
+
+/**
+ Checks to see if the app is already a login item
+
+ @return YES if it is a login item
+ */
 -(BOOL) isLoginItem {
     // the easy and sane method (SMJobCopyDictionary) can pose problems when sandboxed. -_-
     CFArrayRef cfJobDicts = SMCopyAllJobDictionaries(kSMDomainUserLaunchd);
@@ -346,16 +373,25 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  @param sender default sender
  */
 - (IBAction)resetToDefaults:(NSButton *)sender {
-    [self.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
+    AppDelegate *d = [NSApplication sharedApplication].delegate;
+    [d.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
             [DefaultsManager restoreUserDefaults];
             [[PasswordStorage get] deleteAllEntities];
+            //restart
+            [self restartApplication];
         }
     }];
 }
 
+/**
+ Resets all dialogs so that they will be shown
+
+ @param sender default sender
+ */
 - (IBAction)resetAllDialogs:(NSButton *)sender {
-    [self.alertWindowController displayAlertWithBlock:ResetAllDialogsWarning defaultsKey:nil  window:self.view.window closeBlock:^(BOOL cancelled) {
+    AppDelegate *d = [NSApplication sharedApplication].delegate;
+    [d.alertWindowController displayAlertWithBlock:ResetAllDialogsWarning defaultsKey:nil  window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
             [[DefaultsManager get] resetDialogs];
         }

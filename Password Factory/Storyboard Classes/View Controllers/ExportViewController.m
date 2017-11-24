@@ -10,7 +10,7 @@
 #import "PasswordController.h"
 #import "constants.h"
 #import "PasswordStorage.h"
-
+#import "AppDelegate.h"
 @interface ExportViewController ()
 @property (nonatomic, strong) NSOperationQueue *queue;
 @property (nonatomic, assign) BOOL showType;
@@ -38,6 +38,12 @@
     self.queue = [[NSOperationQueue alloc] init];
     
 }
+
+/**
+ Exports passwords to disk
+
+ @param sender default sender
+ */
 - (IBAction)export:(NSButton *)sender {
     if (self.queue.operations.firstObject) {
         //already running an export, so cancel
@@ -66,8 +72,8 @@
                     [self exportStored:stream];
                 }
             } else {
-                //TODO: show error
-                NSLog(@"COULDNT SAVE PASSWORD ERROR");
+                AppDelegate *d = [NSApplication sharedApplication].delegate;
+                [d.alertWindowController displayAlert:PasswordSaveError defaultsKey:nil window:self.view.window];
             }
 
         }
@@ -75,6 +81,12 @@
     }
 
 }
+
+/**
+ Exports all passwords from storage
+
+ @param stream Stream to output to
+ */
 -(void)exportStored:(NSOutputStream *)stream {
     __block PasswordStorage *storage = [PasswordStorage get];
     __block PasswordController *pvc = [PasswordController get:NO];
@@ -102,6 +114,14 @@
     
     [self.queue addOperation:op];
 }
+
+/**
+ Generates passwords to be stored
+
+ @param type PFPasswordType
+ @param stream stream to output to
+ @param amount number of passwords to generate
+ */
 -(void)generatePasswords:(PFPasswordType)type stream:(NSOutputStream *)stream amount:(NSInteger)amount {
     __block PasswordController *p = [PasswordController get:NO];
     NSString *typeName = [p getNameForPasswordType:type];
@@ -135,12 +155,29 @@
     
     [self.queue addOperation:op];
 }
+
+/**
+ Writes a string to output stream
+
+ @param stream stream to output to
+ @param string string to output
+ */
 -(void)writeStringToStream:(NSOutputStream *)stream string:(NSString *)string {
     NSData *data = [string dataUsingEncoding:NSUTF16StringEncoding];
     [stream write:[data bytes] maxLength:data.length];
 }
+
+/**
+ Generates the CSV line for output, will hide and show Type and Strength columns based upon settings
+
+ @param password password to output
+ @param typeName type of the password
+ @param strength strength
+ @return CSV Line
+ */
 -(NSString *)getCSVLine:(NSString *)password typeName:(NSString *)typeName strength:(NSString *)strength {
     NSMutableArray *output = [[NSMutableArray alloc] init];
+    //show the type
     if(self.showType) {
         [output addObject:typeName];
     }
@@ -148,11 +185,18 @@
     password = [password stringByReplacingOccurrencesOfString:@"\"" withString:@"\"\""];
     password = [NSString stringWithFormat:@"\"%@\"",password];
     [output addObject:password];
+    //show the strength
     if(self.showStrength) {
            [output addObject:strength];
     }
     return [NSString stringWithFormat:@"%@\n",[output componentsJoinedByString:@","]];
 }
+
+/**
+ Called when password type is changed, will disable amount when stored is selected because all ae output
+
+ @param sender default sender
+ */
 - (IBAction)changePasswordType:(NSPopUpButton *)sender {
     if(self.passwordTypes.selectedItem.tag == PFStoredType) {
         [self.exportAmount setEnabled:NO];

@@ -420,7 +420,7 @@ Gw
         <scene sceneID="GJT-II-y8b">
             <objects>
                 <windowController storyboardIdentifier="PreferencesWindowController" id="65G-m9-MUQ" userLabel="Preferences Window" customClass="PreferencesWindowController" sceneMemberID="viewController">
-                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="PasswordFactoryPreferencesWindow" animationBehavior="default" id="oth-DO-Nbl" customClass="MainWindow">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="PasswordFactoryPreferencesWindow" animationBehavior="default" id="oth-DO-Nbl" customClass="PreferencesWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="610" y="362" width="212" height="149"/>
@@ -1590,7 +1590,7 @@ Gw
         <scene sceneID="S8b-SG-5Lc">
             <objects>
                 <windowController storyboardIdentifier="ExportWindowController" id="77c-bs-EmC" userLabel="Export Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="Export Passwords" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mFP-wr-Ley">
+                    <window key="window" title="Export Passwords" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mFP-wr-Ley" customClass="ExportWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="362" width="260" height="156"/>

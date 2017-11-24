@@ -77,7 +77,7 @@
 }
 
 /**
- Sets the size of the font and window for the password to be displayed
+ Sets the size of the font and window and displays the password
 
  @param password attributed string of current password
  */

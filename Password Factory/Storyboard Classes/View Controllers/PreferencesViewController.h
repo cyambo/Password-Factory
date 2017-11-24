@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <MASShortcut/Shortcut.h>
-#import "AlertWindowController.h"
+
 
 @interface PreferencesViewController : NSViewController <NSTextFieldDelegate>
 
@@ -50,7 +50,7 @@
 - (IBAction)changeLoginItem:(NSButton *)sender;
 
 @property (weak) IBOutlet NSTextField *maxPasswordLength;
-@property (weak) AlertWindowController *alertWindowController;
+
 - (IBAction)resetToDefaults:(NSButton *)sender;
 - (IBAction)resetAllDialogs:(NSButton *)sender;
 

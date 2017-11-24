@@ -101,6 +101,8 @@
 		40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
 		40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
+		40EC53031FC8A7ED007F6EFF /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */; };
+		40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53051FC8A804007F6EFF /* ExportWindow.m */; };
 		40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		40F07A8A1FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
@@ -299,6 +301,10 @@
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		40EC53011FC8A7ED007F6EFF /* PreferencesWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
+		40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
+		40EC53041FC8A804007F6EFF /* ExportWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportWindow.h; sourceTree = "<group>"; };
+		40EC53051FC8A804007F6EFF /* ExportWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportWindow.m; sourceTree = "<group>"; };
 		40F07A871FBBD23B008AFE29 /* PasswordStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordStorage.h; sourceTree = "<group>"; };
 		40F07A881FBBD23B008AFE29 /* PasswordStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordStorage.m; sourceTree = "<group>"; };
 		40FB0C1B1B810F10009193F8 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -586,8 +592,6 @@
 		40CBF1781FBD5D0D00048B0C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				40DFFEE21B811F470047CF90 /* MainWindow.h */,
-				40DFFEE31B811F470047CF90 /* MainWindow.m */,
 				402759B61FBE26B300B26F03 /* SecureRandom.h */,
 				402759B71FBE26B300B26F03 /* SecureRandom.m */,
 				40D428D81FBFBE310024965B /* Utilities.h */,
@@ -695,10 +699,16 @@
 		40FB841D1FC5F82B00474B94 /* Windows */ = {
 			isa = PBXGroup;
 			children = (
+				40DFFEE21B811F470047CF90 /* MainWindow.h */,
+				40DFFEE31B811F470047CF90 /* MainWindow.m */,
 				40AFC65C1FBB7D3600CB5BDA /* ZoomWindow.h */,
 				40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */,
 				40FB84191FC5F66A00474B94 /* AlertWindow.h */,
 				40FB841A1FC5F66A00474B94 /* AlertWindow.m */,
+				40EC53011FC8A7ED007F6EFF /* PreferencesWindow.h */,
+				40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */,
+				40EC53041FC8A804007F6EFF /* ExportWindow.h */,
+				40EC53051FC8A804007F6EFF /* ExportWindow.m */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -1380,6 +1390,7 @@
 				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,
 				40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */,
 				40A0A3B41FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld in Sources */,
+				40EC53031FC8A7ED007F6EFF /* PreferencesWindow.m in Sources */,
 				40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */,
 				4099B3DF1FAB839300CE826D /* TextField.m in Sources */,
 				404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */,
@@ -1390,6 +1401,7 @@
 				40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */,
 				40D428E21FBFD9D40024965B /* StoredPasswordTableView.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
+				40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */,
 				40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
 				40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */,
