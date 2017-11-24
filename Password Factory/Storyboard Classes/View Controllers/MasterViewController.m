@@ -92,6 +92,7 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    //don't do anything if the change is null
     if (change[@"new"] == [NSNull null]) {
         return;
     }

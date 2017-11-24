@@ -14,9 +14,16 @@
 
 @implementation AlertViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do view setup here.
+
+-(void)viewWillAppear {
+    [super viewWillAppear];
+    //hide the checkbox if the defaults key is nil
+    if(self.defaultsKey == nil) {
+        [self.hideCheckbox setHidden:YES];
+    } else {
+        [self.hideCheckbox setHidden:NO];
+        self.hideCheckbox.state = NSControlStateValueOff;
+    }
 }
 
 - (IBAction)changeHideCheckbox:(NSButton *)sender {

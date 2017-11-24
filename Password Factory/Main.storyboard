@@ -881,27 +881,6 @@ Gw
                                     </subviews>
                                 </view>
                             </box>
-                            <box fixedFrame="YES" title="Defaults" translatesAutoresizingMaskIntoConstraints="NO" id="54e-9a-guj">
-                                <rect key="frame" x="20" y="286" width="243" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" id="fZe-I4-cEZ">
-                                    <rect key="frame" x="2" y="2" width="239" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="94H-KT-sT1">
-                                            <rect key="frame" x="46" y="1" width="147" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="Reset To Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lBz-g9-MVz">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="resetToDefaults:" target="2B8-vP-6ly" id="oTC-wi-mNp"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </view>
-                            </box>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-V4-dQq">
                                 <rect key="frame" x="492" y="329" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -924,6 +903,38 @@ Gw
                                     <action selector="quitOrRestartApplication:" target="2B8-vP-6ly" id="bWL-QW-IK4"/>
                                 </connections>
                             </button>
+                            <box fixedFrame="YES" title="Defaults" translatesAutoresizingMaskIntoConstraints="NO" id="54e-9a-guj">
+                                <rect key="frame" x="20" y="255" width="243" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="fZe-I4-cEZ">
+                                    <rect key="frame" x="2" y="2" width="239" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="94H-KT-sT1">
+                                            <rect key="frame" x="46" y="28" width="147" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Reset To Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lBz-g9-MVz">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="resetToDefaults:" target="2B8-vP-6ly" id="oTC-wi-mNp"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iuF-b8-EqG">
+                                            <rect key="frame" x="6" y="-5" width="228" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Reset All Warnings and Dialogs" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8dP-2d-DZc">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="resetAllDialogs:" target="2B8-vP-6ly" id="eTR-0H-F4r"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </box>
                         </subviews>
                     </view>
                     <connections>

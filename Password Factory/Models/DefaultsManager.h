@@ -13,6 +13,7 @@
 +(NSUserDefaults *)sharedDefaults;
 +(NSUserDefaults *)standardDefaults;
 +(void)restoreUserDefaults;
+-(void)resetDialogs;
 -(void)syncSharedDefaults;
 @property (nonatomic, assign) BOOL useShared;
 - (void)enableShared:(BOOL)enable;

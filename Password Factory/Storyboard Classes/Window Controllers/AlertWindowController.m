@@ -25,7 +25,7 @@
  Displays the alert message if we did not explicitly turn it off
 
  @param alert Alert to show
- @param defaultsKey key to check in defaults that will show and hide alert
+ @param defaultsKey key to check in defaults that will show and hide alert (if nil it will hide the checkbox to hide the alert)
  */
 -(void)displayAlert:(NSString *)alert defaultsKey:(NSString *)defaultsKey {
     [self displayAlertWithBlock:alert defaultsKey:defaultsKey closeBlock:nil];
@@ -33,7 +33,7 @@
 -(void)displayAlertWithBlock:(NSString *)alert defaultsKey:(NSString *)defaultsKey closeBlock:(void (^)(BOOL cancelled))closeBlock {
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     //check to see if we want it hidden
-    if (![d boolForKey:defaultsKey]) {
+    if (defaultsKey == nil || ![d boolForKey:defaultsKey]) {
         AlertViewController *a = (AlertViewController *)self.contentViewController;
         [a.cancelButton setHidden:YES];
         [a.alertText setStringValue:alert];

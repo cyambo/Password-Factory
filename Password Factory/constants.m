@@ -18,3 +18,4 @@ NSString * const StartAtLoginNotInApplicationsWarning = @"Password Factory must 
 NSString * const StoredPasswordOffWarning = @"Turning off store passwords will delete all stored passwords";
 NSString * const StoredPasswordOnWarning = @"Stored passwords are not encrypted, keep that in mind when using this feature";
 NSString * const ResetToDefaultsWarning = @"This will restore all settings to their defaults and will delete all stored passwords";
+NSString * const ResetAllDialogsWarning = @"All previously hidden dialogs will now be shown";

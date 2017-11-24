@@ -79,7 +79,21 @@ static NSDictionary *prefsPlist;
     [[DefaultsManager get] getPrefsFromPlist:true];
 }
 
-
+/**
+ Sets all dialogs to be shown
+ */
+-(void)resetDialogs {
+    [self loadDefaultsPlist];
+    NSUserDefaults *d = [self standardDefaults];
+    //taking plist and finding the dialogs and resetting them to not hide
+    for (NSString *k in prefsPlist) {
+        //check to see if it has Warning as a suffix which all dialogs have
+        if ([k hasSuffix:@"Warning"]) {
+            [d setBool:NO forKey:k];
+        }
+    }
+    [self syncSharedDefaults];
+}
 /**
  Gets the key and adds 'Shared' if we are using shared
 

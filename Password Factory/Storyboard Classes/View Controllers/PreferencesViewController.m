@@ -339,11 +339,25 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 -(void)updatedPrefs {
     [[DefaultsManager get] syncSharedDefaults];
 }
+
+/**
+ Resets the defaults and stored password to defaultes
+
+ @param sender default sender
+ */
 - (IBAction)resetToDefaults:(NSButton *)sender {
-    [self.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:@"hideResetToDefaultsWarning" closeBlock:^(BOOL cancelled) {
+    [self.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:nil closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
             [DefaultsManager restoreUserDefaults];
             [[PasswordStorage get] deleteAllEntities];
+        }
+    }];
+}
+
+- (IBAction)resetAllDialogs:(NSButton *)sender {
+    [self.alertWindowController displayAlertWithBlock:ResetAllDialogsWarning defaultsKey:nil closeBlock:^(BOOL cancelled) {
+        if(!cancelled) {
+            [[DefaultsManager get] resetDialogs];
         }
     }];
 }
