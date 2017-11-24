@@ -45,23 +45,18 @@
         } else {
             [a.cancelButton setHidden:YES];
         }
-        [self showWindow:nil];
-        self.window.delegate = self;
-        [self.window makeKeyAndOrderFront:nil];
+        [NSApp runModalForWindow:self.window];
     }
     //hidden, so do nothing
     
 }
 -(void)closeWindow:(BOOL)cancelled {
+    [NSApp stopModal];
     if(self.closeBlock) {
         self.closeBlock(cancelled);
         self.closeBlock = nil;
     }
     [self.window close];
 }
--(void)windowWillClose:(NSNotification *)notification {
-    if(self.closeBlock) {
-        self.closeBlock(YES);
-    }
-}
+
 @end

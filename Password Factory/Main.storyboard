@@ -287,8 +287,8 @@ CA
         <scene sceneID="Zxe-yW-o90">
             <objects>
                 <windowController storyboardIdentifier="AlertWindowController" id="7qC-qW-QXA" userLabel="Alert Window" customClass="AlertWindowController" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="cJu-nB-lRo" customClass="AlertWindow">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="cJu-nB-lRo" customClass="AlertWindow">
+                        <windowStyleMask key="styleMask" titled="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="362" width="486" height="138"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>

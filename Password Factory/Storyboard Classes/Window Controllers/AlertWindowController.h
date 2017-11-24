@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AlertWindowController : NSWindowController <NSWindowDelegate>
+@interface AlertWindowController : NSWindowController
 -(void)displayAlert:(NSString *)alert defaultsKey:(NSString *)defaultsKey;
 -(void)displayAlertWithBlock:(NSString *)alert defaultsKey:(NSString *)defaultsKey closeBlock:(void (^)(BOOL cancelled))closeBlock;
 -(void)closeWindow:(BOOL)cancelled;
