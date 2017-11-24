@@ -432,7 +432,7 @@
         s = [s accentedCase:accent];
     }
     //checking the find regex
-    if(self.find && [self.find isKindOfClass:[NSRegularExpression class]]) {
+    if(self.find && [self.find isKindOfClass:[NSRegularExpression class]] && self.replace.length > 0) {
         //setting up the regex
         NSMutableString *replaced = [[NSMutableString alloc] initWithString:s];
         NSUInteger matches = [self.find replaceMatchesInString:replaced options:0 range:NSMakeRange(0,replaced.length) withTemplate:self.replace];

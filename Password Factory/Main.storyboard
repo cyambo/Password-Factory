@@ -1996,7 +1996,7 @@ Gw
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedPostfixPattern" id="Xcs-fa-oBW">
+                                    <binding destination="Uvy-Xc-7sE" name="value" keyPath="values.advancedSuffixPattern" id="VYg-O8-rVf">
                                         <dictionary key="options">
                                             <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                         </dictionary>
@@ -2088,7 +2088,7 @@ Gw
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nmy-fV-T6E">
                                 <rect key="frame" x="162" y="55" width="88" height="14"/>
-                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Postfix Pattern" id="vvk-Zz-FV6">
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Suffix Pattern" id="vvk-Zz-FV6">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2224,11 +2224,11 @@ Gw
                     <connections>
                         <outlet property="advancedAccentedCasePercentStepper" destination="D43-w1-kQS" id="nba-ae-Akg"/>
                         <outlet property="advancedFindRegex" destination="Roy-Ax-8H4" id="DLA-Eb-b3t"/>
-                        <outlet property="advancedPostfixPattern" destination="hdA-Lk-Dvd" id="mqp-ym-6bW"/>
                         <outlet property="advancedPrefixPattern" destination="iMf-WX-Iqn" id="BRw-1J-AsC"/>
                         <outlet property="advancedReplaceAmbiguous" destination="pTO-Xl-c8V" id="9Lr-kP-SGk"/>
                         <outlet property="advancedReplacePattern" destination="cZH-XC-Fp5" id="ou1-bW-P7R"/>
                         <outlet property="advancedSource" destination="d6t-j0-Y1w" id="tgh-1K-pwM"/>
+                        <outlet property="advancedSuffixPattern" destination="hdA-Lk-Dvd" id="mqp-ym-6bW"/>
                         <outlet property="advancedSymbolCasePercentStepper" destination="Vth-fo-hq8" id="u7A-ZH-VeR"/>
                         <outlet property="advancedTruncate" destination="9Dp-aA-vqM" id="lfA-w7-g3k"/>
                         <outlet property="advancedTruncateText" destination="XV9-cu-WIs" id="5uR-5a-JS9"/>

@@ -78,7 +78,7 @@
 	<false/>
 	<key>advancedPrefixPattern</key>
 	<string></string>
-	<key>advancedPostfixPattern</key>
+	<key>advancedSuffixPattern</key>
 	<string></string>
 	<key>advancedFindRegex</key>
 	<string></string>

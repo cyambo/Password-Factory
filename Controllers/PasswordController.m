@@ -339,7 +339,7 @@
     
     //generating the prefix and the postfix
     NSString *pre = [d stringForKey:@"advancedPrefixPattern"];
-    NSString *post = [d stringForKey:@"advancedPostfixPattern"];
+    NSString *post = [d stringForKey:@"advancedSuffixPattern"];
     if (pre.length || post.length) {
         NSMutableDictionary *patternSettings = [[self getPasswordSettingsByType:PFPatternType] mutableCopy];
         patternSettings[@"noDisplay"] = @(YES);
