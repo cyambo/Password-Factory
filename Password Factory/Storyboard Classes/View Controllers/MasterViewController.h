@@ -58,5 +58,10 @@
 - (IBAction)changePasswordTypeControl:(NSSegmentedControl *)sender;
 
 @property (weak) IBOutlet NSSegmentedControl *passwordTypeControl;
+@property (weak) IBOutlet NSButton *touchBarZoom;
+
+@property (weak) IBOutlet NSSegmentedControl *touchBarTypeControl;
+
+@property (strong) IBOutlet NSTouchBar *touchBar;
 
 @end

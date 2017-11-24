@@ -63,7 +63,10 @@
     [self.prefsViewController resetShortcutRegistration]; //setting up global shortcut when app launches
     [self.prefsViewController changeLoginItem:nil]; //set the login item to the current state
 
-    
+    //enable touchbar
+    if ([[NSApplication sharedApplication] respondsToSelector:@selector(isAutomaticCustomizeTouchBarMenuItemEnabled)]) {
+        [NSApplication sharedApplication].automaticCustomizeTouchBarMenuItemEnabled = YES;
+    }
     //doing magic for the app if it is in the menu
     if ([d boolForKey:@"isMenuApp"]) {
         //hiding the dock icon if specified

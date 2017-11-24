@@ -103,6 +103,7 @@
 		40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
 		40EC53031FC8A7ED007F6EFF /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */; };
 		40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53051FC8A804007F6EFF /* ExportWindow.m */; };
+		40EC53091FC8CED7007F6EFF /* TouchBarZoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53081FC8CED7007F6EFF /* TouchBarZoom.m */; };
 		40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		40F07A8A1FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
@@ -305,6 +306,8 @@
 		40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		40EC53041FC8A804007F6EFF /* ExportWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportWindow.h; sourceTree = "<group>"; };
 		40EC53051FC8A804007F6EFF /* ExportWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportWindow.m; sourceTree = "<group>"; };
+		40EC53071FC8CED7007F6EFF /* TouchBarZoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchBarZoom.h; sourceTree = "<group>"; };
+		40EC53081FC8CED7007F6EFF /* TouchBarZoom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchBarZoom.m; sourceTree = "<group>"; };
 		40F07A871FBBD23B008AFE29 /* PasswordStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordStorage.h; sourceTree = "<group>"; };
 		40F07A881FBBD23B008AFE29 /* PasswordStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordStorage.m; sourceTree = "<group>"; };
 		40FB0C1B1B810F10009193F8 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -471,6 +474,8 @@
 				40D428DD1FBFC8B10024965B /* ModeTextField.m */,
 				40D428E01FBFD9D40024965B /* StoredPasswordTableView.h */,
 				40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */,
+				40EC53071FC8CED7007F6EFF /* TouchBarZoom.h */,
+				40EC53081FC8CED7007F6EFF /* TouchBarZoom.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1380,6 +1385,7 @@
 				40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */,
 				4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */,
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
+				40EC53091FC8CED7007F6EFF /* TouchBarZoom.m in Sources */,
 				4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */,
 				4099B3DC1FAB7CB500CE826D /* PreferencesWindowController.m in Sources */,
 				40FB84181FC5F63E00474B94 /* AlertViewController.m in Sources */,

@@ -55,7 +55,6 @@
         NSString *regex = [NSString stringWithFormat:@"([^A-Za-z0-9%@])",self.c.escapedSymbols];
         NSError *error;
         self.extendedCharacterRegex = [[NSRegularExpression alloc] initWithPattern:regex options:NSRegularExpressionCaseInsensitive error:&error];
-        NSLog(@"ERROR %@",error.localizedDescription);
     }
     
     return self;
@@ -68,7 +67,6 @@
     [self setOptionalTypes];
     [self setStorePasswordTimer];
     [self loadTypes];
-
 }
 - (void)viewDidAppear {
     [self selectPaswordType:(PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"]];
@@ -146,13 +144,19 @@
     if(self.passwordTypesTable) {
         [self.passwordTypesTable reloadData];
     } else if (self.passwordTypeControl) {
-        NSUInteger count = [[self.password getFilteredPasswordTypes] count];
-        [self.passwordTypeControl setSegmentCount:count];
-        for(NSUInteger i = 0; i < count; i++) {
-            PFPasswordType type = [self.password getPasswordTypeByIndex:i];
-            [self.passwordTypeControl setImage:[TypeIcons getAlternateTypeIcon:type] forSegment:i];
-            [self.passwordTypeControl setWidth:48.0 forSegment:i];
-        }
+        [self setPasswordSegmentedControl:self.passwordTypeControl];
+    }
+    if (self.touchBarTypeControl) {
+        [self setPasswordSegmentedControl:self.touchBarTypeControl];
+    }
+}
+-(void)setPasswordSegmentedControl:(NSSegmentedControl *)control {
+    NSUInteger count = [[self.password getFilteredPasswordTypes] count];
+    [control setSegmentCount:count];
+    for(NSUInteger i = 0; i < count; i++) {
+        PFPasswordType type = [self.password getPasswordTypeByIndex:i];
+        [control setImage:[TypeIcons getAlternateTypeIcon:type] forSegment:i];
+        [control setWidth:48.0 forSegment:i];
     }
 }
 /**
@@ -577,7 +581,12 @@
  @param sender default sender
  */
 - (IBAction)changePasswordTypeControl:(NSSegmentedControl *)sender {
-    [self changeSelectionTypeByIndex:sender.selectedSegment];
+    if (self.passwordTypesTable) {
+        [self selectPaswordType:[self.password getPasswordTypeByIndex:sender.selectedSegment]];
+    } else {
+        [self changeSelectionTypeByIndex:sender.selectedSegment];
+    }
+    
 }
 
 /**
@@ -604,11 +613,13 @@
         NSArray *v = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[ptvc]|" options:0 metrics:nil views:views];
         [self.passwordView addConstraints:h];
         [self.passwordView addConstraints:v];
-
         [self generatePassword];
     }
     if(self.passwordTypeLabel) {
         [self.passwordTypeLabel setStringValue:[[self.password getNameForPasswordType:type] uppercaseString]];
+    }
+    if (self.touchBarTypeControl) {
+        [self.touchBarTypeControl setSelectedSegment:index];
     }
 }
 #pragma mark Table View
