@@ -16,4 +16,7 @@
 -(BOOL)canBecomeMainWindow {
     return YES;
 }
+-(NSTouchBar *)makeTouchBar {
+    return [self.contentViewController makeTouchBar];
+}
 @end

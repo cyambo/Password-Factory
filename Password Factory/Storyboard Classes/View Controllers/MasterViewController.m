@@ -20,7 +20,7 @@
 #import "TypeIcons.h"
 #import "Utilities.h"
 
-@interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, PasswordControllerDelegate>
+@interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, NSTouchBarDelegate, PasswordControllerDelegate>
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, assign) NSUInteger passwordLength;
@@ -152,6 +152,7 @@
 }
 -(void)setPasswordSegmentedControl:(NSSegmentedControl *)control {
     NSUInteger count = [[self.password getFilteredPasswordTypes] count];
+    //TODO: warning when segment count changes
     [control setSegmentCount:count];
     for(NSUInteger i = 0; i < count; i++) {
         PFPasswordType type = [self.password getPasswordTypeByIndex:i];
@@ -473,13 +474,17 @@
     if (currType == type && self.passwordView.subviews.count) {
         [self generatePassword];
     } else {
+        NSUInteger index = [self.password getIndexByPasswordType:type];
         if (self.passwordTypesTable) {
-            NSIndexSet *set = [NSIndexSet indexSetWithIndex:[self.password getIndexByPasswordType:type]];
+            NSIndexSet *set = [NSIndexSet indexSetWithIndex:index];
             [self.passwordTypesTable selectRowIndexes:set byExtendingSelection:false];
         } else if (self.passwordTypeControl) {
-            NSUInteger index = [self.password getIndexByPasswordType:type];
+            
             [self.passwordTypeControl setSelectedSegment:index];
             [self changeSelectionTypeByIndex:index];
+        }
+        if(self.touchBarTypeControl) {
+            [self.touchBarTypeControl setSelectedSegment:index];
         }
     }
 
@@ -637,5 +642,43 @@
     NSInteger row = self.passwordTypesTable.selectedRow;
     [self changeSelectionTypeByIndex:row];
 
+}
+#pragma mark NSTouchBarProvider
+
+// This window controller will have only one NSTouchBarItem instance, which is a simple label,
+// so to show that view controller bar can reside along side its window controller.
+//
+- (NSTouchBar *)makeTouchBar {
+    NSTouchBar *bar = [[NSTouchBar alloc] init];
+    bar.delegate = self;
+    
+    // Set the default ordering of items.
+    bar.defaultItemIdentifiers =
+    @[@"ZoomButton",@"TypeSelection"];
+    
+    return bar;
+}
+- (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier {
+    if ([identifier isEqualToString:@"ZoomButton"]) {
+        NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"ZoomButton"];
+        NSButton *button = [NSButton buttonWithTitle:@"Zoom"
+                                              target:self
+                                              action:@selector(zoomPassword:)];
+        button.image = [StyleKit imageOfZoomWithZoomStroke:[NSColor whiteColor]];
+        touchBarItem.view = button;
+        touchBarItem.customizationLabel = @"Zoom";
+        
+        return touchBarItem;
+    }
+    if ([identifier isEqualToString:@"TypeSelection"]) {
+        NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"TypeSelection"];
+        self.touchBarTypeControl = [[NSSegmentedControl alloc] init];
+        [self setPasswordSegmentedControl:self.touchBarTypeControl];
+        [self.touchBarTypeControl setAction:@selector(changePasswordTypeControl:)];
+        touchBarItem.view = self.touchBarTypeControl;
+        touchBarItem.customizationLabel = @"Select Type";
+        return touchBarItem;
+    }
+    return nil;
 }
 @end

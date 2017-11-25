@@ -14,6 +14,7 @@
 #import "constants.h"
 #import "PasswordStorage.h"
 #import "ExportViewController.h"
+#import "MainWindowController.h"
 
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
@@ -30,12 +31,17 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
     NSUserDefaults *d = [DefaultsManager standardDefaults];
+    //enable touchbar
+    if ([[NSApplication sharedApplication] respondsToSelector:@selector(isAutomaticCustomizeTouchBarMenuItemEnabled)]) {
+        [NSApplication sharedApplication].automaticCustomizeTouchBarMenuItemEnabled = YES;
+    }
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSWindowController *windowController;
+    MainWindowController *windowController;
     if (![d boolForKey:@"isMenuApp"]) {
         //load the main window controller if we are not a menu app
         windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
         self.masterViewController = (MasterViewController *)windowController.window.contentViewController;
+        self.masterViewController.touchBar = nil;
         self.currWindow = windowController.window;
     } else {
         //load the menu view controller if we are a menu app
@@ -63,10 +69,7 @@
     [self.prefsViewController resetShortcutRegistration]; //setting up global shortcut when app launches
     [self.prefsViewController changeLoginItem:nil]; //set the login item to the current state
 
-    //enable touchbar
-    if ([[NSApplication sharedApplication] respondsToSelector:@selector(isAutomaticCustomizeTouchBarMenuItemEnabled)]) {
-        [NSApplication sharedApplication].automaticCustomizeTouchBarMenuItemEnabled = YES;
-    }
+
     //doing magic for the app if it is in the menu
     if ([d boolForKey:@"isMenuApp"]) {
         //hiding the dock icon if specified

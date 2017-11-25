@@ -1,5 +1,5 @@
 //
-//  TouchBarZoom.h
+//  MainWindowController.h
 //  Password Factory
 //
 //  Created by Cristiana Yambo on 11/24/17.
@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TouchBarZoom : NSButton
+@interface MainWindowController : NSWindowController <NSTouchBarDelegate>
 
 @end

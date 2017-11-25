@@ -2,12 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13506"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
-        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -399,7 +397,7 @@ Gw
         <!--Main Window-->
         <scene sceneID="wYJ-g3-zNB">
             <objects>
-                <windowController storyboardIdentifier="MainWindowController" id="WOt-nU-SAU" userLabel="Main Window" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="MainWindowController" id="WOt-nU-SAU" userLabel="Main Window" customClass="MainWindowController" sceneMemberID="viewController">
                     <window key="window" title="Password Factory" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="PasswordFactoryMainWindow" animationBehavior="default" titlebarAppearsTransparent="YES" id="U5Z-KO-ffe" customClass="MainWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -1170,53 +1168,9 @@ Gw
                         <outlet property="passwordTypesTable" destination="6c5-Mk-eYC" id="0TL-TI-nnZ"/>
                         <outlet property="passwordView" destination="WbT-gw-Wm1" id="dsp-2h-gVF"/>
                         <outlet property="pasteboardButton" destination="T3Y-1N-efq" id="qcw-4J-Tsa"/>
-                        <outlet property="touchBar" destination="P7Y-oj-8rY" id="EQS-NT-LTv"/>
-                        <outlet property="touchBarTypeControl" destination="Zpn-Zz-QfE" id="KpM-0b-zUv"/>
-                        <outlet property="touchBarZoom" destination="FDQ-MY-Cv6" id="adh-Cl-Upi"/>
                     </connections>
                 </viewController>
                 <customObject id="nWj-xb-FxS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <touchBar id="P7Y-oj-8rY">
-                    <touchBarItems>
-                        <touchBarItem id="mqd-ei-qbo">
-                            <viewController key="viewController" id="091-r7-WO3">
-                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FDQ-MY-Cv6" customClass="TouchBarZoom">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Zoom" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Csq-0L-1vm" userLabel="Zoom">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" usesAppearanceFont="YES"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="zoomPassword:" target="BgG-3K-KOz" id="Xtj-Yf-vQc"/>
-                                    </connections>
-                                </button>
-                            </viewController>
-                            <size key="designTimeSize" width="72" height="30"/>
-                        </touchBarItem>
-                        <touchBarItem id="UND-Ls-iQu">
-                            <viewController key="viewController" id="Hfy-Zw-IXv">
-                                <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zpn-Zz-QfE">
-                                    <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="wNd-Oq-ZbM">
-                                        <font key="font" metaFont="system"/>
-                                        <segments>
-                                            <segment width="32"/>
-                                            <segment width="32" selected="YES" tag="1"/>
-                                            <segment width="32">
-                                                <nil key="label"/>
-                                            </segment>
-                                        </segments>
-                                    </segmentedCell>
-                                    <connections>
-                                        <action selector="changePasswordTypeControl:" target="BgG-3K-KOz" id="utG-ba-lQw"/>
-                                    </connections>
-                                </segmentedControl>
-                            </viewController>
-                        </touchBarItem>
-                    </touchBarItems>
-                </touchBar>
             </objects>
             <point key="canvasLocation" x="-538" y="1"/>
         </scene>
@@ -2557,12 +2511,12 @@ Gw
                                 </connections>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aCc-Xq-aX4">
-                                <rect key="frame" x="14" y="251" width="344" height="24"/>
+                                <rect key="frame" x="13" y="251" width="345" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="kwv-Js-aab">
                                     <font key="font" metaFont="system"/>
                                     <segments>
                                         <segment width="55"/>
-                                        <segment width="54" selected="YES" tag="1"/>
+                                        <segment width="55" tag="1"/>
                                         <segment/>
                                         <segment/>
                                         <segment/>

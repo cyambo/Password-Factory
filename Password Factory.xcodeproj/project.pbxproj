@@ -18,6 +18,7 @@
 		402759B81FBE26B300B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
 		402759B91FBE26B700B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
+		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		404B6D611FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
@@ -103,7 +104,6 @@
 		40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
 		40EC53031FC8A7ED007F6EFF /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */; };
 		40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53051FC8A804007F6EFF /* ExportWindow.m */; };
-		40EC53091FC8CED7007F6EFF /* TouchBarZoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53081FC8CED7007F6EFF /* TouchBarZoom.m */; };
 		40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		40F07A8A1FBBD23B008AFE29 /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB0C211B810F10009193F8 /* AppDelegate.m */; };
@@ -195,6 +195,8 @@
 		402759B61FBE26B300B26F03 /* SecureRandom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecureRandom.h; sourceTree = "<group>"; };
 		402759B71FBE26B300B26F03 /* SecureRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecureRandom.m; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		404B6D5E1FBE76CB00B281E5 /* NSString+UnicodeLength.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+UnicodeLength.h"; sourceTree = "<group>"; };
 		404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeLength.m"; sourceTree = "<group>"; };
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
@@ -306,8 +308,6 @@
 		40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		40EC53041FC8A804007F6EFF /* ExportWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportWindow.h; sourceTree = "<group>"; };
 		40EC53051FC8A804007F6EFF /* ExportWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportWindow.m; sourceTree = "<group>"; };
-		40EC53071FC8CED7007F6EFF /* TouchBarZoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchBarZoom.h; sourceTree = "<group>"; };
-		40EC53081FC8CED7007F6EFF /* TouchBarZoom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchBarZoom.m; sourceTree = "<group>"; };
 		40F07A871FBBD23B008AFE29 /* PasswordStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordStorage.h; sourceTree = "<group>"; };
 		40F07A881FBBD23B008AFE29 /* PasswordStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordStorage.m; sourceTree = "<group>"; };
 		40FB0C1B1B810F10009193F8 /* Password Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -474,8 +474,6 @@
 				40D428DD1FBFC8B10024965B /* ModeTextField.m */,
 				40D428E01FBFD9D40024965B /* StoredPasswordTableView.h */,
 				40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */,
-				40EC53071FC8CED7007F6EFF /* TouchBarZoom.h */,
-				40EC53081FC8CED7007F6EFF /* TouchBarZoom.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -744,6 +742,8 @@
 				4099B3DB1FAB7CB500CE826D /* PreferencesWindowController.m */,
 				40FB84201FC5F8AF00474B94 /* AlertWindowController.h */,
 				40FB84211FC5F8AF00474B94 /* AlertWindowController.m */,
+				403DF3A01FC8EB9E0057E15C /* MainWindowController.h */,
+				403DF3A11FC8EB9E0057E15C /* MainWindowController.m */,
 			);
 			path = "Window Controllers";
 			sourceTree = "<group>";
@@ -1385,8 +1385,8 @@
 				40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */,
 				4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */,
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
-				40EC53091FC8CED7007F6EFF /* TouchBarZoom.m in Sources */,
 				4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */,
+				403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */,
 				4099B3DC1FAB7CB500CE826D /* PreferencesWindowController.m in Sources */,
 				40FB84181FC5F63E00474B94 /* AlertViewController.m in Sources */,
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
