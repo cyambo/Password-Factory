@@ -12,14 +12,14 @@ const int LONG_PASSWORD_LENGTH = 100;
 #import "PasswordFactory.h"
 #import "SecureRandom.h"
 @interface Passsword_FactoryTests : XCTestCase
-@property (nonatomic, strong) PasswordFactory *pg;
+@property (nonatomic, strong) PasswordFactory *factory;
 @end
 
 @implementation Passsword_FactoryTests
 
 - (void)setUp {
     [super setUp];
-    self.pg = [PasswordFactory get];
+    self.factory = [PasswordFactory get];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -29,7 +29,7 @@ const int LONG_PASSWORD_LENGTH = 100;
 }
 - (void)testGeneratePassphrase {
 
-    self.pg.length = LONG_PASSWORD_LENGTH;
+    self.factory.length = LONG_PASSWORD_LENGTH;
     NSDictionary *regexSep = @{
                             @(PFHyphenSeparator):@"-?",
                             @(PFSpaceSeparator):@"\\s?",
@@ -50,48 +50,197 @@ const int LONG_PASSWORD_LENGTH = 100;
             NSString *errorMessage = [NSString stringWithFormat:@"Regex %@ failed for generatePassphhrase:%@:%@",regex,rSeparator,rCase];
             
             [self regexReplaceTest:regex errorMessage:errorMessage generateBlock:^NSString *{
-                self.pg.caseType = (PFCaseType)[rCase intValue];
-                return [self.pg generatePassphraseWithSeparatorType:(PFSeparatorType)[rSeparator intValue]];
+                self.factory.caseType = (PFCaseType)[rCase intValue];
+                return [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[rSeparator intValue]];
             }];
         }
     }
 }
 
 - (void)testGeneratePronounceable {
-    self.pg.length = LONG_PASSWORD_LENGTH;
-    self.pg.caseType = PFLowerCase;
+    self.factory.length = LONG_PASSWORD_LENGTH;
+    self.factory.caseType = PFLowerCase;
     [self regexReplaceTest:@"([a-z]+-?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Hyphen"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFHyphenSeparator];
+                 return [self.factory generatePronounceableWithSeparatorType:PFHyphenSeparator];
              }];
     [self regexReplaceTest:@"[a-z]"
               errorMessage:@"Value of password not valid for generatePronounceable:None"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFNoSeparator];
+                 return [self.factory generatePronounceableWithSeparatorType:PFNoSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+[A-Z]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Characters"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFCharacterSeparator];
+                 return [self.factory generatePronounceableWithSeparatorType:PFCharacterSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+[0-9]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Numbers"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFNumberSeparator];
+                 return [self.factory generatePronounceableWithSeparatorType:PFNumberSeparator];
              }];
     
     [self regexReplaceTest:@"([a-z]+[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Symbols"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFSymbolSeparator];
+                 return [self.factory generatePronounceableWithSeparatorType:PFSymbolSeparator];
              }];
     [self regexReplaceTest:@"([a-z]+ ?)+"
               errorMessage:@"Value of password not valid for generatePronounceable:Spaces"
              generateBlock:^{
-                 return [self.pg generatePronounceableWithSeparatorType:PFSpaceSeparator];
+                 return [self.factory generatePronounceableWithSeparatorType:PFSpaceSeparator];
              }];
     
+    
+}
+
+- (void)testGenerateRandom {
+    
+    //testing password lengths
+    self.factory.length = 5;
+    self.factory.caseType = PFMixedCase;
+    self.factory.avoidAmbiguous = YES;
+    self.factory.useSymbols = YES;
+    XCTAssertTrue([self.factory generateRandom].length == 5, @"Password Length not 5");
+    self.factory.length = 10;
+    XCTAssertFalse([self.factory generateRandom].length == 5, @"Password Length not Changed from 5 to 10");
+    XCTAssertTrue([self.factory generateRandom].length == 10, @"Password Length not 10");
+    
+    self.factory.length = LONG_PASSWORD_LENGTH;
+    //testing the useSymbols to see if any symbols are part of the password
+
+    
+    
+    [self regexCheckHasMatchesTest:@"[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]"
+                      errorMessage:@"Symbol found when useSymbols == NO"
+                     generateBlock:^{
+                         self.factory.caseType = PFMixedCase;
+                         self.factory.avoidAmbiguous = YES;
+                         self.factory.useSymbols = NO;
+                         return [self.factory generateRandom];
+                     }];
+    
+    //testing mixed case
+
+    [self regexCheckHasMatchesTest:@"[A-Z]"
+                      errorMessage:@"Capitals found when mixedCase == NO"
+                     generateBlock:^{
+                         self.factory.caseType = PFLowerCase;
+                         self.factory.avoidAmbiguous = NO;
+                         self.factory.useSymbols = NO;
+                         return [self.factory generateRandom];
+                     }];
+    
+    //testing ambiguous characters
+
+    [self regexCheckHasMatchesTest:@"[lo]"
+                      errorMessage:@"Ambiguous Lowercase found when avoidAmbiguous = YES"
+                     generateBlock:^{
+                         self.factory.caseType = PFLowerCase;
+                         self.factory.avoidAmbiguous = YES;
+                         self.factory.useSymbols = NO;
+                         return [self.factory generateRandom];
+                     }];
+    
+    
+    
+}
+- (void)testGeneratePattern {
+    
+    //testing single patterns
+    
+    //Testing Character 'c' pattern
+    [self regexReplaceTest:@"^[a-z]$"
+              errorMessage:@"Pattern 'c' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"c"];
+             }];
+    //Testing Uppercase Character 'C' pattern
+    [self regexReplaceTest:@"^[A-Z]$"
+              errorMessage:@"Pattern 'C' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"C"];
+             }];
+    //Testing Number '#' pattern
+    [self regexReplaceTest:@"^[0-9]$"
+              errorMessage:@"Pattern '#' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"#"];
+             }];
+    //Testing Word 'w' pattern
+    [self regexReplaceTest:@"^[a-z]+$"
+              errorMessage:@"Pattern 'w' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"w"];
+             }];
+    //Testing uppercase word 'W' pattern
+    [self regexReplaceTest:@"^[A-Z]+$"
+              errorMessage:@"Pattern 'W' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"W"];
+             }];
+    //testing short word 's' pattern
+    [self regexReplaceTest:@"^[a-z]{3,6}+$"
+              errorMessage:@"Pattern 's' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"s"];
+             }];
+    //testing uppercase short word 'S' pattern
+    [self regexReplaceTest:@"^[A-Z]{3,6}+$"
+              errorMessage:@"Pattern 'S' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"S"];
+             }];
+    //testing symbol '!' pattern
+    [self regexReplaceTest:@"^[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]$"
+              errorMessage:@"Pattern '!' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"!"];
+             }];
+    
+    //testing phonetic item 'p' pattern
+    [self regexReplaceTest:@"^[a-z]{2,3}+$"
+              errorMessage:@"Pattern 'p' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"p"];
+             }];
+    //testing phonetic uppercase item 'P' pattern
+    [self regexReplaceTest:@"^[A-Z]{2,3}+$"
+              errorMessage:@"Pattern 'P' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"P"];
+             }];
+    
+    //testing multiple patterns
+    [self regexReplaceTest:@"^[a-z][A-Z]$"
+              errorMessage:@"Pattern 'cC' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"cC"];
+             }];
+    [self regexReplaceTest:@"^[A-Z][0-9]{2}$"
+              errorMessage:@"Pattern 'C##' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"C##"];
+             }];
+    [self regexReplaceTest:@"^[A-Z]+[a-z]+[A-Z][a-z]$"
+              errorMessage:@"Pattern 'WwCc' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"WwCc"];
+             }];
+    
+    //testing escapes
+    [self regexReplaceTest:@"^C$"
+              errorMessage:@"Pattern '\\C' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"\\C"];
+             }];
+    //testing character replacement
+    [self regexReplaceTest:@"^nQYy>$"
+              errorMessage:@"Pattern 'nQYy>' failed"
+             generateBlock:^{
+                 return [self.factory generatePattern:@"nQYy>"];
+             }];
     
 }
 //regular expression loop test
@@ -135,155 +284,6 @@ const int LONG_PASSWORD_LENGTH = 100;
     }
     
 }
-- (void)testGenerateRandom {
-    
-    //testing password lengths
-    self.pg.length = 5;
-    self.pg.caseType = PFMixedCase;
-    self.pg.avoidAmbiguous = YES;
-    self.pg.useSymbols = YES;
-    XCTAssertTrue([self.pg generateRandom].length == 5, @"Password Length not 5");
-    self.pg.length = 10;
-    XCTAssertFalse([self.pg generateRandom].length == 5, @"Password Length not Changed from 5 to 10");
-    XCTAssertTrue([self.pg generateRandom].length == 10, @"Password Length not 10");
-    
-    self.pg.length = LONG_PASSWORD_LENGTH;
-    //testing the useSymbols to see if any symbols are part of the password
-
-    
-    
-    [self regexCheckHasMatchesTest:@"[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]"
-                      errorMessage:@"Symbol found when useSymbols == NO"
-                     generateBlock:^{
-                         self.pg.caseType = PFMixedCase;
-                         self.pg.avoidAmbiguous = YES;
-                         self.pg.useSymbols = NO;
-                         return [self.pg generateRandom];
-                     }];
-    
-    //testing mixed case
-
-    [self regexCheckHasMatchesTest:@"[A-Z]"
-                      errorMessage:@"Capitals found when mixedCase == NO"
-                     generateBlock:^{
-                         self.pg.caseType = PFLowerCase;
-                         self.pg.avoidAmbiguous = NO;
-                         self.pg.useSymbols = NO;
-                         return [self.pg generateRandom];
-                     }];
-    
-    //testing ambiguous characters
-
-    [self regexCheckHasMatchesTest:@"[lo]"
-                      errorMessage:@"Ambiguous Lowercase found when avoidAmbiguous = YES"
-                     generateBlock:^{
-                         self.pg.caseType = PFLowerCase;
-                         self.pg.avoidAmbiguous = YES;
-                         self.pg.useSymbols = NO;
-                         return [self.pg generateRandom];
-                     }];
-    
-    
-    
-}
-- (void)testGeneratePattern {
-    
-    //testing single patterns
-    
-    //Testing Character 'c' pattern
-    [self regexReplaceTest:@"^[a-z]$"
-              errorMessage:@"Pattern 'c' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"c"];
-             }];
-    //Testing Uppercase Character 'C' pattern
-    [self regexReplaceTest:@"^[A-Z]$"
-              errorMessage:@"Pattern 'C' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"C"];
-             }];
-    //Testing Number '#' pattern
-    [self regexReplaceTest:@"^[0-9]$"
-              errorMessage:@"Pattern '#' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"#"];
-             }];
-    //Testing Word 'w' pattern
-    [self regexReplaceTest:@"^[a-z]+$"
-              errorMessage:@"Pattern 'w' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"w"];
-             }];
-    //Testing uppercase word 'W' pattern
-    [self regexReplaceTest:@"^[A-Z]+$"
-              errorMessage:@"Pattern 'W' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"W"];
-             }];
-    //testing short word 's' pattern
-    [self regexReplaceTest:@"^[a-z]{3,6}+$"
-              errorMessage:@"Pattern 's' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"s"];
-             }];
-    //testing uppercase short word 'S' pattern
-    [self regexReplaceTest:@"^[A-Z]{3,6}+$"
-              errorMessage:@"Pattern 'S' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"S"];
-             }];
-    //testing symbol '!' pattern
-    [self regexReplaceTest:@"^[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]$"
-              errorMessage:@"Pattern '!' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"!"];
-             }];
-    
-    //testing phonetic item 'p' pattern
-    [self regexReplaceTest:@"^[a-z]{2,3}+$"
-              errorMessage:@"Pattern 'p' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"p"];
-             }];
-    //testing phonetic uppercase item 'P' pattern
-    [self regexReplaceTest:@"^[A-Z]{2,3}+$"
-              errorMessage:@"Pattern 'P' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"P"];
-             }];
-    
-    //testing multiple patterns
-    [self regexReplaceTest:@"^[a-z][A-Z]$"
-              errorMessage:@"Pattern 'cC' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"cC"];
-             }];
-    [self regexReplaceTest:@"^[A-Z][0-9]{2}$"
-              errorMessage:@"Pattern 'C##' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"C##"];
-             }];
-    [self regexReplaceTest:@"^[A-Z]+[a-z]+[A-Z][a-z]$"
-              errorMessage:@"Pattern 'WwCc' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"WwCc"];
-             }];
-    
-    //testing escapes
-    [self regexReplaceTest:@"^C$"
-              errorMessage:@"Pattern '\\C' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"\\C"];
-             }];
-    //testing character replacement
-    [self regexReplaceTest:@"^dDYy>$"
-              errorMessage:@"Pattern 'dDYy>' failed"
-             generateBlock:^{
-                 return [self.pg generatePattern:@"dDYy>"];
-             }];
-    
-}
-
 /**
  Test the random number generator
  */

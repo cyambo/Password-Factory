@@ -48,7 +48,10 @@
         //setting to menuViewController because that is a strong property, and it won't deallocate
         self.menuViewController = self.masterViewController;
     }
-    self.masterViewController.touchBar = nil;
+    if ((NSStringFromClass([NSTouchBar class]))) {
+        self.masterViewController.touchBar = nil;
+    }
+    
     //init prefs window
     self.prefsWindowController = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
     self.prefsViewController = (PreferencesViewController *)self.prefsWindowController.window.contentViewController;

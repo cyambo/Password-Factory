@@ -18,6 +18,7 @@
 		402759B81FBE26B300B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
 		402759B91FBE26B700B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
+		402EF2641FC9D791000C567F /* PatternTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 402EF2631FC9D791000C567F /* PatternTextView.m */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
 		404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
@@ -48,7 +49,6 @@
 		40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40940E291FC6249300CA1261 /* ExportViewController.m */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
 		409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CD1B8112D600393B99 /* PreferencesWindowTestClass.m */; };
-		409585D31B8112D600393B99 /* PreferencesWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CE1B8112D600393B99 /* PreferencesWindowTests.m */; };
 		4095860F1B8112FD00393B99 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
 		409586101B8112FD00393B99 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 409585D61B8112FD00393B99 /* defaults.plist */; };
 		409586261B8112FD00393B99 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
@@ -89,7 +89,6 @@
 		40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
 		40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
 		40C4C8AF1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
-		40C4C8B71F9EADC100F31070 /* Password_FactoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C4C8B61F9EADC100F31070 /* Password_FactoryUITests.swift */; };
 		40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C87A281FAE2D3100D784B0 /* PasswordController.m */; };
 		40CC4D881F91B4620093A9B8 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */; };
 		40D428DA1FBFBE310024965B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428D91FBFBE310024965B /* Utilities.m */; };
@@ -141,13 +140,6 @@
 			remoteGlobalIDString = 40AAB5CD1F8EC67F00324759;
 			remoteInfo = "Password Factory iOS";
 		};
-		40C4C8B91F9EADC100F31070 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40FB0C131B810F10009193F8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 40FB0C1A1B810F10009193F8;
-			remoteInfo = "Password Factory";
-		};
 		40FB0C2F1B810F10009193F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 40FB0C131B810F10009193F8 /* Project object */;
@@ -196,6 +188,8 @@
 		402759B61FBE26B300B26F03 /* SecureRandom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecureRandom.h; sourceTree = "<group>"; };
 		402759B71FBE26B300B26F03 /* SecureRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecureRandom.m; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		402EF2621FC9D791000C567F /* PatternTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatternTextView.h; sourceTree = "<group>"; };
+		402EF2631FC9D791000C567F /* PatternTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatternTextView.m; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
@@ -291,9 +285,6 @@
 		40C0F3861B860791005FC25D /* NSString+RandomCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RandomCase.h"; sourceTree = "<group>"; };
 		40C0F3871B860791005FC25D /* NSString+RandomCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RandomCase.m"; sourceTree = "<group>"; };
 		40C4C8AD1F9E9C0900F31070 /* emojis.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = emojis.txt; sourceTree = "<group>"; };
-		40C4C8B41F9EADC100F31070 /* Password FactoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password FactoryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40C4C8B61F9EADC100F31070 /* Password_FactoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_FactoryUITests.swift; sourceTree = "<group>"; };
-		40C4C8B81F9EADC100F31070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40C87A271FAE2D3100D784B0 /* PasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordController.h; sourceTree = "<group>"; };
 		40C87A281FAE2D3100D784B0 /* PasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordController.m; sourceTree = "<group>"; };
 		40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -371,13 +362,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		40AAB5E91F8EC68000324759 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40C4C8B11F9EADC100F31070 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -477,6 +461,8 @@
 				40D428DD1FBFC8B10024965B /* ModeTextField.m */,
 				40D428E01FBFD9D40024965B /* StoredPasswordTableView.h */,
 				40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */,
+				402EF2621FC9D791000C567F /* PatternTextView.h */,
+				402EF2631FC9D791000C567F /* PatternTextView.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -586,15 +572,6 @@
 			path = Graphics;
 			sourceTree = "<group>";
 		};
-		40C4C8B51F9EADC100F31070 /* Password FactoryUITests */ = {
-			isa = PBXGroup;
-			children = (
-				40C4C8B61F9EADC100F31070 /* Password_FactoryUITests.swift */,
-				40C4C8B81F9EADC100F31070 /* Info.plist */,
-			);
-			path = "Password FactoryUITests";
-			sourceTree = "<group>";
-		};
 		40CBF1781FBD5D0D00048B0C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,7 +605,6 @@
 				40AAB5CF1F8EC67F00324759 /* Password Factory iOS */,
 				40AAB5E41F8EC68000324759 /* Password Factory iOSTests */,
 				40AAB5EF1F8EC68000324759 /* Password Factory iOSUITests */,
-				40C4C8B51F9EADC100F31070 /* Password FactoryUITests */,
 				40FB0C1C1B810F10009193F8 /* Products */,
 				F9FEF77E1307D364CA2465EF /* Frameworks */,
 				468C9FB99BC59FBDCAAEB2F7 /* Pods */,
@@ -645,7 +621,6 @@
 				40AAB5E11F8EC68000324759 /* Password Factory iOSTests.xctest */,
 				40AAB5EC1F8EC68000324759 /* Password Factory iOSUITests.xctest */,
 				4058DF241F92995800CCB6E7 /* Password Factory Helper.app */,
-				40C4C8B41F9EADC100F31070 /* Password FactoryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -871,24 +846,6 @@
 			productReference = 40AAB5EC1F8EC68000324759 /* Password Factory iOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		40C4C8B31F9EADC100F31070 /* Password FactoryUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40C4C8BB1F9EADC100F31070 /* Build configuration list for PBXNativeTarget "Password FactoryUITests" */;
-			buildPhases = (
-				40C4C8B01F9EADC100F31070 /* Sources */,
-				40C4C8B11F9EADC100F31070 /* Frameworks */,
-				40C4C8B21F9EADC100F31070 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				40C4C8BA1F9EADC100F31070 /* PBXTargetDependency */,
-			);
-			name = "Password FactoryUITests";
-			productName = "Password FactoryUITests";
-			productReference = 40C4C8B41F9EADC100F31070 /* Password FactoryUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		40FB0C1A1B810F10009193F8 /* Password Factory */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40FB0C381B810F10009193F8 /* Build configuration list for PBXNativeTarget "Password Factory" */;
@@ -977,12 +934,6 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 40AAB5CD1F8EC67F00324759;
 					};
-					40C4C8B31F9EADC100F31070 = {
-						CreatedOnToolsVersion = 9.0.1;
-						DevelopmentTeam = XWE2VMM384;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 40FB0C1A1B810F10009193F8;
-					};
 					40FB0C1A1B810F10009193F8 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = XWE2VMM384;
@@ -1023,7 +974,6 @@
 				40AAB5CD1F8EC67F00324759 /* Password Factory iOS */,
 				40AAB5E01F8EC68000324759 /* Password Factory iOSTests */,
 				40AAB5EB1F8EC68000324759 /* Password Factory iOSUITests */,
-				40C4C8B31F9EADC100F31070 /* Password FactoryUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1068,13 +1018,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		40AAB5EA1F8EC68000324759 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40C4C8B21F9EADC100F31070 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1356,14 +1299,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40C4C8B01F9EADC100F31070 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40C4C8B71F9EADC100F31070 /* Password_FactoryUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		40FB0C171B810F10009193F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1378,6 +1313,7 @@
 				40BA26F21FB389D300F7AF13 /* PasswordFactoryConstants.m in Sources */,
 				40FB841B1FC5F66A00474B94 /* AlertWindow.m in Sources */,
 				4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
+				402EF2641FC9D791000C567F /* PatternTextView.m in Sources */,
 				40AFC65E1FBB7D3600CB5BDA /* ZoomWindow.m in Sources */,
 				4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */,
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,
@@ -1426,7 +1362,6 @@
 			files = (
 				409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */,
 				409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */,
-				409585D31B8112D600393B99 /* PreferencesWindowTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1447,11 +1382,6 @@
 			isa = PBXTargetDependency;
 			target = 40AAB5CD1F8EC67F00324759 /* Password Factory iOS */;
 			targetProxy = 40AAB5ED1F8EC68000324759 /* PBXContainerItemProxy */;
-		};
-		40C4C8BA1F9EADC100F31070 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 40FB0C1A1B810F10009193F8 /* Password Factory */;
-			targetProxy = 40C4C8B91F9EADC100F31070 /* PBXContainerItemProxy */;
 		};
 		40FB0C301B810F10009193F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1802,54 +1732,6 @@
 			};
 			name = Release;
 		};
-		40C4C8BC1F9EADC100F31070 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = XWE2VMM384;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Password FactoryUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-FactoryUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = "Password Factory";
-			};
-			name = Debug;
-		};
-		40C4C8BD1F9EADC100F31070 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = XWE2VMM384;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Password FactoryUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-FactoryUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = "Password Factory";
-			};
-			name = Release;
-		};
 		40FB0C361B810F10009193F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2080,15 +1962,6 @@
 			buildConfigurations = (
 				40AAB5FA1F8EC68000324759 /* Debug */,
 				40AAB5FB1F8EC68000324759 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		40C4C8BB1F9EADC100F31070 /* Build configuration list for PBXNativeTarget "Password FactoryUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				40C4C8BC1F9EADC100F31070 /* Debug */,
-				40C4C8BD1F9EADC100F31070 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

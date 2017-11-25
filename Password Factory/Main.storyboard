@@ -1343,7 +1343,7 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="grE-FA-64P">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="grE-FA-64P" customClass="PatternTextView">
                                 <rect key="frame" x="20" y="66" width="331" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JQ2-IZ-gf7"/>
