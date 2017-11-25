@@ -18,7 +18,7 @@
 @property (nonatomic, assign) BOOL useEmoji;
 @property (nonatomic, assign) BOOL useNumbers;
 @property (nonatomic, strong) NSString *prefix;
-@property (nonatomic, strong) NSString *postfix;
+@property (nonatomic, strong) NSString *suffix;
 @property (nonatomic, strong) NSRegularExpression *find;
 @property (nonatomic, strong) NSString *replace;
 @property (nonatomic, assign) NSUInteger truncate;

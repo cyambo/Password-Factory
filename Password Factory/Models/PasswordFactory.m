@@ -54,7 +54,7 @@
         self.c = [PasswordFactoryConstants get];
         self.length = 5;
         self.prefix = @"";
-        self.postfix = @"";
+        self.suffix = @"";
     }
     return self;
 }
@@ -422,8 +422,15 @@
  @return transformed password
  */
 -(NSString *)transformPassword:(NSString *)source symbolCasePrecent:(NSUInteger)symbol accentedCasePercent:(NSUInteger)accent {
-    //add prefix and postfix
-    NSString *s = [NSString stringWithFormat:@"%@%@%@",self.prefix,source,self.postfix];
+    //make sure prefix and suffix are not nil
+    if (self.prefix == nil) {
+        self.prefix = @"";
+    }
+    if (self.suffix == nil) {
+        self.suffix = @"";
+    }
+    //add prefix and suffix
+    NSString *s = [NSString stringWithFormat:@"%@%@%@",self.prefix,source,self.suffix];
     s = [self caseString:s];
     if (symbol > 0) {
         s = [s symbolCase:symbol];

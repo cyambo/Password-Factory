@@ -126,12 +126,12 @@
                 self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
             }
             self.factory.prefix = @"";
-            self.factory.postfix = @"";
+            self.factory.suffix = @"";
             if (settings[@"prefix"]) {
                 self.factory.prefix = settings[@"prefix"];
             }
-            if (settings[@"postfix"]) {
-                self.factory.postfix = settings[@"postfix"];
+            if (settings[@"suffix"]) {
+                self.factory.suffix = settings[@"suffix"];
             }
             if(settings[@"findRegex"]) {
                 self.factory.find = settings[@"findRegex"];
@@ -337,7 +337,7 @@
     settings[@"generatedPassword"] = password;
     settings[@"truncateAt"] = @([d integerForKey:@"advancedTruncateAt"]);
     
-    //generating the prefix and the postfix
+    //generating the prefix and the suffix
     NSString *pre = [d stringForKey:@"advancedPrefixPattern"];
     NSString *post = [d stringForKey:@"advancedSuffixPattern"];
     if (pre.length || post.length) {
@@ -349,7 +349,7 @@
         }
         if(post.length) {
             patternSettings[@"patternText"] = post;
-            settings[@"postfix"] = [self generatePassword:PFPatternType withSettings:patternSettings];
+            settings[@"suffix"] = [self generatePassword:PFPatternType withSettings:patternSettings];
         }
     }
     
