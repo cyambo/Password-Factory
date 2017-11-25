@@ -70,6 +70,7 @@
 }
 - (void)viewDidAppear {
     [self selectPaswordType:(PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"]];
+    [self.view.window makeFirstResponder:self.view];
 }
 -(void)viewWillDisappear {
     [self unsetStorePasswordTimer];
@@ -591,7 +592,6 @@
     } else {
         [self changeSelectionTypeByIndex:sender.selectedSegment];
     }
-    
 }
 
 /**

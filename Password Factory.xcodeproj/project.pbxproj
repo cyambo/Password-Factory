@@ -19,6 +19,7 @@
 		402759B91FBE26B700B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
+		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
 		404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		404B6D611FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
@@ -197,6 +198,8 @@
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
+		403DF3A41FC8F56C0057E15C /* MenuPopover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuPopover.m; sourceTree = "<group>"; };
 		404B6D5E1FBE76CB00B281E5 /* NSString+UnicodeLength.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+UnicodeLength.h"; sourceTree = "<group>"; };
 		404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeLength.m"; sourceTree = "<group>"; };
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
@@ -702,6 +705,8 @@
 		40FB841D1FC5F82B00474B94 /* Windows */ = {
 			isa = PBXGroup;
 			children = (
+				403DF3A31FC8F56C0057E15C /* MenuPopover.h */,
+				403DF3A41FC8F56C0057E15C /* MenuPopover.m */,
 				40DFFEE21B811F470047CF90 /* MainWindow.h */,
 				40DFFEE31B811F470047CF90 /* MainWindow.m */,
 				40AFC65C1FBB7D3600CB5BDA /* ZoomWindow.h */,
@@ -1409,6 +1414,7 @@
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */,
 				40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */,
+				403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
 				40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */,
 			);

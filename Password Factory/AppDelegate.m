@@ -15,7 +15,7 @@
 #import "PasswordStorage.h"
 #import "ExportViewController.h"
 #import "MainWindowController.h"
-
+#import "MenuPopover.h"
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
@@ -41,7 +41,6 @@
         //load the main window controller if we are not a menu app
         windowController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"];
         self.masterViewController = (MasterViewController *)windowController.window.contentViewController;
-        self.masterViewController.touchBar = nil;
         self.currWindow = windowController.window;
     } else {
         //load the menu view controller if we are a menu app
@@ -49,7 +48,7 @@
         //setting to menuViewController because that is a strong property, and it won't deallocate
         self.menuViewController = self.masterViewController;
     }
-    
+    self.masterViewController.touchBar = nil;
     //init prefs window
     self.prefsWindowController = [storyBoard instantiateControllerWithIdentifier:@"PreferencesWindowController"];
     self.prefsViewController = (PreferencesViewController *)self.prefsWindowController.window.contentViewController;
@@ -78,7 +77,7 @@
         }
         
         //Showing popover
-        self.popover = [[NSPopover alloc] init];
+        self.popover = [[MenuPopover alloc] init];
         self.popover.contentViewController = self.menuViewController;
         self.popover.contentSize = (CGSize)self.menuViewController.view.frame.size;
         self.popover.behavior = NSPopoverBehaviorTransient;
@@ -91,7 +90,6 @@
         self.statusItem.highlightMode = YES;
         //set the action when clicking menu item
         self.statusItem.button.action = @selector(togglePopover:);
-        
         //Registering for events so the popover can be closed when we click outside the window
         self.popoverEvent = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDown handler:^(NSEvent *event) {
            if (self.popover.shown) {
@@ -100,6 +98,7 @@
                }
            }
         }];
+
     } else {
         //set window appearance and settings
         self.currWindow.titlebarAppearsTransparent = YES;
