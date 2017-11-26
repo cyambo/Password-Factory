@@ -13,6 +13,7 @@
 #import "DefaultsManager.h"
 #import "MainWindowController.h"
 #import "PasswordFactoryConstants.h"
+#import "NSString+ColorWithHexColorString.h"
 @interface MasterViewControllerTests : XCTestCase
 @property (nonatomic, strong) MasterViewController *mvc;
 
@@ -89,6 +90,211 @@
 -(void)testPassphrase {
     [self testLengthSeparatorAndCaseType:PFPassphraseType];
 }
+
+/**
+ Tests the display crack time button
+ */
+-(void)testDisplayCrackTime {
+    
+    NSUserDefaults * d = [DefaultsManager standardDefaults];
+    
+    NSButton *b = self.mvc.crackTimeButton;
+    NSString *key = @"displayCrackTime";
+    
+    [self validateButtonBinding:b defaultsKey:key];
+    if ([d boolForKey:key] == TRUE) {
+        [b performClick:self];
+    }
+    XCTAssertTrue(b.alphaValue == 0,@"Alpha Value of Crack time button should be 0");
+    [b performClick:self];
+    XCTAssertTrue(b.alphaValue == 1,@"Alpha Value of Crack time button should be 1");
+}
+/**
+ Tests that the password field gets updated and highlighted based on color settings
+ */
+- (void)testColorPasswordField {
+    PasswordFactory *factory = [PasswordFactory get];
+    NSUserDefaults *defaults = [DefaultsManager standardDefaults];
+    NSColor *upperTextColor = [NSColor greenColor];
+    NSColor *lowerTextColor = [NSColor orangeColor];
+    NSColor *numberTextColor = [NSColor purpleColor];
+    NSColor *symbolTextColor = [NSColor redColor];
+    NSColor *defaultTextColor = [[defaults stringForKey:@"defaultTextColor"] colorWithHexColorString];
+    id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
+    //returning password field for object propery
+    [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
+    //generate a string with all the possible characters that can be highlighted, and some characters that should not be highlighted
+    
+    NSString *testString = [NSString stringWithFormat:@"%@áéíòü",[factory getPasswordCharacterType:PFAllCharacters]];
+    //do not color password
+    [defaults setBool:NO forKey:@"colorPasswordText"];
+    
+    [self.mvc.passwordField setStringValue:testString]; //set password
+    [self.mvc controlTextDidChange:mockNotification]; //send notification
+    NSAttributedString *attrStr = [self.mvc.passwordField attributedStringValue]; //get attributed string from password field
+    //generate an attributed string all one color - which is how the password field should be
+    NSDictionary *attributes = @{
+                                NSForegroundColorAttributeName: defaultTextColor,
+                                NSFontAttributeName: [NSFont systemFontOfSize:17]
+                                };
+    NSAttributedString *testStr = [[NSAttributedString alloc] initWithString:testString attributes:attributes];
+    
+    BOOL mismatch = NO;
+    //compare every character and its attributes to see if they match
+    for (int i = 0; i < testStr.length ; i++) {
+        NSColor *c1, *c2;
+        c1 = [attrStr attributesAtIndex:i effectiveRange:nil][@"NSColor"];
+        c2 = [testStr attributesAtIndex:i effectiveRange:nil][@"NSColor"];
+        if (![c1 isEqual:c2]) {
+            mismatch = YES; //something is different
+            break;
+        }
+    }
+    XCTAssertFalse(mismatch, @"Password field is highlighted when it shouldn't be");
+    //testing highlighted string to see if it gets highlighted when it shouldn't
+    //setting up a mock defaults object
+    id defaultsMock = OCMClassMock([NSUserDefaults class]);
+    id d = OCMPartialMock([NSUserDefaults standardUserDefaults]);
+    
+    //set our mock defaults to return these colors for the character types
+    [[[d stub] andReturnValue:OCMOCK_VALUE([numberTextColor hexadecimalValueOfAnNSColor])] objectForKey:@"numberTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE([upperTextColor hexadecimalValueOfAnNSColor])] objectForKey:@"upperTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE([lowerTextColor hexadecimalValueOfAnNSColor])] objectForKey:@"lowerTextColor"];
+    [[[d stub] andReturnValue:OCMOCK_VALUE([symbolTextColor hexadecimalValueOfAnNSColor])] objectForKey:@"symbolTextColor"];
+    
+    //turn on password coloring
+    [defaults setBool:YES forKey:@"colorPasswordText"];
+    [self.mvc.passwordField setStringValue:testString]; //set a new string
+    [self.mvc controlTextDidChange:mockNotification]; //send notification to update the text field
+    attrStr = [self.mvc.passwordField attributedStringValue];
+    
+    mismatch = NO;
+    NSString *at = @"";
+    
+    //testing that the password string is properly highlighted for each of the possible character types that are highlighted
+    for (int i = 0; i < testStr.length ; i++) {
+        NSDictionary *a1, *a2;
+        a1 = [attrStr attributesAtIndex:i effectiveRange:nil];
+        a2 = [testStr attributesAtIndex:i effectiveRange:nil];
+        
+        NSColor *atColor = a1[@"NSColor"];
+        
+        NSDictionary *colorMap = @{
+                                   @(PFUpperCaseLetters): upperTextColor,
+                                   @(PFLowerCaseLetters): lowerTextColor,
+                                   @(PFNumbers): numberTextColor,
+                                   @(PFSymbols): symbolTextColor
+                                   };
+        
+        at = [NSString stringWithFormat:@"%c", [testString characterAtIndex:i]];
+        BOOL foundType = NO;
+        for(NSNumber *key in [colorMap allKeys]) {
+            PFCharacterType type = (PFCharacterType)key.intValue;
+            if ([factory isCharacterType:type character:at]) {
+                foundType = YES;
+                if (![atColor isEqual: colorMap[key]]) {
+                    mismatch = YES;
+                    break;
+                }
+            }
+        }
+        if (!foundType) {
+            if (![atColor isEqual:defaultTextColor]) {
+                mismatch = YES;
+                break;
+            }
+        }
+    }
+    XCTAssertTrue(mismatch, @"Password field at character %@ is not highlighted properly",at);
+    [defaultsMock stopMocking];
+    [d stopMocking];
+    
+}
+/**
+ Tests that strength meter updates when the password changes
+ */
+- (void)testStrengthMeter {
+    [self.mvc.password setPasswordValue:@"1"]; //set the password
+    [self.mvc setPasswordStrength]; //run the strength update method
+    float currStrength = self.mvc.passwordStrengthLevel.floatValue; //get the new strength
+    NSDictionary *settings = @{
+                               @"caseType": @(PFMixedCase),
+                               @"avoidAmbiguous":@(YES),
+                               @"useSymbols":@(YES)
+                               };
+    [self.mvc.password generatePassword:PFRandomType withSettings:settings];
+
+    XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.floatValue, @"Password strength meter not updated with change"); //check to see if strength changed with updates
+    
+}
+/**
+ Tests that the generate button generates a new password
+ */
+- (void)testGenerateButton {
+    [self.mvc selectPaswordType:PFRandomType];
+    NSString *currPassword = [self getPasswordFieldValue];
+    [self.mvc.generateButton performClick:self.mvc];
+    XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Pressing generate button does not regenerate new password");
+}
+
+/**
+ Tests that the password strength gets updated when a user types in the password field
+ */
+- (void)testManualChangePasswordField {
+    [self.mvc selectPaswordType:PFRandomType];
+    
+    //creating mock notification to simulate typing in the password field
+    id mockNotification = [OCMockObject mockForClass:[NSNotification class]];
+    //returning password field for object property
+    [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
+    
+    //testing pattern change
+    [self.mvc.passwordField setStringValue:@"c"]; //set the password field
+    [self.mvc controlTextDidChange:mockNotification]; //run notification
+    float currStrength = self.mvc.passwordStrengthLevel.floatValue;
+    
+    [self.mvc.passwordField setStringValue:@"!@#$%$#@@#$"]; //change the password field
+    [self.mvc controlTextDidChange:mockNotification];
+    //make sure the strength changed when the password field changed
+    XCTAssertTrue(currStrength != self.mvc.passwordStrengthLevel.floatValue, @"Password strength did not update when passwordField is entered manually");
+}
+/**
+ Test changing the tab on the main window
+ */
+-(void)testChangeType {
+    [self.mvc selectPaswordType:PFPatternType];
+    [self.mvc generatePassword];
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSString *currPassword = [self getPasswordFieldValue];
+    
+    //select all the tabs individually and see if the password updates when the tab has changed
+    for(int i=0;i<3;i++) {
+        PFPasswordType type = (i + PFRandomType);
+        [self.mvc selectPaswordType:type];
+        //see if the password gets updated
+        XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Password not changed when switched to tab %d",i);
+        currPassword = [self getPasswordFieldValue];
+        //see if the selectedTabIndex gets updated in defaults
+        XCTAssertEqual([d integerForKey:@"selectedPasswordType"], type, @"Tab %d selection not saved in defaults",i);
+    }
+}
+/**
+ Tests the control bindings on the random tab
+ */
+-(void)testDefaultsBindingsRandom {
+    
+    [self deleteUserDefaults];
+    [self.mvc selectPaswordType:PFRandomType]; //select random tab
+    
+    //validate the checkboxes
+    PasswordTypesViewController *pvc = self.mvc.currentPasswordTypeViewController;
+    [self validateCheckboxDefaults:pvc.useSymbols defaultsKey:@"randomUseSymbols"];
+    [self validateCheckboxDefaults:pvc.avoidAmbiguous defaultsKey:@"randomAvoidAmbiguous"];
+
+    //validate the slider
+    [self validateSliderDefaults:pvc.passwordLengthSlider defaultsKey:@"passwordLength"];
+}
+
 #pragma mark Utilities
 -(void)testLengthSeparatorAndCaseType:(PFPasswordType)type {
     [self.mvc selectPaswordType:type];
