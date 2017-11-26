@@ -445,7 +445,7 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="566" height="739"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Menu Bar (changes require restart)" translatesAutoresizingMaskIntoConstraints="NO" id="cA6-cI-Ug0">
+                            <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Menu Bar" translatesAutoresizingMaskIntoConstraints="NO" id="cA6-cI-Ug0">
                                 <rect key="frame" x="19" y="411" width="244" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="gZt-DZ-wBf">

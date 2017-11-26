@@ -217,6 +217,8 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     //Set the app to restart depending on the checkbox states as such
     //if the menu status has changed, if it is a menuApp and the dock state changes
     if ((isMenuApp ^ self.initialMenuState) || (isMenuApp && (hideDockIcon ^ self.initialDockState))) {
+        AppDelegate *delegate = [NSApplication sharedApplication].delegate;
+        [delegate.alertWindowController displayAlert:MenuRestartMessage defaultsKey:@"hideMenuRestartWarning" window:self.view.window];
         [self.quitButton setTitle:@"Restart"];
     }
     [self updatedPrefs];
@@ -275,13 +277,12 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         }
     } else {
 
-        
         if (![self isInApplicationsDirectory]) {
             //check to see if app is in Applications because login items only work from there
             self.addToLoginItems.state = NSControlStateValueOff;
             [d setBool:NO forKey:@"addToLoginItems"];
-            AppDelegate *d = [NSApplication sharedApplication].delegate;
-            [d.alertWindowController displayAlert:StartAtLoginNotInApplicationsWarning defaultsKey:@"hideStartAtLoginNotInApplicationsWarning" window:self.view.window];
+            AppDelegate *delegate = [NSApplication sharedApplication].delegate;
+            [delegate.alertWindowController displayAlert:StartAtLoginNotInApplicationsWarning defaultsKey:@"hideStartAtLoginNotInApplicationsWarning" window:self.view.window];
             return;
         }
     }
@@ -291,15 +292,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         if ([d boolForKey:@"addToLoginItems"]) {
             //login item on
             if(!isLoginItem) {
-                NSURL *url = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"Contents/Library/Password Factory Helper.app" isDirectory:NO];
-                NSLog(@"URL PATH %@",url);
-                // Registering helper app
-                if (LSRegisterURL((__bridge CFURLRef)url, true) != noErr) {
-                    NSLog(@"LSRegisterURL failed!");
-                } else {
-                    NSLog(@"LSRegisterURL succeeded!");
-                }
-                if (!SMLoginItemSetEnabled((__bridge CFStringRef)HelperIdentifier, YES)) {
+                if (![self setLoginItem:YES]) {
                     NSLog(@"SET LOGIN FAILED");
                 } else {
                     NSLog(@"SET LOGIN succeeded!");
@@ -307,7 +300,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             }
         } else {
             if(isLoginItem) {
-                if (!SMLoginItemSetEnabled((__bridge CFStringRef)HelperIdentifier, NO)) {
+                if (![self setLoginItem:NO]) {
                     NSLog(@"UNSET LOGIN FAILED");
                 } else {
                     NSLog(@"UNSET LOGIN succeeded!");
@@ -315,10 +308,31 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             }
         }
     }
-
     [self updatedPrefs];
 }
 
+/**
+ Sets login item on or off
+
+ @param set turn on or off
+ @return Success
+ */
+-(BOOL)setLoginItem:(BOOL)set {
+    if(set) {
+        NSURL *url = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"Contents/Library/Password Factory Helper.app" isDirectory:NO];
+        NSLog(@"URL PATH %@",url);
+        // Registering helper app
+        if (LSRegisterURL((__bridge CFURLRef)url, true) != noErr) {
+            NSLog(@"LSRegisterURL failed!");
+        } else {
+            NSLog(@"LSRegisterURL succeeded!");
+        }
+        return SMLoginItemSetEnabled((__bridge CFStringRef)HelperIdentifier, YES);
+
+    } else {
+        return SMLoginItemSetEnabled((__bridge CFStringRef)HelperIdentifier, NO);
+    }
+}
 /**
  Checks to see if the app is in the Applications directory
 
@@ -376,8 +390,16 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     AppDelegate *d = [NSApplication sharedApplication].delegate;
     [d.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
+            //restore defaults
             [DefaultsManager restoreUserDefaults];
+            //delete everything in storage
             [[PasswordStorage get] deleteAllEntities];
+            //turn off login item
+            if([self isLoginItem]) {
+                [self setLoginItem:NO];
+            }
+            //turn off shortcut
+            [self resetShortcutRegistration];
             //restart
             [self restartApplication];
         }

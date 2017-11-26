@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, assign) NSUInteger passwordLength;
-@property (nonatomic, weak) PasswordTypesViewController *currentPasswordTypeViewController;
+
 @property (nonatomic, assign) NSUInteger currentFontSize;
 @property (nonatomic, assign) NSTimeInterval lastGenerated;
 @property (nonatomic, strong) NSTimer *passwordCheckTimer;

@@ -16,6 +16,7 @@
 
 @interface MasterViewController : NSViewController 
 @property (nonatomic, strong) PasswordController *password;
+@property (nonatomic, weak) PasswordTypesViewController *currentPasswordTypeViewController;
 @property (weak) IBOutlet NSTextField *passwordField;
 @property (weak) IBOutlet NSTextField *displayedPasswordLength;
 @property (weak) IBOutlet NSTextField *passwordTypeLabel;

@@ -98,5 +98,7 @@
 	<false/>
 	<key>hideStoredPasswordOffWarning</key>
 	<false/>
+	<key>hideMenuRestartWarning</key>
+	<false/>
 </dict>
 </plist>

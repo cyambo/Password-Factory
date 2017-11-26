@@ -19,4 +19,5 @@ NSString * const StoredPasswordOffWarning = @"Disabling stored passwords will de
 NSString * const StoredPasswordOnWarning = @"Stored passwords are not encrypted, keep that in mind when using this feature.";
 NSString * const ResetToDefaultsWarning = @"All settings will be restored to their defaults, all stored passwords will be deleted, and Password Factory will restart.";
 NSString * const ResetAllDialogsWarning = @"All previously hidden dialogs will now be shown.";
-NSString * const PasswordSaveError = @"Passwords could not be saved to disk";
+NSString * const PasswordSaveError = @"Passwords could not be saved to disk.";
+NSString * const MenuRestartMessage = @"Password factory must be restarted for the changes to take effect.";

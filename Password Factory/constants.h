@@ -102,5 +102,6 @@ extern NSString * const StoredPasswordOnWarning;
 extern NSString * const ResetToDefaultsWarning;
 extern NSString * const ResetAllDialogsWarning;
 extern NSString * const PasswordSaveError;
+extern NSString * const MenuRestartMessage;
 #endif
 
