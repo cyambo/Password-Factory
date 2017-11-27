@@ -10,11 +10,7 @@
 
 @implementation TextField
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-}
+
 -(void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
     
@@ -23,5 +19,7 @@
     } else {
         self.textColor = [self.textColor colorWithAlphaComponent:0.25];
     }
+
 }
+
 @end
