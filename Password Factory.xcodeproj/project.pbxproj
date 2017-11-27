@@ -102,6 +102,7 @@
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
+		40E4535A1FCBA4FD0075F490 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E453591FCBA4FD0075F490 /* BoxView.m */; };
 		40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
 		40EC53031FC8A7ED007F6EFF /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */; };
 		40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53051FC8A804007F6EFF /* ExportWindow.m */; };
@@ -299,6 +300,8 @@
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		40E453581FCBA4FD0075F490 /* BoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
+		40E453591FCBA4FD0075F490 /* BoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
 		40EC53011FC8A7ED007F6EFF /* PreferencesWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		40EC53041FC8A804007F6EFF /* ExportWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportWindow.h; sourceTree = "<group>"; };
@@ -464,6 +467,8 @@
 				40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */,
 				402EF2621FC9D791000C567F /* PatternTextView.h */,
 				402EF2631FC9D791000C567F /* PatternTextView.m */,
+				40E453581FCBA4FD0075F490 /* BoxView.h */,
+				40E453591FCBA4FD0075F490 /* BoxView.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1334,6 +1339,7 @@
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
 				40FB84221FC5F8AF00474B94 /* AlertWindowController.m in Sources */,
 				40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */,
+				40E4535A1FCBA4FD0075F490 /* BoxView.m in Sources */,
 				40D428DA1FBFBE310024965B /* Utilities.m in Sources */,
 				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,
 				40FB0C221B810F10009193F8 /* AppDelegate.m in Sources */,
