@@ -23,7 +23,7 @@
     
     self.layer.backgroundColor = [[NSColor colorWithWhite:0.0 alpha:0.02] CGColor];
     self.layer.cornerRadius = 10.0;
-    self.layer.borderColor = [[NSColor colorWithWhite:0.0 alpha:0.03] CGColor];
+    self.layer.borderColor = [[NSColor colorWithWhite:0.0 alpha:0.06] CGColor];
     self.layer.borderWidth = 0.5;
     
     [self.layer setMasksToBounds:NO];
@@ -33,7 +33,7 @@
     CGFloat width = self.frame.size.width - 30;
     NSRect frame = NSMakeRect(15,yvalue, width, 14);
     [self.titleText setFrame:frame];
-    NSRect f = NSMakeRect(0, 0, self.frame.size.width, self.frame.size.height - 14);
+    NSRect f = NSMakeRect(0, 0, self.frame.size.width, self.frame.size.height - 15);
     [self.layer setBounds:f];
 }
 -(void)addTitleView {
@@ -44,8 +44,8 @@
         self.titleText.backgroundColor = [NSColor clearColor];
         self.titleText.bordered = NO;
         self.titleText.selectable = NO;
-        [self.titleText setAlphaValue:0.4];
-        [self.titleText setFont:[NSFont systemFontOfSize:10]];
+        [self.titleText setAlphaValue:0.2];
+        [self.titleText setFont:[NSFont systemFontOfSize:10 weight:NSFontWeightBold]];
         [self.titleText setAlignment:NSTextAlignmentLeft];
         [self addSubview:self.titleText];
     }
