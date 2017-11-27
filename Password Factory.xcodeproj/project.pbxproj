@@ -43,6 +43,7 @@
 		406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3F1B8447A700727FDB /* StrengthControl.m */; };
 		406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3C1B84476F00727FDB /* StrengthBox.m */; };
 		406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585FE1B8112FD00393B99 /* PreferencesButton.m */; };
+		407DA8D61FCC9A8800B84E66 /* ColorTextPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */; };
 		40855E0A1FBCEEA8005BD8F4 /* StoredPasswordColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */; };
 		40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E0C1FBD1628005BD8F4 /* TypeIcons.m */; };
 		40855E0E1FBD2D10005BD8F4 /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
@@ -90,6 +91,7 @@
 		40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
 		40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
 		40C4C8AF1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
+		40C69F301FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */; };
 		40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C87A281FAE2D3100D784B0 /* PasswordController.m */; };
 		40CC4D881F91B4620093A9B8 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */; };
 		40D428DA1FBFBE310024965B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428D91FBFBE310024965B /* Utilities.m */; };
@@ -214,6 +216,8 @@
 		4058DF2F1F92995800CCB6E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4058DF311F92995800CCB6E7 /* Password_Factory_Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Password_Factory_Helper.entitlements; sourceTree = "<group>"; };
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
+		407DA8D41FCC9A8800B84E66 /* ColorTextPreview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorTextPreview.h; sourceTree = "<group>"; };
+		407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorTextPreview.m; sourceTree = "<group>"; };
 		40855E081FBCEEA8005BD8F4 /* StoredPasswordColumn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoredPasswordColumn.h; sourceTree = "<group>"; };
 		40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoredPasswordColumn.m; sourceTree = "<group>"; };
 		40855E0B1FBD1628005BD8F4 /* TypeIcons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeIcons.h; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 		40C0F3861B860791005FC25D /* NSString+RandomCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RandomCase.h"; sourceTree = "<group>"; };
 		40C0F3871B860791005FC25D /* NSString+RandomCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RandomCase.m"; sourceTree = "<group>"; };
 		40C4C8AD1F9E9C0900F31070 /* emojis.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = emojis.txt; sourceTree = "<group>"; };
+		40C69F2E1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticallyCenteredTextFieldCell.h; sourceTree = "<group>"; };
+		40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticallyCenteredTextFieldCell.m; sourceTree = "<group>"; };
 		40C87A271FAE2D3100D784B0 /* PasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordController.h; sourceTree = "<group>"; };
 		40C87A281FAE2D3100D784B0 /* PasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordController.m; sourceTree = "<group>"; };
 		40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -469,6 +475,10 @@
 				402EF2631FC9D791000C567F /* PatternTextView.m */,
 				40E453581FCBA4FD0075F490 /* BoxView.h */,
 				40E453591FCBA4FD0075F490 /* BoxView.m */,
+				407DA8D41FCC9A8800B84E66 /* ColorTextPreview.h */,
+				407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */,
+				40C69F2E1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.h */,
+				40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1310,6 +1320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40511D661C125348005BE5BE /* PasswordStrength.m in Sources */,
+				407DA8D61FCC9A8800B84E66 /* ColorTextPreview.m in Sources */,
 				40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */,
 				40FB929B1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m in Sources */,
 				40855E0A1FBCEEA8005BD8F4 /* StoredPasswordColumn.m in Sources */,
@@ -1351,6 +1362,7 @@
 				4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */,
 				4095862A1B8112FD00393B99 /* StrengthMeter.m in Sources */,
 				40537D8D1F9419FD00D645B7 /* constants.m in Sources */,
+				40C69F301FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m in Sources */,
 				4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */,
 				40D428E21FBFD9D40024965B /* StoredPasswordTableView.m in Sources */,
