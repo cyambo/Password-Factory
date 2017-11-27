@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface BoxView : NSView
-
+@property (nonatomic, strong) IBInspectable NSString *boxTitle;
 @end
