@@ -420,10 +420,12 @@ Gw
             <objects>
                 <windowController storyboardIdentifier="PreferencesWindowController" id="65G-m9-MUQ" userLabel="Preferences Window" customClass="PreferencesWindowController" sceneMemberID="viewController">
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="PasswordFactoryPreferencesWindow" animationBehavior="default" id="oth-DO-Nbl" customClass="PreferencesWindow">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="610" y="362" width="212" height="149"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <value key="minSize" type="size" width="540" height="482"/>
+                        <value key="maxSize" type="size" width="540" height="482"/>
                         <connections>
                             <outlet property="delegate" destination="65G-m9-MUQ" id="Qsf-ds-7uu"/>
                         </connections>
