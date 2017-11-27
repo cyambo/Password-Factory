@@ -444,64 +444,36 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="540" height="482"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="fqx-L3-h6a">
-                                <rect key="frame" x="280" y="20" width="240" height="94"/>
-                                <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-3a-D4r" userLabel="Restart_Quit">
-                                        <rect key="frame" x="14" y="13" width="171" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="4nW-sV-lzw">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="quitOrRestartApplication:" target="2B8-vP-6ly" id="bWL-QW-IK4"/>
-                                        </connections>
-                                    </button>
-                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-V4-dQq">
-                                        <rect key="frame" x="197" y="17" width="25" height="25"/>
-                                        <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CV0-T1-coC">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="showHelp:" target="2B8-vP-6ly" id="G56-qe-oAa"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94H-KT-sT1">
-                                        <rect key="frame" x="20" y="68" width="200" height="19"/>
-                                        <buttonCell key="cell" type="roundRect" title="Reset To Defaults" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lBz-g9-MVz">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="resetToDefaults:" target="2B8-vP-6ly" id="oTC-wi-mNp"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iuF-b8-EqG">
-                                        <rect key="frame" x="20" y="45" width="200" height="19"/>
-                                        <buttonCell key="cell" type="roundRect" title="Reset All Warnings and Dialogs" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8dP-2d-DZc">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="resetAllDialogs:" target="2B8-vP-6ly" id="eTR-0H-F4r"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="iuF-b8-EqG" firstAttribute="leading" secondItem="gTY-3a-D4r" secondAttribute="leading" id="4pz-QU-5Ni"/>
-                                    <constraint firstItem="xp9-V4-dQq" firstAttribute="leading" secondItem="gTY-3a-D4r" secondAttribute="trailing" constant="20" id="DYl-3e-hdl"/>
-                                    <constraint firstItem="gTY-3a-D4r" firstAttribute="top" secondItem="iuF-b8-EqG" secondAttribute="bottom" constant="5" id="OcE-Zc-naO"/>
-                                    <constraint firstAttribute="bottom" secondItem="gTY-3a-D4r" secondAttribute="bottom" constant="20" id="PVA-Zc-5dT"/>
-                                    <constraint firstAttribute="bottom" secondItem="xp9-V4-dQq" secondAttribute="bottom" constant="20" id="SQC-J3-UiQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="iuF-b8-EqG" secondAttribute="trailing" constant="20" id="VKa-OE-3IS"/>
-                                    <constraint firstItem="gTY-3a-D4r" firstAttribute="leading" secondItem="fqx-L3-h6a" secondAttribute="leading" constant="20" id="akl-J8-Fpa"/>
-                                    <constraint firstAttribute="trailing" secondItem="xp9-V4-dQq" secondAttribute="trailing" constant="20" id="cKj-X7-zIT"/>
-                                    <constraint firstItem="94H-KT-sT1" firstAttribute="leading" secondItem="iuF-b8-EqG" secondAttribute="leading" id="dEg-aw-ScX"/>
-                                    <constraint firstItem="iuF-b8-EqG" firstAttribute="top" secondItem="94H-KT-sT1" secondAttribute="bottom" constant="5" id="hhZ-l5-lBk"/>
-                                    <constraint firstAttribute="trailing" secondItem="94H-KT-sT1" secondAttribute="trailing" constant="20" id="hoK-O2-9k8"/>
-                                </constraints>
-                            </customView>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-V4-dQq">
+                                <rect key="frame" x="497" y="17" width="25" height="25"/>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CV0-T1-coC">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showHelp:" target="2B8-vP-6ly" id="G56-qe-oAa"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94H-KT-sT1">
+                                <rect key="frame" x="280" y="59" width="240" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Reset To Defaults" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lBz-g9-MVz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resetToDefaults:" target="2B8-vP-6ly" id="oTC-wi-mNp"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iuF-b8-EqG">
+                                <rect key="frame" x="280" y="96" width="240" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Reset All Warnings and Dialogs" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8dP-2d-DZc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resetAllDialogs:" target="2B8-vP-6ly" id="eTR-0H-F4r"/>
+                                </connections>
+                            </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="4XQ-5D-FU0" customClass="BoxView">
                                 <rect key="frame" x="20" y="223" width="240" height="239"/>
                                 <subviews>
@@ -1007,23 +979,41 @@ Gw
                                     <userDefinedRuntimeAttribute type="string" keyPath="boxTitle" value="Password Text"/>
                                 </userDefinedRuntimeAttributes>
                             </customView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-3a-D4r" userLabel="Restart_Quit">
+                                <rect key="frame" x="274" y="13" width="212" height="32"/>
+                                <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="4nW-sV-lzw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quitOrRestartApplication:" target="2B8-vP-6ly" id="bWL-QW-IK4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="gSQ-Lb-YNO" firstAttribute="leading" secondItem="HuW-cg-qg8" secondAttribute="leading" id="04C-SD-pjC"/>
                             <constraint firstItem="HuW-cg-qg8" firstAttribute="top" secondItem="gSQ-Lb-YNO" secondAttribute="bottom" constant="20" id="0rh-NT-VhX"/>
                             <constraint firstItem="zBV-Nn-h3d" firstAttribute="width" secondItem="4XQ-5D-FU0" secondAttribute="width" id="2e2-fP-g0s"/>
+                            <constraint firstItem="iuF-b8-EqG" firstAttribute="top" secondItem="HuW-cg-qg8" secondAttribute="bottom" constant="19" id="3aM-n2-wer"/>
                             <constraint firstItem="gSQ-Lb-YNO" firstAttribute="top" secondItem="4XQ-5D-FU0" secondAttribute="top" id="5mf-Sd-h83"/>
-                            <constraint firstItem="HuW-cg-qg8" firstAttribute="leading" secondItem="fqx-L3-h6a" secondAttribute="leading" id="8ep-83-hDq"/>
                             <constraint firstItem="zBV-Nn-h3d" firstAttribute="leading" secondItem="J6I-It-7aA" secondAttribute="leading" constant="20" id="Ahy-mM-zmc"/>
-                            <constraint firstItem="fqx-L3-h6a" firstAttribute="bottom" secondItem="zBV-Nn-h3d" secondAttribute="bottom" id="Gkz-Uz-igi"/>
+                            <constraint firstItem="94H-KT-sT1" firstAttribute="trailing" secondItem="iuF-b8-EqG" secondAttribute="trailing" id="DNs-nw-Ow3"/>
+                            <constraint firstItem="gTY-3a-D4r" firstAttribute="top" secondItem="94H-KT-sT1" secondAttribute="bottom" constant="19" id="Dd0-T4-II6"/>
                             <constraint firstAttribute="bottom" secondItem="zBV-Nn-h3d" secondAttribute="bottom" constant="20" id="Kie-eC-b8Z"/>
                             <constraint firstItem="4XQ-5D-FU0" firstAttribute="leading" secondItem="zBV-Nn-h3d" secondAttribute="leading" id="LJE-vb-5pX"/>
                             <constraint firstItem="gSQ-Lb-YNO" firstAttribute="width" secondItem="4XQ-5D-FU0" secondAttribute="width" id="N8I-oo-sGN"/>
+                            <constraint firstItem="iuF-b8-EqG" firstAttribute="trailing" secondItem="HuW-cg-qg8" secondAttribute="trailing" id="NRm-XG-gN5"/>
+                            <constraint firstItem="xp9-V4-dQq" firstAttribute="trailing" secondItem="94H-KT-sT1" secondAttribute="trailing" id="OKI-Q2-BU0"/>
+                            <constraint firstItem="gTY-3a-D4r" firstAttribute="leading" secondItem="94H-KT-sT1" secondAttribute="leading" id="OO9-aK-qd1"/>
+                            <constraint firstItem="xp9-V4-dQq" firstAttribute="leading" secondItem="gTY-3a-D4r" secondAttribute="trailing" constant="19" id="T5m-6U-RS7"/>
                             <constraint firstItem="zBV-Nn-h3d" firstAttribute="top" secondItem="4XQ-5D-FU0" secondAttribute="bottom" constant="20" id="Tyd-uf-RpP"/>
-                            <constraint firstItem="fqx-L3-h6a" firstAttribute="width" secondItem="4XQ-5D-FU0" secondAttribute="width" id="lAY-fw-gDJ"/>
-                            <constraint firstItem="fqx-L3-h6a" firstAttribute="top" secondItem="HuW-cg-qg8" secondAttribute="bottom" constant="20" id="ofr-jd-E7v"/>
-                            <constraint firstItem="fqx-L3-h6a" firstAttribute="leading" secondItem="zBV-Nn-h3d" secondAttribute="trailing" constant="20" id="qWV-mf-nkw"/>
+                            <constraint firstItem="94H-KT-sT1" firstAttribute="leading" secondItem="iuF-b8-EqG" secondAttribute="leading" id="UH0-wB-nxy"/>
+                            <constraint firstItem="gSQ-Lb-YNO" firstAttribute="leading" secondItem="4XQ-5D-FU0" secondAttribute="trailing" constant="20" id="Ubm-ve-aSr"/>
+                            <constraint firstItem="94H-KT-sT1" firstAttribute="top" secondItem="iuF-b8-EqG" secondAttribute="bottom" constant="19" id="YZZ-YX-8MI"/>
+                            <constraint firstItem="iuF-b8-EqG" firstAttribute="leading" secondItem="HuW-cg-qg8" secondAttribute="leading" id="lFH-dc-wih"/>
                             <constraint firstItem="HuW-cg-qg8" firstAttribute="width" secondItem="4XQ-5D-FU0" secondAttribute="width" id="tg2-em-Toz"/>
+                            <constraint firstItem="xp9-V4-dQq" firstAttribute="centerY" secondItem="gTY-3a-D4r" secondAttribute="centerY" id="u1W-qX-L1E"/>
+                            <constraint firstItem="gTY-3a-D4r" firstAttribute="bottom" secondItem="zBV-Nn-h3d" secondAttribute="bottom" id="u5X-4t-Lr6"/>
                         </constraints>
                     </view>
                     <connections>
