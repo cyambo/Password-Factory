@@ -863,7 +863,7 @@ Gw
                                         </connections>
                                     </button>
                                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="8wy-JD-kmX">
-                                        <rect key="frame" x="142" y="76" width="50" height="23"/>
+                                        <rect key="frame" x="142" y="76" width="23" height="23"/>
                                         <color key="color" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="changeColor:" target="2B8-vP-6ly" id="fng-xB-ap5"/>
@@ -882,7 +882,7 @@ Gw
                                         </connections>
                                     </textField>
                                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-ZI-YnJ">
-                                        <rect key="frame" x="142" y="47" width="50" height="23"/>
+                                        <rect key="frame" x="142" y="47" width="23" height="23"/>
                                         <color key="color" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="changeColor:" target="2B8-vP-6ly" id="kmP-TU-gU4"/>
@@ -890,14 +890,14 @@ Gw
                                         </connections>
                                     </colorWell>
                                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="dcr-yy-tEl">
-                                        <rect key="frame" x="142" y="163" width="50" height="23"/>
+                                        <rect key="frame" x="142" y="163" width="23" height="23"/>
                                         <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="changeColor:" target="2B8-vP-6ly" id="Bvg-6c-cWP"/>
                                         </connections>
                                     </colorWell>
                                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="LHi-qb-Klf">
-                                        <rect key="frame" x="142" y="18" width="50" height="23"/>
+                                        <rect key="frame" x="142" y="18" width="23" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="hP9-sC-0a3"/>
                                         </constraints>
@@ -941,7 +941,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Uj9-zk-COr">
-                                        <rect key="frame" x="142" y="105" width="50" height="23"/>
+                                        <rect key="frame" x="142" y="105" width="23" height="23"/>
                                         <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="changeColor:" target="2B8-vP-6ly" id="0Qn-mV-YFm"/>
@@ -960,13 +960,13 @@ Gw
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l9X-Mj-r5G" customClass="ColorTextPreview">
-                                        <rect key="frame" x="197" y="18" width="23" height="23"/>
+                                        <rect key="frame" x="170" y="18" width="50" height="23"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="23" id="DGO-hp-ZS3"/>
+                                            <constraint firstAttribute="width" constant="50" id="DGO-hp-ZS3"/>
                                             <constraint firstAttribute="height" constant="23" id="PJu-pe-b4D"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="#!" drawsBackground="YES" id="GiE-Xe-V7i" customClass="VerticallyCenteredTextFieldCell">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="!@#$" drawsBackground="YES" id="GiE-Xe-V7i" customClass="VerticallyCenteredTextFieldCell">
+                                            <font key="font" metaFont="systemBold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -975,13 +975,12 @@ Gw
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rrv-BX-74n" customClass="ColorTextPreview">
-                                        <rect key="frame" x="197" y="47" width="23" height="23"/>
+                                        <rect key="frame" x="170" y="47" width="50" height="23"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="23" id="HC6-rL-OhL"/>
                                             <constraint firstAttribute="height" constant="23" id="taz-mH-J0x"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="17" drawsBackground="YES" id="pSJ-Zi-PcP" customClass="VerticallyCenteredTextFieldCell">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="1234" drawsBackground="YES" id="pSJ-Zi-PcP" customClass="VerticallyCenteredTextFieldCell">
+                                            <font key="font" metaFont="systemBold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -990,13 +989,12 @@ Gw
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i8p-AA-vjF" customClass="ColorTextPreview">
-                                        <rect key="frame" x="197" y="76" width="23" height="23"/>
+                                        <rect key="frame" x="170" y="76" width="50" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="BrF-br-aq1"/>
-                                            <constraint firstAttribute="width" constant="23" id="P7J-I9-pJF"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="ab" drawsBackground="YES" id="clk-fB-e2w" customClass="VerticallyCenteredTextFieldCell">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="abcd" drawsBackground="YES" id="clk-fB-e2w" customClass="VerticallyCenteredTextFieldCell">
+                                            <font key="font" metaFont="systemBold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1005,13 +1003,12 @@ Gw
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gQy-Zm-J6h" customClass="ColorTextPreview">
-                                        <rect key="frame" x="197" y="105" width="23" height="23"/>
+                                        <rect key="frame" x="170" y="105" width="50" height="23"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="23" id="cLp-rJ-ceK"/>
                                             <constraint firstAttribute="height" constant="23" id="tFo-Xq-hVe"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AB" drawsBackground="YES" id="uP9-jV-NKH" customClass="VerticallyCenteredTextFieldCell">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="ABCD" drawsBackground="YES" id="uP9-jV-NKH" customClass="VerticallyCenteredTextFieldCell">
+                                            <font key="font" metaFont="systemBold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1019,14 +1016,13 @@ Gw
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="upperTextColor"/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUc-vF-gHW" customClass="ColorTextPreview">
-                                        <rect key="frame" x="197" y="163" width="23" height="23"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ufa-is-XpP" customClass="ColorTextPreview">
+                                        <rect key="frame" x="170" y="163" width="50" height="23"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="23" id="NqY-iE-vkp"/>
-                                            <constraint firstAttribute="width" constant="23" id="i9B-fq-f0V"/>
+                                            <constraint firstAttribute="height" constant="23" id="dTM-pl-62Z"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Ab" drawsBackground="YES" id="UJV-qF-OMK" customClass="VerticallyCenteredTextFieldCell">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Ab3$" drawsBackground="YES" id="beU-Ah-RmI" customClass="VerticallyCenteredTextFieldCell">
+                                            <font key="font" metaFont="systemBold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1041,7 +1037,9 @@ Gw
                                     <constraint firstItem="Uj9-zk-COr" firstAttribute="centerY" secondItem="d45-Jo-kCI" secondAttribute="centerY" id="0Yy-9k-uyh"/>
                                     <constraint firstItem="INO-jc-SFw" firstAttribute="leading" secondItem="d45-Jo-kCI" secondAttribute="leading" id="4xb-hy-MEh"/>
                                     <constraint firstItem="Uj9-zk-COr" firstAttribute="width" secondItem="8wy-JD-kmX" secondAttribute="width" id="6FC-6r-qB6"/>
+                                    <constraint firstItem="gQy-Zm-J6h" firstAttribute="width" secondItem="i8p-AA-vjF" secondAttribute="width" id="7fF-Lu-1CK"/>
                                     <constraint firstItem="6MK-iQ-wnA" firstAttribute="leading" secondItem="hM1-dz-0bY" secondAttribute="leading" id="9gU-Vf-rVG"/>
+                                    <constraint firstItem="ufa-is-XpP" firstAttribute="centerY" secondItem="dcr-yy-tEl" secondAttribute="centerY" id="9lZ-5Z-P5N"/>
                                     <constraint firstItem="l9X-Mj-r5G" firstAttribute="leading" secondItem="LHi-qb-Klf" secondAttribute="trailing" constant="5" id="AFe-sl-rBj"/>
                                     <constraint firstItem="6MK-iQ-wnA" firstAttribute="leading" secondItem="gSQ-Lb-YNO" secondAttribute="leading" constant="20" id="AyY-or-CVE"/>
                                     <constraint firstItem="INO-jc-SFw" firstAttribute="height" secondItem="d45-Jo-kCI" secondAttribute="height" id="B7n-Vx-YTy"/>
@@ -1051,10 +1049,10 @@ Gw
                                     <constraint firstItem="8wy-JD-kmX" firstAttribute="leading" secondItem="Cy3-ZI-YnJ" secondAttribute="leading" id="DQ3-EP-1yz"/>
                                     <constraint firstItem="Uj9-zk-COr" firstAttribute="height" secondItem="8wy-JD-kmX" secondAttribute="height" id="EsW-uy-Xr2"/>
                                     <constraint firstItem="Uj9-zk-COr" firstAttribute="leading" secondItem="8wy-JD-kmX" secondAttribute="leading" id="FUh-KC-BnA"/>
+                                    <constraint firstItem="Rrv-BX-74n" firstAttribute="width" secondItem="l9X-Mj-r5G" secondAttribute="width" id="IMH-XU-QOC"/>
                                     <constraint firstItem="Rrv-BX-74n" firstAttribute="centerY" secondItem="Cy3-ZI-YnJ" secondAttribute="centerY" id="K8y-8a-edF"/>
                                     <constraint firstItem="dcr-yy-tEl" firstAttribute="leading" secondItem="Uj9-zk-COr" secondAttribute="leading" id="KL8-Z2-GAE"/>
                                     <constraint firstItem="d45-Jo-kCI" firstAttribute="height" secondItem="9xY-8e-0jc" secondAttribute="height" id="LrR-NA-iw3"/>
-                                    <constraint firstItem="wUc-vF-gHW" firstAttribute="centerY" secondItem="dcr-yy-tEl" secondAttribute="centerY" id="M8y-p4-XGy"/>
                                     <constraint firstItem="d45-Jo-kCI" firstAttribute="leading" secondItem="9xY-8e-0jc" secondAttribute="leading" id="NG7-Ti-br4"/>
                                     <constraint firstItem="Ona-YN-B0M" firstAttribute="height" secondItem="INO-jc-SFw" secondAttribute="height" id="NHm-k6-0Yf"/>
                                     <constraint firstItem="i8p-AA-vjF" firstAttribute="leading" secondItem="Rrv-BX-74n" secondAttribute="leading" id="Nrp-Vw-V57"/>
@@ -1071,7 +1069,7 @@ Gw
                                     <constraint firstItem="dcr-yy-tEl" firstAttribute="height" secondItem="Uj9-zk-COr" secondAttribute="height" id="hae-ea-DFm"/>
                                     <constraint firstItem="dcr-yy-tEl" firstAttribute="centerY" secondItem="Ona-YN-B0M" secondAttribute="centerY" id="hkA-St-w7q"/>
                                     <constraint firstItem="Ona-YN-B0M" firstAttribute="leading" secondItem="INO-jc-SFw" secondAttribute="leading" id="jUR-X4-cV5"/>
-                                    <constraint firstItem="wUc-vF-gHW" firstAttribute="leading" secondItem="gQy-Zm-J6h" secondAttribute="leading" id="jqa-v1-XCm"/>
+                                    <constraint firstItem="i8p-AA-vjF" firstAttribute="width" secondItem="Rrv-BX-74n" secondAttribute="width" id="kbI-IV-pTd"/>
                                     <constraint firstItem="6MK-iQ-wnA" firstAttribute="top" secondItem="hM1-dz-0bY" secondAttribute="bottom" constant="10" id="mMO-8j-d2G"/>
                                     <constraint firstItem="INO-jc-SFw" firstAttribute="top" secondItem="Ona-YN-B0M" secondAttribute="bottom" constant="10" id="o4p-I3-a7U"/>
                                     <constraint firstItem="Cy3-ZI-YnJ" firstAttribute="leading" secondItem="LHi-qb-Klf" secondAttribute="leading" id="s2P-0h-FGq"/>
@@ -1079,9 +1077,11 @@ Gw
                                     <constraint firstItem="9xY-8e-0jc" firstAttribute="leading" secondItem="hM1-dz-0bY" secondAttribute="leading" id="tLM-Tf-Vj3"/>
                                     <constraint firstItem="LHi-qb-Klf" firstAttribute="centerY" secondItem="6MK-iQ-wnA" secondAttribute="centerY" id="tYv-eF-hJQ"/>
                                     <constraint firstItem="Cy3-ZI-YnJ" firstAttribute="centerY" secondItem="hM1-dz-0bY" secondAttribute="centerY" id="uEH-hu-KNk"/>
+                                    <constraint firstItem="ufa-is-XpP" firstAttribute="width" secondItem="gQy-Zm-J6h" secondAttribute="width" id="umV-pW-fvT"/>
                                     <constraint firstItem="LHi-qb-Klf" firstAttribute="leading" secondItem="6MK-iQ-wnA" secondAttribute="trailing" constant="70" id="vOo-r2-IHA"/>
                                     <constraint firstItem="Cy3-ZI-YnJ" firstAttribute="width" secondItem="LHi-qb-Klf" secondAttribute="width" id="xir-Qm-Vzg"/>
                                     <constraint firstItem="dcr-yy-tEl" firstAttribute="width" secondItem="Uj9-zk-COr" secondAttribute="width" id="xsU-ub-SQd"/>
+                                    <constraint firstItem="ufa-is-XpP" firstAttribute="leading" secondItem="gQy-Zm-J6h" secondAttribute="leading" id="yaq-ol-b6w"/>
                                     <constraint firstItem="9xY-8e-0jc" firstAttribute="height" secondItem="hM1-dz-0bY" secondAttribute="height" id="z3a-R1-4f4"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

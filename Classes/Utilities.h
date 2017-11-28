@@ -11,4 +11,5 @@
 @interface Utilities : NSObject
 +(BOOL)isDarkMode;
 +(NSAttributedString *)colorText:(NSString *)text size:(NSUInteger)size;
++(NSColorSpace *)colorSpace;
 @end

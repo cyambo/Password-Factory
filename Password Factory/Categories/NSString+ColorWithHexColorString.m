@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "NSString+ColorWithHexColorString.h"
-
+#import "Utilities.h"
 @implementation NSString (ColorWithHexColorString)
 /**
  Converts a hex color string into an NSColor
@@ -29,11 +29,11 @@
     greenByte = (unsigned char)(colorCode >> 8);
     blueByte = (unsigned char)(colorCode); // masks off high bits
     
-    result = [NSColor
+    result = [[NSColor
               colorWithCalibratedRed:(CGFloat)redByte / 0xff
               green:(CGFloat)greenByte / 0xff
               blue:(CGFloat)blueByte / 0xff
-              alpha:1.0];
+              alpha:1.0] colorUsingColorSpace:[Utilities colorSpace]];
     return result;
 }
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "NSColor+NSColorHexadecimalValue.h"
-
+#import "Utilities.h"
 
 @implementation NSColor (NSColorHexadecimalValue)
 -(NSString *)hexadecimalValueOfAnNSColor {
@@ -15,8 +15,8 @@
     NSString *redHexValue, *greenHexValue, *blueHexValue;
     
     //Convert the NSColor to the RGB color space before we can access its components
-    NSColor *convertedColor=[self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
-    
+    NSColor *convertedColor=[self colorUsingColorSpace:[Utilities colorSpace]];
+
     if(convertedColor) {
 
         

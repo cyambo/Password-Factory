@@ -40,8 +40,6 @@ static NSDictionary *prefsPlist;
     self = [super init];
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"SHARED DEFAULTS %@",self.sharedDefaults);
-    NSLog(@"STANDARD DEFAULTS %@",self.standardDefaults);
     [self loadPreferencesFromPlist];
     return self;
 }

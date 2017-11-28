@@ -77,4 +77,14 @@
         return s;
     }
 }
+
+/**
+ Returns the colorspace we are using for the app
+
+ @return NSColorSpace
+ */
++(NSColorSpace *)colorSpace {
+    return [NSColorSpace extendedSRGBColorSpace];
+}
+
 @end
