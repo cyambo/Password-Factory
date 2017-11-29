@@ -6,17 +6,18 @@
 //  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
 
-#import "PatternTextView.h"
+#import "PatternTextField.h"
+#import "constants.h"
 #import "PasswordFactoryConstants.h"
-@interface PatternTextView ()
+@interface PatternTextField ()
 
 @end
-@implementation PatternTextView
+@implementation PatternTextField
 
 
 - (NSTouchBar *)makeTouchBar {
     
-    NSTouchBar *bar = [super makeTouchBar];
+    NSTouchBar *bar = [[NSTouchBar alloc] init];
     bar.delegate = self;
     
     // Set the default ordering of items.
@@ -35,10 +36,12 @@
         NSSegmentedControl *insertControl = [[NSSegmentedControl alloc] init];
         PasswordFactoryConstants *c = [PasswordFactoryConstants get];
         [insertControl setSegmentCount:c.patternCharacterToType.count];
-        int i = 0;
-        for(NSString *key in c.patternCharacterToType) {
+
+        for(int i = 0; i < c.patternCharacterToType.count; i++) {
+            PFPatternTypeItem type = [c getPatternTypeByIndex:i];
+            NSString * key = c.patternTypeToCharacter[@(type)];
             [insertControl setLabel:key forSegment:i];
-            i++;
+            [insertControl setWidth:32.0 forSegment:i];
         }
         [insertControl setAction:@selector(insertCharacter:)];
         touchBarItem.view = insertControl;

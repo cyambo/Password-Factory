@@ -124,15 +124,17 @@
     //build out pattern dictionaries
     NSMutableDictionary *pc = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *pn = [[NSMutableDictionary alloc] init];
-
+    NSMutableDictionary *pt = [[NSMutableDictionary alloc] init];
     for(NSNumber *key in self.patternBase) {
         NSString *c = self.patternBase[key][0];
         NSString *name = self.patternBase[key][1];
         pc[c] = key;
         pn[key] = [NSString stringWithFormat:@"%@ - %@",c,name];
+        pt[key] = [NSString stringWithFormat:@"%@",c];
     }
     self.patternCharacterToType = pc;
     self.patternTypeToName = pn;
+    self.patternTypeToCharacter = pt;
 }
 -(PFCaseType)getCaseTypeByIndex:(NSUInteger)index {
     return (PFCaseType)[(NSNumber *)self.caseTypeIndex[index] integerValue];

@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PatternTextView : NSTextField <NSTouchBarDelegate>
+@interface PatternTextField : NSTextField <NSTouchBarDelegate>
 
 @end
