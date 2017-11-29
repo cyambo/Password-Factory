@@ -17,6 +17,16 @@
 @implementation AlertWindowController
 
 /**
+ Displays an error message and code with a note to email support
+
+ @param errorDescription error description
+ @param code PFErrorCode
+ */
+-(void)displayError:(NSString *)errorDescription code:(PFErrorCode)code {
+    NSString *message = [NSString stringWithFormat:@"An application error has occurred.\nCode: %ld\nDescription: '%@'\nPlease send an email to\n%@\nwith the code and description",code,errorDescription,SupportEmailAddress];
+    [self displayAlert:message defaultsKey:nil window:nil];
+}
+/**
  Displays the alert message if we did not explicitly turn it off
 
  @param alert alert message to show
@@ -37,6 +47,13 @@
  */
 -(void)displayAlertWithBlock:(NSString *)alert defaultsKey:(NSString *)defaultsKey window:(NSWindow *)window closeBlock:(void (^)(BOOL cancelled))closeBlock {
     NSUserDefaults *d = [DefaultsManager standardDefaults];
+    
+    if (defaultsKey != nil) {
+        //no defaults key set, so make a new one with NO by default
+        if ([d objectForKey:defaultsKey] == nil) {
+            [d setBool:NO forKey:defaultsKey];
+        }
+    }
     //check to see if we want it hidden
     if (defaultsKey == nil || ![d boolForKey:defaultsKey]) {
         AlertViewController *a = (AlertViewController *)self.contentViewController;
@@ -49,10 +66,17 @@
         } else {
             [a.cancelButton setHidden:YES];
         }
-        if (![d boolForKey:@"isMenuApp"] || [window isKindOfClass:[PreferencesWindow class]]) {
+        //use a sheet if we are not a menu app, in the preferences window, or if the window is nil
+        if (window != nil && (![d boolForKey:@"isMenuApp"] || [window isKindOfClass:[PreferencesWindow class]])) {
             [window beginSheet:self.window completionHandler:nil];
         } else {
-            [self showWindow:nil];
+            if(window != nil) {
+                NSRect popoverFrame = window.frame;
+                NSRect windowFrame = self.window.frame;
+                //moving alert directly to the left of the popover window
+                NSRect newFrame = NSMakeRect(popoverFrame.origin.x - windowFrame.size.width - 20, popoverFrame.origin.y + 50, windowFrame.size.width, windowFrame.size.height);
+                [self.window setFrame:newFrame display:YES];
+            }
             [self.window makeKeyAndOrderFront:nil];
         }
         

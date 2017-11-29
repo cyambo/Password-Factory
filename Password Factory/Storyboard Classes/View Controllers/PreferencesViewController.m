@@ -320,7 +320,6 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 -(BOOL)setLoginItem:(BOOL)set {
     if(set) {
         NSURL *url = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"Contents/Library/Password Factory Helper.app" isDirectory:NO];
-        NSLog(@"URL PATH %@",url);
         // Registering helper app
         if (LSRegisterURL((__bridge CFURLRef)url, true) != noErr) {
             NSLog(@"LSRegisterURL failed!");

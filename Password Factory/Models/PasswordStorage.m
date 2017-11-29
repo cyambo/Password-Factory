@@ -11,6 +11,7 @@
 #import "PasswordStorage.h"
 #import "constants.h"
 #import "DefaultsManager.h"
+#import "AppDelegate.h"
 @interface PasswordStorage ()
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
@@ -50,10 +51,10 @@
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
         
         if(error) {
-            NSLog(@"CORE DATA LOAD ERROR %@",error.localizedDescription);
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataLoadError];
         }
     }];
-    NSLog(@"%@",self.container.persistentStoreDescriptions.firstObject.URL);
     //set to sort with newest on top
     self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
     [self loadSavedData];
@@ -98,7 +99,8 @@
         NSError *error = nil;
         NSArray *items = [self.container.viewContext executeFetchRequest:fetchRequest error:&error];
         if (error.localizedDescription) {
-            NSLog(@"FETCH ERROR %@",error.localizedDescription);
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteOverMaxFetchError];
         }
         for(Passwords *p in items) {
             [self.container.viewContext deleteObject:p];
@@ -115,7 +117,8 @@
         NSError *error = nil;
         [self.container.viewContext save:&error];
         if (error.localizedDescription) {
-            NSLog(@"SAVE FAILED %@",error.localizedDescription);
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataSaveFailedError];
         }
     }
 }
@@ -136,7 +139,8 @@
     NSError *error = nil;
     [self.fetchedResultsController performFetch:&error];
     if(error.localizedDescription) {
-        NSLog(@"FETCH FAILED %@",error.localizedDescription);
+        AppDelegate *d = [NSApplication sharedApplication].delegate;
+        [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataLoadSavedDataFailedError];
     }
 }
 
@@ -199,7 +203,8 @@
     NSError *error = nil;
     [self.container.viewContext executeRequest:delete error:&error];
     if (error.localizedDescription) {
-        NSLog(@"DELETE FAILED %@",error.localizedDescription);
+        AppDelegate *d = [NSApplication sharedApplication].delegate;
+        [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteAllFailedError];
     }
 }
 @end

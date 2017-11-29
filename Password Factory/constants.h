@@ -69,6 +69,15 @@ typedef NS_ENUM(NSInteger, PFPatternTypeItem) {
     PFEmojiType,
     PFRandomItemType
 };
+
+typedef NS_ENUM(NSInteger, PFErrorCode) {
+    PFCoreDataLoadError = 9901,
+    PFCoreDataDeleteOverMaxFetchError,
+    PFCoreDataSaveFailedError,
+    PFCoreDataLoadSavedDataFailedError,
+    PFCoreDataDeleteAllFailedError,
+    PFPasteboardFailError
+};
 #define PFPasswordMinLength 5
 #define PFPasswordMaxLength 150
 

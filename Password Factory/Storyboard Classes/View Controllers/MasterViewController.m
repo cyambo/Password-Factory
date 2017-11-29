@@ -188,7 +188,11 @@
     [pasteboard clearContents];
     NSArray *toPasteboard = @[val];
     BOOL ok = [pasteboard writeObjects:toPasteboard];
-    if (!ok) { NSLog(@"Write to pasteboard failed");}
+    if (!ok) {
+        AppDelegate *d = [NSApplication sharedApplication].delegate;
+        [d.alertWindowController displayError:@"Pasteboard Write Failed" code:PFCoreDataLoadError];
+        
+    }
 }
 
 /**
