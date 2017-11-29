@@ -15,8 +15,6 @@
 		400E83831FC4CB55006CE51A /* StrengthMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586001B8112FD00393B99 /* StrengthMeter.m */; };
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
-		402759B81FBE26B300B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
-		402759B91FBE26B700B26F03 /* SecureRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 402759B71FBE26B300B26F03 /* SecureRandom.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
 		402EF2641FC9D791000C567F /* PatternTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 402EF2631FC9D791000C567F /* PatternTextView.m */; };
 		402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
@@ -189,8 +187,6 @@
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
 		4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyIntegerFormatter.m; sourceTree = "<group>"; };
-		402759B61FBE26B300B26F03 /* SecureRandom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecureRandom.h; sourceTree = "<group>"; };
-		402759B71FBE26B300B26F03 /* SecureRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecureRandom.m; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		402EF2621FC9D791000C567F /* PatternTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatternTextView.h; sourceTree = "<group>"; };
 		402EF2631FC9D791000C567F /* PatternTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatternTextView.m; sourceTree = "<group>"; };
@@ -591,8 +587,6 @@
 		40CBF1781FBD5D0D00048B0C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				402759B61FBE26B300B26F03 /* SecureRandom.h */,
-				402759B71FBE26B300B26F03 /* SecureRandom.m */,
 				40D428D81FBFBE310024965B /* Utilities.h */,
 				40D428D91FBFBE310024965B /* Utilities.m */,
 			);
@@ -1274,7 +1268,6 @@
 				4051C9CF1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */,
 				409732F91FC0CB9200CCEF1A /* PasswordController.m in Sources */,
-				402759B91FBE26B700B26F03 /* SecureRandom.m in Sources */,
 				4004F1DB1FBB63290093DA3F /* ZoomButton.m in Sources */,
 				40537D8E1F941C1700D645B7 /* constants.m in Sources */,
 				4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
@@ -1336,7 +1329,6 @@
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,
 				4051C9D21FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40B9AD081FB0EC50003F7580 /* PasswordTypesViewController.m in Sources */,
-				402759B81FBE26B300B26F03 /* SecureRandom.m in Sources */,
 				40FB0C241B810F10009193F8 /* main.m in Sources */,
 				40D428DE1FBFC8B10024965B /* ModeTextField.m in Sources */,
 				40A0A3CC1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m in Sources */,
