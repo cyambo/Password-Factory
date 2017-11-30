@@ -186,7 +186,7 @@
 - (IBAction)selectInsertMenuItem:(id)sender {
     if(self.insertMenu.indexOfSelectedItem != 0) {
         char toInsert = [self.insertMenu.selectedItem.title characterAtIndex:0];
-        [self.patternText addText:[NSString stringWithFormat:@"%c",toInsert]];
+        [self.patternText appendText:[NSString stringWithFormat:@"%c",toInsert]];
     }
 }
 

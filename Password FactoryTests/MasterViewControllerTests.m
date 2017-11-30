@@ -66,14 +66,14 @@
     
     //testing pattern change
     NSString *pattern = @"c"; //set the pattern to 'c'
-    [pvc.patternText resetText:pattern];
+    [pvc.patternText setText:pattern];
     [d setObject:pattern forKey:@"userPattern"];
     [pvc controlTextDidChange:mockNotification];
     XCTAssertEqual(pattern.length, [self getPasswordFieldValue].length, @"Password length should be 1");
     
     //set a new pattern
     pattern = @"cC\\C";
-    [pvc.patternText resetText:pattern];
+    [pvc.patternText setText:pattern];
     [d setObject:pattern forKey:@"userPattern"];
     [pvc controlTextDidChange:mockNotification];
     

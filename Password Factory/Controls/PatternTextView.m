@@ -14,55 +14,24 @@
 -(instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
-    [self setFont:[NSFont systemFontOfSize:32]];
-    [self setMaxSize:NSMakeSize(FLT_MAX, self.frame.size.height)];
-    [self setHorizontallyResizable:YES];
-    [self.textContainer setWidthTracksTextView:NO];
-    [self.textContainer setContainerSize:NSMakeSize(FLT_MAX, self.frame.size.height)];
-    [self addText:[d stringForKey:@"userPattern"]];
+    [self appendText:[d stringForKey:@"userPattern"]];
     self.delegate = self;
     return self;
 }
 -(void)textDidChange:(NSNotification *)notification {
     [self setDefaults];
 }
--(void)setDefaults {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
-    if (![self.textStorage.string isEqualToString:[d stringForKey:@"userPattern"]]) {
-       [d setObject:self.textStorage.string forKey:@"userPattern"];
-    }
-}
+
 - (NSTouchBar *)makeTouchBar {
     NSTouchBar *bar = [[NSTouchBar alloc] init];
     bar.delegate = self;
     bar.defaultItemIdentifiers = @[@"CharacterInsert"];
     return bar;
 }
--(NSDictionary *)getTextAttributes {
-    return @{
-             NSFontAttributeName: [NSFont systemFontOfSize:32]
-             };
-}
--(void)addText:(NSString *)text {
-    if (text != nil && text.length) {
-        NSDictionary *attributes = [self getTextAttributes];
-        NSAttributedString *string = [[NSAttributedString alloc] initWithString:text attributes:attributes];
-        [self.textStorage appendAttributedString:string];
-        [self setDefaults];
-    }
-}
--(void)resetText:(NSString *)text {
-    if(text == nil) {
-        text = @"";
-    }
-    NSDictionary *attributes = [self getTextAttributes];
-    NSAttributedString *string = [[NSAttributedString alloc] initWithString:text attributes:attributes];
-    [self.textStorage setAttributedString:string];
-    [self setDefaults];
-}
+
 - (IBAction)insertCharacter:(NSSegmentedControl *)sender {
     NSString *title = [sender labelForSegment:sender.selectedSegment];
-    [self addText:title];
+    [self appendText:title];
 
 }
 - (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier {

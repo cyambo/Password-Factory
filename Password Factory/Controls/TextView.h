@@ -13,4 +13,6 @@
 @property (nonatomic, strong) IBInspectable NSString *defaultsKey;
 -(void)appendText:(NSString *)text;
 -(void)setText:(NSString *)text;
+-(void)setDefaults;
+-(NSDictionary *)getTextAttributes;
 @end

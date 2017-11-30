@@ -7,8 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TextView.h"
+@interface PatternTextView : TextView <NSTextViewDelegate>
 
-@interface PatternTextView : NSTextView <NSTextViewDelegate>
--(void)addText:(NSString *)text;
--(void)resetText:(NSString *)text;
 @end
