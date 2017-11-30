@@ -362,16 +362,21 @@
                          forEventClass:kInternetEventClass andEventID:kAEGetURL];
     //remove enter full screen menu item
     [[DefaultsManager standardDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
+    [self handleGetURLEvent:nil withReplyEvent:nil];
 }
 
 /**
  Called when the gear is pressed on the widget - it uses our url scheme to open the application if it is not running, or switch to it if it is active
+ URL Schemes:
+ com-cloud13-password-factory://settings - Opens Settings
+ com-cloud13-password-factory://zoom?password=PASSWORD_TO_ZOOM - Zooms Password
 
  @param event default event
  @param replyEvent default replyEvent
  */
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
-    NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
+    NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
+    NSURL *url = [NSURL URLWithString:urlString];
     BOOL showPreferences = [url.host isEqualToString:@"settings"];
     BOOL zoomPassword = [url.host isEqualToString:@"zoom"];
     if(showPreferences || zoomPassword) {
@@ -386,16 +391,36 @@
                 }
             } else {
                 //zoom password
-                [self.masterViewController zoomPassword:url.lastPathComponent];
+                [self.masterViewController zoomPassword:[self getPasswordToZoomFromURL:urlString]];
             }
 
         } else {
             self.showPrefs = showPreferences;
             if (zoomPassword) {
-                self.passwordToZoom = url.lastPathComponent;
+                self.passwordToZoom = [self getPasswordToZoomFromURL:urlString];
             }
         }
         
     }
+}
+
+/**
+ Gets the password to zoom from the url event
+
+ @param urlString URL to check
+ @return password to zoom
+ */
+-(NSString *)getPasswordToZoomFromURL:(NSString *)urlString {
+    //get the query string from the url
+    NSArray *queryItems = [[NSURLComponents alloc] initWithString:urlString].queryItems;
+    if(queryItems) {
+        //only checking the first to see if it matches 'password' because if it is not there then it didn't come from the app
+        NSURLQueryItem *q = queryItems[0];
+        if([q.name isEqualToString:@"password"]) {
+            //found the query item, so zomm the password
+            return q.value;
+        }
+    }
+    return nil;
 }
 @end

@@ -191,8 +191,10 @@
  @param sender default sender
  */
 - (IBAction)zoomPassword:(id)sender {
-    NSURL *u = [[NSURL alloc] initWithString:ZoomPasswordURL];
-    u = [u URLByAppendingPathComponent:self.passwordController.password];
+    NSString *escapedString = [self.passwordController.password stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    escapedString = [NSString stringWithFormat:@"?password=%@",escapedString];
+    NSString *urlString = [ZoomPasswordURL stringByAppendingString:escapedString];
+    NSURL *u = [[NSURL alloc] initWithString:urlString];
     [[NSWorkspace sharedWorkspace] openURL:u];
 }
 /**
