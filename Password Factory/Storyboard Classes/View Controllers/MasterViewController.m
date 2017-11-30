@@ -660,7 +660,7 @@
     
     // Set the default ordering of items.
     bar.defaultItemIdentifiers =
-    @[@"ZoomButton",@"TypeSelection"];
+    @[@"ZoomButton",@"TypeSelection",@"GenerateButton",@"CopyButton"];
     
     return bar;
 }
@@ -683,6 +683,24 @@
         [self.touchBarTypeControl setAction:@selector(changePasswordTypeControl:)];
         touchBarItem.view = self.touchBarTypeControl;
         touchBarItem.customizationLabel = @"Select Type";
+        return touchBarItem;
+    }
+    if ([identifier isEqualToString:@"GenerateButton"]) {
+        NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"GenerateButton"];
+        NSButton *button = [NSButton buttonWithTitle:@"Generate"
+                                              target:self
+                                              action:@selector(generateAction:)];
+        touchBarItem.customizationLabel = @"Generate";
+        touchBarItem.view = button;
+        return touchBarItem;
+    }
+    if ([identifier isEqualToString:@"CopyButton"]) {
+        NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"CopyButton"];
+        NSButton *button = [NSButton buttonWithTitle:@"Copy"
+                                              target:self
+                                              action:@selector(copyToClipboard:)];
+        touchBarItem.customizationLabel = @"Copy";
+        touchBarItem.view = button;
         return touchBarItem;
     }
     return nil;
