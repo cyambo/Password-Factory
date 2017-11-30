@@ -16,7 +16,6 @@
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
-		402EF2641FC9D791000C567F /* PatternTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 402EF2631FC9D791000C567F /* PatternTextField.m */; };
 		402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
@@ -46,6 +45,7 @@
 		40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E0C1FBD1628005BD8F4 /* TypeIcons.m */; };
 		40855E0E1FBD2D10005BD8F4 /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
 		40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
+		408BCD091FCE498400EC8B39 /* PatternTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408BCD081FCE498400EC8B39 /* PatternTextView.m */; };
 		40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40940E291FC6249300CA1261 /* ExportViewController.m */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
 		409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CD1B8112D600393B99 /* PreferencesWindowTestClass.m */; };
@@ -188,8 +188,6 @@
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
 		4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyIntegerFormatter.m; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		402EF2621FC9D791000C567F /* PatternTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatternTextField.h; sourceTree = "<group>"; };
-		402EF2631FC9D791000C567F /* PatternTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatternTextField.m; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
@@ -219,6 +217,8 @@
 		40855E0B1FBD1628005BD8F4 /* TypeIcons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeIcons.h; sourceTree = "<group>"; };
 		40855E0C1FBD1628005BD8F4 /* TypeIcons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeIcons.m; sourceTree = "<group>"; };
 		408673D51F91D04B00C189AB /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = "Password Factory/constants.h"; sourceTree = "<group>"; };
+		408BCD071FCE498400EC8B39 /* PatternTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatternTextView.h; sourceTree = "<group>"; };
+		408BCD081FCE498400EC8B39 /* PatternTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatternTextView.m; sourceTree = "<group>"; };
 		40940E281FC6249300CA1261 /* ExportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportViewController.h; sourceTree = "<group>"; };
 		40940E291FC6249300CA1261 /* ExportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportViewController.m; sourceTree = "<group>"; };
 		409585CA1B8112D600393B99 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTests.m; sourceTree = "<group>"; };
@@ -467,14 +467,14 @@
 				40D428DD1FBFC8B10024965B /* ModeTextField.m */,
 				40D428E01FBFD9D40024965B /* StoredPasswordTableView.h */,
 				40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */,
-				402EF2621FC9D791000C567F /* PatternTextField.h */,
-				402EF2631FC9D791000C567F /* PatternTextField.m */,
 				40E453581FCBA4FD0075F490 /* BoxView.h */,
 				40E453591FCBA4FD0075F490 /* BoxView.m */,
 				407DA8D41FCC9A8800B84E66 /* ColorTextPreview.h */,
 				407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */,
 				40C69F2E1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.h */,
 				40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */,
+				408BCD071FCE498400EC8B39 /* PatternTextView.h */,
+				408BCD081FCE498400EC8B39 /* PatternTextView.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1323,7 +1323,7 @@
 				40BA26F21FB389D300F7AF13 /* PasswordFactoryConstants.m in Sources */,
 				40FB841B1FC5F66A00474B94 /* AlertWindow.m in Sources */,
 				4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */,
-				402EF2641FC9D791000C567F /* PatternTextField.m in Sources */,
+				408BCD091FCE498400EC8B39 /* PatternTextView.m in Sources */,
 				40AFC65E1FBB7D3600CB5BDA /* ZoomWindow.m in Sources */,
 				4095862C1B8112FD00393B99 /* PasswordFactory.m in Sources */,
 				4095862D1B8112FD00393B99 /* MasterViewController.m in Sources */,

@@ -1531,25 +1531,6 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="371" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="grE-FA-64P">
-                                <rect key="frame" x="20" y="66" width="331" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="JQ2-IZ-gf7"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Pattern" drawsBackground="YES" id="RaX-4I-wdw">
-                                    <font key="font" metaFont="system" size="32"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="m3K-k4-akT" name="value" keyPath="values.userPattern" id="xIZ-YA-Np2">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                    <outlet property="delegate" destination="sd3-yQ-tvi" id="b06-kn-T4D"/>
-                                </connections>
-                            </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-22-F9f" userLabel="Insert Menu">
                                 <rect key="frame" x="18" y="22" width="341" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="Insert" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hxv-hc-dKQ" id="wr0-Db-VUc" userLabel="Insert">
@@ -1620,19 +1601,48 @@ Gw
                                     <action selector="selectInsertMenuItem:" target="sd3-yQ-tvi" id="4nP-K9-79z"/>
                                 </connections>
                             </popUpButton>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="0.0" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="nnY-CZ-PXQ">
+                                <rect key="frame" x="20" y="66" width="331" height="44"/>
+                                <clipView key="contentView" copiesOnScroll="NO" id="Z8W-gt-IXS">
+                                    <rect key="frame" x="1" y="1" width="329" height="42"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="NO" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="33d-cE-36Y" customClass="PatternTextView">
+                                            <rect key="frame" x="0.0" y="0.0" width="329" height="42"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="329" height="42"/>
+                                            <size key="maxSize" width="463" height="42"/>
+                                            <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bDH-xX-XHa"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="LJk-jB-pZs">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="4BQ-Lr-YbB">
+                                    <rect key="frame" x="-100" y="-100" width="16" height="42"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="nnY-CZ-PXQ" firstAttribute="top" secondItem="RWw-tD-t37" secondAttribute="top" constant="20" id="6is-Ti-xhe"/>
                             <constraint firstAttribute="trailing" secondItem="hUB-22-F9f" secondAttribute="trailing" constant="15" id="JtW-UG-gdB"/>
                             <constraint firstItem="hUB-22-F9f" firstAttribute="leading" secondItem="RWw-tD-t37" secondAttribute="leading" constant="20" id="KOF-K3-CtU"/>
-                            <constraint firstItem="hUB-22-F9f" firstAttribute="top" secondItem="grE-FA-64P" secondAttribute="bottom" constant="20" id="RlA-7b-SmL"/>
-                            <constraint firstItem="grE-FA-64P" firstAttribute="top" secondItem="RWw-tD-t37" secondAttribute="top" constant="20" id="SZ2-cM-Yaz"/>
-                            <constraint firstAttribute="trailing" secondItem="grE-FA-64P" secondAttribute="trailing" constant="20" id="bSi-Fs-PFk"/>
-                            <constraint firstItem="grE-FA-64P" firstAttribute="leading" secondItem="RWw-tD-t37" secondAttribute="leading" constant="20" id="ldn-lM-pBf"/>
+                            <constraint firstItem="nnY-CZ-PXQ" firstAttribute="leading" secondItem="RWw-tD-t37" secondAttribute="leading" constant="20" id="Utt-yi-CWS"/>
+                            <constraint firstAttribute="trailing" secondItem="nnY-CZ-PXQ" secondAttribute="trailing" constant="20" id="XFQ-FK-UQc"/>
+                            <constraint firstItem="hUB-22-F9f" firstAttribute="top" secondItem="nnY-CZ-PXQ" secondAttribute="bottom" constant="20" id="m7F-bA-IqL"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="insertMenu" destination="hUB-22-F9f" id="f0m-qI-erN"/>
-                        <outlet property="patternText" destination="grE-FA-64P" id="JYd-d2-1Na"/>
+                        <outlet property="patternText" destination="33d-cE-36Y" id="3ci-Xz-rrU"/>
                     </connections>
                 </viewController>
                 <customObject id="70x-At-AHg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

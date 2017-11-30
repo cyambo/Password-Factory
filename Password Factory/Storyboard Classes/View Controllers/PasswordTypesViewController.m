@@ -186,11 +186,7 @@
 - (IBAction)selectInsertMenuItem:(id)sender {
     if(self.insertMenu.indexOfSelectedItem != 0) {
         char toInsert = [self.insertMenu.selectedItem.title characterAtIndex:0];
-        NSString *pattern = [NSString stringWithFormat:@"%@%c",self.patternText.stringValue,toInsert];
-        [self.patternText setStringValue:pattern];
-        [[DefaultsManager standardDefaults] setObject:pattern forKey:@"userPattern"]; // update defaults because setting the text does not update bindings
-        [self.insertMenu selectItemAtIndex:0];
-        [self callDelegate];
+        [self.patternText addText:[NSString stringWithFormat:@"%c",toInsert]];
     }
 }
 

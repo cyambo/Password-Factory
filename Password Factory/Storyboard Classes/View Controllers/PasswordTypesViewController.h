@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "constants.h"
 #import "StyleKit.h"
-
+#import "PatternTextView.h"
 @class PasswordTypesViewController;
 @protocol PasswordTypesViewControllerDelegate <NSObject, NSTableViewDelegate>
 - (void)controlChanged:(PFPasswordType)type;
@@ -31,7 +31,8 @@
 @property (weak) IBOutlet NSTextField *passwordLengthText;
 - (IBAction)changeLength:(id)sender;
 
-@property (weak) IBOutlet NSTextField *patternText;
+@property (unsafe_unretained) IBOutlet PatternTextView *patternText;
+
 @property (weak) IBOutlet NSPopUpButton *insertMenu;
 - (IBAction)selectInsertMenuItem:(id)sender;
 
@@ -61,5 +62,6 @@
 
 -(void)selectRandomFromStored;
 -(void)selectFromStored:(NSUInteger)index;
+
 
 @end

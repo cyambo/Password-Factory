@@ -113,7 +113,9 @@
         ) {
         [self updatePasswordField];
     }
-    
+    if([keyPath isEqualToString:@"userPattern"]) {
+        [self generatePassword];
+    }
     //updates the max length for the currerntly visible password type
     if ([keyPath isEqualToString:@"maxPasswordLength"] && change[@"new"] != nil && change[@"new"] != [NSNull null]) {
         float new = [(NSNumber *)change[@"new"] floatValue];

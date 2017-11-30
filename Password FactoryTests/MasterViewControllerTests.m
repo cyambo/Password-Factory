@@ -14,6 +14,7 @@
 #import "MainWindowController.h"
 #import "PasswordFactoryConstants.h"
 #import "NSString+ColorWithHexColorString.h"
+#import "PatternTextView.h"
 @interface MasterViewControllerTests : XCTestCase
 @property (nonatomic, strong) MasterViewController *mvc;
 
@@ -65,14 +66,14 @@
     
     //testing pattern change
     NSString *pattern = @"c"; //set the pattern to 'c'
-    [pvc.patternText setStringValue:pattern];
+    [pvc.patternText resetText:pattern];
     [d setObject:pattern forKey:@"userPattern"];
     [pvc controlTextDidChange:mockNotification];
     XCTAssertEqual(pattern.length, [self getPasswordFieldValue].length, @"Password length should be 1");
     
     //set a new pattern
     pattern = @"cC\\C";
-    [pvc.patternText setStringValue:pattern];
+    [pvc.patternText resetText:pattern];
     [d setObject:pattern forKey:@"userPattern"];
     [pvc controlTextDidChange:mockNotification];
     
