@@ -13,6 +13,8 @@
 		4004F1DB1FBB63290093DA3F /* ZoomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D91FBB63290093DA3F /* ZoomButton.m */; };
 		4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */; };
 		400E83831FC4CB55006CE51A /* StrengthMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586001B8112FD00393B99 /* StrengthMeter.m */; };
+		400F03DA1FD07F03008BD579 /* PasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03D91FD07F03008BD579 /* PasswordTextView.m */; };
+		400F03E01FD0827E008BD579 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03DF1FD0827E008BD579 /* TextView.m */; };
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
@@ -183,6 +185,10 @@
 		4004F1D91FBB63290093DA3F /* ZoomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomButton.m; sourceTree = "<group>"; };
 		4004F1DC1FBB759A0093DA3F /* ZoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
 		4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
+		400F03D81FD07F03008BD579 /* PasswordTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordTextView.h; sourceTree = "<group>"; };
+		400F03D91FD07F03008BD579 /* PasswordTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordTextView.m; sourceTree = "<group>"; };
+		400F03DE1FD0827E008BD579 /* TextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
+		400F03DF1FD0827E008BD579 /* TextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
 		4012E50E1B9750FA00BAF217 /* NSString+SymbolCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymbolCase.h"; sourceTree = "<group>"; };
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
@@ -475,6 +481,10 @@
 				40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */,
 				408BCD071FCE498400EC8B39 /* PatternTextView.h */,
 				408BCD081FCE498400EC8B39 /* PatternTextView.m */,
+				400F03D81FD07F03008BD579 /* PasswordTextView.h */,
+				400F03D91FD07F03008BD579 /* PasswordTextView.m */,
+				400F03DE1FD0827E008BD579 /* TextView.h */,
+				400F03DF1FD0827E008BD579 /* TextView.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1342,6 +1352,7 @@
 				409586261B8112FD00393B99 /* StyleKit.m in Sources */,
 				40FB84221FC5F8AF00474B94 /* AlertWindowController.m in Sources */,
 				40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */,
+				400F03DA1FD07F03008BD579 /* PasswordTextView.m in Sources */,
 				40E4535A1FCBA4FD0075F490 /* BoxView.m in Sources */,
 				40D428DA1FBFBE310024965B /* Utilities.m in Sources */,
 				409DEE401B8447A700727FDB /* StrengthControl.m in Sources */,
@@ -1356,6 +1367,7 @@
 				40537D8D1F9419FD00D645B7 /* constants.m in Sources */,
 				40C69F301FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m in Sources */,
 				4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
+				400F03E01FD0827E008BD579 /* TextView.m in Sources */,
 				40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */,
 				40D428E21FBFD9D40024965B /* StoredPasswordTableView.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,

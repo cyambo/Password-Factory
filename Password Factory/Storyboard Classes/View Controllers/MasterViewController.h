@@ -12,12 +12,13 @@
 #import "ZoomViewController.h"
 #import "StrengthMeter.h"
 #import "PasswordController.h"
-
+#import "PasswordTextView.h"
 
 @interface MasterViewController : NSViewController 
 @property (nonatomic, strong) PasswordController *password;
 @property (nonatomic, weak) PasswordTypesViewController *currentPasswordTypeViewController;
-@property (weak) IBOutlet NSTextField *passwordField;
+
+@property (unsafe_unretained) IBOutlet PasswordTextView *passwordField;
 @property (weak) IBOutlet NSTextField *displayedPasswordLength;
 @property (weak) IBOutlet NSTextField *passwordTypeLabel;
 

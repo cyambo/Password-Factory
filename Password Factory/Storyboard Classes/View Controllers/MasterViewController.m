@@ -20,7 +20,7 @@
 #import "TypeIcons.h"
 #import "Utilities.h"
 
-@interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, NSTouchBarDelegate, PasswordControllerDelegate>
+@interface MasterViewController () <NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, NSTouchBarDelegate, NSTextViewDelegate,PasswordControllerDelegate>
 
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, assign) NSUInteger passwordLength;
@@ -77,7 +77,7 @@
 }
 #pragma mark Observers
 
-/**
+/**f
  Sets the necessary observers
  */
 - (void)setObservers {
@@ -303,7 +303,7 @@
 #pragma mark UI Controls
 
 /**
- Changes the password strength when someone types in the password field, or types in the pattern text field
+ Changes the password strength when someone types in the pattern text field
 
  @param obj notifcation passed
  */
@@ -311,7 +311,7 @@
     //if the change came from the passwordField, just reset the strength
     //otherwise generate the password
     if(obj.object == self.passwordField) {
-        [self.password setPasswordValue: self.passwordField.stringValue];
+        [self.password setPasswordValue: self.passwordField.textStorage.string];
         [self.password updatePasswordStrength];
         [self setPasswordStrength];
         [self updatePasswordField];
@@ -320,6 +320,17 @@
     }
 }
 
+/**
+ Changes the password strength when someone types in the password field
+
+ @param notification <#notification description#>
+ */
+-(void)textDidChange:(NSNotification *)notification {
+    [self.password setPasswordValue: self.passwordField.textStorage.string];
+    [self.password updatePasswordStrength];
+    [self setPasswordStrength];
+    [self updatePasswordField];
+}
 /**
  Generate button was pressed
 
@@ -362,10 +373,9 @@
 
     [self.displayedPasswordLength setStringValue:[NSString stringWithFormat:@"%lu",[currPassword getUnicodeLength]]];
     if (currPassword == nil || currPassword.length == 0) {
-        [self.passwordField setAttributedStringValue:[[NSAttributedString alloc] init]];
+        [self.passwordField setText:@""];
         return;
     }
-    NSAttributedString *s = [Utilities colorText:currPassword size:self.currentFontSize];
     
     //don't run the check if we are hiding the warning
     if(![[DefaultsManager standardDefaults] boolForKey:@"hideExtendedCharacterWarning"]) {
@@ -376,7 +386,7 @@
         }
     }
 
-    [self.passwordField setAttributedStringValue:s];
+    [self.passwordField setText:currPassword];
 }
 
 #pragma mark Password Strength
@@ -447,7 +457,7 @@
     if ([sender isKindOfClass:[NSString class]]) {
         password = sender;
     } else {
-        password = [self.passwordField stringValue];
+        password = self.passwordField.textStorage.string;
     }
     [zv updatePassword:password];
     [NSApp activateIgnoringOtherApps:YES]; //brings it to front

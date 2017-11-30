@@ -31,7 +31,6 @@
     if (![self.textStorage.string isEqualToString:[d stringForKey:@"userPattern"]]) {
        [d setObject:self.textStorage.string forKey:@"userPattern"];
     }
-    
 }
 - (NSTouchBar *)makeTouchBar {
     NSTouchBar *bar = [[NSTouchBar alloc] init];

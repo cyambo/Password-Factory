@@ -130,9 +130,9 @@
     //do not color password
     [defaults setBool:NO forKey:@"colorPasswordText"];
     
-    [self.mvc.passwordField setStringValue:testString]; //set password
+    [self.mvc.passwordField setText:testString]; //set password
     [self.mvc controlTextDidChange:mockNotification]; //send notification
-    NSAttributedString *attrStr = [self.mvc.passwordField attributedStringValue]; //get attributed string from password field
+    NSAttributedString *attrStr = self.mvc.passwordField.textStorage; //get attributed string from password field
     //generate an attributed string all one color - which is how the password field should be
     NSDictionary *attributes = @{
                                 NSForegroundColorAttributeName: defaultTextColor,
@@ -165,9 +165,9 @@
     
     //turn on password coloring
     [defaults setBool:YES forKey:@"colorPasswordText"];
-    [self.mvc.passwordField setStringValue:testString]; //set a new string
+    [self.mvc.passwordField setText:testString]; //set a new string
     [self.mvc controlTextDidChange:mockNotification]; //send notification to update the text field
-    attrStr = [self.mvc.passwordField attributedStringValue];
+    attrStr = self.mvc.passwordField.textStorage;
     
     mismatch = NO;
     NSString *at = @"";
@@ -250,11 +250,11 @@
     [[[mockNotification stub] andReturn:self.mvc.passwordField] object];
     
     //testing pattern change
-    [self.mvc.passwordField setStringValue:@"c"]; //set the password field
+    [self.mvc.passwordField setText:@"c"]; //set the password field
     [self.mvc controlTextDidChange:mockNotification]; //run notification
     float currStrength = self.mvc.passwordStrengthLevel.floatValue;
     
-    [self.mvc.passwordField setStringValue:@"!@#$%$#@@#$"]; //change the password field
+    [self.mvc.passwordField setText:@"!@#$%$#@@#$"]; //change the password field
     [self.mvc controlTextDidChange:mockNotification];
     //make sure the strength changed when the password field changed
     XCTAssertTrue(currStrength != self.mvc.passwordStrengthLevel.floatValue, @"Password strength did not update when passwordField is entered manually");
@@ -547,6 +547,6 @@
  @return string of password value
  */
 - (NSString *)getPasswordFieldValue {
-    return self.mvc.passwordField.stringValue;
+    return self.mvc.passwordField.textStorage.string;
 }
 @end

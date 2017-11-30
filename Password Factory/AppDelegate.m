@@ -206,7 +206,7 @@
     //otherwise copy the password to the clipboard
     [self.masterViewController copyToClipboard:self];
     //empty the password field
-    [self.masterViewController.passwordField setStringValue:@""];
+    [self.masterViewController.passwordField setText:@""];
 
 }
 

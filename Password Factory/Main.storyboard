@@ -1161,15 +1161,6 @@ Gw
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cFt-nd-3qd" customClass="StrengthMeter">
                                 <rect key="frame" x="0.0" y="162" width="503" height="84"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xR-jQ-tfH">
-                                        <rect key="frame" x="16" y="29" width="471" height="26"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="PASSWORD" drawsBackground="YES" allowsEditingTextAttributes="YES" id="UnN-Cm-acd">
-                                            <font key="font" metaFont="system" size="17"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <accessibility description="Password Value" identifier="passwordValue"/>
-                                    </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ba5-fo-EG7">
                                         <rect key="frame" x="61" y="2" width="381" height="26"/>
                                         <constraints>
@@ -1184,12 +1175,46 @@ Gw
                                             <action selector="toggleCrackTimeDisplay:" target="BgG-3K-KOz" id="czk-7Q-2GI"/>
                                         </connections>
                                     </button>
+                                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="0.0" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="BTY-I6-Qab">
+                                        <rect key="frame" x="16" y="29" width="471" height="26"/>
+                                        <clipView key="contentView" copiesOnScroll="NO" id="wBV-wU-czT">
+                                            <rect key="frame" x="1" y="1" width="469" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView importsGraphics="NO" verticallyResizable="NO" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="mPK-cQ-gNT" customClass="PasswordTextView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="469" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <size key="minSize" width="469" height="24"/>
+                                                    <size key="maxSize" width="469" height="10000000"/>
+                                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="textSize">
+                                                            <integer key="value" value="17"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="wVc-6h-R8z"/>
+                                        </constraints>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="9Be-VK-BHQ">
+                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Uz9-6s-hpU">
+                                            <rect key="frame" x="-100" y="-100" width="16" height="24"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="8xR-jQ-tfH" secondAttribute="trailing" constant="16" id="GVn-3d-fw9"/>
                                     <constraint firstAttribute="height" constant="84" id="Q5h-08-iqc"/>
-                                    <constraint firstItem="8xR-jQ-tfH" firstAttribute="leading" secondItem="cFt-nd-3qd" secondAttribute="leading" constant="16" id="bbV-ld-zpa"/>
-                                    <constraint firstItem="8xR-jQ-tfH" firstAttribute="top" secondItem="cFt-nd-3qd" secondAttribute="top" constant="29" id="t2J-im-ULd"/>
+                                    <constraint firstAttribute="trailing" secondItem="BTY-I6-Qab" secondAttribute="trailing" constant="16" id="bnG-dm-lx1"/>
+                                    <constraint firstItem="BTY-I6-Qab" firstAttribute="leading" secondItem="cFt-nd-3qd" secondAttribute="leading" constant="16" id="gsA-lP-PjV"/>
+                                    <constraint firstItem="BTY-I6-Qab" firstAttribute="top" secondItem="cFt-nd-3qd" secondAttribute="top" constant="29" id="oxB-eE-IcS"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="WbT-gw-Wm1">
@@ -1351,7 +1376,7 @@ Gw
                         <outlet property="crackTimeButton" destination="Ba5-fo-EG7" id="vGx-9B-iij"/>
                         <outlet property="displayedPasswordLength" destination="6qP-55-Enn" id="g5Y-cK-OPd"/>
                         <outlet property="generateButton" destination="BO3-Ac-9JC" id="Bfk-TO-XAY"/>
-                        <outlet property="passwordField" destination="8xR-jQ-tfH" id="bck-AA-DVA"/>
+                        <outlet property="passwordField" destination="mPK-cQ-gNT" id="ree-4Y-IGG"/>
                         <outlet property="passwordStrengthLevel" destination="cFt-nd-3qd" id="uoJ-Jn-xSB"/>
                         <outlet property="passwordTypesTable" destination="6c5-Mk-eYC" id="0TL-TI-nnZ"/>
                         <outlet property="passwordView" destination="WbT-gw-Wm1" id="dsp-2h-gVF"/>
@@ -1360,7 +1385,7 @@ Gw
                 </viewController>
                 <customObject id="nWj-xb-FxS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-538" y="1"/>
+            <point key="canvasLocation" x="-538.5" y="1"/>
         </scene>
         <!--Random Password-->
         <scene sceneID="n2b-a9-5Qq">
@@ -1612,7 +1637,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="329" height="42"/>
-                                            <size key="maxSize" width="463" height="42"/>
+                                            <size key="maxSize" width="463" height="44"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </textView>
                                     </subviews>
