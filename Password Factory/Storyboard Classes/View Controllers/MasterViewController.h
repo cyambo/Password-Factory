@@ -19,6 +19,8 @@
 @property (nonatomic, weak) PasswordTypesViewController *currentPasswordTypeViewController;
 
 @property (unsafe_unretained) IBOutlet PasswordTextView *passwordField;
+@property (weak) IBOutlet NSScrollView *passwordScrollView;
+
 @property (weak) IBOutlet NSTextField *displayedPasswordLength;
 @property (weak) IBOutlet NSTextField *passwordTypeLabel;
 

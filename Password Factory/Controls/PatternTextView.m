@@ -11,17 +11,35 @@
 #import "DefaultsManager.h"
 @implementation PatternTextView
 
+
+/**
+ Initializes the TextView with defaults text
+
+ @param coder default coder
+ @return self
+ */
 -(instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
-    [self appendText:[d stringForKey:@"userPattern"]];
+    [self setText:[d stringForKey:@"userPattern"]];
     self.delegate = self;
     return self;
 }
+
+/**
+ NSTextViewDelegate method
+
+ @param notification default notification
+ */
 -(void)textDidChange:(NSNotification *)notification {
     [self setDefaults];
 }
 
+/**
+ Makes the touchBar for the text view
+
+ @return touchbar
+ */
 - (NSTouchBar *)makeTouchBar {
     NSTouchBar *bar = [[NSTouchBar alloc] init];
     bar.delegate = self;
@@ -29,11 +47,24 @@
     return bar;
 }
 
+/**
+ Inerts pattern character from the touchbar
+
+ @param sender default sender
+ */
 - (IBAction)insertCharacter:(NSSegmentedControl *)sender {
     NSString *title = [sender labelForSegment:sender.selectedSegment];
     [self appendText:title];
 
 }
+
+/**
+ Touchbar method to generate touchbar items
+
+ @param touchBar default
+ @param identifier default
+ @return touchbar item
+ */
 - (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier {
     
     if ([identifier isEqualToString:@"CharacterInsert"]) {

@@ -15,6 +15,7 @@
 		400E83831FC4CB55006CE51A /* StrengthMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586001B8112FD00393B99 /* StrengthMeter.m */; };
 		400F03DA1FD07F03008BD579 /* PasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03D91FD07F03008BD579 /* PasswordTextView.m */; };
 		400F03E01FD0827E008BD579 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03DF1FD0827E008BD579 /* TextView.m */; };
+		400F03E31FD09941008BD579 /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03E21FD09941008BD579 /* ScrollView.m */; };
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
@@ -189,6 +190,8 @@
 		400F03D91FD07F03008BD579 /* PasswordTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordTextView.m; sourceTree = "<group>"; };
 		400F03DE1FD0827E008BD579 /* TextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
 		400F03DF1FD0827E008BD579 /* TextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
+		400F03E11FD09941008BD579 /* ScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
+		400F03E21FD09941008BD579 /* ScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
 		4012E50E1B9750FA00BAF217 /* NSString+SymbolCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymbolCase.h"; sourceTree = "<group>"; };
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
@@ -485,6 +488,8 @@
 				400F03D91FD07F03008BD579 /* PasswordTextView.m */,
 				400F03DE1FD0827E008BD579 /* TextView.h */,
 				400F03DF1FD0827E008BD579 /* TextView.m */,
+				400F03E11FD09941008BD579 /* ScrollView.h */,
+				400F03E21FD09941008BD579 /* ScrollView.m */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1326,6 +1331,7 @@
 				407DA8D61FCC9A8800B84E66 /* ColorTextPreview.m in Sources */,
 				40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */,
 				40FB929B1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m in Sources */,
+				400F03E31FD09941008BD579 /* ScrollView.m in Sources */,
 				40855E0A1FBCEEA8005BD8F4 /* StoredPasswordColumn.m in Sources */,
 				409DEE3D1B84476F00727FDB /* StrengthBox.m in Sources */,
 				4004F1DA1FBB63290093DA3F /* ZoomButton.m in Sources */,

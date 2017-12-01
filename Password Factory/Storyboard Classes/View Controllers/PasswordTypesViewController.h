@@ -32,6 +32,7 @@
 - (IBAction)changeLength:(id)sender;
 
 @property (unsafe_unretained) IBOutlet PatternTextView *patternText;
+@property (weak) IBOutlet NSScrollView *patternScrollView;
 
 @property (weak) IBOutlet NSPopUpButton *insertMenu;
 - (IBAction)selectInsertMenuItem:(id)sender;

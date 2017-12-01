@@ -1175,9 +1175,9 @@ Gw
                                             <action selector="toggleCrackTimeDisplay:" target="BgG-3K-KOz" id="czk-7Q-2GI"/>
                                         </connections>
                                     </button>
-                                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="0.0" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="BTY-I6-Qab">
+                                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="0.0" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="BTY-I6-Qab" customClass="ScrollView">
                                         <rect key="frame" x="16" y="29" width="471" height="26"/>
-                                        <clipView key="contentView" copiesOnScroll="NO" id="wBV-wU-czT">
+                                        <clipView key="contentView" id="wBV-wU-czT">
                                             <rect key="frame" x="1" y="1" width="469" height="24"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1377,6 +1377,7 @@ Gw
                         <outlet property="displayedPasswordLength" destination="6qP-55-Enn" id="g5Y-cK-OPd"/>
                         <outlet property="generateButton" destination="BO3-Ac-9JC" id="Bfk-TO-XAY"/>
                         <outlet property="passwordField" destination="mPK-cQ-gNT" id="ree-4Y-IGG"/>
+                        <outlet property="passwordScrollView" destination="BTY-I6-Qab" id="DKc-4Q-e6N"/>
                         <outlet property="passwordStrengthLevel" destination="cFt-nd-3qd" id="uoJ-Jn-xSB"/>
                         <outlet property="passwordTypesTable" destination="6c5-Mk-eYC" id="0TL-TI-nnZ"/>
                         <outlet property="passwordView" destination="WbT-gw-Wm1" id="dsp-2h-gVF"/>
@@ -1626,9 +1627,9 @@ Gw
                                     <action selector="selectInsertMenuItem:" target="sd3-yQ-tvi" id="4nP-K9-79z"/>
                                 </connections>
                             </popUpButton>
-                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="0.0" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="nnY-CZ-PXQ">
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="0.0" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="nnY-CZ-PXQ" customClass="ScrollView">
                                 <rect key="frame" x="20" y="66" width="331" height="44"/>
-                                <clipView key="contentView" copiesOnScroll="NO" id="Z8W-gt-IXS">
+                                <clipView key="contentView" id="Z8W-gt-IXS">
                                     <rect key="frame" x="1" y="1" width="329" height="42"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -1673,6 +1674,7 @@ Gw
                     </view>
                     <connections>
                         <outlet property="insertMenu" destination="hUB-22-F9f" id="f0m-qI-erN"/>
+                        <outlet property="patternScrollView" destination="nnY-CZ-PXQ" id="18i-r7-1hx"/>
                         <outlet property="patternText" destination="33d-cE-36Y" id="3ci-Xz-rrU"/>
                     </connections>
                 </viewController>
