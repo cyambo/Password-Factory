@@ -121,6 +121,13 @@ static NSDictionary *prefsPlist;
         return self.standardDefaults;
     }
 }
+
+/**
+ Object for key on defaults, will return cached item if defaults is not working
+
+ @param key key to get
+ @return object from defaults
+ */
 -(id)objectForKey:(NSString *)key {
     id object;
     id cached;
@@ -178,6 +185,27 @@ static NSDictionary *prefsPlist;
     }
     return [[self objectForKey:key] boolValue];
 }
+
+/**
+ floatForKey on defaults
+
+ @param key key to get
+ @return float from defaults
+ */
+- (float)floatForKey:(NSString *)key {
+    id ret = [self objectForKey:key];
+    if (ret == nil) {
+        return 0.0;
+    }
+    return [[self objectForKey:key] floatValue];
+}
+
+/**
+ Sets object in defaults, shared defaults and cache
+
+ @param object object to set
+ @param key defaults key
+ */
 -(void)setObject:(id)object forKey:(NSString *)key {
     if (object == nil) {
         return;
@@ -188,13 +216,36 @@ static NSDictionary *prefsPlist;
     [self.sharedDefaults setObject:object forKey:sharedKey];
     [self.sharedDefaultsCache setObject:object forKey:sharedKey];
 }
+
+/**
+ Sets bool in defaults, shared defaults and cache
+
+ @param object bool to set
+ @param key defaults key
+ */
 -(void)setBool:(BOOL)object forKey:(NSString *)key {
     [self setObject:@(object) forKey:key];
 }
+
+/**
+ Sets integer in defaults, shared defaults and cache
+
+ @param object integer to set
+ @param key defaults key
+ */
 -(void)setInteger:(NSInteger)object forKey:(NSString *)key {
     [self setObject:@(object) forKey:key];
 }
 
+/**
+ Sets float in defaults, shared defaults and cache
+
+ @param object float to set
+ @param key defaults key
+ */
+-(void)setFloat:(float)object forKey:(NSString *)key {
+    [self setObject:@(object) forKey:key];
+}
 /**
  Makes sure our preferences are loaded only at launch
  */

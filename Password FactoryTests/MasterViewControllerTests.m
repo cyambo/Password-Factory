@@ -57,7 +57,7 @@
  Test generating a pattern password
  */
 - (void)testPattern {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     [self.mvc selectPaswordType:PFPatternType];
     PasswordTypesViewController *pvc = self.mvc.currentPasswordTypeViewController;
     //generating a mock notification to pass to controlTextDidChange so we can simulate typing
@@ -97,7 +97,7 @@
  */
 -(void)testDisplayCrackTime {
     
-    NSUserDefaults * d = [DefaultsManager standardDefaults];
+    DefaultsManager * d = [DefaultsManager get];
     
     NSButton *b = self.mvc.crackTimeButton;
     NSString *key = @"displayCrackTime";
@@ -115,7 +115,7 @@
  */
 - (void)testColorPasswordField {
     PasswordFactory *factory = [PasswordFactory get];
-    NSUserDefaults *defaults = [DefaultsManager standardDefaults];
+    DefaultsManager *defaults = [DefaultsManager get];
     NSColor *upperTextColor = [NSColor greenColor];
     NSColor *lowerTextColor = [NSColor orangeColor];
     NSColor *numberTextColor = [NSColor purpleColor];
@@ -235,7 +235,8 @@
     [self.mvc selectPaswordType:PFRandomType];
     NSString *currPassword = [self getPasswordFieldValue];
     [self.mvc.generateButton performClick:self.mvc];
-    XCTAssertTrue([currPassword isNotEqualTo:[self getPasswordFieldValue]],@"Pressing generate button does not regenerate new password");
+    NSString *newPassword = [self getPasswordFieldValue];
+    XCTAssertTrue([currPassword isNotEqualTo:newPassword],@"Pressing generate button does not regenerate new password");
 }
 
 /**
@@ -334,7 +335,7 @@
 -(void)caseTypeTest:(PFPasswordType)type {
     [self.mvc selectPaswordType:type];
     PasswordFactoryConstants *c = [PasswordFactoryConstants get];
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     PasswordTypesViewController *pvc = self.mvc.currentPasswordTypeViewController;
     for(int i = 0; i < pvc.caseTypeMenu.numberOfItems; i++) {
         PFCaseType caseType = [c getCaseTypeByIndex:i];
@@ -375,7 +376,7 @@
 -(void)separatorTypeTest:(PFPasswordType)type {
     [self.mvc selectPaswordType:type];
     PasswordFactoryConstants *c = [PasswordFactoryConstants get];
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     PasswordTypesViewController *pvc = self.mvc.currentPasswordTypeViewController;
     for(int i = 0; i < pvc.separatorTypeMenu.numberOfItems; i++) {
         PFSeparatorType separatorType = [c getSeparatorTypeByIndex:i];
@@ -494,7 +495,7 @@
 -(void)validateSliderDefaults:(NSSlider *)slider
                   defaultsKey:(NSString *)key {
     [self.mvc selectPaswordType:PFRandomType];
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     PasswordTypesViewController *pvc = self.mvc.currentPasswordTypeViewController;
     pvc.passwordLengthSlider.integerValue = 22;
     [pvc.passwordLengthSlider performClick:self];
@@ -513,7 +514,7 @@
  */
 -(void)validateCheckboxDefaults:(NSButton *)checkbox
                     defaultsKey:(NSString *)key {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     checkbox.state = YES;
     [checkbox performClick:self];
     XCTAssertFalse([d boolForKey:key], @"Checkbox %@ should save to defaults as NO",key);
