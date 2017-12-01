@@ -44,8 +44,7 @@
     self.layer.backgroundColor = [self.layerBackgroundColor CGColor];
 }
 
--(void)viewWillDraw {
-    [super viewWillDraw];
+-(void)awakeFromNib {
     [self initBackgroundColor];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     if (self.defaultsKey) {
