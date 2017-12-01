@@ -41,7 +41,7 @@
 -(void)viewWillAppear {
     self.didViewAppear = NO;
     //setting the max password length
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     NSUInteger maxPasswordLength = [d integerForKey:@"maxPasswordLength"];
     if (self.passwordLengthSlider) {
         NSUInteger length = [self.delegate getPasswordLength]; //but we have to get the original length
@@ -112,7 +112,7 @@
  Fills in the popup buttons with defaults from PF Constants
  */
 -(void)setupPopUpButtons {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     if (self.caseTypeMenu) {
         [self.caseTypeMenu removeAllItems];
 
@@ -332,7 +332,7 @@
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    [[DefaultsManager standardDefaults] setInteger:self.storedPasswordTable.selectedRow forKey:@"storedPasswordTableSelectedRow"];
+    [[DefaultsManager get] setInteger:self.storedPasswordTable.selectedRow forKey:@"storedPasswordTableSelectedRow"];
     [self callDelegate];
 }
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors {

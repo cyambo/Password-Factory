@@ -30,7 +30,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     //enable touchbar
     if ([[NSApplication sharedApplication] respondsToSelector:@selector(isAutomaticCustomizeTouchBarMenuItemEnabled)]) {
         [NSApplication sharedApplication].automaticCustomizeTouchBarMenuItemEnabled = YES;
@@ -240,7 +240,7 @@
  */
 - (BOOL)validateUserInterfaceItem:(id<NSValidatedUserInterfaceItem>)item {
     NSMenuItem *m = (NSMenuItem *)item;
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     PFPasswordType selected = [self.masterViewController getSelectedPasswordType];
     //If we are in the 'Tabs' menu, then disable the currently selected tab
     if ([m.parentItem.title isEqualToString:@"Types"]) {
@@ -317,7 +317,7 @@
  */
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     //if it is a menuApp then don't kill app when window is closed
-    return ![[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"];
+    return ![[DefaultsManager get] boolForKey:@"isMenuApp"];
 }
 
 /**
@@ -361,7 +361,7 @@
                            andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                          forEventClass:kInternetEventClass andEventID:kAEGetURL];
     //remove enter full screen menu item
-    [[DefaultsManager standardDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
+    [[DefaultsManager get] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
     [self handleGetURLEvent:nil withReplyEvent:nil];
 }
 
@@ -384,7 +384,7 @@
             if (showPreferences) {
                 [self loadPreferences:nil];
                 //Load up the main window as well
-                if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
+                if ([[DefaultsManager get] boolForKey:@"isMenuApp"]) {
                     [self showPopover:nil];
                 } else {
                     [self.currWindow makeKeyAndOrderFront:self];

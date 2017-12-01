@@ -47,7 +47,7 @@
  Sets the string value of the text view the defaultsKey
  */
 -(void)setDefaults {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     if(self.defaultsKey != nil && self.defaultsKey.length) {
         if (![self.textStorage.string isEqualToString:[d stringForKey:self.defaultsKey]]) {
             [d setObject:self.textStorage.string forKey:self.defaultsKey];

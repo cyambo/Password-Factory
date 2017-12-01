@@ -45,7 +45,7 @@
         self.password = [PasswordController get:NO];
         self.password.delegate = self;
         [self setOptionalTypes];
-        NSUserDefaults *d = [DefaultsManager standardDefaults];
+        DefaultsManager *d = [DefaultsManager get];
         self.colorPasswordText = [d boolForKey:@"colorPasswordText"];
         self.currentFontSize = 13;
         [self setObservers];
@@ -71,7 +71,7 @@
 
 }
 - (void)viewDidAppear {
-    [self selectPaswordType:(PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"]];
+    [self selectPaswordType:(PFPasswordType)[[DefaultsManager get] integerForKey:@"selectedPasswordType"]];
     [self.view.window makeFirstResponder:self.view];
 }
 -(void)viewWillDisappear {
@@ -176,7 +176,7 @@
     if (slider.maxValue != new) {
         float currValue = slider.floatValue;
         if (currValue > new) {
-            [[DefaultsManager standardDefaults] setFloat:new forKey:key];
+            [[DefaultsManager get] setFloat:new forKey:key];
         }
         slider.maxValue = new;
     }
@@ -222,7 +222,7 @@
     //copy to pasteboard
     [self copyToClipboard:nil];
     
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
 
     //show the notification
     if ([d boolForKey:@"globalHotkeyShowNotification"]) {
@@ -245,7 +245,7 @@
     [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.floatValue ]];
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     //Set the sound if the user configured it
-    if ([[DefaultsManager standardDefaults] boolForKey:@"globalHotkeyPlaySound"]) {
+    if ([[DefaultsManager get] boolForKey:@"globalHotkeyPlaySound"]) {
         [notification setSoundName:[self getSelectedSoundName]];
     }
     
@@ -259,7 +259,7 @@
  @return notification sound
  */
 -(NSString *)getSelectedSoundName {
-    NSString *soundName = [[DefaultsManager standardDefaults] stringForKey:@"notificationSound"];
+    NSString *soundName = [[DefaultsManager get] stringForKey:@"notificationSound"];
     if (soundName) {
         return soundName;
     }
@@ -272,7 +272,7 @@
  */
 - (IBAction)copyToClipboard:(id)sender {
 
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     [self updatePasteboard:[self.password getPasswordValue]];
     if ([d boolForKey:@"clearClipboard"]) {
         //setting up clear clipboard timer
@@ -288,7 +288,7 @@
         
     }
     //closing window if it is a menuApp
-    if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
+    if ([[DefaultsManager get] boolForKey:@"isMenuApp"]) {
         NSWindow *window = [[NSApplication sharedApplication] mainWindow];
         if (window.isVisible) {
             [window close];
@@ -380,7 +380,7 @@
     }
     
     //don't run the check if we are hiding the warning
-    if(![[DefaultsManager standardDefaults] boolForKey:@"hideExtendedCharacterWarning"]) {
+    if(![[DefaultsManager get] boolForKey:@"hideExtendedCharacterWarning"]) {
         NSArray *m = [self.extendedCharacterRegex matchesInString:currPassword options:0 range:NSMakeRange(0, currPassword.length)];
         if (m.count) {
             AppDelegate *d = [NSApplication sharedApplication].delegate;
@@ -397,7 +397,7 @@
  Updates the password strength meter and the crack time string
  */
 - (void)setPasswordStrength {
-    BOOL displayCTS = [[DefaultsManager standardDefaults] boolForKey:@"displayCrackTime"]; //do we want to display the crack time string?
+    BOOL displayCTS = [[DefaultsManager get] boolForKey:@"displayCrackTime"]; //do we want to display the crack time string?
     self.password.generateCrackTimeString = displayCTS;
     [self.passwordStrengthLevel updateStrength:[self.password getPasswordStrength]];
     //only display the crack time string if the user has it selected
@@ -413,7 +413,7 @@
  Sets the optional password types in the Password controller so that the type display works properly
  */
 -(void)setOptionalTypes {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     self.password.useStoredType = [d boolForKey:@"storePasswords"];
     self.password.useAdvancedType = [d boolForKey:@"enableAdvanced"];
 }
@@ -424,7 +424,7 @@
  @param sender default sender
  */
 - (IBAction)toggleCrackTimeDisplay:(id)sender {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     NSButton *b = self.crackTimeButton;
     BOOL showCT = ![d boolForKey:@"displayCrackTime"];
     [d setBool:showCT forKey:@"displayCrackTime"]; //manually setting defaults because bindings don't work for this
@@ -514,7 +514,7 @@
  Sets the timer that will run and determine if the password was changed
  */
 -(void)setStorePasswordTimer {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     if ([d boolForKey:@"storePasswords"]) {
         //setting a timer that will check the password field every second to see if it was updated
         //I am using a timer because we don't want to store passwords while sliders, or steppers are being used
@@ -565,7 +565,7 @@
  Store a password in PasswordStorage
  */
 -(void)storePassword {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     if ([d boolForKey:@"storePasswords"]) {
         PFPasswordType currType = [self getSelectedPasswordType];
         //don't store anything if we are on the stored type
@@ -618,7 +618,7 @@
  @param index index of selected item
  */
 - (void)changeSelectionTypeByIndex:(NSUInteger)index {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     PFPasswordType type = [self.password getPasswordTypeByIndex:index];
     //only change if the type selection changed, or we have no subviews (meaning nothing loaded)
     if (type != [d integerForKey:@"selectedPasswordType"] || self.passwordView.subviews.count == 0) {

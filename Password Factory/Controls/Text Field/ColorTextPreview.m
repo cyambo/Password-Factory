@@ -69,7 +69,7 @@
     
 }
 -(void)setTextColor {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     NSString *hexString = [d stringForKey:self.defaultsKey];
     NSColor *color;
     //if dark mode use color dodge on it to approximate what the colors look like in dark mode

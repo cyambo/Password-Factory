@@ -43,7 +43,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     [self resetShortcutRegistration];
     [self changeLoginItem:nil];
     //setting up notification sound
-    NSString *sound = [[DefaultsManager standardDefaults] stringForKey:@"notificationSound"];
+    NSString *sound = [[DefaultsManager get] stringForKey:@"notificationSound"];
     [self.soundSelector selectItemWithTitle:sound];
 }
 
@@ -79,7 +79,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  Setup for the prefs window to fill in the set values
  */
 -(void)updatePrefsUI {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     //Loading up the erase clipboard timer
     [self.clearTimeLabel setIntValue:(int)[d integerForKey:@"clearClipboardTime"]];
     
@@ -100,7 +100,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  @param sender default sender from IBAction
  */
 - (IBAction)changeColor:(id)sender {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     if ([sender isEqualTo:self.uppercaseTextColor]) {
            [d setObject:[self.uppercaseTextColor.color hexadecimalValueOfAnNSColor] forKey:@"upperTextColor"];
     } else if ([sender isEqualTo:self.lowercaseTextColor]) {
@@ -123,7 +123,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  */
 - (IBAction)changeStoredPassword:(NSButton *)sender {
     AppDelegate *appDelegate = [NSApplication sharedApplication].delegate;
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     if(sender.state == NSControlStateValueOn) {
         [appDelegate.masterViewController enableStoredPasswords];
         [appDelegate.alertWindowController displayAlertWithBlock:StoredPasswordOnWarning defaultsKey:@"hideStoredPasswordOnWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
@@ -197,8 +197,8 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  @param sender default sender
  */
 - (IBAction)menuCheckBoxesChanged:(NSButton*)sender {
-    int isMenuApp = (int)[[DefaultsManager standardDefaults] integerForKey:@"isMenuApp"];
-    int hideDockIcon = (int)[[DefaultsManager standardDefaults] integerForKey:@"hideDockIcon"];
+    int isMenuApp = (int)[[DefaultsManager get] integerForKey:@"isMenuApp"];
+    int hideDockIcon = (int)[[DefaultsManager get] integerForKey:@"hideDockIcon"];
 
     [self.quitButton setTitle:@"Quit"];
     
@@ -263,7 +263,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 - (IBAction)changeLoginItem:(NSButton *)sender {
     //get the login item status from preferences and change the checkbox state
 
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     BOOL isLoginItem = [self isLoginItem];
     if(sender == nil) {
         //called from viewWillAppear
@@ -368,7 +368,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  */
 - (IBAction)selectSound:(NSPopUpButton *)sender {
     NSString *soundName = [sender selectedItem].title;
-    [[DefaultsManager standardDefaults] setObject:soundName forKey:@"notificationSound"]; //store it in defaults
+    [[DefaultsManager get] setObject:soundName forKey:@"notificationSound"]; //store it in defaults
     [[NSSound soundNamed:soundName] play]; //play the sound
     [self updatedPrefs];
 }

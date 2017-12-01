@@ -20,4 +20,9 @@
 - (NSString *)stringForKey:(NSString *)key;
 - (NSInteger)integerForKey:(NSString *)key;
 - (BOOL)boolForKey:(NSString *)key;
+-(id)objectForKey:(NSString *)key;
+-(void)setObject:(id)object forKey:(NSString *)key;
+-(void)setBool:(BOOL)object forKey:(NSString *)key;
+-(void)setInteger:(NSInteger)object forKey:(NSString *)key;
+-(void)setFloat:(float)object forKey:(NSString *)key;
 @end

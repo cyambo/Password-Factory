@@ -18,7 +18,7 @@
  @return yes if it is dark, no if it isnt
  */
 +(BOOL)isDarkMode {
-    if ([[DefaultsManager standardDefaults] boolForKey:@"isMenuApp"]) {
+    if ([[DefaultsManager get] boolForKey:@"isMenuApp"]) {
         NSString *osxMode = [[DefaultsManager standardDefaults] stringForKey:@"AppleInterfaceStyle"];
         return [osxMode isEqualToString:@"Dark"];
     } else {

@@ -22,7 +22,7 @@
  */
 -(instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     [self setText:[d stringForKey:@"userPattern"]];
     self.delegate = self;
     return self;
@@ -50,10 +50,10 @@
 -(void)colorPatternText {
     NSDictionary *defaultAttributes = @{
                                         NSFontAttributeName: [NSFont systemFontOfSize:self.textSize],
-                                        NSForegroundColorAttributeName: [[[DefaultsManager standardDefaults] stringForKey:@"defaultTextColor"] colorWithHexColorString]
+                                        NSForegroundColorAttributeName: [[[DefaultsManager get] stringForKey:@"defaultTextColor"] colorWithHexColorString]
                                         };
     __block NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.textStorage.string attributes:defaultAttributes];
-    if([[DefaultsManager standardDefaults] boolForKey:@"colorPasswordText"]) {
+    if([[DefaultsManager get] boolForKey:@"colorPasswordText"]) {
 
         PasswordFactoryConstants *c = [PasswordFactoryConstants get];
         [s beginEditing];
@@ -72,7 +72,7 @@
     [self.textStorage setAttributedString:s];
 }
 -(NSColor *)getPatternColor:(PFPatternTypeItem)type {
-    NSString *colorString = [[DefaultsManager standardDefaults] stringForKey:@"defaultTextColor"];
+    NSString *colorString = [[DefaultsManager get] stringForKey:@"defaultTextColor"];
     switch (type) {
         case PFNumberType:
             colorString = @"ce9740";

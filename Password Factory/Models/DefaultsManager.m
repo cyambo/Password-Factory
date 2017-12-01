@@ -11,6 +11,9 @@
 @interface DefaultsManager ()
 @property (nonatomic, strong) NSUserDefaults *sharedDefaults;
 @property (nonatomic, strong) NSUserDefaults *standardDefaults;
+@property (nonatomic, strong) NSMutableDictionary *standardDefaultsCache;
+@property (nonatomic, strong) NSMutableDictionary *sharedDefaultsCache;
+
 @end
 @implementation DefaultsManager
 
@@ -100,7 +103,7 @@ static NSDictionary *prefsPlist;
  */
 -(NSString *)getKey:(NSString *)key {
     if (self.useShared) {
-        return [NSString stringWithFormat:@"%@Shared",key];
+        return [key stringByAppendingString:@"Shared"];
     } else {
         return key;
     }
@@ -118,7 +121,23 @@ static NSDictionary *prefsPlist;
         return self.standardDefaults;
     }
 }
-
+-(id)objectForKey:(NSString *)key {
+    id object;
+    id cached;
+    if(self.useShared) {
+        NSString *sharedKey = [key stringByAppendingString:@"Shared"];
+        object = [self.sharedDefaults objectForKey:sharedKey];
+        cached = [self.sharedDefaultsCache objectForKey:sharedKey];
+    } else {
+        object = [self.standardDefaults objectForKey:key];
+        cached = [self.standardDefaultsCache objectForKey:key];
+    }
+    if (object == nil){
+        NSLog(@"FAILED DEFAULTS %@",key);
+        return cached;
+    }
+    return object;
+}
 /**
  stringForKey on defaults
 
@@ -126,7 +145,11 @@ static NSDictionary *prefsPlist;
  @return String from defaults
  */
 - (NSString *)stringForKey:(NSString *)key {
-    return [[self getDefaults] stringForKey:[self getKey:key]];
+    NSString *ret = (NSString *)[self objectForKey:key];
+    if (ret == nil) {
+        return @"";
+    }
+    return ret;
 }
 /**
  integerForKey on defaults
@@ -135,7 +158,11 @@ static NSDictionary *prefsPlist;
  @return integer from defaults
  */
 - (NSInteger)integerForKey:(NSString *)key {
-    return [[self getDefaults] integerForKey:[self getKey:key]];
+    id ret = [self objectForKey:key];
+    if (ret == nil) {
+        return 0;
+    }
+    return [ret integerValue];
 }
 
 /**
@@ -145,8 +172,29 @@ static NSDictionary *prefsPlist;
  @return bool from defaults
  */
 - (BOOL)boolForKey:(NSString *)key {
-    return [[self getDefaults] boolForKey:[self getKey:key]];
+    id ret = [self objectForKey:key];
+    if (ret == nil) {
+        return NO;
+    }
+    return [[self objectForKey:key] boolValue];
 }
+-(void)setObject:(id)object forKey:(NSString *)key {
+    if (object == nil) {
+        return;
+    }
+    [self.standardDefaults setObject:object forKey:key];
+    [self.standardDefaultsCache setObject:object forKey:key];
+    NSString *sharedKey = [key stringByAppendingString:@"Shared"];
+    [self.sharedDefaults setObject:object forKey:sharedKey];
+    [self.sharedDefaultsCache setObject:object forKey:sharedKey];
+}
+-(void)setBool:(BOOL)object forKey:(NSString *)key {
+    [self setObject:@(object) forKey:key];
+}
+-(void)setInteger:(NSInteger)object forKey:(NSString *)key {
+    [self setObject:@(object) forKey:key];
+}
+
 /**
  Makes sure our preferences are loaded only at launch
  */
@@ -180,6 +228,43 @@ static NSDictionary *prefsPlist;
     }
     [self syncSharedDefaults];
 }
+-(void)addObservers {
+    NSUserDefaults *d = self.standardDefaults;
+    for (NSString *k in prefsPlist) {
+        [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
+    }
+}
+-(void)setupCache {
+    NSMutableDictionary *st = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *sh = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *d = self.standardDefaults;
+    NSUserDefaults *h = self.sharedDefaults;
+    for (NSString *k in prefsPlist) {
+        if([d objectForKey:k] != nil) {
+            [st setObject:[d objectForKey:k] forKey:k];
+        } else {
+            [st setObject:[prefsPlist objectForKey:k] forKey:k];
+        }
+        NSString *sharedKey = [k stringByAppendingString:@"Shared"];
+        if([h objectForKey:sharedKey] != nil) {
+            [sh setObject:[h objectForKey:sharedKey] forKey:sharedKey];
+        } else {
+            [sh setObject:[prefsPlist objectForKey:k] forKey:sharedKey];
+        }
+    }
+    self.standardDefaultsCache = st;
+    self.sharedDefaultsCache = sh;
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    //don't do anything if the change is null
+    if (change[@"new"] == [NSNull null]) {
+        return;
+    }
+    NSString *sharedKeyPath = [keyPath stringByAppendingString:@"Shared"];
+    [self.standardDefaultsCache setObject:change[@"new"] forKey:keyPath];
+    [self.sharedDefaultsCache setObject:change[@"new"] forKey:sharedKeyPath];
+    [self.sharedDefaults setObject:change[@"new"] forKey:sharedKeyPath];
+}
 /**
  Syncs our plist with the sharedDefaults manager for use in the today extension
  */
@@ -196,7 +281,6 @@ static NSDictionary *prefsPlist;
         }
     }
 }
-
 /**
  Compares two objects from defaults plist and NSUserDefaults
  Cant just use == or isEqual because of the different classes stored

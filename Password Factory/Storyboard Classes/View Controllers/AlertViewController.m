@@ -32,7 +32,7 @@
  @param sender default sender
  */
 - (IBAction)changeHideCheckbox:(NSButton *)sender {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     [d setBool:(sender.state == NSControlStateValueOn) forKey:self.defaultsKey];
 }
 

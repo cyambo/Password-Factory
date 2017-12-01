@@ -46,7 +46,7 @@
  @param closeBlock block that is called on close, will send YES if the operation was cancelled
  */
 -(void)displayAlertWithBlock:(NSString *)alert defaultsKey:(NSString *)defaultsKey window:(NSWindow *)window closeBlock:(void (^)(BOOL cancelled))closeBlock {
-    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    DefaultsManager *d = [DefaultsManager get];
     
     if (defaultsKey != nil) {
         //no defaults key set, so make a new one with NO by default
