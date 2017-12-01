@@ -100,7 +100,6 @@
 		40D428DE1FBFC8B10024965B /* ModeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428DD1FBFC8B10024965B /* ModeTextField.m */; };
 		40D428DF1FBFC8B10024965B /* ModeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428DD1FBFC8B10024965B /* ModeTextField.m */; };
 		40D428E21FBFD9D40024965B /* StoredPasswordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */; };
-		40D428E31FBFD9D40024965B /* StoredPasswordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */; };
 		40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
@@ -403,6 +402,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400F03E71FD1CE8B008BD579 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				409585FD1B8112FD00393B99 /* PreferencesButton.h */,
+				409585FE1B8112FD00393B99 /* PreferencesButton.m */,
+				4004F1D81FBB63290093DA3F /* ZoomButton.h */,
+				4004F1D91FBB63290093DA3F /* ZoomButton.m */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		400F03E81FD1CEB4008BD579 /* Strength */ = {
+			isa = PBXGroup;
+			children = (
+				409585FF1B8112FD00393B99 /* StrengthMeter.h */,
+				409586001B8112FD00393B99 /* StrengthMeter.m */,
+				409DEE3B1B84476F00727FDB /* StrengthBox.h */,
+				409DEE3C1B84476F00727FDB /* StrengthBox.m */,
+				409DEE3E1B8447A700727FDB /* StrengthControl.h */,
+				409DEE3F1B8447A700727FDB /* StrengthControl.m */,
+			);
+			path = Strength;
+			sourceTree = "<group>";
+		};
+		400F03E91FD1CEC9008BD579 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				40855E081FBCEEA8005BD8F4 /* StoredPasswordColumn.h */,
+				40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */,
+				40D428E01FBFD9D40024965B /* StoredPasswordTableView.h */,
+				40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		400F03EA1FD1CEE4008BD579 /* Text Field */ = {
+			isa = PBXGroup;
+			children = (
+				407DA8D41FCC9A8800B84E66 /* ColorTextPreview.h */,
+				407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */,
+				4099B3DD1FAB839300CE826D /* TextField.h */,
+				4099B3DE1FAB839300CE826D /* TextField.m */,
+				40D428DC1FBFC8B10024965B /* ModeTextField.h */,
+				40D428DD1FBFC8B10024965B /* ModeTextField.m */,
+				40C69F2E1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.h */,
+				40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */,
+			);
+			path = "Text Field";
+			sourceTree = "<group>";
+		};
+		400F03EB1FD1CF0C008BD579 /* Text View */ = {
+			isa = PBXGroup;
+			children = (
+				408BCD071FCE498400EC8B39 /* PatternTextView.h */,
+				408BCD081FCE498400EC8B39 /* PatternTextView.m */,
+				400F03D81FD07F03008BD579 /* PasswordTextView.h */,
+				400F03D91FD07F03008BD579 /* PasswordTextView.m */,
+				400F03DE1FD0827E008BD579 /* TextView.h */,
+				400F03DF1FD0827E008BD579 /* TextView.m */,
+				400F03E11FD09941008BD579 /* ScrollView.h */,
+				400F03E21FD09941008BD579 /* ScrollView.m */,
+			);
+			path = "Text View";
+			sourceTree = "<group>";
+		};
+		400F03EC1FD1CF3B008BD579 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */,
+				4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		400F03ED1FD1CF4A008BD579 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				40E453581FCBA4FD0075F490 /* BoxView.h */,
+				40E453591FCBA4FD0075F490 /* BoxView.m */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		4058DF251F92995800CCB6E7 /* Password Factory Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,40 +538,13 @@
 		409585FC1B8112FD00393B99 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				409585FD1B8112FD00393B99 /* PreferencesButton.h */,
-				409585FE1B8112FD00393B99 /* PreferencesButton.m */,
-				4004F1D81FBB63290093DA3F /* ZoomButton.h */,
-				4004F1D91FBB63290093DA3F /* ZoomButton.m */,
-				409585FF1B8112FD00393B99 /* StrengthMeter.h */,
-				409586001B8112FD00393B99 /* StrengthMeter.m */,
-				409DEE3B1B84476F00727FDB /* StrengthBox.h */,
-				409DEE3C1B84476F00727FDB /* StrengthBox.m */,
-				409DEE3E1B8447A700727FDB /* StrengthControl.h */,
-				409DEE3F1B8447A700727FDB /* StrengthControl.m */,
-				4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */,
-				4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */,
-				4099B3DD1FAB839300CE826D /* TextField.h */,
-				4099B3DE1FAB839300CE826D /* TextField.m */,
-				40855E081FBCEEA8005BD8F4 /* StoredPasswordColumn.h */,
-				40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */,
-				40D428DC1FBFC8B10024965B /* ModeTextField.h */,
-				40D428DD1FBFC8B10024965B /* ModeTextField.m */,
-				40D428E01FBFD9D40024965B /* StoredPasswordTableView.h */,
-				40D428E11FBFD9D40024965B /* StoredPasswordTableView.m */,
-				40E453581FCBA4FD0075F490 /* BoxView.h */,
-				40E453591FCBA4FD0075F490 /* BoxView.m */,
-				407DA8D41FCC9A8800B84E66 /* ColorTextPreview.h */,
-				407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */,
-				40C69F2E1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.h */,
-				40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */,
-				408BCD071FCE498400EC8B39 /* PatternTextView.h */,
-				408BCD081FCE498400EC8B39 /* PatternTextView.m */,
-				400F03D81FD07F03008BD579 /* PasswordTextView.h */,
-				400F03D91FD07F03008BD579 /* PasswordTextView.m */,
-				400F03DE1FD0827E008BD579 /* TextView.h */,
-				400F03DF1FD0827E008BD579 /* TextView.m */,
-				400F03E11FD09941008BD579 /* ScrollView.h */,
-				400F03E21FD09941008BD579 /* ScrollView.m */,
+				400F03E71FD1CE8B008BD579 /* Buttons */,
+				400F03EC1FD1CF3B008BD579 /* Formatter */,
+				400F03ED1FD1CF4A008BD579 /* Preferences */,
+				400F03E81FD1CEB4008BD579 /* Strength */,
+				400F03E91FD1CEC9008BD579 /* Table */,
+				400F03EB1FD1CF0C008BD579 /* Text View */,
+				400F03EA1FD1CEE4008BD579 /* Text Field */,
 			);
 			name = Controls;
 			path = "Password Factory/Controls";
@@ -1273,7 +1328,6 @@
 				40D428DF1FBFC8B10024965B /* ModeTextField.m in Sources */,
 				4051C9D31FA7D7780097CDD9 /* NSString+MapCase.m in Sources */,
 				40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */,
-				40D428E31FBFD9D40024965B /* StoredPasswordTableView.m in Sources */,
 				40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */,
 				40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */,
 				40511D671C125348005BE5BE /* PasswordStrength.m in Sources */,
