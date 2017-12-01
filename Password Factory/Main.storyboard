@@ -1181,7 +1181,7 @@ Gw
                                             <rect key="frame" x="1" y="1" width="469" height="24"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView importsGraphics="NO" verticallyResizable="NO" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="mPK-cQ-gNT" customClass="PasswordTextView">
+                                                <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="NO" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="mPK-cQ-gNT" customClass="PasswordTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="469" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1633,7 +1633,7 @@ Gw
                                     <rect key="frame" x="1" y="1" width="329" height="42"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="NO" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="33d-cE-36Y" customClass="PatternTextView">
+                                        <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="NO" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="33d-cE-36Y" customClass="PatternTextView">
                                             <rect key="frame" x="0.0" y="0.0" width="329" height="42"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2652,16 +2652,6 @@ Gw
                                 <rect key="frame" x="0.0" y="165" width="371" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n64-rk-Me9">
-                                <rect key="frame" x="15" y="196" width="341" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="PASSWORD" drawsBackground="YES" allowsEditingTextAttributes="YES" id="t8u-45-EPb">
-                                    <font key="font" metaFont="system" size="17"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <accessibility description="Password Value" identifier="passwordValue"/>
-                            </textField>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1L5-WK-D8b">
                                 <rect key="frame" x="0.0" y="36" width="371" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2758,6 +2748,38 @@ Gw
                                     <action selector="changePasswordTypeControl:" target="dD8-aZ-j4o" id="e2b-EL-oFV"/>
                                 </connections>
                             </segmentedControl>
+                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="0.0" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="qnW-7u-rtk" customClass="ScrollView">
+                                <rect key="frame" x="14" y="196" width="342" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" ambiguous="YES" id="R0V-0V-le4">
+                                    <rect key="frame" x="1" y="1" width="340" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" drawsBackground="NO" importsGraphics="NO" verticallyResizable="NO" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="H6k-KF-eUV" customClass="PasswordTextView">
+                                            <rect key="frame" x="0.0" y="0.0" width="340" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="340" height="24"/>
+                                            <size key="maxSize" width="471" height="10000000"/>
+                                            <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="textSize">
+                                                    <integer key="value" value="17"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Qfl-wU-sqR">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Gmb-vc-gjP">
+                                    <rect key="frame" x="-100" y="-100" width="16" height="24"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="aCc-Xq-aX4" firstAttribute="top" secondItem="DdO-29-3kQ" secondAttribute="top" constant="5" id="b55-Y1-fli"/>
@@ -2769,7 +2791,8 @@ Gw
                         <outlet property="displayedPasswordLength" destination="yHJ-vd-xHD" id="BAd-nJ-dNx"/>
                         <outlet property="generateButton" destination="s1C-78-LuC" id="gwo-2M-3XM"/>
                         <outlet property="loadPreferencesButton" destination="GWj-ev-HVw" id="Y7H-lA-cz1"/>
-                        <outlet property="passwordField" destination="n64-rk-Me9" id="N2s-Kb-45X"/>
+                        <outlet property="passwordField" destination="H6k-KF-eUV" id="2Me-5G-JI3"/>
+                        <outlet property="passwordScrollView" destination="qnW-7u-rtk" id="dcQ-R2-ItJ"/>
                         <outlet property="passwordStrengthLevel" destination="g4C-yd-AGs" id="XgQ-Ce-QwX"/>
                         <outlet property="passwordTypeControl" destination="aCc-Xq-aX4" id="dHC-VB-5zD"/>
                         <outlet property="passwordTypeLabel" destination="Uwg-Wc-qLa" id="Fhb-CO-ycb"/>
