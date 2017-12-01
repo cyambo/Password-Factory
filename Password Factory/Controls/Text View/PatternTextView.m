@@ -50,7 +50,7 @@
 -(void)colorPatternText {
     NSDictionary *defaultAttributes = @{
                                         NSFontAttributeName: [NSFont systemFontOfSize:self.textSize],
-                                        NSForegroundColorAttributeName: [self getPatternColor:0]
+                                        NSForegroundColorAttributeName: [[[DefaultsManager standardDefaults] stringForKey:@"defaultTextColor"] colorWithHexColorString]
                                         };
     __block NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:self.textStorage.string attributes:defaultAttributes];
     if([[DefaultsManager standardDefaults] boolForKey:@"colorPasswordText"]) {

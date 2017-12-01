@@ -83,13 +83,13 @@
  tests generating a pronounceable password
  */
 -(void)testPronounceable {
-    [self testLengthSeparatorAndCaseType:PFPronounceableType];
+    [self lengthSeparatorAndCaseTypeTest:PFPronounceableType];
 }
 /**
  tests generating a pronounceable password
  */
 -(void)testPassphrase {
-    [self testLengthSeparatorAndCaseType:PFPassphraseType];
+    [self lengthSeparatorAndCaseTypeTest:PFPassphraseType];
 }
 
 /**
@@ -297,7 +297,7 @@
 }
 
 #pragma mark Utilities
--(void)testLengthSeparatorAndCaseType:(PFPasswordType)type {
+-(void)lengthSeparatorAndCaseTypeTest:(PFPasswordType)type {
     [self.mvc selectPaswordType:type];
     //test length changing
     [self lengthTest:type];
