@@ -40,11 +40,7 @@
 }
 -(void)initBackgroundColor {
     //use the dark mode colors when in dark mode for an accurate preview
-    if ([Utilities isDarkMode]) {
-        self.layerBackgroundColor = [NSColor colorWithRed:0.22 green:0.22 blue:0.22 alpha:1.0];
-    } else {
-        self.layerBackgroundColor = [NSColor whiteColor];
-    }
+    self.layerBackgroundColor = [Utilities getBackgroundColor];
     self.layer.backgroundColor = [self.layerBackgroundColor CGColor];
 }
 
@@ -79,42 +75,12 @@
     NSColor *color;
     //if dark mode use color dodge on it to approximate what the colors look like in dark mode
     if ([Utilities isDarkMode]) {
-        color = [self dodgeColor:[hexString colorWithHexColorString]];
+        color = [Utilities dodgeColor:[hexString colorWithHexColorString] backgroundColor:self.layerBackgroundColor];
     } else {
         color = [hexString colorWithHexColorString];
     }
     self.textColor = color;
 }
 
-/**
- Linear Dodge on a color
 
- @param foreground Foreground Color Component(from 0 - 1)
- @param background Background Color Component(from 0 - 1)
- @return Dodged component
- */
--(float)dodge:(float)foreground background:(float)background{
-    float A = foreground * 255;
-    float B = background * 255;
-    float r = (A + B) / 255;
-    if (r >= 1) {
-        return 1;
-    } else {
-        return r;
-    }
-}
-
-/**
- Runs a linear dodge on a color
-
- @param inputColor color to dodge
- @return Dodged color
- */
--(NSColor *)dodgeColor:(NSColor *)inputColor {
-    NSColor *color = [inputColor colorUsingColorSpace:[Utilities colorSpace]];
-    float r = [self dodge:color.redComponent background:self.layerBackgroundColor.redComponent];
-    float g = [self dodge:color.greenComponent background:self.layerBackgroundColor.greenComponent];
-    float b = [self dodge:color.blueComponent  background:self.layerBackgroundColor.blueComponent];
-    return [[NSColor colorWithCalibratedRed:r green:g blue:b alpha:1]  colorUsingColorSpace:[Utilities colorSpace]];
-}
 @end

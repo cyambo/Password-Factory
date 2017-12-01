@@ -13,4 +13,6 @@
 +(NSAttributedString *)colorText:(NSString *)text size:(NSUInteger)size;
 +(NSColorSpace *)colorSpace;
 +(uint)randomInt:(uint)limit;
++(NSColor *)dodgeColor:(NSColor *)foregroundColor backgroundColor:(NSColor *)backgroundColor;
++(NSColor *)getBackgroundColor;
 @end

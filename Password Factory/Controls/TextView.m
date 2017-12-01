@@ -85,4 +85,5 @@
     [self.textStorage setAttributedString:string];
     [self setDefaults];
 }
+
 @end

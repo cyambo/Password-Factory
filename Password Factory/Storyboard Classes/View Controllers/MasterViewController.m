@@ -68,9 +68,7 @@
     [self setStorePasswordTimer];
     [self loadTypes];
     
-    //centering password in view
-    [self.passwordScrollView.contentView scrollToPoint:NSMakePoint(0, -3)];
-    [self.passwordScrollView reflectScrolledClipView:self.passwordScrollView.contentView];
+
 }
 - (void)viewDidAppear {
     [self selectPaswordType:(PFPasswordType)[[DefaultsManager standardDefaults] integerForKey:@"selectedPasswordType"]];

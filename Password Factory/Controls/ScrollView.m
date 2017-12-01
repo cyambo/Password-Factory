@@ -7,17 +7,26 @@
 //
 
 #import "ScrollView.h"
-
+#import "DefaultsManager.h"
+#import "Utilities.h"
 @implementation ScrollView
-
-
-/**
- Scroll wheel method - just returning to disable scrolling
-
- @param event default event
- */
--(void)scrollWheel:(NSEvent *)event {
-    //just return
-    return;
+-(instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    NSUserDefaults *d = [DefaultsManager standardDefaults];
+    [d addObserver:self forKeyPath:@"AppleInterfaceStyle" options:NSKeyValueObservingOptionNew context:NULL];
+    return self;
+}
+-(void)awakeFromNib {
+    [self setupColors];
+}
+-(void)setupColors {
+    self.backgroundColor = [Utilities getBackgroundColor];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    //if changed to dark mode update the display
+    if([keyPath isEqualToString:@"AppleInterfaceStyle"]) {
+        [self setupColors];
+    }
 }
 @end
+

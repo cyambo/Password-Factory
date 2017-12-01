@@ -44,7 +44,14 @@
         NSColor *cColor = [[d stringForKey:@"upperTextColor"] colorWithHexColorString];
         NSColor *clColor = [[d stringForKey:@"lowerTextColor"] colorWithHexColorString];
         NSColor *sColor = [[d stringForKey:@"symbolTextColor"] colorWithHexColorString];
-        
+        //if we are using dark mode, then dodge all the colors to make them brighter
+        if ([Utilities isDarkMode]) {
+            NSColor *bg = [Utilities getBackgroundColor];
+            nColor = [Utilities dodgeColor:nColor backgroundColor:bg];
+            cColor = [Utilities dodgeColor:cColor backgroundColor:bg];
+            clColor = [Utilities dodgeColor:clColor backgroundColor:bg];
+            sColor = [Utilities dodgeColor:sColor backgroundColor:bg];
+        }
         //uses AttributedString to color password
         
         __block NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName:[NSFont systemFontOfSize:size]}];
@@ -77,14 +84,49 @@
         return s;
     }
 }
+/**
+ Dodge on a color component
+ 
+ @param foreground Foreground Color Component(from 0 - 1)
+ @param background Background Color Component(from 0 - 1)
+ @return Dodged component
+ */
++(float)dodge:(float)foreground background:(float)background{
+    float A = foreground * 255;
+    float B = background * 255;
+    
+    B+= (B*0.5);
+    
+    float r = (A + B) / 255;
+    if (r >= 1) {
+        return 1;
+    } else {
+        return r;
+    }
+}
 
+/**
+ Runs a linear dodge on a color
+ 
+ @param foregroundColor color to dodge
+ @param backgroundColor Background of color
+ @return Dodged color
+ */
++(NSColor *)dodgeColor:(NSColor *)foregroundColor backgroundColor:(NSColor *)backgroundColor {
+    NSColor *fg = [foregroundColor colorUsingColorSpace:[Utilities colorSpace]];
+    NSColor *bg = [backgroundColor colorUsingColorSpace:[Utilities colorSpace]];
+    float r = [Utilities dodge:fg.redComponent background:bg.redComponent];
+    float g = [Utilities dodge:fg.greenComponent background:bg.greenComponent];
+    float b = [Utilities dodge:fg.blueComponent  background:bg.blueComponent];
+    return [[NSColor colorWithCalibratedRed:r green:g blue:b alpha:1]  colorUsingColorSpace:[Utilities colorSpace]];
+}
 /**
  Returns the colorspace we are using for the app
 
  @return NSColorSpace
  */
 +(NSColorSpace *)colorSpace {
-    return [NSColorSpace extendedSRGBColorSpace];
+    return [NSColorSpace sRGBColorSpace];
 }
 /**
  Generates a cryptographic random number
@@ -104,5 +146,18 @@
         NSLog(@"SecRandomCopyBytes failed for some reason");
     }
     return 1;
+}
+
+/**
+ Gets the background color depending on dark mode status
+
+ @return background NSColor
+ */
++(NSColor *)getBackgroundColor {
+    if([Utilities isDarkMode]) {
+        return [NSColor colorWithRed:0.22 green:0.22 blue:0.22 alpha:1.0];
+    } else {
+        return [NSColor whiteColor];
+    }
 }
 @end

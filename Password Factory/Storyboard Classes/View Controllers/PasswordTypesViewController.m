@@ -75,12 +75,7 @@
         [self selectFromStored:0];
     }
     [self setAdvancedRegex];
-    if (self.patternText) {
-        //centering pattern text in view
-        [self.patternScrollView.contentView scrollToPoint:NSMakePoint(0, -3)];
-        [self.patternScrollView reflectScrolledClipView:self.patternScrollView.contentView];
 
-    }
 }
 -(void)viewDidAppear {
     self.didViewAppear = YES;
