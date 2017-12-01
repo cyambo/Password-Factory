@@ -487,7 +487,6 @@ Gw
                                         <rect key="frame" x="204" y="103" width="19" height="27"/>
                                         <stepperCell key="cell" continuous="YES" alignment="left" increment="5" minValue="10" maxValue="500" doubleValue="100" id="0gQ-yc-DI5"/>
                                         <connections>
-                                            <action selector="changeOptions:" target="2B8-vP-6ly" id="glh-7r-dSh"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxStoredPasswords" id="bFt-c1-kXm"/>
                                             <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.storePasswords" id="pNt-hf-PY7"/>
                                         </connections>
@@ -558,7 +557,6 @@ Gw
                                         <rect key="frame" x="204" y="190" width="19" height="27"/>
                                         <stepperCell key="cell" continuous="YES" alignment="left" minValue="6" maxValue="100" doubleValue="6" id="FaI-M1-zJi"/>
                                         <connections>
-                                            <action selector="changeOptions:" target="2B8-vP-6ly" id="vwl-se-FqA"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxPasswordLength" id="pC0-c7-Xox"/>
                                         </connections>
                                     </stepper>
@@ -585,7 +583,6 @@ Gw
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="changeStoredPassword:" target="2B8-vP-6ly" id="gHH-rh-2t4"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.storePasswords" id="9Oh-G1-tB0"/>
                                         </connections>
                                     </button>
@@ -596,7 +593,6 @@ Gw
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="changeOptions:" target="2B8-vP-6ly" id="ncQ-b1-hDp"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.enableAdvanced" id="wwq-K9-SAh"/>
                                         </connections>
                                     </button>
@@ -658,7 +654,6 @@ Gw
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="changeOptions:" target="2B8-vP-6ly" id="n06-4p-EuX"/>
                                             <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="epF-5K-tZx"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.globalHotkeyShowNotification" id="5lg-7C-e0Z"/>
                                         </connections>
@@ -670,7 +665,6 @@ Gw
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="changeOptions:" target="2B8-vP-6ly" id="nK7-UK-Sy6"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.MASPGShortcutEnabled" id="YBG-nq-PP8"/>
                                         </connections>
                                     </button>
@@ -704,7 +698,6 @@ Gw
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="changeOptions:" target="2B8-vP-6ly" id="5LJ-2X-feN"/>
                                             <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.MASPGShortcutEnabled" id="KvI-Ve-7HP"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.globalHotkeyPlaySound" id="pe1-wA-Sol"/>
                                         </connections>
@@ -788,9 +781,6 @@ Gw
                                                 <binding destination="DGa-ye-VaM" name="value" keyPath="values.clearClipboard" id="lqY-Ui-EnZ"/>
                                             </connections>
                                         </buttonCell>
-                                        <connections>
-                                            <action selector="changeOptions:" target="2B8-vP-6ly" id="jdz-ce-Fzk"/>
-                                        </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZoL-o6-QXE" customClass="TextField">
                                         <rect key="frame" x="18" y="20" width="21" height="19"/>

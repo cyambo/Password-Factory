@@ -292,10 +292,6 @@
 -(void)closePopover:(id)sender {
     [self.popover performClose:sender];
 }
--(void)applicationWillTerminate:(NSNotification *)notification {
-    //Sync preferences when closing
-    [[DefaultsManager get] syncSharedDefaults];
-}
 
 /**
  Loads the prefs window

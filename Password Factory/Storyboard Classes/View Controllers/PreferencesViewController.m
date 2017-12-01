@@ -145,14 +145,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     }
 }
 
-/**
- Called when checkboxes are updated
 
- @param sender default sender
- */
-- (IBAction)changeOptions:(id)sender {
-    [self updatedPrefs];
-}
 #pragma mark auto clear clipboard
 /**
  Clipboard erase time slider action
@@ -162,7 +155,6 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 - (IBAction)changeClearTime:(id)sender {
     //changes the label for the clipboard erase time
     [self.clearTimeLabel setIntValue:(int)[self.clearTime integerValue]];
-    [self updatedPrefs];
 }
 /**
  Quits or restarts the application depending on the checkboxes for the menu bar state
@@ -221,7 +213,6 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         [delegate.alertWindowController displayAlert:MenuRestartMessage defaultsKey:@"hideMenuRestartWarning" window:self.view.window];
         [self.quitButton setTitle:@"Restart"];
     }
-    [self updatedPrefs];
 }
 #pragma mark - Custom shortcut
 /**
@@ -308,7 +299,6 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             }
         }
     }
-    [self updatedPrefs];
 }
 
 /**
@@ -370,15 +360,8 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     NSString *soundName = [sender selectedItem].title;
     [[DefaultsManager get] setObject:soundName forKey:@"notificationSound"]; //store it in defaults
     [[NSSound soundNamed:soundName] play]; //play the sound
-    [self updatedPrefs];
 }
 
-/**
- Called when any preferences are updated
- */
--(void)updatedPrefs {
-    [[DefaultsManager get] syncSharedDefaults];
-}
 
 /**
  Resets the defaults and stored password to defaultes

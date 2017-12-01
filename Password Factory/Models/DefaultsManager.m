@@ -35,8 +35,6 @@ static NSDictionary *prefsPlist;
         dm = [[DefaultsManager alloc] init];
 
     });
-    //always sync shared defaults on get
-    [dm syncSharedDefaults];
     return dm;
 }
 -(instancetype)init {
@@ -44,6 +42,9 @@ static NSDictionary *prefsPlist;
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
     [self loadPreferencesFromPlist];
+    [self syncSharedDefaults];
+    [self setupCache];
+    [self addObservers];
     return self;
 }
 -(void)enableShared:(BOOL)enable {
@@ -85,15 +86,13 @@ static NSDictionary *prefsPlist;
  */
 -(void)resetDialogs {
     [self loadDefaultsPlist];
-    NSUserDefaults *d = [self standardDefaults];
     //taking plist and finding the dialogs and resetting them to not hide
     for (NSString *k in prefsPlist) {
         //check to see if it has Warning as a suffix which all dialogs have
         if ([k hasSuffix:@"Warning"]) {
-            [d setBool:NO forKey:k];
+            [self setBool:NO forKey:k];
         }
     }
-    [self syncSharedDefaults];
 }
 /**
  Gets the key and adds 'Shared' if we are using shared
@@ -274,10 +273,9 @@ static NSDictionary *prefsPlist;
     //taking plist and filling in defaults if none set
     for (NSString *k in prefsPlist) {
         if (initialize || ([d objectForKey:k] == nil)) {
-            [d setObject:[prefsPlist objectForKey:k] forKey:k];
+            [self setObject:[prefsPlist objectForKey:k] forKey:k];
         }
     }
-    [self syncSharedDefaults];
 }
 -(void)addObservers {
     NSUserDefaults *d = self.standardDefaults;

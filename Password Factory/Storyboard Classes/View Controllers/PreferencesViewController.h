@@ -23,8 +23,6 @@
 - (IBAction)changeStoredPassword:(NSButton *)sender;
 @property (weak) IBOutlet NSButton *storedPasswordCheckbox;
 
-- (IBAction)changeOptions:(id)sender;
-
 @property (weak) IBOutlet NSButton *automaticallyClearClipboard;
 @property (weak) IBOutlet NSSlider *clearTime;
 @property (weak) IBOutlet NSTextField *clearTimeLabel;
