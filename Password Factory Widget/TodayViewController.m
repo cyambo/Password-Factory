@@ -46,7 +46,6 @@
     self.strengthMeter.wantsLayer = YES;
     self.strengthMeter.layer.backgroundColor = [[NSColor colorWithWhite:0.73 alpha:0.1] CGColor];
     self.strengthMeter.layer.cornerRadius = 10.0;
-    [self setupTypesPopup];
     [self generatePassword];
 }
 
@@ -54,7 +53,7 @@
  Change the label when the view changes
  */
 -(void)viewDidLayout {
-    
+    [self setupTypesPopup];
 }
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
     // Update your data and prepare for a snapshot. Call completion handler when you are done
@@ -81,6 +80,11 @@
     }
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     NSInteger sel = [d integerForKey:@"widgetSelectedPasswordType"];
+    //check to see if we are off the end, that means the password type changed
+    //and that one does not exist anymore
+    if (sel >= self.passwordType.numberOfItems) {
+        sel = 0;
+    }
     [self.passwordType selectItemAtIndex:sel];
 }
 /**

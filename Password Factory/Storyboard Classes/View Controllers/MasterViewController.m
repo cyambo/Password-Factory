@@ -157,7 +157,6 @@
 }
 -(void)setPasswordSegmentedControl:(NSSegmentedControl *)control {
     NSUInteger count = [[self.password getFilteredPasswordTypes] count];
-    //TODO: warning when segment count changes
     [control setSegmentCount:count];
     for(NSUInteger i = 0; i < count; i++) {
         PFPasswordType type = [self.password getPasswordTypeByIndex:i];

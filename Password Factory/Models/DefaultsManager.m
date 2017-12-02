@@ -131,9 +131,9 @@ static NSDictionary *prefsPlist;
     id object;
     id cached;
     if(self.useShared) {
-        NSString *sharedKey = [key stringByAppendingString:@"Shared"];
-        object = [self.sharedDefaults objectForKey:sharedKey];
-        cached = [self.sharedDefaultsCache objectForKey:sharedKey];
+        key = [key stringByAppendingString:@"Shared"];
+        object = [self.sharedDefaults objectForKey:key];
+        cached = [self.sharedDefaultsCache objectForKey:key];
     } else {
         object = [self.standardDefaults objectForKey:key];
         cached = [self.standardDefaultsCache objectForKey:key];
