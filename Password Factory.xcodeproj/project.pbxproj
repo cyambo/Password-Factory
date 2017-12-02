@@ -39,6 +39,9 @@
 		4058DF301F92995800CCB6E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4058DF2F1F92995800CCB6E7 /* main.m */; };
 		405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
+		406BD2301FD3148200D0E854 /* ControlsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BD22F1FD3148200D0E854 /* ControlsContainer.swift */; };
+		406BD2331FD315C100D0E854 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BD2321FD315C000D0E854 /* StyleKit.swift */; };
+		406BD2351FD3166100D0E854 /* StrengthMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BD2341FD3166100D0E854 /* StrengthMeter.swift */; };
 		406C388A1B844D0100F471E7 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
 		406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3F1B8447A700727FDB /* StrengthControl.m */; };
 		406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3C1B84476F00727FDB /* StrengthBox.m */; };
@@ -217,6 +220,9 @@
 		4058DF2E1F92995800CCB6E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4058DF2F1F92995800CCB6E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4058DF311F92995800CCB6E7 /* Password_Factory_Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Password_Factory_Helper.entitlements; sourceTree = "<group>"; };
+		406BD22F1FD3148200D0E854 /* ControlsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsContainer.swift; sourceTree = "<group>"; };
+		406BD2321FD315C000D0E854 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		406BD2341FD3166100D0E854 /* StrengthMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthMeter.swift; sourceTree = "<group>"; };
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
 		407DA8D41FCC9A8800B84E66 /* ColorTextPreview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorTextPreview.h; sourceTree = "<group>"; };
 		407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorTextPreview.m; sourceTree = "<group>"; };
@@ -499,6 +505,23 @@
 			path = "Password Factory Helper";
 			sourceTree = "<group>";
 		};
+		406BD22C1FD312F400D0E854 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				406BD22F1FD3148200D0E854 /* ControlsContainer.swift */,
+				406BD2341FD3166100D0E854 /* StrengthMeter.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		406BD2311FD315C000D0E854 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				406BD2321FD315C000D0E854 /* StyleKit.swift */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
 		409585D41B8112FD00393B99 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +638,8 @@
 		40AAB5CF1F8EC67F00324759 /* Password Factory iOS */ = {
 			isa = PBXGroup;
 			children = (
+				406BD2311FD315C000D0E854 /* Graphics */,
+				406BD22C1FD312F400D0E854 /* Controls */,
 				40AAB5D01F8EC67F00324759 /* AppDelegate.swift */,
 				40AAB5D21F8EC67F00324759 /* ViewController.swift */,
 				40AAB5D41F8EC67F00324759 /* Main.storyboard */,
@@ -1356,7 +1381,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				406BD2301FD3148200D0E854 /* ControlsContainer.swift in Sources */,
 				40AAB5D31F8EC67F00324759 /* ViewController.swift in Sources */,
+				406BD2351FD3166100D0E854 /* StrengthMeter.swift in Sources */,
+				406BD2331FD315C100D0E854 /* StyleKit.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
