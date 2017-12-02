@@ -15,6 +15,7 @@
 #import "TypeIcons.h"
 #import "StrengthControl.h"
 #import "Utilities.h"
+#import "SecureRandom.h"
 @interface PasswordTypesViewController () <NSTextFieldDelegate>
 
 @property (nonatomic, assign) NSInteger passwordLength;
@@ -100,7 +101,7 @@
  */
 -(void)selectRandomFromStored {
     if ([self.storage count]) {
-        uint index = [Utilities randomInt:(uint)[self.storage count]];
+        uint index = [SecureRandom randomInt:(uint)[self.storage count]];
         [self selectFromStored:index];
     } else {
         //nothing in the table so just call the delegate to set the password and strength to nothing

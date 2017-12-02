@@ -1,5 +1,5 @@
 //
-//  PasswordsViewController.swift
+//  TabViewController.swift
 //  Password Factory iOS
 //
 //  Created by Cristiana Yambo on 12/2/17.
@@ -8,25 +8,19 @@
 
 import UIKit
 
-class PasswordsViewController: UIViewController {
+class TabViewController: UITabBarController {
 
-    var passwordViewController: UIViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func setup(type: PFPasswordType) {
-        let typeName = PasswordFactoryConstants.get().getNameFor(type) ?? "random"
-        let storyboardIdentfier = typeName + "Password"
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        passwordViewController = storyboard.instantiateViewController(withIdentifier: storyboardIdentfier)
-        self.view = passwordViewController?.view
-    }
+    
 
     /*
     // MARK: - Navigation

@@ -11,6 +11,7 @@ const int LONG_PASSWORD_LENGTH = 100;
 #import <XCTest/XCTest.h>
 #import "PasswordFactory.h"
 #import "Utilities.h"
+#import "SecureRandom.h"
 @interface Passsword_FactoryTests : XCTestCase
 @property (nonatomic, strong) PasswordFactory *factory;
 @end
@@ -422,7 +423,7 @@ const int LONG_PASSWORD_LENGTH = 100;
 -(void)testRandomNumberGenerator {
     for (uint i = 1; i < RANDOM_ITERATIONS; i ++) {
         for(uint j = 10; j < 20; j++) {
-            uint k = [Utilities randomInt:j];
+            uint k = [SecureRandom randomInt:j];
             XCTAssertFalse((k < 0 || k > j), @"Random Number is out of range");
         }
     }

@@ -128,25 +128,7 @@
 +(NSColorSpace *)colorSpace {
     return [NSColorSpace sRGBColorSpace];
 }
-/**
- Generates a cryptographic random number
- 
- @param limit upper limit of number
- @return random uint
- */
-+(uint)randomInt:(uint)limit {
-    if (limit == 0) {
-        return 0;
-    }
-    int32_t randomNumber = 0;
-    uint result = SecRandomCopyBytes(kSecRandomDefault, 4, (uint8_t*) &randomNumber);
-    if(result == 0) {
-        return randomNumber % limit;
-    } else {
-        NSLog(@"SecRandomCopyBytes failed for some reason");
-    }
-    return 1;
-}
+
 
 /**
  Gets the background color depending on dark mode status
