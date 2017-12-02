@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4001080D1FD32FB600594304 /* PatternTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001080C1FD32FB600594304 /* PatternTextView.swift */; };
+		4001080F1FD3320D00594304 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001080E1FD3320D00594304 /* MasterViewController.swift */; };
+		400108121FD3323900594304 /* PasswordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400108111FD3323900594304 /* PasswordsViewController.swift */; };
+		400108131FD3338000594304 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
+		400108151FD333A800594304 /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
 		4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
 		4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
 		4004F1DA1FBB63290093DA3F /* ZoomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D91FBB63290093DA3F /* ZoomButton.m */; };
@@ -182,6 +187,9 @@
 
 /* Begin PBXFileReference section */
 		097270D42A6F1CBA8198EDFE /* Pods-Password Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.release.xcconfig"; sourceTree = "<group>"; };
+		4001080C1FD32FB600594304 /* PatternTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternTextView.swift; sourceTree = "<group>"; };
+		4001080E1FD3320D00594304 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		400108111FD3323900594304 /* PasswordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordsViewController.swift; sourceTree = "<group>"; };
 		4004F1D41FBA4E200093DA3F /* NSString+ColorWithHexColorString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ColorWithHexColorString.h"; sourceTree = "<group>"; };
 		4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ColorWithHexColorString.m"; sourceTree = "<group>"; };
 		4004F1D81FBB63290093DA3F /* ZoomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomButton.h; sourceTree = "<group>"; };
@@ -408,6 +416,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400108101FD3321500594304 /* Storyboard Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4001080E1FD3320D00594304 /* MasterViewController.swift */,
+				400108111FD3323900594304 /* PasswordsViewController.swift */,
+			);
+			path = "Storyboard Classes";
+			sourceTree = "<group>";
+		};
 		400F03E71FD1CE8B008BD579 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +527,7 @@
 			children = (
 				406BD22F1FD3148200D0E854 /* ControlsContainer.swift */,
 				406BD2341FD3166100D0E854 /* StrengthMeter.swift */,
+				4001080C1FD32FB600594304 /* PatternTextView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -638,6 +656,7 @@
 		40AAB5CF1F8EC67F00324759 /* Password Factory iOS */ = {
 			isa = PBXGroup;
 			children = (
+				400108101FD3321500594304 /* Storyboard Classes */,
 				406BD2311FD315C000D0E854 /* Graphics */,
 				406BD22C1FD312F400D0E854 /* Controls */,
 				40AAB5D01F8EC67F00324759 /* AppDelegate.swift */,
@@ -1383,9 +1402,14 @@
 			files = (
 				406BD2301FD3148200D0E854 /* ControlsContainer.swift in Sources */,
 				40AAB5D31F8EC67F00324759 /* ViewController.swift in Sources */,
+				4001080D1FD32FB600594304 /* PatternTextView.swift in Sources */,
 				406BD2351FD3166100D0E854 /* StrengthMeter.swift in Sources */,
 				406BD2331FD315C100D0E854 /* StyleKit.swift in Sources */,
+				400108121FD3323900594304 /* PasswordsViewController.swift in Sources */,
+				400108131FD3338000594304 /* constants.m in Sources */,
+				4001080F1FD3320D00594304 /* MasterViewController.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
+				400108151FD333A800594304 /* PasswordFactoryConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
