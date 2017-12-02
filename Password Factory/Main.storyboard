@@ -1279,14 +1279,16 @@ Gw
                                                             <rect key="frame" x="1" y="1" width="127" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H15-dD-bIs">
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H15-dD-bIs">
                                                                     <rect key="frame" x="3" y="0.0" width="17" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="17" id="1aK-XM-nFe"/>
+                                                                        <constraint firstAttribute="height" constant="17" id="mmX-Q5-gs6"/>
+                                                                    </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="IMy-Li-1JL"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYL-un-xXI">
-                                                                    <rect key="frame" x="25" y="0.0" width="102" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYL-un-xXI">
+                                                                    <rect key="frame" x="25" y="0.0" width="96" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Vyo-ib-HMF">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1294,6 +1296,12 @@ Gw
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="H15-dD-bIs" firstAttribute="leading" secondItem="Kud-z3-6pv" secondAttribute="leading" constant="3" id="Ct5-Rz-HBM"/>
+                                                                <constraint firstItem="hYL-un-xXI" firstAttribute="centerY" secondItem="Kud-z3-6pv" secondAttribute="centerY" id="J7O-Rr-ezd"/>
+                                                                <constraint firstItem="H15-dD-bIs" firstAttribute="centerY" secondItem="Kud-z3-6pv" secondAttribute="centerY" id="ZM8-Tp-Yi8"/>
+                                                                <constraint firstItem="hYL-un-xXI" firstAttribute="leading" secondItem="H15-dD-bIs" secondAttribute="trailing" constant="7" id="n6Q-j5-VmH"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="imageView" destination="H15-dD-bIs" id="3Mb-oL-ZBd"/>
                                                                 <outlet property="textField" destination="hYL-un-xXI" id="zRg-10-bsU"/>
