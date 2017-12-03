@@ -26,7 +26,7 @@
         <!--Container-->
         <scene sceneID="ncT-d3-bSB">
             <objects>
-                <viewController storyboardIdentifier="Container" id="khg-tJ-abi" userLabel="Container" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Container" id="khg-tJ-abi" userLabel="Container" customClass="ContainerViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="umP-QV-cBN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,9 +82,9 @@
                             <constraint firstAttribute="trailing" secondItem="60d-QR-74K" secondAttribute="trailing" constant="16" id="7jz-m9-1fF"/>
                             <constraint firstItem="hWY-Nj-X5d" firstAttribute="leading" secondItem="umP-QV-cBN" secondAttribute="leading" constant="16" id="Csi-3N-MFs"/>
                             <constraint firstItem="60d-QR-74K" firstAttribute="leading" secondItem="jCT-Ik-veD" secondAttribute="trailing" id="FUk-Yd-xaI"/>
+                            <constraint firstItem="MdJ-Ig-lVh" firstAttribute="bottom" secondItem="jCT-Ik-veD" secondAttribute="bottom" constant="16" id="JlA-xB-V45"/>
                             <constraint firstItem="60d-QR-74K" firstAttribute="height" secondItem="jCT-Ik-veD" secondAttribute="height" id="KbV-0e-rKh"/>
                             <constraint firstAttribute="trailing" secondItem="hWY-Nj-X5d" secondAttribute="trailing" constant="16" id="MFb-we-ShX"/>
-                            <constraint firstAttribute="bottom" secondItem="jCT-Ik-veD" secondAttribute="bottom" constant="16" id="VmA-iX-8Mr"/>
                             <constraint firstItem="60d-QR-74K" firstAttribute="centerY" secondItem="jCT-Ik-veD" secondAttribute="centerY" id="eMh-r8-5yR"/>
                             <constraint firstItem="fq2-1h-ReF" firstAttribute="top" secondItem="hWY-Nj-X5d" secondAttribute="bottom" constant="16" id="hhu-Ob-zdI"/>
                             <constraint firstItem="60d-QR-74K" firstAttribute="width" secondItem="jCT-Ik-veD" secondAttribute="width" id="ls8-YD-lfb"/>
@@ -94,6 +94,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MdJ-Ig-lVh"/>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="fq2-1h-ReF" id="8AS-S4-qWm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9K-Cr-CWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,7 +105,7 @@
         <!--Random Password-->
         <scene sceneID="9Ox-ap-9QA">
             <objects>
-                <viewController storyboardIdentifier="RandomPassword" id="Sl1-Tc-FzO" userLabel="Random Password" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RandomPassword" id="Sl1-Tc-FzO" userLabel="Random Password" customClass="PasswordsViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N3V-xc-f2J">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,8 +147,8 @@
                                                     <constraint firstAttribute="height" constant="31" id="dg5-LF-I0c"/>
                                                 </constraints>
                                             </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9w-Jc-66q">
-                                                <rect key="frame" x="81" y="10" width="246" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Symbols" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9w-Jc-66q">
+                                                <rect key="frame" x="81" y="10.5" width="246" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -171,8 +174,8 @@
                                                     <constraint firstAttribute="height" constant="31" id="kSv-xr-eu7"/>
                                                 </constraints>
                                             </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7y-0s-rev">
-                                                <rect key="frame" x="81" y="10" width="246" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avoid Ambiguous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7y-0s-rev">
+                                                <rect key="frame" x="81" y="10.5" width="246" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -198,8 +201,8 @@
                                                     <constraint firstAttribute="height" constant="31" id="b1q-Fd-edx"/>
                                                 </constraints>
                                             </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diO-cc-Mg5">
-                                                <rect key="frame" x="81" y="10" width="246" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diO-cc-Mg5">
+                                                <rect key="frame" x="81" y="10.5" width="246" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -225,8 +228,8 @@
                                                     <constraint firstAttribute="height" constant="31" id="gw7-ab-8uJ"/>
                                                 </constraints>
                                             </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-pu-2Ux">
-                                                <rect key="frame" x="81" y="10" width="246" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-pu-2Ux">
+                                                <rect key="frame" x="81" y="10.5" width="246" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -281,7 +284,7 @@
         <!--Pattern Password-->
         <scene sceneID="yGa-KQ-i4O">
             <objects>
-                <viewController storyboardIdentifier="PatternPassword" id="Uod-3F-Rl7" userLabel="Pattern Password" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatternPassword" id="Uod-3F-Rl7" userLabel="Pattern Password" customClass="PasswordsViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7cG-vN-QZI">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

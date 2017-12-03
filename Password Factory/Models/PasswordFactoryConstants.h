@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSArray *phoneticSoundsThree;
 @property (nonatomic, strong) NSDictionary *passwordCharacterTypes;
 @property (nonatomic, strong) NSDictionary *passwordTypes;
+@property (nonatomic, strong) NSDictionary *passwordNameToType;
 @property (nonatomic, strong) NSDictionary *caseTypes;
 @property (nonatomic, strong) NSDictionary *separatorTypes;
 @property (nonatomic, strong) NSDictionary *patternCharacterToType;

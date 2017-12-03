@@ -12,11 +12,18 @@ class ControlsContainer: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 10.0
-        self.layer.backgroundColor = UIColor.white.cgColor
-        
+        setDisplay()
+    }
+    public override func awakeFromNib() {
+        setDisplay()
     }
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setDisplay()
+    }
+    func setDisplay() {
+        self.layer.cornerRadius = 10.0
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.masksToBounds = true
     }
 }

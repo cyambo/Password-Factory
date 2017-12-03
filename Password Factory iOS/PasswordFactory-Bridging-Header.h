@@ -12,5 +12,4 @@
 #import "constants.h"
 #import "PasswordFactory.h"
 #import "PasswordFactoryConstants.h"
-
 #endif /* PasswordFactory_Bridging_Header_h */

@@ -120,6 +120,10 @@
     self.caseTypeIndex = [[self.caseTypes allKeys] sortedArrayUsingSelector:@selector(compare:)];
     self.separatorTypeIndex = [[self.separatorTypes allKeys] sortedArrayUsingSelector:@selector(compare:)];
     self.patternTypeIndex = [[self.patternBase allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    //building type name dictionary
+    NSArray *tk = self.passwordTypes.allKeys;
+    NSArray *tv = [self.passwordTypes objectsForKeys:tk notFoundMarker:[NSNull null]];
+    self.passwordNameToType = [NSDictionary dictionaryWithObjects:tk forKeys:tv];
     //build out pattern dictionaries
     NSMutableDictionary *pc = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *pn = [[NSMutableDictionary alloc] init];
