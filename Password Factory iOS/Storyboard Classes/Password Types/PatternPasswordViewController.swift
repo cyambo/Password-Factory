@@ -9,7 +9,6 @@
 import UIKit
 
 class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate {
-
     @IBOutlet weak var patternText: PatternTextView!
     @IBOutlet weak var insertPicker: UIPickerView!
     override func viewDidLoad() {
@@ -46,18 +45,11 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         if (row == 0) {
             return "Insert"
         } else {
-            let pt = getPatternTypeItemFromIndex(index: (row - 1))
-            if let name = c.getNameFor(pt) {
-                return name
-            }
-            return ""
-
+            let pt = c.patternTypeIndex[(row - 1)]
+            return c.getNameFor(type: pt)
         }
     }
-    func getPatternTypeItemFromIndex(index: Int) -> PFPatternTypeItem {
-        let rawType = c.patternTypeIndex[index] as? Int ?? PFPatternTypeItem.randomItemType.rawValue
-        return PFPatternTypeItem(rawValue: rawType) ?? .randomItemType
-    }
+
     /*
     // MARK: - Navigation
 

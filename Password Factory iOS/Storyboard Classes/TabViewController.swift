@@ -21,6 +21,7 @@ class TabViewController: UITabBarController {
         patternPasswordViewController = (mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController) ?? PasswordContainerViewController()
         patternPasswordViewController?.setType(type: .patternType)
         viewControllers = [randomPasswordViewController!,patternPasswordViewController!]
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()

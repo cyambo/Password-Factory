@@ -19,7 +19,7 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var useNumbersSwitch: UISwitch!
     @IBOutlet weak var useEmojiSwitch: UISwitch!
     @IBOutlet weak var caseTypePicker: UIPickerView!
-    let c = PasswordFactoryConstants.get()!
+    let c = PFConstants.instance
     let d = DefaultsManager.get()!
     let f = PasswordFactory.get()!
     var passwordViewController: UIViewController?
@@ -35,7 +35,7 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Dispose of any resources that can be recreated.
     }
     func setup(type: PFPasswordType) {
-        let typeName = PasswordFactoryConstants.get().getNameFor(type) ?? "random"
+        let typeName = c.getNameFor(type: type)
         let storyboardIdentfier = typeName + "Password"
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         passwordViewController = storyboard.instantiateViewController(withIdentifier: storyboardIdentfier)

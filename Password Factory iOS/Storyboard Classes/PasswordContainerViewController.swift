@@ -9,6 +9,7 @@
 import UIKit
 
 class PasswordContainerViewController: UIViewController {
+    let c = PFConstants.instance
     var image: UIImage?
     var type: PFPasswordType = .randomType
     @IBInspectable public var num: Int = 0
@@ -19,7 +20,7 @@ class PasswordContainerViewController: UIViewController {
     }
     func setType(type: PFPasswordType) {
         self.type = type
-        let typeName = PasswordFactoryConstants.get().getNameFor(type) ?? "Random"
+        let typeName = c.getNameFor(type: type)
         image = TypeIcons.getTypeIcon(type: type)
         tabBarItem = UITabBarItem.init(title: typeName, image: image, tag: type.rawValue)
         let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
