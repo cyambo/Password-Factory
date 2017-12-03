@@ -17,9 +17,8 @@
 @end
 @implementation DefaultsManager
 
-static BOOL loadedPrefs;
 static NSDictionary *prefsPlist;
-
+static DefaultsManager *dm = nil;
 
 /**
  Singleton Get method
@@ -27,14 +26,31 @@ static NSDictionary *prefsPlist;
  @return DefaultsManager instance
  */
 +(instancetype) get {
-    static DefaultsManager *dm = nil;
-    
-    static dispatch_once_t once = 0;
-    
-    dispatch_once(&once, ^ {
-        dm = [[DefaultsManager alloc] init];
+    if (!dm) {
+        static dispatch_once_t once = 0;
+        dispatch_once(&once, ^ {
+            dm = [[DefaultsManager alloc] init];
+            [dm syncToSharedDefaults];
+        });
+    }
+    return dm;
+}
 
-    });
+/**
+ Singleton get method, enables shared and since we are shared
+ we do not sync to shared defaults as the shared defaults are the
+ definitive source, rather than the main defaults
+
+ @return DefaultsManager Instance
+ */
++(instancetype)getShared {
+    if(!dm) {
+        static dispatch_once_t once = 0;
+        dispatch_once(&once, ^ {
+            dm = [[DefaultsManager alloc] init];
+            [dm enableShared:YES];
+        });
+    }
     return dm;
 }
 -(instancetype)init {
@@ -42,7 +58,6 @@ static NSDictionary *prefsPlist;
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
     [self loadPreferencesFromPlist];
-    [self syncSharedDefaults];
     [self setupCache];
     [self addObservers];
     return self;
@@ -67,7 +82,6 @@ static NSDictionary *prefsPlist;
  */
 +(NSUserDefaults *)standardDefaults {
     NSUserDefaults *s = [DefaultsManager get].standardDefaults;
-//    assert([s objectForKey:@"passwordLength"] != nil);
     return s;
 }
 
@@ -182,7 +196,7 @@ static NSDictionary *prefsPlist;
     if (ret == nil) {
         return NO;
     }
-    return [[self objectForKey:key] boolValue];
+    return [ret boolValue];
 }
 
 /**
@@ -249,9 +263,8 @@ static NSDictionary *prefsPlist;
  Makes sure our preferences are loaded only at launch
  */
 -(void)loadPreferencesFromPlist {
-    if (!loadedPrefs) {
+    if (!prefsPlist) {
         [self getPrefsFromPlist:false];
-        loadedPrefs = YES;
     }
 }
 /**
@@ -315,9 +328,9 @@ static NSDictionary *prefsPlist;
     [self.sharedDefaults setObject:change[@"new"] forKey:sharedKeyPath];
 }
 /**
- Syncs our plist with the sharedDefaults manager for use in the today extension
+ Syncs our plist to the sharedDefaults manager for use in the today extension
  */
--(void)syncSharedDefaults {
+-(void)syncToSharedDefaults {
     [self loadDefaultsPlist];
     NSUserDefaults *sharedDefaults = self.sharedDefaults;
     NSUserDefaults *d = self.standardDefaults;

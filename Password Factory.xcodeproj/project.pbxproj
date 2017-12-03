@@ -238,7 +238,7 @@
 		4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AccentedCase.m"; sourceTree = "<group>"; };
 		4051C9D01FA7D7780097CDD9 /* NSString+MapCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MapCase.h"; sourceTree = "<group>"; };
 		4051C9D11FA7D7780097CDD9 /* NSString+MapCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MapCase.m"; sourceTree = "<group>"; };
-		40537D8C1F9419FD00D645B7 /* constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = constants.m; path = "Password Factory/constants.m"; sourceTree = "<group>"; };
+		40537D8C1F9419FD00D645B7 /* constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
 		4058DF241F92995800CCB6E7 /* Password Factory Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4058DF261F92995800CCB6E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4058DF271F92995800CCB6E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoredPasswordColumn.m; sourceTree = "<group>"; };
 		40855E0B1FBD1628005BD8F4 /* TypeIcons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeIcons.h; sourceTree = "<group>"; };
 		40855E0C1FBD1628005BD8F4 /* TypeIcons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeIcons.m; sourceTree = "<group>"; };
-		408673D51F91D04B00C189AB /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = "Password Factory/constants.h"; sourceTree = "<group>"; };
+		408673D51F91D04B00C189AB /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		408BCD071FCE498400EC8B39 /* PatternTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatternTextView.h; sourceTree = "<group>"; };
 		408BCD081FCE498400EC8B39 /* PatternTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatternTextView.m; sourceTree = "<group>"; };
 		40940E281FC6249300CA1261 /* ExportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportViewController.h; sourceTree = "<group>"; };
@@ -568,8 +568,7 @@
 				409585D51B8112FD00393B99 /* bad_words.json */,
 				40C4C8AD1F9E9C0900F31070 /* emojis.txt */,
 			);
-			name = Assets;
-			path = "Password Factory/Assets";
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		409585F71B8112FD00393B99 /* Categories */ = {
@@ -592,8 +591,7 @@
 				404B6D5E1FBE76CB00B281E5 /* NSString+UnicodeLength.h */,
 				404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */,
 			);
-			name = Categories;
-			path = "Password Factory/Categories";
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		409585FC1B8112FD00393B99 /* Controls */ = {
@@ -607,8 +605,7 @@
 				400F03EB1FD1CF0C008BD579 /* Text View */,
 				400F03EA1FD1CEE4008BD579 /* Text Field */,
 			);
-			name = Controls;
-			path = "Password Factory/Controls";
+			path = Controls;
 			sourceTree = "<group>";
 		};
 		409586051B8112FD00393B99 /* Models */ = {
@@ -625,8 +622,7 @@
 				40F07A871FBBD23B008AFE29 /* PasswordStorage.h */,
 				40F07A881FBBD23B008AFE29 /* PasswordStorage.m */,
 			);
-			name = Models;
-			path = "Password Factory/Models";
+			path = Models;
 			sourceTree = "<group>";
 		};
 		409586081B8112FD00393B99 /* Storyboard Classes */ = {
@@ -636,8 +632,7 @@
 				40FB841E1FC5F86F00474B94 /* View Controllers */,
 				40FB841D1FC5F82B00474B94 /* Windows */,
 			);
-			name = "Storyboard Classes";
-			path = "Password Factory/Storyboard Classes";
+			path = "Storyboard Classes";
 			sourceTree = "<group>";
 		};
 		409E13BB1B8258170041541B /* Password Factory Widget */ = {
@@ -732,18 +727,6 @@
 		40FB0C121B810F10009193F8 = {
 			isa = PBXGroup;
 			children = (
-				408673D51F91D04B00C189AB /* constants.h */,
-				40537D8C1F9419FD00D645B7 /* constants.m */,
-				409585D61B8112FD00393B99 /* defaults.plist */,
-				409585D41B8112FD00393B99 /* Assets */,
-				40CBF1781FBD5D0D00048B0C /* Classes */,
-				40A0A3B51FBBCBF4009CEB5E /* Data */,
-				40BA26EF1FB26E1400F7AF13 /* Graphics */,
-				409585F71B8112FD00393B99 /* Categories */,
-				409585FC1B8112FD00393B99 /* Controls */,
-				40FB841C1FC5F81300474B94 /* Controllers */,
-				409586051B8112FD00393B99 /* Models */,
-				409586081B8112FD00393B99 /* Storyboard Classes */,
 				40FB0C1D1B810F10009193F8 /* Password Factory */,
 				4058DF251F92995800CCB6E7 /* Password Factory Helper */,
 				40FB0C311B810F10009193F8 /* Password FactoryTests */,
@@ -774,6 +757,18 @@
 		40FB0C1D1B810F10009193F8 /* Password Factory */ = {
 			isa = PBXGroup;
 			children = (
+				408673D51F91D04B00C189AB /* constants.h */,
+				40537D8C1F9419FD00D645B7 /* constants.m */,
+				409585D61B8112FD00393B99 /* defaults.plist */,
+				409585D41B8112FD00393B99 /* Assets */,
+				40CBF1781FBD5D0D00048B0C /* Classes */,
+				40A0A3B51FBBCBF4009CEB5E /* Data */,
+				40BA26EF1FB26E1400F7AF13 /* Graphics */,
+				409585F71B8112FD00393B99 /* Categories */,
+				409585FC1B8112FD00393B99 /* Controls */,
+				40FB841C1FC5F81300474B94 /* Controllers */,
+				409586051B8112FD00393B99 /* Models */,
+				409586081B8112FD00393B99 /* Storyboard Classes */,
 				402A42821FAA316F00615A2E /* Main.storyboard */,
 				40FB0C201B810F10009193F8 /* AppDelegate.h */,
 				40FB0C211B810F10009193F8 /* AppDelegate.m */,

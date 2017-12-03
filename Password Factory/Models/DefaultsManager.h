@@ -10,11 +10,12 @@
 
 @interface DefaultsManager : NSObject
 +(instancetype) get;
++(instancetype) getShared;
 +(NSUserDefaults *)sharedDefaults;
 +(NSUserDefaults *)standardDefaults;
 +(void)restoreUserDefaults;
 -(void)resetDialogs;
--(void)syncSharedDefaults;
+-(void)syncToSharedDefaults;
 @property (nonatomic, assign) BOOL useShared;
 - (void)enableShared:(BOOL)enable;
 - (NSString *)stringForKey:(NSString *)key;

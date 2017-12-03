@@ -20,7 +20,6 @@
  */
 @interface TodayViewController () <NCWidgetProviding>
 
-
 @property (nonatomic, strong) id clearClipboardTimer;
 @property (nonatomic, strong) PasswordStrength *passwordStrength;
 @property (nonatomic, strong) PasswordController *passwordController;
@@ -32,11 +31,11 @@
 @implementation TodayViewController
 - (instancetype)init {
     self = [super init];
-    self.d = [DefaultsManager get];
+    self.d = [DefaultsManager getShared];
     self.passwordController = [PasswordController get:YES];
     self.passwordStrength = [[PasswordStrength alloc] init];
     self.storage = [PasswordStorage get];
-    self.d.useShared = YES;
+    
     return self;
 }
 /**
@@ -63,6 +62,10 @@
     [self generatePassword];
     completionHandler(NCUpdateResultNoData);
 }
+
+/**
+ Fills the types popup with the activated types
+ */
 -(void)setupTypesPopup {
     self.passwordController.useStoredType = [self.d boolForKey:@"storePasswords"];
     self.passwordController.useAdvancedType = [self.d boolForKey:@"enableAdvanced"];
