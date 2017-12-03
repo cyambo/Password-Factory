@@ -12,4 +12,5 @@
 #import "constants.h"
 #import "PasswordFactory.h"
 #import "PasswordFactoryConstants.h"
+#import "DefaultsManager.h"
 #endif /* PasswordFactory_Bridging_Header_h */

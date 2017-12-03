@@ -25,7 +25,7 @@
 		4001082A1FD3378400594304 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 409585D61B8112FD00393B99 /* defaults.plist */; };
 		4001082B1FD3378500594304 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 409585D61B8112FD00393B99 /* defaults.plist */; };
 		400108571FD33F2A00594304 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400108561FD33F2A00594304 /* TabViewController.swift */; };
-		400108591FD340B600594304 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400108581FD340B600594304 /* ContainerViewController.swift */; };
+		400108591FD340B600594304 /* PasswordContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400108581FD340B600594304 /* PasswordContainerViewController.swift */; };
 		4001085C1FD3445000594304 /* TypeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001085B1FD3445000594304 /* TypeIcons.swift */; };
 		4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
 		4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
@@ -38,6 +38,12 @@
 		400F03E31FD09941008BD579 /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03E21FD09941008BD579 /* ScrollView.m */; };
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
+		40189F561FD46A1B00D87217 /* RandomPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F551FD46A1B00D87217 /* RandomPasswordViewController.swift */; };
+		40189F581FD46A3600D87217 /* PatternPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F571FD46A3600D87217 /* PatternPasswordViewController.swift */; };
+		40189F5A1FD46A6000D87217 /* PronounceablePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F591FD46A6000D87217 /* PronounceablePasswordViewController.swift */; };
+		40189F5C1FD46A6D00D87217 /* PassphrasePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5B1FD46A6D00D87217 /* PassphrasePasswordViewController.swift */; };
+		40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */; };
+		40189F601FD46A8F00D87217 /* AdvancedPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
 		402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
@@ -127,6 +133,12 @@
 		40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
 		40E4535A1FCBA4FD0075F490 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E453591FCBA4FD0075F490 /* BoxView.m */; };
+		40E809AB1FD485AB0042AA8A /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
+		40E809AC1FD4861A0042AA8A /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
+		40E809AD1FD48CE50042AA8A /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A2E3DC1F92756A0044E2A1 /* frequency_lists.json */; };
+		40E809AE1FD48CEB0042AA8A /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
+		40E809AF1FD48CF00042AA8A /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
+		40E809B21FD491AA0042AA8A /* PFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E809B11FD491AA0042AA8A /* PFConstants.swift */; };
 		40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
 		40EC53031FC8A7ED007F6EFF /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */; };
 		40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EC53051FC8A804007F6EFF /* ExportWindow.m */; };
@@ -207,7 +219,7 @@
 		4001081E1FD3360300594304 /* SecureRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecureRandom.m; sourceTree = "<group>"; };
 		400108351FD33A1500594304 /* PasswordFactory-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PasswordFactory-Bridging-Header.h"; sourceTree = "<group>"; };
 		400108561FD33F2A00594304 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
-		400108581FD340B600594304 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		400108581FD340B600594304 /* PasswordContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordContainerViewController.swift; sourceTree = "<group>"; };
 		4001085B1FD3445000594304 /* TypeIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeIcons.swift; sourceTree = "<group>"; };
 		4004F1D41FBA4E200093DA3F /* NSString+ColorWithHexColorString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ColorWithHexColorString.h"; sourceTree = "<group>"; };
 		4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ColorWithHexColorString.m"; sourceTree = "<group>"; };
@@ -225,6 +237,12 @@
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
 		4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyIntegerFormatter.m; sourceTree = "<group>"; };
+		40189F551FD46A1B00D87217 /* RandomPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPasswordViewController.swift; sourceTree = "<group>"; };
+		40189F571FD46A3600D87217 /* PatternPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternPasswordViewController.swift; sourceTree = "<group>"; };
+		40189F591FD46A6000D87217 /* PronounceablePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronounceablePasswordViewController.swift; sourceTree = "<group>"; };
+		40189F5B1FD46A6D00D87217 /* PassphrasePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphrasePasswordViewController.swift; sourceTree = "<group>"; };
+		40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredPasswordViewController.swift; sourceTree = "<group>"; };
+		40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPasswordViewController.swift; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
@@ -344,6 +362,7 @@
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		40E453581FCBA4FD0075F490 /* BoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
 		40E453591FCBA4FD0075F490 /* BoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
+		40E809B11FD491AA0042AA8A /* PFConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFConstants.swift; sourceTree = "<group>"; };
 		40EC53011FC8A7ED007F6EFF /* PreferencesWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		40EC53021FC8A7ED007F6EFF /* PreferencesWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		40EC53041FC8A804007F6EFF /* ExportWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportWindow.h; sourceTree = "<group>"; };
@@ -437,9 +456,9 @@
 		400108101FD3321500594304 /* Storyboard Classes */ = {
 			isa = PBXGroup;
 			children = (
-				400108111FD3323900594304 /* PasswordsViewController.swift */,
+				40189F541FD46A0300D87217 /* Password Types */,
 				400108561FD33F2A00594304 /* TabViewController.swift */,
-				400108581FD340B600594304 /* ContainerViewController.swift */,
+				400108581FD340B600594304 /* PasswordContainerViewController.swift */,
 			);
 			path = "Storyboard Classes";
 			sourceTree = "<group>";
@@ -525,6 +544,20 @@
 				40E453591FCBA4FD0075F490 /* BoxView.m */,
 			);
 			path = Preferences;
+			sourceTree = "<group>";
+		};
+		40189F541FD46A0300D87217 /* Password Types */ = {
+			isa = PBXGroup;
+			children = (
+				400108111FD3323900594304 /* PasswordsViewController.swift */,
+				40189F551FD46A1B00D87217 /* RandomPasswordViewController.swift */,
+				40189F571FD46A3600D87217 /* PatternPasswordViewController.swift */,
+				40189F591FD46A6000D87217 /* PronounceablePasswordViewController.swift */,
+				40189F5B1FD46A6D00D87217 /* PassphrasePasswordViewController.swift */,
+				40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */,
+				40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */,
+			);
+			path = "Password Types";
 			sourceTree = "<group>";
 		};
 		4058DF251F92995800CCB6E7 /* Password Factory Helper */ = {
@@ -671,6 +704,7 @@
 		40AAB5CF1F8EC67F00324759 /* Password Factory iOS */ = {
 			isa = PBXGroup;
 			children = (
+				40E809B01FD491830042AA8A /* Model */,
 				406BD2311FD315C000D0E854 /* Graphics */,
 				406BD22C1FD312F400D0E854 /* Controls */,
 				400108101FD3321500594304 /* Storyboard Classes */,
@@ -722,6 +756,14 @@
 				4001081E1FD3360300594304 /* SecureRandom.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		40E809B01FD491830042AA8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				40E809B11FD491AA0042AA8A /* PFConstants.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		40FB0C121B810F10009193F8 = {
@@ -1148,6 +1190,9 @@
 			files = (
 				4001082B1FD3378500594304 /* defaults.plist in Resources */,
 				40AAB5DB1F8EC67F00324759 /* LaunchScreen.storyboard in Resources */,
+				40E809AD1FD48CE50042AA8A /* frequency_lists.json in Resources */,
+				40E809AE1FD48CEB0042AA8A /* bad_words.json in Resources */,
+				40E809AF1FD48CF00042AA8A /* emojis.txt in Resources */,
 				40AAB5D81F8EC67F00324759 /* Assets.xcassets in Resources */,
 				40AAB5D61F8EC67F00324759 /* Main.storyboard in Resources */,
 			);
@@ -1424,21 +1469,30 @@
 				406BD2301FD3148200D0E854 /* ControlsContainer.swift in Sources */,
 				400108281FD3372100594304 /* NSString+ReplaceAmbiguous.m in Sources */,
 				4001080D1FD32FB600594304 /* PatternTextView.swift in Sources */,
+				40189F561FD46A1B00D87217 /* RandomPasswordViewController.swift in Sources */,
 				406BD2351FD3166100D0E854 /* StrengthMeter.swift in Sources */,
 				406BD2331FD315C100D0E854 /* StyleKit.swift in Sources */,
 				400108571FD33F2A00594304 /* TabViewController.swift in Sources */,
 				400108291FD3372A00594304 /* NSString+MapCase.m in Sources */,
 				4001085C1FD3445000594304 /* TypeIcons.swift in Sources */,
 				400108121FD3323900594304 /* PasswordsViewController.swift in Sources */,
+				40189F581FD46A3600D87217 /* PatternPasswordViewController.swift in Sources */,
+				40189F5A1FD46A6000D87217 /* PronounceablePasswordViewController.swift in Sources */,
 				400108131FD3338000594304 /* constants.m in Sources */,
 				400108241FD3370500594304 /* NSString+RandomCase.m in Sources */,
 				400108231FD336F700594304 /* PasswordFactory.m in Sources */,
 				400108261FD3371000594304 /* NSString+AccentedCase.m in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
+				40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */,
 				400108251FD3370B00594304 /* NSString+SymbolCase.m in Sources */,
 				400108151FD333A800594304 /* PasswordFactoryConstants.m in Sources */,
-				400108591FD340B600594304 /* ContainerViewController.swift in Sources */,
+				40E809AB1FD485AB0042AA8A /* DefaultsManager.m in Sources */,
+				40189F5C1FD46A6D00D87217 /* PassphrasePasswordViewController.swift in Sources */,
+				400108591FD340B600594304 /* PasswordContainerViewController.swift in Sources */,
+				40E809AC1FD4861A0042AA8A /* NSString+UnicodeLength.m in Sources */,
 				400108221FD3360300594304 /* SecureRandom.m in Sources */,
+				40189F601FD46A8F00D87217 /* AdvancedPasswordViewController.swift in Sources */,
+				40E809B21FD491AA0042AA8A /* PFConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

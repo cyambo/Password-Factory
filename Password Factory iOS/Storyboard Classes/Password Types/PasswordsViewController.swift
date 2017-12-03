@@ -8,14 +8,28 @@
 
 import UIKit
 
-class PasswordsViewController: UIViewController {
+class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
 
+    
+
+    @IBOutlet weak var lenghDisplay: UILabel!
+    @IBOutlet weak var lengthSlider: UISlider!
+    @IBOutlet weak var useSymbolsSwitch: UISwitch!
+    @IBOutlet weak var avoidAmbiguousSwitch: UISwitch!
+    @IBOutlet weak var useNumbersSwitch: UISwitch!
+    @IBOutlet weak var useEmojiSwitch: UISwitch!
+    @IBOutlet weak var caseTypePicker: UIPickerView!
+    let c = PasswordFactoryConstants.get()!
+    let d = DefaultsManager.get()!
+    let f = PasswordFactory.get()!
     var passwordViewController: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -27,15 +41,16 @@ class PasswordsViewController: UIViewController {
         passwordViewController = storyboard.instantiateViewController(withIdentifier: storyboardIdentfier)
         self.view = passwordViewController?.view
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func changeLengthSlider(_ sender: UISlider) {
     }
-    */
-
+    @IBAction func changeSwitch(_ sender: UISwitch) {
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 0
+    }
+    
 }

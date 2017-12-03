@@ -26,13 +26,13 @@
         <!--Container-->
         <scene sceneID="ncT-d3-bSB">
             <objects>
-                <viewController storyboardIdentifier="Container" id="khg-tJ-abi" userLabel="Container" customClass="ContainerViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Container" id="khg-tJ-abi" userLabel="Container" customClass="PasswordContainerViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="umP-QV-cBN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq2-1h-ReF" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="16" y="154" width="343" height="459"/>
+                                <rect key="frame" x="16" y="154" width="343" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWY-Nj-X5d" customClass="StrengthMeter" customModule="Password_Factory_iOS" customModuleProvider="target">
@@ -64,14 +64,14 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCT-Ik-veD">
-                                <rect key="frame" x="16" y="621" width="171.5" height="30"/>
+                                <rect key="frame" x="16" y="629" width="171.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="pgu-cj-TFQ"/>
                                 </constraints>
                                 <state key="normal" title="Generate"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60d-QR-74K">
-                                <rect key="frame" x="187.5" y="621" width="171.5" height="30"/>
+                                <rect key="frame" x="187.5" y="629" width="171.5" height="30"/>
                                 <state key="normal" title="Copy"/>
                             </button>
                         </subviews>
@@ -82,7 +82,7 @@
                             <constraint firstAttribute="trailing" secondItem="60d-QR-74K" secondAttribute="trailing" constant="16" id="7jz-m9-1fF"/>
                             <constraint firstItem="hWY-Nj-X5d" firstAttribute="leading" secondItem="umP-QV-cBN" secondAttribute="leading" constant="16" id="Csi-3N-MFs"/>
                             <constraint firstItem="60d-QR-74K" firstAttribute="leading" secondItem="jCT-Ik-veD" secondAttribute="trailing" id="FUk-Yd-xaI"/>
-                            <constraint firstItem="MdJ-Ig-lVh" firstAttribute="bottom" secondItem="jCT-Ik-veD" secondAttribute="bottom" constant="16" id="JlA-xB-V45"/>
+                            <constraint firstItem="MdJ-Ig-lVh" firstAttribute="bottom" secondItem="jCT-Ik-veD" secondAttribute="bottom" constant="8" id="JlA-xB-V45"/>
                             <constraint firstItem="60d-QR-74K" firstAttribute="height" secondItem="jCT-Ik-veD" secondAttribute="height" id="KbV-0e-rKh"/>
                             <constraint firstAttribute="trailing" secondItem="hWY-Nj-X5d" secondAttribute="trailing" constant="16" id="MFb-we-ShX"/>
                             <constraint firstItem="60d-QR-74K" firstAttribute="centerY" secondItem="jCT-Ik-veD" secondAttribute="centerY" id="eMh-r8-5yR"/>
@@ -105,7 +105,7 @@
         <!--Random Password-->
         <scene sceneID="9Ox-ap-9QA">
             <objects>
-                <viewController storyboardIdentifier="RandomPassword" id="Sl1-Tc-FzO" userLabel="Random Password" customClass="PasswordsViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RandomPassword" id="Sl1-Tc-FzO" userLabel="Random Password" customClass="RandomPasswordViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N3V-xc-f2J">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,6 +115,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YyK-Zg-mRj"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="changeLengthSlider:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="49y-Aq-ccB"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEO-r3-tTi">
                                 <rect key="frame" x="16" y="46" width="147.5" height="74"/>
@@ -133,6 +136,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="123" id="ivc-uN-WeO"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="Sl1-Tc-FzO" id="6Ai-Rt-iEW"/>
+                                </connections>
                             </pickerView>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="100" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lha-gg-Saa">
                                 <rect key="frame" x="0.0" y="136" width="343" height="184"/>
@@ -146,6 +152,9 @@
                                                     <constraint firstAttribute="width" constant="49" id="dfP-vO-alQ"/>
                                                     <constraint firstAttribute="height" constant="31" id="dg5-LF-I0c"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeSwitch:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="UjF-Vx-4Dn"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Symbols" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9w-Jc-66q">
                                                 <rect key="frame" x="81" y="10.5" width="246" height="20.5"/>
@@ -173,6 +182,9 @@
                                                     <constraint firstAttribute="width" constant="49" id="c4g-6Z-tA5"/>
                                                     <constraint firstAttribute="height" constant="31" id="kSv-xr-eu7"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeSwitch:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="qmW-uc-qJE"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avoid Ambiguous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7y-0s-rev">
                                                 <rect key="frame" x="81" y="10.5" width="246" height="20.5"/>
@@ -200,6 +212,9 @@
                                                     <constraint firstAttribute="width" constant="49" id="MrI-qZ-4rw"/>
                                                     <constraint firstAttribute="height" constant="31" id="b1q-Fd-edx"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeSwitch:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="Aye-cH-aih"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diO-cc-Mg5">
                                                 <rect key="frame" x="81" y="10.5" width="246" height="20.5"/>
@@ -227,6 +242,9 @@
                                                     <constraint firstAttribute="width" constant="49" id="8lI-xb-Qwj"/>
                                                     <constraint firstAttribute="height" constant="31" id="gw7-ab-8uJ"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeSwitch:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="nrR-Po-yX9"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-pu-2Ux">
                                                 <rect key="frame" x="81" y="10.5" width="246" height="20.5"/>
@@ -276,6 +294,15 @@
                         <viewLayoutGuide key="safeArea" id="t7f-d2-COZ"/>
                     </view>
                     <size key="freeformSize" width="343" height="459"/>
+                    <connections>
+                        <outlet property="avoidAmbiguousSwitch" destination="tGr-gv-4M8" id="jZY-2k-9on"/>
+                        <outlet property="caseTypePicker" destination="H6s-07-0wa" id="gWk-qT-QEZ"/>
+                        <outlet property="lenghDisplay" destination="OWH-Ah-1GR" id="MZ2-c0-9yl"/>
+                        <outlet property="lengthSlider" destination="ITo-M0-15I" id="hdT-AU-Xhk"/>
+                        <outlet property="useEmojiSwitch" destination="PVs-so-sbA" id="GEB-uT-uA6"/>
+                        <outlet property="useNumbersSwitch" destination="MdC-rb-3sB" id="WHT-jX-iJ8"/>
+                        <outlet property="useSymbolsSwitch" destination="wjA-DG-1fU" id="wfe-nr-MN4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvU-K2-ZbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,7 +311,7 @@
         <!--Pattern Password-->
         <scene sceneID="yGa-KQ-i4O">
             <objects>
-                <viewController storyboardIdentifier="PatternPassword" id="Uod-3F-Rl7" userLabel="Pattern Password" customClass="PasswordsViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatternPassword" id="Uod-3F-Rl7" userLabel="Pattern Password" customClass="PatternPasswordViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7cG-vN-QZI">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,6 +321,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="123" id="xc4-83-jhV"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Uod-3F-Rl7" id="ozl-Z0-67y"/>
+                                    <outlet property="delegate" destination="Uod-3F-Rl7" id="gOD-sl-6Nm"/>
+                                </connections>
                             </pickerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRZ-vj-A0J" customClass="PatternTextView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="16" y="20" width="311" height="300"/>
@@ -305,6 +336,9 @@
                                     </fragment>
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Uod-3F-Rl7" id="FQV-36-hVQ"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -320,6 +354,10 @@
                         <viewLayoutGuide key="safeArea" id="vvm-9n-wj2"/>
                     </view>
                     <size key="freeformSize" width="343" height="459"/>
+                    <connections>
+                        <outlet property="insertPicker" destination="0ED-67-0UG" id="3tw-oJ-kPC"/>
+                        <outlet property="patternText" destination="aRZ-vj-A0J" id="eZm-MF-rj4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ns-ps-eyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
