@@ -10,6 +10,7 @@
 #import "Utilities.h"
 #import "DefaultsManager.h"
 #import "PasswordFactory.h"
+#import "PasswordFactoryConstants.h"
 #import "NSString+ColorWithHexColorString.h"
 @implementation Utilities
 /**
@@ -83,6 +84,28 @@
         //update the password field
         return s;
     }
+}
+
+/**
+ Gets the color of a PFPatternTypeItem for highlighting
+
+ @param type PFPatternTypeItem
+ @return color of item
+ */
++(NSColor *)patternTypeToColor:(PFPatternTypeItem)type {
+    PasswordFactoryConstants *c = [PasswordFactoryConstants get];
+    NSColor *baseColor = [NSColor colorWithCalibratedRed:0.74 green:0.21 blue:0.23 alpha:1.0];
+    NSUInteger hueSteps = c.patternTypeIndex.count + 1;
+    NSUInteger at = (NSUInteger)type - (NSUInteger)PFNumberType;
+    float hue = (float)at / (float)hueSteps;
+    //changing hue from 0 - 1 to get all different colors
+    NSColor *color = [NSColor colorWithHue:hue saturation:baseColor.saturationComponent brightness:baseColor.brightnessComponent alpha:1.0];
+    if ([Utilities isDarkMode]) {
+        return [Utilities dodgeColor:color backgroundColor:[Utilities getBackgroundColor]];
+    } else {
+        return color;
+    }
+    
 }
 /**
  Dodge on a color component

@@ -62,7 +62,7 @@
             if(substringRange.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
                 PFPatternTypeItem t = (PFPatternTypeItem)[(NSNumber *)c.patternCharacterToType[at] integerValue];
                 //set the character color
-                NSColor *c = [self getPatternColor:t];
+                NSColor *c = [Utilities patternTypeToColor:t];
                 [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];
             }
         }];
@@ -71,80 +71,7 @@
     }
     [self.textStorage setAttributedString:s];
 }
--(NSColor *)getPatternColor:(PFPatternTypeItem)type {
-    NSString *colorString = [[DefaultsManager get] stringForKey:@"defaultTextColor"];
-    switch (type) {
-        case PFNumberType:
-            colorString = @"ce9740";
-            break;
-        case PFLowerCaseWordType:
-            colorString = @"ceb340";
-            break;
-        case PFUpperCaseWordType:
-            colorString = @"ccce40";
-            break;
-        case PFRandomCaseWordType:
-            colorString = @"99bf3c";
-            break;
-        case PFTitleCaseWordType:
-            colorString = @"38b23f";
-            break;
-        case PFLowerCaseShortWordType:
-            colorString = @"3891b2";
-            break;
-        case PFUpperCaseShortWordType:
-            colorString = @"3867b2";
-            break;
-        case PFRandomCaseShortWordType:
-            colorString = @"4f38b2";
-            break;
-        case PFTitleCaseShortWordType:
-            colorString = @"8e38b2";
-            break;
-        case PFSymbolType:
-            colorString = @"ba3a7f";
-            break;
-        case PFLowerCaseCharacterType:
-            colorString = @"ce4340";
-            break;
-        case PFUpperCaseCharacterType:
-            colorString = @"cf8e27";
-            break;
-        case PFNonAmbiguousCharacterType:
-            colorString = @"cfb027";
-            break;
-        case PFNonAmbiguousUpperCaseCharacterType:
-            colorString = @"cbcd27";
-            break;
-        case PFNonAmbiguousNumberType:
-            colorString = @"8dbd24";
-            break;
-        case PFLowerCasePhoneticSoundType:
-            colorString = @"21ad2e";
-            break;
-        case PFUpperCasePhoneticSoundType:
-            colorString = @"2186ad";
-            break;
-        case PFRandomCasePhoneticSoundType:
-            colorString = @"2155ad";
-            break;
-        case PFTitleCasePhoneticSoundType:
-            colorString = @"3e21ad";
-            break;
-        case PFEmojiType:
-            colorString = @"8721ad";
-            break;
-        case PFRandomItemType:
-            colorString = @"b72370";
-            break;
-    }
-    if ([Utilities isDarkMode]) {
-        return [Utilities dodgeColor:[colorString colorWithHexColorString] backgroundColor:[Utilities getBackgroundColor]];
-    } else {
-       return [colorString colorWithHexColorString];
-    }
-    
-}
+
 -(void)setText:(NSString *)text {
     [super setText:text];
     [self colorPatternText];

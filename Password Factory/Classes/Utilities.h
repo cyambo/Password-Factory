@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "constants.h"
 @interface Utilities : NSObject
 +(BOOL)isDarkMode;
 +(NSAttributedString *)colorText:(NSString *)text size:(NSUInteger)size;
@@ -15,4 +15,5 @@
 
 +(NSColor *)dodgeColor:(NSColor *)foregroundColor backgroundColor:(NSColor *)backgroundColor;
 +(NSColor *)getBackgroundColor;
++(NSColor *)patternTypeToColor:(PFPatternTypeItem)type;
 @end

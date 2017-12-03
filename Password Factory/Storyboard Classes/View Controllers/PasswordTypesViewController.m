@@ -189,6 +189,7 @@
     if(self.insertMenu.indexOfSelectedItem != 0) {
         char toInsert = [self.insertMenu.selectedItem.title characterAtIndex:0];
         [self.patternText appendText:[NSString stringWithFormat:@"%c",toInsert]];
+        [self.insertMenu selectItemAtIndex:0]; //select the first again
     }
 }
 

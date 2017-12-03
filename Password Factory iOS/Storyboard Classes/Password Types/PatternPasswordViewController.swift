@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate {
+class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    
     @IBOutlet weak var patternText: PatternTextView!
     @IBOutlet weak var insertPicker: UIPickerView!
     override func viewDidLoad() {
@@ -23,33 +25,21 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupInsertPicker()
+
     }
-    func setupInsertPicker() {
-        
-    }
-    override func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return c.patternTypeIndex.count
+    }
     
-    override func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return c.patternTypeIndex.count + 1
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PatternItemCell", for: indexPath) as! PatternCollectionViewCell
+        let pc = c.patternTypeToCharacter[c.patternTypeIndex[indexPath.row]]
+        cell.patternItemText.text = pc
+        return cell
     }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //zero row is insert menu
-        if(row > 0) {
-            
-        }
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if (row == 0) {
-            return "Insert"
-        } else {
-            let pt = c.patternTypeIndex[(row - 1)]
-            return c.getNameFor(type: pt)
-        }
-    }
-
     /*
     // MARK: - Navigation
 
