@@ -11,7 +11,7 @@ import UIKit
 class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, PickerViewControllerDelegate  {
 
 
-    @IBOutlet weak var lenghDisplay: UILabel!
+    @IBOutlet weak var lengthDisplay: UILabel!
     @IBOutlet weak var lengthSlider: UISlider!
     @IBOutlet weak var useSymbolsSwitch: UISwitch!
     @IBOutlet weak var avoidAmbiguousSwitch: UISwitch!
@@ -45,7 +45,7 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         switch (type) {
         case .CaseType:
             let ct = c.getCaseType(by: UInt(index))
-            self.caseTypeButton.titleLabel?.text = c.caseTypes[ct] ?? ""
+            self.caseTypeButton.setTitle(c.caseTypes[ct] ?? "", for: .normal)
         case .SeparatorType:
             print ("sep")
 //            let st = c.getSeparatorType(by: UInt(index))
@@ -66,7 +66,17 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
 
     }
+    func setupLengthSlider() {
+        lengthSlider.minimumValue = 5.0
+        lengthSlider.maximumValue = d.float(forKey: "maxPasswordLength")
+        lengthSlider.setValue(d.float(forKey: "passwordLength"), animated: false)
+    }
+    func lengthChanged() {
+        let length = Int(lengthSlider.value)
+        lengthDisplay.text = "\(length)"
+    }
     @IBAction func changeLengthSlider(_ sender: UISlider) {
+        lengthChanged()
     }
     @IBAction func changeSwitch(_ sender: UISwitch) {
     }

@@ -210,7 +210,7 @@ static DefaultsManager *dm = nil;
     if (ret == nil) {
         return 0.0;
     }
-    return [[self objectForKey:key] floatValue];
+    return [ret floatValue];
 }
 
 /**
