@@ -24,6 +24,7 @@ final class PFConstants: NSObject {
     public let patternCharacterToType: [String:PFPatternTypeItem]
     public let patternTypeToName: [PFPatternTypeItem:String]
     public let patternTypeToCharacter: [PFPatternTypeItem:String]
+    public let patternTypeToDescription: [PFPatternTypeItem:String]
     public let passwordTypesIndex: [PFPasswordType]
     public let caseTypeIndex: [PFCaseType]
     public let separatorTypeIndex: [PFSeparatorType]
@@ -60,6 +61,9 @@ final class PFConstants: NSObject {
             key, value in (  key as! String, PFPatternTypeItem(rawValue:value as! Int)!)
         })
         patternTypeToName = Dictionary.init(uniqueKeysWithValues: c.patternTypeToName.map {
+            key, value in ( PFPatternTypeItem(rawValue:key as! Int)!, value as! String)
+        })
+        patternTypeToDescription = Dictionary.init(uniqueKeysWithValues: c.patternTypeToDescription.map {
             key, value in ( PFPatternTypeItem(rawValue:key as! Int)!, value as! String)
         })
         patternTypeToCharacter = Dictionary.init(uniqueKeysWithValues: c.patternTypeToCharacter.map {

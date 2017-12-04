@@ -22,8 +22,6 @@ class ControlsContainer: UIView {
         setDisplay()
     }
     func setDisplay() {
-        self.layer.cornerRadius = 10.0
-        self.layer.backgroundColor = UIColor.white.cgColor
-        self.layer.masksToBounds = true
+        Utilities.roundCorners(layer: self.layer, withBorder: false)
     }
 }

@@ -128,13 +128,17 @@
     NSMutableDictionary *pc = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *pn = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *pt = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *pd = [[NSMutableDictionary alloc] init];
     for(NSNumber *key in self.patternBase) {
         NSString *c = self.patternBase[key][0];
         NSString *name = self.patternBase[key][1];
         pc[c] = key;
         pn[key] = [NSString stringWithFormat:@"%@ - %@",c,name];
         pt[key] = [NSString stringWithFormat:@"%@",c];
+        pd[key] = name;
+        
     }
+    self.patternTypeToDescription = pd;
     self.patternCharacterToType = pc;
     self.patternTypeToName = pn;
     self.patternTypeToCharacter = pt;

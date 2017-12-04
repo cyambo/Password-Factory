@@ -19,10 +19,7 @@ class PatternTextView: UITextView {
         setDisplay()
     }
     func setDisplay() {
-        self.layer.cornerRadius = 10.0
-        self.layer.backgroundColor = UIColor.white.cgColor
-        self.layer.borderColor = UIColor.gray.cgColor
-        self.layer.borderWidth = 0.5
+        Utilities.roundCorners(layer: self.layer, withBorder: true)
     }
 
 }

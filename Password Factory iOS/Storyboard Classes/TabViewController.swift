@@ -25,7 +25,9 @@ class TabViewController: UITabBarController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
