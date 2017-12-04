@@ -11,7 +11,7 @@
 #import "NSString+ColorWithHexColorString.h"
 #import "NSColor+NSColorHexadecimalValue.h"
 #import "Utilities.h"
-
+#import "ColorUtilities.h"
 @interface ColorTextPreview ()
 @property (nonatomic, strong) NSColor *layerBackgroundColor;
 @end
@@ -74,7 +74,7 @@
     NSColor *color;
     //if dark mode use color dodge on it to approximate what the colors look like in dark mode
     if ([Utilities isDarkMode]) {
-        color = [Utilities dodgeColor:[hexString colorWithHexColorString] backgroundColor:self.layerBackgroundColor];
+        color = [ColorUtilities dodgeColor:[hexString colorWithHexColorString] backgroundColor:self.layerBackgroundColor];
     } else {
         color = [hexString colorWithHexColorString];
     }

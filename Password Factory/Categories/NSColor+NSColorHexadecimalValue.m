@@ -7,33 +7,11 @@
 //
 
 #import "NSColor+NSColorHexadecimalValue.h"
-#import "Utilities.h"
+#import "ColorUtilities.h"
 
 @implementation NSColor (NSColorHexadecimalValue)
 -(NSString *)hexadecimalValueOfAnNSColor {
-    int redIntValue, greenIntValue, blueIntValue;
-    NSString *redHexValue, *greenHexValue, *blueHexValue;
-    
-    //Convert the NSColor to the RGB color space before we can access its components
-    NSColor *convertedColor=[self colorUsingColorSpace:[Utilities colorSpace]];
-
-    if(convertedColor) {
-
-        
-        // Convert the components to numbers (unsigned decimal integer) between 0 and 255
-        redIntValue=[convertedColor redComponent]* 255;
-        greenIntValue=[convertedColor greenComponent]* 255;
-        blueIntValue=[convertedColor blueComponent]* 255;
-        
-        // Convert the numbers to hex strings
-        redHexValue=[NSString stringWithFormat:@"%02X", redIntValue];
-        greenHexValue=[NSString stringWithFormat:@"%02X", greenIntValue];
-        blueHexValue=[NSString stringWithFormat:@"%02X", blueIntValue];
-        
-        // Concatenate the red, green, and blue components' hex strings together
-        return [NSString stringWithFormat:@"%@%@%@", redHexValue, greenHexValue, blueHexValue];
-    }
-    return nil;
+    return [ColorUtilities colorToHexString:self];
 }
 @end
 

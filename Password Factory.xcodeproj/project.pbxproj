@@ -45,6 +45,9 @@
 		40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */; };
 		40189F601FD46A8F00D87217 /* AdvancedPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
+		402C96431FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
+		402C96441FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
+		402C96451FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
 		402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
@@ -245,6 +248,8 @@
 		40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredPasswordViewController.swift; sourceTree = "<group>"; };
 		40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPasswordViewController.swift; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		402C96411FD4C53B00E2B37E /* ColorUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorUtilities.h; sourceTree = "<group>"; };
+		402C96421FD4C53B00E2B37E /* ColorUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorUtilities.m; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
@@ -757,6 +762,8 @@
 				40D428D91FBFBE310024965B /* Utilities.m */,
 				4001081D1FD3360300594304 /* SecureRandom.h */,
 				4001081E1FD3360300594304 /* SecureRandom.m */,
+				402C96411FD4C53B00E2B37E /* ColorUtilities.h */,
+				402C96421FD4C53B00E2B37E /* ColorUtilities.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1441,6 +1448,7 @@
 				400108271FD3372000594304 /* NSString+ReplaceAmbiguous.m in Sources */,
 				40EADD421FB38FEE007CBDCB /* PasswordFactoryConstants.m in Sources */,
 				40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */,
+				402C96441FD4C53B00E2B37E /* ColorUtilities.m in Sources */,
 				40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */,
 				40511D671C125348005BE5BE /* PasswordStrength.m in Sources */,
 				40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */,
@@ -1470,6 +1478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				406BD2301FD3148200D0E854 /* ControlsContainer.swift in Sources */,
+				402C96451FD4C53B00E2B37E /* ColorUtilities.m in Sources */,
 				400108281FD3372100594304 /* NSString+ReplaceAmbiguous.m in Sources */,
 				4001080D1FD32FB600594304 /* PatternTextView.swift in Sources */,
 				40E939B81FD4A88600B32A2D /* PatternCollectionViewCell.swift in Sources */,
@@ -1569,6 +1578,7 @@
 				4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */,
 				400F03E01FD0827E008BD579 /* TextView.m in Sources */,
 				40F07A891FBBD23B008AFE29 /* PasswordStorage.m in Sources */,
+				402C96431FD4C53B00E2B37E /* ColorUtilities.m in Sources */,
 				40D428E21FBFD9D40024965B /* StoredPasswordTableView.m in Sources */,
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */,

@@ -11,9 +11,5 @@
 @interface Utilities : NSObject
 +(BOOL)isDarkMode;
 +(NSAttributedString *)colorText:(NSString *)text size:(NSUInteger)size;
-+(NSColorSpace *)colorSpace;
-
-+(NSColor *)dodgeColor:(NSColor *)foregroundColor backgroundColor:(NSColor *)backgroundColor;
 +(NSColor *)getBackgroundColor;
-+(NSColor *)patternTypeToColor:(PFPatternTypeItem)type;
 @end

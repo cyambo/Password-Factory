@@ -11,6 +11,7 @@
 #import "DefaultsManager.h"
 #import "Utilities.h"
 #import "NSString+ColorWithHexColorString.h"
+#import "ColorUtilities.h"
 @implementation PatternTextView
 
 
@@ -62,7 +63,7 @@
             if(substringRange.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
                 PFPatternTypeItem t = (PFPatternTypeItem)[(NSNumber *)c.patternCharacterToType[at] integerValue];
                 //set the character color
-                NSColor *c = [Utilities patternTypeToColor:t];
+                NSColor *c = [ColorUtilities patternTypeToColor:t];
                 [s addAttribute:NSForegroundColorAttributeName value:c range:substringRange];
             }
         }];
