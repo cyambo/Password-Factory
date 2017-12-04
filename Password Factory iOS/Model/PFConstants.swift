@@ -7,7 +7,11 @@
 //
 
 import UIKit
-
+enum PickerTypes: String {
+    case CaseType = "Case"
+    case SeparatorType = "Separator"
+    case PasswordType = "Password"
+}
 final class PFConstants: NSObject {
     //not subclassing PasswordFactoryContstants because you cant override the
     //properties with new ones because they are Any!
