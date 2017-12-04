@@ -12,10 +12,12 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
 
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var patternText: PatternTextView!
+    var patternTextFont = UIFont.systemFont(ofSize: 32.0)
     override func viewDidLoad() {
         super.viewDidLoad()
         typeLabel.text = ""
         patternText.text = ""
+        patternTextFont = patternText.font ?? patternTextFont
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
@@ -30,20 +32,43 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             textView.resignFirstResponder()
         } else if(textView.text.count > 0) {
             //setting the typeLabel to the type that was last entered
-            let last = String(describing:textView.text.last!)
+            let last = String(describing:textView.text.last)
             if let type = c.patternCharacterToType[last] {
                 typeLabel.text = c.patternTypeToDescription[type] ?? ""
             }
         }
         if(d.bool(forKey: "colorPasswordText")) {
             highlightPattern()
+        } else {
+            let h = NSMutableAttributedString.init(string: patternText.text)
+            let attrs = [
+                NSAttributedStringKey.foregroundColor:ColorUtilities.getDefaultsColor("defaultTextColor") as Any,
+                NSAttributedStringKey.font: patternTextFont
+            ]
+            h.setAttributes(attrs, range: NSMakeRange(0, patternText.text.count))
+            patternText.attributedText = h
         }
     }
     func highlightPattern() {
+        let highlighted = NSMutableAttributedString()
+        let defaultColor = ColorUtilities.getDefaultsColor("defaultTextColor")
         for index in patternText.text.indices {
+            var color = defaultColor
             let char = patternText.text[index]
-            print(char)
+            let s = String(describing:char)
+            if(s.count == 1) {
+                if let pType = c.patternCharacterToType[s] {
+                    color = ColorUtilities.patternType(toColor: pType)
+                }
+            }
+            let attrs = [
+                NSAttributedStringKey.foregroundColor:color as Any,
+                NSAttributedStringKey.font: patternTextFont
+            ]
+            let hChar = NSAttributedString.init(string: s, attributes: attrs)
+            highlighted.append(hChar)
         }
+        patternText.attributedText = highlighted
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

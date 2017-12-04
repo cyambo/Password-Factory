@@ -10,7 +10,15 @@
 #import "DefaultsManager.h"
 #import "PasswordFactory.h"
 #import "PasswordFactoryConstants.h"
+
 @implementation ColorUtilities
+
+/**
+ Gets the color of a password text character for highlighting
+
+ @param subsring character to check
+ @return Color that text should highlight to
+ */
 +(Color *)getPasswordTextColor:(NSString *)subsring {
     DefaultsManager *d = [DefaultsManager get];
     PasswordFactory *f = [PasswordFactory get];
@@ -29,6 +37,40 @@
     }
     return [ColorUtilities colorFromHexString:color];
 }
+
+/**
+ Sets the text color in defaults
+
+ @param defaultsKey defaults key to set
+ @param color color to set
+ */
++(void)setDefaultsColor:(NSString *)defaultsKey color:(Color *)color {
+    DefaultsManager *d = [DefaultsManager get];
+    NSString *stringColor = [ColorUtilities colorToHexString:color];
+    [d setObject:stringColor forKey:defaultsKey];
+}
+
+/**
+ Gets the color from defaults
+
+ @param defaultsKey key to get
+ @return color of key
+ */
++(Color *)getDefaultsColor:(NSString *)defaultsKey {
+    DefaultsManager *d = [DefaultsManager get];
+    NSString *stringColor = [d stringForKey:defaultsKey];
+    if(stringColor == nil || stringColor.length != 6) {
+        stringColor = @"FFFFFF";
+    }
+    return [ColorUtilities colorFromHexString:stringColor];
+}
+
+/**
+ Gets a color from a hex string
+
+ @param hex hex string to convert
+ @return color of hex string
+ */
 +(Color *)colorFromHexString:(NSString *)hex {
     unsigned colorCode = 0;
     unsigned char redByte, greenByte, blueByte;
@@ -45,15 +87,23 @@
                             blue:(CGFloat)blueByte / 0xff
                            alpha:1.0];
 }
+
+/**
+ Converts a color to a hex string
+
+ @param color color to convert
+ @return hex string of color
+ */
 +(NSString *)colorToHexString:(Color *)color {
     int redIntValue, greenIntValue, blueIntValue;
     NSString *redHexValue, *greenHexValue, *blueHexValue;
     
-    //Convert the NSColor to the RGB color space before we can access its components
+    
     Color *c;
 #ifdef IOS
     c = color;
 #else
+    //Convert the NSColor to the RGB color space before we can access its components
     c = [color colorUsingColorSpace:[ColorUtilities colorSpace]];
 #endif
     
@@ -83,6 +133,13 @@
     }
     return @"000000";
 }
+
+/**
+ Gets the color of a pattern type item
+
+ @param type PatternTypeItem to colorize
+ @return color of item
+ */
 +(Color *)patternTypeToColor:(PFPatternTypeItem)type {
     PasswordFactoryConstants *c = [PasswordFactoryConstants get];
     Color *baseColor = [Color colorWithRed:0.74 green:0.21 blue:0.23 alpha:1.0];
@@ -101,6 +158,14 @@
     Color *color = [Color colorWithHue:hue saturation:saturation brightness:brightness alpha:1.0];
     return color;
 }
+
+/**
+ Runs a linear dodge on a color
+
+ @param foregroundColor forground color to dodge
+ @param backgroundColor background of dodged color
+ @return dodged color
+ */
 +(Color *)dodgeColor:(Color *)foregroundColor backgroundColor:(Color *)backgroundColor {
     CGFloat r,g,b,fr,fg,fb,br,bg,bb;
 #ifdef IOS

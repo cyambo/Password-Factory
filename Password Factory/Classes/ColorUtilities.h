@@ -21,6 +21,8 @@
 +(Color *)dodgeColor:(Color *)foregroundColor backgroundColor:(Color *)backgroundColor;
 +(NSString *)colorToHexString:(Color *)color;
 +(Color *)colorFromHexString:(NSString *)hex;
++(Color *)getDefaultsColor:(NSString *)defaultsKey;
++(void)setDefaultsColor:(NSString *)defaultsKey color:(Color *)color;
 #ifndef IOS
 +(NSColorSpace *)colorSpace;
 #endif
