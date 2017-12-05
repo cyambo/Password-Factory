@@ -52,7 +52,7 @@ class PasswordContainerViewController: UIViewController {
             containerView?.addConstraints(hc)
             containerView?.addConstraints(vc)
         }
-        self.passwordTextView.textContainer.lineBreakMode = .byCharWrapping
+        passwordTextView.textContainer.lineBreakMode = .byCharWrapping
         generatePassword()
     }
     @IBAction func pressedGenerateButton(_ sender: Any) {

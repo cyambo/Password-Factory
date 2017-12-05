@@ -19,6 +19,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         typeLabel.text = ""
         patternText.text = ""
         patternTextFont = patternText.font ?? patternTextFont
+        patternText.textContainer.lineBreakMode = .byCharWrapping
         if let p = d.object(forKey: "userPattern") {
             patternText.text = String(describing: p)
             highlightPatternString()
