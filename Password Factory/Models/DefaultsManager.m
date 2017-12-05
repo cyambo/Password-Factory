@@ -17,7 +17,6 @@
 @end
 @implementation DefaultsManager
 
-static NSDictionary *prefsPlist;
 static DefaultsManager *dm = nil;
 
 /**
@@ -101,7 +100,7 @@ static DefaultsManager *dm = nil;
 -(void)resetDialogs {
     [self loadDefaultsPlist];
     //taking plist and finding the dialogs and resetting them to not hide
-    for (NSString *k in prefsPlist) {
+    for (NSString *k in self.prefsPlist) {
         //check to see if it has Warning as a suffix which all dialogs have
         if ([k hasSuffix:@"Warning"]) {
             [self setBool:NO forKey:k];
@@ -263,7 +262,7 @@ static DefaultsManager *dm = nil;
  Makes sure our preferences are loaded only at launch
  */
 -(void)loadPreferencesFromPlist {
-    if (!prefsPlist) {
+    if (!self.prefsPlist) {
         [self getPrefsFromPlist:false];
     }
 }
@@ -271,9 +270,9 @@ static DefaultsManager *dm = nil;
  Loads our defaults.plist into a dictionary
  */
 -(void)loadDefaultsPlist {
-    if (prefsPlist == nil) {
+    if (self.prefsPlist == nil) {
         NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
-        prefsPlist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+        self.prefsPlist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     }
 }
 /**
@@ -284,15 +283,15 @@ static DefaultsManager *dm = nil;
     NSUserDefaults *d = self.standardDefaults;
     
     //taking plist and filling in defaults if none set
-    for (NSString *k in prefsPlist) {
+    for (NSString *k in self.prefsPlist) {
         if (initialize || ([d objectForKey:k] == nil)) {
-            [self setObject:[prefsPlist objectForKey:k] forKey:k];
+            [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
         }
     }
 }
 -(void)addObservers {
     NSUserDefaults *d = self.standardDefaults;
-    for (NSString *k in prefsPlist) {
+    for (NSString *k in self.prefsPlist) {
         [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
     }
 }
@@ -301,17 +300,17 @@ static DefaultsManager *dm = nil;
     NSMutableDictionary *sh = [[NSMutableDictionary alloc] init];
     NSUserDefaults *d = self.standardDefaults;
     NSUserDefaults *h = self.sharedDefaults;
-    for (NSString *k in prefsPlist) {
+    for (NSString *k in self.prefsPlist) {
         if([d objectForKey:k] != nil) {
             [st setObject:[d objectForKey:k] forKey:k];
         } else {
-            [st setObject:[prefsPlist objectForKey:k] forKey:k];
+            [st setObject:[self.prefsPlist objectForKey:k] forKey:k];
         }
         NSString *sharedKey = [k stringByAppendingString:@"Shared"];
         if([h objectForKey:sharedKey] != nil) {
             [sh setObject:[h objectForKey:sharedKey] forKey:sharedKey];
         } else {
-            [sh setObject:[prefsPlist objectForKey:k] forKey:sharedKey];
+            [sh setObject:[self.prefsPlist objectForKey:k] forKey:sharedKey];
         }
     }
     self.standardDefaultsCache = st;
@@ -334,7 +333,7 @@ static DefaultsManager *dm = nil;
     [self loadDefaultsPlist];
     NSUserDefaults *sharedDefaults = self.sharedDefaults;
     NSUserDefaults *d = self.standardDefaults;
-    for (NSString *key in prefsPlist) {
+    for (NSString *key in self.prefsPlist) {
         NSString *k = [key stringByAppendingString:@"Shared"]; //Appending shared to shared defaults because KVO will cause the observer to be called
         id obj = [d objectForKey:key];
         //syncing to shared defaults

@@ -10,13 +10,12 @@ import UIKit
 
 class PassphrasePasswordViewController: PasswordsViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupLengthSlider()
         lengthChanged()
         setupCaseType()
         setupSeparatorType()
     }
-
 
 }

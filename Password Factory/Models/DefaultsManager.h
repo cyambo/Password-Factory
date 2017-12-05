@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface DefaultsManager : NSObject
+@property (nonatomic, strong) NSDictionary *prefsPlist;
 +(instancetype) get;
 +(instancetype) getShared;
 +(NSUserDefaults *)sharedDefaults;

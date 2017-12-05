@@ -11,6 +11,7 @@ import UIKit
 class TabViewController: UITabBarController {
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
+    let d = DefaultsManager.get()
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
@@ -26,6 +27,7 @@ class TabViewController: UITabBarController {
             }
         }
         viewControllers = newVc
+        setObservers()
 
     }
     override func viewDidLoad() {
@@ -35,6 +37,22 @@ class TabViewController: UITabBarController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+    }
+    func setObservers() {
+        guard let plist = d?.prefsPlist else {
+            return
+        }
+        let defaults = DefaultsManager.standardDefaults()
+        for (key, _) in plist {
+            let k = String(describing: key)
+            print(k)
+            defaults?.addObserver(self, forKeyPath: k, options: .new, context: nil)
+        }
+    }
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let vc = selectedViewController as? PasswordContainerViewController {
+            vc.generatePassword()
+        }
     }
 
 }

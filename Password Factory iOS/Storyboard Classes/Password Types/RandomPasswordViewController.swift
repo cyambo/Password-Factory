@@ -10,8 +10,8 @@ import UIKit
 
 class RandomPasswordViewController: PasswordsViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupLengthSlider()
         lengthChanged()
         setSwitch(s: avoidAmbiguousSwitch, defaultsKey: "randomAvoidAmbiguous")
@@ -19,7 +19,6 @@ class RandomPasswordViewController: PasswordsViewController {
         setSwitch(s: useSymbolsSwitch, defaultsKey: "randomUseSymbols")
         setSwitch(s: useEmojiSwitch, defaultsKey: "randomUseEmoji")
         setupCaseType()
-
     }
     
 

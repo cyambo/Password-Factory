@@ -10,8 +10,8 @@ import UIKit
 
 class PronounceablePasswordViewController: PasswordsViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupLengthSlider()
         lengthChanged()
         setupCaseType()

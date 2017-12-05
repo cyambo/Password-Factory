@@ -83,11 +83,9 @@
  Sets the necessary observers
  */
 - (void)setObservers {
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
-    NSDictionary *p = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     //setting observers for all the items in our defaults plist
-    for (NSString *k in p) {
+    for (NSString *k in [DefaultsManager get].prefsPlist) {
         [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
     }
 }

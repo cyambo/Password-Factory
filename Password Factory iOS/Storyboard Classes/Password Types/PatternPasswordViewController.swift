@@ -49,13 +49,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         if(d.bool(forKey: "colorPasswordText")) {
             highlightPattern()
         } else {
-            let h = NSMutableAttributedString.init(string: patternText.text)
-            let attrs = [
-                NSAttributedStringKey.foregroundColor:ColorUtilities.getDefaultsColor("defaultTextColor") as Any,
-                NSAttributedStringKey.font: patternTextFont
-            ]
-            h.setAttributes(attrs, range: NSMakeRange(0, patternText.text.count))
-            patternText.attributedText = h
+            patternText.attributedText = Utilities.getNonHighlightedString(s: patternText.text, font: patternTextFont)
         }
     }
     func highlightPattern() {
@@ -107,5 +101,6 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     @IBAction func clearPattern(_ sender: UIButton) {
         patternText.text = ""
         typeLabel.text = ""
+        d.setObject("", forKey: "userPattern")
     }
 }

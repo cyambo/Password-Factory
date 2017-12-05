@@ -38,13 +38,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWY-Nj-X5d" customClass="StrengthMeter" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="16" y="0.0" width="343" height="150"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="PASSWORD" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MaC-uI-G5O" customClass="PasswordTextView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MaC-uI-G5O" customClass="PasswordTextView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                         <rect key="frame" x="8" y="39" width="327" height="73"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="73" id="oPW-el-irQ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="PASSWORD">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="system" size="24"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8q-MI-Jsc">
@@ -62,6 +68,9 @@
                                             <constraint firstAttribute="height" constant="30" id="5gL-Ij-baE"/>
                                             <constraint firstAttribute="width" constant="30" id="aXw-cn-1Af"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="pressedZoomButton:" destination="khg-tJ-abi" eventType="touchUpInside" id="vqB-T3-RAD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,6 +92,9 @@
                                     <constraint firstAttribute="height" constant="30" id="pgu-cj-TFQ"/>
                                 </constraints>
                                 <state key="normal" title="Generate"/>
+                                <connections>
+                                    <action selector="pressedGenerateButton:" destination="khg-tJ-abi" eventType="touchUpInside" id="XXb-f3-hPc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60d-QR-74K">
                                 <rect key="frame" x="187.5" y="613" width="171.5" height="30"/>
@@ -110,6 +122,9 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="fq2-1h-ReF" id="8AS-S4-qWm"/>
+                        <outlet property="passwordLengthDisplay" destination="e8q-MI-Jsc" id="wa2-iE-fKM"/>
+                        <outlet property="passwordTextView" destination="MaC-uI-G5O" id="bfC-Bh-6Gm"/>
+                        <outlet property="strenghMeter" destination="hWY-Nj-X5d" id="EXa-Uq-9gl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9K-Cr-CWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
