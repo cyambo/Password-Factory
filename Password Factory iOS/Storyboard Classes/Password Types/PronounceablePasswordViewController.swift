@@ -14,6 +14,8 @@ class PronounceablePasswordViewController: PasswordsViewController {
         super.viewDidLoad()
         setupLengthSlider()
         lengthChanged()
+        setupCaseType()
+        setupSeparatorType()
     }
 
 }

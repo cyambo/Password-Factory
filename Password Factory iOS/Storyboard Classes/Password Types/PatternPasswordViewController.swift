@@ -13,11 +13,16 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var patternText: PatternTextView!
     var patternTextFont = UIFont.systemFont(ofSize: 32.0)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         typeLabel.text = ""
         patternText.text = ""
         patternTextFont = patternText.font ?? patternTextFont
+        if let p = d.object(forKey: "userPattern") {
+            patternText.text = String(describing: p)
+            highlightPatternString()
+        }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
@@ -37,6 +42,10 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
                 typeLabel.text = c.patternTypeToDescription[type] ?? ""
             }
         }
+        d.setObject(patternText.text, forKey: "userPattern")
+        highlightPatternString()
+    }
+    func highlightPatternString() {
         if(d.bool(forKey: "colorPasswordText")) {
             highlightPattern()
         } else {

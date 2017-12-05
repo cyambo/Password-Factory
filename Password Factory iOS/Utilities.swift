@@ -18,15 +18,14 @@ class Utilities: NSObject {
             layer.borderWidth = 0.5
         }
     }
-    public class func dropShadow(layer: CALayer) {
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: -1, height: 1)
-        layer.shadowRadius = 1
-        
-        layer.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = UIScreen.main.scale
+    public class func dropShadow(view: UIView) {
+        view.clipsToBounds = false
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowOffset = CGSize(width: -10, height: 10)
+        view.layer.shadowRadius = 10
+        view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
+
     }
 }

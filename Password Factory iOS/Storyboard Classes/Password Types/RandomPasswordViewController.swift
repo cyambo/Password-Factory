@@ -14,5 +14,13 @@ class RandomPasswordViewController: PasswordsViewController {
         super.viewDidLoad()
         setupLengthSlider()
         lengthChanged()
+        setSwitch(s: avoidAmbiguousSwitch, defaultsKey: "randomAvoidAmbiguous")
+        setSwitch(s: useNumbersSwitch, defaultsKey: "randomUseNumbers")
+        setSwitch(s: useSymbolsSwitch, defaultsKey: "randomUseSymbols")
+        setSwitch(s: useEmojiSwitch, defaultsKey: "randomUseEmoji")
+        setupCaseType()
+
     }
+    
+
 }

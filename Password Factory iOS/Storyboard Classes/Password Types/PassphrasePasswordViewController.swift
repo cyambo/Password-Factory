@@ -14,6 +14,8 @@ class PassphrasePasswordViewController: PasswordsViewController {
         super.viewDidLoad()
         setupLengthSlider()
         lengthChanged()
+        setupCaseType()
+        setupSeparatorType()
     }
 
 

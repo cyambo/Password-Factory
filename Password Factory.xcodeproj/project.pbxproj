@@ -64,6 +64,7 @@
 		405118571FD6220200E3FDFB /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
 		405118581FD622CA00E3FDFB /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		4051185A1FD6264000E3FDFB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405118591FD6263F00E3FDFB /* CoreData.framework */; };
+		4051185D1FD62E2600E3FDFB /* ZoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051185C1FD62E2600E3FDFB /* ZoomButton.swift */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */; };
@@ -273,6 +274,7 @@
 		404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeLength.m"; sourceTree = "<group>"; };
 		405118591FD6263F00E3FDFB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.1.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		4051185B1FD626B200E3FDFB /* Password Factory iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Password Factory iOS.entitlements"; sourceTree = "<group>"; };
+		4051185C1FD62E2600E3FDFB /* ZoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomButton.swift; sourceTree = "<group>"; };
 		40511D641C125348005BE5BE /* PasswordStrength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
 		40511D651C125348005BE5BE /* PasswordStrength.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStrength.m; sourceTree = "<group>"; };
 		4051C9CC1FA7D6E90097CDD9 /* NSString+AccentedCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AccentedCase.h"; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 				4001080C1FD32FB600594304 /* PatternTextView.swift */,
 				40E939B71FD4A88600B32A2D /* PatternCollectionViewCell.swift */,
 				402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */,
+				4051185C1FD62E2600E3FDFB /* ZoomButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1591,6 +1594,7 @@
 				400108261FD3371000594304 /* NSString+AccentedCase.m in Sources */,
 				405118551FD621FC00E3FDFB /* StoredPasswordModel.xcdatamodeld in Sources */,
 				402C96531FD5D69600E2B37E /* PickerViewController.swift in Sources */,
+				4051185D1FD62E2600E3FDFB /* ZoomButton.swift in Sources */,
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
 				40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */,

@@ -25,7 +25,11 @@ class PasswordContainerViewController: UIViewController {
         tabBarItem = UITabBarItem.init(title: typeName, image: image, tag: type.rawValue)
         let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         passwordViewController = mainStoryboard.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController
-        addChildViewController(passwordViewController!)
+        if let p = passwordViewController {
+            p.setup(type: type)
+            addChildViewController(p)
+        }
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
