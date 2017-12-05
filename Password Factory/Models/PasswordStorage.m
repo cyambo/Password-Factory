@@ -42,7 +42,11 @@
 -(instancetype)init {
     self = [super init];
     self.d = [DefaultsManager get];
+#ifdef IS_MACOS
     NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:SharedDefaultsAppGroup];
+#else
+    NSURL *containerURL = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
+#endif
     containerURL = [containerURL URLByAppendingPathComponent:@"database.sqlite"];
     NSPersistentStoreDescription *description = [[NSPersistentStoreDescription alloc] initWithURL:containerURL];
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"StoredPasswordModel" withExtension:@"momd"];
@@ -51,7 +55,6 @@
     self.container.persistentStoreDescriptions = @[description];
     [self.container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDescription, NSError * _Nullable error) {
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
-        
         if(error) {
 #ifndef IOS
             AppDelegate *d = [NSApplication sharedApplication].delegate;

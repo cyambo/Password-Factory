@@ -9,34 +9,32 @@
 import UIKit
 
 class TabViewController: UITabBarController {
-    var randomPasswordViewController: PasswordContainerViewController?
-    var patternPasswordViewController: PasswordContainerViewController?
-    var pronounceablePasswordViewController: PasswordContainerViewController?
+    let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
-    
     required init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-        randomPasswordViewController = (mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController) ?? PasswordContainerViewController()
-        randomPasswordViewController?.setType(type: .randomType)
-        patternPasswordViewController = (mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController) ?? PasswordContainerViewController()
-        patternPasswordViewController?.setType(type: .patternType)
-        pronounceablePasswordViewController = (mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController) ?? PasswordContainerViewController()
-        pronounceablePasswordViewController?.setType(type: .pronounceableType)
-        viewControllers = [randomPasswordViewController!,patternPasswordViewController!,pronounceablePasswordViewController!]
+        passwordController.useStoredType = false
+        passwordController.useAdvancedType = false
+        //initializing all the view controllers and putting them in the tab view
+        var newVc = [UIViewController]()
+        for i in 0 ..< passwordController.getFilteredPasswordTypes().count {
+            if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController {
+                vc.setType(type: passwordController.getPasswordType(by: UInt(i)))
+                newVc.append(vc)
+            }
+        }
+        viewControllers = newVc
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //setting a tap gesture to dismiss keyboard when tapped outside of keyboard view
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
