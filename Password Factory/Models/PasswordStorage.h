@@ -6,6 +6,11 @@
 //  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+#else
+#define IOS 1
+#endif
+
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "constants.h"

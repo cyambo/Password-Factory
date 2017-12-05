@@ -10,8 +10,9 @@
 #if TARGET_OS_OSX
 #define Color NSColor
 #import <Cocoa/Cocoa.h>
+#define IS_MACOS 1
 #else
-#define IOS 1
+#define IS_IOS 1
 #define Color UIColor
 #import <UIKit/UIKit.h>
 #endif
@@ -23,7 +24,7 @@
 +(Color *)colorFromHexString:(NSString *)hex;
 +(Color *)getDefaultsColor:(NSString *)defaultsKey;
 +(void)setDefaultsColor:(NSString *)defaultsKey color:(Color *)color;
-#ifndef IOS
+#ifdef IS_MACOS
 +(NSColorSpace *)colorSpace;
 #endif
 @end

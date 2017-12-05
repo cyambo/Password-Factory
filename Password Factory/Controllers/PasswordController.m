@@ -8,7 +8,6 @@
 
 #import "PasswordController.h"
 #import "PasswordStrength.h"
-#import "PasswordTypesViewController.h"
 #import "PasswordFactoryConstants.h"
 #import "DefaultsManager.h"
 #import "PasswordStorage.h"
@@ -63,8 +62,10 @@
         NSDictionary *settings = [self getPasswordSettingsByType:type];
         [self generatePassword:type withSettings:settings];
     } else {
+#ifdef IS_MACOS
         PasswordTypesViewController *vc = [self getViewControllerForPasswordType:type];
         [vc selectRandomFromStored];
+#endif
     }
 }
 
@@ -157,6 +158,7 @@
 /**
  Initialize the PasswordTypesViewControllers for all the types
  */
+#ifdef IS_MACOS
 - (void)initViewControllers {
     if (self.viewControllers == nil) {
         NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -174,18 +176,19 @@
         self.viewControllers = vcs;
     }
 }
-
+#endif
 /**
  Gets the viewController for PFPasswordType
 
  @param type PFPasswordType
  @return ViewController matching type
  */
+#ifdef IS_MACOS
 - (PasswordTypesViewController *)getViewControllerForPasswordType:(PFPasswordType)type {
     [self initViewControllers];
     return self.viewControllers[@(type)];
 }
-
+#endif
 /**
  PasswordTypesViewControllerDelegate method, called when a control has changed in the PasswordTypesViewController instances
 

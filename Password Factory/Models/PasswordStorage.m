@@ -11,7 +11,9 @@
 #import "PasswordStorage.h"
 #import "constants.h"
 #import "DefaultsManager.h"
+#ifndef IOS
 #import "AppDelegate.h"
+#endif
 @interface PasswordStorage ()
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
@@ -51,8 +53,10 @@
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
         
         if(error) {
+#ifndef IOS
             AppDelegate *d = [NSApplication sharedApplication].delegate;
             [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataLoadError];
+#endif
         }
     }];
     //set to sort with newest on top
@@ -99,8 +103,10 @@
         NSError *error = nil;
         NSArray *items = [self.container.viewContext executeFetchRequest:fetchRequest error:&error];
         if (error.localizedDescription) {
+#ifndef IOS
             AppDelegate *d = [NSApplication sharedApplication].delegate;
             [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteOverMaxFetchError];
+#endif
         }
         for(Passwords *p in items) {
             [self.container.viewContext deleteObject:p];
@@ -117,8 +123,10 @@
         NSError *error = nil;
         [self.container.viewContext save:&error];
         if (error.localizedDescription) {
+#ifndef IOS
             AppDelegate *d = [NSApplication sharedApplication].delegate;
             [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataSaveFailedError];
+#endif
         }
     }
 }
@@ -139,8 +147,10 @@
     NSError *error = nil;
     [self.fetchedResultsController performFetch:&error];
     if(error.localizedDescription) {
+#ifndef IOS
         AppDelegate *d = [NSApplication sharedApplication].delegate;
         [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataLoadSavedDataFailedError];
+#endif
     }
 }
 
@@ -203,8 +213,10 @@
     NSError *error = nil;
     [self.container.viewContext executeRequest:delete error:&error];
     if (error.localizedDescription) {
+#ifndef IOS
         AppDelegate *d = [NSApplication sharedApplication].delegate;
         [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteAllFailedError];
+#endif
     }
 }
 @end

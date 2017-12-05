@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06FB33813F0BBED84CF7E7B3 /* libPods-Password Factory iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E73410DF5D8F9108678ECA /* libPods-Password Factory iOS.a */; };
 		4001080D1FD32FB600594304 /* PatternTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001080C1FD32FB600594304 /* PatternTextView.swift */; };
 		400108121FD3323900594304 /* PasswordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400108111FD3323900594304 /* PasswordsViewController.swift */; };
 		400108131FD3338000594304 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
@@ -56,6 +57,12 @@
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
 		404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		404B6D611FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
+		404D73CB1FD61B3D00A6FA0D /* PasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C87A281FAE2D3100D784B0 /* PasswordController.m */; };
+		405118541FD621F300E3FDFB /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
+		405118551FD621FC00E3FDFB /* StoredPasswordModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3B21FBBC902009CEB5E /* StoredPasswordModel.xcdatamodeld */; };
+		405118561FD621FF00E3FDFB /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
+		405118571FD6220200E3FDFB /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
+		405118581FD622CA00E3FDFB /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		4051C9CE1FA7D6E90097CDD9 /* NSString+AccentedCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4051C9CD1FA7D6E90097CDD9 /* NSString+AccentedCase.m */; };
@@ -220,6 +227,7 @@
 
 /* Begin PBXFileReference section */
 		097270D42A6F1CBA8198EDFE /* Pods-Password Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.release.xcconfig"; sourceTree = "<group>"; };
+		3860C013FF2C0EE5469E9FE2 /* Pods-Password Factory iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory iOS/Pods-Password Factory iOS.release.xcconfig"; sourceTree = "<group>"; };
 		4001080C1FD32FB600594304 /* PatternTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternTextView.swift; sourceTree = "<group>"; };
 		400108111FD3323900594304 /* PasswordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordsViewController.swift; sourceTree = "<group>"; };
 		4001081D1FD3360300594304 /* SecureRandom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecureRandom.h; sourceTree = "<group>"; };
@@ -400,7 +408,9 @@
 		40FB929A1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReplaceAmbiguous.m"; sourceTree = "<group>"; };
 		48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D56B0CCBE7731ACB294CA25 /* Pods-Password FactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B5B0F4D2A1A88E11B250367 /* Pods-Password Factory iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory iOS/Pods-Password Factory iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8388D3084A5960812CCBE3DA /* Pods-Password FactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		93E73410DF5D8F9108678ECA /* libPods-Password Factory iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E63067A820D229F01792D9 /* Pods-Password Factory Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget.release.xcconfig"; sourceTree = "<group>"; };
 		B267C54F034B19376A024C8C /* Pods-Password Factory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.debug.xcconfig"; sourceTree = "<group>"; };
 		D6A31815789898B38CF7B69A /* Pods-Password Factory Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget.debug.xcconfig"; sourceTree = "<group>"; };
@@ -429,6 +439,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06FB33813F0BBED84CF7E7B3 /* libPods-Password Factory iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +950,8 @@
 				A6E63067A820D229F01792D9 /* Pods-Password Factory Widget.release.xcconfig */,
 				8388D3084A5960812CCBE3DA /* Pods-Password FactoryTests.debug.xcconfig */,
 				4D56B0CCBE7731ACB294CA25 /* Pods-Password FactoryTests.release.xcconfig */,
+				5B5B0F4D2A1A88E11B250367 /* Pods-Password Factory iOS.debug.xcconfig */,
+				3860C013FF2C0EE5469E9FE2 /* Pods-Password Factory iOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -951,6 +964,7 @@
 				E52C166078E13798FABDD114 /* libPods-Password Factory.a */,
 				EE39728CFBCBE26EDF076FD6 /* libPods-Password Factory Widget.a */,
 				48E3093BE573CEE2D5C5EBFF /* libPods-Password FactoryTests.a */,
+				93E73410DF5D8F9108678ECA /* libPods-Password Factory iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -999,9 +1013,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40AAB5F31F8EC68000324759 /* Build configuration list for PBXNativeTarget "Password Factory iOS" */;
 			buildPhases = (
+				588F7CC6E85DA1283794FC67 /* [CP] Check Pods Manifest.lock */,
 				40AAB5CA1F8EC67F00324759 /* Sources */,
 				40AAB5CB1F8EC67F00324759 /* Frameworks */,
 				40AAB5CC1F8EC67F00324759 /* Resources */,
+				DC7BC81662A1C43EEBD4743C /* [CP] Embed Pods Frameworks */,
+				A6EB55D43AB3C1987A435A16 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1329,6 +1346,24 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/Password Factory Widget\" \"${SRCROOT}/Password FactoryTests\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
+		588F7CC6E85DA1283794FC67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Password Factory iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5EAFD32C1175B45CD56A4ED3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1385,6 +1420,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A6EB55D43AB3C1987A435A16 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory iOS/Pods-Password Factory iOS-resources.sh",
+				"${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json",
+				"${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory iOS/Pods-Password Factory iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B44686487D7108DA6AC36A86 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1413,6 +1467,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC7BC81662A1C43EEBD4743C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory iOS/Pods-Password Factory iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E8CC2659939A54D5551EEDAE /* [CP] Copy Pods Resources */ = {
@@ -1486,6 +1555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				404D73CB1FD61B3D00A6FA0D /* PasswordController.m in Sources */,
 				406BD2301FD3148200D0E854 /* ControlsContainer.swift in Sources */,
 				402C96451FD4C53B00E2B37E /* ColorUtilities.m in Sources */,
 				400108281FD3372100594304 /* NSString+ReplaceAmbiguous.m in Sources */,
@@ -1501,9 +1571,14 @@
 				40189F581FD46A3600D87217 /* PatternPasswordViewController.swift in Sources */,
 				40189F5A1FD46A6000D87217 /* PronounceablePasswordViewController.swift in Sources */,
 				400108131FD3338000594304 /* constants.m in Sources */,
+				405118581FD622CA00E3FDFB /* PasswordStorage.m in Sources */,
 				400108241FD3370500594304 /* NSString+RandomCase.m in Sources */,
+				405118571FD6220200E3FDFB /* Passwords+CoreDataProperties.m in Sources */,
+				405118541FD621F300E3FDFB /* PasswordStrength.m in Sources */,
+				405118561FD621FF00E3FDFB /* Passwords+CoreDataClass.m in Sources */,
 				400108231FD336F700594304 /* PasswordFactory.m in Sources */,
 				400108261FD3371000594304 /* NSString+AccentedCase.m in Sources */,
+				405118551FD621FC00E3FDFB /* StoredPasswordModel.xcdatamodeld in Sources */,
 				402C96531FD5D69600E2B37E /* PickerViewController.swift in Sources */,
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
@@ -1771,6 +1846,7 @@
 		};
 		40AAB5F41F8EC68000324759 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B5B0F4D2A1A88E11B250367 /* Pods-Password Factory iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1807,6 +1883,7 @@
 		};
 		40AAB5F51F8EC68000324759 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3860C013FF2C0EE5469E9FE2 /* Pods-Password Factory iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;

@@ -100,7 +100,7 @@
     
     
     Color *c;
-#ifdef IOS
+#ifdef IS_IOS
     c = color;
 #else
     //Convert the NSColor to the RGB color space before we can access its components
@@ -109,7 +109,7 @@
     
     if(c) {
         CGFloat r,g,b;
-#ifdef IOS
+#ifdef IS_IOS
         [c getRed:&r green:&g blue:&b alpha:nil];
 #else
         Color *tmp = [color colorUsingColorSpace:[ColorUtilities colorSpace]];
@@ -149,7 +149,7 @@
     //changing hue from 0 - 1 to get all different colors
     CGFloat saturation;
     CGFloat brightness;
-#ifdef IOS
+#ifdef IS_IOS
     [baseColor getHue:nil saturation:&saturation brightness:&brightness alpha:nil];
 #else
     saturation = baseColor.saturationComponent;
@@ -168,7 +168,7 @@
  */
 +(Color *)dodgeColor:(Color *)foregroundColor backgroundColor:(Color *)backgroundColor {
     CGFloat r,g,b,fr,fg,fb,br,bg,bb;
-#ifdef IOS
+#ifdef IS_IOS
     [foregroundColor getRed:&fr green:&fg blue:&fb alpha:nil];
     [backgroundColor getRed:&br green:&bg blue:&bb alpha:nil];
 #else
@@ -199,7 +199,7 @@
         return r;
     }
 }
-#ifndef IOS
+#ifdef IS_MACOS
 +(NSColorSpace *)colorSpace {
     return [NSColorSpace sRGBColorSpace];
 }
