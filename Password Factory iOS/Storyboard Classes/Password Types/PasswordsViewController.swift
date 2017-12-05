@@ -18,6 +18,7 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var useNumbersSwitch: UISwitch!
     @IBOutlet weak var useEmojiSwitch: UISwitch!
     @IBOutlet weak var caseTypeButton: UIButton!
+    @IBOutlet weak var separatorTypeButton: UIButton!
     
     let c = PFConstants.instance
     let d = DefaultsManager.get()!
@@ -48,23 +49,28 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             self.caseTypeButton.setTitle(c.caseTypes[ct] ?? "", for: .normal)
         case .SeparatorType:
             print ("sep")
-//            let st = c.getSeparatorType(by: UInt(index))
-//            newLabel = c.separatorTypes[st] ?? ""
+            let st = c.getSeparatorType(by: UInt(index))
+            self.separatorTypeButton.setTitle(c.separatorTypes[st] ?? "", for: .normal)
         case .PasswordType:
             print("password")
 //            newLabel = "PASSWORD TYPE"
         }
         
     }
-    @IBAction func selectCaseType(_ sender: UIButton) {
+    func openPickerView(type: PickerTypes) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController {
-
             vc.modalPresentationStyle = .overCurrentContext
-            vc.setType(type: .CaseType)
+            vc.setType(type: type)
             vc.delegate = self
             present(vc, animated: true, completion: nil)
         }
-
+    }
+    @IBAction func selectCaseType(_ sender: UIButton) {
+        openPickerView(type: .CaseType)
+    }
+    
+    @IBAction func selectSeparatorType(_ sender: Any) {
+        openPickerView(type: .SeparatorType)
     }
     func setupLengthSlider() {
         lengthSlider.minimumValue = 5.0

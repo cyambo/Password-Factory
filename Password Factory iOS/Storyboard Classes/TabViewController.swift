@@ -11,6 +11,7 @@ import UIKit
 class TabViewController: UITabBarController {
     var randomPasswordViewController: PasswordContainerViewController?
     var patternPasswordViewController: PasswordContainerViewController?
+    var pronounceablePasswordViewController: PasswordContainerViewController?
     var mainStoryboard: UIStoryboard?
     
     required init?(coder aDecoder: NSCoder) {
@@ -20,7 +21,9 @@ class TabViewController: UITabBarController {
         randomPasswordViewController?.setType(type: .randomType)
         patternPasswordViewController = (mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController) ?? PasswordContainerViewController()
         patternPasswordViewController?.setType(type: .patternType)
-        viewControllers = [randomPasswordViewController!,patternPasswordViewController!]
+        pronounceablePasswordViewController = (mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController) ?? PasswordContainerViewController()
+        pronounceablePasswordViewController?.setType(type: .pronounceableType)
+        viewControllers = [randomPasswordViewController!,patternPasswordViewController!,pronounceablePasswordViewController!]
 
     }
     override func viewDidLoad() {
