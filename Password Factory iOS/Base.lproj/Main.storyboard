@@ -17,6 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.99215686270000003" green="0.43921568630000002" blue="0.23921568630000001" alpha="1" colorSpace="deviceRGB"/>
                     </tabBar>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pof-67-E4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -848,4 +849,5 @@
             <point key="canvasLocation" x="3455" y="-385"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.99215686274509807" green="0.4392156862745098" blue="0.23921568627450979" alpha="1" colorSpace="deviceRGB"/>
 </document>
