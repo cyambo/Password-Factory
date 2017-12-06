@@ -33,7 +33,6 @@ class TabViewController: UITabBarController {
 
     }
     
-    
     /// Selects the password type based upon defaults
     func setSelectedPasswordType() {
         guard let typeInt = d?.integer(forKey: "selectedPasswordType") else {

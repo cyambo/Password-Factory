@@ -19,6 +19,8 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var useEmojiSwitch: UISwitch!
     @IBOutlet weak var caseTypeButton: UIButton!
     @IBOutlet weak var separatorTypeButton: UIButton!
+    @IBOutlet weak var separatorTypeView: UIView!
+    @IBOutlet weak var caseTypeView: UIView!
     
     let c = PFConstants.instance
     let d = DefaultsManager.get()!
@@ -37,6 +39,15 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     func setup(type: PFPasswordType) {
         passwordType = type
+    }
+
+    func setupSelectorView(selectorType: PickerTypes, typeView: UIView) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SelectTypes") as? SelectTypesViewController {
+            vc.pickerType = selectorType
+            typeView.removeSubviews()
+            typeView.addSubview(vc.view)
+            addChildViewController(vc)
+        }
     }
     func selectedItem(type: PickerTypes, index: Int) {
         switch (type) {
