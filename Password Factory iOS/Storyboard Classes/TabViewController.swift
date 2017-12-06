@@ -45,7 +45,6 @@ class TabViewController: UITabBarController {
         let defaults = DefaultsManager.standardDefaults()
         for (key, _) in plist {
             let k = String(describing: key)
-            print(k)
             defaults?.addObserver(self, forKeyPath: k, options: .new, context: nil)
         }
     }

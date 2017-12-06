@@ -20,6 +20,7 @@ class PatternTextView: UITextView {
     }
     func setDisplay() {
         Utilities.roundCorners(layer: self.layer, withBorder: true)
+        textContainer.lineBreakMode = .byCharWrapping
     }
 
 }

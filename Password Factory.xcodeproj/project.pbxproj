@@ -63,7 +63,6 @@
 		405118561FD621FF00E3FDFB /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
 		405118571FD6220200E3FDFB /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
 		405118581FD622CA00E3FDFB /* PasswordStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F07A881FBBD23B008AFE29 /* PasswordStorage.m */; };
-		4051185A1FD6264000E3FDFB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405118591FD6263F00E3FDFB /* CoreData.framework */; };
 		4051185D1FD62E2600E3FDFB /* ZoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051185C1FD62E2600E3FDFB /* ZoomButton.swift */; };
 		40511D661C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
 		40511D671C125348005BE5BE /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = 40511D651C125348005BE5BE /* PasswordStrength.m */; };
@@ -444,7 +443,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4051185A1FD6264000E3FDFB /* CoreData.framework in Frameworks */,
 				06FB33813F0BBED84CF7E7B3 /* libPods-Password Factory iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

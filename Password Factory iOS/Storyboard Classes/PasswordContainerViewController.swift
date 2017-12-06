@@ -15,6 +15,8 @@ class PasswordContainerViewController: UIViewController {
     var image: UIImage?
     var type: PFPasswordType = .randomType
     @IBInspectable public var num: Int = 0
+    
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var containerView: ControlsContainer!
     @IBOutlet weak var strenghMeter: StrengthMeter!
     @IBOutlet weak var passwordLengthDisplay: UILabel!
@@ -47,11 +49,12 @@ class PasswordContainerViewController: UIViewController {
             containerView.addSubview(pv)
             let vd = ["p" : pv ]
             pv.translatesAutoresizingMaskIntoConstraints = false
-            let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|[p]|", options: [], metrics: nil, views: vd)
-            let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|[p]|", options: [], metrics: nil, views: vd)
+            let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[p]-8-|", options: [], metrics: nil, views: vd)
+            let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[p]-8-|", options: [], metrics: nil, views: vd)
             containerView?.addConstraints(hc)
             containerView?.addConstraints(vc)
         }
+        imageView.image = TypeIcons.getTypeIcon(type: type, andColor: UIColor.green)
         passwordTextView.textContainer.lineBreakMode = .byCharWrapping
         generatePassword()
     }
