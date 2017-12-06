@@ -33,6 +33,7 @@
 		4004F1DA1FBB63290093DA3F /* ZoomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D91FBB63290093DA3F /* ZoomButton.m */; };
 		4004F1DB1FBB63290093DA3F /* ZoomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D91FBB63290093DA3F /* ZoomButton.m */; };
 		4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */; };
+		400E45D01FD78A1E00A3F4F7 /* BigTypeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */; };
 		400E83831FC4CB55006CE51A /* StrengthMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586001B8112FD00393B99 /* StrengthMeter.m */; };
 		400F03DA1FD07F03008BD579 /* PasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03D91FD07F03008BD579 /* PasswordTextView.m */; };
 		400F03E01FD0827E008BD579 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03DF1FD0827E008BD579 /* TextView.m */; };
@@ -243,6 +244,7 @@
 		4004F1D91FBB63290093DA3F /* ZoomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomButton.m; sourceTree = "<group>"; };
 		4004F1DC1FBB759A0093DA3F /* ZoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
 		4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
+		400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigTypeIconView.swift; sourceTree = "<group>"; };
 		400F03D81FD07F03008BD579 /* PasswordTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordTextView.h; sourceTree = "<group>"; };
 		400F03D91FD07F03008BD579 /* PasswordTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordTextView.m; sourceTree = "<group>"; };
 		400F03DE1FD0827E008BD579 /* TextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 				40E939B71FD4A88600B32A2D /* PatternCollectionViewCell.swift */,
 				402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */,
 				4051185C1FD62E2600E3FDFB /* ZoomButton.swift */,
+				400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1575,6 +1578,7 @@
 				40E939B81FD4A88600B32A2D /* PatternCollectionViewCell.swift in Sources */,
 				40189F561FD46A1B00D87217 /* RandomPasswordViewController.swift in Sources */,
 				406BD2351FD3166100D0E854 /* StrengthMeter.swift in Sources */,
+				400E45D01FD78A1E00A3F4F7 /* BigTypeIconView.swift in Sources */,
 				406BD2331FD315C100D0E854 /* StyleKit.swift in Sources */,
 				400108571FD33F2A00594304 /* TabViewController.swift in Sources */,
 				400108291FD3372A00594304 /* NSString+MapCase.m in Sources */,

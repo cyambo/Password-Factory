@@ -9,6 +9,7 @@
 import UIKit
 
 class PasswordContainerViewController: UIViewController {
+    
     let c = PFConstants.instance
     let controller = PasswordController.get(false)
     let d = DefaultsManager.get()
@@ -16,13 +17,15 @@ class PasswordContainerViewController: UIViewController {
     var type: PFPasswordType = .randomType
     @IBInspectable public var num: Int = 0
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var bigTypeImage: BigTypeIconView!
     @IBOutlet weak var containerView: ControlsContainer!
     @IBOutlet weak var strenghMeter: StrengthMeter!
     @IBOutlet weak var passwordLengthDisplay: UILabel!
     @IBOutlet weak var passwordTextView: PasswordTextView!
+    
     var passwordViewController: PasswordsViewController?
     var passwordFont = UIFont.systemFont(ofSize: 24.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordFont = passwordTextView.font ?? passwordFont
@@ -32,6 +35,7 @@ class PasswordContainerViewController: UIViewController {
         let typeName = c.getNameFor(type: type)
         image = TypeIcons.getTypeIcon(type: type)
         tabBarItem = UITabBarItem.init(title: typeName, image: image, tag: type.rawValue)
+        tabBarItem.tag = type.rawValue
         let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         passwordViewController = mainStoryboard.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController
         if let p = passwordViewController {
@@ -53,8 +57,9 @@ class PasswordContainerViewController: UIViewController {
             let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[p]-8-|", options: [], metrics: nil, views: vd)
             containerView?.addConstraints(hc)
             containerView?.addConstraints(vc)
+            bigTypeImage.setImage(type: type)
         }
-        imageView.image = TypeIcons.getTypeIcon(type: type, andColor: UIColor.green)
+
         passwordTextView.textContainer.lineBreakMode = .byCharWrapping
         generatePassword()
     }

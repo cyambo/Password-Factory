@@ -12,6 +12,7 @@ class TabViewController: UITabBarController {
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
     let d = DefaultsManager.get()
+    let c = PFConstants.instance
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
@@ -27,8 +28,39 @@ class TabViewController: UITabBarController {
             }
         }
         viewControllers = newVc
+        setSelectedPasswordType()
         setObservers()
 
+    }
+    
+    
+    /// Selects the password type based upon defaults
+    func setSelectedPasswordType() {
+        guard let typeInt = d?.integer(forKey: "selectedPasswordType") else {
+            return
+        }
+        guard let vcs = viewControllers else {
+            return
+        }
+        var i = 0
+        for vc in vcs {
+            if vc.tabBarItem.tag == typeInt {
+                selectedIndex = i
+                break;
+            }
+            i = i + 1
+        }
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        //setting current password type when tab bar changes
+        guard let currentTitle = item.title else {
+            return
+        }
+        guard let currentType = c.passwordNameToType[currentTitle] else {
+            return
+        }
+        d?.setInteger(currentType.rawValue, forKey: "selectedPasswordType")
     }
     override func viewDidLoad() {
         super.viewDidLoad()

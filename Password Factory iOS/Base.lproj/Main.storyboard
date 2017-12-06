@@ -31,11 +31,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLv-Wd-jOC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QLv-Wd-jOC" userLabel="Gradient">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x5p-3y-evh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5p-3y-evh" userLabel="Big Type" customClass="BigTypeIconView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <visualEffectView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4LC-AV-igL">
@@ -44,9 +43,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <vibrancyEffect>
-                                    <blurEffect style="light"/>
-                                </vibrancyEffect>
+                                <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq2-1h-ReF" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="182" width="295" height="407"/>
@@ -128,9 +125,11 @@
                             <constraint firstItem="MdJ-Ig-lVh" firstAttribute="bottom" secondItem="jCT-Ik-veD" secondAttribute="bottom" constant="24" id="JlA-xB-V45"/>
                             <constraint firstItem="60d-QR-74K" firstAttribute="height" secondItem="jCT-Ik-veD" secondAttribute="height" id="KbV-0e-rKh"/>
                             <constraint firstAttribute="trailing" secondItem="hWY-Nj-X5d" secondAttribute="trailing" constant="16" id="MFb-we-ShX"/>
+                            <constraint firstItem="MdJ-Ig-lVh" firstAttribute="bottom" secondItem="QLv-Wd-jOC" secondAttribute="bottom" id="P3d-8a-bu8"/>
                             <constraint firstItem="x5p-3y-evh" firstAttribute="leading" secondItem="MdJ-Ig-lVh" secondAttribute="leading" id="POE-JZ-Nzk"/>
                             <constraint firstItem="MdJ-Ig-lVh" firstAttribute="trailing" secondItem="x5p-3y-evh" secondAttribute="trailing" id="Sfj-aC-2cr"/>
                             <constraint firstItem="MdJ-Ig-lVh" firstAttribute="bottom" secondItem="x5p-3y-evh" secondAttribute="bottom" id="W5s-Yd-aGh"/>
+                            <constraint firstItem="QLv-Wd-jOC" firstAttribute="leading" secondItem="MdJ-Ig-lVh" secondAttribute="leading" id="Y4z-IH-kvS"/>
                             <constraint firstItem="MdJ-Ig-lVh" firstAttribute="top" secondItem="4LC-AV-igL" secondAttribute="top" constant="20" id="bDT-zj-Nlk"/>
                             <constraint firstItem="MdJ-Ig-lVh" firstAttribute="top" secondItem="x5p-3y-evh" secondAttribute="top" constant="20" id="d0E-W4-8Jt"/>
                             <constraint firstItem="4LC-AV-igL" firstAttribute="leading" secondItem="MdJ-Ig-lVh" secondAttribute="leading" id="dsI-S0-jD7"/>
@@ -141,20 +140,26 @@
                             <constraint firstItem="jCT-Ik-veD" firstAttribute="leading" secondItem="umP-QV-cBN" secondAttribute="leading" constant="16" id="rlQ-Dd-1XG"/>
                             <constraint firstItem="MdJ-Ig-lVh" firstAttribute="trailing" secondItem="4LC-AV-igL" secondAttribute="trailing" id="tsw-e1-PbC"/>
                             <constraint firstAttribute="trailing" secondItem="fq2-1h-ReF" secondAttribute="trailing" constant="40" id="xko-7S-6de"/>
+                            <constraint firstItem="MdJ-Ig-lVh" firstAttribute="trailing" secondItem="QLv-Wd-jOC" secondAttribute="trailing" id="xqG-mW-kjT"/>
                             <constraint firstItem="jCT-Ik-veD" firstAttribute="top" secondItem="fq2-1h-ReF" secondAttribute="bottom" constant="24" id="y5f-pJ-qeT"/>
+                            <constraint firstItem="MdJ-Ig-lVh" firstAttribute="top" secondItem="QLv-Wd-jOC" secondAttribute="top" constant="20" id="zWG-qx-CSH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MdJ-Ig-lVh"/>
                     </view>
                     <connections>
+                        <outlet property="bigTypeImage" destination="x5p-3y-evh" id="0Th-QA-jDE"/>
                         <outlet property="containerView" destination="fq2-1h-ReF" id="8AS-S4-qWm"/>
-                        <outlet property="imageView" destination="x5p-3y-evh" id="I2Z-Fu-3Aa"/>
                         <outlet property="passwordLengthDisplay" destination="e8q-MI-Jsc" id="wa2-iE-fKM"/>
                         <outlet property="passwordTextView" destination="MaC-uI-G5O" id="bfC-Bh-6Gm"/>
                         <outlet property="strenghMeter" destination="hWY-Nj-X5d" id="EXa-Uq-9gl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9K-Cr-CWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="GDP-Ly-1o8" customClass="StyleKit" customModule="Password_Factory_iOS" customModuleProvider="target"/>
+                <customObject id="GDP-Ly-1o8" customClass="StyleKit" customModule="Password_Factory_iOS" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="gradientBackgroundTargets" destination="QLv-Wd-jOC" collectionClass="NSMutableArray" id="2MX-jD-H4h"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1069.5999999999999" y="-319.79010494752629"/>
         </scene>

@@ -29,4 +29,21 @@ class TypeIcons: NSObject {
         let c = UIColor.init(red: 0.31, green: 0.678, blue: 0.984, alpha: 1.0)
         return TypeIcons.getTypeIcon(type: type, andColor: c)
     }
+    static func drawTypeIcon(type :PFPasswordType, frame: CGRect, color: UIColor) {
+        switch(type) {
+        case .randomType:
+            StyleKit.drawRandomType(frame: frame, resizing: .aspectFit, typeColor: color)
+        case .patternType:
+            StyleKit.drawPatternType(frame: frame, resizing: .aspectFit, typeColor: color)
+        case .passphraseType:
+            StyleKit.drawPassphraseType(frame: frame, resizing: .aspectFit, typeColor: color)
+        case .pronounceableType:
+            StyleKit.drawPronounceableType(frame: frame, resizing: .aspectFit, typeColor: color)
+        case .advancedType:
+            StyleKit.drawAdvancedType(frame: frame, resizing: .aspectFit, typeColor: color)
+        case .storedType:
+            StyleKit.drawStoredType(frame: frame, resizing: .aspectFit, typeColor: color)
+        }
+        
+    }
 }
