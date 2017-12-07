@@ -19,6 +19,8 @@ class SelectTypesView: UIView, UICollectionViewDataSource {
         super.init(coder: aDecoder)
         removeSubviewsAndConstraints()
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        layout.minimumLineSpacing = 8.0
         layout.itemSize = CGSize.init(width: 70, height: 50)
         collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         
@@ -28,17 +30,18 @@ class SelectTypesView: UIView, UICollectionViewDataSource {
         col.register(SelectTypeCollectionViewCell.self, forCellWithReuseIdentifier: "SelectTypeCell")
         col.backgroundColor = UIColor.white
         col.dataSource = self
+
         addSubview(typeLabel)
         addSubview(col)
         typeLabel.text = ""
         
         let views = ["collection" : col as UIView, "label" : typeLabel as UIView]
-        
+        translatesAutoresizingMaskIntoConstraints = false
         col.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-|", options: [], metrics: nil, views: views)
         let hc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[collection]-|", options: [], metrics: nil, views: views)
-        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-[collection]-|", options: [], metrics: nil, views: views)
+        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[label(==20)]-8-[collection]-8-|", options: [], metrics: nil, views: views)
 
         addConstraints(hc)
         addConstraints(hc2)
@@ -73,7 +76,7 @@ class SelectTypesView: UIView, UICollectionViewDataSource {
         if let st = selectTypeEnum {
             cell.setIndex(index: indexPath.row, andType: st)
         }
-        Utilities.roundCorners(layer: cell.layer, withBorder: true)
+//        Utilities.roundCorners(layer: cell.layer, withBorder: true)
         return cell
     }
 

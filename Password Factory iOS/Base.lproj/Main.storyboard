@@ -485,78 +485,6 @@
             </objects>
             <point key="canvasLocation" x="1933.5999999999999" y="220.83958020989508"/>
         </scene>
-        <!--Select Types View Controller-->
-        <scene sceneID="Kjp-Jo-a6o">
-            <objects>
-                <viewController storyboardIdentifier="SelectTypes" id="y4V-hd-Fb2" customClass="SelectTypesViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mtE-pn-FhG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QdZ-qY-IsH">
-                                <rect key="frame" x="16" y="37" width="343" height="163"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LVo-bN-Ypy">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectTypeCell" id="hwt-g9-ghs">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2Z-dy-M50">
-                                                    <rect key="frame" x="4" y="15" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="y4V-hd-Fb2" id="vcw-3L-pZy"/>
-                                    <outlet property="delegate" destination="y4V-hd-Fb2" id="g7J-NY-G8j"/>
-                                </connections>
-                            </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Case Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49w-GU-meA">
-                                <rect key="frame" x="16" y="0.0" width="343" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="m3A-YD-ak5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="QdZ-qY-IsH" firstAttribute="trailing" secondItem="49w-GU-meA" secondAttribute="trailing" id="7Va-he-ajJ"/>
-                            <constraint firstItem="QdZ-qY-IsH" firstAttribute="top" secondItem="49w-GU-meA" secondAttribute="bottom" constant="16" id="K6V-zW-vg7"/>
-                            <constraint firstAttribute="top" secondItem="49w-GU-meA" secondAttribute="bottom" constant="-21" id="Qnx-fk-E2q"/>
-                            <constraint firstItem="49w-GU-meA" firstAttribute="leading" secondItem="mtE-pn-FhG" secondAttribute="leading" constant="16" id="boJ-bf-buX"/>
-                            <constraint firstItem="QdZ-qY-IsH" firstAttribute="leading" secondItem="49w-GU-meA" secondAttribute="leading" id="jI9-EZ-m8r"/>
-                            <constraint firstAttribute="bottom" secondItem="QdZ-qY-IsH" secondAttribute="bottom" id="sNV-Bz-Z2i"/>
-                            <constraint firstAttribute="trailing" secondItem="49w-GU-meA" secondAttribute="trailing" constant="16" id="vbe-Rr-sry"/>
-                        </constraints>
-                    </view>
-                    <size key="freeformSize" width="375" height="200"/>
-                    <connections>
-                        <outlet property="typeTitle" destination="49w-GU-meA" id="qvx-wN-Yc3"/>
-                        <outlet property="typesCollection" destination="QdZ-qY-IsH" id="F2Y-dO-ZLp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DSH-Ji-W5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2594" y="11"/>
-        </scene>
         <!--Pattern Password-->
         <scene sceneID="yGa-KQ-i4O">
             <objects>
@@ -699,15 +627,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXa-GF-O3q" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="284" width="343" height="175"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXa-GF-O3q" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="276" width="343" height="183"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Case" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LX-Zz-BhG">
+                                        <rect key="frame" x="152" y="77" width="39" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="selectType" value="Case"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhD-W8-ENL" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92.5" width="343" height="175.5"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LhD-W8-ENL" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92.5" width="343" height="183.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Separator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nc-cm-nTH">
+                                        <rect key="frame" x="133" y="77" width="76" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="selectType" value="Separator"/>
@@ -733,7 +679,7 @@
                             <constraint firstItem="LhD-W8-ENL" firstAttribute="height" secondItem="BXa-GF-O3q" secondAttribute="height" id="lGp-uV-gcK"/>
                             <constraint firstItem="s9a-OJ-s0v" firstAttribute="height" secondItem="vzc-hJ-zRI" secondAttribute="height" id="lKc-P1-1sd"/>
                             <constraint firstAttribute="bottom" secondItem="BXa-GF-O3q" secondAttribute="bottom" id="wXd-6G-dIp"/>
-                            <constraint firstItem="BXa-GF-O3q" firstAttribute="top" secondItem="LhD-W8-ENL" secondAttribute="bottom" constant="16" id="yLj-Qi-KsC"/>
+                            <constraint firstItem="BXa-GF-O3q" firstAttribute="top" secondItem="LhD-W8-ENL" secondAttribute="bottom" id="yLj-Qi-KsC"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="343" height="459"/>

@@ -44,6 +44,17 @@ class TypeIcons: NSObject {
         case .storedType:
             StyleKit.drawStoredType(frame: frame, resizing: .aspectFit, typeColor: color)
         }
-        
+    }
+    func getCaseTypeIcon(type: PFCaseType) -> UIImage {
+        switch type {
+        case .lowerCase:
+            return StyleKit.imageOfLowercase
+        case .upperCase:
+            return StyleKit.imageOfUppercase
+        case .mixedCase:
+            return StyleKit.imageOfMixedCase
+        case .titleCase:
+            return StyleKit.imageOfTitleCase
+        }
     }
 }

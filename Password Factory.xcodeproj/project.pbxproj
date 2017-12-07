@@ -34,7 +34,6 @@
 		4004F1DB1FBB63290093DA3F /* ZoomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D91FBB63290093DA3F /* ZoomButton.m */; };
 		4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */; };
 		400E45D01FD78A1E00A3F4F7 /* BigTypeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */; };
-		400E45D21FD8668C00A3F4F7 /* SelectTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45D11FD8668C00A3F4F7 /* SelectTypesViewController.swift */; };
 		400E45D51FD86FBD00A3F4F7 /* UIView+removeSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45D41FD86FBD00A3F4F7 /* UIView+removeSubviews.swift */; };
 		400E45D71FD8726800A3F4F7 /* SelectTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */; };
 		400E45D91FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45D81FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift */; };
@@ -250,7 +249,6 @@
 		4004F1DC1FBB759A0093DA3F /* ZoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
 		4004F1DD1FBB759A0093DA3F /* ZoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
 		400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigTypeIconView.swift; sourceTree = "<group>"; };
-		400E45D11FD8668C00A3F4F7 /* SelectTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypesViewController.swift; sourceTree = "<group>"; };
 		400E45D41FD86FBD00A3F4F7 /* UIView+removeSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+removeSubviews.swift"; sourceTree = "<group>"; };
 		400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypesView.swift; sourceTree = "<group>"; };
 		400E45D81FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+removeSubviewsAndConstraints.swift"; sourceTree = "<group>"; };
@@ -500,7 +498,6 @@
 				40189F541FD46A0300D87217 /* Password Types */,
 				400108561FD33F2A00594304 /* TabViewController.swift */,
 				400108581FD340B600594304 /* PasswordContainerViewController.swift */,
-				400E45D11FD8668C00A3F4F7 /* SelectTypesViewController.swift */,
 			);
 			path = "Storyboard Classes";
 			sourceTree = "<group>";
@@ -1621,7 +1618,6 @@
 				400E45D91FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift in Sources */,
 				405118551FD621FC00E3FDFB /* StoredPasswordModel.xcdatamodeld in Sources */,
 				402C96531FD5D69600E2B37E /* PickerViewController.swift in Sources */,
-				400E45D21FD8668C00A3F4F7 /* SelectTypesViewController.swift in Sources */,
 				4051185D1FD62E2600E3FDFB /* ZoomButton.swift in Sources */,
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,

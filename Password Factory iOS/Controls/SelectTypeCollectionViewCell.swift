@@ -27,6 +27,7 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         switch selectType {
         case .CaseType:
             title = c.caseTypes[c.getCaseType(by: UInt(index))] ?? ""
+            imageView.image = TypeIcons().getCaseTypeIcon(type: c.getCaseType(by: UInt(index)))
         case .SeparatorType:
             title = c.separatorTypes[c.getSeparatorType(by: UInt(index))] ?? ""
         case .PasswordType:
@@ -36,8 +37,10 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
     }
     func setupView() {
         removeSubviews()
-        layer.backgroundColor = UIColor.green.cgColor
-        typeLabel.font = UIFont.systemFont(ofSize: 8)
+        Utilities.roundCorners(layer: layer, withBorder: false)
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        typeLabel.font = UIFont.systemFont(ofSize: 10)
+        typeLabel.textColor = UIColor.white
         addSubview(imageView)
         addSubview(typeLabel)
         typeLabel.text = "Underscore"
@@ -46,13 +49,14 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-|", options: [], metrics: nil, views: views)
-        let hc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[image]-|", options: [], metrics: nil, views: views)
-        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[image]-2-[label(==12)]-|", options: [], metrics: nil, views: views)
+        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[label]-(0)-|", options: [], metrics: nil, views: views)
+        let hc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[image]-(8)-|", options: [], metrics: nil, views: views)
+        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(5)-[image]-5-[label(==12)]-(5)-|", options: [], metrics: nil, views: views)
         
         addConstraints(hc)
         addConstraints(hc2)
         addConstraints(vc)
+        backgroundColor = UIColor.gray
 
     }
 }

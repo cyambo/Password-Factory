@@ -41,14 +41,7 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         passwordType = type
     }
 
-    func setupSelectorView(selectorType: PickerTypes, typeView: UIView) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "SelectTypes") as? SelectTypesViewController {
-            vc.pickerType = selectorType
-            typeView.removeSubviews()
-            typeView.addSubview(vc.view)
-            addChildViewController(vc)
-        }
-    }
+
     func selectedItem(type: PickerTypes, index: Int) {
         switch (type) {
         case .CaseType:
