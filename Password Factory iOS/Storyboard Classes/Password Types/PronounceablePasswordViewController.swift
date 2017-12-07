@@ -14,11 +14,11 @@ class PronounceablePasswordViewController: PasswordsViewController {
         super.viewWillAppear(animated)
         setupLengthSlider()
         lengthChanged()
-//        setupCaseType()
-//        setupSeparatorType()
-//        setupSelectorView(selectorType: .CaseType, typeView: caseTypeView)
-//        setupSelectorView(selectorType: .SeparatorType, typeView: separatorTypeView)
-        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        caseTypeView.scrollToSelected()
+        separatorTypeView.scrollToSelected()
     }
 
 }

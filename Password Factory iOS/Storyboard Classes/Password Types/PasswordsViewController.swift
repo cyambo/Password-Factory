@@ -19,8 +19,9 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var useEmojiSwitch: UISwitch!
     @IBOutlet weak var caseTypeButton: UIButton!
     @IBOutlet weak var separatorTypeButton: UIButton!
-    @IBOutlet weak var separatorTypeView: UIView!
-    @IBOutlet weak var caseTypeView: UIView!
+    
+    @IBOutlet weak var separatorTypeView: SelectTypesView!
+    @IBOutlet weak var caseTypeView: SelectTypesView!
     
     let c = PFConstants.instance
     let d = DefaultsManager.get()!

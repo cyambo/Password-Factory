@@ -8,14 +8,18 @@
 
 import UIKit
 
-class SelectTypesView: UIView, UICollectionViewDataSource {
+class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBInspectable var selectType: String?
+    @IBInspectable var passwordTypeInt: Int
+    let d = DefaultsManager.get()
     let c = PFConstants.instance
     let typeLabel = UILabel.init()
-    var selectTypeEnum :PickerTypes?
+    var currentSelectType = PickerTypes.CaseType
+    var currentPasswordType = PFPasswordType.pronounceableType
     var collection:UICollectionView?
     required init?(coder aDecoder: NSCoder) {
+        passwordTypeInt = 403
         super.init(coder: aDecoder)
         removeSubviewsAndConstraints()
         let layout = UICollectionViewFlowLayout()
@@ -30,7 +34,7 @@ class SelectTypesView: UIView, UICollectionViewDataSource {
         col.register(SelectTypeCollectionViewCell.self, forCellWithReuseIdentifier: "SelectTypeCell")
         col.backgroundColor = UIColor.white
         col.dataSource = self
-
+        col.delegate = self
         addSubview(typeLabel)
         addSubview(col)
         typeLabel.text = ""
@@ -48,20 +52,32 @@ class SelectTypesView: UIView, UICollectionViewDataSource {
         addConstraints(vc)
         
     }
+    func scrollToSelected() {
+        if let index = d?.integer(forKey: getDefaultsKey()) {
+            collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
+    func getDefaultsKey() -> String {
+        let prefix = c.getNameFor(type: currentPasswordType).lowercased()
+        return "\(prefix)\(currentSelectType.rawValue)TypeIndex"
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         guard let selType = PickerTypes(rawValue: (selectType ?? "Case")) else {
             return
         }
-        selectTypeEnum = selType
+        currentSelectType = selType
         typeLabel.text = "\(selType.rawValue) Type"
-        
+        currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        d?.setInteger(indexPath.row, forKey: getDefaultsKey())
+        collectionView.reloadData()
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let selType = selectTypeEnum else {
-            return 0
-        }
-        switch selType {
+
+        switch currentSelectType {
         case .CaseType:
             return c.caseTypes.count
         case .SeparatorType:
@@ -73,9 +89,9 @@ class SelectTypesView: UIView, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectTypeCell", for: indexPath) as! SelectTypeCollectionViewCell
-        if let st = selectTypeEnum {
-            cell.setIndex(index: indexPath.row, andType: st)
-        }
+        cell.backgroundColor = tintColor
+        cell.setIndex(index: indexPath.row, andType: currentSelectType, andPasswordType: currentPasswordType)
+
 //        Utilities.roundCorners(layer: cell.layer, withBorder: true)
         return cell
     }

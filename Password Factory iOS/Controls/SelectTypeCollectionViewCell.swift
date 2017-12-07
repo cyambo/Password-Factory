@@ -9,10 +9,12 @@
 import UIKit
 
 class SelectTypeCollectionViewCell: UICollectionViewCell {
-    var selectType = PickerTypes.CaseType
+    var currentSelectType = PickerTypes.CaseType
+    var currentPasswordType = PFPasswordType.pronounceableType
     var typeLabel = UILabel.init()
     var imageView = UIImageView.init()
     let c = PFConstants.instance
+    let d = DefaultsManager.get()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -21,19 +23,28 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         setupView()
     }
-    func setIndex(index : Int, andType:PickerTypes) {
-        selectType = andType
+    func setIndex(index : Int, andType selectType:PickerTypes, andPasswordType passwordType: PFPasswordType) {
+        currentSelectType = selectType
+        currentPasswordType = passwordType
+        
         var title = ""
+        var selected = false
+        let prefix = c.getNameFor(type: currentPasswordType)
         switch selectType {
         case .CaseType:
             title = c.caseTypes[c.getCaseType(by: UInt(index))] ?? ""
             imageView.image = TypeIcons().getCaseTypeIcon(type: c.getCaseType(by: UInt(index)))
+            selected = (index == d?.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
         case .SeparatorType:
             title = c.separatorTypes[c.getSeparatorType(by: UInt(index))] ?? ""
+            selected = (index == d?.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
         case .PasswordType:
             title = "PASSWORD"
         }
         typeLabel.text = title
+        if selected {
+            backgroundColor = UIColor.lightGray
+        }
     }
     func setupView() {
         removeSubviews()

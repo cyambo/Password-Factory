@@ -14,8 +14,11 @@ class PassphrasePasswordViewController: PasswordsViewController {
         super.viewWillAppear(animated)
         setupLengthSlider()
         lengthChanged()
-        setupCaseType()
-        setupSeparatorType()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        caseTypeView?.scrollToSelected()
+        separatorTypeView?.scrollToSelected()
     }
 
 }
