@@ -230,7 +230,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ulj-xk-CQo">
                                 <rect key="frame" x="0.0" y="101" width="343" height="244"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFn-xH-YMG" userLabel="Use Numbers">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFn-xH-YMG" userLabel="Use Numbers" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="61"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MdC-rb-3sB">
@@ -240,9 +240,6 @@
                                                     <constraint firstAttribute="height" constant="31" id="W8B-Bv-Sah"/>
                                                     <constraint firstAttribute="width" constant="49" id="Yn1-Mh-9Uz"/>
                                                 </constraints>
-                                                <connections>
-                                                    <action selector="changeSwitch:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="Aye-cH-aih"/>
-                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diO-cc-Mg5">
                                                 <rect key="frame" x="81" y="20.5" width="246" height="20.5"/>
@@ -260,8 +257,12 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="dn5-yG-MJc"/>
                                             <constraint firstAttribute="trailing" secondItem="diO-cc-Mg5" secondAttribute="trailing" constant="16" id="l5O-UW-TOQ"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseNumbers"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Numbers"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-2N-GYa" userLabel="Use Symbols">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-2N-GYa" userLabel="Use Symbols" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="61" width="343" height="61"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjA-DG-1fU">
@@ -271,9 +272,6 @@
                                                     <constraint firstAttribute="width" constant="49" id="60K-fu-hBG"/>
                                                     <constraint firstAttribute="height" constant="31" id="Aas-Gh-ofL"/>
                                                 </constraints>
-                                                <connections>
-                                                    <action selector="changeSwitch:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="UjF-Vx-4Dn"/>
-                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Symbols" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9w-Jc-66q">
                                                 <rect key="frame" x="81" y="20.5" width="246" height="20.5"/>
@@ -290,8 +288,12 @@
                                             <constraint firstAttribute="trailing" secondItem="D9w-Jc-66q" secondAttribute="trailing" constant="16" id="C77-ce-uj4"/>
                                             <constraint firstItem="D9w-Jc-66q" firstAttribute="centerY" secondItem="wjA-DG-1fU" secondAttribute="centerY" id="xBJ-V9-lB3"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseSymbols"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Symbols"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-K0-hXd" userLabel="Avoid Ambiguous">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-K0-hXd" userLabel="Avoid Ambiguous" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="122" width="343" height="61"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGr-gv-4M8">
@@ -301,9 +303,6 @@
                                                     <constraint firstAttribute="width" constant="49" id="OIX-AY-gDH"/>
                                                     <constraint firstAttribute="height" constant="31" id="mIV-B3-dQ2"/>
                                                 </constraints>
-                                                <connections>
-                                                    <action selector="changeSwitch:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="qmW-uc-qJE"/>
-                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avoid Ambiguous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7y-0s-rev">
                                                 <rect key="frame" x="81" y="20.5" width="246" height="20.5"/>
@@ -320,8 +319,12 @@
                                             <constraint firstItem="tGr-gv-4M8" firstAttribute="centerY" secondItem="0MN-K0-hXd" secondAttribute="centerY" id="ctx-D6-TX4"/>
                                             <constraint firstItem="tGr-gv-4M8" firstAttribute="leading" secondItem="0MN-K0-hXd" secondAttribute="leading" constant="16" id="qrS-Oq-gs2"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomAvoidAmbiguous"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Avoid Ambiguous"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zi8-nK-CJ8" userLabel="Use Emoji">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zi8-nK-CJ8" userLabel="Use Emoji" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="183" width="343" height="61"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVs-so-sbA">
@@ -331,9 +334,6 @@
                                                     <constraint firstAttribute="height" constant="31" id="FpE-i6-KWz"/>
                                                     <constraint firstAttribute="width" constant="49" id="zH1-iI-DfC"/>
                                                 </constraints>
-                                                <connections>
-                                                    <action selector="changeSwitch:" destination="Sl1-Tc-FzO" eventType="valueChanged" id="nrR-Po-yX9"/>
-                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-pu-2Ux">
                                                 <rect key="frame" x="81" y="20.5" width="246" height="20.5"/>
@@ -350,6 +350,10 @@
                                             <constraint firstAttribute="trailing" secondItem="mhj-pu-2Ux" secondAttribute="trailing" constant="16" id="tUr-2M-DfO"/>
                                             <constraint firstItem="mhj-pu-2Ux" firstAttribute="centerY" secondItem="PVs-so-sbA" secondAttribute="centerY" id="ycU-Bz-QdI"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseEmoji"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Emoji"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -393,13 +397,9 @@
                     </view>
                     <size key="freeformSize" width="343" height="459"/>
                     <connections>
-                        <outlet property="avoidAmbiguousSwitch" destination="tGr-gv-4M8" id="jZY-2k-9on"/>
                         <outlet property="caseTypeView" destination="Wui-kw-72e" id="zYP-BQ-Wpn"/>
                         <outlet property="lengthDisplay" destination="OWH-Ah-1GR" id="0QN-jm-RER"/>
                         <outlet property="lengthSlider" destination="ITo-M0-15I" id="hdT-AU-Xhk"/>
-                        <outlet property="useEmojiSwitch" destination="PVs-so-sbA" id="GEB-uT-uA6"/>
-                        <outlet property="useNumbersSwitch" destination="MdC-rb-3sB" id="WHT-jX-iJ8"/>
-                        <outlet property="useSymbolsSwitch" destination="wjA-DG-1fU" id="wfe-nr-MN4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvU-K2-ZbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

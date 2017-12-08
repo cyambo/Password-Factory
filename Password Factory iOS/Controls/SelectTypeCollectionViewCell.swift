@@ -44,6 +44,7 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
             title = "PASSWORD"
         }
         typeLabel.text = title
+        
         backgroundColor = UIColor(red:0.99, green:0.31, blue:0.16, alpha:1.0)
         if !selected {
             backgroundColor = backgroundColor?.withAlphaComponent(0.5)

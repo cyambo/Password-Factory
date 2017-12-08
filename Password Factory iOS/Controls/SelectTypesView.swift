@@ -17,7 +17,7 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     let typeLabel = UILabel.init()
     var currentSelectType = PickerTypes.CaseType
     var currentPasswordType = PFPasswordType.pronounceableType
-    var collection:UICollectionView?
+    var collection:UICollectionView!
     required init?(coder aDecoder: NSCoder) {
         passwordTypeInt = 403
         super.init(coder: aDecoder)
@@ -28,25 +28,22 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         layout.itemSize = CGSize.init(width: 70, height: 50)
         collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         
-        guard let col = collection else{
-            return
-        }
-        col.register(SelectTypeCollectionViewCell.self, forCellWithReuseIdentifier: "SelectTypeCell")
-        col.backgroundColor = UIColor.white
-        col.dataSource = self
-        col.delegate = self
+        collection.register(SelectTypeCollectionViewCell.self, forCellWithReuseIdentifier: "SelectTypeCell")
+        collection.backgroundColor = UIColor.white
+        collection.dataSource = self
+        collection.delegate = self
         addSubview(typeLabel)
-        addSubview(col)
+        addSubview(collection)
         typeLabel.text = ""
         
-        let views = ["collection" : col as UIView, "label" : typeLabel as UIView]
+        let views = ["collection" : collection as UIView, "label" : typeLabel as UIView]
         translatesAutoresizingMaskIntoConstraints = false
-        col.translatesAutoresizingMaskIntoConstraints = false
+        collection.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views)
         let hc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views)
         let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-12-[collection(==50)]", options: [], metrics: nil, views: views)
-        Utilities.roundCorners(layer: col.layer, withBorder: false)
+        Utilities.roundCorners(layer: collection.layer, withBorder: false)
         addConstraints(hc)
         addConstraints(hc2)
         addConstraints(vc)

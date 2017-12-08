@@ -14,10 +14,7 @@ class RandomPasswordViewController: PasswordsViewController {
         super.viewWillAppear(animated)
         setupLengthSlider()
         lengthChanged()
-        setSwitch(s: avoidAmbiguousSwitch, defaultsKey: "randomAvoidAmbiguous")
-        setSwitch(s: useNumbersSwitch, defaultsKey: "randomUseNumbers")
-        setSwitch(s: useSymbolsSwitch, defaultsKey: "randomUseSymbols")
-        setSwitch(s: useEmojiSwitch, defaultsKey: "randomUseEmoji")
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

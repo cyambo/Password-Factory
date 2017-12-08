@@ -132,6 +132,7 @@
 		40AAB5DB1F8EC67F00324759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D91F8EC67F00324759 /* LaunchScreen.storyboard */; };
 		40AAB5E61F8EC68000324759 /* Password_Factory_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5E51F8EC68000324759 /* Password_Factory_iOSTests.swift */; };
 		40AAB5F11F8EC68000324759 /* Password_Factory_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5F01F8EC68000324759 /* Password_Factory_iOSUITests.swift */; };
+		40AB01E01FDB029F00D34027 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB01DF1FDB029F00D34027 /* SwitchView.swift */; };
 		40AFC65E1FBB7D3600CB5BDA /* ZoomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */; };
 		40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
 		40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
@@ -372,6 +373,7 @@
 		40AAB5EC1F8EC68000324759 /* Password Factory iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Factory iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AAB5F01F8EC68000324759 /* Password_Factory_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Factory_iOSUITests.swift; sourceTree = "<group>"; };
 		40AAB5F21F8EC68000324759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40AB01DF1FDB029F00D34027 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		40AFC65C1FBB7D3600CB5BDA /* ZoomWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomWindow.h; sourceTree = "<group>"; };
 		40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomWindow.m; sourceTree = "<group>"; };
 		40B9AD061FB0EC50003F7580 /* PasswordTypesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordTypesViewController.h; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 				400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */,
 				400E45DA1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift */,
 				400E45DC1FDA2C9900A3F4F7 /* ButtonsContainer.swift */,
+				40AB01DF1FDB029F00D34027 /* SwitchView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1599,6 +1602,7 @@
 				402C96451FD4C53B00E2B37E /* ColorUtilities.m in Sources */,
 				400108281FD3372100594304 /* NSString+ReplaceAmbiguous.m in Sources */,
 				4001080D1FD32FB600594304 /* PatternTextView.swift in Sources */,
+				40AB01E01FDB029F00D34027 /* SwitchView.swift in Sources */,
 				40E939B81FD4A88600B32A2D /* PatternCollectionViewCell.swift in Sources */,
 				40189F561FD46A1B00D87217 /* RandomPasswordViewController.swift in Sources */,
 				406BD2351FD3166100D0E854 /* StrengthMeter.swift in Sources */,

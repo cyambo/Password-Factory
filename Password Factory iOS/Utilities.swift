@@ -78,4 +78,13 @@ class Utilities: NSObject {
         h.setAttributes(attrs, range: NSMakeRange(0, s.count))
         return h
     }
+    public class func fillViewInContainer(_ view: UIView, superView: UIView, padding: Int = 0) {
+        let views = ["sub" : view]
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let constraintString = ":|-\(padding)-[sub]-\(padding)-|"
+        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H\(constraintString)", options: [], metrics: nil, views: views)
+        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V\(constraintString)", options: [], metrics: nil, views: views)
+        superView.addConstraints(hc)
+        superView.addConstraints(vc)
+    }
 }

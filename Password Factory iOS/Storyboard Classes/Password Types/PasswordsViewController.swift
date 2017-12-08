@@ -13,10 +13,7 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     @IBOutlet weak var lengthDisplay: UILabel!
     @IBOutlet weak var lengthSlider: UISlider!
-    @IBOutlet weak var useSymbolsSwitch: UISwitch!
-    @IBOutlet weak var avoidAmbiguousSwitch: UISwitch!
-    @IBOutlet weak var useNumbersSwitch: UISwitch!
-    @IBOutlet weak var useEmojiSwitch: UISwitch!
+
     @IBOutlet weak var caseTypeButton: UIButton!
     @IBOutlet weak var separatorTypeButton: UIButton!
     
@@ -72,9 +69,7 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func selectSeparatorType(_ sender: Any) {
         openPickerView(type: .SeparatorType)
     }
-    func setSwitch(s: UISwitch, defaultsKey:String) {
-        s.setOn(d.bool(forKey: defaultsKey), animated: false)
-    }
+
     func setupLengthSlider() {
         lengthSlider.minimumValue = 5.0
         lengthSlider.maximumValue = d.float(forKey: "maxPasswordLength")
@@ -106,16 +101,7 @@ class PasswordsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func changeLengthSlider(_ sender: UISlider) {
         lengthChanged()
     }
-    @IBAction func changeSwitch(_ sender: UISwitch) {
-        guard var desc = sender.accessibilityLabel else {
-            return
-        }
-        guard let typeName = c.passwordTypes[passwordType]?.lowercased() else {
-            return
-        }
-        desc = typeName + desc.replacingOccurrences(of: " ", with: "")
-        d.setBool(sender.isOn, forKey: desc)
-    }
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 0
     }
