@@ -33,7 +33,7 @@ class PasswordContainerViewController: UIViewController {
     func setType(type: PFPasswordType) {
         self.type = type
         let typeName = c.getNameFor(type: type)
-        image = TypeIcons.getTypeIcon(type: type)
+        image = TypeIcons.getTypeIcon(type)
         tabBarItem = UITabBarItem.init(title: typeName, image: image, tag: type.rawValue)
         tabBarItem.tag = type.rawValue
         let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)

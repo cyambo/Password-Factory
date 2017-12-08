@@ -33,17 +33,21 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         switch selectType {
         case .CaseType:
             title = c.caseTypes[c.getCaseType(by: UInt(index))] ?? ""
-            imageView.image = TypeIcons().getCaseTypeIcon(type: c.getCaseType(by: UInt(index)))
+            imageView.image = TypeIcons().getCaseTypeIcon(c.getCaseType(by: UInt(index)))
             selected = (index == d?.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
         case .SeparatorType:
             title = c.separatorTypes[c.getSeparatorType(by: UInt(index))] ?? ""
+            imageView.image = TypeIcons().getSeparatorTypeIcon(c.getSeparatorType(by: UInt(index)))
             selected = (index == d?.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
+            
         case .PasswordType:
             title = "PASSWORD"
         }
         typeLabel.text = title
         if selected {
-            backgroundColor = UIColor.lightGray
+            backgroundColor = UIColor(red:0.99, green:0.31, blue:0.16, alpha:1.0)
+        } else {
+            backgroundColor = UIColor(red:0.99, green:0.31, blue:0.16, alpha:0.5)
         }
     }
     func setupView() {
@@ -67,7 +71,7 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         addConstraints(hc)
         addConstraints(hc2)
         addConstraints(vc)
-        backgroundColor = UIColor.gray
+        backgroundColor = UIColor.white
 
     }
 }

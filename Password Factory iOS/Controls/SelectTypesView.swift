@@ -89,10 +89,7 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectTypeCell", for: indexPath) as! SelectTypeCollectionViewCell
-        cell.backgroundColor = tintColor
         cell.setIndex(index: indexPath.row, andType: currentSelectType, andPasswordType: currentPasswordType)
-
-//        Utilities.roundCorners(layer: cell.layer, withBorder: true)
         return cell
     }
 

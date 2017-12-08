@@ -25,7 +25,7 @@ class TypeIcons: NSObject {
             return StyleKit.imageOfStoredType(typeColor: color)
         }
     }
-    static func getTypeIcon(type :PFPasswordType) -> UIImage {
+    static func getTypeIcon(_ type :PFPasswordType) -> UIImage {
         let c = UIColor.init(red: 0.31, green: 0.678, blue: 0.984, alpha: 1.0)
         return TypeIcons.getTypeIcon(type: type, andColor: c)
     }
@@ -45,7 +45,7 @@ class TypeIcons: NSObject {
             StyleKit.drawStoredType(frame: frame, resizing: .aspectFit, typeColor: color)
         }
     }
-    func getCaseTypeIcon(type: PFCaseType) -> UIImage {
+    func getCaseTypeIcon(_ type: PFCaseType) -> UIImage {
         switch type {
         case .lowerCase:
             return StyleKit.imageOfLowercase
@@ -55,6 +55,29 @@ class TypeIcons: NSObject {
             return StyleKit.imageOfMixedCase
         case .titleCase:
             return StyleKit.imageOfTitleCase
+        }
+    }
+    func getSeparatorTypeIcon(_ type: PFSeparatorType) -> UIImage {
+        switch type {
+        case .characterSeparator:
+            return StyleKit.imageOfCharacterSeparator
+        case .underscoreSeparator:
+            return StyleKit.imageOfUnderscoreSeparator
+        case .hyphenSeparator:
+            return StyleKit.imageOfHyphenSeparator
+        case .noSeparator:
+            return StyleKit.imageOfNoSeparator
+        case .emojiSeparator:
+            return StyleKit.imageOfEmojiSeparator
+        case .spaceSeparator:
+            return StyleKit.imageOfSpaceSeparator
+        case .symbolSeparator:
+            return StyleKit.imageOfSymbolSeparator
+        case .randomSeparator:
+            return StyleKit.imageOfRandomSeparator
+        case .numberSeparator:
+            return StyleKit.imageOfNumberSeparator
+            
         }
     }
 }
