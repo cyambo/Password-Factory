@@ -26,19 +26,17 @@ class SwitchView: UIView {
         if (touchGesture != nil) {
             addGestureRecognizer(touchGesture!)
         }
+        removeSubviewsAndConstraints()
+        addSubview(controlSwitch)
+        addSubview(controlLabel)
     }
     
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        if newWindow != nil {
-            setupView()
-        }
+        setupView()
     }
     
     func setupView() {
-        removeSubviewsAndConstraints()
-        addSubview(controlSwitch)
-        addSubview(controlLabel)
         if label != nil {
             controlLabel.text = label
         } else {

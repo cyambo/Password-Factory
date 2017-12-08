@@ -76,7 +76,12 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
 
         switch currentSelectType {
         case .CaseType:
-            return c.caseTypes.count
+            if (currentPasswordType == .randomType) {
+                return c.caseTypes.count - 1 
+            } else {
+               return c.caseTypes.count
+            }
+            
         case .SeparatorType:
             return c.separatorTypes.count
         case .PasswordType:
