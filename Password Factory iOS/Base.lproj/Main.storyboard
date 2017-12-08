@@ -139,7 +139,6 @@
                             <constraint firstItem="fq2-1h-ReF" firstAttribute="leading" secondItem="umP-QV-cBN" secondAttribute="leading" constant="40" id="6tp-12-bT4"/>
                             <constraint firstItem="1Cd-FT-S3v" firstAttribute="top" secondItem="fq2-1h-ReF" secondAttribute="bottom" constant="8" id="BCa-be-i4P"/>
                             <constraint firstItem="hWY-Nj-X5d" firstAttribute="leading" secondItem="umP-QV-cBN" secondAttribute="leading" constant="16" id="Csi-3N-MFs"/>
-                            <constraint firstItem="1Cd-FT-S3v" firstAttribute="leading" secondItem="hWY-Nj-X5d" secondAttribute="leading" id="Hrl-tp-BKW"/>
                             <constraint firstItem="W92-gv-z2d" firstAttribute="bottom" secondItem="1Cd-FT-S3v" secondAttribute="bottom" id="Kqr-u8-nXm"/>
                             <constraint firstAttribute="trailing" secondItem="hWY-Nj-X5d" secondAttribute="trailing" constant="16" id="MFb-we-ShX"/>
                             <constraint firstItem="fq2-1h-ReF" firstAttribute="top" secondItem="hWY-Nj-X5d" secondAttribute="bottom" constant="8" id="OVv-in-GQc"/>
@@ -151,8 +150,9 @@
                             <constraint firstAttribute="top" secondItem="x5p-3y-evh" secondAttribute="top" constant="20" id="d0E-W4-8Jt"/>
                             <constraint firstItem="4LC-AV-igL" firstAttribute="leading" secondItem="umP-QV-cBN" secondAttribute="leading" id="dsI-S0-jD7"/>
                             <constraint firstAttribute="bottom" secondItem="4LC-AV-igL" secondAttribute="bottom" id="gpC-nZ-mLp"/>
-                            <constraint firstItem="1Cd-FT-S3v" firstAttribute="trailing" secondItem="hWY-Nj-X5d" secondAttribute="trailing" id="rrN-Y3-fE7"/>
+                            <constraint firstItem="1Cd-FT-S3v" firstAttribute="leading" secondItem="W92-gv-z2d" secondAttribute="leading" constant="16" id="icS-2A-aPN"/>
                             <constraint firstAttribute="trailing" secondItem="4LC-AV-igL" secondAttribute="trailing" id="tsw-e1-PbC"/>
+                            <constraint firstItem="W92-gv-z2d" firstAttribute="trailing" secondItem="1Cd-FT-S3v" secondAttribute="trailing" constant="16" id="xDi-Hb-aVu"/>
                             <constraint firstAttribute="trailing" secondItem="fq2-1h-ReF" secondAttribute="trailing" constant="40" id="xko-7S-6de"/>
                             <constraint firstAttribute="trailing" secondItem="QLv-Wd-jOC" secondAttribute="trailing" id="xqG-mW-kjT"/>
                             <constraint firstAttribute="top" secondItem="QLv-Wd-jOC" secondAttribute="top" id="zWG-qx-CSH"/>
@@ -164,7 +164,7 @@
                         <outlet property="containerView" destination="fq2-1h-ReF" id="8AS-S4-qWm"/>
                         <outlet property="passwordLengthDisplay" destination="e8q-MI-Jsc" id="wa2-iE-fKM"/>
                         <outlet property="passwordTextView" destination="MaC-uI-G5O" id="bfC-Bh-6Gm"/>
-                        <outlet property="strenghMeter" destination="hWY-Nj-X5d" id="EXa-Uq-9gl"/>
+                        <outlet property="strengthMeter" destination="hWY-Nj-X5d" id="EXa-Uq-9gl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9K-Cr-CWd" userLabel="First Responder" sceneMemberID="firstResponder"/>

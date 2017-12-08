@@ -19,7 +19,7 @@ class PasswordContainerViewController: UIViewController {
     
     @IBOutlet weak var bigTypeImage: BigTypeIconView!
     @IBOutlet weak var containerView: ControlsContainer!
-    @IBOutlet weak var strenghMeter: StrengthMeter!
+    @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var passwordLengthDisplay: UILabel!
     @IBOutlet weak var passwordTextView: PasswordTextView!
     
@@ -76,7 +76,7 @@ class PasswordContainerViewController: UIViewController {
         }
         
         if let s = controller?.getPasswordStrength() {
-            strenghMeter.updateStrength(s: Double(s))
+            strengthMeter.updateStrength(s: Double(s))
         }
 
         passwordLengthDisplay.text = "\(passwordTextView.text.count)"

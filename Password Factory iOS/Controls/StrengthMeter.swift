@@ -9,7 +9,7 @@
 import UIKit
 @IBDesignable
 class StrengthMeter: UIView {
-    var strength = 0.01
+    var strength = 1.0
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: getStrengthColor(), strength: CGFloat(strength), size: rect.size)

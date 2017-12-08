@@ -37,12 +37,17 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             textView.text.remove(at: textView.text.index(before: textView.text.endIndex))
             //dismiss the keyboard
             textView.resignFirstResponder()
+            //scroll back to the top
+            textView.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
         } else if(textView.text.count > 0) {
             //setting the typeLabel to the type that was last entered
-            let last = String(describing:textView.text.last)
-            if let type = c.patternCharacterToType[last] {
-                typeLabel.text = c.patternTypeToDescription[type] ?? ""
+            if let lc = textView.text.last {
+                let last = String(describing:lc)
+                if let type = c.patternCharacterToType[last] {
+                    typeLabel.text = c.patternTypeToDescription[type] ?? ""
+                }
             }
+
         }
         d.setObject(patternText.text, forKey: "userPattern")
         highlightPatternString()
