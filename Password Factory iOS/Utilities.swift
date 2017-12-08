@@ -14,9 +14,22 @@ class Utilities: NSObject {
         layer.backgroundColor = UIColor.white.cgColor
         layer.masksToBounds = true
         if(withBorder) {
-            layer.borderColor = UIColor.gray.cgColor
-            layer.borderWidth = 0.5
+            addBorder(layer: layer)
         }
+    }
+    public class func roundCorners(view: UIView, corners: UIRectCorner, withBorder: Bool) {
+        view.layer.backgroundColor = UIColor.white.cgColor
+        let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: 10.0, height: 10.0))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        view.layer.mask = mask
+        if(withBorder) {
+            addBorder(layer: view.layer)
+        }
+    }
+    public class func addBorder(layer: CALayer) {
+        layer.borderColor = UIColor.gray.cgColor
+        layer.borderWidth = 0.5
     }
     public class func dropShadow(view: UIView) {
         view.clipsToBounds = false

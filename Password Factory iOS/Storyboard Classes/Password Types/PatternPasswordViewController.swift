@@ -10,6 +10,7 @@ import UIKit
 
 class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var patternButtonCollectionView: UICollectionView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var patternText: PatternTextView!
     var patternTextFont = UIFont.systemFont(ofSize: 32.0)
@@ -23,6 +24,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             patternText.text = String(describing: p)
             highlightPatternString()
         }
+        Utilities.roundCorners(layer: patternButtonCollectionView.layer, withBorder: false)
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
@@ -81,14 +83,9 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //putting the pattern letter in each cell, and highlighting it
-        //based upon the pattern color
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PatternItemCell", for: indexPath) as! PatternCollectionViewCell
         let pti = c.patternTypeIndex[indexPath.row]
-        let pc = c.patternTypeToCharacter[pti]
-        cell.patternItemText.text = pc
-        cell.patternItemText.textColor = ColorUtilities.patternType(toColor: pti)
-        Utilities.roundCorners(layer: cell.layer, withBorder: true)
+        cell.setPatternTypeItem(pti)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

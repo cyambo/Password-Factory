@@ -10,4 +10,17 @@ import UIKit
 
 class PatternCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var patternItemText: UILabel!
+    let c = PFConstants.instance
+    func setPatternTypeItem(_ patternTypeItem: PFPatternTypeItem) {
+        //putting the pattern letter in the cell, and highlighting it
+        //based upon the pattern color
+        let pc = c.patternTypeToCharacter[patternTypeItem]
+        patternItemText.text = pc
+        let color = ColorUtilities.patternType(toColor: patternTypeItem)
+        Utilities.roundCorners(layer: layer, withBorder: false)
+        patternItemText.text = pc
+        patternItemText.textColor = UIColor.white
+        backgroundColor = color
+        
+    }
 }

@@ -49,17 +49,18 @@ class PasswordContainerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (containerView.subviews.count == 0 ){
-            let pv = passwordViewController?.view ?? UIView()
-            containerView.addSubview(pv)
-            let vd = ["p" : pv ]
-            pv.translatesAutoresizingMaskIntoConstraints = false
-            let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[p]-8-|", options: [], metrics: nil, views: vd)
-            let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[p]-8-|", options: [], metrics: nil, views: vd)
-            containerView?.addConstraints(hc)
-            containerView?.addConstraints(vc)
-            bigTypeImage.setImage(type: type)
-        }
+            if let pv = passwordViewController?.view {
+                containerView.addSubview(pv)
+                let vd = ["p" : pv ]
+                pv.translatesAutoresizingMaskIntoConstraints = false
+                let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[p]-(8)-|", options: [], metrics: nil, views: vd)
+                let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(8)-[p]-(8)-|", options: [], metrics: nil, views: vd)
+                containerView?.addConstraints(hc)
+                containerView?.addConstraints(vc)
+                bigTypeImage.setImage(type: type)
+            }
 
+        }
         passwordTextView.textContainer.lineBreakMode = .byCharWrapping
         generatePassword()
     }

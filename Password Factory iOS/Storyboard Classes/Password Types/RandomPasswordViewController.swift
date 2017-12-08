@@ -18,8 +18,9 @@ class RandomPasswordViewController: PasswordsViewController {
         setSwitch(s: useNumbersSwitch, defaultsKey: "randomUseNumbers")
         setSwitch(s: useSymbolsSwitch, defaultsKey: "randomUseSymbols")
         setSwitch(s: useEmojiSwitch, defaultsKey: "randomUseEmoji")
-        setupCaseType()
     }
-    
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        caseTypeView?.scrollToSelected()
+    }
 }

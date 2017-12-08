@@ -43,10 +43,10 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         translatesAutoresizingMaskIntoConstraints = false
         col.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-|", options: [], metrics: nil, views: views)
-        let hc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[collection]-|", options: [], metrics: nil, views: views)
-        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[label(==20)]-8-[collection]-8-|", options: [], metrics: nil, views: views)
-
+        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views)
+        let hc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views)
+        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-12-[collection(==50)]", options: [], metrics: nil, views: views)
+        Utilities.roundCorners(layer: col.layer, withBorder: false)
         addConstraints(hc)
         addConstraints(hc2)
         addConstraints(vc)

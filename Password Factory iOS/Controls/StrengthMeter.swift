@@ -13,7 +13,7 @@ class StrengthMeter: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: getStrengthColor(), strength: CGFloat(strength), size: rect.size)
-        roundCorners([.bottomLeft, .bottomRight], radius: 10.0)
+        Utilities.roundCorners(view: self, corners: [.bottomLeft, .bottomRight], withBorder: false)
     }
     func getStrengthColor() -> UIColor {
         let strengthHue = strength * 0.3;
@@ -30,12 +30,6 @@ class StrengthMeter: UIView {
         if (strength < 0.0) { strength = 0.0 }
         if (strength > 1.0) { strength = 1.0 }
         setNeedsDisplay()
-    }
-    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
     }
 }
 

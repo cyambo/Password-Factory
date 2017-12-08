@@ -17,8 +17,8 @@ class PronounceablePasswordViewController: PasswordsViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        caseTypeView.scrollToSelected()
-        separatorTypeView.scrollToSelected()
+        caseTypeView?.scrollToSelected()
+        separatorTypeView?.scrollToSelected()
     }
 
 }
