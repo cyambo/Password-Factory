@@ -18,12 +18,19 @@ class TabViewController: UITabBarController {
         super.init(coder: aDecoder)
         mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         passwordController.useStoredType = false
-        passwordController.useAdvancedType = false
+        passwordController.useAdvancedType = true
         //initializing all the view controllers and putting them in the tab view
         var newVc = [UIViewController]()
         for i in 0 ..< passwordController.getFilteredPasswordTypes().count {
-            if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController {
-                vc.setType(type: passwordController.getPasswordType(by: UInt(i)))
+            let currType = passwordController.getPasswordType(by: UInt(i))
+            let storyboardIdentifier: String
+            if currType == .advancedType || currType == .storedType {
+                storyboardIdentifier = "BigContainer"
+            } else {
+                storyboardIdentifier = "Container"
+            }
+            if let vc = mainStoryboard?.instantiateViewController(withIdentifier: storyboardIdentifier) as? PasswordContainerViewController {
+                vc.setType(type: currType)
                 newVc.append(vc)
             }
         }

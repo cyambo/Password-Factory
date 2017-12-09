@@ -18,7 +18,7 @@ class PasswordContainerViewController: UIViewController {
     @IBInspectable public var num: Int = 0
     
     @IBOutlet weak var bigTypeImage: BigTypeIconView!
-    @IBOutlet weak var containerView: ControlsContainer!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var passwordLengthDisplay: UILabel!
     @IBOutlet weak var passwordTextView: PasswordTextView!
@@ -51,12 +51,7 @@ class PasswordContainerViewController: UIViewController {
         if (containerView.subviews.count == 0 ){
             if let pv = passwordViewController?.view {
                 containerView.addSubview(pv)
-                let vd = ["p" : pv ]
-                pv.translatesAutoresizingMaskIntoConstraints = false
-                let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[p]-(8)-|", options: [], metrics: nil, views: vd)
-                let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(8)-[p]-(8)-|", options: [], metrics: nil, views: vd)
-                containerView?.addConstraints(hc)
-                containerView?.addConstraints(vc)
+                Utilities.fillViewInContainer(pv, superView: containerView, padding: 8)
                 bigTypeImage.setImage(type: type)
             }
 
@@ -66,6 +61,8 @@ class PasswordContainerViewController: UIViewController {
     }
     @IBAction func pressedGenerateButton(_ sender: Any) {
         generatePassword()
+    }
+    @IBAction func pressedCopyButton(_ sender: Any) {
     }
     func generatePassword() {
         controller?.generatePassword(type)

@@ -28,6 +28,7 @@
 		400108571FD33F2A00594304 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400108561FD33F2A00594304 /* TabViewController.swift */; };
 		400108591FD340B600594304 /* PasswordContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400108581FD340B600594304 /* PasswordContainerViewController.swift */; };
 		4001085C1FD3445000594304 /* TypeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001085B1FD3445000594304 /* TypeIcons.swift */; };
+		400210F11FDB316600D272BB /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400210F01FDB316600D272BB /* StepperView.swift */; };
 		4004F1D61FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
 		4004F1D71FBA4E200093DA3F /* NSString+ColorWithHexColorString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */; };
 		4004F1DA1FBB63290093DA3F /* ZoomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004F1D91FBB63290093DA3F /* ZoomButton.m */; };
@@ -244,6 +245,7 @@
 		400108561FD33F2A00594304 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		400108581FD340B600594304 /* PasswordContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordContainerViewController.swift; sourceTree = "<group>"; };
 		4001085B1FD3445000594304 /* TypeIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeIcons.swift; sourceTree = "<group>"; };
+		400210F01FDB316600D272BB /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		4004F1D41FBA4E200093DA3F /* NSString+ColorWithHexColorString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ColorWithHexColorString.h"; sourceTree = "<group>"; };
 		4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ColorWithHexColorString.m"; sourceTree = "<group>"; };
 		4004F1D81FBB63290093DA3F /* ZoomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomButton.h; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 				400E45DA1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift */,
 				400E45DC1FDA2C9900A3F4F7 /* ButtonsContainer.swift */,
 				40AB01DF1FDB029F00D34027 /* SwitchView.swift */,
+				400210F01FDB316600D272BB /* StepperView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1597,6 +1600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				404D73CB1FD61B3D00A6FA0D /* PasswordController.m in Sources */,
+				400210F11FDB316600D272BB /* StepperView.swift in Sources */,
 				406BD2301FD3148200D0E854 /* ControlsContainer.swift in Sources */,
 				400E45D51FD86FBD00A3F4F7 /* UIView+removeSubviews.swift in Sources */,
 				402C96451FD4C53B00E2B37E /* ColorUtilities.m in Sources */,
