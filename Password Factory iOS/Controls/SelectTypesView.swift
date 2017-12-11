@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// View that displays a collection view containing separator, or case types
 class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBInspectable var selectType: String?
@@ -22,6 +24,8 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         passwordTypeInt = 403
         super.init(coder: aDecoder)
         removeSubviewsAndConstraints()
+        
+        //setup the collection view
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         layout.minimumLineSpacing = 8.0
@@ -40,20 +44,24 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         translatesAutoresizingMaskIntoConstraints = false
         collection.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views)
-        let hc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views)
-        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-12-[collection(==50)]", options: [], metrics: nil, views: views)
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-12-[collection(==50)]", options: [], metrics: nil, views: views))
         Utilities.roundCorners(layer: collection.layer, withBorder: false)
-        addConstraints(hc)
-        addConstraints(hc2)
-        addConstraints(vc)
+
         
     }
+    
+    /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
         if let index = d?.integer(forKey: getDefaultsKey()) {
             collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
+    
+    /// Gets the current defaults key
+    ///
+    /// - Returns: defaults key
     func getDefaultsKey() -> String {
         let prefix = c.getNameFor(type: currentPasswordType).lowercased()
         return "\(prefix)\(currentSelectType.rawValue)TypeIndex"
@@ -76,12 +84,11 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
 
         switch currentSelectType {
         case .CaseType:
-            if (currentPasswordType == .randomType) {
+            if (currentPasswordType == .randomType) { //if it is random, then we don't have Title case, so do one less
                 return c.caseTypes.count - 1 
             } else {
                return c.caseTypes.count
             }
-            
         case .SeparatorType:
             return c.separatorTypes.count
         case .PasswordType:

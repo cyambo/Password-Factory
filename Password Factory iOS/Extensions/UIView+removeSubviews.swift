@@ -9,7 +9,8 @@
 
 extension UIView {
     
-    // Recursive remove subviews and constraints
+    
+    /// Removes subviews from UIView
     func removeSubviews() {
         self.subviews.forEach({
             if !($0 is UILayoutSupport) {

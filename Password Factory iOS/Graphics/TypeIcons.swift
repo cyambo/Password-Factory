@@ -8,7 +8,16 @@
 
 import UIKit
 
+
+/// Gets icons based upon enum type
 class TypeIcons: NSObject {
+    
+    /// Gets the password type icon
+    ///
+    /// - Parameters:
+    ///   - type: password type of icon
+    ///   - color: colo to use
+    /// - Returns: image of icon
     static func getTypeIcon(type :PFPasswordType, andColor color: UIColor) -> UIImage {
         switch(type) {
         case .randomType:
@@ -25,10 +34,22 @@ class TypeIcons: NSObject {
             return StyleKit.imageOfStoredType(typeColor: color)
         }
     }
+    
+    /// Gets the password type icon of default color
+    ///
+    /// - Parameter type: password type of icon
+    /// - Returns: password type image
     static func getTypeIcon(_ type :PFPasswordType) -> UIImage {
         let c = UIColor.init(red: 0.31, green: 0.678, blue: 0.984, alpha: 1.0)
         return TypeIcons.getTypeIcon(type: type, andColor: c)
     }
+    
+    /// Draws the type icon for use in drawRect
+    ///
+    /// - Parameters:
+    ///   - type: password type of icon
+    ///   - frame: frame to draw in
+    ///   - color: color to use
     static func drawTypeIcon(type :PFPasswordType, frame: CGRect, color: UIColor) {
         switch(type) {
         case .randomType:
@@ -45,6 +66,11 @@ class TypeIcons: NSObject {
             StyleKit.drawStoredType(frame: frame, resizing: .aspectFit, typeColor: color)
         }
     }
+    
+    /// Gets the icon for case type
+    ///
+    /// - Parameter type: case type to get
+    /// - Returns: icon of case type
     func getCaseTypeIcon(_ type: PFCaseType) -> UIImage {
         switch type {
         case .lowerCase:
@@ -57,6 +83,11 @@ class TypeIcons: NSObject {
             return StyleKit.imageOfTitleCase
         }
     }
+    
+    /// Gets the icon for a separator type
+    ///
+    /// - Parameter type: separator type to get
+    /// - Returns: icon of separator type
     func getSeparatorTypeIcon(_ type: PFSeparatorType) -> UIImage {
         switch type {
         case .characterSeparator:

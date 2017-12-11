@@ -8,16 +8,20 @@
 
 import UIKit
 
+
+/// Controller for the tab view
 class TabViewController: UITabBarController {
+    
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
     var keyboardDismissGesture: UITapGestureRecognizer?
     let d = DefaultsManager.get()
     let c = PFConstants.instance
+    
     required init?(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)
         mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+        //TODO: use defaults for random and stored
         passwordController.useStoredType = false
         passwordController.useAdvancedType = true
         //initializing all the view controllers and putting them in the tab view
@@ -79,6 +83,8 @@ class TabViewController: UITabBarController {
         }
 
     }
+    
+    /// sets observers for all the values in defaults plist
     func setObservers() {
         guard let plist = d?.prefsPlist else {
             return
@@ -90,8 +96,11 @@ class TabViewController: UITabBarController {
         }
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let vc = selectedViewController as? PasswordContainerViewController {
-            vc.generatePassword()
+        //whenever a default changes, generate a password
+        
+        //TODO: do not generate on color changes
+        if let vc = selectedViewController as? PasswordContainerViewController { //select the current view controller
+            vc.generatePassword() //generate the password
         }
     }
 

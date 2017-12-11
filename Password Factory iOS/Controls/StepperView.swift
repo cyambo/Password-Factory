@@ -8,12 +8,13 @@
 
 import UIKit
 
+/// Adds a stepper label and value display in a view connected to defaults
 class StepperView: UIView {
-    @IBInspectable public var defaultsKey: String?
-    @IBInspectable public var label: String?
-    @IBInspectable public var minValue: Int = 0
-    @IBInspectable public var maxValue: Int = 100
-    @IBInspectable public var stepValue: Int = 1
+    @IBInspectable public var defaultsKey: String? //defaults key to use
+    @IBInspectable public var label: String? //label to display
+    @IBInspectable public var minValue: Int = 0 //minimum value of the stepper
+    @IBInspectable public var maxValue: Int = 100 //maximum value of the stepper
+    @IBInspectable public var stepValue: Int = 1 //step for each press
     let controlStepper = UIStepper.init()
     let controlLabel = UILabel.init()
     let valueLabel = UILabel.init()
@@ -31,9 +32,10 @@ class StepperView: UIView {
 
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        setupView()
+        setupView() //calling setup view here because this is when the IBInspectables are set
     }
     
+    /// positions the views and sets up the stepper
     func setupView() {
 
         let views = ["stepper" : controlStepper as UIView, "label" : controlLabel as UIView,"value" : valueLabel as UIView]
@@ -50,6 +52,9 @@ class StepperView: UIView {
         controlStepper.minimumValue = Double(minValue)
         controlStepper.maximumValue = Double(maxValue)
         controlStepper.stepValue = Double(stepValue)
+        controlStepper.autorepeat = true
+        controlStepper.isContinuous = true
+        controlStepper.wraps = false
         valueLabel.backgroundColor = Utilities.tintColor
         valueLabel.textColor = UIColor.white
         valueLabel.textAlignment = .center
@@ -61,6 +66,8 @@ class StepperView: UIView {
             controlStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
         }
     }
+    
+    /// Changes the value label based upon stepper value
     func setLabel() {
         controlLabel.text = label
         if defaultsKey != nil {
@@ -69,6 +76,8 @@ class StepperView: UIView {
             valueLabel.text = "--"
         }
     }
+    
+    /// Called when stepper is changed, will set defaults and label
     @objc func changeStepper() {
         d.setInteger(Int(controlStepper.value), forKey: defaultsKey)
         setLabel()

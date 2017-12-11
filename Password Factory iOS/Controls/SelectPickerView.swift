@@ -8,9 +8,11 @@
 
 import UIKit
 
+
+/// Adds a view that has a label and a button to show the picker types view
 class SelectPickerView: UIView, PickerViewControllerDelegate {
-    @IBInspectable public var pickerTypeString: String?
-    @IBInspectable public var passwordTypeInt: Int = 401
+    @IBInspectable public var pickerTypeString: String? //Picker type to use
+    @IBInspectable public var passwordTypeInt: Int = 401 //Password type of item
     
     let controlLabel = UILabel.init()
     let controlButton = UIButton.init()
@@ -20,15 +22,17 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
     
     var pickerType: PickerTypes?
     var passwordType: PFPasswordType?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         removeSubviewsAndConstraints()
         addSubview(controlButton)
         addSubview(controlLabel)
+        //sets button action
         controlButton.addTarget(self, action: #selector(openPicker), for: .touchUpInside)
     }
-
+    
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         if (pickerTypeString != nil) {
@@ -38,6 +42,7 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         setupView()
     }
     
+    /// Positions the views in the container
     func setupView() {
         Utilities.roundCorners(layer: controlButton.layer, withBorder: false)
         controlButton.backgroundColor = Utilities.tintColor
@@ -56,6 +61,8 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
 
         
     }
+    
+    /// Sets the label based upon PickerType
     func setLabelText() {
         if let pt = pickerType {
             switch pt {
@@ -68,6 +75,8 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
             }
         }
     }
+    
+    /// Sets the button text, which displays
     func setButtonText() {
         if let pt = pickerType {
             switch pt {
@@ -81,6 +90,8 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         }
 
     }
+    
+    /// sets the title if we are the password type
     func setupPasswordtype() {
         guard let passwordTypeKey = getDefaultsKey() else {
             return
@@ -89,6 +100,7 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         controlButton.setTitle(c.passwordTypes[buttonPasswordType], for: .normal)
 
     }
+    /// sets the title if we are the case type
     func setupCaseType() {
         guard let caseTypeKey = getDefaultsKey() else {
             return
@@ -98,7 +110,7 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         }
         var index = d.integer(forKey: caseTypeKey)
         var title = ""
-        if pt == .advancedType {
+        if pt == .advancedType { //advanced starts with No Change and doesn't have title case
             index = index - 1
         }
         if index < 0 {
@@ -108,8 +120,9 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
             title = c.caseTypes[caseType] ?? "--"
         }
         controlButton.setTitle(title, for: .normal)
-        
     }
+    
+    /// sets the title if we are the separator type
     func setupSeparatorType() {
         guard let separatorTypeKey = getDefaultsKey() else {
             return
@@ -117,6 +130,10 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         let separatorType = c.getSeparatorType(by: UInt(d.integer(forKey: separatorTypeKey)))
         controlButton.setTitle(c.separatorTypes[separatorType], for: .normal)
     }
+    
+    /// Gets the defaults key
+    ///
+    /// - Returns: defaults key to use
     func getDefaultsKey() ->String? {
         guard let pt = passwordType else {
             return nil
@@ -140,6 +157,8 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         return "\(typeName)\(suffix)"
     }
 
+    
+    /// Opens the picker view
     @objc func openPicker() {
         guard let pass = passwordType else {
             return
@@ -155,6 +174,12 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
             parentViewController?.present(vc, animated: true, completion: nil)
         }
     }
+    
+    /// Delegate method for PickerViewController - sets defaults and title of button
+    ///
+    /// - Parameters:
+    ///   - type: type of picker
+    ///   - index: index of selection
     func selectedItem(type: PickerTypes, index: Int) {
         var t = "--"
         var i = index

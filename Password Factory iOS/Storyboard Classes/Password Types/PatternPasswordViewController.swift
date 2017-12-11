@@ -8,12 +8,14 @@
 
 import UIKit
 
+
+/// Controller for pattern password
 class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var patternButtonCollectionView: UICollectionView!
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var patternText: PatternTextView!
-    var patternTextFont = UIFont.systemFont(ofSize: 32.0)
+    @IBOutlet weak var patternButtonCollectionView: UICollectionView! //contains the pattern letter buttons
+    @IBOutlet weak var typeLabel: UILabel! //displays the pattern type of the last entered letter
+    @IBOutlet weak var patternText: PatternTextView! //pattern text
+    var patternTextFont = UIFont.systemFont(ofSize: 32.0) //font for the pattern text
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +31,11 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
     }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        //check to see if the last entered value is a newline
         if(text == "\n") {
-            textView.resignFirstResponder()
+            textView.resignFirstResponder() //if so, dismiss keyboard
             return false
         }
         return true
@@ -46,15 +50,16 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
                     typeLabel.text = c.patternTypeToDescription[type] ?? ""
                 }
             }
-
         }
         d.setObject(patternText.text, forKey: "userPattern")
         highlightPatternString()
     }
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        print ("fad")
         return true
     }
+    
+    
+    /// highlights the pattern string, or uses default color based upon defaults
     func highlightPatternString() {
         if(d.bool(forKey: "colorPasswordText")) {
             highlightPattern()
@@ -62,6 +67,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             patternText.attributedText = Utilities.getNonHighlightedString(s: patternText.text, font: patternTextFont)
         }
     }
+    /// Highlights the pattern string based upon defaults
     func highlightPattern() {
         let highlighted = NSMutableAttributedString()
         let defaultColor = ColorUtilities.getDefaultsColor("defaultTextColor")
@@ -103,6 +109,9 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         typeLabel.text = c.patternTypeToDescription[patternItem] ?? ""
     }
     
+    /// Clears the current pattern
+    ///
+    /// - Parameter sender: default sender
     @IBAction func clearPattern(_ sender: UIButton) {
         patternText.text = ""
         typeLabel.text = ""

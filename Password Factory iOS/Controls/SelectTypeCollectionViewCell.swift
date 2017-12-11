@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// CollectionViewCell for SelectTypesView
 class SelectTypeCollectionViewCell: UICollectionViewCell {
     var currentSelectType = PickerTypes.CaseType
     var currentPasswordType = PFPasswordType.pronounceableType
@@ -23,6 +25,13 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         setupView()
     }
+    
+    /// Sets the cell title and image based upon index
+    ///
+    /// - Parameters:
+    ///   - index: index to use
+    ///   - selectType: current select type
+    ///   - passwordType: current password type
     func setIndex(index : Int, andType selectType:PickerTypes, andPasswordType passwordType: PFPasswordType) {
         currentSelectType = selectType
         currentPasswordType = passwordType
@@ -50,6 +59,8 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
             backgroundColor = backgroundColor?.withAlphaComponent(0.5)
         }
     }
+    
+    /// Adds the image and label to the view and uses vfl to position them in the view
     func setupView() {
         removeSubviews()
         Utilities.roundCorners(layer: layer, withBorder: false)
@@ -64,13 +75,10 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[label]-(0)-|", options: [], metrics: nil, views: views)
-        let hc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[image]-(8)-|", options: [], metrics: nil, views: views)
-        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(5)-[image]-5-[label(==12)]-(5)-|", options: [], metrics: nil, views: views)
-        
-        addConstraints(hc)
-        addConstraints(hc2)
-        addConstraints(vc)
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[label]-(0)-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[image]-(8)-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(5)-[image]-5-[label(==12)]-(5)-|", options: [], metrics: nil, views: views))
+
         backgroundColor = UIColor.white
 
     }

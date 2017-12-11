@@ -8,18 +8,15 @@
 
 import UIKit
 @IBDesignable
+
+/// Text view containing the pattern text
 class PatternTextView: UITextView {
     
-    public override init(frame: CGRect, textContainer: NSTextContainer?) {
-        super.init(frame: frame, textContainer: textContainer)
+    public override func awakeFromNib() {
         setDisplay()
     }
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override func prepareForInterfaceBuilder() {
         setDisplay()
-    }
-    override func willMove(toWindow newWindow: UIWindow?) {
-        textContainer.lineBreakMode = .byCharWrapping
     }
     func setDisplay() {
         Utilities.roundCorners(layer: self.layer, withBorder: true)

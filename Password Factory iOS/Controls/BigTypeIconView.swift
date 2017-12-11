@@ -8,11 +8,14 @@
 
 import UIKit
 
+
+/// Displays a big version of the type icon
 class BigTypeIconView: UIImageView {
 
-    override func awakeFromNib() {
-
-    }
+    
+    /// Draws the type icon in the current context
+    ///
+    /// - Parameter type: password type to draw
     func setImage(type: PFPasswordType) {
         UIGraphicsBeginImageContext(frame.size)
         TypeIcons.drawTypeIcon(type: type, frame: frame, color: UIColor.white)

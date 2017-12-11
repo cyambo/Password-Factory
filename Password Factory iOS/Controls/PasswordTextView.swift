@@ -8,13 +8,13 @@
 
 import UIKit
 @IBDesignable
+
+/// TextView for the password display
 class PasswordTextView: UITextView {
-    public override init(frame: CGRect, textContainer: NSTextContainer?) {
-        super.init(frame: frame, textContainer: textContainer)
+    public override func awakeFromNib() {
         setDisplay()
     }
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override func prepareForInterfaceBuilder() {
         setDisplay()
     }
     func setDisplay() {

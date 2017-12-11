@@ -8,17 +8,15 @@
 
 import UIKit
 @IBDesignable
+
+/// Container for the password controls
 class ControlsContainer: UIView {
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setDisplay()
-    }
+
     public override func awakeFromNib() {
         setDisplay()
     }
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override func prepareForInterfaceBuilder() {
         setDisplay()
     }
     func setDisplay() {

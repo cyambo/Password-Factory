@@ -8,8 +8,16 @@
 
 import UIKit
 @IBDesignable
+
+/// Zoom Button
 class ZoomButton: UIButton {
+    override func prepareForInterfaceBuilder() {
+        setDisplay()
+    }
     override func awakeFromNib() {
+        setDisplay()
+    }
+    func setDisplay() {
         super.awakeFromNib()
         setBackgroundImage(StyleKit.imageOfZoom(), for: .normal)
         setTitle("", for: .normal)

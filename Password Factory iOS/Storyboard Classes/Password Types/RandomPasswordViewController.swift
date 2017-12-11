@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Controller for random passwords
 class RandomPasswordViewController: PasswordsViewController {
 
     override func viewWillAppear(_ animated: Bool) {
@@ -18,6 +19,6 @@ class RandomPasswordViewController: PasswordsViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        caseTypeView?.scrollToSelected()
+        caseTypeView?.scrollToSelected() //scroll to the selected case type
     }
 }

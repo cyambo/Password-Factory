@@ -10,6 +10,12 @@ import UIKit
 
 class Utilities: NSObject {
     static let tintColor = UIColor(red:0.99, green:0.31, blue:0.16, alpha:1.0)
+    
+    /// Rounds the corners of a layer
+    ///
+    /// - Parameters:
+    ///   - layer: layer to round corners
+    ///   - withBorder: add a border
     public class func roundCorners(layer: CALayer, withBorder: Bool) {
         layer.cornerRadius = 10.0
         layer.backgroundColor = UIColor.white.cgColor
@@ -18,6 +24,13 @@ class Utilities: NSObject {
             addBorder(layer: layer)
         }
     }
+    
+    /// Round specific corners of a view
+    ///
+    /// - Parameters:
+    ///   - view: view to round corners
+    ///   - corners: UIRectCorner array
+    ///   - withBorder: add a border
     public class func roundCorners(view: UIView, corners: UIRectCorner, withBorder: Bool) {
         view.layer.backgroundColor = UIColor.white.cgColor
         let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: 10.0, height: 10.0))
@@ -28,10 +41,18 @@ class Utilities: NSObject {
             addBorder(layer: view.layer)
         }
     }
+    
+    /// Adds a border to a layer
+    ///
+    /// - Parameter layer: layer to add the border to
     public class func addBorder(layer: CALayer) {
         layer.borderColor = UIColor.gray.cgColor
         layer.borderWidth = 0.5
     }
+    
+    /// Adds a drop shadow to a uiview
+    ///
+    /// - Parameter view: view to add a shadow to
     public class func dropShadow(view: UIView) {
         view.clipsToBounds = false
         view.layer.masksToBounds = false
@@ -41,6 +62,13 @@ class Utilities: NSObject {
         view.layer.shadowRadius = 10
         view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
     }
+    
+    /// Highlights a password string, or returns it in the default color based upon defaults
+    ///
+    /// - Parameters:
+    ///   - password: password to highlight
+    ///   - font: font to use
+    /// - Returns: attrbuted string that is highlighted with colors set in prefs
     public class func highlightPassword(password: String, font: UIFont) ->NSAttributedString {
         
         if(DefaultsManager.get().bool(forKey: "colorPasswordText")) {
@@ -51,6 +79,13 @@ class Utilities: NSObject {
             return Utilities.getNonHighlightedString(s: password, font: font)
         }
     }
+    
+    /// Highlights the password string
+    ///
+    /// - Parameters:
+    ///   - password: password to highlight
+    ///   - font: font to use
+    /// - Returns: attributed string that is highlighted
     class func highlightPasswordString(password: String, font: UIFont) -> NSAttributedString {
         let highlighted = NSMutableAttributedString()
         let defaultColor = ColorUtilities.getDefaultsColor("defaultTextColor")
@@ -70,6 +105,13 @@ class Utilities: NSObject {
         }
         return highlighted
     }
+    
+    /// Gets the non-highlighted string using the font and default color
+    ///
+    /// - Parameters:
+    ///   - s: string to highlight
+    ///   - font: font to use
+    /// - Returns: attributed string in font and default color
     public class func getNonHighlightedString(s: String, font: UIFont) ->NSAttributedString {
         let h = NSMutableAttributedString.init(string: s)
         let attrs = [
@@ -79,15 +121,28 @@ class Utilities: NSObject {
         h.setAttributes(attrs, range: NSMakeRange(0, s.count))
         return h
     }
-    public class func fillViewInContainer(_ view: UIView, superView: UIView, padding: Int = 0) {
+    
+    /// Fills view in a superview
+    ///
+    /// - Parameters:
+    ///   - view: view to fill container with
+    ///   - superview: superview to fil
+    ///   - padding: any padding around the view
+    public class func fillViewInContainer(_ view: UIView, superview: UIView, padding: Int = 0) {
         let views = ["sub" : view]
         view.translatesAutoresizingMaskIntoConstraints = false
         let constraintString = ":|-\(padding)-[sub]-\(padding)-|"
         let hc = NSLayoutConstraint.constraints(withVisualFormat: "H\(constraintString)", options: [], metrics: nil, views: views)
         let vc = NSLayoutConstraint.constraints(withVisualFormat: "V\(constraintString)", options: [], metrics: nil, views: views)
-        superView.addConstraints(hc)
-        superView.addConstraints(vc)
+        superview.addConstraints(hc)
+        superview.addConstraints(vc)
     }
+    
+    /// Centers a view vertically in a container
+    ///
+    /// - Parameters:
+    ///   - view: view to center
+    ///   - superview: view that it is centered in
     public class func centerViewVerticallyInContainer(_ view: UIView, superview: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
         superview.translatesAutoresizingMaskIntoConstraints = false

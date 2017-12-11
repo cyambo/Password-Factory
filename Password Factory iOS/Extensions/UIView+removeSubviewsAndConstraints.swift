@@ -9,7 +9,8 @@
 import Foundation
 extension UIView {
     
-    // Recursive remove subviews and constraints
+    
+    /// Removes subviews and constraints from view
     func removeSubviewsAndConstraints() {
         self.subviews.forEach({
             $0.removeSubviewsAndConstraints()

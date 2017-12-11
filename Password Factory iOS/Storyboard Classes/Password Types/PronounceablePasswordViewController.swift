@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/// Controller for pronounceable passwords
 class PronounceablePasswordViewController: PasswordsViewController {
 
     override func viewWillAppear(_ animated: Bool) {

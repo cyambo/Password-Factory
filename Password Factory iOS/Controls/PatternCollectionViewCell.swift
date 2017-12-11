@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// CollectionViewCell for the pattern view - puts the pattern letter in the cell and colors it based upon pattern color
 class PatternCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var patternItemText: UILabel!
     let c = PFConstants.instance

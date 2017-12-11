@@ -10,6 +10,8 @@ import UIKit
 protocol PickerViewControllerDelegate: class {
     func selectedItem(type: PickerTypes, index: Int)
 }
+
+/// Displays a picker view
 class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate {
     weak var delegate: PickerViewControllerDelegate?
     let c = PFConstants.instance
@@ -40,6 +42,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
         }
     }
+    
+    /// Sets up the views to be displayed
     func setupView() {
         Utilities.roundCorners(layer: containerView.layer, withBorder: false)
         Utilities.dropShadow(view: containerView)
@@ -47,6 +51,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         Utilities.roundCorners(view: titleLabel, corners: [.topLeft, .topRight], withBorder: false)
         
     }
+    
+    /// Sets the title
     func setupTitle() {
         if pickerType == .PasswordType {
             self.titleLabel.text = "Password Source"
@@ -90,11 +96,17 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return c.passwordTypes[pt]
         }
     }
+    
+    /// Called when done is pressed, or the background is tapped
     func done() {
         self.dismiss(animated: true, completion: nil)
         let selected = itemPickerView.selectedRow(inComponent: 0)
         delegate?.selectedItem(type: pickerType, index: selected)
     }
+    
+    /// Gets the defaults key to use
+    ///
+    /// - Returns: defaults key
     func getDefaultsKey() -> String? {
         var pick = pickerType.rawValue + "Type"
         if pickerType == .PasswordType {
@@ -105,6 +117,13 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         return nil
     }
+    
+    /// Gesture recognizer delegate - only accept touches outside of the picker display
+    ///
+    /// - Parameters:
+    ///   - gestureRecognizer: gesture recognizer
+    ///   - touch: touches
+    /// - Returns: bool for accepting touches
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (touch.view?.isDescendant(of: containerView))! {
             return false

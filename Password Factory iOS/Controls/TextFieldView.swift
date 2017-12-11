@@ -8,15 +8,16 @@
 
 import UIKit
 
+
+/// Adds a text field and label to a view connected to defaults
 class TextFieldView: UIView, UITextFieldDelegate {
-    @IBInspectable public var defaultsKey: String?
-    @IBInspectable public var label: String?
+    @IBInspectable public var defaultsKey: String? //defaults key to use
+    @IBInspectable public var label: String? //label to display
 
     let controlText = UITextField.init()
     let controlLabel = UILabel.init()
 
     let d = DefaultsManager.get()!
-    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,11 +27,12 @@ class TextFieldView: UIView, UITextFieldDelegate {
         addSubview(controlLabel)
         setupTextField()
     }
-
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         setupView()
     }
+    
+    /// Sets the parameters of the text field
     func setupTextField() {
         controlText.autocapitalizationType = .none
         controlText.smartDashesType = .no
@@ -41,6 +43,8 @@ class TextFieldView: UIView, UITextFieldDelegate {
         controlText.clearButtonMode = .always
         controlText.delegate = self
     }
+    
+    /// sets the position of the views and adds observers for the text field
     func setupView() {
         controlLabel.text = label
         controlText.borderStyle = .roundedRect
@@ -54,13 +58,18 @@ class TextFieldView: UIView, UITextFieldDelegate {
         Utilities.centerViewVerticallyInContainer(controlText, superview: self)
         let n = NotificationCenter.default
         n.addObserver(self, selector: #selector(textChanged), name: .UITextFieldTextDidChange, object: controlText)
-        
-        
     }
+    
+    /// Dismisses the keyboard when done is pressed
+    ///
+    /// - Parameter textField: default
+    /// - Returns: true to return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         controlText.resignFirstResponder()
         return true
     }
+    
+    /// Observer method called when text changes
     @objc func textChanged() {
         //do we have anything in the text
         if let s = controlText.text {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/// Controller for advanced passwords
 class AdvancedPasswordViewController: PasswordsViewController {
 
     @IBOutlet weak var prefixPatternView: TextFieldView!
@@ -18,6 +18,7 @@ class AdvancedPasswordViewController: PasswordsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let nc = NotificationCenter.default
+        //set keyboard observers
         nc.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
         nc.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
     }

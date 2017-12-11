@@ -8,9 +8,17 @@
 
 import UIKit
 
+/// Container for the bottom buttons
+@IBDesignable
 class ButtonsContainer: UIView {
-
-    override func draw(_ rect: CGRect) {
+    public override func awakeFromNib() {
+        setDisplay()
+    }
+    override func prepareForInterfaceBuilder() {
+        setDisplay()
+    }
+    func setDisplay() {
         Utilities.roundCorners(view: self, corners: [.topLeft, .topRight], withBorder: false)
     }
+
 }

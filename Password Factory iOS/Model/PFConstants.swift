@@ -7,11 +7,19 @@
 //
 
 import UIKit
+
+/// Picker Types that are available
+///
+/// - CaseType: Select case type
+/// - SeparatorType: Select separator type
+/// - PasswordType: Select password type
 enum PickerTypes: String {
     case CaseType = "Case"
     case SeparatorType = "Separator"
     case PasswordType = "Password"
 }
+
+/// Swift version of PasswordFactoryConstants that changes the Any types to specific types
 final class PFConstants: NSObject {
     //not subclassing PasswordFactoryContstants because you cant override the
     //properties with new ones because they are Any!
