@@ -45,7 +45,7 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         }
         typeLabel.text = title
         
-        backgroundColor = UIColor(red:0.99, green:0.31, blue:0.16, alpha:1.0)
+        backgroundColor = Utilities.tintColor
         if !selected {
             backgroundColor = backgroundColor?.withAlphaComponent(0.5)
         }

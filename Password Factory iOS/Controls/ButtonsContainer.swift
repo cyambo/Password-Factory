@@ -9,19 +9,8 @@
 import UIKit
 
 class ButtonsContainer: UIView {
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setDisplay()
-    }
-    public override func awakeFromNib() {
-        setDisplay()
-    }
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setDisplay()
-    }
-    func setDisplay() {
+
+    override func draw(_ rect: CGRect) {
         Utilities.roundCorners(view: self, corners: [.topLeft, .topRight], withBorder: false)
     }
-
 }

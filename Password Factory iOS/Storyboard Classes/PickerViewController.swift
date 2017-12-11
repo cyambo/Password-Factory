@@ -53,6 +53,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch (pickerType) {
         case .CaseType:
+            if passwordType == .advancedType || passwordType == .randomType {
+                return c.caseTypes.count - 1
+            }
             return c.caseTypes.count
         case .SeparatorType:
             return c.separatorTypes.count
@@ -70,7 +73,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let st = c.getSeparatorType(by: UInt(row))
             return c.separatorTypes[st]
         case .PasswordType:
-            return "PASSWORD TYPE"
+            let pt = c.getPasswordType(by: UInt(row))
+            return c.passwordTypes[pt]
         }
     }
     func done() {
@@ -83,8 +87,12 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     func getDefaultsKey() -> String {
+        var pick = pickerType.rawValue + "Type"
+        if pickerType == .PasswordType {
+            pick = "Source"
+        }
         if let pt = c.passwordTypes[passwordType]?.lowercased() {
-            return pt + pickerType.rawValue + "TypeIndex"
+            return pt + pick + "Index"
         }
         return ""
     }

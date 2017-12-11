@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordContainerViewController: UIViewController {
+class PasswordContainerViewController: UIViewController, UITextViewDelegate {
     
     let c = PFConstants.instance
     let controller = PasswordController.get(false)
@@ -29,6 +29,7 @@ class PasswordContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordFont = passwordTextView.font ?? passwordFont
+
     }
     func setType(type: PFPasswordType) {
         self.type = type
@@ -54,10 +55,19 @@ class PasswordContainerViewController: UIViewController {
                 Utilities.fillViewInContainer(pv, superView: containerView, padding: 8)
                 bigTypeImage.setImage(type: type)
             }
-
         }
         passwordTextView.textContainer.lineBreakMode = .byCharWrapping
         generatePassword()
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        print("yo")
     }
     @IBAction func pressedGenerateButton(_ sender: Any) {
         generatePassword()
@@ -78,4 +88,5 @@ class PasswordContainerViewController: UIViewController {
 
         passwordLengthDisplay.text = "\(passwordTextView.text.count)"
     }
+
 }

@@ -18,9 +18,11 @@ class PatternTextView: UITextView {
         super.init(coder: aDecoder)
         setDisplay()
     }
+    override func willMove(toWindow newWindow: UIWindow?) {
+        textContainer.lineBreakMode = .byCharWrapping
+    }
     func setDisplay() {
         Utilities.roundCorners(layer: self.layer, withBorder: true)
-        textContainer.lineBreakMode = .byCharWrapping
     }
 
 }

@@ -28,9 +28,7 @@ class StepperView: UIView {
         addSubview(controlLabel)
         addSubview(valueLabel)
     }
-    override func prepareForInterfaceBuilder() {
-        setupView()
-    }
+
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         setupView()
@@ -38,27 +36,24 @@ class StepperView: UIView {
     
     func setupView() {
 
-        let views = ["stepper" : controlStepper as UIView, "label" : controlLabel as UIView,"value" : valueLabel as UIView, "superview" : self]
+        let views = ["stepper" : controlStepper as UIView, "label" : controlLabel as UIView,"value" : valueLabel as UIView]
         translatesAutoresizingMaskIntoConstraints = false
         controlStepper.translatesAutoresizingMaskIntoConstraints = false
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
-        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[label]-8-[stepper(==94)]-8-[value(==29)]-8-|", options: [], metrics: nil, views: views)
-        //magic constraints for vertical center
-        let vc = NSLayoutConstraint.constraints(withVisualFormat: "H:[superview]-(<=1)-[label]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
-        let vc2 = NSLayoutConstraint.constraints(withVisualFormat: "H:[superview]-(<=1)-[stepper]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
-        let vc3 = NSLayoutConstraint.constraints(withVisualFormat: "H:[superview]-(<=1)-[value(==29)]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[label]-8-[stepper(==94)]-8-[value(==70)]-8-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[value(==29)]", options: [], metrics: nil, views: views))
+        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
+        Utilities.centerViewVerticallyInContainer(controlStepper, superview: self)
+        Utilities.centerViewVerticallyInContainer(valueLabel, superview: self)
 
-        addConstraints(hc)
-        addConstraints(vc)
-        addConstraints(vc2)
-        addConstraints(vc3)
         controlStepper.minimumValue = Double(minValue)
         controlStepper.maximumValue = Double(maxValue)
         controlStepper.stepValue = Double(stepValue)
-        valueLabel.backgroundColor = window?.tintColor
+        valueLabel.backgroundColor = Utilities.tintColor
         valueLabel.textColor = UIColor.white
         valueLabel.textAlignment = .center
+        Utilities.roundCorners(layer: valueLabel.layer, withBorder: false)
         
         setLabel()
         if defaultsKey != nil {

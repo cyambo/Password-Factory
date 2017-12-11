@@ -11,6 +11,7 @@ import UIKit
 class TabViewController: UITabBarController {
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
+    var keyboardDismissGesture: UITapGestureRecognizer?
     let d = DefaultsManager.get()
     let c = PFConstants.instance
     required init?(coder aDecoder: NSCoder) {
@@ -70,11 +71,13 @@ class TabViewController: UITabBarController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //setting a tap gesture to dismiss keyboard when tapped outside of keyboard view
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
+        if keyboardDismissGesture == nil {
+            //setting a tap gesture to dismiss keyboard when tapped outside of keyboard view
+            keyboardDismissGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+            keyboardDismissGesture?.cancelsTouchesInView = false
+            self.view.addGestureRecognizer(keyboardDismissGesture!)
+        }
+
     }
     func setObservers() {
         guard let plist = d?.prefsPlist else {

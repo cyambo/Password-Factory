@@ -59,6 +59,7 @@
 		402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C96491FD5B31200E2B37E /* Utilities.swift */; };
 		402C964E1FD5C57C00E2B37E /* PasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */; };
 		402C96531FD5D69600E2B37E /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C96521FD5D69600E2B37E /* PickerViewController.swift */; };
+		402CF5A01FDC6FE10037C56D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402CF59F1FDC6FE10037C56D /* TextFieldView.swift */; };
 		402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
@@ -100,6 +101,7 @@
 		40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
 		408BCD091FCE498400EC8B39 /* PatternTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408BCD081FCE498400EC8B39 /* PatternTextView.m */; };
 		40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40940E291FC6249300CA1261 /* ExportViewController.m */; };
+		409485D01FDDB450006D3332 /* UIView+parentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409485CF1FDDB450006D3332 /* UIView+parentViewController.swift */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
 		409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CD1B8112D600393B99 /* PreferencesWindowTestClass.m */; };
 		4095860F1B8112FD00393B99 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
@@ -155,6 +157,7 @@
 		40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
 		40E4535A1FCBA4FD0075F490 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E453591FCBA4FD0075F490 /* BoxView.m */; };
+		40E580451FDDA2B800AD7DB9 /* SelectPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */; };
 		40E809AB1FD485AB0042AA8A /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40E809AC1FD4861A0042AA8A /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		40E809AD1FD48CE50042AA8A /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A2E3DC1F92756A0044E2A1 /* frequency_lists.json */; };
@@ -280,6 +283,7 @@
 		402C96491FD5B31200E2B37E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextView.swift; sourceTree = "<group>"; };
 		402C96521FD5D69600E2B37E /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		402CF59F1FDC6FE10037C56D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 		408BCD081FCE498400EC8B39 /* PatternTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatternTextView.m; sourceTree = "<group>"; };
 		40940E281FC6249300CA1261 /* ExportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportViewController.h; sourceTree = "<group>"; };
 		40940E291FC6249300CA1261 /* ExportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportViewController.m; sourceTree = "<group>"; };
+		409485CF1FDDB450006D3332 /* UIView+parentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+parentViewController.swift"; sourceTree = "<group>"; };
 		409585CA1B8112D600393B99 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTests.m; sourceTree = "<group>"; };
 		409585CB1B8112D600393B99 /* PasswordFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactoryTests.m; sourceTree = "<group>"; };
 		409585CC1B8112D600393B99 /* PreferencesWindowTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowTestClass.h; sourceTree = "<group>"; };
@@ -402,6 +407,7 @@
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		40E453581FCBA4FD0075F490 /* BoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
 		40E453591FCBA4FD0075F490 /* BoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
+		40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPickerView.swift; sourceTree = "<group>"; };
 		40E809B11FD491AA0042AA8A /* PFConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFConstants.swift; sourceTree = "<group>"; };
 		40E939B71FD4A88600B32A2D /* PatternCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternCollectionViewCell.swift; sourceTree = "<group>"; };
 		40EC53011FC8A7ED007F6EFF /* PreferencesWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
@@ -513,6 +519,7 @@
 			children = (
 				400E45D41FD86FBD00A3F4F7 /* UIView+removeSubviews.swift */,
 				400E45D81FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift */,
+				409485CF1FDDB450006D3332 /* UIView+parentViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -643,6 +650,8 @@
 				400E45DC1FDA2C9900A3F4F7 /* ButtonsContainer.swift */,
 				40AB01DF1FDB029F00D34027 /* SwitchView.swift */,
 				400210F01FDB316600D272BB /* StepperView.swift */,
+				402CF59F1FDC6FE10037C56D /* TextFieldView.swift */,
+				40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1058,6 +1067,7 @@
 				40AAB5CC1F8EC67F00324759 /* Resources */,
 				DC7BC81662A1C43EEBD4743C /* [CP] Embed Pods Frameworks */,
 				A6EB55D43AB3C1987A435A16 /* [CP] Copy Pods Resources */,
+				40B30B7B1FDEE60C0055D6FB /* Show TODO and FIXME as warnings */,
 			);
 			buildRules = (
 			);
@@ -1390,6 +1400,20 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}/Password Factory Widget\" \"${SRCROOT}/Password FactoryTests\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
+		40B30B7B1FDEE60C0055D6FB /* Show TODO and FIXME as warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Show TODO and FIXME as warnings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
 		588F7CC6E85DA1283794FC67 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1600,7 +1624,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				404D73CB1FD61B3D00A6FA0D /* PasswordController.m in Sources */,
+				409485D01FDDB450006D3332 /* UIView+parentViewController.swift in Sources */,
 				400210F11FDB316600D272BB /* StepperView.swift in Sources */,
+				402CF5A01FDC6FE10037C56D /* TextFieldView.swift in Sources */,
 				406BD2301FD3148200D0E854 /* ControlsContainer.swift in Sources */,
 				400E45D51FD86FBD00A3F4F7 /* UIView+removeSubviews.swift in Sources */,
 				402C96451FD4C53B00E2B37E /* ColorUtilities.m in Sources */,
@@ -1634,6 +1660,7 @@
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
 				400E45DD1FDA2C9900A3F4F7 /* ButtonsContainer.swift in Sources */,
 				40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */,
+				40E580451FDDA2B800AD7DB9 /* SelectPickerView.swift in Sources */,
 				400E45D71FD8726800A3F4F7 /* SelectTypesView.swift in Sources */,
 				400108251FD3370B00594304 /* NSString+SymbolCase.m in Sources */,
 				400108151FD333A800594304 /* PasswordFactoryConstants.m in Sources */,

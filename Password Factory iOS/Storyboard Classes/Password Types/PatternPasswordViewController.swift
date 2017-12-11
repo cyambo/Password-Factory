@@ -29,17 +29,16 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
     }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     func textViewDidChange(_ textView: UITextView) {
         typeLabel.text = ""
-        //checking to see if a newline was entered, that means 'done' was pressed on the keyboard and need to dismiss it
-        if(textView.text.last == "\n") {
-            //remove the newline, because it doesn't make sense in the pattern
-            textView.text.remove(at: textView.text.index(before: textView.text.endIndex))
-            //dismiss the keyboard
-            textView.resignFirstResponder()
-            //scroll back to the top
-            textView.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
-        } else if(textView.text.count > 0) {
+        if(textView.text.count > 0) {
             //setting the typeLabel to the type that was last entered
             if let lc = textView.text.last {
                 let last = String(describing:lc)
@@ -51,6 +50,10 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         }
         d.setObject(patternText.text, forKey: "userPattern")
         highlightPatternString()
+    }
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        print ("fad")
+        return true
     }
     func highlightPatternString() {
         if(d.bool(forKey: "colorPasswordText")) {

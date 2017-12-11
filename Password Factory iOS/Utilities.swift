@@ -9,6 +9,7 @@
 import UIKit
 
 class Utilities: NSObject {
+    static let tintColor = UIColor(red:0.99, green:0.31, blue:0.16, alpha:1.0)
     public class func roundCorners(layer: CALayer, withBorder: Bool) {
         layer.cornerRadius = 10.0
         layer.backgroundColor = UIColor.white.cgColor
@@ -86,5 +87,11 @@ class Utilities: NSObject {
         let vc = NSLayoutConstraint.constraints(withVisualFormat: "V\(constraintString)", options: [], metrics: nil, views: views)
         superView.addConstraints(hc)
         superView.addConstraints(vc)
+    }
+    public class func centerViewVerticallyInContainer(_ view: UIView, superview: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        superview.translatesAutoresizingMaskIntoConstraints = false
+        let views = ["view": view, "superview": superview]
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[superview]-(<=1)-[view]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views))
     }
 }
