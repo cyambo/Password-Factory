@@ -322,7 +322,7 @@
 /**
  Changes the password strength when someone types in the password field
 
- @param notification <#notification description#>
+ @param notification default notification
  */
 -(void)textDidChange:(NSNotification *)notification {
     [self.password setPasswordValue: self.passwordField.textStorage.string];

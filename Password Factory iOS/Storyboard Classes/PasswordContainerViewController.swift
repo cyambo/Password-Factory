@@ -60,6 +60,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
             }
         }
         passwordTextView.textContainer.lineBreakMode = .byCharWrapping
+        passwordTextView.textContainer.maximumNumberOfLines = 1
         generatePassword()
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -71,7 +72,11 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         return true
     }
     func textViewDidChange(_ textView: UITextView) {
-        //TODO: update strength
+        
+        controller?.setPasswordValue(passwordTextView.text)
+        controller?.updatePasswordStrength()
+        passwordTextView.attributedText = Utilities.highlightPassword(password: passwordTextView.text, font: passwordFont)
+        updateStrength()
     }
     @IBAction func pressedZoomButton(_ sender: UIButton) {
         //TODO: show zoom
@@ -100,12 +105,14 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         } else {
             passwordTextView.text = ""
         }
+        updateStrength()
+        passwordLengthDisplay.text = "\(passwordTextView.text.count)"
+    }
+    func updateStrength() {
         //update the strength
         if let s = controller?.getPasswordStrength() {
             strengthMeter.updateStrength(s: Double(s))
         }
-
-        passwordLengthDisplay.text = "\(passwordTextView.text.count)"
     }
 
 }

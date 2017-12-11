@@ -890,7 +890,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="PASSWORD">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="24"/>
+                                                    <font key="NSFont" size="18" name=".SFNSDisplay"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>

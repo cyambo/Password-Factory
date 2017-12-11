@@ -56,10 +56,18 @@ class TextFieldView: UIView, UITextFieldDelegate {
 
         Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
         Utilities.centerViewVerticallyInContainer(controlText, superview: self)
+        setTextFieldFromDefaults()
         let n = NotificationCenter.default
         n.addObserver(self, selector: #selector(textChanged), name: .UITextFieldTextDidChange, object: controlText)
     }
     
+    /// sets the text field with defaults value
+    func setTextFieldFromDefaults() {
+        guard let dk = defaultsKey else {
+            return
+        }
+        controlText.text = d.string(forKey: dk)
+    }
     /// Dismisses the keyboard when done is pressed
     ///
     /// - Parameter textField: default
