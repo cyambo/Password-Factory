@@ -33,8 +33,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupView()
-        let key = getDefaultsKey()
-        if key.count > 0 {
+        
+        if let key = getDefaultsKey() {
             if let selected = d?.integer(forKey: key) {
                 itemPickerView.selectRow(selected, inComponent: 0, animated: false)
             }
@@ -43,9 +43,17 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func setupView() {
         Utilities.roundCorners(layer: containerView.layer, withBorder: false)
         Utilities.dropShadow(view: containerView)
-        self.titleLabel.text = "Select \(pickerType.rawValue)"
+        setupTitle()
+        Utilities.roundCorners(view: titleLabel, corners: [.topLeft, .topRight], withBorder: false)
+        
     }
-
+    func setupTitle() {
+        if pickerType == .PasswordType {
+            self.titleLabel.text = "Password Source"
+        } else {
+            self.titleLabel.text = "Select \(pickerType.rawValue)"
+        }
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -53,7 +61,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch (pickerType) {
         case .CaseType:
-            if passwordType == .advancedType || passwordType == .randomType {
+            if passwordType == .randomType {
                 return c.caseTypes.count - 1
             }
             return c.caseTypes.count
@@ -67,8 +75,13 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
         switch (pickerType) {
         case .CaseType:
-            let ct = c.getCaseType(by: UInt(row))
-            return c.caseTypes[ct]
+            if row == 0 {
+                return "No Change"
+            } else {
+                let ct = c.getCaseType(by: UInt(row - 1))
+                return c.caseTypes[ct]
+            }
+
         case .SeparatorType:
             let st = c.getSeparatorType(by: UInt(row))
             return c.separatorTypes[st]
@@ -81,12 +94,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.dismiss(animated: true, completion: nil)
         let selected = itemPickerView.selectedRow(inComponent: 0)
         delegate?.selectedItem(type: pickerType, index: selected)
-        let key = getDefaultsKey()
-        if key.count > 0 {
-            d?.setInteger(selected, forKey: key)
-        }
     }
-    func getDefaultsKey() -> String {
+    func getDefaultsKey() -> String? {
         var pick = pickerType.rawValue + "Type"
         if pickerType == .PasswordType {
             pick = "Source"
@@ -94,7 +103,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if let pt = c.passwordTypes[passwordType]?.lowercased() {
             return pt + pick + "Index"
         }
-        return ""
+        return nil
     }
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (touch.view?.isDescendant(of: containerView))! {

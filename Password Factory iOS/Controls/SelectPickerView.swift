@@ -93,8 +93,21 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         guard let caseTypeKey = getDefaultsKey() else {
             return
         }
-        let caseType = c.getCaseType(by: UInt(d.integer(forKey: caseTypeKey)))
-        controlButton.setTitle(c.caseTypes[caseType], for: .normal)
+        guard let pt = passwordType else {
+            return
+        }
+        var index = d.integer(forKey: caseTypeKey)
+        var title = ""
+        if pt == .advancedType {
+            index = index - 1
+        }
+        if index < 0 {
+            title = "No Change"
+        } else {
+            let caseType = c.getCaseType(by: UInt(index))
+            title = c.caseTypes[caseType] ?? "--"
+        }
+        controlButton.setTitle(title, for: .normal)
         
     }
     func setupSeparatorType() {
@@ -144,13 +157,22 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
     }
     func selectedItem(type: PickerTypes, index: Int) {
         var t = "--"
+        var i = index
         switch (type) {
         case .CaseType:
-            t = c.caseTypes[c.getCaseType(by: UInt(index))] ?? t
+            if passwordType! == .advancedType {
+                i = i - 1
+            }
+            if i < 0 {
+                t = "No Change"
+            } else {
+               t = c.caseTypes[c.getCaseType(by: UInt(i))] ?? t
+            }
+            
         case .SeparatorType:
-            t = c.separatorTypes[c.getSeparatorType(by: UInt(index))] ?? t
+            t = c.separatorTypes[c.getSeparatorType(by: UInt(i))] ?? t
         case .PasswordType:
-            t = c.passwordTypes[c.getPasswordType(by: UInt(index))] ?? t
+            t = c.passwordTypes[c.getPasswordType(by: UInt(i))] ?? t
         }
         if let key = getDefaultsKey() {
             d.setInteger(index, forKey: key)

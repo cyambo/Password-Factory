@@ -62,7 +62,24 @@ class TextFieldView: UIView, UITextFieldDelegate {
         return true
     }
     @objc func textChanged() {
-
-        d.setObject(controlText.text, forKey: defaultsKey)
+        //do we have anything in the text
+        if let s = controlText.text {
+            //if we are the find regex
+            if defaultsKey == "advancedFindRegex" {
+                controlText.textColor = UIColor.black
+                //turn the text red if the regex is not valid
+                do {
+                    _ = try NSRegularExpression(pattern: s, options: .caseInsensitive)
+                } catch {
+                    controlText.textColor = UIColor.red
+                }
+            }
+            //set the text
+            d.setObject(s, forKey: defaultsKey)
+        } else {
+            //set nothing
+            d.setObject("", forKey: defaultsKey)
+        }
+        
     }
 }
