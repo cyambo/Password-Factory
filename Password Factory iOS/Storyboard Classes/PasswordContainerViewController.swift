@@ -78,19 +78,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         //TODO: show zoom
     }
     
-    /// Generates password when button is pressed
-    ///
-    /// - Parameter sender: default sender
-    @IBAction func pressedGenerateButton(_ sender: Any) {
-        generatePassword()
-    }
-    
-    /// Copies the password to the pasteboard
-    ///
-    /// - Parameter sender: default sender
-    @IBAction func pressedCopyButton(_ sender: Any) {
-        UIPasteboard.general.string = passwordTextView.text
-    }
+
     
     /// Generates a new password and updates strength
     func generatePassword() {

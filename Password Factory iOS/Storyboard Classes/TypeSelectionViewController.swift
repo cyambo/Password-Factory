@@ -62,6 +62,22 @@ class TypeSelectionViewController: UIViewController {
         }
         d?.setInteger(selType.rawValue, forKey: "selectedPasswordType")
     }
+    /// Generates password when button is pressed
+    ///
+    /// - Parameter sender: default sender
+    @IBAction func pressedGenerateButton(_ sender: Any) {
+        currentViewController?.generatePassword()
+    }
+    
+    /// Copies the password to the pasteboard
+    ///
+    /// - Parameter sender: default sender
+    @IBAction func pressedCopyButton(_ sender: Any) {
+        if let currPass = currentViewController?.passwordTextView.text {
+            UIPasteboard.general.string = currPass
+        }
+        
+    }
     func setSelectedPasswordType() {
         guard let typeInt = d?.integer(forKey: "selectedPasswordType") else {
             return

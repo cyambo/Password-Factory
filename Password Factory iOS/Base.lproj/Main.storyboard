@@ -34,11 +34,14 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-dz-RZb" userLabel="Selection Container">
-                                <rect key="frame" x="16" y="614" width="343" height="53"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-dz-RZb" userLabel="Selection Container" customClass="ButtonsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                <rect key="frame" x="16" y="585" width="343" height="82"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jUq-0Y-Ywb">
-                                        <rect key="frame" x="8" y="9" width="327" height="29"/>
+                                        <rect key="frame" x="8" y="46" width="327" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="K7W-hD-MOt"/>
+                                        </constraints>
                                         <segments>
                                             <segment title="First"/>
                                             <segment title="Second"/>
@@ -47,17 +50,41 @@
                                             <action selector="selectType:" destination="fD8-6D-Gbm" eventType="valueChanged" id="2NC-A5-dYb"/>
                                         </connections>
                                     </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3p-3g-Cie">
+                                        <rect key="frame" x="0.0" y="8" width="171.5" height="30"/>
+                                        <state key="normal" title="Generate"/>
+                                        <connections>
+                                            <action selector="pressedGenerateButton:" destination="fD8-6D-Gbm" eventType="touchUpInside" id="qNj-VQ-tZY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vug-YN-pqk">
+                                        <rect key="frame" x="171.5" y="8" width="171.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="0P7-yc-vbY"/>
+                                        </constraints>
+                                        <state key="normal" title="Copy"/>
+                                        <connections>
+                                            <action selector="pressedCopyButton:" destination="fD8-6D-Gbm" eventType="touchUpInside" id="Emt-wc-5uU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="1Nx-8X-DYT"/>
+                                    <constraint firstItem="a3p-3g-Cie" firstAttribute="height" secondItem="Vug-YN-pqk" secondAttribute="height" id="3wX-nH-8E2"/>
+                                    <constraint firstItem="Vug-YN-pqk" firstAttribute="leading" secondItem="a3p-3g-Cie" secondAttribute="trailing" id="5jO-iq-5zD"/>
+                                    <constraint firstItem="Vug-YN-pqk" firstAttribute="top" secondItem="QYu-dz-RZb" secondAttribute="top" constant="8" id="6jA-er-gDO"/>
                                     <constraint firstItem="jUq-0Y-Ywb" firstAttribute="leading" secondItem="QYu-dz-RZb" secondAttribute="leading" constant="8" id="Gvk-Ns-C3k"/>
-                                    <constraint firstAttribute="bottom" secondItem="jUq-0Y-Ywb" secondAttribute="bottom" constant="16" id="dSh-Qt-s1g"/>
+                                    <constraint firstItem="jUq-0Y-Ywb" firstAttribute="top" secondItem="Vug-YN-pqk" secondAttribute="bottom" constant="8" id="Ngr-3j-VWP"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vug-YN-pqk" secondAttribute="trailing" id="Qb8-XW-Pu3"/>
+                                    <constraint firstItem="a3p-3g-Cie" firstAttribute="width" secondItem="Vug-YN-pqk" secondAttribute="width" id="YD9-Gh-eDH"/>
                                     <constraint firstAttribute="trailing" secondItem="jUq-0Y-Ywb" secondAttribute="trailing" constant="8" id="gDz-AH-GuE"/>
+                                    <constraint firstAttribute="bottom" secondItem="jUq-0Y-Ywb" secondAttribute="bottom" constant="8" id="mnz-iC-4lw"/>
+                                    <constraint firstItem="Vug-YN-pqk" firstAttribute="centerY" secondItem="a3p-3g-Cie" secondAttribute="centerY" id="qZy-ZI-FA8"/>
+                                    <constraint firstItem="a3p-3g-Cie" firstAttribute="leading" secondItem="QYu-dz-RZb" secondAttribute="leading" id="rlQ-rV-5CO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96N-xx-wIs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="614"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -97,41 +124,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq2-1h-ReF" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="158" width="295" height="452"/>
+                                <rect key="frame" x="40" y="158" width="295" height="501"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-FT-S3v" userLabel="Buttons" customClass="ButtonsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="16" y="618" width="343" height="49"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60d-QR-74K">
-                                        <rect key="frame" x="171.5" y="0.5" width="171.5" height="49"/>
-                                        <state key="normal" title="Copy"/>
-                                        <connections>
-                                            <action selector="pressedCopyButton:" destination="khg-tJ-abi" eventType="touchUpInside" id="kE7-DF-2xP"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCT-Ik-veD">
-                                        <rect key="frame" x="0.0" y="0.0" width="171" height="49"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="49" id="pgu-cj-TFQ"/>
-                                        </constraints>
-                                        <state key="normal" title="Generate"/>
-                                        <connections>
-                                            <action selector="pressedGenerateButton:" destination="khg-tJ-abi" eventType="touchUpInside" id="XXb-f3-hPc"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="jCT-Ik-veD" firstAttribute="leading" secondItem="1Cd-FT-S3v" secondAttribute="leading" id="0VT-1I-GQu"/>
-                                    <constraint firstItem="60d-QR-74K" firstAttribute="centerY" secondItem="jCT-Ik-veD" secondAttribute="centerY" id="7Ym-Sc-bYc"/>
-                                    <constraint firstItem="jCT-Ik-veD" firstAttribute="height" secondItem="60d-QR-74K" secondAttribute="height" id="A1c-tx-1DA"/>
-                                    <constraint firstAttribute="trailing" secondItem="60d-QR-74K" secondAttribute="trailing" id="Ils-BX-nwv"/>
-                                    <constraint firstAttribute="bottom" secondItem="jCT-Ik-veD" secondAttribute="bottom" id="SQq-Xw-Ypw"/>
-                                    <constraint firstItem="jCT-Ik-veD" firstAttribute="top" secondItem="1Cd-FT-S3v" secondAttribute="top" id="bbv-6U-jiy"/>
-                                    <constraint firstItem="jCT-Ik-veD" firstAttribute="width" secondItem="60d-QR-74K" secondAttribute="width" id="dsL-wZ-WRD"/>
-                                    <constraint firstItem="60d-QR-74K" firstAttribute="leading" secondItem="jCT-Ik-veD" secondAttribute="trailing" id="z3t-yO-4bP"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWY-Nj-X5d" customClass="StrengthMeter" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="16" y="0.0" width="343" height="150"/>
@@ -190,14 +184,11 @@
                         <constraints>
                             <constraint firstItem="hWY-Nj-X5d" firstAttribute="top" secondItem="umP-QV-cBN" secondAttribute="top" id="3c8-97-amP"/>
                             <constraint firstItem="fq2-1h-ReF" firstAttribute="leading" secondItem="umP-QV-cBN" secondAttribute="leading" constant="40" id="6tp-12-bT4"/>
-                            <constraint firstItem="1Cd-FT-S3v" firstAttribute="top" secondItem="fq2-1h-ReF" secondAttribute="bottom" constant="8" id="BCa-be-i4P"/>
                             <constraint firstItem="hWY-Nj-X5d" firstAttribute="leading" secondItem="umP-QV-cBN" secondAttribute="leading" constant="16" id="Csi-3N-MFs"/>
-                            <constraint firstItem="W92-gv-z2d" firstAttribute="bottom" secondItem="1Cd-FT-S3v" secondAttribute="bottom" id="Kqr-u8-nXm"/>
                             <constraint firstAttribute="trailing" secondItem="hWY-Nj-X5d" secondAttribute="trailing" constant="16" id="MFb-we-ShX"/>
                             <constraint firstItem="fq2-1h-ReF" firstAttribute="top" secondItem="hWY-Nj-X5d" secondAttribute="bottom" constant="8" id="OVv-in-GQc"/>
-                            <constraint firstItem="1Cd-FT-S3v" firstAttribute="leading" secondItem="W92-gv-z2d" secondAttribute="leading" constant="16" id="icS-2A-aPN"/>
+                            <constraint firstAttribute="bottom" secondItem="fq2-1h-ReF" secondAttribute="bottom" constant="8" id="iGg-48-aXd"/>
                             <constraint firstItem="W92-gv-z2d" firstAttribute="top" secondItem="MaC-uI-G5O" secondAttribute="bottom" constant="-92" id="nvT-4W-MjN"/>
-                            <constraint firstItem="W92-gv-z2d" firstAttribute="trailing" secondItem="1Cd-FT-S3v" secondAttribute="trailing" constant="16" id="xDi-Hb-aVu"/>
                             <constraint firstAttribute="trailing" secondItem="fq2-1h-ReF" secondAttribute="trailing" constant="40" id="xko-7S-6de"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W92-gv-z2d"/>
@@ -863,39 +854,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqQ-ro-B6V" userLabel="Buttons" customClass="ButtonsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="16" y="618" width="343" height="49"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9Z-oo-Mw4">
-                                        <rect key="frame" x="171.5" y="0.5" width="171.5" height="49"/>
-                                        <state key="normal" title="Copy"/>
-                                        <connections>
-                                            <action selector="pressedCopyButton:" destination="uRl-z1-nZ4" eventType="touchUpInside" id="kls-6K-Ksu"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgO-q1-Zkj">
-                                        <rect key="frame" x="0.0" y="0.0" width="171" height="49"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="49" id="ONc-fa-C6s"/>
-                                        </constraints>
-                                        <state key="normal" title="Generate"/>
-                                        <connections>
-                                            <action selector="pressedGenerateButton:" destination="uRl-z1-nZ4" eventType="touchUpInside" id="2Gp-TR-LaK"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="t9Z-oo-Mw4" firstAttribute="centerY" secondItem="bgO-q1-Zkj" secondAttribute="centerY" id="3VC-hz-4v6"/>
-                                    <constraint firstItem="bgO-q1-Zkj" firstAttribute="height" secondItem="t9Z-oo-Mw4" secondAttribute="height" id="5qH-93-SlN"/>
-                                    <constraint firstItem="t9Z-oo-Mw4" firstAttribute="leading" secondItem="bgO-q1-Zkj" secondAttribute="trailing" id="B0d-RV-GvX"/>
-                                    <constraint firstItem="bgO-q1-Zkj" firstAttribute="leading" secondItem="zqQ-ro-B6V" secondAttribute="leading" id="Ckv-d7-vAY"/>
-                                    <constraint firstItem="bgO-q1-Zkj" firstAttribute="top" secondItem="zqQ-ro-B6V" secondAttribute="top" id="s5t-pJ-rwU"/>
-                                    <constraint firstItem="bgO-q1-Zkj" firstAttribute="width" secondItem="t9Z-oo-Mw4" secondAttribute="width" id="vGt-3I-GoN"/>
-                                    <constraint firstAttribute="trailing" secondItem="t9Z-oo-Mw4" secondAttribute="trailing" id="wB7-uc-9Xs"/>
-                                    <constraint firstAttribute="bottom" secondItem="bgO-q1-Zkj" secondAttribute="bottom" id="zbp-c1-ek4"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRx-T7-U1Y" customClass="StrengthMeter" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="16" y="0.0" width="343" height="113"/>
                                 <subviews>
@@ -950,22 +908,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybd-A8-L1O" userLabel="Big Container" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="4" y="121" width="367" height="489"/>
+                                <rect key="frame" x="4" y="121" width="367" height="538"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="qRx-T7-U1Y" firstAttribute="leading" secondItem="OCK-6D-Ruf" secondAttribute="leading" constant="16" id="4Fu-Cr-TdQ"/>
                             <constraint firstItem="qRx-T7-U1Y" firstAttribute="top" secondItem="OCK-6D-Ruf" secondAttribute="top" id="6RH-yJ-vJS"/>
+                            <constraint firstAttribute="bottom" secondItem="ybd-A8-L1O" secondAttribute="bottom" constant="8" id="Bb7-QB-p45"/>
                             <constraint firstItem="ybd-A8-L1O" firstAttribute="top" secondItem="qRx-T7-U1Y" secondAttribute="bottom" constant="8" id="Fvx-Fg-bUB"/>
                             <constraint firstItem="cLh-ch-7CM" firstAttribute="top" secondItem="0qq-Zg-yxn" secondAttribute="bottom" constant="-55" id="GLz-Qd-L48"/>
                             <constraint firstAttribute="trailing" secondItem="ybd-A8-L1O" secondAttribute="trailing" constant="4" id="PTY-0U-gyT"/>
-                            <constraint firstItem="cLh-ch-7CM" firstAttribute="bottom" secondItem="zqQ-ro-B6V" secondAttribute="bottom" id="QUM-q5-7CN"/>
-                            <constraint firstItem="zqQ-ro-B6V" firstAttribute="top" secondItem="ybd-A8-L1O" secondAttribute="bottom" constant="8" id="SkD-jG-j3G"/>
                             <constraint firstAttribute="trailing" secondItem="qRx-T7-U1Y" secondAttribute="trailing" constant="16" id="U5G-CI-QBx"/>
-                            <constraint firstItem="cLh-ch-7CM" firstAttribute="trailing" secondItem="zqQ-ro-B6V" secondAttribute="trailing" constant="16" id="rV5-7m-RQ7"/>
                             <constraint firstItem="ybd-A8-L1O" firstAttribute="leading" secondItem="OCK-6D-Ruf" secondAttribute="leading" constant="4" id="sBR-wE-9QQ"/>
-                            <constraint firstItem="zqQ-ro-B6V" firstAttribute="leading" secondItem="cLh-ch-7CM" secondAttribute="leading" constant="16" id="wCW-vl-Uad"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cLh-ch-7CM"/>
                     </view>
