@@ -55,7 +55,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
             //only add a new password control view if there are no views in the container
             if let pv = passwordViewController?.view {
                 containerView.addSubview(pv)
-                Utilities.fillViewInContainer(pv, superview: containerView, padding: 8)
+                Utilities.fillViewInContainer(pv, superview: containerView, padding: 16)
                 bigTypeImage.setImage(type: type)
             }
         }
@@ -107,6 +107,8 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         }
         updateStrength()
         passwordLengthDisplay.text = "\(passwordTextView.text.count)"
+        //scroll to top
+        passwordTextView.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
     }
     func updateStrength() {
         //update the strength

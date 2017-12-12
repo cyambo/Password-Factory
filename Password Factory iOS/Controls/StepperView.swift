@@ -43,7 +43,7 @@ class StepperView: UIView {
         controlStepper.translatesAutoresizingMaskIntoConstraints = false
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[label]-8-[stepper(==94)]-8-[value(==70)]-8-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-8-[stepper(==94)]-8-[value(==70)]-0-|", options: [], metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[value(==29)]", options: [], metrics: nil, views: views))
         Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
         Utilities.centerViewVerticallyInContainer(controlStepper, superview: self)

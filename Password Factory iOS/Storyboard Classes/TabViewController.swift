@@ -22,7 +22,7 @@ class TabViewController: UITabBarController {
         super.init(coder: aDecoder)
         mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         //TODO: use defaults for random and stored
-        passwordController.useStoredType = false
+        passwordController.useStoredType = true
         passwordController.useAdvancedType = true
         //initializing all the view controllers and putting them in the tab view
         var newVc = [UIViewController]()

@@ -49,7 +49,7 @@ class SwitchView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         controlSwitch.translatesAutoresizingMaskIntoConstraints = false
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[switch(==51)]-(16)-[label]-16-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-8-[switch(==51)]-0-|", options: [], metrics: nil, views: views))
 
         Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
         Utilities.centerViewVerticallyInContainer(controlSwitch, superview: self)

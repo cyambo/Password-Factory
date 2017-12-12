@@ -46,9 +46,8 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-12-[collection(==50)]", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-8-[collection(==50)]", options: [], metrics: nil, views: views))
         Utilities.roundCorners(layer: collection.layer, withBorder: false)
-
         
     }
     
@@ -72,8 +71,9 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
             return
         }
         currentSelectType = selType
-        typeLabel.text = "\(selType.rawValue) Type"
+        typeLabel.text = "\(selType.rawValue)"
         currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
+
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
