@@ -28,6 +28,10 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         }
         Utilities.roundCorners(layer: patternButtonCollectionView.layer, withBorder: false)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        patternText.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
+    }
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
     }

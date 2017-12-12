@@ -35,11 +35,14 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
     
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        if (pickerTypeString != nil) {
-            pickerType = PickerTypes(rawValue: pickerTypeString!)
+        if newWindow != nil {
+            if (pickerTypeString != nil) {
+                pickerType = PickerTypes(rawValue: pickerTypeString!)
+            }
+            passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
+            setupView()
         }
-        passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
-        setupView()
+
     }
     
     /// Positions the views in the container
@@ -171,7 +174,9 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
             vc.modalPresentationStyle = .overCurrentContext
             vc.setType(type: pick,passwordType: pass)
             vc.delegate = self
-            parentViewController?.present(vc, animated: true, completion: nil)
+            if let r = UIApplication.shared.keyWindow?.rootViewController {
+                r.present(vc, animated: true, completion: nil)
+            }
         }
     }
     

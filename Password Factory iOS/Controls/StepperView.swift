@@ -32,7 +32,10 @@ class StepperView: UIView {
 
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        setupView() //calling setup view here because this is when the IBInspectables are set
+        if newWindow != nil {
+            setupView() //calling setup view here because this is when the IBInspectables are set
+        }
+        
     }
     
     /// positions the views and sets up the stepper

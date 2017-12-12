@@ -14,11 +14,8 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
     let c = PFConstants.instance
     let controller = PasswordController.get(false)
     let d = DefaultsManager.get()
-    var image: UIImage?
     var type: PFPasswordType = .randomType
-    @IBInspectable public var num: Int = 0
     
-    @IBOutlet weak var bigTypeImage: BigTypeIconView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var passwordLengthDisplay: UILabel!
@@ -32,15 +29,14 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         passwordFont = passwordTextView.font ?? passwordFont
     }
     
-    /// Set the password type used in this contollrer
+    /// Set the password type used in this contoller
     ///
     /// - Parameter type: type to set
     func setType(type: PFPasswordType) {
         self.type = type
         let typeName = c.getNameFor(type: type)
-        image = TypeIcons.getTypeIcon(type)
-        tabBarItem = UITabBarItem.init(title: typeName, image: image, tag: type.rawValue)
-        tabBarItem.tag = type.rawValue
+
+
         let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         passwordViewController = mainStoryboard.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController
         if let p = passwordViewController {
@@ -56,7 +52,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
             if let pv = passwordViewController?.view {
                 containerView.addSubview(pv)
                 Utilities.fillViewInContainer(pv, superview: containerView, padding: 16)
-                bigTypeImage.setImage(type: type)
+                
             }
         }
         passwordTextView.textContainer.lineBreakMode = .byCharWrapping

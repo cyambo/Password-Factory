@@ -35,7 +35,10 @@ class SwitchView: UIView {
     
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        setupView()
+        if newWindow != nil {
+            setupView()
+        }
+        
     }
     
     /// Adds and positions the switch and label
