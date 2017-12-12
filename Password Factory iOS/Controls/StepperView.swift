@@ -71,7 +71,13 @@ class StepperView: UIView {
     func setLabel() {
         controlLabel.text = label
         if defaultsKey != nil {
-            valueLabel.text = "\(d.integer(forKey: defaultsKey))"
+            let val = d.integer(forKey: defaultsKey)
+            if val == 0 && defaultsKey == "advancedTruncateAt" {
+                valueLabel.text = "None"
+            } else {
+               valueLabel.text = "\(val)"
+            }
+            
         } else {
             valueLabel.text = "--"
         }
