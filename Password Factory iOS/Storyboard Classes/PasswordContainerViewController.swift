@@ -54,10 +54,10 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
                 Utilities.fillViewInContainer(pv, superview: containerView, padding: 16)
                 
             }
+            generatePassword()
         }
         passwordTextView.textContainer.lineBreakMode = .byCharWrapping
         passwordTextView.textContainer.maximumNumberOfLines = 1
-        generatePassword()
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         //dismisses the keyboard when done is pressed
@@ -77,9 +77,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
     @IBAction func pressedZoomButton(_ sender: UIButton) {
         //TODO: show zoom
     }
-    
 
-    
     /// Generates a new password and updates strength
     func generatePassword() {
         controller?.generatePassword(type)

@@ -132,10 +132,9 @@ class Utilities: NSObject {
         let views = ["sub" : view]
         view.translatesAutoresizingMaskIntoConstraints = false
         let constraintString = ":|-\(padding)-[sub]-\(padding)-|"
-        let hc = NSLayoutConstraint.constraints(withVisualFormat: "H\(constraintString)", options: [], metrics: nil, views: views)
-        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V\(constraintString)", options: [], metrics: nil, views: views)
-        superview.addConstraints(hc)
-        superview.addConstraints(vc)
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H\(constraintString)", options: [], metrics: nil, views: views))
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V\(constraintString)", options: [], metrics: nil, views: views))
+
     }
     
     /// Centers a view vertically in a container

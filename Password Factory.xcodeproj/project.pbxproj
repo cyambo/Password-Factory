@@ -60,6 +60,7 @@
 		402C96531FD5D69600E2B37E /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C96521FD5D69600E2B37E /* PickerViewController.swift */; };
 		402CF5A01FDC6FE10037C56D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402CF59F1FDC6FE10037C56D /* TextFieldView.swift */; };
 		402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
+		403248F71FE07B9D007D8797 /* UIView+removeConstraintsOnSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403248F61FE07B9D007D8797 /* UIView+removeConstraintsOnSubviews.swift */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
 		404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
@@ -283,6 +284,7 @@
 		402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextView.swift; sourceTree = "<group>"; };
 		402C96521FD5D69600E2B37E /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		402CF59F1FDC6FE10037C56D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		403248F61FE07B9D007D8797 /* UIView+removeConstraintsOnSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+removeConstraintsOnSubviews.swift"; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				400E45D41FD86FBD00A3F4F7 /* UIView+removeSubviews.swift */,
 				400E45D81FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift */,
 				409485CF1FDDB450006D3332 /* UIView+parentViewController.swift */,
+				403248F61FE07B9D007D8797 /* UIView+removeConstraintsOnSubviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1664,6 +1667,7 @@
 				400E45D71FD8726800A3F4F7 /* SelectTypesView.swift in Sources */,
 				400108251FD3370B00594304 /* NSString+SymbolCase.m in Sources */,
 				400108151FD333A800594304 /* PasswordFactoryConstants.m in Sources */,
+				403248F71FE07B9D007D8797 /* UIView+removeConstraintsOnSubviews.swift in Sources */,
 				40E809AB1FD485AB0042AA8A /* DefaultsManager.m in Sources */,
 				40189F5C1FD46A6D00D87217 /* PassphrasePasswordViewController.swift in Sources */,
 				402C964E1FD5C57C00E2B37E /* PasswordTextView.swift in Sources */,
