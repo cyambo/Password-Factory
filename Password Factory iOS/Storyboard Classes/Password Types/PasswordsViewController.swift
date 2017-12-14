@@ -34,26 +34,7 @@ class PasswordsViewController: UIViewController  {
     }
 
     
-    /// Sets up the length slider with the maximum value and moves the knob to the defaults value
-    func setupLengthSlider() {
-        lengthSlider.minimumValue = 5.0
-        lengthSlider.maximumValue = d.float(forKey: "maxPasswordLength")
-        lengthSlider.setValue(d.float(forKey: "passwordLength"), animated: false)
-    }
-    
-    /// Called when length is changed - sets defaults and label
-    func lengthChanged() {
-        let length = Int(lengthSlider.value)
-        lengthDisplay.text = "\(length)"
-        d.setInteger(Int(lengthSlider.value), forKey: "passwordLength")
-    }
-    
-    /// action when length is changed
-    ///
-    /// - Parameter sender: default sender
-    @IBAction func changeLengthSlider(_ sender: UISlider) {
-        lengthChanged()
-    }
+
 
     
     

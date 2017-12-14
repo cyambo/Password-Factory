@@ -94,6 +94,7 @@
 		406C388B1B844D0600F471E7 /* StrengthControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3F1B8447A700727FDB /* StrengthControl.m */; };
 		406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 409DEE3C1B84476F00727FDB /* StrengthBox.m */; };
 		406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585FE1B8112FD00393B99 /* PreferencesButton.m */; };
+		406E8FE11FE30E7400A76765 /* LengthControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E8FE01FE30E7400A76765 /* LengthControlView.swift */; };
 		407DA8D61FCC9A8800B84E66 /* ColorTextPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */; };
 		40855E0A1FBCEEA8005BD8F4 /* StoredPasswordColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */; };
 		40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E0C1FBD1628005BD8F4 /* TypeIcons.m */; };
@@ -313,6 +314,7 @@
 		406BD2321FD315C000D0E854 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		406BD2341FD3166100D0E854 /* StrengthMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthMeter.swift; sourceTree = "<group>"; };
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
+		406E8FE01FE30E7400A76765 /* LengthControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthControlView.swift; sourceTree = "<group>"; };
 		407DA8D41FCC9A8800B84E66 /* ColorTextPreview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorTextPreview.h; sourceTree = "<group>"; };
 		407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorTextPreview.m; sourceTree = "<group>"; };
 		40855E081FBCEEA8005BD8F4 /* StoredPasswordColumn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoredPasswordColumn.h; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 				400210F01FDB316600D272BB /* StepperView.swift */,
 				402CF59F1FDC6FE10037C56D /* TextFieldView.swift */,
 				40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */,
+				406E8FE01FE30E7400A76765 /* LengthControlView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1662,6 +1665,7 @@
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
 				400E45DD1FDA2C9900A3F4F7 /* ButtonsContainer.swift in Sources */,
+				406E8FE11FE30E7400A76765 /* LengthControlView.swift in Sources */,
 				40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */,
 				40E580451FDDA2B800AD7DB9 /* SelectPickerView.swift in Sources */,
 				400E45D71FD8726800A3F4F7 /* SelectTypesView.swift in Sources */,

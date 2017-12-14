@@ -13,8 +13,7 @@ class PassphrasePasswordViewController: PasswordsViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupLengthSlider()
-        lengthChanged()
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
