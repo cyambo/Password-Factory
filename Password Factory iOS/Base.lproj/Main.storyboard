@@ -37,6 +37,9 @@
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jUq-0Y-Ywb">
                                         <rect key="frame" x="8" y="46" width="327" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="MEi-xS-yoK"/>
+                                        </constraints>
                                         <segments>
                                             <segment title="First"/>
                                             <segment title="Second"/>
@@ -286,13 +289,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ulj-xk-CQo">
-                                <rect key="frame" x="0.0" y="85" width="343" height="276"/>
+                                <rect key="frame" x="0.0" y="85" width="343" height="284"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFn-xH-YMG" userLabel="Use Numbers" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="69"/>
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rFn-xH-YMG" userLabel="Use Numbers" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="71"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MdC-rb-3sB">
-                                                <rect key="frame" x="16" y="19" width="51" height="31"/>
+                                                <rect key="frame" x="16" y="20" width="51" height="31"/>
                                                 <accessibility key="accessibilityConfiguration" label="Use Numbers"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="W8B-Bv-Sah"/>
@@ -300,7 +303,7 @@
                                                 </constraints>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diO-cc-Mg5">
-                                                <rect key="frame" x="81" y="24.5" width="246" height="20.5"/>
+                                                <rect key="frame" x="81" y="25.5" width="246" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -312,7 +315,7 @@
                                             <constraint firstItem="diO-cc-Mg5" firstAttribute="leading" secondItem="MdC-rb-3sB" secondAttribute="trailing" constant="16" id="VLG-qC-EGd"/>
                                             <constraint firstItem="MdC-rb-3sB" firstAttribute="centerY" secondItem="rFn-xH-YMG" secondAttribute="centerY" id="Z12-WP-GQp"/>
                                             <constraint firstItem="MdC-rb-3sB" firstAttribute="leading" secondItem="rFn-xH-YMG" secondAttribute="leading" constant="16" id="cSM-ws-iri"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="dn5-yG-MJc"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="dn5-yG-MJc"/>
                                             <constraint firstAttribute="trailing" secondItem="diO-cc-Mg5" secondAttribute="trailing" constant="16" id="l5O-UW-TOQ"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -321,10 +324,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-2N-GYa" userLabel="Use Symbols" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="69" width="343" height="69"/>
+                                        <rect key="frame" x="0.0" y="71" width="343" height="71"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjA-DG-1fU">
-                                                <rect key="frame" x="16" y="19" width="51" height="31"/>
+                                                <rect key="frame" x="16" y="20" width="51" height="31"/>
                                                 <accessibility key="accessibilityConfiguration" label="Use Symbols"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="60K-fu-hBG"/>
@@ -332,7 +335,7 @@
                                                 </constraints>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Symbols" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9w-Jc-66q">
-                                                <rect key="frame" x="81" y="24.5" width="246" height="20.5"/>
+                                                <rect key="frame" x="81" y="25.5" width="246" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -352,10 +355,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-K0-hXd" userLabel="Avoid Ambiguous" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="138" width="343" height="69"/>
+                                        <rect key="frame" x="0.0" y="142" width="343" height="71"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGr-gv-4M8">
-                                                <rect key="frame" x="16" y="19" width="51" height="31"/>
+                                                <rect key="frame" x="16" y="20" width="51" height="31"/>
                                                 <accessibility key="accessibilityConfiguration" label="Avoid Ambiguous"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="OIX-AY-gDH"/>
@@ -363,7 +366,7 @@
                                                 </constraints>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avoid Ambiguous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7y-0s-rev">
-                                                <rect key="frame" x="81" y="24.5" width="246" height="20.5"/>
+                                                <rect key="frame" x="81" y="25.5" width="246" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -383,10 +386,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zi8-nK-CJ8" userLabel="Use Emoji" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="207" width="343" height="69"/>
+                                        <rect key="frame" x="0.0" y="213" width="343" height="71"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVs-so-sbA">
-                                                <rect key="frame" x="16" y="19" width="51" height="31"/>
+                                                <rect key="frame" x="16" y="20" width="51" height="31"/>
                                                 <accessibility key="accessibilityConfiguration" label="Use Emoji"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="FpE-i6-KWz"/>
@@ -394,7 +397,7 @@
                                                 </constraints>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-pu-2Ux">
-                                                <rect key="frame" x="81" y="24.5" width="246" height="20.5"/>
+                                                <rect key="frame" x="81" y="25.5" width="246" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -433,7 +436,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Wui-kw-72e" firstAttribute="top" secondItem="Ulj-xk-CQo" secondAttribute="bottom" constant="8" id="21N-vO-GeT"/>
+                            <constraint firstItem="Wui-kw-72e" firstAttribute="top" secondItem="Ulj-xk-CQo" secondAttribute="bottom" id="21N-vO-GeT"/>
                             <constraint firstItem="t7f-d2-COZ" firstAttribute="trailing" secondItem="ITo-M0-15I" secondAttribute="trailing" id="5pL-Y0-4bg"/>
                             <constraint firstItem="Ulj-xk-CQo" firstAttribute="leading" secondItem="t7f-d2-COZ" secondAttribute="leading" id="7Xk-Ps-Rba"/>
                             <constraint firstItem="t7f-d2-COZ" firstAttribute="bottom" secondItem="Wui-kw-72e" secondAttribute="bottom" id="8L7-EF-unR"/>

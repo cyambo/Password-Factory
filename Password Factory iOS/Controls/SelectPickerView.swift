@@ -55,6 +55,7 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         controlButton.translatesAutoresizingMaskIntoConstraints = false
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label(==125)]-8-[button]-0-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[button(==29)]", options: [], metrics: nil, views: views))
 
         Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
         Utilities.centerViewVerticallyInContainer(controlButton, superview: self)

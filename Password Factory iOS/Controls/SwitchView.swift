@@ -45,11 +45,12 @@ class SwitchView: UIView {
         } else {
             controlLabel.text = "Switch"
         }
+        
         let views = ["switch" : controlSwitch as UIView, "label" : controlLabel as UIView, "superview" : self]
         translatesAutoresizingMaskIntoConstraints = false
         controlSwitch.translatesAutoresizingMaskIntoConstraints = false
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-8-[switch(==51)]-0-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-8-[switch(==49)]-0-|", options: [], metrics: nil, views: views))
 
         Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
         Utilities.centerViewVerticallyInContainer(controlSwitch, superview: self)
@@ -59,6 +60,8 @@ class SwitchView: UIView {
             controlSwitch.setOn((d.bool(forKey: defaultsKey)), animated: false)
             controlSwitch.addTarget(self, action: #selector(changeSwitch), for: .valueChanged)
         }
+        controlSwitch.backgroundColor = UIColor.white
+        controlSwitch.layer.cornerRadius = 16
     }
     
     /// sets defaults for the switch state
