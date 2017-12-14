@@ -23,5 +23,6 @@ class ControlsContainer: UIView {
     }
     func setDisplay() {
         Utilities.roundCorners(layer: self.layer, withBorder: false)
+        backgroundColor = UIColor.white.withAlphaComponent(0.75)
     }
 }

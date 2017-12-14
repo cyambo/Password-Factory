@@ -95,10 +95,11 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLV-CU-ghx" userLabel="Padding View">
                                 <rect key="frame" x="16" y="667" width="343" height="0.0"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="1" green="0.32128514056224899" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kMU-Ol-EiP" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="5Ly-rh-CLq"/>
                             <constraint firstItem="hLV-CU-ghx" firstAttribute="bottom" secondItem="rZJ-aR-1l4" secondAttribute="bottom" id="67v-dn-6Ra"/>
@@ -273,7 +274,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="zpw-5E-aIJ"/>
                                 </constraints>
@@ -305,7 +306,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="diO-cc-Mg5" firstAttribute="centerY" secondItem="MdC-rb-3sB" secondAttribute="centerY" id="JCo-WJ-yL8"/>
                                             <constraint firstItem="diO-cc-Mg5" firstAttribute="leading" secondItem="MdC-rb-3sB" secondAttribute="trailing" constant="16" id="VLG-qC-EGd"/>
@@ -337,7 +338,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="wjA-DG-1fU" firstAttribute="centerY" secondItem="mUN-2N-GYa" secondAttribute="centerY" id="2vs-Gy-npn"/>
                                             <constraint firstItem="D9w-Jc-66q" firstAttribute="leading" secondItem="wjA-DG-1fU" secondAttribute="trailing" constant="16" id="4yD-T5-56g"/>
@@ -368,7 +369,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="o7y-0s-rev" firstAttribute="leading" secondItem="tGr-gv-4M8" secondAttribute="trailing" constant="16" id="Bqv-Cr-c7g"/>
                                             <constraint firstItem="o7y-0s-rev" firstAttribute="centerY" secondItem="tGr-gv-4M8" secondAttribute="centerY" id="Mmj-em-KKm"/>
@@ -399,7 +400,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="PVs-so-sbA" firstAttribute="centerY" secondItem="Zi8-nK-CJ8" secondAttribute="centerY" id="6zF-yH-lcY"/>
                                             <constraint firstItem="mhj-pu-2Ux" firstAttribute="leading" secondItem="PVs-so-sbA" secondAttribute="trailing" constant="16" id="Lu1-Ar-BTI"/>
@@ -430,7 +431,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Wui-kw-72e" firstAttribute="top" secondItem="Ulj-xk-CQo" secondAttribute="bottom" constant="8" id="21N-vO-GeT"/>
                             <constraint firstItem="t7f-d2-COZ" firstAttribute="trailing" secondItem="ITo-M0-15I" secondAttribute="trailing" id="5pL-Y0-4bg"/>
@@ -596,7 +597,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="250" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j7g-b9-uuP">
                                 <rect key="frame" x="0.0" y="170" width="343" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="250" id="hjC-tf-bAj"/>
                                 </constraints>
@@ -639,7 +640,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qf7-hR-1v4" firstAttribute="leading" secondItem="j7g-b9-uuP" secondAttribute="leading" id="0qB-mv-OSo"/>
                             <constraint firstItem="qf7-hR-1v4" firstAttribute="trailing" secondItem="j7g-b9-uuP" secondAttribute="trailing" id="5pr-eh-hgK"/>
@@ -708,7 +709,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="selectType" value="Case"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="passwordTypeInt">
@@ -727,7 +728,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="selectType" value="Separator"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="passwordTypeInt">
@@ -736,7 +737,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="s9a-OJ-s0v" firstAttribute="leading" secondItem="UrV-px-NX1" secondAttribute="leading" id="Bv9-p5-C0C"/>
                             <constraint firstItem="vzc-hJ-zRI" firstAttribute="width" secondItem="s9a-OJ-s0v" secondAttribute="width" id="DoY-Xh-zQv"/>
@@ -811,7 +812,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="selectType" value="Case"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="passwordTypeInt">
@@ -830,7 +831,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="selectType" value="Separator"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="passwordTypeInt">
@@ -839,7 +840,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Xof-It-RYX" secondAttribute="bottom" id="1Zu-Om-Kiy"/>
                             <constraint firstAttribute="trailing" secondItem="JWA-M2-DZ0" secondAttribute="trailing" id="350-Ks-kPB"/>
@@ -986,7 +987,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="passwordTypeInt">
                                                 <integer key="value" value="405"/>
@@ -1009,6 +1010,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </stepper>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedTruncateAt"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Truncate At"/>
@@ -1034,7 +1036,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="pickerTypeString" value="Case"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="passwordTypeInt">
@@ -1057,6 +1059,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </stepper>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedSymbolCasePercent"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Symbolize"/>
@@ -1086,6 +1089,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </stepper>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedAccentedCasePercent"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Accenter"/>
@@ -1111,7 +1115,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Replace Ambiguous"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedReplaceAmbiguous"/>
@@ -1128,7 +1132,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedPrefixPattern"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Prefix Pattern"/>
@@ -1145,7 +1149,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedSuffixPattern"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Suffix Pattern"/>
@@ -1162,7 +1166,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedFindRegex"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Find Regex"/>
@@ -1186,13 +1190,14 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedReplacePattern"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Replace Pattern"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Z2J-m3-D5S" firstAttribute="height" secondItem="PxK-St-LpQ" secondAttribute="height" id="9rB-tZ-gL3"/>
                                     <constraint firstItem="Y8D-XE-xXN" firstAttribute="height" secondItem="PxK-St-LpQ" secondAttribute="height" id="HdN-uV-h9J"/>
@@ -1206,7 +1211,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="I4A-GG-r8s" firstAttribute="leading" secondItem="CKz-sb-c4N" secondAttribute="leading" id="6C5-d3-DPN"/>
                             <constraint firstItem="CKz-sb-c4N" firstAttribute="bottom" secondItem="I4A-GG-r8s" secondAttribute="bottom" id="Dy6-cd-hKh"/>

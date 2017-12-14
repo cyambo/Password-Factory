@@ -9,7 +9,7 @@
 import UIKit
 
 class Utilities: NSObject {
-    static let tintColor = UIColor(red:0.99, green:0.31, blue:0.16, alpha:1.0)
+    static let tintColor = UIColor(red:0.99, green:0.28, blue:0.12, alpha:1.0)
     
     /// Rounds the corners of a layer
     ///
@@ -18,7 +18,6 @@ class Utilities: NSObject {
     ///   - withBorder: add a border
     public class func roundCorners(layer: CALayer, withBorder: Bool) {
         layer.cornerRadius = 10.0
-        layer.backgroundColor = UIColor.white.cgColor
         layer.masksToBounds = true
         if(withBorder) {
             addBorder(layer: layer)
@@ -32,7 +31,6 @@ class Utilities: NSObject {
     ///   - corners: UIRectCorner array
     ///   - withBorder: add a border
     public class func roundCorners(view: UIView, corners: UIRectCorner, withBorder: Bool) {
-        view.layer.backgroundColor = UIColor.white.cgColor
         let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: 10.0, height: 10.0))
         let mask = CAShapeLayer()
         mask.path = path.cgPath

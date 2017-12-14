@@ -20,6 +20,7 @@ class ButtonsContainer: UIView {
     }
     func setDisplay() {
         Utilities.roundCorners(view: self, corners: [.topLeft, .topRight], withBorder: false)
+        backgroundColor = UIColor.white.withAlphaComponent(0.75)
     }
 
 }

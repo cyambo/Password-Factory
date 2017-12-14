@@ -48,6 +48,7 @@ class TextFieldView: UIView, UITextFieldDelegate {
     func setupView() {
         controlLabel.text = label
         controlText.borderStyle = .roundedRect
+        controlText.backgroundColor = UIColor.white.withAlphaComponent(0.75)
         let views = ["text" : controlText as UIView, "label" : controlLabel as UIView]
         translatesAutoresizingMaskIntoConstraints = false
         controlText.translatesAutoresizingMaskIntoConstraints = false

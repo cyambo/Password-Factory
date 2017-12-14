@@ -33,7 +33,7 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         
         collection.register(SelectTypeCollectionViewCell.self, forCellWithReuseIdentifier: "SelectTypeCell")
-        collection.backgroundColor = UIColor.white
+        collection.backgroundColor = UIColor.clear 
         collection.dataSource = self
         collection.delegate = self
         addSubview(typeLabel)
