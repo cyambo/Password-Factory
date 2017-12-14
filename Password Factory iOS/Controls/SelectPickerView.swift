@@ -33,16 +33,13 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         controlButton.addTarget(self, action: #selector(openPicker), for: .touchUpInside)
     }
     
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        if newWindow != nil {
-            if (pickerTypeString != nil) {
-                pickerType = PickerTypes(rawValue: pickerTypeString!)
-            }
-            passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
-            setupView()
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if (pickerTypeString != nil) {
+            pickerType = PickerTypes(rawValue: pickerTypeString!)
         }
-
+        passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
+        setupView()
     }
     
     /// Positions the views in the container

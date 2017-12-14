@@ -52,12 +52,14 @@ class TypeSelectionViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         setSelectedPasswordType()
-        selectType(typeSelectionControl)
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        selectType(typeSelectionControl)
+    }
+
     /// Called when type is selected on the segmented control - animates the next one into the view
     ///
     /// - Parameter sender: default sender
@@ -215,7 +217,6 @@ class TypeSelectionViewController: UIViewController {
         }
         
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

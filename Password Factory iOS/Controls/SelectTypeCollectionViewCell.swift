@@ -23,7 +23,6 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
     }
     
     /// Sets the cell title and image based upon index

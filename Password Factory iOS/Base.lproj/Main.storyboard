@@ -18,31 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMU-Ol-EiP" userLabel="Gradient">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kMU-Ol-EiP" userLabel="Gradient">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGC-86-ZBB" userLabel="Big Type" customClass="BigTypeIconView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-10" width="375" height="687"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <visualEffectView contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zob-Wf-bzQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGC-86-ZBB" userLabel="Big Type" customClass="BigTypeIconView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="prT-fV-NBK">
+                            </imageView>
+                            <visualEffectView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zob-Wf-bzQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="prT-fV-NBK">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-dz-RZb" userLabel="Selection Container" customClass="ButtonsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="16" y="585" width="343" height="82"/>
+                                <rect key="frame" x="16" y="577" width="343" height="90"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jUq-0Y-Ywb">
                                         <rect key="frame" x="8" y="46" width="327" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="K7W-hD-MOt"/>
-                                        </constraints>
                                         <segments>
                                             <segment title="First"/>
                                             <segment title="Second"/>
@@ -79,16 +73,16 @@
                                     <constraint firstAttribute="trailing" secondItem="Vug-YN-pqk" secondAttribute="trailing" id="Qb8-XW-Pu3"/>
                                     <constraint firstItem="a3p-3g-Cie" firstAttribute="width" secondItem="Vug-YN-pqk" secondAttribute="width" id="YD9-Gh-eDH"/>
                                     <constraint firstAttribute="trailing" secondItem="jUq-0Y-Ywb" secondAttribute="trailing" constant="8" id="gDz-AH-GuE"/>
-                                    <constraint firstAttribute="bottom" secondItem="jUq-0Y-Ywb" secondAttribute="bottom" constant="8" id="mnz-iC-4lw"/>
+                                    <constraint firstAttribute="bottom" secondItem="jUq-0Y-Ywb" secondAttribute="bottom" constant="16" id="mnz-iC-4lw"/>
                                     <constraint firstItem="Vug-YN-pqk" firstAttribute="centerY" secondItem="a3p-3g-Cie" secondAttribute="centerY" id="qZy-ZI-FA8"/>
                                     <constraint firstItem="a3p-3g-Cie" firstAttribute="leading" secondItem="QYu-dz-RZb" secondAttribute="leading" id="rlQ-rV-5CO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96N-xx-wIs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zQ-kZ-8eJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="750" height="585"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="750" height="577"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,15 +93,35 @@
                                     <constraint firstItem="5zQ-kZ-8eJ" firstAttribute="width" secondItem="96N-xx-wIs" secondAttribute="width" multiplier="2" id="IEm-4A-atq"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLV-CU-ghx" userLabel="Padding View">
+                                <rect key="frame" x="16" y="667" width="343" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="kMU-Ol-EiP" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="5Ly-rh-CLq"/>
+                            <constraint firstItem="hLV-CU-ghx" firstAttribute="bottom" secondItem="rZJ-aR-1l4" secondAttribute="bottom" id="67v-dn-6Ra"/>
+                            <constraint firstItem="zob-Wf-bzQ" firstAttribute="bottom" secondItem="kMU-Ol-EiP" secondAttribute="bottom" id="9oL-wU-Gcn"/>
+                            <constraint firstAttribute="trailing" secondItem="kMU-Ol-EiP" secondAttribute="trailing" id="C9B-rP-qbp"/>
+                            <constraint firstAttribute="top" secondItem="kMU-Ol-EiP" secondAttribute="top" id="DbQ-ad-faS"/>
                             <constraint firstItem="iSx-iR-SEn" firstAttribute="bottom" secondItem="QYu-dz-RZb" secondAttribute="bottom" id="KKH-kU-SI7"/>
+                            <constraint firstItem="hLV-CU-ghx" firstAttribute="top" secondItem="QYu-dz-RZb" secondAttribute="bottom" id="MSd-ld-fXq"/>
+                            <constraint firstItem="zob-Wf-bzQ" firstAttribute="leading" secondItem="kMU-Ol-EiP" secondAttribute="leading" id="P9h-Xg-41D"/>
                             <constraint firstItem="iSx-iR-SEn" firstAttribute="trailing" secondItem="QYu-dz-RZb" secondAttribute="trailing" constant="16" id="Pq7-Sz-dsd"/>
+                            <constraint firstItem="hLV-CU-ghx" firstAttribute="leading" secondItem="QYu-dz-RZb" secondAttribute="leading" id="Qdu-QQ-zId"/>
+                            <constraint firstItem="ZGC-86-ZBB" firstAttribute="bottom" secondItem="kMU-Ol-EiP" secondAttribute="bottom" id="RBE-7A-Cx0"/>
+                            <constraint firstItem="ZGC-86-ZBB" firstAttribute="trailing" secondItem="kMU-Ol-EiP" secondAttribute="trailing" id="WYb-x2-Z9H"/>
+                            <constraint firstItem="ZGC-86-ZBB" firstAttribute="leading" secondItem="kMU-Ol-EiP" secondAttribute="leading" id="XCm-uh-PSt"/>
+                            <constraint firstItem="hLV-CU-ghx" firstAttribute="trailing" secondItem="QYu-dz-RZb" secondAttribute="trailing" id="YDV-aI-ZCI"/>
+                            <constraint firstItem="zob-Wf-bzQ" firstAttribute="trailing" secondItem="kMU-Ol-EiP" secondAttribute="trailing" id="ad6-Db-Rko"/>
                             <constraint firstItem="QYu-dz-RZb" firstAttribute="leading" secondItem="iSx-iR-SEn" secondAttribute="leading" constant="16" id="flE-iw-Eaq"/>
+                            <constraint firstItem="zob-Wf-bzQ" firstAttribute="top" secondItem="kMU-Ol-EiP" secondAttribute="top" id="gD4-KA-9f9"/>
                             <constraint firstItem="96N-xx-wIs" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="hvl-nX-KeJ"/>
                             <constraint firstAttribute="top" secondItem="96N-xx-wIs" secondAttribute="top" id="in8-jR-4h2"/>
+                            <constraint firstItem="ZGC-86-ZBB" firstAttribute="top" secondItem="kMU-Ol-EiP" secondAttribute="top" id="uJm-vl-pHh"/>
                             <constraint firstAttribute="trailing" secondItem="96N-xx-wIs" secondAttribute="trailing" id="uU8-08-zEa"/>
+                            <constraint firstAttribute="bottom" secondItem="kMU-Ol-EiP" secondAttribute="bottom" id="xSm-Ls-fp6"/>
                             <constraint firstItem="QYu-dz-RZb" firstAttribute="top" secondItem="96N-xx-wIs" secondAttribute="bottom" id="z3A-pE-Sx2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iSx-iR-SEn"/>
@@ -126,7 +140,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="373.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="60" y="-345"/>
         </scene>
         <!--Container-->
         <scene sceneID="ncT-d3-bSB">
@@ -466,7 +480,7 @@
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sz4-nc-1EV">
-                                <rect key="frame" x="37" y="263" width="300" height="161"/>
+                                <rect key="frame" x="37.5" y="263" width="300" height="161"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" verticalHuggingPriority="100" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UDE-eY-3fA">
                                         <rect key="frame" x="0.0" y="37" width="300" height="86"/>

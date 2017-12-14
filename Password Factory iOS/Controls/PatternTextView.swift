@@ -12,7 +12,8 @@ import UIKit
 /// Text view containing the pattern text
 class PatternTextView: UITextView {
     
-    public override func awakeFromNib() {
+    public override func layoutSubviews() {
+        super.layoutSubviews()
         setDisplay()
     }
     override func prepareForInterfaceBuilder() {

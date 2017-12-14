@@ -11,7 +11,8 @@ import UIKit
 /// Container for the bottom buttons
 @IBDesignable
 class ButtonsContainer: UIView {
-    public override func awakeFromNib() {
+    public override func layoutSubviews() {
+        super.layoutSubviews()
         setDisplay()
     }
     override func prepareForInterfaceBuilder() {

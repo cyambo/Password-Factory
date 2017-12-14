@@ -27,11 +27,9 @@ class TextFieldView: UIView, UITextFieldDelegate {
         addSubview(controlLabel)
         setupTextField()
     }
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        if newWindow != nil {
-            setupView()
-        }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupView()
     }
     
     /// Sets the parameters of the text field

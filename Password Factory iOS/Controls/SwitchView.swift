@@ -33,12 +33,9 @@ class SwitchView: UIView {
         addSubview(controlLabel)
     }
     
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        if newWindow != nil {
-            setupView()
-        }
-        
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupView()
     }
     
     /// Adds and positions the switch and label

@@ -30,12 +30,9 @@ class StepperView: UIView {
         addSubview(valueLabel)
     }
 
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        if newWindow != nil {
-            setupView() //calling setup view here because this is when the IBInspectables are set
-        }
-        
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupView()
     }
     
     /// positions the views and sets up the stepper

@@ -13,7 +13,9 @@ import UIKit
 class ControlsContainer: UIView {
 
 
-    public override func awakeFromNib() {
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
         setDisplay()
     }
     override func prepareForInterfaceBuilder() {
