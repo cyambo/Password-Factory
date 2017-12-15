@@ -40,6 +40,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         passwordTextView.textContainer.lineBreakMode = .byCharWrapping
         passwordTextView.textContainer.maximumNumberOfLines = 1
         passwordFont = passwordTextView.font ?? passwordFont
+        generatePassword()
     }
     override func viewWillLayoutSubviews() {
         if let pv = passwordViewController?.view {
@@ -74,10 +75,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        generatePassword()
-    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.passwordTextView.contentOffset.y = -self.passwordTextView.contentInset.top

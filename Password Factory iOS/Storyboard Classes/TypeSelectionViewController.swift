@@ -18,6 +18,7 @@ class TypeSelectionViewController: UIViewController {
     var nextViewController: PasswordContainerViewController?
     var selectedIndex = -1
     
+    @IBOutlet weak var sliderLeading: NSLayoutConstraint!
     @IBOutlet weak var sliderView: UIView!
     @IBOutlet weak var bigType: BigTypeIconView!
     @IBOutlet weak var controlsView: UIView!
@@ -95,10 +96,11 @@ class TypeSelectionViewController: UIViewController {
                     
                     UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: { [unowned self] in
                         if (fromRight) {
-                            self.sliderView.frame.origin.x = -(self.sliderView.frame.size.width / 2)
+                            self.sliderLeading.constant = -(self.sliderView.frame.size.width / 2)
                         } else {
-                            self.sliderView.frame.origin.x = 0
+                            self.sliderLeading.constant = 0
                         }
+                        self.view.layoutIfNeeded()
                     }, completion: {[unowned self] (complete) in
                         //remove the views
                         self.currentViewController?.view.removeFromSuperview()
@@ -107,7 +109,8 @@ class TypeSelectionViewController: UIViewController {
                         self.currentViewController = self.nextViewController
                         self.nextViewController = nil
                         //move the slider back to zero
-                        self.sliderView.frame.origin.x = 0
+                        self.sliderLeading.constant = 0
+                        self.view.layoutIfNeeded()
                         //place the view in the original places
                         self.setupSlide(left: selectedViewController.view, right: UIView(), fromRight: true)
                         self.selectedIndex = self.typeSelectionControl.selectedSegmentIndex
@@ -143,10 +146,11 @@ class TypeSelectionViewController: UIViewController {
         sliderView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[right]-0-|", options: [], metrics: metrics, views: views))
         //place the slider to the left or right so we can start the animation
         if !fromRight {
-            sliderView.frame.origin.x = -(sliderView.frame.size.width / 2)
+            sliderLeading.constant = -(sliderView.frame.size.width / 2)
         } else {
-            sliderView.frame.origin.x = 0
+            sliderLeading.constant = 0
         }
+        self.view.layoutIfNeeded()
     }
     /// Generates password when button is pressed
     ///
@@ -208,7 +212,7 @@ class TypeSelectionViewController: UIViewController {
         if keyPath != "selectedPasswordType" {
             currentViewController?.generatePassword()
         }
-        
+    
     }
     
     override func didReceiveMemoryWarning() {
