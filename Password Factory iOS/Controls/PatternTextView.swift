@@ -16,9 +16,7 @@ class PatternTextView: UITextView {
         super.layoutSubviews()
         setDisplay()
     }
-    override func prepareForInterfaceBuilder() {
-        setDisplay()
-    }
+
     func setDisplay() {
         Utilities.roundCorners(layer: self.layer, withBorder: true)
         backgroundColor = UIColor.white.withAlphaComponent(0.75)

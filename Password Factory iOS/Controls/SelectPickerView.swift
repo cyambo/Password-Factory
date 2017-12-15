@@ -25,14 +25,14 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        removeSubviewsAndConstraints()
-        addSubview(controlButton)
-        addSubview(controlLabel)
-        //sets button action
-        controlButton.addTarget(self, action: #selector(openPicker), for: .touchUpInside)
+        addViews()
     }
-    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addViews()
+    }
+
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         if (pickerTypeString != nil) {
@@ -41,7 +41,12 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
         passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
         setupView()
     }
-    
+    func addViews() {
+        addSubview(controlButton)
+        addSubview(controlLabel)
+        //sets button action
+        controlButton.addTarget(self, action: #selector(openPicker), for: .touchUpInside)
+    }
     /// Positions the views in the container
     func setupView() {
         Utilities.roundCorners(layer: controlButton.layer, withBorder: false)

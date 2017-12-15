@@ -17,9 +17,7 @@ class StrengthMeter: UIView {
         StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: getStrengthColor(), strength: CGFloat(strength), size: rect.size)
         
     }
-    override func prepareForInterfaceBuilder() {
-        setDisplay()
-    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setDisplay()

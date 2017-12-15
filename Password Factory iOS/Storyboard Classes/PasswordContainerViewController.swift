@@ -16,6 +16,12 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
     let d = DefaultsManager.get()
     var type: PFPasswordType = .randomType
     
+    @IBOutlet weak var passwordViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet var containerVerticalMargins: [NSLayoutConstraint]!
+    @IBOutlet var containerHorizontalMargins: [NSLayoutConstraint]!
+    
+
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var passwordLengthDisplay: UILabel!
@@ -23,10 +29,58 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
     
     var passwordViewController: PasswordsViewController?
     var passwordFont = UIFont.systemFont(ofSize: 24.0)
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        containerView.removeSubviews()
+        if let pv = passwordViewController?.view {
+            containerView.addSubview(pv)
+        }
+        passwordTextView.textContainer.lineBreakMode = .byCharWrapping
+        passwordTextView.textContainer.maximumNumberOfLines = 1
         passwordFont = passwordTextView.font ?? passwordFont
+    }
+    override func viewWillLayoutSubviews() {
+        if let pv = passwordViewController?.view {
+            Utilities.fillViewInContainer(pv, superview: containerView, padding: 16)
+        }
+        
+    }
+    override func viewDidLayoutSubviews() {
+
+        switch type {
+        case .storedType, .advancedType:
+            if passwordViewHeight.constant == 0.0 {
+                containerHorizontalMargins.forEach{$0.constant = 4}
+            }
+        case .passphraseType, .pronounceableType:
+            let h = containerView.frame.height
+            if passwordViewHeight.constant == 0.0 {
+                var c = h - 306.0
+                c = c  / 3
+                passwordViewHeight.constant = c
+                containerVerticalMargins.forEach{$0.constant = c + $0.constant}
+            }
+        case .patternType:
+            break
+        case .randomType:
+            let h = containerView.frame.height
+            if h < 356 {
+                passwordViewHeight.constant = h - 356
+            } else {
+                let c = (h - 356) / 2
+                containerVerticalMargins.forEach{$0.constant = c + $0.constant}
+            }
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        generatePassword()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.passwordTextView.contentOffset.y = -self.passwordTextView.contentInset.top
     }
     
     /// Set the password type used in this contoller
@@ -36,7 +90,6 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         self.type = type
         let typeName = c.getNameFor(type: type)
 
-
         let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         passwordViewController = mainStoryboard.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController
         if let p = passwordViewController {
@@ -45,20 +98,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if (containerView.subviews.count == 0 ){
-            //only add a new password control view if there are no views in the container
-            if let pv = passwordViewController?.view {
-                containerView.addSubview(pv)
-                Utilities.fillViewInContainer(pv, superview: containerView, padding: 16)
-                
-            }
-            generatePassword()
-        }
-        passwordTextView.textContainer.lineBreakMode = .byCharWrapping
-        passwordTextView.textContainer.maximumNumberOfLines = 1
-    }
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         //dismisses the keyboard when done is pressed
         if(text == "\n") {

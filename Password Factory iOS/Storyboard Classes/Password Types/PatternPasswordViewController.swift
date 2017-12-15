@@ -30,7 +30,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        patternText.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
+        self.patternText.contentOffset.y = -self.patternText.contentInset.top
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()

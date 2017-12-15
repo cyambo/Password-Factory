@@ -15,9 +15,7 @@ class ButtonsContainer: UIView {
         super.layoutSubviews()
         setDisplay()
     }
-    override func prepareForInterfaceBuilder() {
-        setDisplay()
-    }
+
     func setDisplay() {
         Utilities.roundCorners(view: self, corners: [.topLeft, .topRight], withBorder: false)
         backgroundColor = UIColor.white.withAlphaComponent(0.75)

@@ -183,14 +183,7 @@ class TypeSelectionViewController: UIViewController {
     /// - Parameter passwordType: password type of vc to get
     /// - Returns: view controller
     func getViewController(_ passwordType: PFPasswordType) -> PasswordContainerViewController? {
-        let storyboardIdentifier: String
-        if passwordType == .advancedType || passwordType == .storedType {
-            storyboardIdentifier = "BigContainer"
-        } else {
-            storyboardIdentifier = "Container"
-        }
-        
-        if let vc = mainStoryboard?.instantiateViewController(withIdentifier: storyboardIdentifier) as? PasswordContainerViewController {
+        if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "Container") as? PasswordContainerViewController {
             vc.setType(type: passwordType)
             return vc
         }

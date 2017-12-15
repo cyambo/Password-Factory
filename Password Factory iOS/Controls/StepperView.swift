@@ -20,21 +20,29 @@ class StepperView: UIView {
     let valueLabel = UILabel.init()
     let d = DefaultsManager.get()!
     
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
-        removeSubviewsAndConstraints()
-        addSubview(controlStepper)
-        addSubview(controlLabel)
-        addSubview(valueLabel)
+        addViews()
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addViews()
+    }
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setupView()
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         setupView()
     }
-    
+    func addViews() {
+        removeSubviewsAndConstraints()
+        addSubview(controlStepper)
+        addSubview(controlLabel)
+        addSubview(valueLabel)
+    }
     /// positions the views and sets up the stepper
     func setupView() {
 

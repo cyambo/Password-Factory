@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@IBDesignable
 class LengthControlView: UIView {
     let slider = UISlider.init()
     let label = UILabel.init()
@@ -17,12 +17,15 @@ class LengthControlView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        removeSubviewsAndConstraints()
-        addSubview(slider)
-        addSubview(label)
-        addSubview(sizeLabel)
-
+        addViews()
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addViews()
+    }
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setupView()
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -31,6 +34,12 @@ class LengthControlView: UIView {
         setupView()
     }
     
+    /// Adds the slider label and size to the view
+    func addViews() {
+        addSubview(slider)
+        addSubview(label)
+        addSubview(sizeLabel)
+    }
     /// Positions the views in the container
     func setupView() {
         label.text = "Length"

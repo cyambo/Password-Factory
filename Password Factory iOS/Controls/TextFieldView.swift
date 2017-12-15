@@ -19,12 +19,15 @@ class TextFieldView: UIView, UITextFieldDelegate {
 
     let d = DefaultsManager.get()!
     
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addViews()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        removeSubviewsAndConstraints()
-        addSubview(controlText)
-        addSubview(controlLabel)
+        addViews()
         setupTextField()
     }
     override func layoutSubviews() {
@@ -43,7 +46,11 @@ class TextFieldView: UIView, UITextFieldDelegate {
         controlText.clearButtonMode = .always
         controlText.delegate = self
     }
-    
+    func addViews() {
+        removeSubviewsAndConstraints()
+        addSubview(controlText)
+        addSubview(controlLabel)
+    }
     /// sets the position of the views and adds observers for the text field
     func setupView() {
         controlLabel.text = label

@@ -12,6 +12,7 @@ import UIKit
 /// Zoom Button
 class ZoomButton: UIButton {
     override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
         setDisplay()
     }
     override func awakeFromNib() {

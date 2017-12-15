@@ -20,7 +20,12 @@ class SwitchView: UIView {
     
     let d = DefaultsManager.get()!
 
-    
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addViews()
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         isUserInteractionEnabled = true
@@ -28,16 +33,18 @@ class SwitchView: UIView {
         if (touchGesture != nil) {
             addGestureRecognizer(touchGesture!)
         }
-        removeSubviewsAndConstraints()
-        addSubview(controlSwitch)
-        addSubview(controlLabel)
+        addViews()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         setupView()
     }
-    
+    func addViews() {
+        removeSubviewsAndConstraints()
+        addSubview(controlSwitch)
+        addSubview(controlLabel)
+    }
     /// Adds and positions the switch and label
     func setupView() {
         if label != nil {
