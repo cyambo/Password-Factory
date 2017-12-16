@@ -1,16 +1,17 @@
 //
-//  ZoomButton.swift
+//  PreferencesButton.swift
 //  Password Factory iOS
 //
-//  Created by Cristiana Yambo on 12/4/17.
+//  Created by Cristiana Yambo on 12/16/17.
 //  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
+
 
 import UIKit
 @IBDesignable
 
-/// Zoom Button
-class ZoomButton: UIButton {
+/// Preferences Button
+class PreferencesButton: UIButton {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         setDisplay()
@@ -20,8 +21,8 @@ class ZoomButton: UIButton {
     }
     func setDisplay() {
         super.awakeFromNib()
-        setBackgroundImage(StyleKit.imageOfZoom(), for: .normal)
+        setImage(StyleKit.imageOfPreferencesButton(strokeColor: UIColor.black), for: .normal)
         setTitle("", for: .normal)
     }
-
+    
 }

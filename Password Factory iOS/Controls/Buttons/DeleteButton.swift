@@ -1,17 +1,16 @@
 //
-//  PreferencesButton.swift
+//  DeleteButton.swift
 //  Password Factory iOS
 //
 //  Created by Cristiana Yambo on 12/16/17.
 //  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
 
-
 import UIKit
 @IBDesignable
 
-/// Zoom Button
-class PreferencesButton: UIButton {
+/// Delete Button
+class DeleteButton: UIButton {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         setDisplay()
@@ -21,7 +20,7 @@ class PreferencesButton: UIButton {
     }
     func setDisplay() {
         super.awakeFromNib()
-        setImage(StyleKit.imageOfPreferencesButton(strokeColor: UIColor.black), for: .normal)
+        setImage(StyleKit.imageOfDeleteButon, for: .normal)
         setTitle("", for: .normal)
     }
     

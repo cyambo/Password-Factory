@@ -17,6 +17,8 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     let c = PFConstants.instance
     var currentViewController: PasswordsViewController?
 
+    
+    @IBOutlet weak var passwordTypeTitle: UILabel!
     @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var bigType: BigTypeIconView!
     @IBOutlet weak var controlsView: UIView!
@@ -98,15 +100,15 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
         guard let currentView = selectedViewController.view else {
             return
         }
-        
+        passwordTypeTitle.text = c.getNameFor(type: selType)
         controlsView.removeSubviewsAndConstraints()
         currentViewController = selectedViewController
             
-        if selType == .patternType {
+//        if selType == .patternType {
             controlsView.addSubview(currentView)
-            Utilities.fillViewInContainer(currentView, superview: view, padding: 16)
+            Utilities.fillViewInContainer(currentView, superview: view)
             
-        } else {
+//        } else {
 //            let scroll = UIScrollView.init()
 //            controlsView.addSubview(scroll)
 //            Utilities.fillViewInContainer(scroll, superview: self.view, padding: 16)
@@ -114,7 +116,7 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
 //            scroll.contentSize = CGSize.init(width: (scroll.frame.size.width - 16.0), height: currentView.frame.size.height)
 //            scroll.isDirectionalLockEnabled = true
             
-        }
+//        }
         self.d?.setInteger(selType.rawValue, forKey: "selectedPasswordType")
     
     }

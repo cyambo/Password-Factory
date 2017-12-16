@@ -121,4 +121,8 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         typeLabel.text = ""
         d.setObject("", forKey: "userPattern")
     }
+    @IBAction func deleteLast(_ sender: Any) {
+        patternText.text = String(patternText.text.dropLast())
+    }
+    
 }

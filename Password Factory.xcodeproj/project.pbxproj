@@ -53,6 +53,7 @@
 		40189F5C1FD46A6D00D87217 /* PassphrasePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5B1FD46A6D00D87217 /* PassphrasePasswordViewController.swift */; };
 		40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */; };
 		40189F601FD46A8F00D87217 /* AdvancedPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */; };
+		4025FC271FE5C2B50036BE3C /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4025FC261FE5C2B50036BE3C /* DeleteButton.swift */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
 		402C96431FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
 		402C96441FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
@@ -283,6 +284,7 @@
 		40189F5B1FD46A6D00D87217 /* PassphrasePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphrasePasswordViewController.swift; sourceTree = "<group>"; };
 		40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredPasswordViewController.swift; sourceTree = "<group>"; };
 		40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPasswordViewController.swift; sourceTree = "<group>"; };
+		4025FC261FE5C2B50036BE3C /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		402C96411FD4C53B00E2B37E /* ColorUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorUtilities.h; sourceTree = "<group>"; };
 		402C96421FD4C53B00E2B37E /* ColorUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorUtilities.m; sourceTree = "<group>"; };
@@ -639,6 +641,16 @@
 			path = "Password Types";
 			sourceTree = "<group>";
 		};
+		4025FC281FE5C2E90036BE3C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				4051185C1FD62E2600E3FDFB /* ZoomButton.swift */,
+				4025FC261FE5C2B50036BE3C /* DeleteButton.swift */,
+				4054ABF01FE58D40009FE668 /* PreferencesButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		4058DF251F92995800CCB6E7 /* Password Factory Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,13 +668,12 @@
 		406BD22C1FD312F400D0E854 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				4025FC281FE5C2E90036BE3C /* Buttons */,
 				406BD22F1FD3148200D0E854 /* ControlsContainer.swift */,
 				406BD2341FD3166100D0E854 /* StrengthMeter.swift */,
 				4001080C1FD32FB600594304 /* PatternTextView.swift */,
 				40E939B71FD4A88600B32A2D /* PatternCollectionViewCell.swift */,
 				402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */,
-				4051185C1FD62E2600E3FDFB /* ZoomButton.swift */,
-				4054ABF01FE58D40009FE668 /* PreferencesButton.swift */,
 				400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */,
 				400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */,
 				400E45DA1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift */,
@@ -1649,6 +1660,7 @@
 			files = (
 				404D73CB1FD61B3D00A6FA0D /* PasswordController.m in Sources */,
 				409485D01FDDB450006D3332 /* UIView+parentViewController.swift in Sources */,
+				4025FC271FE5C2B50036BE3C /* DeleteButton.swift in Sources */,
 				400210F11FDB316600D272BB /* StepperView.swift in Sources */,
 				402CF5A01FDC6FE10037C56D /* TextFieldView.swift in Sources */,
 				4054ABED1FE4B731009FE668 /* UIView+borders.swift in Sources */,
