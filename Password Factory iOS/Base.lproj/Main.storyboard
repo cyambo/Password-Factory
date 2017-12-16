@@ -461,32 +461,29 @@
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sz4-nc-1EV">
-                                <rect key="frame" x="37.5" y="263" width="300" height="161"/>
+                                <rect key="frame" x="37.5" y="218.5" width="300" height="250"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" verticalHuggingPriority="100" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UDE-eY-3fA">
-                                        <rect key="frame" x="0.0" y="37" width="300" height="86"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="86" id="9hz-xw-MgO"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="44" width="300" height="162"/>
                                         <connections>
                                             <outlet property="dataSource" destination="NMS-hk-qec" id="88Z-lb-ebx"/>
                                             <outlet property="delegate" destination="NMS-hk-qec" id="GFt-BV-Qdu"/>
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picker Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8S4-pG-fnz">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="36"/>
                                         <color key="backgroundColor" red="0.99215686270000003" green="0.43921568630000002" blue="0.23921568630000001" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="29" id="gFx-Lw-4eg"/>
+                                            <constraint firstAttribute="height" constant="36" id="gFx-Lw-4eg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEi-mc-6vM">
-                                        <rect key="frame" x="0.0" y="131" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="214" width="300" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="RYI-3C-Zqj"/>
+                                            <constraint firstAttribute="height" constant="36" id="RYI-3C-Zqj"/>
                                         </constraints>
                                         <state key="normal" title="Done"/>
                                         <connections>
@@ -503,7 +500,7 @@
                                     <constraint firstAttribute="trailing" secondItem="8S4-pG-fnz" secondAttribute="trailing" id="YQy-8H-w8x"/>
                                     <constraint firstItem="8S4-pG-fnz" firstAttribute="leading" secondItem="sz4-nc-1EV" secondAttribute="leading" id="bsd-NS-t8v"/>
                                     <constraint firstAttribute="trailing" secondItem="AEi-mc-6vM" secondAttribute="trailing" id="fft-ep-fNJ"/>
-                                    <constraint firstAttribute="height" constant="161" id="iF9-l5-EPP"/>
+                                    <constraint firstAttribute="height" constant="250" id="iF9-l5-EPP"/>
                                     <constraint firstAttribute="bottom" secondItem="AEi-mc-6vM" secondAttribute="bottom" id="mIo-Na-dL0"/>
                                     <constraint firstItem="UDE-eY-3fA" firstAttribute="leading" secondItem="sz4-nc-1EV" secondAttribute="leading" id="nXW-8W-KaA"/>
                                     <constraint firstItem="AEi-mc-6vM" firstAttribute="leading" secondItem="sz4-nc-1EV" secondAttribute="leading" id="rsp-Ad-Egy"/>
@@ -523,6 +520,7 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="sz4-nc-1EV" id="wsS-Yu-bL2"/>
+                        <outlet property="doneButton" destination="AEi-mc-6vM" id="4Rg-ou-jpd"/>
                         <outlet property="itemPickerView" destination="UDE-eY-3fA" id="vhn-Gf-Ney"/>
                         <outlet property="titleLabel" destination="8S4-pG-fnz" id="qxv-s4-xCo"/>
                     </connections>
@@ -1079,6 +1077,280 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yli-AI-Ibm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4617" y="-385"/>
+        </scene>
+        <!--Preferences View-->
+        <scene sceneID="QRT-0E-Lo3">
+            <objects>
+                <viewController storyboardIdentifier="PreferencesView" id="KGt-Hr-RKx" userLabel="Preferences View" customClass="PreferencesViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="koU-Aw-Ur0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfn-8Q-33l">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AjP-Xg-Nm4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD2-LM-EkB">
+                                <rect key="frame" x="16" y="36" width="343" height="615"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4c-rq-9ch">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
+                                        <color key="backgroundColor" red="0.99215686270000003" green="0.43921568630000002" blue="0.23921568630000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="FMy-h5-e21"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eew-MJ-TLG">
+                                        <rect key="frame" x="8" y="43.5" width="327" height="527.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-Dj-BZF" userLabel="Max Password Length" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="53"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="maxPasswordLength"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Max Length"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <integer key="value" value="100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1p-hu-HFb" userLabel="Enable Advanced" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="53" width="327" height="52.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="enableAdvanced"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Enable Advanced"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xup-A2-sDC" userLabel="Enable Stored" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="105.5" width="327" height="53"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="storePasswords"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Store Passwords"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWn-q6-7cQ" userLabel="Amount To Store" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="158.5" width="327" height="52.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="maxStoredPasswords"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Amount To Store"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <integer key="value" value="500"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5V-Ia-V1b" userLabel="Text Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="211" width="327" height="53"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Text Color"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="defaultTextColor"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soT-oz-KrN" userLabel="Color Password Text" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="264" width="327" height="52.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="colorPasswordText"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Color Password Text"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPp-gZ-aYm" userLabel="Uppercase Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="316.5" width="327" height="53"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="upperTextColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Uppercase Letters"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WG2-5P-lfb" userLabel="Lowercase Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="369.5" width="327" height="52.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="lowerTextColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Lowercase Letters"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwH-s0-Oqs" userLabel="Numbers Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="422" width="327" height="53"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="numberTextColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Numbers"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5am-K1-F3G" userLabel="Symbols Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="475" width="327" height="52.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="symbolTextColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Symbols"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFG-id-j4P" userLabel="Done">
+                                        <rect key="frame" x="0.0" y="579" width="343" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Ckr-JR-fDm"/>
+                                        </constraints>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="done:" destination="KGt-Hr-RKx" eventType="touchUpInside" id="ZuU-1O-QkU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GFG-id-j4P" firstAttribute="top" secondItem="eew-MJ-TLG" secondAttribute="bottom" constant="8" id="0kS-RF-lTV"/>
+                                    <constraint firstItem="T4c-rq-9ch" firstAttribute="top" secondItem="sD2-LM-EkB" secondAttribute="top" id="78K-1X-vN5"/>
+                                    <constraint firstItem="eew-MJ-TLG" firstAttribute="leading" secondItem="sD2-LM-EkB" secondAttribute="leading" constant="8" id="8sC-K7-SRY"/>
+                                    <constraint firstItem="eew-MJ-TLG" firstAttribute="top" secondItem="T4c-rq-9ch" secondAttribute="bottom" constant="8" id="HMQ-o4-Sl1"/>
+                                    <constraint firstAttribute="trailing" secondItem="GFG-id-j4P" secondAttribute="trailing" id="KM8-Bo-1yZ"/>
+                                    <constraint firstItem="T4c-rq-9ch" firstAttribute="leading" secondItem="sD2-LM-EkB" secondAttribute="leading" id="PZt-d4-KoU"/>
+                                    <constraint firstAttribute="bottom" secondItem="GFG-id-j4P" secondAttribute="bottom" id="Wjp-Gk-8xh"/>
+                                    <constraint firstItem="GFG-id-j4P" firstAttribute="leading" secondItem="sD2-LM-EkB" secondAttribute="leading" id="ZnT-7D-Zzg"/>
+                                    <constraint firstAttribute="trailing" secondItem="eew-MJ-TLG" secondAttribute="trailing" constant="8" id="bXt-VM-FYx"/>
+                                    <constraint firstAttribute="trailing" secondItem="T4c-rq-9ch" secondAttribute="trailing" id="nCY-oX-ZPN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="sD2-LM-EkB" firstAttribute="top" secondItem="AF0-5N-ELN" secondAttribute="top" constant="16" id="4DC-bE-IIa"/>
+                            <constraint firstAttribute="top" secondItem="xfn-8Q-33l" secondAttribute="top" id="CE2-tg-tvv"/>
+                            <constraint firstItem="xfn-8Q-33l" firstAttribute="leading" secondItem="koU-Aw-Ur0" secondAttribute="leading" id="CrY-gL-r3Y"/>
+                            <constraint firstItem="sD2-LM-EkB" firstAttribute="leading" secondItem="AF0-5N-ELN" secondAttribute="leading" constant="16" id="NGF-rq-Pvh"/>
+                            <constraint firstItem="AF0-5N-ELN" firstAttribute="trailing" secondItem="sD2-LM-EkB" secondAttribute="trailing" constant="16" id="fcu-3e-236"/>
+                            <constraint firstAttribute="trailing" secondItem="xfn-8Q-33l" secondAttribute="trailing" id="guB-Oe-ieY"/>
+                            <constraint firstItem="AF0-5N-ELN" firstAttribute="bottom" secondItem="sD2-LM-EkB" secondAttribute="bottom" constant="16" id="m6C-z2-Wsx"/>
+                            <constraint firstAttribute="bottom" secondItem="xfn-8Q-33l" secondAttribute="bottom" id="sOJ-WZ-RIY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AF0-5N-ELN"/>
+                    </view>
+                    <connections>
+                        <outlet property="controlsContainer" destination="sD2-LM-EkB" id="3ha-6h-COU"/>
+                        <outlet property="doneButton" destination="GFG-id-j4P" id="LCk-Cv-22a"/>
+                        <outlet property="titleLabel" destination="T4c-rq-9ch" id="5ni-AB-p1l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fJf-ST-hCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2581" y="261"/>
+        </scene>
+        <!--Color Picker View Controller-->
+        <scene sceneID="ykn-JV-wDr">
+            <objects>
+                <viewController storyboardIdentifier="ColorPickerView" id="Ql4-0I-EYf" customClass="ColorPickerViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uzd-HV-dhu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Th-cW-A0Z">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8s5-Wq-GS2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrv-aj-fOO" userLabel="Container">
+                                <rect key="frame" x="32" y="148" width="311" height="391"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG6-BP-1Gv">
+                                        <rect key="frame" x="0.0" y="355" width="155.5" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="ca3-gP-Xlb"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="pressedCancel:" destination="Ql4-0I-EYf" eventType="touchUpInside" id="l8R-MO-oqT"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehz-Fz-X16">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="83F-Ed-vEn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yd-oO-cGt" customClass="SwiftHSVColorPicker" customModule="SwiftHSVColorPicker">
+                                        <rect key="frame" x="8" y="52" width="295" height="287"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-3n-TXD">
+                                        <rect key="frame" x="155.5" y="355" width="155.5" height="36"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="pressedDone:" destination="Ql4-0I-EYf" eventType="touchUpInside" id="SF6-AH-juh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5Dv-3n-TXD" firstAttribute="leading" secondItem="bG6-BP-1Gv" secondAttribute="trailing" id="303-Zq-dO8"/>
+                                    <constraint firstAttribute="bottom" secondItem="bG6-BP-1Gv" secondAttribute="bottom" id="EWL-EP-95L"/>
+                                    <constraint firstItem="0yd-oO-cGt" firstAttribute="top" secondItem="ehz-Fz-X16" secondAttribute="bottom" constant="16" id="Egj-cG-3vQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="0yd-oO-cGt" secondAttribute="trailing" constant="8" id="IOT-0V-tlW"/>
+                                    <constraint firstItem="bG6-BP-1Gv" firstAttribute="top" secondItem="0yd-oO-cGt" secondAttribute="bottom" constant="16" id="Jsf-I4-GLS"/>
+                                    <constraint firstItem="bG6-BP-1Gv" firstAttribute="width" secondItem="5Dv-3n-TXD" secondAttribute="width" id="KtO-lQ-pBC"/>
+                                    <constraint firstItem="bG6-BP-1Gv" firstAttribute="height" secondItem="5Dv-3n-TXD" secondAttribute="height" id="UIL-po-nLb"/>
+                                    <constraint firstItem="ehz-Fz-X16" firstAttribute="top" secondItem="zrv-aj-fOO" secondAttribute="top" id="adq-gF-PEu"/>
+                                    <constraint firstItem="5Dv-3n-TXD" firstAttribute="centerY" secondItem="bG6-BP-1Gv" secondAttribute="centerY" id="eXI-UV-Z2e"/>
+                                    <constraint firstItem="0yd-oO-cGt" firstAttribute="leading" secondItem="zrv-aj-fOO" secondAttribute="leading" constant="8" id="fsi-4b-p8K"/>
+                                    <constraint firstItem="bG6-BP-1Gv" firstAttribute="leading" secondItem="zrv-aj-fOO" secondAttribute="leading" id="h95-Wh-ngc"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Dv-3n-TXD" secondAttribute="trailing" id="jVU-Vx-Y7z"/>
+                                    <constraint firstItem="ehz-Fz-X16" firstAttribute="leading" secondItem="zrv-aj-fOO" secondAttribute="leading" id="lLU-9D-b3h"/>
+                                    <constraint firstAttribute="trailing" secondItem="ehz-Fz-X16" secondAttribute="trailing" id="sP6-C5-PgE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7Th-cW-A0Z" secondAttribute="bottom" id="GM5-ft-gyt"/>
+                            <constraint firstItem="AN1-mV-g49" firstAttribute="bottom" secondItem="zrv-aj-fOO" secondAttribute="bottom" constant="128" id="Ghe-3r-eUy"/>
+                            <constraint firstItem="AN1-mV-g49" firstAttribute="trailing" secondItem="zrv-aj-fOO" secondAttribute="trailing" constant="32" id="Ni8-Wd-ejx"/>
+                            <constraint firstItem="zrv-aj-fOO" firstAttribute="leading" secondItem="AN1-mV-g49" secondAttribute="leading" constant="32" id="PZS-ZB-fI1"/>
+                            <constraint firstItem="7Th-cW-A0Z" firstAttribute="top" secondItem="Uzd-HV-dhu" secondAttribute="top" id="gFl-fg-Mys"/>
+                            <constraint firstItem="zrv-aj-fOO" firstAttribute="top" secondItem="AN1-mV-g49" secondAttribute="top" constant="128" id="iRo-A5-Eyy"/>
+                            <constraint firstItem="7Th-cW-A0Z" firstAttribute="leading" secondItem="Uzd-HV-dhu" secondAttribute="leading" id="q4B-Yi-102"/>
+                            <constraint firstAttribute="trailing" secondItem="7Th-cW-A0Z" secondAttribute="trailing" id="tae-jZ-f7F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AN1-mV-g49"/>
+                    </view>
+                    <connections>
+                        <outlet property="container" destination="zrv-aj-fOO" id="f3d-6R-7VS"/>
+                        <outlet property="leftButton" destination="bG6-BP-1Gv" id="20O-Jo-qPu"/>
+                        <outlet property="picker" destination="0yd-oO-cGt" id="2vy-Sr-ThR"/>
+                        <outlet property="rightButton" destination="5Dv-3n-TXD" id="CWQ-J2-ZqG"/>
+                        <outlet property="titleLabel" destination="ehz-Fz-X16" id="c5e-AU-JwA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zVL-6j-dO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3276" y="317.99100449775113"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.99215686274509807" green="0.4392156862745098" blue="0.23921568627450979" alpha="1" colorSpace="deviceRGB"/>

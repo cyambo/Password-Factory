@@ -21,6 +21,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var itemPickerView: UIPickerView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var doneButton: UIButton!
     
     func setType(type: PickerTypes, passwordType: PFPasswordType) {
         pickerType = type
@@ -34,7 +35,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupView()
         
         if let key = getDefaultsKey() {
             if let selected = d?.integer(forKey: key) {
@@ -42,14 +42,16 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
         }
     }
-    
+    override func viewDidLayoutSubviews() {
+        setupView()
+    }
     /// Sets up the views to be displayed
     func setupView() {
         Utilities.roundCorners(layer: containerView.layer, withBorder: false)
         Utilities.dropShadow(view: containerView)
         setupTitle()
         Utilities.roundCorners(view: titleLabel, corners: [.topLeft, .topRight], withBorder: false)
-        
+        doneButton.addTopBorderWithColor(color: Utilities.tintColor, width: 0.5)
     }
     
     /// Sets the title
@@ -59,6 +61,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         } else {
             self.titleLabel.text = "Select \(pickerType.rawValue)"
         }
+        titleLabel.backgroundColor = Utilities.tintColor
+        titleLabel.textColor = UIColor.white
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -78,7 +82,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-
         switch (pickerType) {
         case .CaseType:
             if row == 0 {

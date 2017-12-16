@@ -32,16 +32,7 @@ class TypeSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TODO: use defaults for random and stored
-        passwordController.useStoredType = true
-        passwordController.useAdvancedType = true
-
-        typeSelectionControl.removeAllSegments()
-        for i in 0 ..< passwordController.getFilteredPasswordTypes().count {
-            let currType = passwordController.getPasswordType(by: UInt(i))
-            let image = TypeIcons.getTypeIcon(currType)
-            typeSelectionControl.insertSegment(with: image, at: i, animated: true)
-        }
+        setupSegments()
         if keyboardDismissGesture == nil {
             //setting a tap gesture to dismiss keyboard when tapped outside of keyboard view
             keyboardDismissGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -60,13 +51,27 @@ class TypeSelectionViewController: UIViewController {
         super.viewDidAppear(animated)
         selectType(typeSelectionControl)
     }
-
+    
+    /// Inserts the segments based upon preferences
+    func setupSegments() {
+        passwordController.useStoredType = d?.bool(forKey: "storePasswords") ?? false
+        passwordController.useAdvancedType = d?.bool(forKey: "enableAdvanced") ?? false
+        
+        typeSelectionControl.removeAllSegments()
+        for i in 0 ..< passwordController.getFilteredPasswordTypes().count {
+            let currType = passwordController.getPasswordType(by: UInt(i))
+            let image = TypeIcons.getTypeIcon(currType)
+            typeSelectionControl.insertSegment(with: image, at: i, animated: true)
+        }
+        
+    }
     /// Called when type is selected on the segmented control - animates the next one into the view
     ///
     /// - Parameter sender: default sender
 
     @IBAction func selectType(_ sender: UISegmentedControl) {
-        let selType = c.getPasswordType(by: UInt(typeSelectionControl.selectedSegmentIndex))
+        
+        let selType = passwordController.getPasswordType(by: UInt(typeSelectionControl.selectedSegmentIndex))
         bigType.setImage(type: selType)
         
         if let selectedViewController = getViewController(selType) {
@@ -209,6 +214,10 @@ class TypeSelectionViewController: UIViewController {
         //whenever a default changes, generate a password
     
         //TODO: do not generate on color changes
+        if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
+            setupSegments()
+            setSelectedPasswordType()
+        }
         if keyPath != "selectedPasswordType" {
             currentViewController?.generatePassword()
         }

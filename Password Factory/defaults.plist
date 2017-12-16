@@ -48,8 +48,6 @@
 	<integer>1</integer>
 	<key>passphraseCaseTypeIndex</key>
 	<integer>0</integer>
-	<key>enableAdvancedMode</key>
-	<false/>
 	<key>addToLoginItems</key>
 	<false/>
 	<key>displayCrackTime</key>
