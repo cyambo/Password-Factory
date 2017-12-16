@@ -85,6 +85,7 @@
 		40537D8F1F941D1800D645B7 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
 		4054ABEB1FE4999D009FE668 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054ABEA1FE4999D009FE668 /* ColorPickerViewController.swift */; };
 		4054ABED1FE4B731009FE668 /* UIView+borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054ABEC1FE4B731009FE668 /* UIView+borders.swift */; };
+		4054ABF11FE58D40009FE668 /* PreferencesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054ABF01FE58D40009FE668 /* PreferencesButton.swift */; };
 		4058DF281F92995800CCB6E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4058DF271F92995800CCB6E7 /* AppDelegate.m */; };
 		4058DF2A1F92995800CCB6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4058DF291F92995800CCB6E7 /* Assets.xcassets */; };
 		4058DF2D1F92995800CCB6E7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4058DF2B1F92995800CCB6E7 /* MainMenu.xib */; };
@@ -308,6 +309,7 @@
 		40537D8C1F9419FD00D645B7 /* constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
 		4054ABEA1FE4999D009FE668 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		4054ABEC1FE4B731009FE668 /* UIView+borders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+borders.swift"; sourceTree = "<group>"; };
+		4054ABF01FE58D40009FE668 /* PreferencesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesButton.swift; sourceTree = "<group>"; };
 		4058DF241F92995800CCB6E7 /* Password Factory Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4058DF261F92995800CCB6E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4058DF271F92995800CCB6E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -660,6 +662,7 @@
 				40E939B71FD4A88600B32A2D /* PatternCollectionViewCell.swift */,
 				402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */,
 				4051185C1FD62E2600E3FDFB /* ZoomButton.swift */,
+				4054ABF01FE58D40009FE668 /* PreferencesButton.swift */,
 				400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */,
 				400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */,
 				400E45DA1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift */,
@@ -1661,6 +1664,7 @@
 				400E45D01FD78A1E00A3F4F7 /* BigTypeIconView.swift in Sources */,
 				406BD2331FD315C100D0E854 /* StyleKit.swift in Sources */,
 				400108291FD3372A00594304 /* NSString+MapCase.m in Sources */,
+				4054ABF11FE58D40009FE668 /* PreferencesButton.swift in Sources */,
 				4001085C1FD3445000594304 /* TypeIcons.swift in Sources */,
 				400108121FD3323900594304 /* PasswordsViewController.swift in Sources */,
 				40189F581FD46A3600D87217 /* PatternPasswordViewController.swift in Sources */,

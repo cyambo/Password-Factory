@@ -17,6 +17,5 @@ class RandomPasswordViewController: PasswordsViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        caseTypeView?.scrollToSelected() //scroll to the selected case type
     }
 }

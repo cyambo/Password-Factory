@@ -91,7 +91,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         passwordViewController = mainStoryboard.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController
         if let p = passwordViewController {
-            p.setup(type: type)
+//            p.setup(type: type)
             addChildViewController(p)
         }
     }
@@ -112,20 +112,7 @@ class PasswordContainerViewController: UIViewController, UITextViewDelegate {
         passwordTextView.attributedText = Utilities.highlightPassword(password: passwordTextView.text, font: passwordFont)
         updateStrength()
     }
-    @IBAction func pressedZoomButton(_ sender: UIButton) {
-        //TODO: show zoom
-        showPreferences()
-    }
-    func showPreferences() {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "PreferencesView") as? PreferencesViewController {
-            vc.modalPresentationStyle = .overCurrentContext
 
-            if let r = UIApplication.shared.keyWindow?.rootViewController {
-                r.present(vc, animated: true, completion: nil)
-            }
-        }
-    }
     /// Generates a new password and updates strength
     func generatePassword() {
         controller?.generatePassword(type)

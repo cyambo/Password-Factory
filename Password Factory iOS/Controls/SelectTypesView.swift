@@ -50,7 +50,9 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         Utilities.roundCorners(layer: collection.layer, withBorder: false)
         
     }
-    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        scrollToSelected()
+    }
     /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
         if let index = d?.integer(forKey: getDefaultsKey()) {

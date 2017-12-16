@@ -17,7 +17,10 @@ class StrengthMeter: UIView {
         StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: getStrengthColor(), strength: CGFloat(strength), size: rect.size)
         
     }
-
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        updateStrength(s: 0.5)
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
         setDisplay()
@@ -46,7 +49,6 @@ class StrengthMeter: UIView {
         setNeedsDisplay()
     }
     func setDisplay() {
-        Utilities.roundCorners(view: self, corners: [.bottomLeft, .bottomRight], withBorder: false)
         backgroundColor = UIColor.white.withAlphaComponent(0.75)
     }
 }
