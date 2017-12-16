@@ -123,6 +123,8 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     }
     @IBAction func deleteLast(_ sender: Any) {
         patternText.text = String(patternText.text.dropLast())
+        d.setObject(patternText.text, forKey: "userPattern")
+        highlightPatternString()
     }
     
 }
