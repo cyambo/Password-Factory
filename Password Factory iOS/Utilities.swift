@@ -10,7 +10,10 @@ import UIKit
 
 class Utilities: NSObject {
     static let tintColor = UIColor(red:0.99, green:0.28, blue:0.12, alpha:1.0)
-    
+
+    static let cellBorderColor = UIColor(white: 0.85, alpha: 1.0)
+    static let containerBorderColor = UIColor(white: 0.6, alpha: 1.0)
+    static let labelFont = UIFont.systemFont(ofSize: 16, weight: .regular)
     /// Rounds the corners of a layer
     ///
     /// - Parameters:

@@ -40,7 +40,6 @@
 		400E45D71FD8726800A3F4F7 /* SelectTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */; };
 		400E45D91FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45D81FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift */; };
 		400E45DB1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45DA1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift */; };
-		400E45DD1FDA2C9900A3F4F7 /* ButtonsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E45DC1FDA2C9900A3F4F7 /* ButtonsContainer.swift */; };
 		400E83831FC4CB55006CE51A /* StrengthMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586001B8112FD00393B99 /* StrengthMeter.m */; };
 		400F03DA1FD07F03008BD579 /* PasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03D91FD07F03008BD579 /* PasswordTextView.m */; };
 		400F03E01FD0827E008BD579 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03DF1FD0827E008BD579 /* TextView.m */; };
@@ -267,7 +266,6 @@
 		400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypesView.swift; sourceTree = "<group>"; };
 		400E45D81FD8787C00A3F4F7 /* UIView+removeSubviewsAndConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+removeSubviewsAndConstraints.swift"; sourceTree = "<group>"; };
 		400E45DA1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypeCollectionViewCell.swift; sourceTree = "<group>"; };
-		400E45DC1FDA2C9900A3F4F7 /* ButtonsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsContainer.swift; sourceTree = "<group>"; };
 		400F03D81FD07F03008BD579 /* PasswordTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordTextView.h; sourceTree = "<group>"; };
 		400F03D91FD07F03008BD579 /* PasswordTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordTextView.m; sourceTree = "<group>"; };
 		400F03DE1FD0827E008BD579 /* TextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
@@ -651,6 +649,21 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		4025FC291FE6CF2A0036BE3C /* Control Views */ = {
+			isa = PBXGroup;
+			children = (
+				400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */,
+				400E45DA1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift */,
+				40AB01DF1FDB029F00D34027 /* SwitchView.swift */,
+				400210F01FDB316600D272BB /* StepperView.swift */,
+				402CF59F1FDC6FE10037C56D /* TextFieldView.swift */,
+				40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */,
+				406E8FE01FE30E7400A76765 /* LengthControlView.swift */,
+				40974E301FE4828400AC2772 /* ColorWellView.swift */,
+			);
+			path = "Control Views";
+			sourceTree = "<group>";
+		};
 		4058DF251F92995800CCB6E7 /* Password Factory Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,22 +681,14 @@
 		406BD22C1FD312F400D0E854 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				4025FC291FE6CF2A0036BE3C /* Control Views */,
 				4025FC281FE5C2E90036BE3C /* Buttons */,
+				4001080C1FD32FB600594304 /* PatternTextView.swift */,
 				406BD22F1FD3148200D0E854 /* ControlsContainer.swift */,
 				406BD2341FD3166100D0E854 /* StrengthMeter.swift */,
-				4001080C1FD32FB600594304 /* PatternTextView.swift */,
 				40E939B71FD4A88600B32A2D /* PatternCollectionViewCell.swift */,
 				402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */,
 				400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */,
-				400E45D61FD8726800A3F4F7 /* SelectTypesView.swift */,
-				400E45DA1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift */,
-				400E45DC1FDA2C9900A3F4F7 /* ButtonsContainer.swift */,
-				40AB01DF1FDB029F00D34027 /* SwitchView.swift */,
-				400210F01FDB316600D272BB /* StepperView.swift */,
-				402CF59F1FDC6FE10037C56D /* TextFieldView.swift */,
-				40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */,
-				406E8FE01FE30E7400A76765 /* LengthControlView.swift */,
-				40974E301FE4828400AC2772 /* ColorWellView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1697,7 +1702,6 @@
 				4051185D1FD62E2600E3FDFB /* ZoomButton.swift in Sources */,
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
-				400E45DD1FDA2C9900A3F4F7 /* ButtonsContainer.swift in Sources */,
 				406E8FE11FE30E7400A76765 /* LengthControlView.swift in Sources */,
 				40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */,
 				40E580451FDDA2B800AD7DB9 /* SelectPickerView.swift in Sources */,

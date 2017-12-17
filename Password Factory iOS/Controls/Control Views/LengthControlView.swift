@@ -57,6 +57,8 @@ class LengthControlView: UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[slider]-0-|", options: [], metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-[sizeLabel]-0-|", options: [], metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[slider]-4-[sizeLabel(==30)]", options: [], metrics: nil, views: views))
+        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
+        label.font = Utilities.labelFont
         
     }    /// Sets up the length slider with the maximum value and moves the knob to the defaults value
     func setupLengthSlider() {

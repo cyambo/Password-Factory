@@ -20,7 +20,17 @@ class ControlsContainer: UIView {
     }
 
     func setDisplay() {
-        Utilities.roundCorners(layer: self.layer, withBorder: false)
-        backgroundColor = UIColor.white.withAlphaComponent(0.75)
+        let color = Utilities.containerBorderColor
+        if let rootView = window?.rootViewController?.view {
+            let conv = convert(frame, to: rootView)
+            //do not put a top border if is aligned to the top of the window
+            if conv.origin.y != 0 {
+                addTopBorderWithColor(color: color, width: 0.5)
+            }
+            //do not put a border if the bottom of the frame is at the bottom of the window
+            if(conv.origin.y + conv.size.height != rootView.frame.size.height) {
+                addBottomBorderWithColor(color: color, width: 0.5)
+            }
+        }
     }
 }

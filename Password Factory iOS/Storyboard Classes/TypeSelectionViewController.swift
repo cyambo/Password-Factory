@@ -17,7 +17,6 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     let c = PFConstants.instance
     var currentViewController: PasswordsViewController?
 
-    
     @IBOutlet weak var passwordTypeTitle: UILabel!
     @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var bigType: BigTypeIconView!
@@ -46,17 +45,17 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
         passwordDisplay.textContainer.lineBreakMode = .byCharWrapping
         passwordDisplay.textContainer.maximumNumberOfLines = 1
         passwordFont = passwordDisplay.font ?? passwordFont
-        
 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setSelectedPasswordType()
-        
+        selectType(typeSelectionControl)
+        generatePassword()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        selectType(typeSelectionControl)
+
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         //dismisses the keyboard when done is pressed
@@ -67,7 +66,6 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
         return true
     }
     func textViewDidChange(_ textView: UITextView) {
-        
 //        controller?.setPasswordValue(passwordTextView.text)
 //        controller?.updatePasswordStrength()
 //        passwordTextView.attributedText = Utilities.highlightPassword(password: passwordTextView.text, font: passwordFont)
@@ -103,20 +101,10 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
         passwordTypeTitle.text = c.getNameFor(type: selType)
         controlsView.removeSubviewsAndConstraints()
         currentViewController = selectedViewController
-            
-//        if selType == .patternType {
-            controlsView.addSubview(currentView)
-            Utilities.fillViewInContainer(currentView, superview: view)
-            
-//        } else {
-//            let scroll = UIScrollView.init()
-//            controlsView.addSubview(scroll)
-//            Utilities.fillViewInContainer(scroll, superview: self.view, padding: 16)
-//            scroll.addSubview(currentView)
-//            scroll.contentSize = CGSize.init(width: (scroll.frame.size.width - 16.0), height: currentView.frame.size.height)
-//            scroll.isDirectionalLockEnabled = true
-            
-//        }
+
+        controlsView.addSubview(currentView)
+        Utilities.fillViewInContainer(currentView, superview: view)
+
         self.d?.setInteger(selType.rawValue, forKey: "selectedPasswordType")
     
     }
@@ -138,7 +126,7 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     ///
     /// - Parameter sender: default sender
     @IBAction func pressedGenerateButton(_ sender: Any) {
-        currentViewController?.generatePassword()
+        generatePassword()
     }
     
     /// Copies the password to the pasteboard
@@ -150,7 +138,21 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
 //        }
         
     }
-    
+    func generatePassword() {
+        
+        guard let p = currentViewController?.generatePassword() else {
+            passwordDisplay.text = ""
+            strengthMeter.updateStrength(s: 0.0)
+            passwordLengthDisplay.text = "0"
+            return
+        }
+        passwordDisplay.attributedText = Utilities.highlightPassword(password: p, font: passwordFont)
+        passwordLengthDisplay.text = "\(passwordDisplay.text.count)"
+        strengthMeter.updateStrength(s: Double(currentViewController?.passwordStrength ?? 0.0))
+        passwordDisplay.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
+        
+        
+    }
     /// selects the current password type on the segmented control
     func setSelectedPasswordType() {
         guard let typeInt = d?.integer(forKey: "selectedPasswordType") else {
@@ -196,10 +198,10 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
         if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
             setupSegments()
             setSelectedPasswordType()
+        } else {
+           generatePassword()
         }
-        if keyPath != "selectedPasswordType" {
-            currentViewController?.generatePassword()
-        }
+        
     
     }
     

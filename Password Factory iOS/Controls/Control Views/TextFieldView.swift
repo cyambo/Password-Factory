@@ -45,6 +45,7 @@ class TextFieldView: UIView, UITextFieldDelegate {
         controlText.returnKeyType = .done
         controlText.clearButtonMode = .always
         controlText.delegate = self
+        
     }
     func addViews() {
         removeSubviewsAndConstraints()
@@ -67,6 +68,9 @@ class TextFieldView: UIView, UITextFieldDelegate {
         setTextFieldFromDefaults()
         let n = NotificationCenter.default
         n.addObserver(self, selector: #selector(textChanged), name: .UITextFieldTextDidChange, object: controlText)
+        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
+        controlText.font = Utilities.labelFont
+        controlLabel.font = Utilities.labelFont
     }
     
     /// sets the text field with defaults value

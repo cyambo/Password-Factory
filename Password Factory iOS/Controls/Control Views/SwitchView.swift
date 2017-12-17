@@ -24,6 +24,7 @@ class SwitchView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addViews()
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -67,6 +68,8 @@ class SwitchView: UIView {
             controlSwitch.setOn((d.bool(forKey: defaultsKey)), animated: false)
             controlSwitch.addTarget(self, action: #selector(changeSwitch), for: .valueChanged)
         }
+        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
+        controlLabel.font = Utilities.labelFont
 
     }
     

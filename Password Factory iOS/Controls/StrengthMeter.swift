@@ -20,6 +20,7 @@ class StrengthMeter: UIView {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         updateStrength(s: 0.5)
+        
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -50,6 +51,8 @@ class StrengthMeter: UIView {
     }
     func setDisplay() {
         backgroundColor = UIColor.white.withAlphaComponent(0.75)
+        addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
+        addTopBorderWithColor(color: UIColor.lightGray, width: 0.5)
     }
 }
 

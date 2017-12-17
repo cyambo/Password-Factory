@@ -76,7 +76,7 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[label]-(0)-|", options: [], metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[image]-(8)-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(5)-[image]-5-[label(==12)]-(5)-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(5)-[image]-(5)-[label(==12)]-(5)-|", options: [], metrics: nil, views: views))
 
         backgroundColor = UIColor.white
 

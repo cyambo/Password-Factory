@@ -46,17 +46,28 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-4-[collection(==50)]", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[label(==20)]-4-[collection(>=50)]", options: [], metrics: nil, views: views))
         Utilities.roundCorners(layer: collection.layer, withBorder: false)
+        typeLabel.font = Utilities.labelFont
         
     }
-    override func willMove(toWindow newWindow: UIWindow?) {
-        scrollToSelected()
+    override func layoutSubviews() {
+//        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
     }
+    override func willMove(toWindow newWindow: UIWindow?) {
+        if (newWindow != nil) {
+            scrollToSelected()
+        }
+        
+    }
+//    override func willMove(toSuperview newSuperview: UIView?) {
+//        scrollToSelected()
+//    }
     /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
         if let index = d?.integer(forKey: getDefaultsKey()) {
             collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
+
         }
     }
     

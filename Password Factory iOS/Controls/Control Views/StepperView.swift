@@ -73,6 +73,9 @@ class StepperView: UIView {
             controlStepper.value = Double(d.integer(forKey: defaultsKey))
             controlStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
         }
+        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
+        controlLabel.font = Utilities.labelFont
+        valueLabel.font = Utilities.labelFont
     }
     
     /// Changes the value label based upon stepper value

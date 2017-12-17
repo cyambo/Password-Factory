@@ -49,6 +49,7 @@ class ColorWellView: UIView, ColorPickerViewControllerDelegate  {
         Utilities.centerViewVerticallyInContainer(wellView, superview: self)
         setFromDefaults()
         wellView.addTarget(self, action: #selector(loadColorPicker), for: .touchUpInside)
+        controlLabel.font = Utilities.labelFont
         
     }
     func selectedColor(_ color: UIColor) {

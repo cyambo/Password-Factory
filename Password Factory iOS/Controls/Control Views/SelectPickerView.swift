@@ -64,7 +64,9 @@ class SelectPickerView: UIView, PickerViewControllerDelegate {
 
         Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
         Utilities.centerViewVerticallyInContainer(controlButton, superview: self)
-
+        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
+        controlLabel.font = Utilities.labelFont
+        controlButton.titleLabel?.font = Utilities.labelFont
         
     }
     

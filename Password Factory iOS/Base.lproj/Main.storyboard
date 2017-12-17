@@ -32,6 +32,10 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NlW-CN-LXO">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.89808485243055558" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdU-uD-dyc" userLabel="Header">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                 <subviews>
@@ -69,7 +73,7 @@
                                     <constraint firstAttribute="height" constant="32" id="opm-Ip-hF4"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-gt-17B" userLabel="Password Controls">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-gt-17B" userLabel="Password Controls" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="168" width="375" height="88"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-3e-tKc" customClass="ZoomButton" customModule="Password_Factory_iOS" customModuleProvider="target">
@@ -95,7 +99,7 @@
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="fD8-6D-Gbm" id="E3K-ST-fpj"/>
                                         </connections>
@@ -123,11 +127,11 @@
                                     <constraint firstItem="yS4-tb-bGv" firstAttribute="top" secondItem="kCJ-gt-17B" secondAttribute="top" id="f5C-Zv-bp4"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-dR-N5M" userLabel="Controls Container">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-dR-N5M" userLabel="Controls Container" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="272" width="375" height="281"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-dz-RZb" userLabel="Selection Container">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-dz-RZb" userLabel="Selection Container" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="569" width="375" height="98"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3p-3g-Cie">
@@ -185,6 +189,7 @@
                             <constraint firstAttribute="trailing" secondItem="zob-Wf-bzQ" secondAttribute="trailing" id="3Bh-Tw-4fF"/>
                             <constraint firstItem="DdU-uD-dyc" firstAttribute="trailing" secondItem="rZJ-aR-1l4" secondAttribute="trailing" id="3KA-mi-WE8"/>
                             <constraint firstItem="QYu-dz-RZb" firstAttribute="trailing" secondItem="rZJ-aR-1l4" secondAttribute="trailing" id="3fL-N8-mFi"/>
+                            <constraint firstItem="iSx-iR-SEn" firstAttribute="bottom" secondItem="NlW-CN-LXO" secondAttribute="bottom" id="6oR-D0-ES3"/>
                             <constraint firstAttribute="trailing" secondItem="kCJ-gt-17B" secondAttribute="trailing" id="B30-Ep-2Qd"/>
                             <constraint firstItem="kCJ-gt-17B" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="C2s-uN-z9k"/>
                             <constraint firstItem="ZGC-86-ZBB" firstAttribute="leading" secondItem="zob-Wf-bzQ" secondAttribute="leading" id="Cum-tA-gmw"/>
@@ -198,7 +203,9 @@
                             <constraint firstItem="ZGC-86-ZBB" firstAttribute="top" secondItem="zob-Wf-bzQ" secondAttribute="top" id="ah9-eY-yjL"/>
                             <constraint firstItem="NWI-dR-N5M" firstAttribute="top" secondItem="kCJ-gt-17B" secondAttribute="bottom" constant="16" id="ceR-rO-GF3"/>
                             <constraint firstItem="lLN-pe-r9C" firstAttribute="trailing" secondItem="rZJ-aR-1l4" secondAttribute="trailing" id="d7E-Jo-n3a"/>
+                            <constraint firstItem="NlW-CN-LXO" firstAttribute="leading" secondItem="iSx-iR-SEn" secondAttribute="leading" id="dGg-oQ-eB2"/>
                             <constraint firstItem="kMU-Ol-EiP" firstAttribute="top" secondItem="zob-Wf-bzQ" secondAttribute="top" id="dNm-dp-sGC"/>
+                            <constraint firstItem="iSx-iR-SEn" firstAttribute="trailing" secondItem="NlW-CN-LXO" secondAttribute="trailing" id="irJ-pz-0la"/>
                             <constraint firstItem="kCJ-gt-17B" firstAttribute="top" secondItem="lLN-pe-r9C" secondAttribute="bottom" constant="16" id="jJ9-Vi-uDy"/>
                             <constraint firstItem="zob-Wf-bzQ" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="jtu-Z7-erK"/>
                             <constraint firstItem="lLN-pe-r9C" firstAttribute="top" secondItem="DdU-uD-dyc" secondAttribute="bottom" id="ktT-Ag-ueY"/>
@@ -207,6 +214,7 @@
                             <constraint firstItem="lLN-pe-r9C" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="oon-mX-ciq"/>
                             <constraint firstItem="kMU-Ol-EiP" firstAttribute="trailing" secondItem="zob-Wf-bzQ" secondAttribute="trailing" id="qNr-g0-pHS"/>
                             <constraint firstItem="ZGC-86-ZBB" firstAttribute="trailing" secondItem="zob-Wf-bzQ" secondAttribute="trailing" id="sQP-FW-OXL"/>
+                            <constraint firstItem="NlW-CN-LXO" firstAttribute="top" secondItem="iSx-iR-SEn" secondAttribute="top" id="sd3-U2-kWw"/>
                             <constraint firstItem="QYu-dz-RZb" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="vgL-6P-n7R"/>
                             <constraint firstAttribute="top" secondItem="zob-Wf-bzQ" secondAttribute="top" id="x8h-PU-N2n"/>
                         </constraints>
