@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.89808485243055558" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdU-uD-dyc" userLabel="Header">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdU-uD-dyc" userLabel="Header" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xl-nY-3zn">
@@ -67,27 +67,17 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLN-pe-r9C" userLabel="Strength" customClass="StrengthMeter" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="120" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="opm-Ip-hF4"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-gt-17B" userLabel="Password Controls" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="168" width="375" height="88"/>
+                                <rect key="frame" x="0.0" y="184" width="375" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-3e-tKc" customClass="ZoomButton" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="51" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="bPh-J1-7uz"/>
-                                            <constraint firstAttribute="height" constant="30" id="r7j-zp-A3H"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="pressedZoomButton:" destination="fD8-6D-Gbm" eventType="touchUpInside" id="7v8-5H-LQJ"/>
-                                        </connections>
-                                    </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDF-xA-Mpa">
-                                        <rect key="frame" x="8" y="0.0" width="359" height="44"/>
+                                        <rect key="frame" x="8" y="0.0" width="327" height="44"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SsW-g0-WJi">
                                                 <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
@@ -117,31 +107,41 @@
                                             <constraint firstItem="SsW-g0-WJi" firstAttribute="leading" secondItem="eDF-xA-Mpa" secondAttribute="leading" id="tHa-pw-iN7"/>
                                         </constraints>
                                     </scrollView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk6-Cd-qFq">
-                                        <rect key="frame" x="309" y="56" width="42" height="21"/>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-3e-tKc" userLabel="Zoom Button" customClass="ZoomButton" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="340.5" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="bPh-J1-7uz"/>
+                                            <constraint firstAttribute="height" constant="30" id="r7j-zp-A3H"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="pressedZoomButton:" destination="fD8-6D-Gbm" eventType="touchUpInside" id="7v8-5H-LQJ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk6-Cd-qFq">
+                                        <rect key="frame" x="340" y="23" width="30.5" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Wmx-U7-xJb"/>
+                                            <constraint firstAttribute="width" constant="30.5" id="ddP-ws-cQN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                        <color key="textColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="yk6-Cd-qFq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kCJ-gt-17B" secondAttribute="leadingMargin" id="9F5-KA-xHc"/>
-                                    <constraint firstItem="yk6-Cd-qFq" firstAttribute="centerY" secondItem="rs5-3e-tKc" secondAttribute="centerY" id="AH9-er-MKU"/>
-                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="top" secondItem="eDF-xA-Mpa" secondAttribute="bottom" constant="7" id="QNI-DW-ZMo"/>
-                                    <constraint firstAttribute="bottom" secondItem="rs5-3e-tKc" secondAttribute="bottom" constant="7" id="SVG-48-MtE"/>
-                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="leading" secondItem="kCJ-gt-17B" secondAttribute="leadingMargin" constant="16" id="Xfz-LX-fRC"/>
-                                    <constraint firstAttribute="height" constant="88" id="Z5Q-UU-qBF"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="yk6-Cd-qFq" secondAttribute="trailing" constant="16" id="b5M-8q-ept"/>
+                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="centerX" secondItem="yk6-Cd-qFq" secondAttribute="centerX" id="DhR-jB-Rr9"/>
+                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="top" secondItem="kCJ-gt-17B" secondAttribute="top" id="UWo-Wv-mx1"/>
+                                    <constraint firstAttribute="height" constant="44" id="Z5Q-UU-qBF"/>
+                                    <constraint firstItem="eDF-xA-Mpa" firstAttribute="top" secondItem="kCJ-gt-17B" secondAttribute="top" id="fIw-sk-fDn"/>
+                                    <constraint firstAttribute="trailing" secondItem="yk6-Cd-qFq" secondAttribute="trailing" constant="4.5" id="hDj-ku-OWe"/>
                                     <constraint firstItem="eDF-xA-Mpa" firstAttribute="leading" secondItem="kCJ-gt-17B" secondAttribute="leadingMargin" id="rUx-G7-mTV"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="eDF-xA-Mpa" secondAttribute="trailing" id="xre-fp-tnX"/>
+                                    <constraint firstAttribute="bottom" secondItem="yk6-Cd-qFq" secondAttribute="bottom" id="tpK-l9-sTF"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="eDF-xA-Mpa" secondAttribute="trailing" constant="32" id="xre-fp-tnX"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-dR-N5M" userLabel="Controls Container" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="272" width="375" height="281"/>
+                                <rect key="frame" x="0.0" y="244" width="375" height="309"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-dz-RZb" userLabel="Selection Container" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
@@ -221,7 +221,7 @@
                             <constraint firstItem="iSx-iR-SEn" firstAttribute="trailing" secondItem="NlW-CN-LXO" secondAttribute="trailing" id="irJ-pz-0la"/>
                             <constraint firstItem="kCJ-gt-17B" firstAttribute="top" secondItem="lLN-pe-r9C" secondAttribute="bottom" constant="16" id="jJ9-Vi-uDy"/>
                             <constraint firstItem="zob-Wf-bzQ" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="jtu-Z7-erK"/>
-                            <constraint firstItem="lLN-pe-r9C" firstAttribute="top" secondItem="DdU-uD-dyc" secondAttribute="bottom" id="ktT-Ag-ueY"/>
+                            <constraint firstItem="lLN-pe-r9C" firstAttribute="top" secondItem="DdU-uD-dyc" secondAttribute="bottom" constant="16" id="ktT-Ag-ueY"/>
                             <constraint firstItem="kMU-Ol-EiP" firstAttribute="bottom" secondItem="zob-Wf-bzQ" secondAttribute="bottom" id="lJA-W5-HI4"/>
                             <constraint firstItem="QYu-dz-RZb" firstAttribute="top" secondItem="NWI-dR-N5M" secondAttribute="bottom" constant="16" id="nMA-gt-UHS"/>
                             <constraint firstItem="lLN-pe-r9C" firstAttribute="leading" secondItem="rZJ-aR-1l4" secondAttribute="leading" id="oon-mX-ciq"/>
