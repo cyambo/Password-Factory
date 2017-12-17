@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TypeSelectionViewController: UIViewController, UITextViewDelegate {
+class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
     
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
@@ -16,14 +16,16 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     let d = DefaultsManager.get()
     let c = PFConstants.instance
     var currentViewController: PasswordsViewController?
-
+    
     @IBOutlet weak var passwordTypeTitle: UILabel!
     @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var bigType: BigTypeIconView!
     @IBOutlet weak var controlsView: UIView!
     @IBOutlet weak var typeSelectionControl: UISegmentedControl!
     
-    @IBOutlet weak var passwordDisplay: UITextView!
+    @IBOutlet weak var passwordDisplayWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var passwordScrollView: UIScrollView!
+    @IBOutlet weak var passwordDisplay: UITextField!
     var passwordFont = UIFont.systemFont(ofSize: 24.0)
     @IBOutlet weak var passwordLengthDisplay: UILabel!
     
@@ -42,10 +44,9 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
             keyboardDismissGesture?.cancelsTouchesInView = false
             self.view.addGestureRecognizer(keyboardDismissGesture!)
         }
-        passwordDisplay.textContainer.lineBreakMode = .byCharWrapping
-        passwordDisplay.textContainer.maximumNumberOfLines = 1
-        passwordFont = passwordDisplay.font ?? passwordFont
 
+        passwordFont = passwordDisplay.font ?? passwordFont
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,22 +56,9 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
 
-    }
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        //dismisses the keyboard when done is pressed
-        if(text == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    func textViewDidChange(_ textView: UITextView) {
-//        controller?.setPasswordValue(passwordTextView.text)
-//        controller?.updatePasswordStrength()
-//        passwordTextView.attributedText = Utilities.highlightPassword(password: passwordTextView.text, font: passwordFont)
-//        updateStrength()
-    }
     /// Inserts the segments based upon preferences
     func setupSegments() {
         passwordController.useStoredType = d?.bool(forKey: "storePasswords") ?? false
@@ -87,7 +75,7 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     /// Called when type is selected on the segmented control - animates the next one into the view
     ///
     /// - Parameter sender: default sender
-
+    
     @IBAction func selectType(_ sender: UISegmentedControl) {
         
         let selType = passwordController.getPasswordType(by: UInt(typeSelectionControl.selectedSegmentIndex))
@@ -101,12 +89,12 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
         passwordTypeTitle.text = c.getNameFor(type: selType)
         controlsView.removeSubviewsAndConstraints()
         currentViewController = selectedViewController
-
+        
         controlsView.addSubview(currentView)
         Utilities.fillViewInContainer(currentView, superview: view)
-
+        
         self.d?.setInteger(selType.rawValue, forKey: "selectedPasswordType")
-    
+        
     }
     
     @IBAction func pressedPreferencesButton(_ sender: UIButton) {
@@ -121,7 +109,7 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     }
     @IBAction func pressedZoomButton(_ sender: UIButton) {
     }
-
+    
     /// Generates password when button is pressed
     ///
     /// - Parameter sender: default sender
@@ -133,9 +121,9 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     ///
     /// - Parameter sender: default sender
     @IBAction func pressedCopyButton(_ sender: Any) {
-//        if let currPass = currentViewController?.passwordTextView.text {
-//            UIPasteboard.general.string = currPass
-//        }
+        //        if let currPass = currentViewController?.passwordTextView.text {
+        //            UIPasteboard.general.string = currPass
+        //        }
         
     }
     func generatePassword() {
@@ -146,12 +134,20 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
             passwordLengthDisplay.text = "0"
             return
         }
-        passwordDisplay.attributedText = Utilities.highlightPassword(password: p, font: passwordFont)
-        passwordLengthDisplay.text = "\(passwordDisplay.text.count)"
+        updatePasswordField(p)
+
+
+    }
+    func updatePasswordField(_ password: String) {
+        passwordLengthDisplay.text = "\(passwordDisplay.text?.count ?? 0)"
         strengthMeter.updateStrength(s: Double(currentViewController?.passwordStrength ?? 0.0))
-        passwordDisplay.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
-        
-        
+        var size = (password as NSString).size(withAttributes: [NSAttributedStringKey.font: passwordFont])
+        size = CGSize.init(width: size.width, height: passwordDisplay.frame.size.height)
+        passwordDisplay.attributedText = Utilities.highlightPassword(password: password, font: passwordFont)
+        passwordDisplay.frame.size = size
+        passwordScrollView.contentSize = size
+        passwordDisplayWidthConstraint.constant = size.width
+        passwordScrollView.scrollRectToVisible(CGRect.init(x: size.width-1, y: 0, width: 1, height: 1), animated: true)
     }
     /// selects the current password type on the segmented control
     func setSelectedPasswordType() {
@@ -171,12 +167,12 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     /// - Parameter passwordType: password type of vc to get
     /// - Returns: view controller
     func getViewController(_ passwordType: PFPasswordType) -> PasswordsViewController? {
-
+        
         let typeName = c.getNameFor(type: passwordType)
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController {
             return vc
         }
-
+        
         return nil
     }
     
@@ -193,22 +189,30 @@ class TypeSelectionViewController: UIViewController, UITextViewDelegate {
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         //whenever a default changes, generate a password
-    
+        
         //TODO: do not generate on color changes
         if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
             setupSegments()
             setSelectedPasswordType()
         } else {
-           generatePassword()
+            generatePassword()
         }
         
-    
+        
     }
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        updatePasswordField(textField.text ?? "")
+        if string == "\n" {
+            textField.endEditing(true)
+            return false
+        }
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
+

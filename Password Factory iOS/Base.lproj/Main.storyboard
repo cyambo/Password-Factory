@@ -77,7 +77,7 @@
                                 <rect key="frame" x="0.0" y="168" width="375" height="88"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-3e-tKc" customClass="ZoomButton" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="51" width="30" height="30"/>
+                                        <rect key="frame" x="24" y="51" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="bPh-J1-7uz"/>
                                             <constraint firstAttribute="height" constant="30" id="r7j-zp-A3H"/>
@@ -86,26 +86,39 @@
                                             <action selector="pressedZoomButton:" destination="fD8-6D-Gbm" eventType="touchUpInside" id="7v8-5H-LQJ"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yS4-tb-bGv" userLabel="Password">
-                                        <rect key="frame" x="16" y="0.0" width="343" height="44"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDF-xA-Mpa">
+                                        <rect key="frame" x="8" y="0.0" width="359" height="44"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SsW-g0-WJi">
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="Djc-ba-qOG"/>
+                                                    <constraint firstAttribute="width" constant="359" id="YoU-iU-K3G"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Password">
+                                                        <attributes>
+                                                            <font key="NSFont" size="26" name=".SFNSText"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="fD8-6D-Gbm" id="t5R-YU-IwA"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="8IL-fh-RgD"/>
+                                            <constraint firstAttribute="bottom" secondItem="SsW-g0-WJi" secondAttribute="bottom" id="SYm-sb-xTr"/>
+                                            <constraint firstAttribute="height" constant="44" id="YHI-On-lRf"/>
+                                            <constraint firstItem="SsW-g0-WJi" firstAttribute="top" secondItem="eDF-xA-Mpa" secondAttribute="top" id="dD4-cC-Y1k"/>
+                                            <constraint firstAttribute="trailing" secondItem="SsW-g0-WJi" secondAttribute="trailing" id="k5l-RM-20V"/>
+                                            <constraint firstItem="SsW-g0-WJi" firstAttribute="leading" secondItem="eDF-xA-Mpa" secondAttribute="leading" id="tHa-pw-iN7"/>
                                         </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment content="PASSWORD">
-                                                <attributes>
-                                                    <font key="NSFont" size="24" name=".SFNSText"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="fD8-6D-Gbm" id="E3K-ST-fpj"/>
-                                        </connections>
-                                    </textView>
+                                    </scrollView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk6-Cd-qFq">
-                                        <rect key="frame" x="317" y="56" width="42" height="21"/>
+                                        <rect key="frame" x="309" y="56" width="42" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Wmx-U7-xJb"/>
                                         </constraints>
@@ -116,15 +129,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="yk6-Cd-qFq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kCJ-gt-17B" secondAttribute="leading" constant="20" symbolic="YES" id="3Z8-bo-2jE"/>
+                                    <constraint firstItem="yk6-Cd-qFq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kCJ-gt-17B" secondAttribute="leadingMargin" id="9F5-KA-xHc"/>
                                     <constraint firstItem="yk6-Cd-qFq" firstAttribute="centerY" secondItem="rs5-3e-tKc" secondAttribute="centerY" id="AH9-er-MKU"/>
-                                    <constraint firstItem="yS4-tb-bGv" firstAttribute="leading" secondItem="kCJ-gt-17B" secondAttribute="leadingMargin" constant="8" id="GKS-gi-vvr"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="yS4-tb-bGv" secondAttribute="trailing" constant="8" id="PAt-tH-2uK"/>
-                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="leading" secondItem="yS4-tb-bGv" secondAttribute="leading" id="Q6p-Lc-7Tv"/>
+                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="top" secondItem="eDF-xA-Mpa" secondAttribute="bottom" constant="7" id="QNI-DW-ZMo"/>
                                     <constraint firstAttribute="bottom" secondItem="rs5-3e-tKc" secondAttribute="bottom" constant="7" id="SVG-48-MtE"/>
+                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="leading" secondItem="kCJ-gt-17B" secondAttribute="leadingMargin" constant="16" id="Xfz-LX-fRC"/>
                                     <constraint firstAttribute="height" constant="88" id="Z5Q-UU-qBF"/>
-                                    <constraint firstItem="yk6-Cd-qFq" firstAttribute="trailing" secondItem="yS4-tb-bGv" secondAttribute="trailing" id="eO6-Kf-yOz"/>
-                                    <constraint firstItem="yS4-tb-bGv" firstAttribute="top" secondItem="kCJ-gt-17B" secondAttribute="top" id="f5C-Zv-bp4"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="yk6-Cd-qFq" secondAttribute="trailing" constant="16" id="b5M-8q-ept"/>
+                                    <constraint firstItem="eDF-xA-Mpa" firstAttribute="leading" secondItem="kCJ-gt-17B" secondAttribute="leadingMargin" id="rUx-G7-mTV"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="eDF-xA-Mpa" secondAttribute="trailing" id="xre-fp-tnX"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-dR-N5M" userLabel="Controls Container" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
@@ -223,8 +236,10 @@
                     <connections>
                         <outlet property="bigType" destination="ZGC-86-ZBB" id="cuV-ij-hci"/>
                         <outlet property="controlsView" destination="NWI-dR-N5M" id="Gir-CN-NxR"/>
-                        <outlet property="passwordDisplay" destination="yS4-tb-bGv" id="P4m-aj-ja7"/>
+                        <outlet property="passwordDisplay" destination="SsW-g0-WJi" id="aDN-Gi-PGg"/>
+                        <outlet property="passwordDisplayWidthConstraint" destination="YoU-iU-K3G" id="BkM-wz-loy"/>
                         <outlet property="passwordLengthDisplay" destination="yk6-Cd-qFq" id="wQc-wG-Xfg"/>
+                        <outlet property="passwordScrollView" destination="eDF-xA-Mpa" id="uN3-JV-HAH"/>
                         <outlet property="passwordTypeTitle" destination="7xl-nY-3zn" id="NNe-0S-QdV"/>
                         <outlet property="strengthMeter" destination="lLN-pe-r9C" id="Mc6-mK-2Ny"/>
                         <outlet property="typeSelectionControl" destination="jUq-0Y-Ywb" id="sxd-cd-A59"/>
@@ -237,7 +252,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1055" y="-292"/>
+            <point key="canvasLocation" x="1053.5999999999999" y="-292.80359820089956"/>
         </scene>
         <!--Random Password-->
         <scene sceneID="9Ox-ap-9QA">
