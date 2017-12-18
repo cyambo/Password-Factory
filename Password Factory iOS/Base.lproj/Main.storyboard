@@ -265,146 +265,134 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giY-cw-6dW">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="459"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnW-tp-2J9" userLabel="Scrolling">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="358"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ulj-xk-CQo">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="408"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ulj-xk-CQo">
-                                                <rect key="frame" x="16" y="102" width="311" height="256"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rFn-xH-YMG" userLabel="Use Numbers" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="44"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diO-cc-Mg5">
-                                                                <rect key="frame" x="81" y="29" width="104.5" height="20.5"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseNumbers"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Numbers"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-2N-GYa" userLabel="Use Symbols" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="44" width="311" height="44"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Symbols" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9w-Jc-66q">
-                                                                <rect key="frame" x="226.5" y="28" width="100.5" height="20.5"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseSymbols"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Symbols"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-K0-hXd" userLabel="Avoid Ambiguous" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="88" width="311" height="44"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avoid Ambiguous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7y-0s-rev">
-                                                                <rect key="frame" x="194" y="29.5" width="133" height="20.5"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomAvoidAmbiguous"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Avoid Ambiguous"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zi8-nK-CJ8" userLabel="Use Emoji" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="132" width="311" height="44"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-pu-2Ux">
-                                                                <rect key="frame" x="251" y="28.5" width="76" height="20.5"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseEmoji"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Emoji"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-kw-72e" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="176" width="311" height="80"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Case Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V43-KJ-zCV">
-                                                                <rect key="frame" x="115" y="35" width="81" height="21"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="T4d-15-1k2"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="selectType" value="Case"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="passwordTypeInt">
-                                                                <integer key="value" value="401"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="mUN-2N-GYa" firstAttribute="height" secondItem="0MN-K0-hXd" secondAttribute="height" id="55B-d7-tOI"/>
-                                                    <constraint firstItem="rFn-xH-YMG" firstAttribute="height" secondItem="mUN-2N-GYa" secondAttribute="height" id="5yc-6D-G7P"/>
-                                                    <constraint firstAttribute="height" constant="256" id="8xV-5v-wVD"/>
-                                                    <constraint firstItem="Zi8-nK-CJ8" firstAttribute="leading" secondItem="Ulj-xk-CQo" secondAttribute="leading" id="AEi-Vo-IB4"/>
-                                                    <constraint firstItem="rFn-xH-YMG" firstAttribute="height" secondItem="Zi8-nK-CJ8" secondAttribute="height" id="Cwu-3R-V55"/>
-                                                    <constraint firstItem="rFn-xH-YMG" firstAttribute="leading" secondItem="Ulj-xk-CQo" secondAttribute="leading" id="Kwd-xS-9E8"/>
-                                                    <constraint firstItem="0MN-K0-hXd" firstAttribute="height" secondItem="Zi8-nK-CJ8" secondAttribute="height" id="QIl-E3-bWa"/>
-                                                    <constraint firstItem="rFn-xH-YMG" firstAttribute="height" secondItem="0MN-K0-hXd" secondAttribute="height" id="dbl-ID-q4d"/>
-                                                    <constraint firstAttribute="trailing" secondItem="0MN-K0-hXd" secondAttribute="trailing" id="jTG-oT-r8E"/>
-                                                    <constraint firstAttribute="trailing" secondItem="rFn-xH-YMG" secondAttribute="trailing" id="krD-Y9-1Kl"/>
-                                                    <constraint firstItem="0MN-K0-hXd" firstAttribute="leading" secondItem="Ulj-xk-CQo" secondAttribute="leading" id="rYa-tL-VlS"/>
-                                                    <constraint firstItem="mUN-2N-GYa" firstAttribute="leading" secondItem="Ulj-xk-CQo" secondAttribute="leading" id="sri-tP-vvr"/>
-                                                    <constraint firstAttribute="trailing" secondItem="mUN-2N-GYa" secondAttribute="trailing" id="wlc-v9-Jeh"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Zi8-nK-CJ8" secondAttribute="trailing" id="ywc-7R-TlT"/>
-                                                </constraints>
-                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="deZ-XR-Tje" customClass="LengthControlView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="16" width="311" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="88"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="iv8-60-HqC"/>
+                                                    <constraint firstAttribute="height" constant="88" id="iv8-60-HqC"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rFn-xH-YMG" userLabel="Use Numbers" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="88" width="343" height="56"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diO-cc-Mg5">
+                                                        <rect key="frame" x="81" y="29" width="104.5" height="20.5"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="3TH-b7-8LZ"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseNumbers"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Numbers"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-2N-GYa" userLabel="Use Symbols" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="144" width="343" height="56"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Symbols" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9w-Jc-66q">
+                                                        <rect key="frame" x="226.5" y="28" width="100.5" height="20.5"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseSymbols"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Symbols"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-K0-hXd" userLabel="Avoid Ambiguous" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="200" width="343" height="56"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avoid Ambiguous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7y-0s-rev">
+                                                        <rect key="frame" x="194" y="29.5" width="133" height="20.5"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomAvoidAmbiguous"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Avoid Ambiguous"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zi8-nK-CJ8" userLabel="Use Emoji" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="256" width="343" height="56"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-pu-2Ux">
+                                                        <rect key="frame" x="251" y="28.5" width="76" height="20.5"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseEmoji"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Emoji"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-kw-72e" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="312" width="343" height="96"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Case Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V43-KJ-zCV">
+                                                        <rect key="frame" x="115" y="35" width="81" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="96" id="T4d-15-1k2"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectType" value="Case"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="passwordTypeInt">
+                                                        <integer key="value" value="401"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Ulj-xk-CQo" firstAttribute="top" secondItem="deZ-XR-Tje" secondAttribute="bottom" constant="16" id="BSH-UU-18q"/>
-                                            <constraint firstItem="Ulj-xk-CQo" firstAttribute="leading" secondItem="SnW-tp-2J9" secondAttribute="leading" constant="16" id="LpR-FZ-9xq"/>
-                                            <constraint firstAttribute="height" constant="358" id="VTM-dk-ciw"/>
-                                            <constraint firstAttribute="trailing" secondItem="deZ-XR-Tje" secondAttribute="trailing" constant="16" id="ZXm-CQ-bnh"/>
-                                            <constraint firstItem="deZ-XR-Tje" firstAttribute="top" secondItem="SnW-tp-2J9" secondAttribute="top" constant="16" id="gwd-fk-zit"/>
-                                            <constraint firstItem="deZ-XR-Tje" firstAttribute="leading" secondItem="SnW-tp-2J9" secondAttribute="leading" constant="16" id="oC2-U1-oHz"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ulj-xk-CQo" secondAttribute="trailing" constant="16" id="tNf-04-HhR"/>
+                                            <constraint firstItem="mUN-2N-GYa" firstAttribute="height" secondItem="0MN-K0-hXd" secondAttribute="height" id="55B-d7-tOI"/>
+                                            <constraint firstItem="rFn-xH-YMG" firstAttribute="height" secondItem="mUN-2N-GYa" secondAttribute="height" id="5yc-6D-G7P"/>
+                                            <constraint firstItem="Zi8-nK-CJ8" firstAttribute="leading" secondItem="Ulj-xk-CQo" secondAttribute="leading" id="AEi-Vo-IB4"/>
+                                            <constraint firstAttribute="height" constant="408" id="B44-YZ-kzy"/>
+                                            <constraint firstItem="rFn-xH-YMG" firstAttribute="height" secondItem="Zi8-nK-CJ8" secondAttribute="height" id="Cwu-3R-V55"/>
+                                            <constraint firstItem="rFn-xH-YMG" firstAttribute="leading" secondItem="Ulj-xk-CQo" secondAttribute="leading" id="Kwd-xS-9E8"/>
+                                            <constraint firstItem="0MN-K0-hXd" firstAttribute="height" secondItem="Zi8-nK-CJ8" secondAttribute="height" id="QIl-E3-bWa"/>
+                                            <constraint firstItem="rFn-xH-YMG" firstAttribute="height" secondItem="0MN-K0-hXd" secondAttribute="height" id="dbl-ID-q4d"/>
+                                            <constraint firstAttribute="trailing" secondItem="0MN-K0-hXd" secondAttribute="trailing" id="jTG-oT-r8E"/>
+                                            <constraint firstAttribute="trailing" secondItem="rFn-xH-YMG" secondAttribute="trailing" id="krD-Y9-1Kl"/>
+                                            <constraint firstItem="0MN-K0-hXd" firstAttribute="leading" secondItem="Ulj-xk-CQo" secondAttribute="leading" id="rYa-tL-VlS"/>
+                                            <constraint firstItem="mUN-2N-GYa" firstAttribute="leading" secondItem="Ulj-xk-CQo" secondAttribute="leading" id="sri-tP-vvr"/>
+                                            <constraint firstAttribute="trailing" secondItem="mUN-2N-GYa" secondAttribute="trailing" id="wlc-v9-Jeh"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zi8-nK-CJ8" secondAttribute="trailing" id="ywc-7R-TlT"/>
                                         </constraints>
-                                    </view>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="SnW-tp-2J9" firstAttribute="width" secondItem="giY-cw-6dW" secondAttribute="width" id="AaM-Ns-9gf"/>
-                                    <constraint firstAttribute="bottom" secondItem="SnW-tp-2J9" secondAttribute="bottom" constant="117" id="IWG-ov-b06"/>
-                                    <constraint firstAttribute="trailing" secondItem="SnW-tp-2J9" secondAttribute="trailing" id="UER-E1-KUM"/>
-                                    <constraint firstItem="SnW-tp-2J9" firstAttribute="leading" secondItem="giY-cw-6dW" secondAttribute="leading" id="g0p-hw-nqj"/>
-                                    <constraint firstItem="SnW-tp-2J9" firstAttribute="top" secondItem="giY-cw-6dW" secondAttribute="top" id="oRK-OC-6Cr"/>
+                                    <constraint firstItem="Ulj-xk-CQo" firstAttribute="top" secondItem="giY-cw-6dW" secondAttribute="top" id="IK4-dS-R99"/>
+                                    <constraint firstItem="Ulj-xk-CQo" firstAttribute="leading" secondItem="giY-cw-6dW" secondAttribute="leading" id="WCc-tM-Od6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ulj-xk-CQo" secondAttribute="trailing" id="Zo4-Gc-Cg7"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ulj-xk-CQo" secondAttribute="bottom" id="fdQ-Ka-saz"/>
+                                    <constraint firstItem="Ulj-xk-CQo" firstAttribute="width" secondItem="giY-cw-6dW" secondAttribute="width" id="pWt-KE-6JV"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -424,7 +412,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="scrollContainer" destination="SnW-tp-2J9" id="n4K-hT-sgy"/>
                         <outlet property="scrollView" destination="giY-cw-6dW" id="0XE-a8-GHH"/>
                     </connections>
                 </viewController>

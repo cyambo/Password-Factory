@@ -66,7 +66,7 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         }
         typeLabel.text = title
         imageView.contentMode = .scaleAspectFit
-        backgroundColor = Utilities.tintColor
+        backgroundColor = PFConstants.tintColor
         if !selected {
             backgroundColor = backgroundColor?.withAlphaComponent(0.5)
         }
@@ -75,20 +75,12 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
     /// Adds the image and label to the view and uses vfl to position them in the view
     func setupView() {
 
-        Utilities.roundCorners(layer: layer, withBorder: false)
+        roundCorners()
         
-
         let views = ["label" : typeLabel as UIView, "image" : imageView as UIView]
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[label]-(0)-|", options: [], metrics: nil, views: views))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(5)-[image(==23)]", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[label(==12)]-(5)-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[image]-(>=7)-|", options: [], metrics: nil, views: views))
-
-
+        let constraints = ["H:|-(0)-[label]-(0)-|","V:|-(5)-[image(==23)]","V:[label(==12)]-(5)-|","H:|-(8)-[image]-(>=7)-|"]
+        addVFLConstraints(constraints: constraints, views: views)
+        translatesAutoresizingMaskIntoConstraints = true
 
     }
 }

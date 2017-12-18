@@ -45,17 +45,18 @@ class ColorPickerViewController: UIViewController {
         super.viewWillLayoutSubviews()
         titleLabel.text = pickerTitle
         titleLabel.textColor = UIColor.white
-        titleLabel.backgroundColor = Utilities.tintColor
+        titleLabel.backgroundColor = PFConstants.tintColor
         picker.setViewColor(pickerColor)
 
     }
     override func viewDidLayoutSubviews() {
-        Utilities.roundCorners(layer: container.layer, withBorder: false)
-        Utilities.dropShadow(view: container)
-        Utilities.roundCorners(view: titleLabel, corners: [.topLeft, .topRight], withBorder: false)
-        rightButton.addTopBorderWithColor(color: Utilities.tintColor, width: 0.5)
-        leftButton.addTopBorderWithColor(color: Utilities.tintColor, width: 0.5)
-        rightButton.addLeftBorderWithColor(color: Utilities.tintColor, width: 0.5)
+        container.roundCorners()
+        container.dropShadow()
+        titleLabel.roundCorners(corners: [.topLeft, .topRight])
+
+        rightButton.addTopBorderWithColor(color: PFConstants.tintColor, width: 0.5)
+        leftButton.addTopBorderWithColor(color: PFConstants.tintColor, width: 0.5)
+        rightButton.addLeftBorderWithColor(color: PFConstants.tintColor, width: 0.5)
     }
 
 

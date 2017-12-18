@@ -25,18 +25,16 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         super.setupView()
         controlText.borderStyle = .roundedRect
         controlText.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+        
         let views = ["text" : controlText as UIView, "label" : controlLabel as UIView]
-        translatesAutoresizingMaskIntoConstraints = false
-        controlText.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label(==125)]-8-[text]-0-|", options: [], metrics: nil, views: views))
+        addVFLConstraints(constraints: ["H:|-0-[label(==125)]-8-[text]-0-|"], views: views)
+        centerViewVertically(controlLabel)
+        centerViewVertically(controlText)
 
-        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
-        Utilities.centerViewVerticallyInContainer(controlText, superview: self)
         setTextFieldFromDefaults()
         let n = NotificationCenter.default
         n.addObserver(self, selector: #selector(textChanged), name: .UITextFieldTextDidChange, object: controlText)
-        controlText.font = Utilities.labelFont
+        controlText.font = PFConstants.labelFont
     }
     /// Sets the parameters of the text field
     func setupTextField() {

@@ -47,11 +47,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     /// Sets up the views to be displayed
     func setupView() {
-        Utilities.roundCorners(layer: containerView.layer, withBorder: false)
-        Utilities.dropShadow(view: containerView)
-        setupTitle()
-        Utilities.roundCorners(view: titleLabel, corners: [.topLeft, .topRight], withBorder: false)
-        doneButton.addTopBorderWithColor(color: Utilities.tintColor, width: 0.5)
+        containerView.roundCorners()
+        containerView.dropShadow()
+        titleLabel.roundCorners(corners: [.topLeft, .topRight])
+        doneButton.addTopBorderWithColor(color: PFConstants.tintColor, width: 0.5)
     }
     
     /// Sets the title
@@ -61,7 +60,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         } else {
             self.titleLabel.text = "Select \(pickerType.rawValue)"
         }
-        titleLabel.backgroundColor = Utilities.tintColor
+        titleLabel.backgroundColor = PFConstants.tintColor
         titleLabel.textColor = UIColor.white
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

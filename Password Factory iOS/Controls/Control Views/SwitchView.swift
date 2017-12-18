@@ -32,14 +32,10 @@ class SwitchView: ControlView {
     override func setupView() {
         super.setupView()
         
-        let views = ["switch" : controlSwitch as UIView, "label" : controlLabel as UIView, "superview" : self]
-        translatesAutoresizingMaskIntoConstraints = false
-        controlSwitch.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-8-[switch(==52)]-0-|", options: [], metrics: nil, views: views))
-
-        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
-        Utilities.centerViewVerticallyInContainer(controlSwitch, superview: self)
+        let views = ["switch" : controlSwitch as UIView, "label" : controlLabel as UIView]
+        addVFLConstraints(constraints: ["H:|-[label]-8-[switch(==52)]-|"], views: views)
+        centerViewVertically(controlLabel)
+        centerViewVertically(controlSwitch)
         
         //sets the state and action for the switch
         if defaultsKey != nil {

@@ -17,6 +17,6 @@ class PasswordTextView: UITextView {
     }
 
     func setDisplay() {
-        Utilities.roundCorners(layer: self.layer, withBorder: true)
+        roundCorners()
     }
 }

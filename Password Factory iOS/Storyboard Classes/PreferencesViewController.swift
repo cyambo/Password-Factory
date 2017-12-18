@@ -16,12 +16,13 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLayoutSubviews() {
-        Utilities.roundCorners(layer: controlsContainer.layer, withBorder: false)
-        Utilities.roundCorners(view: titleLabel, corners: [.topLeft, .topRight], withBorder: false)
-        Utilities.dropShadow(view: controlsContainer)
-        titleLabel.backgroundColor = Utilities.tintColor
+        controlsContainer.roundCorners()
+        titleLabel.roundCorners(corners: [.topLeft, .topRight])
+        controlsContainer.dropShadow()
+
+        titleLabel.backgroundColor = PFConstants.tintColor
         titleLabel.textColor = UIColor.white
-        doneButton.addTopBorderWithColor(color: Utilities.tintColor, width: 0.5)
+        doneButton.addTopBorderWithColor(color: PFConstants.tintColor, width: 0.5)
         
     }
 

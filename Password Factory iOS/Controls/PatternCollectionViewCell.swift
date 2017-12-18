@@ -19,7 +19,7 @@ class PatternCollectionViewCell: UICollectionViewCell {
         let pc = c.patternTypeToCharacter[patternTypeItem]
         patternItemText.text = pc
         let color = ColorUtilities.patternType(toColor: patternTypeItem)
-        Utilities.roundCorners(layer: layer, withBorder: false)
+        roundCorners()
         patternItemText.text = pc
         patternItemText.textColor = UIColor.white
         backgroundColor = color

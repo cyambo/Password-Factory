@@ -20,7 +20,7 @@ class ControlsContainer: UIView {
     }
 
     func setDisplay() {
-        let color = Utilities.containerBorderColor
+        let color = PFConstants.containerBorderColor
         if let rootView = window?.rootViewController?.view {
             let conv = convert(frame, to: rootView)
             //do not put a top border if is aligned to the top of the window

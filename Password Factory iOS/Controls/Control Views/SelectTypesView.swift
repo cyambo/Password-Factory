@@ -37,15 +37,8 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         super.setupView()
 
         let views = ["collection" : collection as UIView, "label" : controlLabel as UIView]
-        translatesAutoresizingMaskIntoConstraints = false
-        collection.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[label(==20)]-4-[collection(>=50)]", options: [], metrics: nil, views: views))
-
-        Utilities.roundCorners(layer: collection.layer, withBorder: false)
-
+        addVFLConstraints(constraints: ["H:|-0-[label]-0-|","H:|-0-[collection]-0-|","V:|-0-[label(==20)]-4-[collection(>=50)]"], views: views)
+        collection.roundCorners()
     }
     func setupCollectionView() {
         //setup the collection view

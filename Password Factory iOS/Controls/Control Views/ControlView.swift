@@ -9,7 +9,7 @@
 import UIKit
 
 /// Class that all the control views inherit from, will do all the housekeeping that needs to be done for the control views
-@IBDesignable
+
 class ControlView: UIView {
     @IBInspectable public var label: String? //label to display
     let d = DefaultsManager.get()!
@@ -35,18 +35,27 @@ class ControlView: UIView {
         setupView()
     }
     func initializeControls() {
-        
+        layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     func addViews() {
         removeSubviewsAndConstraints()
     }
     func setupView() {
-        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
+        addBottomBorderWithColor(color: PFConstants.cellBorderColor, width: 0.5)
+        addGradient()
         setLabel()
+    }
+    func addGradient() {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        let topColor = UIColor(white: 1, alpha: 1).cgColor
+        let bottomColor = UIColor(white: 0.98, alpha: 1).cgColor
+        gradient.colors = [topColor, bottomColor]
+        layer.insertSublayer(gradient, at: 0)
     }
     func setLabel() {
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.font = Utilities.labelFont
+        controlLabel.font = PFConstants.labelFont
         controlLabel.text = label
     }
 }

@@ -91,10 +91,9 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
         currentViewController = selectedViewController
         
         controlsView.addSubview(currentView)
-        Utilities.fillViewInContainer(currentView, superview: view)
+        view.fillViewInContainer(currentView)
         
         self.d?.setInteger(selType.rawValue, forKey: "selectedPasswordType")
-        
     }
     
     @IBAction func pressedPreferencesButton(_ sender: UIButton) {

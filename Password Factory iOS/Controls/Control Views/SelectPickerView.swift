@@ -32,23 +32,19 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
     /// Positions the views in the container
     override func setupView() {
         super.setupView()
-        Utilities.roundCorners(layer: controlButton.layer, withBorder: false)
-        controlButton.backgroundColor = Utilities.tintColor
+        controlButton.roundCorners()
+        controlButton.backgroundColor = PFConstants.tintColor
         controlButton.setTitleColor(UIColor.white, for: .normal)
         setButtonText()
         setLabelText()
 
         let views = ["button" : controlButton as UIView, "label" : controlLabel as UIView]
+        addVFLConstraints(constraints: ["H:|-0-[label(==125)]-8-[button]-0-|","V:[button(==29)]"], views: views)
+        centerViewVertically(controlLabel)
+        centerViewVertically(controlButton)
         translatesAutoresizingMaskIntoConstraints = false
-        controlButton.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label(==125)]-8-[button]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[button(==29)]", options: [], metrics: nil, views: views))
 
-        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
-        Utilities.centerViewVerticallyInContainer(controlButton, superview: self)
-
-        controlButton.titleLabel?.font = Utilities.labelFont
+        controlButton.titleLabel?.font = PFConstants.labelFont
     }
     
     /// Sets the label based upon PickerType

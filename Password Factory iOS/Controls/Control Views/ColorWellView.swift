@@ -23,16 +23,10 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     override func setupView() {
         super.setupView()
         let views = ["label" : controlLabel, "well" : wellView]
-        translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        wellView.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label(==200)]-8-[well]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[well]-8-|", options: [], metrics: nil, views: views))
-        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
-        Utilities.centerViewVerticallyInContainer(wellView, superview: self)
+        addVFLConstraints(constraints: ["H:|-0-[label(==200)]-8-[well]-0-|","V:|-8-[well]-8-|"], views: views)
+        centerViewVertically(controlLabel)
         setFromDefaults()
         wellView.addTarget(self, action: #selector(loadColorPicker), for: .touchUpInside)
-        
     }
     func selectedColor(_ color: UIColor) {
         wellView.backgroundColor = color
@@ -55,7 +49,7 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         guard let dk = defaultsKey else {
             return
         }
-        Utilities.roundCorners(layer: wellView.layer, withBorder: false)
+        wellView.roundCorners()
         let color = ColorUtilities.color(fromHexString: d.string(forKey: dk))
         wellView.backgroundColor = color
     }

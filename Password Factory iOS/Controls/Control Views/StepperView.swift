@@ -28,15 +28,11 @@ class StepperView: ControlView {
     override func setupView() {
         super.setupView()
         let views = ["stepper" : controlStepper as UIView, "label" : controlLabel as UIView,"value" : valueLabel as UIView]
-        translatesAutoresizingMaskIntoConstraints = false
-        controlStepper.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        valueLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-8-[stepper(==94)]-8-[value(==70)]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[value(==29)]", options: [], metrics: nil, views: views))
-        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
-        Utilities.centerViewVerticallyInContainer(controlStepper, superview: self)
-        Utilities.centerViewVerticallyInContainer(valueLabel, superview: self)
+
+        addVFLConstraints(constraints: ["H:|-0-[label]-8-[stepper(==94)]-8-[value(==70)]-0-|","V:[value(==29)]"], views: views)
+        centerViewVertically(controlLabel)
+        centerViewVertically(controlStepper)
+        centerViewVertically(valueLabel)
 
         controlStepper.minimumValue = Double(minValue)
         controlStepper.maximumValue = Double(maxValue)
@@ -44,17 +40,17 @@ class StepperView: ControlView {
         controlStepper.autorepeat = true
         controlStepper.isContinuous = true
         controlStepper.wraps = false
-        valueLabel.backgroundColor = Utilities.tintColor
+        valueLabel.backgroundColor = PFConstants.tintColor
         valueLabel.textColor = UIColor.white
         valueLabel.textAlignment = .center
-        Utilities.roundCorners(layer: valueLabel.layer, withBorder: false)
+        valueLabel.roundCorners()
         
         if defaultsKey != nil {
             controlStepper.value = Double(d.integer(forKey: defaultsKey))
             controlStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
         }
 
-        valueLabel.font = Utilities.labelFont
+        valueLabel.font = PFConstants.labelFont
         setStepperLabel()
     }
     

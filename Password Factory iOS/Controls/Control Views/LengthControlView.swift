@@ -30,19 +30,16 @@ class LengthControlView: ControlView {
         sizeLabel.textAlignment = .right
         sizeLabel.font = UIFont.systemFont(ofSize: 32)
         let views = ["slider" : slider as UIView, "label" : controlLabel as UIView, "sizeLabel": sizeLabel as UIView]
-        translatesAutoresizingMaskIntoConstraints = false
-        slider.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        sizeLabel.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = ["H:|-[slider]-|",
+                           "H:|-[label]-0-[sizeLabel]-|",
+                           "V:|-[slider]-4-[sizeLabel(==30)]"]
+        addVFLConstraints(constraints: constraints, views: views)
+        equalAttributesTo(sizeLabel, controlLabel, attribute: .width)
+        equalAttributesTo(sizeLabel, controlLabel, attribute: .height)
+        equalAttributesTo(sizeLabel, controlLabel, attribute: .centerY)
 
-        addConstraint(NSLayoutConstraint.init(item: controlLabel, attribute: .width, relatedBy: .equal, toItem: sizeLabel, attribute: .width, multiplier: 1, constant: 1))
-        addConstraint(NSLayoutConstraint.init(item: controlLabel, attribute: .height, relatedBy: .equal, toItem: sizeLabel, attribute: .height, multiplier: 1, constant: 1))
-        addConstraint(NSLayoutConstraint.init(item: controlLabel, attribute: .centerY, relatedBy: .equal, toItem: sizeLabel, attribute: .centerY, multiplier: 1, constant: 1))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[slider]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-[sizeLabel]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[slider]-4-[sizeLabel(==30)]", options: [], metrics: nil, views: views))
-        
-    }    /// Sets up the length slider with the maximum value and moves the knob to the defaults value
+    }
+    /// Sets up the length slider with the maximum value and moves the knob to the defaults value
     func setupLengthSlider() {
         slider.addTarget(self, action: #selector(changeLengthSlider(_:)), for: .valueChanged)
         slider.minimumValue = 5.0

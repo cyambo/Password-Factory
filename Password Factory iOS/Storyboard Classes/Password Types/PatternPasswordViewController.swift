@@ -26,7 +26,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             patternText.text = String(describing: p)
             highlightPatternString()
         }
-        Utilities.roundCorners(layer: patternButtonCollectionView.layer, withBorder: false)
+        patternButtonCollectionView.roundCorners()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
