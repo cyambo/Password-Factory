@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// Adds a view that has a label and a button to show the picker types view
 class SelectPickerView: ControlView, PickerViewControllerDelegate {
     @IBInspectable public var pickerTypeString: String = "Case" //Picker type to use

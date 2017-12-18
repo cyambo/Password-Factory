@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// View containing a switch and a label connected to defaults
 class SwitchView: ControlView {
     @IBInspectable var defaultsKey: String? //defaults key to use

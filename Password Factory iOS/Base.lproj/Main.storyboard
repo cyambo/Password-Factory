@@ -37,16 +37,16 @@
                                 <color key="backgroundColor" red="1" green="0.74813630846665691" blue="0.65703667534722221" alpha="0.75" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdU-uD-dyc" userLabel="Header" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xl-nY-3zn">
-                                        <rect key="frame" x="16" y="65" width="302" height="39"/>
+                                        <rect key="frame" x="16" y="53" width="302" height="39"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDC-1S-lMq" customClass="PreferencesButton" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="334" y="72" width="25" height="25"/>
+                                        <rect key="frame" x="334" y="60" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="OgH-gW-fjz"/>
                                             <constraint firstAttribute="height" constant="25" id="bGO-cQ-oRu"/>
@@ -61,20 +61,20 @@
                                     <constraint firstItem="CDC-1S-lMq" firstAttribute="centerY" secondItem="7xl-nY-3zn" secondAttribute="centerY" id="82r-ah-5zW"/>
                                     <constraint firstItem="7xl-nY-3zn" firstAttribute="leading" secondItem="DdU-uD-dyc" secondAttribute="leadingMargin" constant="8" id="AwW-Qr-Cc5"/>
                                     <constraint firstItem="CDC-1S-lMq" firstAttribute="leading" secondItem="7xl-nY-3zn" secondAttribute="trailing" constant="16" id="C0M-6L-5zc"/>
-                                    <constraint firstAttribute="height" constant="120" id="TD6-MG-ObP"/>
+                                    <constraint firstAttribute="height" constant="100" id="TD6-MG-ObP"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="CDC-1S-lMq" secondAttribute="trailing" constant="8" id="f3n-UV-gcj"/>
-                                    <constraint firstAttribute="bottom" secondItem="7xl-nY-3zn" secondAttribute="bottom" constant="16" id="ipy-vM-RJ1"/>
+                                    <constraint firstAttribute="bottom" secondItem="7xl-nY-3zn" secondAttribute="bottom" constant="8" id="ipy-vM-RJ1"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLN-pe-r9C" userLabel="Strength" customClass="StrengthMeter" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="opm-Ip-hF4"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-gt-17B" userLabel="Password Controls" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="184" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="44"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDF-xA-Mpa">
                                         <rect key="frame" x="8" y="0.0" width="327" height="44"/>
@@ -141,7 +141,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-dR-N5M" userLabel="Controls Container" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="244" width="375" height="309"/>
+                                <rect key="frame" x="0.0" y="224" width="375" height="329"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-dz-RZb" userLabel="Selection Container" customClass="ControlsContainer" customModule="Password_Factory_iOS" customModuleProvider="target">

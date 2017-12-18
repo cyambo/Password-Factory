@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable
+//Displays a color well and shows a color picker to choose a new color
 class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     
     @IBInspectable public var defaultsKey: String? //defaults key to use

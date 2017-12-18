@@ -146,7 +146,8 @@ class Utilities: NSObject {
     public class func centerViewVerticallyInContainer(_ view: UIView, superview: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
         superview.translatesAutoresizingMaskIntoConstraints = false
-        let views = ["view": view, "superview": superview]
-        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[superview]-(<=1)-[view]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views))
+        view.centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
+//        let views = ["view": view, "superview": superview]
+//        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[superview]-(<=1)-[view]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views))
     }
 }

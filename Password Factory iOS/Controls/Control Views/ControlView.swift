@@ -8,8 +8,8 @@
 
 import UIKit
 
-
 /// Class that all the control views inherit from, will do all the housekeeping that needs to be done for the control views
+@IBDesignable
 class ControlView: UIView {
     @IBInspectable public var label: String? //label to display
     let d = DefaultsManager.get()!

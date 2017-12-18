@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// Adds a text field and label to a view connected to defaults
 class TextFieldView: ControlView, UITextFieldDelegate {
     @IBInspectable public var defaultsKey: String? //defaults key to use

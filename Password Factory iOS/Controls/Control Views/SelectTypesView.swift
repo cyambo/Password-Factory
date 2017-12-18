@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// View that displays a collection view containing separator, or case types
 class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -44,6 +43,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[label(==20)]-4-[collection(>=50)]", options: [], metrics: nil, views: views))
+
         Utilities.roundCorners(layer: collection.layer, withBorder: false)
 
     }
@@ -53,7 +53,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         layout.minimumLineSpacing = 8.0
         layout.itemSize = CGSize.init(width: 70, height: 50)
-        collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
+        collection = UICollectionView.init(frame: frame, collectionViewLayout: layout)
         
         collection.register(SelectTypeCollectionViewCell.self, forCellWithReuseIdentifier: "SelectTypeCell")
         collection.backgroundColor = UIColor.clear
@@ -65,9 +65,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
             scrollToSelected()
         }
     }
-    override func willMove(toSuperview newSuperview: UIView?) {
-        scrollToSelected()
-    }
+
     /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
         let index = d.integer(forKey: getDefaultsKey())

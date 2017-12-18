@@ -7,7 +7,9 @@
 //
 
 import UIKit
-@IBDesignable
+
+
+/// Displays a slider and label with value of slider
 class LengthControlView: ControlView {
     let slider = UISlider.init()
     let sizeLabel = UILabel.init()
