@@ -61,35 +61,36 @@ extension UIView {
         }
         return nil
     }
-    
-    func addTopBorderWithColor(color: UIColor, width: CGFloat) {
-        let border = CALayer()
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(x:0,y: 0, width:self.frame.size.width, height:width)
-        self.layer.addSublayer(border)
+    func addBorder(_ sides: UIRectEdge, color: UIColor = UIColor.gray, width: CGFloat = 0.5) {
+
+        var borders = [CGRect]()
+        if sides.contains(.top) {
+            borders.append(CGRect(x:0,y: 0, width: frame.size.width, height:width))
+        }
+        if sides.contains(.right) {
+            borders.append(CGRect(x: frame.size.width - width,y: 0, width:width, height: frame.size.height))
+        }
+        if sides.contains(.bottom) {
+            borders.append(CGRect(x:0, y: frame.size.height - width, width: frame.size.width, height:width))
+        }
+        if sides.contains(.left) {
+            borders.append(CGRect(x:0, y:0, width:width, height: frame.size.height))
+        }
+        for b in borders {
+            let border = CALayer()
+            layer.masksToBounds = true
+            border.backgroundColor = color.cgColor
+            border.frame = b
+            layer.addSublayer(border)
+        }
     }
-    
-    func addRightBorderWithColor(color: UIColor, width: CGFloat) {
-        let border = CALayer()
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: self.frame.size.width - width,y: 0, width:width, height:self.frame.size.height)
-        self.layer.addSublayer(border)
+
+    func addGradient(_ topColor: UIColor = UIColor(white: 1, alpha: 1), _ bottomColor: UIColor = UIColor(white: 0.98, alpha: 1)) {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+        layer.insertSublayer(gradient, at: 0)
     }
-    
-    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
-        let border = CALayer()
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(x:0, y:self.frame.size.height - width, width:self.frame.size.width, height:width)
-        self.layer.addSublayer(border)
-    }
-    
-    func addLeftBorderWithColor(color: UIColor, width: CGFloat) {
-        let border = CALayer()
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(x:0, y:0, width:width, height:self.frame.size.height)
-        self.layer.addSublayer(border)
-    }
-    
     /// Rounds the corners of view
     ///
     /// - Parameter withBorder: add border if needed
@@ -116,9 +117,9 @@ extension UIView {
         }
     }
     /// adds a standard border
-    func addBorder() {
-        layer.borderColor = UIColor.gray.cgColor
-        layer.borderWidth = 0.5
+    func addBorder(_ width: CGFloat = 0.5, color : UIColor = UIColor.gray) {
+        layer.borderColor = color.cgColor
+        layer.borderWidth = width
     }
     /// Adds a drop shadow
     func dropShadow() {

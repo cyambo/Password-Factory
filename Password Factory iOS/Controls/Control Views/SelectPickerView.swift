@@ -39,7 +39,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         setLabelText()
 
         let views = ["button" : controlButton as UIView, "label" : controlLabel as UIView]
-        addVFLConstraints(constraints: ["H:|-0-[label(==125)]-8-[button]-0-|","V:[button(==29)]"], views: views)
+        addVFLConstraints(constraints: ["H:|-[label(==125)]-8-[button]-|","V:[button(==29)]"], views: views)
         centerViewVertically(controlLabel)
         centerViewVertically(controlButton)
         translatesAutoresizingMaskIntoConstraints = false

@@ -51,8 +51,8 @@ class StrengthMeter: UIView {
     }
     func setDisplay() {
         backgroundColor = UIColor.white.withAlphaComponent(0.75)
-        addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
-        addTopBorderWithColor(color: UIColor.lightGray, width: 0.5)
+        addBorder([.top,.bottom], color: PFConstants.containerBorderColor)
+
     }
 }
 

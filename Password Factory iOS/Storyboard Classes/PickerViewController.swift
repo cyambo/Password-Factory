@@ -50,7 +50,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         containerView.roundCorners()
         containerView.dropShadow()
         titleLabel.roundCorners(corners: [.topLeft, .topRight])
-        doneButton.addTopBorderWithColor(color: PFConstants.tintColor, width: 0.5)
+        doneButton.addBorder([.top],color: PFConstants.tintColor)
     }
     
     /// Sets the title

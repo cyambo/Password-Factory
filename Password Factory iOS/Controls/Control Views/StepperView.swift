@@ -29,7 +29,7 @@ class StepperView: ControlView {
         super.setupView()
         let views = ["stepper" : controlStepper as UIView, "label" : controlLabel as UIView,"value" : valueLabel as UIView]
 
-        addVFLConstraints(constraints: ["H:|-0-[label]-8-[stepper(==94)]-8-[value(==70)]-0-|","V:[value(==29)]"], views: views)
+        addVFLConstraints(constraints: ["H:|-[label]-8-[stepper(==94)]-8-[value(==70)]-|","V:[value(==29)]"], views: views)
         centerViewVertically(controlLabel)
         centerViewVertically(controlStepper)
         centerViewVertically(valueLabel)

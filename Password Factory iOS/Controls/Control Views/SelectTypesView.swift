@@ -22,6 +22,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
     }
     override func initializeControls() {
+        super.initializeControls()
         setupCollectionView()
     }
     override func addViews() {
@@ -37,8 +38,10 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         super.setupView()
 
         let views = ["collection" : collection as UIView, "label" : controlLabel as UIView]
-        addVFLConstraints(constraints: ["H:|-0-[label]-0-|","H:|-0-[collection]-0-|","V:|-0-[label(==20)]-4-[collection(>=50)]"], views: views)
+        addVFLConstraints(constraints: ["H:|-[label]-|","H:|-[collection]-|","V:|-[label(==20)]-8-[collection(>=50)]"], views: views)
         collection.roundCorners()
+        controlLabel.addBorder([.bottom],color: PFConstants.cellBorderColor.withAlphaComponent(0.25))
+
     }
     func setupCollectionView() {
         //setup the collection view

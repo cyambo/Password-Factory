@@ -27,7 +27,7 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         controlText.backgroundColor = UIColor.white.withAlphaComponent(0.75)
         
         let views = ["text" : controlText as UIView, "label" : controlLabel as UIView]
-        addVFLConstraints(constraints: ["H:|-0-[label(==125)]-8-[text]-0-|"], views: views)
+        addVFLConstraints(constraints: ["H:|-[label(==125)]-8-[text]-|"], views: views)
         centerViewVertically(controlLabel)
         centerViewVertically(controlText)
 

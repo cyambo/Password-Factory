@@ -53,10 +53,9 @@ class ColorPickerViewController: UIViewController {
         container.roundCorners()
         container.dropShadow()
         titleLabel.roundCorners(corners: [.topLeft, .topRight])
+        rightButton.addBorder([.top,.left],color: PFConstants.tintColor)
+        leftButton.addBorder([.top],color: PFConstants.tintColor)
 
-        rightButton.addTopBorderWithColor(color: PFConstants.tintColor, width: 0.5)
-        leftButton.addTopBorderWithColor(color: PFConstants.tintColor, width: 0.5)
-        rightButton.addLeftBorderWithColor(color: PFConstants.tintColor, width: 0.5)
     }
 
 

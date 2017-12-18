@@ -22,8 +22,8 @@ class PreferencesViewController: UIViewController {
 
         titleLabel.backgroundColor = PFConstants.tintColor
         titleLabel.textColor = UIColor.white
-        doneButton.addTopBorderWithColor(color: PFConstants.tintColor, width: 0.5)
-        
+        doneButton.addBorder([.top],color: PFConstants.tintColor)
+
     }
 
     @IBAction func done(_ sender: Any) {

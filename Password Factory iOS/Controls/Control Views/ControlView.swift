@@ -35,24 +35,17 @@ class ControlView: UIView {
         setupView()
     }
     func initializeControls() {
-        layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
     }
     func addViews() {
         removeSubviewsAndConstraints()
     }
     func setupView() {
-        addBottomBorderWithColor(color: PFConstants.cellBorderColor, width: 0.5)
+        addBorder([.bottom],color: PFConstants.cellBorderColor)
         addGradient()
         setLabel()
     }
-    func addGradient() {
-        let gradient = CAGradientLayer()
-        gradient.frame = bounds
-        let topColor = UIColor(white: 1, alpha: 1).cgColor
-        let bottomColor = UIColor(white: 0.98, alpha: 1).cgColor
-        gradient.colors = [topColor, bottomColor]
-        layer.insertSublayer(gradient, at: 0)
-    }
+
     func setLabel() {
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
         controlLabel.font = PFConstants.labelFont

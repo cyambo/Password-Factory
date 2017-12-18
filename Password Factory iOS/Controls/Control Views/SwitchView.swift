@@ -16,6 +16,7 @@ class SwitchView: ControlView {
     let controlSwitch = UISwitch.init()
 
     override func initializeControls() {
+        super.initializeControls()
         isUserInteractionEnabled = true
         touchGesture = UITapGestureRecognizer.init(target: self, action: #selector(touched))
         if (touchGesture != nil) {
@@ -49,7 +50,6 @@ class SwitchView: ControlView {
         if defaultsKey != nil {
             d.setBool(controlSwitch.isOn, forKey: defaultsKey)
         }
-        
     }
     
     /// Called when the view is tapped

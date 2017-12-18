@@ -27,10 +27,13 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             highlightPatternString()
         }
         patternButtonCollectionView.roundCorners()
+        
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.patternText.contentOffset.y = -self.patternText.contentInset.top
+        view.addGradient()
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()

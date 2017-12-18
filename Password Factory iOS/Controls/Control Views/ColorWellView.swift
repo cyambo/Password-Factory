@@ -23,7 +23,7 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     override func setupView() {
         super.setupView()
         let views = ["label" : controlLabel, "well" : wellView]
-        addVFLConstraints(constraints: ["H:|-0-[label(==200)]-8-[well]-0-|","V:|-8-[well]-8-|"], views: views)
+        addVFLConstraints(constraints: ["H:|-[label(==200)]-8-[well]-|","V:|-[well]-|"], views: views)
         centerViewVertically(controlLabel)
         setFromDefaults()
         wellView.addTarget(self, action: #selector(loadColorPicker), for: .touchUpInside)
