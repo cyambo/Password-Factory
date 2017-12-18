@@ -150,6 +150,7 @@
 		40B9AD081FB0EC50003F7580 /* PasswordTypesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9AD071FB0EC50003F7580 /* PasswordTypesViewController.m */; };
 		40BA26F21FB389D300F7AF13 /* PasswordFactoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */; };
 		40C0F3881B860791005FC25D /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
+		40C110D31FE73D4200D0B893 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C110D21FE73D4200D0B893 /* ControlView.swift */; };
 		40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
 		40C4C8AF1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
 		40C69F301FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */; };
@@ -402,6 +403,7 @@
 		40BA26F11FB389D300F7AF13 /* PasswordFactoryConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordFactoryConstants.m; sourceTree = "<group>"; };
 		40C0F3861B860791005FC25D /* NSString+RandomCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RandomCase.h"; sourceTree = "<group>"; };
 		40C0F3871B860791005FC25D /* NSString+RandomCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RandomCase.m"; sourceTree = "<group>"; };
+		40C110D21FE73D4200D0B893 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		40C4C8AD1F9E9C0900F31070 /* emojis.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = emojis.txt; sourceTree = "<group>"; };
 		40C69F2E1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticallyCenteredTextFieldCell.h; sourceTree = "<group>"; };
 		40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticallyCenteredTextFieldCell.m; sourceTree = "<group>"; };
@@ -660,6 +662,7 @@
 				40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */,
 				406E8FE01FE30E7400A76765 /* LengthControlView.swift */,
 				40974E301FE4828400AC2772 /* ColorWellView.swift */,
+				40C110D21FE73D4200D0B893 /* ControlView.swift */,
 			);
 			path = "Control Views";
 			sourceTree = "<group>";
@@ -1681,6 +1684,7 @@
 				400E45D01FD78A1E00A3F4F7 /* BigTypeIconView.swift in Sources */,
 				406BD2331FD315C100D0E854 /* StyleKit.swift in Sources */,
 				400108291FD3372A00594304 /* NSString+MapCase.m in Sources */,
+				40C110D31FE73D4200D0B893 /* ControlView.swift in Sources */,
 				4054ABF11FE58D40009FE668 /* PreferencesButton.swift in Sources */,
 				4001085C1FD3445000594304 /* TypeIcons.swift in Sources */,
 				400108121FD3323900594304 /* PasswordsViewController.swift in Sources */,

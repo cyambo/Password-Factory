@@ -10,21 +10,44 @@ import UIKit
 
 
 /// View that displays a collection view containing separator, or case types
-class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBInspectable var selectType: String?
-    @IBInspectable var passwordTypeInt: Int
-    let d = DefaultsManager.get()
-    let c = PFConstants.instance
-    let typeLabel = UILabel.init()
+    @IBInspectable var selectType: String = "Case"
+    @IBInspectable var passwordTypeInt: Int = 403
+
     var currentSelectType = PickerTypes.CaseType
     var currentPasswordType = PFPasswordType.pronounceableType
     var collection:UICollectionView!
-    required init?(coder aDecoder: NSCoder) {
-        passwordTypeInt = 403
-        super.init(coder: aDecoder)
-        removeSubviewsAndConstraints()
-        
+    override func awakeFromNib() {
+        currentSelectType = PickerTypes(rawValue: (selectType)) ?? .CaseType
+        currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
+    }
+    override func initializeControls() {
+        setupCollectionView()
+    }
+    override func addViews() {
+        super.addViews()
+        addSubview(controlLabel)
+        addSubview(collection)
+    }
+    override func setLabel() {
+        super.setLabel()
+        controlLabel.text = "\(currentSelectType.rawValue)"
+    }
+    override func setupView() {
+        super.setupView()
+
+        let views = ["collection" : collection as UIView, "label" : controlLabel as UIView]
+        translatesAutoresizingMaskIntoConstraints = false
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        controlLabel.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[label(==20)]-4-[collection(>=50)]", options: [], metrics: nil, views: views))
+        Utilities.roundCorners(layer: collection.layer, withBorder: false)
+
+    }
+    func setupCollectionView() {
         //setup the collection view
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
@@ -33,42 +56,22 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         
         collection.register(SelectTypeCollectionViewCell.self, forCellWithReuseIdentifier: "SelectTypeCell")
-        collection.backgroundColor = UIColor.clear 
+        collection.backgroundColor = UIColor.clear
         collection.dataSource = self
         collection.delegate = self
-        addSubview(typeLabel)
-        addSubview(collection)
-        typeLabel.text = ""
-        
-        let views = ["collection" : collection as UIView, "label" : typeLabel as UIView]
-        translatesAutoresizingMaskIntoConstraints = false
-        collection.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[label(==20)]-4-[collection(>=50)]", options: [], metrics: nil, views: views))
-        Utilities.roundCorners(layer: collection.layer, withBorder: false)
-        typeLabel.font = Utilities.labelFont
-        
-    }
-    override func layoutSubviews() {
-//        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
     }
     override func willMove(toWindow newWindow: UIWindow?) {
         if (newWindow != nil) {
             scrollToSelected()
         }
-        
     }
-//    override func willMove(toSuperview newSuperview: UIView?) {
-//        scrollToSelected()
-//    }
+    override func willMove(toSuperview newSuperview: UIView?) {
+        scrollToSelected()
+    }
     /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
-        if let index = d?.integer(forKey: getDefaultsKey()) {
-            collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
-
-        }
+        let index = d.integer(forKey: getDefaultsKey())
+        collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     /// Gets the current defaults key
@@ -78,19 +81,10 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         let prefix = c.getNameFor(type: currentPasswordType).lowercased()
         return "\(prefix)\(currentSelectType.rawValue)TypeIndex"
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        guard let selType = PickerTypes(rawValue: (selectType ?? "Case")) else {
-            return
-        }
-        currentSelectType = selType
-        typeLabel.text = "\(selType.rawValue)"
-        currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
 
-    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        d?.setInteger(indexPath.row, forKey: getDefaultsKey())
+        d.setInteger(indexPath.row, forKey: getDefaultsKey())
         collectionView.reloadData()
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

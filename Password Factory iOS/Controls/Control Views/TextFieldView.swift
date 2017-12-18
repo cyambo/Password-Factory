@@ -10,51 +10,20 @@ import UIKit
 
 
 /// Adds a text field and label to a view connected to defaults
-class TextFieldView: UIView, UITextFieldDelegate {
+class TextFieldView: ControlView, UITextFieldDelegate {
     @IBInspectable public var defaultsKey: String? //defaults key to use
-    @IBInspectable public var label: String? //label to display
 
     let controlText = UITextField.init()
-    let controlLabel = UILabel.init()
 
-    let d = DefaultsManager.get()!
-    
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addViews()
-        setupTextField()
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupView()
-    }
-    
-    /// Sets the parameters of the text field
-    func setupTextField() {
-        controlText.autocapitalizationType = .none
-        controlText.smartDashesType = .no
-        controlText.smartQuotesType = .no
-        controlText.smartInsertDeleteType = .no
-        controlText.spellCheckingType = .no
-        controlText.returnKeyType = .done
-        controlText.clearButtonMode = .always
-        controlText.delegate = self
-        
-    }
-    func addViews() {
-        removeSubviewsAndConstraints()
+    override func addViews() {
+        super.addViews()
         addSubview(controlText)
         addSubview(controlLabel)
+        setupTextField()
     }
     /// sets the position of the views and adds observers for the text field
-    func setupView() {
-        controlLabel.text = label
+    override func setupView() {
+        super.setupView()
         controlText.borderStyle = .roundedRect
         controlText.backgroundColor = UIColor.white.withAlphaComponent(0.75)
         let views = ["text" : controlText as UIView, "label" : controlLabel as UIView]
@@ -68,11 +37,19 @@ class TextFieldView: UIView, UITextFieldDelegate {
         setTextFieldFromDefaults()
         let n = NotificationCenter.default
         n.addObserver(self, selector: #selector(textChanged), name: .UITextFieldTextDidChange, object: controlText)
-        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
         controlText.font = Utilities.labelFont
-        controlLabel.font = Utilities.labelFont
     }
-    
+    /// Sets the parameters of the text field
+    func setupTextField() {
+        controlText.autocapitalizationType = .none
+        controlText.smartDashesType = .no
+        controlText.smartQuotesType = .no
+        controlText.smartInsertDeleteType = .no
+        controlText.spellCheckingType = .no
+        controlText.returnKeyType = .done
+        controlText.clearButtonMode = .always
+        controlText.delegate = self
+    }
     /// sets the text field with defaults value
     func setTextFieldFromDefaults() {
         guard let dk = defaultsKey else {

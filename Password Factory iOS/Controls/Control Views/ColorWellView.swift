@@ -9,36 +9,19 @@
 import UIKit
 
 @IBDesignable
-class ColorWellView: UIView, ColorPickerViewControllerDelegate  {
+class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     
     @IBInspectable public var defaultsKey: String? //defaults key to use
-    @IBInspectable public var label: String? //label to display
 
     let wellView = UIButton.init()
-    let controlLabel = UILabel.init()
     
-    let d = DefaultsManager.get()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addViews()
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupView()
-    }
-    
-    func addViews() {
-        removeSubviewsAndConstraints()
+    override func addViews() {
+        super.addViews()
         addSubview(controlLabel)
         addSubview(wellView)
     }
-    func setupView() {
+    override func setupView() {
+        super.setupView()
         let views = ["label" : controlLabel, "well" : wellView]
         translatesAutoresizingMaskIntoConstraints = false
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -49,13 +32,12 @@ class ColorWellView: UIView, ColorPickerViewControllerDelegate  {
         Utilities.centerViewVerticallyInContainer(wellView, superview: self)
         setFromDefaults()
         wellView.addTarget(self, action: #selector(loadColorPicker), for: .touchUpInside)
-        controlLabel.font = Utilities.labelFont
         
     }
     func selectedColor(_ color: UIColor) {
         wellView.backgroundColor = color
         if let colorString = ColorUtilities.color(toHexString: color) {
-            d?.setObject(colorString, forKey: defaultsKey)
+            d.setObject(colorString, forKey: defaultsKey)
         }
     }
     @objc func loadColorPicker() {
@@ -73,9 +55,8 @@ class ColorWellView: UIView, ColorPickerViewControllerDelegate  {
         guard let dk = defaultsKey else {
             return
         }
-        controlLabel.text = label
         Utilities.roundCorners(layer: wellView.layer, withBorder: false)
-        let color = ColorUtilities.color(fromHexString: d?.string(forKey: dk))
+        let color = ColorUtilities.color(fromHexString: d.string(forKey: dk))
         wellView.backgroundColor = color
     }
 }

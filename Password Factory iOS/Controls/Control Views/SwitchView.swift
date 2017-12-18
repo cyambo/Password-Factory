@@ -10,49 +10,28 @@ import UIKit
 
 
 /// View containing a switch and a label connected to defaults
-class SwitchView: UIView {
+class SwitchView: ControlView {
     @IBInspectable var defaultsKey: String? //defaults key to use
-    @IBInspectable var label: String? //label to display
 
     var touchGesture: UITapGestureRecognizer? //tap gesture recognizer that fills the view and toggles the switch
     let controlSwitch = UISwitch.init()
-    let controlLabel = UILabel.init()
-    
-    let d = DefaultsManager.get()!
 
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addViews()
-        
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override func initializeControls() {
         isUserInteractionEnabled = true
         touchGesture = UITapGestureRecognizer.init(target: self, action: #selector(touched))
         if (touchGesture != nil) {
             addGestureRecognizer(touchGesture!)
         }
-        addViews()
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupView()
-    }
-    func addViews() {
-        removeSubviewsAndConstraints()
+
+    override func addViews() {
+        super.addViews()
         addSubview(controlSwitch)
         addSubview(controlLabel)
     }
     /// Adds and positions the switch and label
-    func setupView() {
-        if label != nil {
-            controlLabel.text = label
-        } else {
-            controlLabel.text = "Switch"
-        }
+    override func setupView() {
+        super.setupView()
         
         let views = ["switch" : controlSwitch as UIView, "label" : controlLabel as UIView, "superview" : self]
         translatesAutoresizingMaskIntoConstraints = false
@@ -68,9 +47,6 @@ class SwitchView: UIView {
             controlSwitch.setOn((d.bool(forKey: defaultsKey)), animated: false)
             controlSwitch.addTarget(self, action: #selector(changeSwitch), for: .valueChanged)
         }
-        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
-        controlLabel.font = Utilities.labelFont
-
     }
     
     /// sets defaults for the switch state

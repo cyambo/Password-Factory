@@ -9,43 +9,24 @@
 import UIKit
 
 /// Adds a stepper label and value display in a view connected to defaults
-class StepperView: UIView {
+class StepperView: ControlView {
     @IBInspectable public var defaultsKey: String? //defaults key to use
-    @IBInspectable public var label: String? //label to display
     @IBInspectable public var minValue: Int = 0 //minimum value of the stepper
     @IBInspectable public var maxValue: Int = 100 //maximum value of the stepper
     @IBInspectable public var stepValue: Int = 1 //step for each press
     let controlStepper = UIStepper.init()
-    let controlLabel = UILabel.init()
     let valueLabel = UILabel.init()
-    let d = DefaultsManager.get()!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addViews()
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addViews()
-    }
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        setupView()
-    }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupView()
-    }
-    func addViews() {
-        removeSubviewsAndConstraints()
+    override func addViews() {
+        super.addViews()
         addSubview(controlStepper)
         addSubview(controlLabel)
         addSubview(valueLabel)
     }
     /// positions the views and sets up the stepper
-    func setupView() {
-
+    override func setupView() {
+        super.setupView()
         let views = ["stepper" : controlStepper as UIView, "label" : controlLabel as UIView,"value" : valueLabel as UIView]
         translatesAutoresizingMaskIntoConstraints = false
         controlStepper.translatesAutoresizingMaskIntoConstraints = false
@@ -68,19 +49,17 @@ class StepperView: UIView {
         valueLabel.textAlignment = .center
         Utilities.roundCorners(layer: valueLabel.layer, withBorder: false)
         
-        setLabel()
         if defaultsKey != nil {
             controlStepper.value = Double(d.integer(forKey: defaultsKey))
             controlStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
         }
-        addBottomBorderWithColor(color: Utilities.cellBorderColor, width: 0.5)
-        controlLabel.font = Utilities.labelFont
+
         valueLabel.font = Utilities.labelFont
+        setStepperLabel()
     }
     
     /// Changes the value label based upon stepper value
-    func setLabel() {
-        controlLabel.text = label
+    func setStepperLabel() {
         if defaultsKey != nil {
             let val = d.integer(forKey: defaultsKey)
             if val == 0 && defaultsKey == "advancedTruncateAt" {
@@ -97,7 +76,7 @@ class StepperView: UIView {
     /// Called when stepper is changed, will set defaults and label
     @objc func changeStepper() {
         d.setInteger(Int(controlStepper.value), forKey: defaultsKey)
-        setLabel()
+        setStepperLabel()
     }
 
 }
