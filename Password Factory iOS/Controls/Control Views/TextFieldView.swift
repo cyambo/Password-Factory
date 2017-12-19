@@ -45,6 +45,7 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         controlText.spellCheckingType = .no
         controlText.returnKeyType = .done
         controlText.clearButtonMode = .always
+        controlText.autocorrectionType = .no
         controlText.delegate = self
     }
     /// sets the text field with defaults value

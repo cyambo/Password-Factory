@@ -1136,6 +1136,8 @@
                         <outlet property="findRegexView" destination="aGv-ok-O9Y" id="Ohb-dk-3Qq"/>
                         <outlet property="prefixPatternView" destination="Y8D-XE-xXN" id="yTf-Il-jH9"/>
                         <outlet property="replacePatternView" destination="Xwn-e2-C5x" id="BOV-zl-Xo9"/>
+                        <outlet property="scrollView" destination="EcN-Uk-qAy" id="5DF-6E-sjb"/>
+                        <outlet property="stackView" destination="I4A-GG-r8s" id="dAi-zt-BaA"/>
                         <outlet property="suffixPatternView" destination="iUs-NY-vtn" id="FDB-mD-qOk"/>
                     </connections>
                 </viewController>
