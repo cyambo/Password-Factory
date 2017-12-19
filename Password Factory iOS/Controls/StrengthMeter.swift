@@ -15,9 +15,17 @@ class StrengthMeter: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: getStrengthColor(), strength: CGFloat(strength), size: rect.size)
-        Utilities.roundCorners(view: self, corners: [.bottomLeft, .bottomRight], withBorder: false)
+        
     }
-    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        updateStrength(s: 0.5)
+        
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setDisplay()
+    }
     /// Gets the color for the set strength
     ///
     /// - Returns: color
@@ -40,6 +48,11 @@ class StrengthMeter: UIView {
         if (strength < 0.0) { strength = 0.0 }
         if (strength > 1.0) { strength = 1.0 }
         setNeedsDisplay()
+    }
+    func setDisplay() {
+        backgroundColor = UIColor.white.withAlphaComponent(0.75)
+        addBorder([.top,.bottom], color: PFConstants.containerBorderColor)
+
     }
 }
 

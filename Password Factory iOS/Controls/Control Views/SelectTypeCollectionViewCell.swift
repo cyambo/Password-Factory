@@ -15,17 +15,27 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
     var currentPasswordType = PFPasswordType.pronounceableType
     var typeLabel = UILabel.init()
     var imageView = UIImageView.init()
+
     let c = PFConstants.instance
     let d = DefaultsManager.get()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        addSubviews()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        addSubviews()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
         setupView()
     }
-    
+    func addSubviews() {
+        removeSubviewsAndConstraints()
+        addSubview(imageView)
+        addSubview(typeLabel)
+    }
     /// Sets the cell title and image based upon index
     ///
     /// - Parameters:
@@ -35,7 +45,9 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
     func setIndex(index : Int, andType selectType:PickerTypes, andPasswordType passwordType: PFPasswordType) {
         currentSelectType = selectType
         currentPasswordType = passwordType
-        
+        typeLabel.font = UIFont.systemFont(ofSize: 10)
+        typeLabel.textColor = UIColor.white
+        typeLabel.textAlignment = .center
         var title = ""
         var selected = false
         let prefix = c.getNameFor(type: currentPasswordType)
@@ -53,8 +65,8 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
             title = "PASSWORD"
         }
         typeLabel.text = title
-        
-        backgroundColor = Utilities.tintColor
+        imageView.contentMode = .scaleAspectFit
+        backgroundColor = PFConstants.tintColor
         if !selected {
             backgroundColor = backgroundColor?.withAlphaComponent(0.5)
         }
@@ -62,24 +74,13 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
     
     /// Adds the image and label to the view and uses vfl to position them in the view
     func setupView() {
-        removeSubviews()
-        Utilities.roundCorners(layer: layer, withBorder: false)
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        typeLabel.font = UIFont.systemFont(ofSize: 10)
-        typeLabel.textColor = UIColor.white
-        addSubview(imageView)
-        addSubview(typeLabel)
-        typeLabel.text = "Underscore"
-        typeLabel.textAlignment = .center
-        let views = ["label" : typeLabel as UIView, "image" : imageView as UIView]
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[label]-(0)-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[image]-(8)-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(5)-[image]-5-[label(==12)]-(5)-|", options: [], metrics: nil, views: views))
 
-        backgroundColor = UIColor.white
+        roundCorners()
+        
+        let views = ["label" : typeLabel as UIView, "image" : imageView as UIView]
+        let constraints = ["H:|-(0)-[label]-(0)-|","V:|-(5)-[image(==23)]","V:[label(==12)]-(5)-|","H:|-(8)-[image]-(>=7)-|"]
+        addVFLConstraints(constraints: constraints, views: views)
+        translatesAutoresizingMaskIntoConstraints = true
 
     }
 }

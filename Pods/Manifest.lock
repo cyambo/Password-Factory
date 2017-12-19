@@ -1,23 +1,26 @@
 PODS:
   - MASShortcut (2.3.6)
-  - OCMock (3.4)
-  - SyncKit (0.5.2):
-    - SyncKit/Core (= 0.5.2)
-  - SyncKit/Core (0.5.2)
+  - OCMock (3.4.1)
+  - SwiftHSVColorPicker (1.1.1)
+  - SyncKit (0.5.6):
+    - SyncKit/Core (= 0.5.6)
+  - SyncKit/Core (0.5.6)
   - ZXCVBN (1.0.5)
 
 DEPENDENCIES:
   - MASShortcut
   - OCMock
+  - SwiftHSVColorPicker
   - SyncKit
   - ZXCVBN
 
 SPEC CHECKSUMS:
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
-  OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
-  SyncKit: c421bee4b7addec4212c5bac8b84bca052a8c1c7
+  OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
+  SwiftHSVColorPicker: 69c9028dea168e0f8ee2439d31a899cf1df95678
+  SyncKit: f0e83fc72337446e03f5398ec1909072ff074cba
   ZXCVBN: f3888e3f6363b8cf57bcc32857a9bc09f9f9e18e
 
-PODFILE CHECKSUM: 3cc3cf383bd12822cf49e921c84964c1bb504089
+PODFILE CHECKSUM: 584139f04ac9e85ff9edd115a4f8ad4ae64bd0ea
 
 COCOAPODS: 1.3.1

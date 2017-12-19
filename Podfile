@@ -10,9 +10,11 @@ target 'Password Factory'  do
 end
 
 target 'Password Factory iOS'  do
+    use_frameworks!
     platform :ios, '10.0'
     pod 'ZXCVBN'
     pod 'SyncKit'
+    pod 'SwiftHSVColorPicker'
 end
 
 target 'Password Factory Widget' do

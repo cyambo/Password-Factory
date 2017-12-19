@@ -12,14 +12,14 @@ import UIKit
 /// Text view containing the pattern text
 class PatternTextView: UITextView {
     
-    public override func awakeFromNib() {
+    public override func layoutSubviews() {
+        super.layoutSubviews()
         setDisplay()
     }
-    override func prepareForInterfaceBuilder() {
-        setDisplay()
-    }
+
     func setDisplay() {
-        Utilities.roundCorners(layer: self.layer, withBorder: true)
+        roundCorners(withBorder: true)
+        backgroundColor = UIColor.white.withAlphaComponent(0.75)
     }
 
 }

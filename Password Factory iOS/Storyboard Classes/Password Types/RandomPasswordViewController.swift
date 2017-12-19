@@ -11,14 +11,22 @@ import UIKit
 /// Controller for random passwords
 class RandomPasswordViewController: PasswordsViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupLengthSlider()
-        lengthChanged()
+    @IBOutlet weak var scrollContainer: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        scrollContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+//        scrollContainer.contentLayoutGuide.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 
+//        DispatchQueue.main.async {
+//            var contentRect = CGRect.zero
+//            for view in self.scrollView.subviews {
+//                contentRect = contentRect.union(view.frame)
+//                self.scrollView.contentSize = contentRect.size
+//
+//            }
+//        }
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        caseTypeView?.scrollToSelected() //scroll to the selected case type
-    }
+
 }

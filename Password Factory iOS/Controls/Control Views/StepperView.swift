@@ -9,48 +9,30 @@
 import UIKit
 
 /// Adds a stepper label and value display in a view connected to defaults
-class StepperView: UIView {
+class StepperView: ControlView {
     @IBInspectable public var defaultsKey: String? //defaults key to use
-    @IBInspectable public var label: String? //label to display
     @IBInspectable public var minValue: Int = 0 //minimum value of the stepper
     @IBInspectable public var maxValue: Int = 100 //maximum value of the stepper
     @IBInspectable public var stepValue: Int = 1 //step for each press
     let controlStepper = UIStepper.init()
-    let controlLabel = UILabel.init()
     let valueLabel = UILabel.init()
-    let d = DefaultsManager.get()!
     
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
 
-        removeSubviewsAndConstraints()
+    override func addViews() {
+        super.addViews()
         addSubview(controlStepper)
         addSubview(controlLabel)
         addSubview(valueLabel)
     }
-
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        if newWindow != nil {
-            setupView() //calling setup view here because this is when the IBInspectables are set
-        }
-        
-    }
-    
     /// positions the views and sets up the stepper
-    func setupView() {
-
+    override func setupView() {
+        super.setupView()
         let views = ["stepper" : controlStepper as UIView, "label" : controlLabel as UIView,"value" : valueLabel as UIView]
-        translatesAutoresizingMaskIntoConstraints = false
-        controlStepper.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        valueLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-8-[stepper(==94)]-8-[value(==70)]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[value(==29)]", options: [], metrics: nil, views: views))
-        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
-        Utilities.centerViewVerticallyInContainer(controlStepper, superview: self)
-        Utilities.centerViewVerticallyInContainer(valueLabel, superview: self)
+
+        addVFLConstraints(constraints: ["H:|-[label]-8-[stepper(==94)]-8-[value(==70)]-|","V:[value(==29)]"], views: views)
+        centerViewVertically(controlLabel)
+        centerViewVertically(controlStepper)
+        centerViewVertically(valueLabel)
 
         controlStepper.minimumValue = Double(minValue)
         controlStepper.maximumValue = Double(maxValue)
@@ -58,21 +40,22 @@ class StepperView: UIView {
         controlStepper.autorepeat = true
         controlStepper.isContinuous = true
         controlStepper.wraps = false
-        valueLabel.backgroundColor = Utilities.tintColor
+        valueLabel.backgroundColor = PFConstants.tintColor
         valueLabel.textColor = UIColor.white
         valueLabel.textAlignment = .center
-        Utilities.roundCorners(layer: valueLabel.layer, withBorder: false)
+        valueLabel.roundCorners()
         
-        setLabel()
         if defaultsKey != nil {
             controlStepper.value = Double(d.integer(forKey: defaultsKey))
             controlStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
         }
+
+        valueLabel.font = PFConstants.labelFont
+        setStepperLabel()
     }
     
     /// Changes the value label based upon stepper value
-    func setLabel() {
-        controlLabel.text = label
+    func setStepperLabel() {
         if defaultsKey != nil {
             let val = d.integer(forKey: defaultsKey)
             if val == 0 && defaultsKey == "advancedTruncateAt" {
@@ -89,7 +72,7 @@ class StepperView: UIView {
     /// Called when stepper is changed, will set defaults and label
     @objc func changeStepper() {
         d.setInteger(Int(controlStepper.value), forKey: defaultsKey)
-        setLabel()
+        setStepperLabel()
     }
 
 }

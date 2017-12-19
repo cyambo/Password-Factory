@@ -26,11 +26,14 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             patternText.text = String(describing: p)
             highlightPatternString()
         }
-        Utilities.roundCorners(layer: patternButtonCollectionView.layer, withBorder: false)
+        patternButtonCollectionView.roundCorners()
+        
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        patternText.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
+        self.patternText.contentOffset.y = -self.patternText.contentInset.top
+        view.addGradient()
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
@@ -121,4 +124,10 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         typeLabel.text = ""
         d.setObject("", forKey: "userPattern")
     }
+    @IBAction func deleteLast(_ sender: Any) {
+        patternText.text = String(patternText.text.dropLast())
+        d.setObject(patternText.text, forKey: "userPattern")
+        highlightPatternString()
+    }
+    
 }

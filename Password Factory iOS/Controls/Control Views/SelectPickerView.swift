@@ -8,61 +8,43 @@
 
 import UIKit
 
-
 /// Adds a view that has a label and a button to show the picker types view
-class SelectPickerView: UIView, PickerViewControllerDelegate {
-    @IBInspectable public var pickerTypeString: String? //Picker type to use
+class SelectPickerView: ControlView, PickerViewControllerDelegate {
+    @IBInspectable public var pickerTypeString: String = "Case" //Picker type to use
     @IBInspectable public var passwordTypeInt: Int = 401 //Password type of item
-    
-    let controlLabel = UILabel.init()
+
     let controlButton = UIButton.init()
-    
-    let d = DefaultsManager.get()!
-    let c = PFConstants.instance
     
     var pickerType: PickerTypes?
     var passwordType: PFPasswordType?
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        removeSubviewsAndConstraints()
+    override func awakeFromNib() {
+        pickerType = PickerTypes(rawValue: pickerTypeString) ?? .CaseType
+        passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
+    }
+
+    override func addViews() {
+        super.addViews()
         addSubview(controlButton)
         addSubview(controlLabel)
         //sets button action
         controlButton.addTarget(self, action: #selector(openPicker), for: .touchUpInside)
     }
-    
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        if newWindow != nil {
-            if (pickerTypeString != nil) {
-                pickerType = PickerTypes(rawValue: pickerTypeString!)
-            }
-            passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
-            setupView()
-        }
-
-    }
-    
     /// Positions the views in the container
-    func setupView() {
-        Utilities.roundCorners(layer: controlButton.layer, withBorder: false)
-        controlButton.backgroundColor = Utilities.tintColor
+    override func setupView() {
+        super.setupView()
+        controlButton.roundCorners()
+        controlButton.backgroundColor = PFConstants.tintColor
         controlButton.setTitleColor(UIColor.white, for: .normal)
-
         setButtonText()
         setLabelText()
+
         let views = ["button" : controlButton as UIView, "label" : controlLabel as UIView]
+        addVFLConstraints(constraints: ["H:|-[label(==125)]-8-[button]-|","V:[button(==29)]"], views: views)
+        centerViewVertically(controlLabel)
+        centerViewVertically(controlButton)
         translatesAutoresizingMaskIntoConstraints = false
-        controlButton.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label(==125)]-8-[button]-0-|", options: [], metrics: nil, views: views))
 
-        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
-        Utilities.centerViewVerticallyInContainer(controlButton, superview: self)
-
-        
+        controlButton.titleLabel?.font = PFConstants.labelFont
     }
     
     /// Sets the label based upon PickerType

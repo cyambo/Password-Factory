@@ -11,13 +11,12 @@ import UIKit
 
 /// TextView for the password display
 class PasswordTextView: UITextView {
-    public override func awakeFromNib() {
+    public override func layoutSubviews() {
+        super.layoutSubviews()
         setDisplay()
     }
-    override func prepareForInterfaceBuilder() {
-        setDisplay()
-    }
+
     func setDisplay() {
-        Utilities.roundCorners(layer: self.layer, withBorder: true)
+        roundCorners()
     }
 }

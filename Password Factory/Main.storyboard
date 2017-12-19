@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
@@ -555,7 +555,7 @@ Gw
                                     </textField>
                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-Wd-A8k">
                                         <rect key="frame" x="204" y="190" width="19" height="27"/>
-                                        <stepperCell key="cell" continuous="YES" alignment="left" minValue="6" maxValue="100" doubleValue="6" id="FaI-M1-zJi"/>
+                                        <stepperCell key="cell" continuous="YES" alignment="left" increment="5" minValue="10" maxValue="100" doubleValue="10" id="FaI-M1-zJi"/>
                                         <connections>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxPasswordLength" id="pC0-c7-Xox"/>
                                         </connections>
@@ -2730,7 +2730,7 @@ Gw
                                 </connections>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aCc-Xq-aX4">
-                                <rect key="frame" x="13" y="251" width="345" height="24"/>
+                                <rect key="frame" x="10" y="251" width="351" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="kwv-Js-aab">
                                     <font key="font" metaFont="system"/>
                                     <segments>

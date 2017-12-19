@@ -8,32 +8,34 @@
 
 import UIKit
 
-
 /// Adds a text field and label to a view connected to defaults
-class TextFieldView: UIView, UITextFieldDelegate {
+class TextFieldView: ControlView, UITextFieldDelegate {
     @IBInspectable public var defaultsKey: String? //defaults key to use
-    @IBInspectable public var label: String? //label to display
 
     let controlText = UITextField.init()
-    let controlLabel = UILabel.init()
 
-    let d = DefaultsManager.get()!
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        removeSubviewsAndConstraints()
+    override func addViews() {
+        super.addViews()
         addSubview(controlText)
         addSubview(controlLabel)
         setupTextField()
     }
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        if newWindow != nil {
-            setupView()
-        }
+    /// sets the position of the views and adds observers for the text field
+    override func setupView() {
+        super.setupView()
+        controlText.borderStyle = .roundedRect
+        controlText.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+        
+        let views = ["text" : controlText as UIView, "label" : controlLabel as UIView]
+        addVFLConstraints(constraints: ["H:|-[label(==125)]-8-[text]-|"], views: views)
+        centerViewVertically(controlLabel)
+        centerViewVertically(controlText)
+
+        setTextFieldFromDefaults()
+        let n = NotificationCenter.default
+        n.addObserver(self, selector: #selector(textChanged), name: .UITextFieldTextDidChange, object: controlText)
+        controlText.font = PFConstants.labelFont
     }
-    
     /// Sets the parameters of the text field
     func setupTextField() {
         controlText.autocapitalizationType = .none
@@ -45,24 +47,6 @@ class TextFieldView: UIView, UITextFieldDelegate {
         controlText.clearButtonMode = .always
         controlText.delegate = self
     }
-    
-    /// sets the position of the views and adds observers for the text field
-    func setupView() {
-        controlLabel.text = label
-        controlText.borderStyle = .roundedRect
-        let views = ["text" : controlText as UIView, "label" : controlLabel as UIView]
-        translatesAutoresizingMaskIntoConstraints = false
-        controlText.translatesAutoresizingMaskIntoConstraints = false
-        controlLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label(==125)]-8-[text]-0-|", options: [], metrics: nil, views: views))
-
-        Utilities.centerViewVerticallyInContainer(controlLabel, superview: self)
-        Utilities.centerViewVerticallyInContainer(controlText, superview: self)
-        setTextFieldFromDefaults()
-        let n = NotificationCenter.default
-        n.addObserver(self, selector: #selector(textChanged), name: .UITextFieldTextDidChange, object: controlText)
-    }
-    
     /// sets the text field with defaults value
     func setTextFieldFromDefaults() {
         guard let dk = defaultsKey else {

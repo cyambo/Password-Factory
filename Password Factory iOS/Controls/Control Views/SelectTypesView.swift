@@ -8,54 +8,64 @@
 
 import UIKit
 
-
 /// View that displays a collection view containing separator, or case types
-class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBInspectable var selectType: String?
-    @IBInspectable var passwordTypeInt: Int
-    let d = DefaultsManager.get()
-    let c = PFConstants.instance
-    let typeLabel = UILabel.init()
+    @IBInspectable var selectType: String = "Case"
+    @IBInspectable var passwordTypeInt: Int = 403
+
     var currentSelectType = PickerTypes.CaseType
     var currentPasswordType = PFPasswordType.pronounceableType
     var collection:UICollectionView!
-    required init?(coder aDecoder: NSCoder) {
-        passwordTypeInt = 403
-        super.init(coder: aDecoder)
-        removeSubviewsAndConstraints()
-        
+    override func awakeFromNib() {
+        currentSelectType = PickerTypes(rawValue: (selectType)) ?? .CaseType
+        currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
+    }
+    override func initializeControls() {
+        super.initializeControls()
+        setupCollectionView()
+    }
+    override func addViews() {
+        super.addViews()
+        addSubview(controlLabel)
+        addSubview(collection)
+    }
+    override func setLabel() {
+        super.setLabel()
+        controlLabel.text = "\(currentSelectType.rawValue)"
+    }
+    override func setupView() {
+        super.setupView()
+
+        let views = ["collection" : collection as UIView, "label" : controlLabel as UIView]
+        addVFLConstraints(constraints: ["H:|-[label]-|","H:|-[collection]-|","V:|-[label(==20)]-8-[collection(>=50)]"], views: views)
+        collection.roundCorners()
+        controlLabel.addBorder([.bottom],color: PFConstants.cellBorderColor.withAlphaComponent(0.25))
+
+    }
+    func setupCollectionView() {
         //setup the collection view
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         layout.minimumLineSpacing = 8.0
         layout.itemSize = CGSize.init(width: 70, height: 50)
-        collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
+        collection = UICollectionView.init(frame: frame, collectionViewLayout: layout)
         
         collection.register(SelectTypeCollectionViewCell.self, forCellWithReuseIdentifier: "SelectTypeCell")
-        collection.backgroundColor = UIColor.white
+        collection.backgroundColor = UIColor.clear
         collection.dataSource = self
         collection.delegate = self
-        addSubview(typeLabel)
-        addSubview(collection)
-        typeLabel.text = ""
-        
-        let views = ["collection" : collection as UIView, "label" : typeLabel as UIView]
-        translatesAutoresizingMaskIntoConstraints = false
-        collection.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[label]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[collection]-0-|", options: [], metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label(==20)]-8-[collection(==50)]", options: [], metrics: nil, views: views))
-        Utilities.roundCorners(layer: collection.layer, withBorder: false)
-        
     }
-    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        if (newWindow != nil) {
+            scrollToSelected()
+        }
+    }
+
     /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
-        if let index = d?.integer(forKey: getDefaultsKey()) {
-            collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
-        }
+        let index = d.integer(forKey: getDefaultsKey())
+        collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     /// Gets the current defaults key
@@ -65,19 +75,10 @@ class SelectTypesView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         let prefix = c.getNameFor(type: currentPasswordType).lowercased()
         return "\(prefix)\(currentSelectType.rawValue)TypeIndex"
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        guard let selType = PickerTypes(rawValue: (selectType ?? "Case")) else {
-            return
-        }
-        currentSelectType = selType
-        typeLabel.text = "\(selType.rawValue)"
-        currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
 
-    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        d?.setInteger(indexPath.row, forKey: getDefaultsKey())
+        d.setInteger(indexPath.row, forKey: getDefaultsKey())
         collectionView.reloadData()
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
