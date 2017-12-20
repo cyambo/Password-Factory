@@ -10,8 +10,7 @@ import UIKit
 
 /// Adds a text field and label to a view connected to defaults
 class TextFieldView: ControlView, UITextFieldDelegate {
-    @IBInspectable public var defaultsKey: String? //defaults key to use
-
+    
     let controlText = UITextField.init()
 
     override func addViews() {
@@ -63,7 +62,12 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         controlText.resignFirstResponder()
         return true
     }
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        startAction()
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        endAction()
+    }
     /// Observer method called when text changes
     @objc func textChanged() {
         //do we have anything in the text

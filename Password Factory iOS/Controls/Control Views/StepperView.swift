@@ -10,7 +10,7 @@ import UIKit
 
 /// Adds a stepper label and value display in a view connected to defaults
 class StepperView: ControlView {
-    @IBInspectable public var defaultsKey: String? //defaults key to use
+
     @IBInspectable public var minValue: Int = 0 //minimum value of the stepper
     @IBInspectable public var maxValue: Int = 100 //maximum value of the stepper
     @IBInspectable public var stepValue: Int = 1 //step for each press
@@ -27,6 +27,7 @@ class StepperView: ControlView {
     /// positions the views and sets up the stepper
     override func setupView() {
         super.setupView()
+        setActions(controlStepper)
         let views = ["stepper" : controlStepper as UIView, "label" : controlLabel as UIView,"value" : valueLabel as UIView]
 
         addVFLConstraints(constraints: ["H:|-[label]-8-[stepper(==94)]-8-[value(==70)]-|","V:[value(==29)]"], views: views)

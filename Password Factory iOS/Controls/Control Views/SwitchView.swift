@@ -10,7 +10,6 @@ import UIKit
 
 /// View containing a switch and a label connected to defaults
 class SwitchView: ControlView {
-    @IBInspectable var defaultsKey: String? //defaults key to use
 
     var touchGesture: UITapGestureRecognizer? //tap gesture recognizer that fills the view and toggles the switch
     let controlSwitch = UISwitch.init()
@@ -32,7 +31,7 @@ class SwitchView: ControlView {
     /// Adds and positions the switch and label
     override func setupView() {
         super.setupView()
-        
+
         let views = ["switch" : controlSwitch as UIView, "label" : controlLabel as UIView]
         addVFLConstraints(constraints: ["H:|-[label]-8-[switch(==52)]-|"], views: views)
         centerViewVertically(controlLabel)

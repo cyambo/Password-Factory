@@ -15,4 +15,7 @@
 #import "DefaultsManager.h"
 #import "ColorUtilities.h"
 #import "PasswordController.h"
+#import "PasswordStorage.h"
+#import "Passwords+CoreDataClass.h"
+#import "Passwords+CoreDataProperties.h"
 #endif /* PasswordFactory_Bridging_Header_h */

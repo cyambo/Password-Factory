@@ -12,6 +12,7 @@ import UIKit
 
 class ControlView: UIView {
     @IBInspectable public var label: String? //label to display
+    @IBInspectable public var defaultsKey: String? //defaults key to use
     let d = DefaultsManager.get()!
     let c = PFConstants.instance
     let controlLabel = UILabel.init() //label of the view
@@ -23,8 +24,8 @@ class ControlView: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initializeControls()
         addViews()
+        initializeControls()
     }
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
@@ -36,6 +37,8 @@ class ControlView: UIView {
     }
     func initializeControls() {
         layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        d.setBool(false, forKey: "activeControl")
+        d.setObject(nil, forKey: "currentControlKey")
     }
     func addViews() {
         removeSubviewsAndConstraints()
@@ -50,5 +53,24 @@ class ControlView: UIView {
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
         controlLabel.font = PFConstants.labelFont
         controlLabel.text = label
+    }
+    func setActions(_ control: UIControl) {
+        control.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        control.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpInside)
+        control.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpOutside)
+    }
+    func startAction() {
+        d.setBool(true, forKey: "activeControl")
+        d.setObject(defaultsKey ?? "", forKey: "currentControlKey")
+    }
+    func endAction() {
+        d.setBool(false, forKey: "activeControl")
+        d.setObject("", forKey: "currentControlKey")
+    }
+    @objc func touchDown(_ sender: UISlider) {
+        startAction()
+    }
+    @objc func touchUp(_ sender: UISlider) {
+        endAction()
     }
 }

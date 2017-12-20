@@ -28,4 +28,5 @@
 -(void)setBool:(BOOL)object forKey:(NSString *)key;
 -(void)setInteger:(NSInteger)object forKey:(NSString *)key;
 -(void)setFloat:(float)object forKey:(NSString *)key;
+-(BOOL)timeThresholdForKeyPathExceeded:(NSString *)key thresholdValue:(uint64_t)threshold;
 @end

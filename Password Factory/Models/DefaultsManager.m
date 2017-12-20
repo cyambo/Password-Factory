@@ -5,9 +5,16 @@
 //  Created by Cristiana Yambo on 8/19/15.
 //  Copyright (c) 2015 Cristiana Yambo. All rights reserved.
 //
-
+#include <mach/mach.h>
+#include <mach/mach_time.h>
 #import "DefaultsManager.h"
 #import "constants.h"
+
+static mach_timebase_info_data_t _sTimebaseInfo;
+
+uint64_t  _newTime, _previousTime, _elapsed, _elapsedNano, _threshold;
+NSString  *_previousKeyPath;
+
 @interface DefaultsManager ()
 @property (nonatomic, strong) NSUserDefaults *sharedDefaults;
 @property (nonatomic, strong) NSUserDefaults *standardDefaults;
@@ -367,4 +374,26 @@ static DefaultsManager *dm = nil;
     //different classes, so return NO
     return NO;
 }
+
+-(BOOL)timeThresholdForKeyPathExceeded:(NSString *)key thresholdValue:(uint64_t)threshold {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        (void) mach_timebase_info(&_sTimebaseInfo);
+    });
+    _previousTime = _newTime;
+    _newTime = mach_absolute_time();
+    
+    if(_previousTime > 0) {
+        _elapsed = _newTime - _previousTime;
+        _elapsedNano = _elapsed * _sTimebaseInfo.numer / _sTimebaseInfo.denom;
+    }
+    NSLog(@"%@ ELAPSDE %llu",key,_elapsedNano);
+    if(_elapsedNano > threshold || ![key isEqualToString:_previousKeyPath]) {
+        NSLog(@"SUCC");
+        _previousKeyPath = key;
+        return YES;
+    }
+    return NO;
+}
+
 @end

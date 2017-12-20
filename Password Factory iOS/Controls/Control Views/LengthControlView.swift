@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// Displays a slider and label with value of slider
 class LengthControlView: ControlView {
     let slider = UISlider.init()
@@ -26,6 +25,7 @@ class LengthControlView: ControlView {
     override func setupView() {
         super.setupView()
         setupLengthSlider()
+        setActions(slider)
         lengthChanged()
         controlLabel.text = "Length"
         sizeLabel.textAlignment = .right
@@ -54,11 +54,13 @@ class LengthControlView: ControlView {
     
     /// Called when length is changed - sets defaults and label
     func lengthChanged() {
-        let length = Int(slider.value)
-        sizeLabel.text = "\(length)"
-        d.setInteger(Int(slider.value), forKey: "passwordLength")
+        if let key = defaultsKey {
+            let length = Int(slider.value)
+            sizeLabel.text = "\(length)"
+            d.setInteger(Int(slider.value), forKey: key)
+        }
     }
-    
+
     /// action when length is changed
     ///
     /// - Parameter sender: default sender

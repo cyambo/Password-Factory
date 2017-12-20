@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// Superclass for all password types view
 class PasswordsViewController: UIViewController  {
 
@@ -16,6 +15,7 @@ class PasswordsViewController: UIViewController  {
     let c = PFConstants.instance
     let d = DefaultsManager.get()!
     let f = PasswordFactory.get()!
+    
     var passwordStrength: Float = 0.0
     var strengthText = ""
     var currentPassword = ""

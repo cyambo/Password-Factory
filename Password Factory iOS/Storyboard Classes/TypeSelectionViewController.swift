@@ -15,6 +15,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
     var keyboardDismissGesture: UITapGestureRecognizer?
     let d = DefaultsManager.get()
     let c = PFConstants.instance
+    let s = PasswordStorage.get()!
     var currentViewController: PasswordsViewController?
     
     @IBOutlet weak var passwordTypeTitle: UILabel!
@@ -127,13 +128,24 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
     
     /// Generates password from the current view controller
     func generatePassword() {
-        guard let p = currentViewController?.generatePassword() else {
-            passwordDisplay.text = ""
-            strengthMeter.updateStrength(s: 0.0)
-            passwordLengthDisplay.text = "0"
-            return
+        DispatchQueue.main.async { [unowned self] in
+            guard let p = self.currentViewController?.generatePassword() else {
+                self.passwordDisplay.text = ""
+                self.strengthMeter.updateStrength(s: 0.0)
+                self.passwordLengthDisplay.text = "0"
+                return
+            }
+            guard let type = self.currentViewController?.passwordType else {
+                return
+            }
+            if type != .storedType {
+                if !(self.d?.bool(forKey: "activeControl") ?? false)  {
+                    self.s.storePassword(p, strength: Float(self.strengthMeter.strength), type: (self.currentViewController?.passwordType)!)
+                }
+            }
+            self.updatePasswordField(p)
         }
-        updatePasswordField(p)
+
     }
     
     /// Updates the password field with the attributed text as well as updating the length counter
@@ -185,9 +197,10 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
     
     /// sets observers for all the values in defaults plist
     func setObservers() {
-        guard let plist = d?.prefsPlist else {
+        guard var plist = d?.prefsPlist else {
             return
         }
+        plist["activeControl"] = false
         let defaults = DefaultsManager.standardDefaults()
         for (key, _) in plist {
             let k = String(describing: key)
@@ -199,13 +212,16 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
         //whenever a default changes, generate a password
         
         //TODO: do not generate on color changes
-        if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
-            setupSegments()
-            setSelectedPasswordType()
-            selectType(typeSelectionControl)
-        } else {
-            generatePassword()
+        if (d?.timeThreshold(forKeyPathExceeded: keyPath, thresholdValue: 700000))! {
+            if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
+                setupSegments()
+                setSelectedPasswordType()
+                selectType(typeSelectionControl)
+            } else {
+                generatePassword()
+            }
         }
+
         
         
     }
