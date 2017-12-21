@@ -20,6 +20,7 @@ NSString  *_previousKeyPath;
 @property (nonatomic, strong) NSUserDefaults *standardDefaults;
 @property (nonatomic, strong) NSMutableDictionary *standardDefaultsCache;
 @property (nonatomic, strong) NSMutableDictionary *sharedDefaultsCache;
+@property (nonatomic, strong) NSMutableArray *bridgedContexts;
 
 @end
 @implementation DefaultsManager
@@ -61,6 +62,7 @@ static DefaultsManager *dm = nil;
 }
 -(instancetype)init {
     self = [super init];
+    self.bridgedContexts = [[NSMutableArray alloc] init];
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
     [self loadPreferencesFromPlist];
@@ -324,6 +326,19 @@ static DefaultsManager *dm = nil;
     self.sharedDefaultsCache = sh;
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    //checking if we have a context, if so, we called from
+    //which means it was setup in setDefaultsObservers
+    if (context != nil) {
+        id c = (__bridge id)context;
+        //if so, see if it conforms to our protocol
+        if ([self timeThresholdForKeyPathExceeded:keyPath]) {
+            //and then only call it if it isnt a duplicate call (because of bug by apple)
+            if ([c conformsToProtocol:@protocol(DefaultsManagerDelegate)]) {
+                [(id <DefaultsManagerDelegate>)c observeValue:keyPath change:change];
+            }
+        }
+        return;
+    }
     //don't do anything if the change is null
     if (change[@"new"] == [NSNull null]) {
         return;
@@ -375,7 +390,13 @@ static DefaultsManager *dm = nil;
     return NO;
 }
 
--(BOOL)timeThresholdForKeyPathExceeded:(NSString *)key thresholdValue:(uint64_t)threshold {
+/**
+ Checks to see if an key observing action has happened within a specified amount of time
+
+ @param key key to check
+ @return yes, if it happened after threshold
+ */
+-(BOOL)timeThresholdForKeyPathExceeded:(NSString *)key {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         (void) mach_timebase_info(&_sTimebaseInfo);
@@ -387,13 +408,46 @@ static DefaultsManager *dm = nil;
         _elapsed = _newTime - _previousTime;
         _elapsedNano = _elapsed * _sTimebaseInfo.numer / _sTimebaseInfo.denom;
     }
-    NSLog(@"%@ ELAPSDE %llu",key,_elapsedNano);
-    if(_elapsedNano > threshold || ![key isEqualToString:_previousKeyPath]) {
-        NSLog(@"SUCC");
+    if(_elapsedNano > PFObserverTimeThreshold || ![key isEqualToString:_previousKeyPath]) {
         _previousKeyPath = key;
         return YES;
     }
     return NO;
+}
+
+/**
+ Sets an array of keys to observe on NSUserDefaults
+
+ @param observer object that we are observing from
+ @param keys array of keys to observe
+ */
+-(void)observeDefaults:(NSObject *)observer keys:(NSArray *)keys {
+    NSUserDefaults *d = self.standardDefaults;
+    //saving the observer object so that it won't get deallocated
+    [self.bridgedContexts addObject:observer];
+    //add the observers
+    for (NSString* key in keys) {
+        [d addObserver:self forKeyPath:key options: NSKeyValueObservingOptionNew context:(__bridge void * _Nullable)observer];
+    }
+}
+
+/**
+ Removes observers from defaults
+
+ @param observer object that was observed from
+ @param keys array of keys to remove as observers
+ */
+-(void)removeDefaultsObservers:(NSObject *)observer keys:(NSArray *)keys  {
+    //remove the observer from the array, so it will be deallocated
+    for(NSInteger i = self.bridgedContexts.count - 1; i >=0 ; i--) {
+        if ([self.bridgedContexts[i] isEqual:observer]) {
+            [self.bridgedContexts removeObjectAtIndex:i];
+        }
+    }
+    NSUserDefaults *d = self.standardDefaults;
+    for (NSString* key in keys) {
+        [d removeObserver:self forKeyPath:key context:(__bridge void *)observer];
+    }
 }
 
 @end

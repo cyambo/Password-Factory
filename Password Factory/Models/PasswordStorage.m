@@ -89,7 +89,6 @@
         [self loadSavedData];
         [self deleteOverMaxItems];
     }
-
 }
 
 /**
@@ -221,5 +220,6 @@
         [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteAllFailedError];
 #endif
     }
+    [self loadSavedData];
 }
 @end

@@ -71,6 +71,7 @@ class TextFieldView: ControlView, UITextFieldDelegate {
     /// Observer method called when text changes
     @objc func textChanged() {
         //do we have anything in the text
+        var toChange = ""
         if let s = controlText.text {
             //if we are the find regex
             if defaultsKey == "advancedFindRegex" {
@@ -83,10 +84,15 @@ class TextFieldView: ControlView, UITextFieldDelegate {
                 }
             }
             //set the text
-            d.setObject(s, forKey: defaultsKey)
+            toChange = s
+            
         } else {
             //set nothing
-            d.setObject("", forKey: defaultsKey)
+            toChange = ""
+        }
+        if let key = defaultsKey {
+            d.setObject(toChange, forKey: key)
+            delegate?.controlChanged(controlText, defaultsKey: key)
         }
         
     }

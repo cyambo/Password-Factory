@@ -44,6 +44,7 @@ class StrengthMeter: UIView {
     ///
     /// - Parameter s: strength to set
     func updateStrength(s: Double) {
+        
         strength = s / 100.0
         if (strength < 0.0) { strength = 0.0 }
         if (strength > 1.0) { strength = 1.0 }

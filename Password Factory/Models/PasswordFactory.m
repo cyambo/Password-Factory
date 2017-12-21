@@ -247,6 +247,7 @@
     NSMutableString *curr = [[NSMutableString alloc] init];
     for(int i=0;i<length;i++){
         int at = [SecureRandom randomInt:(uint)self.currentRange.count];
+        //TODO: dies here sometimes with array index over length
         [curr appendString:[self.currentRange objectAtIndex:at]];
     }
     return curr;

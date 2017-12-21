@@ -46,25 +46,23 @@ class StepperView: ControlView {
         valueLabel.textAlignment = .center
         valueLabel.roundCorners()
         
-        if defaultsKey != nil {
-            controlStepper.value = Double(d.integer(forKey: defaultsKey))
+        if let key = defaultsKey {
+            controlStepper.value = Double(d.integer(forKey: key))
             controlStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
         }
-
         valueLabel.font = PFConstants.labelFont
         setStepperLabel()
     }
     
     /// Changes the value label based upon stepper value
     func setStepperLabel() {
-        if defaultsKey != nil {
-            let val = d.integer(forKey: defaultsKey)
+        if let key = defaultsKey {
+            let val = d.integer(forKey: key)
             if val == 0 && defaultsKey == "advancedTruncateAt" {
                 valueLabel.text = "None"
             } else {
-               valueLabel.text = "\(val)"
+                valueLabel.text = "\(val)"
             }
-            
         } else {
             valueLabel.text = "--"
         }
@@ -72,8 +70,12 @@ class StepperView: ControlView {
     
     /// Called when stepper is changed, will set defaults and label
     @objc func changeStepper() {
-        d.setInteger(Int(controlStepper.value), forKey: defaultsKey)
-        setStepperLabel()
+        if let key = defaultsKey {
+            d.setInteger(Int(controlStepper.value), forKey: key)
+            setStepperLabel()
+            delegate?.controlChanged(controlStepper, defaultsKey: key)
+        }
+
     }
 
 }

@@ -1200,10 +1200,10 @@
                                 <state key="normal" title="100"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="myh-vK-5qy">
-                                <rect key="frame" x="0.0" y="38" width="343" height="421"/>
+                                <rect key="frame" x="0.0" y="30" width="343" height="429"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PasswordCell" rowHeight="44" id="nMH-3S-zL2" customClass="StoredPasswordTableViewCell" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="PasswordCell" rowHeight="44" id="nMH-3S-zL2" customClass="StoredPasswordTableViewCell" customModule="Password_Factory_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nMH-3S-zL2" id="nln-gD-BeI">
@@ -1248,9 +1248,9 @@
                                                         <constraint firstItem="Q6l-rT-Wxr" firstAttribute="leading" secondItem="yZj-AB-aQj" secondAttribute="leading" constant="4" id="eS2-mC-zfj"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftBorder" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftBorder" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="value" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -1277,7 +1277,7 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="leftBorder" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="value" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -1303,7 +1303,7 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="value" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="leftBorder" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
@@ -1325,6 +1325,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="ygR-9X-O5m" secondAttribute="trailing" constant="8" id="yqe-1t-Tj4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="34" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="length" destination="ag8-26-K4h" id="O1H-Ym-WOr"/>
                                             <outlet property="password" destination="Q6l-rT-Wxr" id="QwU-FU-Ph4"/>
@@ -1357,7 +1358,7 @@
                             <constraint firstItem="mJK-GC-XLR" firstAttribute="top" secondItem="xdX-fW-efM" secondAttribute="top" id="4zM-Id-Lb2"/>
                             <constraint firstItem="mJK-GC-XLR" firstAttribute="leading" secondItem="lxO-4x-CKu" secondAttribute="trailing" id="9fQ-s3-enJ"/>
                             <constraint firstItem="lxO-4x-CKu" firstAttribute="top" secondItem="xdX-fW-efM" secondAttribute="top" id="Nzt-zf-HTr"/>
-                            <constraint firstItem="myh-vK-5qy" firstAttribute="top" secondItem="lxO-4x-CKu" secondAttribute="bottom" constant="8" id="Qfl-uI-5zP"/>
+                            <constraint firstItem="myh-vK-5qy" firstAttribute="top" secondItem="lxO-4x-CKu" secondAttribute="bottom" id="Qfl-uI-5zP"/>
                             <constraint firstItem="myh-vK-5qy" firstAttribute="trailing" secondItem="xdX-fW-efM" secondAttribute="trailing" id="jhQ-Nh-kcR"/>
                             <constraint firstItem="myh-vK-5qy" firstAttribute="bottom" secondItem="xdX-fW-efM" secondAttribute="bottom" id="oxP-a3-swC"/>
                             <constraint firstItem="1rN-NO-7mx" firstAttribute="top" secondItem="xdX-fW-efM" secondAttribute="top" id="saj-Lo-sXZ"/>
@@ -1374,13 +1375,14 @@
                     <connections>
                         <outlet property="lengthButton" destination="d46-n8-h5g" id="CXT-8E-j7A"/>
                         <outlet property="passwordButton" destination="mJK-GC-XLR" id="cNA-hG-TTB"/>
+                        <outlet property="storedPasswordsTable" destination="myh-vK-5qy" id="tDc-3E-DYS"/>
                         <outlet property="strengthButton" destination="1rN-NO-7mx" id="iY5-HM-fcI"/>
                         <outlet property="typeButton" destination="lxO-4x-CKu" id="rvW-Hn-CAb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yli-AI-Ibm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4616.8000000000002" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="4609" y="-385"/>
         </scene>
         <!--Preferences View-->
         <scene sceneID="QRT-0E-Lo3">
@@ -1446,6 +1448,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="storePasswords"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Store Passwords"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="KGt-Hr-RKx" id="ozS-Rr-AEy"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWn-q6-7cQ" userLabel="Amount To Store" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="160.5" width="343" height="53.5"/>

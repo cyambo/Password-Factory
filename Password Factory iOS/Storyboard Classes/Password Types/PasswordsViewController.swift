@@ -13,8 +13,9 @@ class PasswordsViewController: UIViewController  {
 
     @IBInspectable public var passwordTypeInt: Int = 401 //Password type of item
     let c = PFConstants.instance
-    let d = DefaultsManager.get()!
+    let d = DefaultsManager.get()
     let f = PasswordFactory.get()!
+    var typeSelectionViewController : TypeSelectionViewController?
     
     var passwordStrength: Float = 0.0
     var strengthText = ""

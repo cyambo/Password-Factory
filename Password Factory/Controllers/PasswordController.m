@@ -65,6 +65,9 @@
 #ifdef IS_MACOS
         PasswordTypesViewController *vc = [self getViewControllerForPasswordType:type];
         [vc selectRandomFromStored];
+#else
+        NSDictionary *settings = [self getPasswordSettingsByType:type];
+        [self generatePassword:type withSettings:settings];
 #endif
     }
 }

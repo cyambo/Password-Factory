@@ -58,6 +58,7 @@ class LengthControlView: ControlView {
             let length = Int(slider.value)
             sizeLabel.text = "\(length)"
             d.setInteger(Int(slider.value), forKey: key)
+            delegate?.controlChanged(slider, defaultsKey: key)
         }
     }
 

@@ -9,13 +9,18 @@
 import UIKit
 
 /// Class that all the control views inherit from, will do all the housekeeping that needs to be done for the control views
-
+@objc public protocol ControlViewDelegate: class {
+    func controlChanged(_ control: UIControl?, defaultsKey: String)
+}
 class ControlView: UIView {
     @IBInspectable public var label: String? //label to display
     @IBInspectable public var defaultsKey: String? //defaults key to use
-    let d = DefaultsManager.get()!
+    @IBOutlet var delegate: ControlViewDelegate?
+    
+    let d = DefaultsManager.get()
     let c = PFConstants.instance
     let controlLabel = UILabel.init() //label of the view
+    
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

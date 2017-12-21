@@ -15,24 +15,48 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     @IBOutlet weak var passwordButton: UIButton!
     @IBOutlet weak var lengthButton: UIButton!
     @IBOutlet weak var strengthButton: UIButton!
+    @IBOutlet weak var storedPasswordsTable: UITableView!
+    
+    var selectFirstPassword = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         typeButton.setTitle("", for: .normal)
         passwordButton.setTitle("", for: .normal)
         strengthButton.setTitle("", for: .normal)
+        lengthButton.setTitle("", for: .normal)
         typeButton.setImage(StyleKit.imageOfPasswordTypeHeader, for: .normal)
         passwordButton.setImage(StyleKit.imageOfPasswordHeader, for: .normal)
         strengthButton.setImage(StyleKit.imageOfPasswordStrengthHeader, for: .normal)
-        // Do any additional setup after loading the view.
+        lengthButton.setImage(StyleKit.imageOfPasswordLengthHeader, for: .normal)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //when view appears, select the first password when generating
+        selectFirstPassword = true
     }
     override func generatePassword() -> String {
-        //TODO: get random password from list for generate
-        return "PaSSWoRD"
+        var index : UInt = 0
+        if !selectFirstPassword {
+            index = UInt(SecureRandom.randomInt(uint(s.count())))
+        }
+        selectFirstPassword = false
+        selectPasswordAtIndex(index)
+        d.setObject(index, forKey: "storedPasswordTableSelectedRow")
+        return super.generatePassword()
+        
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func selectPasswordAtIndex(_ index: UInt){
+        if s.count() == 0 {
+            return
+        }
+        if index > s.count() - 1 {
+            return
+        }
+        storedPasswordsTable.selectRow(at: IndexPath.init(row: Int(index), section: 0), animated: true, scrollPosition: .middle)
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int(s.count())
@@ -51,7 +75,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
             currentCell = StoredPasswordTableViewCell()
         }
         currentCell.setupCell(p)
-
+        currentCell.layoutMargins = UIEdgeInsets.zero
         return currentCell
     }
     

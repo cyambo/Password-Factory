@@ -18,4 +18,5 @@
 #import "PasswordStorage.h"
 #import "Passwords+CoreDataClass.h"
 #import "Passwords+CoreDataProperties.h"
+#import "SecureRandom.h"
 #endif /* PasswordFactory_Bridging_Header_h */

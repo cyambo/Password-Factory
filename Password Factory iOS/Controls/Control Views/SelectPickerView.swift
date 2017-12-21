@@ -188,8 +188,10 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         }
         if let key = getDefaultsKey() {
             d.setInteger(index, forKey: key)
+            delegate?.controlChanged(controlButton, defaultsKey: key)
         }
         controlButton.setTitle(t, for: .normal)
+        
     }
 
 }

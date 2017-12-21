@@ -43,6 +43,8 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         controlLabel.addBorder([.bottom],color: PFConstants.cellBorderColor.withAlphaComponent(0.25))
 
     }
+    
+    /// Sets up the collection view
     func setupCollectionView() {
         //setup the collection view
         let layout = UICollectionViewFlowLayout()
@@ -58,6 +60,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
     }
     override func willMove(toWindow newWindow: UIWindow?) {
         if (newWindow != nil) {
+            //scroll to the selected item when the view appears
             scrollToSelected()
         }
     }
@@ -77,8 +80,9 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        d.setInteger(indexPath.row, forKey: getDefaultsKey())
+        let key = getDefaultsKey()
+        d.setInteger(indexPath.row, forKey: key)
+        delegate?.controlChanged(nil, defaultsKey: key)
         collectionView.reloadData()
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

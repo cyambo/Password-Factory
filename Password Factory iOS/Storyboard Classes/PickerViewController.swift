@@ -37,9 +37,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         super.viewWillAppear(animated)
         
         if let key = getDefaultsKey() {
-            if let selected = d?.integer(forKey: key) {
-                itemPickerView.selectRow(selected, inComponent: 0, animated: false)
-            }
+            itemPickerView.selectRow(d.integer(forKey: key), inComponent: 0, animated: false)
         }
     }
     override func viewDidLayoutSubviews() {

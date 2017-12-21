@@ -26,12 +26,21 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         setFromDefaults()
         wellView.addTarget(self, action: #selector(loadColorPicker), for: .touchUpInside)
     }
+    
+    /// Color selector view delegate method, called when color changed
+    ///
+    /// - Parameter color: selected color
     func selectedColor(_ color: UIColor) {
         wellView.backgroundColor = color
         if let colorString = ColorUtilities.color(toHexString: color) {
-            d.setObject(colorString, forKey: defaultsKey)
+            if let key = defaultsKey {
+                d.setObject(colorString, forKey: key)
+                delegate?.controlChanged(nil, defaultsKey: key)
+            }
         }
     }
+    
+    /// Loads the color picker modal
     @objc func loadColorPicker() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "ColorPickerView") as? ColorPickerViewController {
@@ -43,6 +52,7 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         }
     }
     
+    /// Sets the color of the well from defaults
     func setFromDefaults() {
         guard let dk = defaultsKey else {
             return

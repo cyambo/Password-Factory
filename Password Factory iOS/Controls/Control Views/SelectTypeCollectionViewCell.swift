@@ -55,11 +55,11 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
         case .CaseType:
             title = c.caseTypes[c.getCaseType(by: UInt(index))] ?? ""
             imageView.image = TypeIcons().getCaseTypeIcon(c.getCaseType(by: UInt(index)))
-            selected = (index == d?.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
+            selected = (index == d.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
         case .SeparatorType:
             title = c.separatorTypes[c.getSeparatorType(by: UInt(index))] ?? ""
             imageView.image = TypeIcons().getSeparatorTypeIcon(c.getSeparatorType(by: UInt(index)))
-            selected = (index == d?.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
+            selected = (index == d.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
             
         case .PasswordType:
             title = "PASSWORD"

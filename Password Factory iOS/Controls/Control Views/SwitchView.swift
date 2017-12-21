@@ -38,16 +38,17 @@ class SwitchView: ControlView {
         centerViewVertically(controlSwitch)
         
         //sets the state and action for the switch
-        if defaultsKey != nil {
-            controlSwitch.setOn((d.bool(forKey: defaultsKey)), animated: false)
+        if let key = defaultsKey {
+            controlSwitch.setOn((d.bool(forKey: key)), animated: false)
             controlSwitch.addTarget(self, action: #selector(changeSwitch), for: .valueChanged)
         }
     }
     
     /// sets defaults for the switch state
     @objc func changeSwitch() {
-        if defaultsKey != nil {
-            d.setBool(controlSwitch.isOn, forKey: defaultsKey)
+        if let key = defaultsKey {
+            d.setBool(controlSwitch.isOn, forKey: key)
+            delegate?.controlChanged(controlSwitch, defaultsKey: key)
         }
     }
     

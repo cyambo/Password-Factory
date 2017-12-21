@@ -90,6 +90,8 @@ typedef NS_ENUM(NSInteger, PFErrorCode) {
 #define PFZoomLargeFontSize 72
 #define PFZoomXLargeFontSize 128
 
+#define PFObserverTimeThreshold 2000000
+
 extern NSString * const SupportEmailAddress;
 extern NSString * const SharedDefaultsAppGroup;
 extern NSString * const NotificationSoundName;

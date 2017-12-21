@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
+class TypeSelectionViewController: UIViewController, UITextFieldDelegate, DefaultsManagerDelegate {
     
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
@@ -16,6 +16,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
     let d = DefaultsManager.get()
     let c = PFConstants.instance
     let s = PasswordStorage.get()!
+    let queue = OperationQueue()
     var currentViewController: PasswordsViewController?
     
     @IBOutlet weak var passwordTypeTitle: UILabel!
@@ -55,11 +56,15 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
         selectType(typeSelectionControl)
         generatePassword()
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        if let p = d.prefsPlist {
+            d.removeDefaultsObservers(self, keys: Array(p))
+        }
+    }
     /// Inserts the segments based upon preferences
     func setupSegments() {
-        passwordController.useStoredType = d?.bool(forKey: "storePasswords") ?? false
-        passwordController.useAdvancedType = d?.bool(forKey: "enableAdvanced") ?? false
+        passwordController.useStoredType = d.bool(forKey: "storePasswords")
+        passwordController.useAdvancedType = d.bool(forKey: "enableAdvanced")
         
         typeSelectionControl.removeAllSegments()
         for i in 0 ..< passwordController.getFilteredPasswordTypes().count {
@@ -90,15 +95,14 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
         controlsView.addSubview(currentView)
         view.fillViewInContainer(currentView)
         
-        self.d?.setInteger(selType.rawValue, forKey: "selectedPasswordType")
+        self.d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
     }
     
     /// Displays the preferences modal
     ///
     /// - Parameter sender: default sender
     @IBAction func pressedPreferencesButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "PreferencesView") as? PreferencesViewController {
+        if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "PreferencesView") as? PreferencesViewController {
             vc.modalPresentationStyle = .overCurrentContext
             
             if let r = UIApplication.shared.keyWindow?.rootViewController {
@@ -128,24 +132,35 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
     
     /// Generates password from the current view controller
     func generatePassword() {
-        DispatchQueue.main.async { [unowned self] in
+        //if there are any other generate operations, just cancel them
+//        if (queue.operations.first != nil) {
+//            queue.cancelAllOperations()
+//        }
+        //adding the generate option to the background
+//        queue.addOperation { [unowned self] in
+
             guard let p = self.currentViewController?.generatePassword() else {
-                self.passwordDisplay.text = ""
-                self.strengthMeter.updateStrength(s: 0.0)
-                self.passwordLengthDisplay.text = "0"
+//                DispatchQueue.main.async { [unowned self] in
+                    self.passwordDisplay.text = ""
+                    self.strengthMeter.updateStrength(s: 0.0)
+                    self.passwordLengthDisplay.text = "0"
+//                }
                 return
             }
             guard let type = self.currentViewController?.passwordType else {
                 return
             }
-            if type != .storedType {
-                if !(self.d?.bool(forKey: "activeControl") ?? false)  {
-                    self.s.storePassword(p, strength: Float(self.strengthMeter.strength), type: (self.currentViewController?.passwordType)!)
-                }
-            }
-            self.updatePasswordField(p)
-        }
 
+//            DispatchQueue.main.async { [unowned self] in
+                self.updatePasswordField(p)
+                if type != .storedType {
+                    let active = self.d.bool(forKey: "activeControl")
+                    if !active  {
+                        self.s.storePassword(p, strength: Float(self.strengthMeter.strength), type: (self.currentViewController?.passwordType)!)
+                    }
+                }
+//            }
+//        }
     }
     
     /// Updates the password field with the attributed text as well as updating the length counter
@@ -167,9 +182,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
     /// selects the current password type on the segmented control
     func setSelectedPasswordType() {
         //get the password type raw value
-        guard let typeInt = d?.integer(forKey: "selectedPasswordType") else {
-            return
-        }
+        let typeInt = d.integer(forKey: "selectedPasswordType")
         //convert it to enum
         guard let currType = PFPasswordType.init(rawValue: typeInt) else {
             return
@@ -189,6 +202,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
         
         let typeName = c.getNameFor(type: passwordType)
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController {
+            vc.typeSelectionViewController = self
             return vc
         }
         
@@ -197,34 +211,28 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate {
     
     /// sets observers for all the values in defaults plist
     func setObservers() {
-        guard var plist = d?.prefsPlist else {
+        guard var plist = d.prefsPlist else {
             return
         }
         plist["activeControl"] = false
-        let defaults = DefaultsManager.standardDefaults()
-        for (key, _) in plist {
-            let k = String(describing: key)
-            defaults?.addObserver(self, forKeyPath: k, options: .new, context: nil)
+        d.observeDefaults(self, keys: Array(plist.keys))
+
+    }
+    func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
+        //whenever a default changes, generate a password
+        if keyPath == "storedPasswordTableSelectedRow" {
+            return
+        }
+        //TODO: do not generate on color changes
+        if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
+            setupSegments()
+            setSelectedPasswordType()
+            selectType(typeSelectionControl)
+        } else {
+            generatePassword()
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        //whenever a default changes, generate a password
-        
-        //TODO: do not generate on color changes
-        if (d?.timeThreshold(forKeyPathExceeded: keyPath, thresholdValue: 700000))! {
-            if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
-                setupSegments()
-                setSelectedPasswordType()
-                selectType(typeSelectionControl)
-            } else {
-                generatePassword()
-            }
-        }
-
-        
-        
-    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         //this is called when a user types in the password field
         //highlight and update the counter

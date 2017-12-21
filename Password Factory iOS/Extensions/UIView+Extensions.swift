@@ -86,6 +86,7 @@ extension UIView {
     }
 
     func addGradient(_ topColor: UIColor = UIColor(white: 1, alpha: 1), _ bottomColor: UIColor = UIColor(white: 0.98, alpha: 1)) {
+        return;
         let gradient = CAGradientLayer()
         gradient.frame = bounds
         gradient.colors = [topColor.cgColor, bottomColor.cgColor]
