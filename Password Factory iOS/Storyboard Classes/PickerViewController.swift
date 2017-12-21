@@ -18,6 +18,12 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var pickerType = PickerTypes.CaseType
     var passwordType = PFPasswordType.randomType
     let d = DefaultsManager.get()
+    var lowerRange : UInt = 0
+    var upperRange : UInt = 1
+    var currentNumber : UInt = 0
+    var step : UInt = 1
+    var numberTypeTitle = ""
+    
     @IBOutlet weak var itemPickerView: UIPickerView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -27,6 +33,18 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerType = type
         self.passwordType = passwordType
     }
+    func setNumberType(title: String, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
+        lowerRange = l
+        upperRange = u
+        step = s
+        currentNumber = current
+        if step == 0 { step = 1}
+        if upperRange < lowerRange {
+            upperRange = lowerRange + step
+        }
+        pickerType = .NumberType
+        numberTypeTitle = title
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapFrom(recognizer:)))
@@ -35,10 +53,17 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if let key = getDefaultsKey() {
-            itemPickerView.selectRow(d.integer(forKey: key), inComponent: 0, animated: false)
+        var rowToSelect = 0
+        if pickerType != .NumberType {
+            if let key = getDefaultsKey() {
+                rowToSelect = d.integer(forKey: key)
+            }
+        } else {
+            rowToSelect = Int((currentNumber - lowerRange) / step)
         }
+        itemPickerView.selectRow(rowToSelect, inComponent: 0, animated: false)
+        setupTitle()
+
     }
     override func viewDidLayoutSubviews() {
         setupView()
@@ -55,11 +80,16 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func setupTitle() {
         if pickerType == .PasswordType {
             self.titleLabel.text = "Password Source"
+        } else if pickerType == .NumberType {
+            self.titleLabel.text = numberTypeTitle
         } else {
             self.titleLabel.text = "Select \(pickerType.rawValue)"
         }
         titleLabel.backgroundColor = PFConstants.tintColor
         titleLabel.textColor = UIColor.white
+    }
+    func getNumberOfSteps() -> Int {
+        return Int((upperRange - lowerRange) / step) + 1
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -76,6 +106,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return c.separatorTypes.count
         case .PasswordType:
             return 4
+        case .NumberType:
+            return getNumberOfSteps()
         }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -94,6 +126,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         case .PasswordType:
             let pt = c.getPasswordType(by: UInt(row))
             return c.passwordTypes[pt]
+        case .NumberType:
+            return "\(row * Int(step))"
         }
     }
     

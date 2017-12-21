@@ -53,7 +53,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         if index > s.count() - 1 {
             return
         }
-        storedPasswordsTable.selectRow(at: IndexPath.init(row: Int(index), section: 0), animated: true, scrollPosition: .middle)
+        storedPasswordsTable.selectRow(at: IndexPath.init(row: Int(index), section: 0), animated: true, scrollPosition: .top)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

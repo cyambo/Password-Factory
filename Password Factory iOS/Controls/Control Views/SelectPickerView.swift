@@ -57,6 +57,9 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
                 controlLabel.text = "Separator"
             case .PasswordType:
                 controlLabel.text = "Source"
+            case .NumberType:
+                controlLabel.text = "Range"
+                
             }
         }
     }
@@ -71,11 +74,20 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
                 setupSeparatorType()
             case .PasswordType:
                 setupPasswordtype()
+            case .NumberType:
+                setupNumberType()
             }
         }
 
     }
     
+    /// Sets the button title to the selected number
+    func setupNumberType() {
+        guard let numberTypeKey = getDefaultsKey() else {
+            return
+        }
+        controlButton.setTitle("\(d.integer(forKey: numberTypeKey))", for: .normal)
+    }
     /// sets the title if we are the password type
     func setupPasswordtype() {
         guard let passwordTypeKey = getDefaultsKey() else {
@@ -138,6 +150,8 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
             suffix = "SeparatorTypeIndex"
         case .PasswordType:
             suffix = "SourceIndex"
+        case .NumberType:
+            suffix = "SelectedNumber"
         }
         return "\(typeName)\(suffix)"
     }
@@ -185,6 +199,8 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
             t = c.separatorTypes[c.getSeparatorType(by: UInt(i))] ?? t
         case .PasswordType:
             t = c.passwordTypes[c.getPasswordType(by: UInt(i))] ?? t
+        case .NumberType:
+            t = "\(i)"
         }
         if let key = getDefaultsKey() {
             d.setInteger(index, forKey: key)

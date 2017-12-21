@@ -60,9 +60,8 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
             title = c.separatorTypes[c.getSeparatorType(by: UInt(index))] ?? ""
             imageView.image = TypeIcons().getSeparatorTypeIcon(c.getSeparatorType(by: UInt(index)))
             selected = (index == d.integer(forKey: "\(prefix.lowercased())\(selectType.rawValue)TypeIndex"))
-            
-        case .PasswordType:
-            title = "PASSWORD"
+        default:
+            title = ""
         }
         typeLabel.text = title
         imageView.contentMode = .scaleAspectFit
@@ -76,7 +75,6 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
     func setupView() {
 
         roundCorners()
-        
         let views = ["label" : typeLabel as UIView, "image" : imageView as UIView]
         let constraints = ["H:|-(0)-[label]-(0)-|","V:|-(5)-[image(==23)]","V:[label(==12)]-(5)-|","H:|-(8)-[image]-(>=7)-|"]
         addVFLConstraints(constraints: constraints, views: views)

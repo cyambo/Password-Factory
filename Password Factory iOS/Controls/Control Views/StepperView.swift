@@ -9,13 +9,13 @@
 import UIKit
 
 /// Adds a stepper label and value display in a view connected to defaults
-class StepperView: ControlView {
+class StepperView: ControlView, PickerViewControllerDelegate {
 
     @IBInspectable public var minValue: Int = 0 //minimum value of the stepper
     @IBInspectable public var maxValue: Int = 100 //maximum value of the stepper
     @IBInspectable public var stepValue: Int = 1 //step for each press
     let controlStepper = UIStepper.init()
-    let valueLabel = UILabel.init()
+    let valueLabel = UIButton.init()
     
 
     override func addViews() {
@@ -42,29 +42,50 @@ class StepperView: ControlView {
         controlStepper.isContinuous = true
         controlStepper.wraps = false
         valueLabel.backgroundColor = PFConstants.tintColor
-        valueLabel.textColor = UIColor.white
-        valueLabel.textAlignment = .center
+        valueLabel.setTitleColor(UIColor.white, for: .normal)
         valueLabel.roundCorners()
         
         if let key = defaultsKey {
             controlStepper.value = Double(d.integer(forKey: key))
             controlStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
+            valueLabel.addTarget(self, action: #selector(loadPicker), for: .touchUpInside)
         }
-        valueLabel.font = PFConstants.labelFont
+        valueLabel.titleLabel?.font = PFConstants.labelFont
         setStepperLabel()
     }
+    @objc func loadPicker() {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController {
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.setNumberType(title: label ?? "", current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
+            vc.delegate = self
+            if let r = UIApplication.shared.keyWindow?.rootViewController {
+                r.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
     
+    /// Picker View delegate method
+    ///
+    /// - Parameters:
+    ///   - type: picker type
+    ///   - index: selected index
+    func selectedItem(type: PickerTypes, index: Int) {
+        controlStepper.value = Double((stepValue * index) + minValue)
+        changeStepper()
+    }
     /// Changes the value label based upon stepper value
     func setStepperLabel() {
         if let key = defaultsKey {
             let val = d.integer(forKey: key)
             if val == 0 && defaultsKey == "advancedTruncateAt" {
-                valueLabel.text = "None"
+                valueLabel.setTitle("None", for: .normal)
             } else {
-                valueLabel.text = "\(val)"
+                valueLabel.setTitle("\(val)", for: .normal)
+
             }
         } else {
-            valueLabel.text = "--"
+            valueLabel.setTitle("--", for: .normal)
         }
     }
     

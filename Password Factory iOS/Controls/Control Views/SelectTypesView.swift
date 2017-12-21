@@ -96,7 +96,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
             }
         case .SeparatorType:
             return c.separatorTypes.count
-        case .PasswordType:
+        default:
             return 0
         }
     }

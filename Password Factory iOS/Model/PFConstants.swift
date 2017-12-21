@@ -17,6 +17,7 @@ enum PickerTypes: String {
     case CaseType = "Case"
     case SeparatorType = "Separator"
     case PasswordType = "Password"
+    case NumberType = "Number"
 }
 
 /// Swift version of PasswordFactoryConstants that changes the Any types to specific types
