@@ -32,6 +32,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        storedPasswordsTable.reloadData()
         //when view appears, select the first password when generating
         selectFirstPassword = true
     }
@@ -53,10 +54,24 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         if index > s.count() - 1 {
             return
         }
-        storedPasswordsTable.selectRow(at: IndexPath.init(row: Int(index), section: 0), animated: true, scrollPosition: .top)
+        DispatchQueue.main.async {
+           self.storedPasswordsTable.selectRow(at: IndexPath.init(row: Int(index), section: 0), animated: true, scrollPosition: .top)
+        }
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let cell = storedPasswordsTable.cellForRow(at: indexPath) as? StoredPasswordTableViewCell {
+            guard let p = cell.password.text else {
+                return
+            }
+            guard let st = cell.strength.text else {
+                return
+            }
+            guard let s = Double(st) else {
+                return
+            }
+            typeSelectionViewController?.updatePasswordField(p, strength: s)
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int(s.count())

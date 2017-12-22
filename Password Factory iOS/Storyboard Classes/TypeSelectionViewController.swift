@@ -132,45 +132,48 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
     
     /// Generates password from the current view controller
     func generatePassword() {
-        //if there are any other generate operations, just cancel them
-//        if (queue.operations.first != nil) {
-//            queue.cancelAllOperations()
-//        }
-        //adding the generate option to the background
-//        queue.addOperation { [unowned self] in
 
-            guard let p = self.currentViewController?.generatePassword() else {
-                DispatchQueue.main.async { [unowned self] in
-                    self.passwordDisplay.text = ""
-                    self.strengthMeter.updateStrength(s: 0.0)
-                    self.passwordLengthDisplay.text = "0"
+        
+        let active = self.d.bool(forKey: "activeControl")
+        //running the password generation if we are not an active control, or if we are an active control make sure the last operation finished
+        if !active || (active &&  queue.operationCount == 0) {
+            queue.addOperation { [unowned self, active] in
+                
+                guard let p = self.currentViewController?.generatePassword() else {
+                    DispatchQueue.main.async { [unowned self] in
+                        self.passwordDisplay.text = ""
+                        self.strengthMeter.updateStrength(s: 0.0)
+                        self.passwordLengthDisplay.text = "0"
+                    }
+                    return
                 }
-                return
-            }
-            guard let type = self.currentViewController?.passwordType else {
-                return
-            }
-
-            DispatchQueue.main.async { [unowned self] in
-                self.updatePasswordField(p)
-            }
-            if type != .storedType {
-                let active = self.d.bool(forKey: "activeControl")
-                if !active  {
-                    DispatchQueue.main.async {
-                        self.s.storePassword(p, strength: Float((self.currentViewController?.passwordStrength ?? 0.0) / 100.0), type: (self.currentViewController?.passwordType)!)
+                guard let type = self.currentViewController?.passwordType else {
+                    return
+                }
+                guard let strength = self.currentViewController?.passwordStrength else {
+                    return
+                }
+                //update the password field
+                DispatchQueue.main.async { [unowned self, p, strength] in
+                    self.updatePasswordField(p, strength: Double(strength))
+                }
+                if type != .storedType {
+                    if !active  {
+                        //store on the main thread
+                        DispatchQueue.main.async { [unowned self, p, strength, type] in
+                            self.s.storePassword(p, strength: Float(strength / 100.0), type: type)
+                        }
                     }
                 }
             }
-
         }
-//    }
+    }
 
     /// Updates the password field with the attributed text as well as updating the length counter
     ///
     /// - Parameter password: password to put in field
-    func updatePasswordField(_ password: String) {
-        strengthMeter.updateStrength(s: Double(currentViewController?.passwordStrength ?? 0.0))
+    func updatePasswordField(_ password: String, strength: Double) {
+        strengthMeter.updateStrength(s: strength)
         var size = (password as NSString).size(withAttributes: [NSAttributedStringKey.font: passwordFont])
         size = CGSize.init(width: size.width, height: passwordDisplay.frame.size.height)
         passwordDisplay.attributedText = Utilities.highlightPassword(password: password, font: passwordFont)
@@ -241,7 +244,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         //this is called when a user types in the password field
         //highlight and update the counter
-        updatePasswordField(textField.text ?? "")
+        updatePasswordField(textField.text ?? "", strength: Double(self.currentViewController?.passwordStrength ?? 0.0))
         //if the done button is pressed, didmiss the keyboard
         if string == "\n" {
             textField.endEditing(true)
