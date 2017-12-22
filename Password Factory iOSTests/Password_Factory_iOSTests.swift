@@ -26,10 +26,39 @@ class Password_Factory_iOSTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testHighlightPasswordPerformance() {
+        let password = "W🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDdW🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDd"
         self.measure {
-            // Put the code you want to measure the time of here.
+            for _ in 0 ..< 10 {
+              _ = Utilities.highlightPasswordString(password: password, font: PFConstants.labelFont)
+            }
+        }
+    }
+    func testGetPasswordTextColorPerformance() {
+        let password = "W🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDdW🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDd"
+        var charArray = [String]()
+        for char in password {
+            charArray.append("\(char)")
+        }
+        self.measure {
+            for _ in 0 ..< 10 {
+                for c in charArray {
+                    _ = ColorUtilities.getPasswordTextColor(c)
+                }
+            }
+
+        }
+    }
+    func testRandomPasswordPerformance() {
+        let f = PasswordFactory.get()
+        f?.useEmoji = true
+        f?.useSymbols = true
+        f?.useNumbers = true
+        f?.length = 100
+        self.measure {
+            for _ in 0 ..< 1000 {
+                _ = f?.generateRandom()
+            }
         }
     }
     

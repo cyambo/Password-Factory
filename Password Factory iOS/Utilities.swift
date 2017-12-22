@@ -35,22 +35,18 @@ class Utilities: NSObject {
     ///   - font: font to use
     /// - Returns: attributed string that is highlighted
     class func highlightPasswordString(password: String, font: UIFont) -> NSAttributedString {
-        let highlighted = NSMutableAttributedString()
-        let defaultColor = ColorUtilities.getDefaultsColor("defaultTextColor")
-        for index in password.indices {
-            var color = defaultColor
-            let char = password[index]
-            let s = String(describing:char)
-            if (s.count == 1) {
-                color = ColorUtilities.getPasswordTextColor(s)
+        let passwordString = password as NSString
+        let highlighted = getNonHighlightedString(s: password, font: font)
+        passwordString.enumerateSubstrings(in: NSMakeRange(0, passwordString.length), options: .byComposedCharacterSequences, using: {
+            (substring, substringRange, _, _) in
+            if substring?.count == 1 {
+                let attrs = [
+                    NSAttributedStringKey.foregroundColor:ColorUtilities.getPasswordTextColor(substring) as Any,
+                    ]
+    
+                highlighted.addAttributes(attrs, range: substringRange)
             }
-            let attrs = [
-                NSAttributedStringKey.foregroundColor:color as Any,
-                NSAttributedStringKey.font: font
-            ]
-            let hChar = NSAttributedString.init(string: s, attributes: attrs)
-            highlighted.append(hChar)
-        }
+        })
         return highlighted
     }
     
@@ -60,13 +56,14 @@ class Utilities: NSObject {
     ///   - s: string to highlight
     ///   - font: font to use
     /// - Returns: attributed string in font and default color
-    public class func getNonHighlightedString(s: String, font: UIFont) ->NSAttributedString {
+    public class func getNonHighlightedString(s: String, font: UIFont) ->NSMutableAttributedString {
+        let passwordString = s as NSString
         let h = NSMutableAttributedString.init(string: s)
         let attrs = [
             NSAttributedStringKey.foregroundColor:ColorUtilities.getDefaultsColor("defaultTextColor") as Any,
             NSAttributedStringKey.font: font
         ]
-        h.setAttributes(attrs, range: NSMakeRange(0, s.count))
+        h.setAttributes(attrs, range: NSMakeRange(0, passwordString.length))
         return h
     }
 

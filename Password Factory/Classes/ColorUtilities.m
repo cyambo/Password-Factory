@@ -11,36 +11,36 @@
 #import "PasswordFactory.h"
 #import "PasswordFactoryConstants.h"
 
+static NSMutableDictionary *passwordTextColors;
 @implementation ColorUtilities
 
 /**
  Gets the color of a password text character for highlighting
-
+ 
  @param subsring character to check
  @return Color that text should highlight to
  */
 +(Color *)getPasswordTextColor:(NSString *)subsring {
-    DefaultsManager *d = [DefaultsManager get];
-    PasswordFactory *f = [PasswordFactory get];
-    NSString *color = [d stringForKey:@"defaultTextColor"];
     
+    PasswordFactory *f = [PasswordFactory get];
+    NSString *colorKey = @"defaultTextColor";
     if (subsring.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
         if ([f isCharacterType:PFUpperCaseLetters character:subsring]) { //are we an uppercase character
-            color = [d stringForKey:@"upperTextColor"];
+            colorKey = @"upperTextColor";
         } else if ([f isCharacterType:PFLowerCaseLetters character:subsring]){ //lowercase character?
-            color = [d stringForKey:@"lowerTextColor"];
+            colorKey = @"lowerTextColor";
         } else if ([f isCharacterType:PFNumbers character:subsring]){ //number?
-            color = [d stringForKey:@"numberTextColor"];
+            colorKey = @"numberTextColor";
         } else if ([f isCharacterType:PFSymbols character:subsring]){ //symbol?
-            color = [d stringForKey:@"symbolTextColor"];
+            colorKey = @"symbolTextColor";
         }
     }
-    return [ColorUtilities colorFromHexString:color];
+    return [ColorUtilities getDefaultsColor: colorKey];
 }
 
 /**
  Sets the text color in defaults
-
+ 
  @param defaultsKey defaults key to set
  @param color color to set
  */
@@ -52,22 +52,29 @@
 
 /**
  Gets the color from defaults
-
+ 
  @param defaultsKey key to get
  @return color of key
  */
 +(Color *)getDefaultsColor:(NSString *)defaultsKey {
     DefaultsManager *d = [DefaultsManager get];
-    NSString *stringColor = [d stringForKey:defaultsKey];
-    if(stringColor == nil || stringColor.length != 6) {
-        stringColor = @"FFFFFF";
+    if (passwordTextColors == nil) {
+        passwordTextColors = [[NSMutableDictionary alloc] init];
     }
-    return [ColorUtilities colorFromHexString:stringColor];
+    NSString *hexColor = [d stringForKey:defaultsKey];
+    
+    if (![passwordTextColors[defaultsKey][@"hex"] isEqualToString:hexColor]) {
+        Color *c = [ColorUtilities colorFromHexString:hexColor];
+        passwordTextColors[defaultsKey] = @{@"hex" : hexColor, @"color" : c};
+        return c;
+    } else {
+        return passwordTextColors[defaultsKey][@"color"];
+    }
 }
 
 /**
  Gets a color from a hex string
-
+ 
  @param hex hex string to convert
  @return color of hex string
  */
@@ -83,14 +90,14 @@
     greenByte = (unsigned char)(colorCode >> 8);
     blueByte = (unsigned char)(colorCode); // masks off high bits
     return  [Color colorWithRed:(CGFloat)redByte / 0xff
-                           green:(CGFloat)greenByte / 0xff
-                            blue:(CGFloat)blueByte / 0xff
-                           alpha:1.0];
+                          green:(CGFloat)greenByte / 0xff
+                           blue:(CGFloat)blueByte / 0xff
+                          alpha:1.0];
 }
 
 /**
  Converts a color to a hex string
-
+ 
  @param color color to convert
  @return hex string of color
  */
@@ -136,7 +143,7 @@
 
 /**
  Gets the color of a pattern type item
-
+ 
  @param type PatternTypeItem to colorize
  @return color of item
  */
@@ -161,7 +168,7 @@
 
 /**
  Runs a linear dodge on a color
-
+ 
  @param foregroundColor forground color to dodge
  @param backgroundColor background of dodged color
  @return dodged color
@@ -205,3 +212,4 @@
 }
 #endif
 @end
+

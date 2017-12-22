@@ -18,6 +18,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
     let s = PasswordStorage.get()!
     let queue = OperationQueue()
     var currentViewController: PasswordsViewController?
+    var viewControllers = [PFPasswordType : UIViewController]()
     
     @IBOutlet weak var passwordTypeTitle: UILabel!
     @IBOutlet weak var strengthMeter: StrengthMeter!
@@ -79,9 +80,8 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
     ///
     /// - Parameter sender: default sender
     @IBAction func selectType(_ sender: UISegmentedControl) {
-        
+        currentViewController?.view.removeFromSuperview()
         let selType = passwordController.getPasswordType(by: UInt(typeSelectionControl.selectedSegmentIndex))
-        bigType.setImage(type: selType)
         guard let selectedViewController = getViewController(selType) else {
             return
         }
@@ -89,7 +89,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
             return
         }
         passwordTypeTitle.text = c.getNameFor(type: selType)
-        controlsView.removeSubviewsAndConstraints()
+
         currentViewController = selectedViewController
         
         controlsView.addSubview(currentView)
@@ -140,29 +140,32 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
 //        queue.addOperation { [unowned self] in
 
             guard let p = self.currentViewController?.generatePassword() else {
-//                DispatchQueue.main.async { [unowned self] in
+                DispatchQueue.main.async { [unowned self] in
                     self.passwordDisplay.text = ""
                     self.strengthMeter.updateStrength(s: 0.0)
                     self.passwordLengthDisplay.text = "0"
-//                }
+                }
                 return
             }
             guard let type = self.currentViewController?.passwordType else {
                 return
             }
 
-//            DispatchQueue.main.async { [unowned self] in
+            DispatchQueue.main.async { [unowned self] in
                 self.updatePasswordField(p)
-                if type != .storedType {
-                    let active = self.d.bool(forKey: "activeControl")
-                    if !active  {
-                        self.s.storePassword(p, strength: Float(self.strengthMeter.strength), type: (self.currentViewController?.passwordType)!)
+            }
+            if type != .storedType {
+                let active = self.d.bool(forKey: "activeControl")
+                if !active  {
+                    DispatchQueue.main.async {
+                        self.s.storePassword(p, strength: Float((self.currentViewController?.passwordStrength ?? 0.0) / 100.0), type: (self.currentViewController?.passwordType)!)
                     }
                 }
-//            }
-//        }
-    }
-    
+            }
+
+        }
+//    }
+
     /// Updates the password field with the attributed text as well as updating the length counter
     ///
     /// - Parameter password: password to put in field
@@ -174,9 +177,8 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         passwordDisplay.frame.size = size
         passwordScrollView.contentSize = size
         passwordDisplayWidthConstraint.constant = size.width
-        passwordScrollView.scrollRectToVisible(CGRect.init(x: size.width-1, y: 0, width: 1, height: 1), animated: true)
+        passwordScrollView.scrollRectToVisible(CGRect.init(x: size.width-1, y: 0, width: 1, height: 1), animated: false)
         passwordLengthDisplay.text = "\(passwordDisplay.text?.count ?? 0)"
-
     }
     
     /// selects the current password type on the segmented control
@@ -199,9 +201,12 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
     /// - Parameter passwordType: password type of vc to get
     /// - Returns: view controller
     func getViewController(_ passwordType: PFPasswordType) -> PasswordsViewController? {
-        
         let typeName = c.getNameFor(type: passwordType)
+        if let vc = viewControllers[passwordType] as? PasswordsViewController {
+            return vc
+        }
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController {
+            viewControllers[passwordType] = vc
             vc.typeSelectionViewController = self
             return vc
         }
@@ -246,7 +251,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        viewControllers.removeAll()
     }
     
     
