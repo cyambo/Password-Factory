@@ -22,11 +22,9 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
     
     @IBOutlet weak var passwordTypeTitle: UILabel!
     @IBOutlet weak var strengthMeter: StrengthMeter!
-    @IBOutlet weak var bigType: BigTypeIconView!
     @IBOutlet weak var controlsView: UIView!
     @IBOutlet weak var typeSelectionControl: UISegmentedControl!
     
-    @IBOutlet weak var passwordDisplayWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var passwordScrollView: UIScrollView!
     @IBOutlet weak var passwordDisplay: UITextField!
     var passwordFont = UIFont.systemFont(ofSize: 24.0)
@@ -48,6 +46,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
             keyboardDismissGesture?.cancelsTouchesInView = false
             self.view.addGestureRecognizer(keyboardDismissGesture!)
         }
+        passwordDisplay.text = ""
         passwordFont = passwordDisplay.font ?? passwordFont
     }
     
@@ -138,7 +137,6 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         //running the password generation if we are not an active control, or if we are an active control make sure the last operation finished
         if !active || (active &&  queue.operationCount == 0) {
             queue.addOperation { [unowned self, active] in
-                
                 guard let p = self.currentViewController?.generatePassword() else {
                     DispatchQueue.main.async { [unowned self] in
                         self.passwordDisplay.text = ""
@@ -157,12 +155,10 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
                 DispatchQueue.main.async { [unowned self, p, strength] in
                     self.updatePasswordField(p, strength: Double(strength))
                 }
-                if type != .storedType {
-                    if !active  {
-                        //store on the main thread
-                        DispatchQueue.main.async { [unowned self, p, strength, type] in
-                            self.s.storePassword(p, strength: Float(strength / 100.0), type: type)
-                        }
+                if type != .storedType && !active {
+                    //store on the main thread
+                    DispatchQueue.main.async { [unowned self, p, strength, type] in
+                        self.s.storePassword(p, strength: Float(strength / 100.0), type: type)
                     }
                 }
             }
@@ -179,7 +175,6 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         passwordDisplay.attributedText = Utilities.highlightPassword(password: password, font: passwordFont)
         passwordDisplay.frame.size = size
         passwordScrollView.contentSize = size
-        passwordDisplayWidthConstraint.constant = size.width
         passwordScrollView.scrollRectToVisible(CGRect.init(x: size.width-1, y: 0, width: 1, height: 1), animated: false)
         passwordLengthDisplay.text = "\(passwordDisplay.text?.count ?? 0)"
     }

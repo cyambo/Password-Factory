@@ -10,7 +10,7 @@ import XCTest
 @testable import Password_Factory_iOS
 
 class Password_Factory_iOSTests: XCTestCase {
-    
+    let longPassword = "W🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDdW🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDd"
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,17 +27,15 @@ class Password_Factory_iOSTests: XCTestCase {
     }
     
     func testHighlightPasswordPerformance() {
-        let password = "W🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDdW🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDd"
         self.measure {
             for _ in 0 ..< 10 {
-              _ = Utilities.highlightPasswordString(password: password, font: PFConstants.labelFont)
+              _ = Utilities.highlightPasswordString(password: longPassword, font: PFConstants.labelFont)
             }
         }
     }
     func testGetPasswordTextColorPerformance() {
-        let password = "W🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDdW🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDd"
         var charArray = [String]()
-        for char in password {
+        for char in longPassword {
             charArray.append("\(char)")
         }
         self.measure {
@@ -50,8 +48,7 @@ class Password_Factory_iOSTests: XCTestCase {
         }
     }
     func testUpdatePasswordFieldPerformance() {
-        let password = "W🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDdW🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDd"
-        let h = Utilities.highlightPassword(password: password, font: PFConstants.labelFont)
+        let h = Utilities.highlightPassword(password: longPassword, font: PFConstants.labelFont)
         if let vc = UIApplication.shared.delegate?.window??.rootViewController as? TypeSelectionViewController {
             self.measure {
                 vc.passwordDisplay.attributedText = h

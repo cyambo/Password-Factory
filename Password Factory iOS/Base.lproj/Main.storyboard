@@ -79,11 +79,10 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDF-xA-Mpa">
                                         <rect key="frame" x="8" y="0.0" width="327" height="44"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SsW-g0-WJi">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                            <textField autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="left" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SsW-g0-WJi">
+                                                <rect key="frame" x="0.0" y="0.0" width="119.5" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Djc-ba-qOG"/>
-                                                    <constraint firstAttribute="width" constant="359" id="YoU-iU-K3G"/>
                                                 </constraints>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Password">
@@ -243,7 +242,6 @@
                     <connections>
                         <outlet property="controlsView" destination="NWI-dR-N5M" id="Gir-CN-NxR"/>
                         <outlet property="passwordDisplay" destination="SsW-g0-WJi" id="aDN-Gi-PGg"/>
-                        <outlet property="passwordDisplayWidthConstraint" destination="YoU-iU-K3G" id="BkM-wz-loy"/>
                         <outlet property="passwordLengthDisplay" destination="yk6-Cd-qFq" id="wQc-wG-Xfg"/>
                         <outlet property="passwordScrollView" destination="eDF-xA-Mpa" id="uN3-JV-HAH"/>
                         <outlet property="passwordTypeTitle" destination="7xl-nY-3zn" id="NNe-0S-QdV"/>
