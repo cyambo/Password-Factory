@@ -79,31 +79,27 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDF-xA-Mpa">
                                         <rect key="frame" x="8" y="0.0" width="327" height="44"/>
                                         <subviews>
-                                            <textField autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="left" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SsW-g0-WJi">
-                                                <rect key="frame" x="0.0" y="0.0" width="119.5" height="44"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjP-Mb-z7A">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="44"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="Djc-ba-qOG"/>
+                                                    <constraint firstAttribute="height" constant="44" id="JCL-yo-NCF"/>
                                                 </constraints>
                                                 <attributedString key="attributedText">
-                                                    <fragment content="Password">
+                                                    <fragment content="Label">
                                                         <attributes>
-                                                            <font key="NSFont" size="26" name=".SFNSText"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            <font key="NSFont" size="26" name=".SFNSDisplay"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="fD8-6D-Gbm" id="t5R-YU-IwA"/>
-                                                </connections>
-                                            </textField>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="SsW-g0-WJi" secondAttribute="bottom" id="SYm-sb-xTr"/>
+                                            <constraint firstItem="FjP-Mb-z7A" firstAttribute="leading" secondItem="eDF-xA-Mpa" secondAttribute="leading" id="1JC-Yh-9IN"/>
+                                            <constraint firstItem="FjP-Mb-z7A" firstAttribute="top" secondItem="eDF-xA-Mpa" secondAttribute="top" id="BaM-Nz-to1"/>
+                                            <constraint firstAttribute="trailing" secondItem="FjP-Mb-z7A" secondAttribute="trailing" id="C68-96-ITb"/>
                                             <constraint firstAttribute="height" constant="44" id="YHI-On-lRf"/>
-                                            <constraint firstItem="SsW-g0-WJi" firstAttribute="top" secondItem="eDF-xA-Mpa" secondAttribute="top" id="dD4-cC-Y1k"/>
-                                            <constraint firstAttribute="trailing" secondItem="SsW-g0-WJi" secondAttribute="trailing" id="k5l-RM-20V"/>
-                                            <constraint firstItem="SsW-g0-WJi" firstAttribute="leading" secondItem="eDF-xA-Mpa" secondAttribute="leading" id="tHa-pw-iN7"/>
+                                            <constraint firstAttribute="bottom" secondItem="FjP-Mb-z7A" secondAttribute="bottom" id="ur5-0W-dnD"/>
                                         </constraints>
                                     </scrollView>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-3e-tKc" userLabel="Zoom Button" customClass="ZoomButton" customModule="Password_Factory_iOS" customModuleProvider="target">
@@ -241,7 +237,7 @@
                     </view>
                     <connections>
                         <outlet property="controlsView" destination="NWI-dR-N5M" id="Gir-CN-NxR"/>
-                        <outlet property="passwordDisplay" destination="SsW-g0-WJi" id="aDN-Gi-PGg"/>
+                        <outlet property="passwordDisplay" destination="FjP-Mb-z7A" id="u7z-mB-36p"/>
                         <outlet property="passwordLengthDisplay" destination="yk6-Cd-qFq" id="wQc-wG-Xfg"/>
                         <outlet property="passwordScrollView" destination="eDF-xA-Mpa" id="uN3-JV-HAH"/>
                         <outlet property="passwordTypeTitle" destination="7xl-nY-3zn" id="NNe-0S-QdV"/>

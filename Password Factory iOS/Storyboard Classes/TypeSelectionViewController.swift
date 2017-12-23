@@ -26,7 +26,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
     @IBOutlet weak var typeSelectionControl: UISegmentedControl!
     
     @IBOutlet weak var passwordScrollView: UIScrollView!
-    @IBOutlet weak var passwordDisplay: UITextField!
+    @IBOutlet weak var passwordDisplay: UILabel!
     var passwordFont = UIFont.systemFont(ofSize: 24.0)
     @IBOutlet weak var passwordLengthDisplay: UILabel!
     
