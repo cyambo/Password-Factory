@@ -1,9 +1,8 @@
 //
 //  Passwords+CoreDataProperties.m
-//  Password Factory
+//  
 //
-//  Created by Cristiana Yambo on 11/15/17.
-//  Copyright © 2017 Cristiana Yambo. All rights reserved.
+//  Created by Cristiana Yambo on 12/22/17.
 //
 //
 
@@ -17,7 +16,8 @@
 
 @dynamic password;
 @dynamic strength;
-@dynamic type;
 @dynamic time;
+@dynamic type;
+@dynamic length;
 
 @end

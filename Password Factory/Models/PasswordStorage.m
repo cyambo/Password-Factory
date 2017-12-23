@@ -11,6 +11,7 @@
 #import "PasswordStorage.h"
 #import "constants.h"
 #import "DefaultsManager.h"
+#import "NSString+UnicodeLength.h"
 #ifndef IOS
 #import "AppDelegate.h"
 #endif
@@ -83,6 +84,7 @@
         pw.password = password;
         pw.strength = strength;
         pw.type = type;
+        pw.length = [password getUnicodeLength];
         pw.time = [NSDate date];
         //save it
         [self saveContext];

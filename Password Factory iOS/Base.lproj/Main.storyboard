@@ -1175,6 +1175,9 @@
                                     <constraint firstAttribute="height" constant="30" id="wqB-J8-wMh"/>
                                 </constraints>
                                 <state key="normal" title="t"/>
+                                <connections>
+                                    <action selector="clickedSortButton:" destination="mru-R2-ogB" eventType="touchUpInside" id="MES-Os-8f6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-GC-XLR">
                                 <rect key="frame" x="34" y="0.0" width="221" height="30"/>
@@ -1182,6 +1185,9 @@
                                     <constraint firstAttribute="height" constant="30" id="eyx-5x-XVV"/>
                                 </constraints>
                                 <state key="normal" title="Password"/>
+                                <connections>
+                                    <action selector="clickedSortButton:" destination="mru-R2-ogB" eventType="touchUpInside" id="xZF-Uv-6c1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-NO-7mx">
                                 <rect key="frame" x="295" y="0.0" width="40" height="30"/>
@@ -1190,10 +1196,14 @@
                                     <constraint firstAttribute="height" constant="30" id="igZ-H9-rRe"/>
                                 </constraints>
                                 <state key="normal" title="100"/>
+                                <connections>
+                                    <action selector="clickedSortButton:" destination="mru-R2-ogB" eventType="touchUpInside" id="mSF-Sh-YfS"/>
+                                </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="myh-vK-5qy">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="myh-vK-5qy">
                                 <rect key="frame" x="0.0" y="30" width="343" height="429"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="PasswordCell" rowHeight="44" id="nMH-3S-zL2" customClass="StoredPasswordTableViewCell" customModule="Password_Factory_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
@@ -1338,6 +1348,9 @@
                                     <constraint firstAttribute="width" constant="40" id="TRc-fD-sdo"/>
                                 </constraints>
                                 <state key="normal" title="LEN"/>
+                                <connections>
+                                    <action selector="clickedSortButton:" destination="mru-R2-ogB" eventType="touchUpInside" id="7Nv-WC-ZMa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

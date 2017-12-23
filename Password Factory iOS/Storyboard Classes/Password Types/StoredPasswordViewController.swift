@@ -18,7 +18,8 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     @IBOutlet weak var storedPasswordsTable: UITableView!
     
     var selectFirstPassword = true
-    
+    var sortedBy = ""
+    var ascending = false
     override func viewDidLoad() {
         super.viewDidLoad()
         typeButton.setTitle("", for: .normal)
@@ -30,9 +31,36 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         strengthButton.setImage(StyleKit.imageOfPasswordStrengthHeader, for: .normal)
         lengthButton.setImage(StyleKit.imageOfPasswordLengthHeader, for: .normal)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    @IBAction func clickedSortButton(_ sender: UIButton) {
+        var sort = ""
+        if sender == typeButton {
+            sort = "type"
+        } else if sender == passwordButton {
+            sort = "password"
+        } else if sender == lengthButton {
+            sort = "length"
+        } else if sender == strengthButton {
+            sort = "strength"
+        }
+        changeSort(sort)
+    }
+    func changeSort(_ sortKey: String) {
+        if sortKey != sortedBy {
+            sortedBy = sortKey
+            ascending = false
+        } else {
+            ascending = !ascending
+        }
+        let sort = NSSortDescriptor.init(key: sortedBy, ascending: ascending)
+        s.setSortDescriptor(sort)
         storedPasswordsTable.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(animated)
+        ascending = true
+        changeSort("time")
         //when view appears, select the first password when generating
         selectFirstPassword = true
     }
@@ -71,6 +99,12 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
                 return
             }
             typeSelectionViewController?.updatePasswordField(p, strength: s)
+        }
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            s.deleteItem(at: UInt(indexPath.row))
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

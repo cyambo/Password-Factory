@@ -1,9 +1,8 @@
 //
 //  Passwords+CoreDataProperties.h
-//  Password Factory
+//  
 //
-//  Created by Cristiana Yambo on 11/15/17.
-//  Copyright © 2017 Cristiana Yambo. All rights reserved.
+//  Created by Cristiana Yambo on 12/22/17.
 //
 //
 
@@ -18,8 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, copy) NSString *password;
 @property (nonatomic) float strength;
-@property (nonatomic) int16_t type;
 @property (nullable, nonatomic, copy) NSDate *time;
+@property (nonatomic) int16_t type;
+@property (nonatomic) int16_t length;
 
 @end
 

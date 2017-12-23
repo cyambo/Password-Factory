@@ -30,7 +30,7 @@ class StoredPasswordTableViewCell: UITableViewCell {
         }
 
         strength.text = "\(Int(p.strength * 100))"
-        length.text = "\(p.password?.count ?? 0)"
+        length.text = "\(p.length)"
         if let passwordType = PFPasswordType.init(rawValue: Int(p.type)) {
             typeImage.image = TypeIcons.getTypeIcon(type: passwordType, andColor: PFConstants.tintColor)
         } else {
