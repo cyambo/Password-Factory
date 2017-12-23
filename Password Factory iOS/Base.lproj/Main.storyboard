@@ -1278,9 +1278,6 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="leftBorder" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygR-9X-O5m" userLabel="Strength Container" customClass="BorderedView" customModule="Password_Factory_iOS" customModuleProvider="target">
@@ -1304,9 +1301,6 @@
                                                         <constraint firstAttribute="width" constant="40" id="sJi-pg-Rzk"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="leftBorder" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>

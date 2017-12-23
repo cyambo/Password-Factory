@@ -59,6 +59,7 @@ class StepperView: ControlView, PickerViewControllerDelegate {
             vc.modalPresentationStyle = .overCurrentContext
             vc.setNumberType(title: label ?? "", current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
             vc.delegate = self
+            //TODO: fix when picker on top of picker - uses same presented view controller
             if let r = UIApplication.shared.keyWindow?.rootViewController {
                 r.present(vc, animated: true, completion: nil)
             }

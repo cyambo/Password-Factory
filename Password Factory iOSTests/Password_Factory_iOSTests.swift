@@ -49,6 +49,16 @@ class Password_Factory_iOSTests: XCTestCase {
 
         }
     }
+    func testUpdatePasswordFieldPerformance() {
+        let password = "W🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDdW🇰🇭&c🔊8'⏲C4ZuTcC7z]F📊Q|e🤵AK'Az🇸🇲%📧6)H*[🎟@🇰🇭#CN|GEc}!pL🇲🇩yD!_.🦏aLeGxT☘️N{:D7V🇰🇭Ut📊xv🤵🎟>QA.🦏eK{?6R9🇲🇩[2]wDd"
+        let h = Utilities.highlightPassword(password: password, font: PFConstants.labelFont)
+        if let vc = UIApplication.shared.delegate?.window??.rootViewController as? TypeSelectionViewController {
+            self.measure {
+                vc.passwordDisplay.attributedText = h
+            }
+            
+        }
+    }
     func testRandomPasswordPerformance() {
         let f = PasswordFactory.get()
         f?.useEmoji = true

@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSPersistentContainer *container;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) DefaultsManager *d;
+@property (nonatomic, strong) NSString *prev;
 @end
 @implementation PasswordStorage
 
@@ -78,6 +79,10 @@
  @param type PFPasswordType of password
  */
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type {
+    if ([password isEqualToString:self.prev]) { //getting duplicates from bug in observer on ios, so, just return
+        return;
+    }
+    self.prev = password;
     if (password && password.length) { //don't store 0 length passwords
         //setup the core data class
         Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
