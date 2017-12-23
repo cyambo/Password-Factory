@@ -9,7 +9,7 @@
 import UIKit
 
 /// Superclass for all password types view
-class PasswordsViewController: UIViewController  {
+class PasswordsViewController: UIViewController, ControlViewDelegate  {
 
     @IBInspectable public var passwordTypeInt: Int = 401 //Password type of item
     let c = PFConstants.instance
@@ -23,12 +23,19 @@ class PasswordsViewController: UIViewController  {
     var passwordType = PFPasswordType.randomType
     let controller = PasswordController.get(false)
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        controlChanged(nil, defaultsKey: "")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     override func awakeFromNib() {
         passwordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.randomType
+    }
+    func controlChanged(_ control: UIControl?, defaultsKey: String) {
+        typeSelectionViewController?.controlChanged(control, defaultsKey: defaultsKey)
     }
     func generatePassword() -> String {
         passwordStrength = 0.0
@@ -43,6 +50,5 @@ class PasswordsViewController: UIViewController  {
             passwordStrength = s
         }
         return currentPassword
-        
     }
 }

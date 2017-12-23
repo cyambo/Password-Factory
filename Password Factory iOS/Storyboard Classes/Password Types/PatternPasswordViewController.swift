@@ -27,8 +27,6 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             highlightPatternString()
         }
         patternButtonCollectionView.roundCorners()
-        
-
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -58,14 +56,17 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
                 }
             }
         }
-        d.setObject(patternText.text, forKey: "userPattern")
+        updatePattern(patternText.text)
         highlightPatternString()
     }
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         return true
     }
     
-    
+    func updatePattern(_ pattern: String) {
+        d.setObject(pattern, forKey: "userPattern")
+        controlChanged(nil, defaultsKey: "userPattern")
+    }
     /// highlights the pattern string, or uses default color based upon defaults
     func highlightPatternString() {
         if(d.bool(forKey: "colorPasswordText")) {
@@ -122,11 +123,12 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     @IBAction func clearPattern(_ sender: UIButton) {
         patternText.text = ""
         typeLabel.text = ""
-        d.setObject("", forKey: "userPattern")
+        updatePattern("")
+
     }
     @IBAction func deleteLast(_ sender: Any) {
         patternText.text = String(patternText.text.dropLast())
-        d.setObject(patternText.text, forKey: "userPattern")
+        updatePattern(patternText.text)
         highlightPatternString()
     }
     

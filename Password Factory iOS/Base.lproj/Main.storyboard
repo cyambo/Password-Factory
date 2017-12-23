@@ -277,6 +277,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="passwordLength"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Sl1-Tc-FzO" id="o3I-xx-tEL"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rFn-xH-YMG" userLabel="Use Numbers" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="88" width="343" height="56"/>
@@ -297,6 +300,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseNumbers"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Numbers"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Sl1-Tc-FzO" id="gIU-3r-6RY"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-2N-GYa" userLabel="Use Symbols" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="144" width="343" height="56"/>
@@ -314,6 +320,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseSymbols"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Symbols"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Sl1-Tc-FzO" id="iXs-e7-upQ"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MN-K0-hXd" userLabel="Avoid Ambiguous" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="200" width="343" height="56"/>
@@ -331,6 +340,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomAvoidAmbiguous"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Avoid Ambiguous"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Sl1-Tc-FzO" id="qMS-fR-6DI"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zi8-nK-CJ8" userLabel="Use Emoji" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="256" width="343" height="56"/>
@@ -348,6 +360,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomUseEmoji"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Use Emoji"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Sl1-Tc-FzO" id="X6g-jq-19D"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-kw-72e" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="312" width="343" height="96"/>
@@ -370,6 +385,9 @@
                                                         <integer key="value" value="401"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Sl1-Tc-FzO" id="YV8-9w-pHW"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -669,6 +687,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="passwordLength"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="vEx-Tj-Bk3" id="7nP-l1-sBE"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LhD-W8-ENL" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="88" width="343" height="96"/>
@@ -691,6 +712,9 @@
                                                         <integer key="value" value="403"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="vEx-Tj-Bk3" id="l7C-RV-djK"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXa-GF-O3q" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="184" width="343" height="96"/>
@@ -710,6 +734,9 @@
                                                         <integer key="value" value="403"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="vEx-Tj-Bk3" id="pma-Rq-qha"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -785,6 +812,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="passwordLength"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="6fA-LE-ub7" id="pJP-9R-rK0"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnT-RR-TKU" userLabel="Separator Types View" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="88" width="343" height="96"/>
@@ -807,6 +837,9 @@
                                                         <integer key="value" value="404"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="6fA-LE-ub7" id="8C7-3H-yMI"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xof-It-RYX" userLabel="Case Types View" customClass="SelectTypesView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="184" width="343" height="96"/>
@@ -826,6 +859,9 @@
                                                         <integer key="value" value="404"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="6fA-LE-ub7" id="AIn-7J-54G"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -904,6 +940,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="pickerTypeString" value="Password"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="mSI-Oa-t8B"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PxK-St-LpQ" userLabel="Truncate" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="56" width="343" height="56"/>
@@ -937,6 +976,9 @@
                                                         <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="b9t-vn-xzj"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2J-m3-D5S" userLabel="Case Type" customClass="SelectPickerView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="112" width="343" height="56"/>
@@ -947,6 +989,9 @@
                                                         <integer key="value" value="405"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="p6G-rV-oo7"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gJ-Lc-8f3" userLabel="Symbolize" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="168" width="343" height="56"/>
@@ -977,6 +1022,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="fB8-wu-8ky"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giI-9O-tuw" userLabel="Accenter" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="224" width="343" height="56"/>
@@ -1007,6 +1055,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="ndp-Ob-XWP"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtS-rl-it6" userLabel="Replace Ambiguous" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="280" width="343" height="56"/>
@@ -1024,6 +1075,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Replace Ambiguous"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedReplaceAmbiguous"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="HnF-p2-rWZ"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8D-XE-xXN" userLabel="Prefix Pattern" customClass="TextFieldView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="336" width="343" height="56"/>
@@ -1041,6 +1095,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedPrefixPattern"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Prefix Pattern"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="U1U-qg-ET5"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUs-NY-vtn" userLabel="Suffix Pattern" customClass="TextFieldView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="392" width="343" height="56"/>
@@ -1058,6 +1115,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedSuffixPattern"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Suffix Pattern"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="WF8-hx-MzO"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aGv-ok-O9Y" userLabel="Find Regex" customClass="TextFieldView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="448" width="343" height="56"/>
@@ -1075,6 +1135,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedFindRegex"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Find Regex"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="Knx-Hc-SNd"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xwn-e2-C5x" userLabel="Replace Pattern" customClass="TextFieldView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="504" width="343" height="56"/>
@@ -1099,6 +1162,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedReplacePattern"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Replace Pattern"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pyS-d0-K6C" id="zAp-Cn-5SQ"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

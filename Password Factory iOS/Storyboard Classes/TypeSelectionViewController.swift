@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TypeSelectionViewController: UIViewController, UITextFieldDelegate, DefaultsManagerDelegate {
-    
+class TypeSelectionViewController: UIViewController, UITextFieldDelegate, DefaultsManagerDelegate, ControlViewDelegate {
+
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
     var keyboardDismissGesture: UITapGestureRecognizer?
@@ -54,7 +54,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         super.viewWillAppear(animated)
         setSelectedPasswordType()
         selectType(typeSelectionControl)
-        generatePassword()
+//        generatePassword()
     }
     override func viewWillDisappear(_ animated: Bool) {
         if let p = d.prefsPlist {
@@ -128,11 +128,11 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
             UIPasteboard.general.string = currPass
         }
     }
-    
+    func controlChanged(_ control: UIControl?, defaultsKey: String) {
+        generatePassword()
+    }
     /// Generates password from the current view controller
     func generatePassword() {
-
-        
         let active = self.d.bool(forKey: "activeControl")
         //running the password generation if we are not an active control, or if we are an active control make sure the last operation finished
         if !active || (active &&  queue.operationCount == 0) {
@@ -232,7 +232,7 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
             setSelectedPasswordType()
             selectType(typeSelectionControl)
         } else {
-            generatePassword()
+//            generatePassword()
         }
     }
     

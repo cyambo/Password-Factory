@@ -32,6 +32,7 @@ class ControlView: UIView {
         addViews()
         initializeControls()
     }
+
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         setupView()
@@ -64,18 +65,21 @@ class ControlView: UIView {
         control.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpInside)
         control.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpOutside)
     }
-    func startAction() {
+    func startAction(_ sender: UIControl? = nil) {
         d.setBool(true, forKey: "activeControl")
         d.setObject(defaultsKey ?? "", forKey: "currentControlKey")
     }
-    func endAction() {
+    func endAction(_ sender: UIControl? = nil) {
         d.setBool(false, forKey: "activeControl")
         d.setObject("", forKey: "currentControlKey")
+        if let key = defaultsKey {
+            delegate?.controlChanged(sender, defaultsKey: key)
+        }
     }
-    @objc func touchDown(_ sender: UISlider) {
-        startAction()
+    @objc func touchDown(_ sender: UIControl) {
+        startAction(sender)
     }
-    @objc func touchUp(_ sender: UISlider) {
-        endAction()
+    @objc func touchUp(_ sender: UIControl) {
+        endAction(sender)
     }
 }

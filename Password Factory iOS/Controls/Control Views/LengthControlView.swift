@@ -26,7 +26,6 @@ class LengthControlView: ControlView {
         super.setupView()
         setupLengthSlider()
         setActions(slider)
-        lengthChanged()
         controlLabel.text = "Length"
         sizeLabel.textAlignment = .right
         sizeLabel.font = UIFont.systemFont(ofSize: 32)
@@ -50,18 +49,23 @@ class LengthControlView: ControlView {
         slider.minimumValue = 5.0
         slider.maximumValue = d.float(forKey: "maxPasswordLength")
         slider.setValue(d.float(forKey: "passwordLength"), animated: false)
+        setSizeLabelText()
     }
     
     /// Called when length is changed - sets defaults and label
     func lengthChanged() {
         if let key = defaultsKey {
-            let length = Int(slider.value)
-            sizeLabel.text = "\(length)"
+            setSizeLabelText()
             d.setInteger(Int(slider.value), forKey: key)
             delegate?.controlChanged(slider, defaultsKey: key)
         }
     }
-
+    
+    /// Sets the size label text based upon the slider value
+    func setSizeLabelText() {
+        let length = Int(slider.value)
+        sizeLabel.text = "\(length)"
+    }
     /// action when length is changed
     ///
     /// - Parameter sender: default sender
