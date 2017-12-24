@@ -33,7 +33,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     }
     
     @IBAction func clickedSortButton(_ sender: UIButton) {
-        var sort = ""
+        var sort = "time"
         if sender == typeButton {
             sort = "type"
         } else if sender == passwordButton {
@@ -65,9 +65,9 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         selectFirstPassword = true
     }
     override func generatePassword() -> String {
-        var index : UInt = 0
+        var index  = 0
         if !selectFirstPassword {
-            index = UInt(SecureRandom.randomInt(uint(s.count())))
+            index = Int(SecureRandom.randomInt(uint(s.count())))
         }
         selectFirstPassword = false
         selectPasswordAtIndex(index)
@@ -75,11 +75,9 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         return super.generatePassword()
         
     }
-    func selectPasswordAtIndex(_ index: UInt){
-        if s.count() == 0 {
-            return
-        }
-        if index > s.count() - 1 {
+    func selectPasswordAtIndex(_ index: Int){
+
+        if index > Int(s.count()) - 1 {
             return
         }
         DispatchQueue.main.async {

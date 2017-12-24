@@ -193,7 +193,6 @@
     return p;
 }
 
-
 /**
   Generates a passphrase using the separator code constant
 
@@ -204,6 +203,7 @@
     [self setSeparatorFromType:separatorType];
     return [self generatePassphrase];
 }
+
 /**
  *  Gets a word from our dictionary to fit the length remaining in passphrase
  *

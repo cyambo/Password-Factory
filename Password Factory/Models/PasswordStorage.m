@@ -36,7 +36,6 @@
     static dispatch_once_t once = 0;
     dispatch_once(&once, ^ {
         ps = [[PasswordStorage alloc] init];
-        
     });
     
     return ps;

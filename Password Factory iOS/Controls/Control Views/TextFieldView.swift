@@ -12,7 +12,7 @@ import UIKit
 class TextFieldView: ControlView, UITextFieldDelegate {
     
     let controlText = UITextField.init()
-
+    var prevChange : String? = nil
     override func addViews() {
         super.addViews()
         addSubview(controlText)
@@ -92,8 +92,12 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         }
         if let key = defaultsKey {
             d.setObject(toChange, forKey: key)
-            delegate?.controlChanged(controlText, defaultsKey: key)
+            if prevChange != toChange { //don't call the delegate if it is a duplicate
+                delegate?.controlChanged(controlText, defaultsKey: key)
+            }
         }
+        //storing last change to check to see if it is called with the same value twice because of ios bug
+        prevChange = toChange
         
     }
 }
