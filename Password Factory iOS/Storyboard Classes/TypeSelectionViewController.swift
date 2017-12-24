@@ -175,7 +175,6 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         passwordDisplay.attributedText = Utilities.highlightPassword(password: password, font: passwordFont)
         passwordDisplay.frame.size = size
         passwordScrollView.contentSize = size
-        passwordScrollView.scrollRectToVisible(CGRect.init(x: size.width-1, y: 0, width: 1, height: 1), animated: false)
         passwordLengthDisplay.text = "\(passwordDisplay.text?.count ?? 0)"
     }
     
@@ -212,14 +211,10 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         return nil
     }
     
-    /// sets observers for all the values in defaults plist
+    /// sets observers for the defaults keys we want to monitor
     func setObservers() {
-        guard var plist = d.prefsPlist else {
-            return
-        }
-        plist["activeControl"] = false
-        d.observeDefaults(self, keys: Array(plist.keys))
-
+        let toObserve = ["activeControl", "enableAdvanced", "storePasswords"]
+        d.observeDefaults(self, keys: toObserve)
     }
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
         //whenever a default changes, generate a password

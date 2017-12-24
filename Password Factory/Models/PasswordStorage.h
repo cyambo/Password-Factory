@@ -26,4 +26,5 @@
 -(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor;
 -(void)loadSavedData;
 -(void)deleteAllEntities;
+-(void)changedMaxStorageAmount;
 @end

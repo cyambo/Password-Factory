@@ -14,7 +14,7 @@ class StrengthMeter: UIView {
     var strength = 1.0
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: getStrengthColor(), strength: CGFloat(strength), size: rect.size)
+        StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: StrengthMeter.getStrengthColor(strength), strength: CGFloat(strength), size: rect.size)
         
     }
     override func prepareForInterfaceBuilder() {
@@ -29,7 +29,7 @@ class StrengthMeter: UIView {
     /// Gets the color for the set strength
     ///
     /// - Returns: color
-    func getStrengthColor() -> UIColor {
+    class func getStrengthColor(_ strength: Double) -> UIColor {
         let strengthHue = strength * 0.3;
         let sc = UIColor.init(red: 0.848, green: 0.077, blue: 0.077, alpha: 1.0)
         var hue:CGFloat = 0.0

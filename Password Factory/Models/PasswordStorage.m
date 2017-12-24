@@ -228,4 +228,8 @@
     }
     [self loadSavedData];
 }
+-(void)changedMaxStorageAmount {
+    [self loadSavedData];
+    [self deleteOverMaxItems];
+}
 @end

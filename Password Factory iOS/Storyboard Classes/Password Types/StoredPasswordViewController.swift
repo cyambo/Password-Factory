@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate, UITableViewDataSource{
+class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate, UITableViewDataSource, DefaultsManagerDelegate{
     let s = PasswordStorage.get()!
     enum SortTypes : Int {
         case PasswordType = 9901
@@ -27,6 +27,9 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     var sortedBy : SortTypes = .Time
     var ascending = false
 
+    override func awakeFromNib() {
+        d.observeDefaults(self, keys: ["maxStoredPasswords"])
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         sortButtons = [
@@ -105,13 +108,20 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
             return "time"
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
 
+    func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
+        if keyPath == "maxStoredPasswords" {
+            s.changedMaxStorageAmount()
+            storedPasswordsTable.reloadData()
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ascending = true
         changeSort(.Time)
         //when view appears, select the first password when generating
         selectFirstPassword = true
+        
     }
     override func generatePassword() -> String {
         var index  = 0
@@ -125,14 +135,12 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         
     }
     func selectPasswordAtIndex(_ index: Int){
-
         if index > Int(s.count()) - 1 {
             return
         }
         DispatchQueue.main.async {
            self.storedPasswordsTable.selectRow(at: IndexPath.init(row: Int(index), section: 0), animated: true, scrollPosition: .top)
         }
-        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = storedPasswordsTable.cellForRow(at: indexPath) as? StoredPasswordTableViewCell {
@@ -176,3 +184,4 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     }
     
 }
+
