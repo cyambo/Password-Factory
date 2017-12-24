@@ -10,57 +10,106 @@ import UIKit
 
 class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate, UITableViewDataSource{
     let s = PasswordStorage.get()!
-    
+    enum SortTypes : Int {
+        case PasswordType = 9901
+        case Password
+        case Strength
+        case Length
+        case Time
+    }
     @IBOutlet weak var typeButton: UIButton!
     @IBOutlet weak var passwordButton: UIButton!
     @IBOutlet weak var lengthButton: UIButton!
     @IBOutlet weak var strengthButton: UIButton!
     @IBOutlet weak var storedPasswordsTable: UITableView!
-    
+    var sortButtons : [SortTypes: UIButton] = [:]
     var selectFirstPassword = true
-    var sortedBy = ""
+    var sortedBy : SortTypes = .Time
     var ascending = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        typeButton.setTitle("", for: .normal)
-        passwordButton.setTitle("", for: .normal)
-        strengthButton.setTitle("", for: .normal)
-        lengthButton.setTitle("", for: .normal)
-        typeButton.setImage(StyleKit.imageOfPasswordTypeHeader, for: .normal)
-        passwordButton.setImage(StyleKit.imageOfPasswordHeader, for: .normal)
-        strengthButton.setImage(StyleKit.imageOfPasswordStrengthHeader, for: .normal)
-        lengthButton.setImage(StyleKit.imageOfPasswordLengthHeader, for: .normal)
+        sortButtons = [
+            .PasswordType : typeButton,
+            .Password : passwordButton,
+            .Strength : strengthButton,
+            .Length : lengthButton
+        ]
+        for (sort,button) in sortButtons {
+            button.setTitle("", for: .normal)
+            button.setImage(getImageForSort(sort), for: .normal)
+        }
     }
     
     @IBAction func clickedSortButton(_ sender: UIButton) {
-        var sort = "time"
-        if sender == typeButton {
-            sort = "type"
-        } else if sender == passwordButton {
-            sort = "password"
-        } else if sender == lengthButton {
-            sort = "length"
-        } else if sender == strengthButton {
-            sort = "strength"
+        if let sort = SortTypes.init(rawValue: sender.tag) {
+            changeSort(sort)
         }
-        changeSort(sort)
     }
-    func changeSort(_ sortKey: String) {
-        if sortKey != sortedBy {
-            sortedBy = sortKey
+    func changeSort(_ toSort: SortTypes) {
+        if sortedBy != toSort {
+            let oldSort = sortedBy
+            sortedBy = toSort
             ascending = false
+            if let sb = sortButtons[oldSort] {
+                sb.setImage(getImageForSort(oldSort), for: .normal)
+            }
+
         } else {
             ascending = !ascending
         }
-        let sort = NSSortDescriptor.init(key: sortedBy, ascending: ascending)
+        if let sb = sortButtons[sortedBy] {
+            sb.setImage(getImageForSort(sortedBy), for: .normal)
+        }
+        let sortName = getNameForSort(sortedBy)
+        let sort = NSSortDescriptor.init(key: sortName, ascending: ascending)
         s.setSortDescriptor(sort)
         storedPasswordsTable.reloadData()
+    }
+    func getImageForSort(_ sort : SortTypes) -> UIImage {
+        let baseImage: UIImage
+        switch sort {
+        case .Length:
+            baseImage = StyleKit.imageOfPasswordLengthHeader
+        case .Password:
+            baseImage = StyleKit.imageOfPasswordHeader
+        case .PasswordType:
+            baseImage = StyleKit.imageOfPasswordTypeHeader
+        case .Strength:
+            baseImage = StyleKit.imageOfPasswordStrengthHeader
+        case .Time:
+            baseImage = UIImage()
+        }
+        if sortedBy == sort {
+            let arrow : UIImage
+            if ascending {
+                arrow = StyleKit.imageOfHeaderUpArrow
+            } else {
+                arrow = StyleKit.imageOfHeaderDownArrow
+            }
+            return baseImage.combine(arrow)
+        }
+        return baseImage
+    }
+    func getNameForSort(_ sort: SortTypes) -> String {
+        switch sort {
+        case .Length:
+            return "length"
+        case .Password:
+            return "password"
+        case .PasswordType:
+            return "type"
+        case .Strength:
+            return "strength"
+        case .Time:
+            return "time"
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
 
         super.viewWillAppear(animated)
         ascending = true
-        changeSort("time")
+        changeSort(.Time)
         //when view appears, select the first password when generating
         selectFirstPassword = true
     }

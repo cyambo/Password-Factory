@@ -84,6 +84,7 @@
 		405483701FE9B1F000E42EF6 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054836F1FE9B1F000E42EF6 /* BorderedView.swift */; };
 		4054ABEB1FE4999D009FE668 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054ABEA1FE4999D009FE668 /* ColorPickerViewController.swift */; };
 		4054ABF11FE58D40009FE668 /* PreferencesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054ABF01FE58D40009FE668 /* PreferencesButton.swift */; };
+		405531F61FEF3F1200E77A84 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405531F51FEF3F1200E77A84 /* UIImage+Extensions.swift */; };
 		4058DF281F92995800CCB6E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4058DF271F92995800CCB6E7 /* AppDelegate.m */; };
 		4058DF2A1F92995800CCB6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4058DF291F92995800CCB6E7 /* Assets.xcassets */; };
 		4058DF2D1F92995800CCB6E7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4058DF2B1F92995800CCB6E7 /* MainMenu.xib */; };
@@ -305,6 +306,7 @@
 		4054836F1FE9B1F000E42EF6 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		4054ABEA1FE4999D009FE668 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		4054ABF01FE58D40009FE668 /* PreferencesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesButton.swift; sourceTree = "<group>"; };
+		405531F51FEF3F1200E77A84 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		4058DF241F92995800CCB6E7 /* Password Factory Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4058DF261F92995800CCB6E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4058DF271F92995800CCB6E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				40496FBA1FE843F30099158C /* UIView+Extensions.swift */,
+				405531F51FEF3F1200E77A84 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1691,6 +1694,7 @@
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
 				406E8FE11FE30E7400A76765 /* LengthControlView.swift in Sources */,
+				405531F61FEF3F1200E77A84 /* UIImage+Extensions.swift in Sources */,
 				40496FBB1FE843F30099158C /* UIView+Extensions.swift in Sources */,
 				40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */,
 				40E580451FDDA2B800AD7DB9 /* SelectPickerView.swift in Sources */,

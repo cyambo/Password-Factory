@@ -1228,7 +1228,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxO-4x-CKu">
+                            <button opaque="NO" tag="9901" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxO-4x-CKu">
                                 <rect key="frame" x="8" y="0.0" width="26" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="cqt-pb-lTq"/>
@@ -1239,7 +1239,7 @@
                                     <action selector="clickedSortButton:" destination="mru-R2-ogB" eventType="touchUpInside" id="MES-Os-8f6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-GC-XLR">
+                            <button opaque="NO" tag="9902" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-GC-XLR">
                                 <rect key="frame" x="34" y="0.0" width="221" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="eyx-5x-XVV"/>
@@ -1249,7 +1249,7 @@
                                     <action selector="clickedSortButton:" destination="mru-R2-ogB" eventType="touchUpInside" id="xZF-Uv-6c1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-NO-7mx">
+                            <button opaque="NO" tag="9903" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rN-NO-7mx">
                                 <rect key="frame" x="295" y="0.0" width="40" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="4Gd-0y-Kt0"/>
@@ -1395,7 +1395,7 @@
                                     <outlet property="delegate" destination="mru-R2-ogB" id="NCP-IZ-wRA"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d46-n8-h5g">
+                            <button opaque="NO" tag="9904" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d46-n8-h5g">
                                 <rect key="frame" x="255" y="0.0" width="40" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JNx-MT-1fK"/>
