@@ -432,9 +432,6 @@
                             <integer key="value" value="401"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="scrollView" destination="giY-cw-6dW" id="0XE-a8-GHH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvU-K2-ZbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -186,7 +186,6 @@
         //return nil if we are over count
         return nil;
     }
-
 }
 
 /**
@@ -228,6 +227,10 @@
     }
     [self loadSavedData];
 }
+
+/**
+ Called when max storage amount was changed
+ */
 -(void)changedMaxStorageAmount {
     [self loadSavedData];
     [self deleteOverMaxItems];
