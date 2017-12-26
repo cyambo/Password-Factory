@@ -78,7 +78,7 @@
  @param type PFPasswordType of password
  */
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type {
-    if ([password isEqualToString:self.prev]) { //getting duplicates from bug in observer on ios, so, just return
+    if (self.prev != nil && [password isEqualToString:self.prev]) { //getting duplicates from bug in observer on ios, so, just return
         return;
     }
     self.prev = password;

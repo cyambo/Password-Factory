@@ -166,7 +166,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         return Int(s.count())
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 36
+        return 44
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let p = s.password(at: UInt(indexPath.row)) else {

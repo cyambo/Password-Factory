@@ -14,6 +14,7 @@ class StepperView: ControlView, PickerViewControllerDelegate {
     @IBInspectable public var minValue: Int = 0 //minimum value of the stepper
     @IBInspectable public var maxValue: Int = 100 //maximum value of the stepper
     @IBInspectable public var stepValue: Int = 1 //step for each press
+    @IBInspectable public var isPercent: Bool = false //is it a percent meter
     let controlStepper = UIStepper.init()
     let valueLabel = UIButton.init()
     
@@ -56,8 +57,10 @@ class StepperView: ControlView, PickerViewControllerDelegate {
     @objc func loadPicker() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController {
+            let percent = isPercent ? " (%)" : ""
+            let pickerTitle = "\(label ?? "Select")\(percent)"
             vc.modalPresentationStyle = .overCurrentContext
-            vc.setNumberType(title: label ?? "", current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
+            vc.setNumberType(title: pickerTitle, current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
             vc.delegate = self
             //TODO: fix when picker on top of picker - uses same presented view controller
             if let r = UIApplication.shared.keyWindow?.rootViewController {
@@ -82,7 +85,8 @@ class StepperView: ControlView, PickerViewControllerDelegate {
             if val == 0 && defaultsKey == "advancedTruncateAt" {
                 valueLabel.setTitle("None", for: .normal)
             } else {
-                valueLabel.setTitle("\(val)", for: .normal)
+                let percent = isPercent ? "%" : ""
+                valueLabel.setTitle("\(val)\(percent)", for: .normal)
 
             }
         } else {

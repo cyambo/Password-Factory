@@ -23,7 +23,9 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
     var passwordType = PFPasswordType.randomType
     let controller = PasswordController.get(false)
     
+
     override func viewWillAppear(_ animated: Bool) {
+        passwordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.randomType
         super.viewWillAppear(animated)
         controlChanged(nil, defaultsKey: "")
     }
@@ -31,9 +33,7 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func awakeFromNib() {
-        passwordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.randomType
-    }
+
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
         typeSelectionViewController?.controlChanged(control, defaultsKey: defaultsKey)
     }

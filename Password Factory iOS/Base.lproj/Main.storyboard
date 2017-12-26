@@ -1021,6 +1021,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isPercent" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="pyS-d0-K6C" id="fB8-wu-8ky"/>
@@ -1054,6 +1055,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isPercent" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="pyS-d0-K6C" id="ndp-Ob-XWP"/>
