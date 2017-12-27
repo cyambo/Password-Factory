@@ -149,6 +149,9 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                 guard let strength = self.currentViewController?.passwordStrength else {
                     return
                 }
+                if p.count == 0 || strength == 0 {
+                    print("BREAKPOINT LOG - COUNT STRENGTH ZERO")
+                }
                 //update the password field
                 DispatchQueue.main.async { [unowned self, p, strength] in
                     self.updatePasswordField(p, strength: Double(strength))
@@ -156,6 +159,9 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                 if type != .storedType && !active {
                     //store on the main thread
                     DispatchQueue.main.async { [unowned self, p, strength, type] in
+                        if strength / 100.0 == 0 && p.count > 0 {
+                            print("BREAKPOINT LOG - ZERO STRENGTH")
+                        }
                         self.s.storePassword(p, strength: Float(strength / 100.0), type: type)
                     }
                 }
@@ -167,6 +173,9 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     ///
     /// - Parameter password: password to put in field
     func updatePasswordField(_ password: String, strength: Double) {
+        if password.count == 0 {
+            print("BREAKPOINT LOG - ZERO PASSWORD")
+        }
         strengthMeter.updateStrength(s: strength)
         var size = (password as NSString).size(withAttributes: [NSAttributedStringKey.font: passwordFont])
         size = CGSize.init(width: size.width, height: passwordDisplay.frame.size.height)
@@ -209,14 +218,20 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     
     /// sets observers for the defaults keys we want to monitor
     func setObservers() {
-        let toObserve = ["activeControl", "enableAdvanced", "storePasswords"]
+        let toObserve = ["activeControl", "enableAdvanced", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor"]
         d.observeDefaults(self, keys: toObserve)
     }
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
-        if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
-            setupSegments()
-            setSelectedPasswordType()
-            selectType(typeSelectionControl)
+        if let key = keyPath {
+            //are we toggling advanced or stored
+            if key == "enableAdvanced" || key == "storePasswords" {
+                setupSegments()
+                setSelectedPasswordType()
+                selectType(typeSelectionControl)
+                return
+            }
+            //if not, we are updating colors
+            updatePasswordField(passwordDisplay.text ?? "", strength: strengthMeter.strength * 100)
         }
     }
     

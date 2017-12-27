@@ -21,6 +21,10 @@ class LengthControlView: ControlView {
         container.addSubview(controlLabel)
         container.addSubview(sizeLabel)
     }
+    override func initializeControls() {
+        super.initializeControls()
+        d.observeDefaults(self, keys: ["maxPasswordLength"])
+    }
     /// Positions the views in the container
     override func setupView() {
         super.setupView()
@@ -76,7 +80,23 @@ class LengthControlView: ControlView {
     @IBAction func changeLengthSlider(_ sender: UISlider) {
         lengthChanged()
     }
-    
-
-    
+    /// Used when a defaults key changes
+    ///
+    /// - Parameters:
+    ///   - keyPath: defaults key
+    ///   - change: change message
+    override func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
+        super.observeValue(keyPath, change: change)
+        if keyPath == "maxPasswordLength" {
+            if let c = change {
+                if let f = c["new"] as? Float {
+                    if slider.value > f {
+                        slider.value = f
+                        lengthChanged()
+                    }
+                    slider.maximumValue = f
+                }
+            }
+        }
+    }
 }

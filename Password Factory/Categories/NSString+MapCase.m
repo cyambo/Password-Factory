@@ -71,10 +71,18 @@ static NSDictionary *map = nil;
     return retval;
 }
 - (NSString *)getRandomSymbolForLetter:(NSString*)letter {
-    if(map[letter]) {
+    if(map[letter] != nil) {
         NSArray *choices = (NSArray *)map[letter];
+        if (choices == nil) {
+            NSLog(@"BREAKPONT LOG - NIL CHOICES");
+        }
         int at = arc4random() % choices.count;
-        return [choices objectAtIndex:at];
+        NSString *choice = [choices objectAtIndex:at];
+        if (choice != nil) {
+            return choice;
+        } else {
+            NSLog(@"BREAKPOINT LOG - NIL CHOICE");
+        }
     }
     return letter;
 }

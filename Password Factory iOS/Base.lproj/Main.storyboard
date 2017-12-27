@@ -37,16 +37,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xl-nY-3zn">
-                                        <rect key="frame" x="16" y="53" width="302" height="39"/>
+                                        <rect key="frame" x="16" y="53" width="291" height="39"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDC-1S-lMq" customClass="PreferencesButton" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="334" y="60" width="25" height="25"/>
+                                        <rect key="frame" x="323" y="50.5" width="44" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="OgH-gW-fjz"/>
-                                            <constraint firstAttribute="height" constant="25" id="bGO-cQ-oRu"/>
+                                            <constraint firstAttribute="width" constant="44" id="OgH-gW-fjz"/>
+                                            <constraint firstAttribute="height" constant="44" id="bGO-cQ-oRu"/>
                                         </constraints>
                                         <connections>
                                             <action selector="pressedPreferencesButton:" destination="fD8-6D-Gbm" eventType="touchUpInside" id="KSu-O7-HqJ"/>
@@ -59,7 +59,7 @@
                                     <constraint firstItem="7xl-nY-3zn" firstAttribute="leading" secondItem="DdU-uD-dyc" secondAttribute="leadingMargin" constant="8" id="AwW-Qr-Cc5"/>
                                     <constraint firstItem="CDC-1S-lMq" firstAttribute="leading" secondItem="7xl-nY-3zn" secondAttribute="trailing" constant="16" id="C0M-6L-5zc"/>
                                     <constraint firstAttribute="height" constant="100" id="TD6-MG-ObP"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="CDC-1S-lMq" secondAttribute="trailing" constant="8" id="f3n-UV-gcj"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="CDC-1S-lMq" secondAttribute="trailing" id="f3n-UV-gcj"/>
                                     <constraint firstAttribute="bottom" secondItem="7xl-nY-3zn" secondAttribute="bottom" constant="8" id="ipy-vM-RJ1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -102,11 +102,11 @@
                                             <constraint firstAttribute="bottom" secondItem="FjP-Mb-z7A" secondAttribute="bottom" id="ur5-0W-dnD"/>
                                         </constraints>
                                     </scrollView>
-                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-3e-tKc" userLabel="Zoom Button" customClass="ZoomButton" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="340.5" y="0.0" width="30" height="30"/>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-3e-tKc" userLabel="Zoom Button" customClass="ZoomButton" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="333.5" y="2" width="44" height="42"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="bPh-J1-7uz"/>
-                                            <constraint firstAttribute="height" constant="30" id="r7j-zp-A3H"/>
+                                            <constraint firstAttribute="width" constant="44" id="bPh-J1-7uz"/>
+                                            <constraint firstAttribute="height" constant="42" id="r7j-zp-A3H"/>
                                         </constraints>
                                         <connections>
                                             <action selector="pressedZoomButton:" destination="fD8-6D-Gbm" eventType="touchUpInside" id="7v8-5H-LQJ"/>
@@ -126,7 +126,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="rs5-3e-tKc" firstAttribute="centerX" secondItem="yk6-Cd-qFq" secondAttribute="centerX" id="DhR-jB-Rr9"/>
-                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="top" secondItem="kCJ-gt-17B" secondAttribute="top" id="UWo-Wv-mx1"/>
+                                    <constraint firstItem="rs5-3e-tKc" firstAttribute="top" secondItem="kCJ-gt-17B" secondAttribute="top" constant="2" id="UWo-Wv-mx1"/>
                                     <constraint firstAttribute="height" constant="44" id="Z5Q-UU-qBF"/>
                                     <constraint firstItem="eDF-xA-Mpa" firstAttribute="top" secondItem="kCJ-gt-17B" secondAttribute="top" id="fIw-sk-fDn"/>
                                     <constraint firstAttribute="trailing" secondItem="yk6-Cd-qFq" secondAttribute="trailing" constant="4.5" id="hDj-ku-OWe"/>

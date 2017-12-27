@@ -118,11 +118,17 @@ static NSMutableDictionary *passwordTextColors;
         CGFloat r,g,b;
 #ifdef IS_IOS
         [c getRed:&r green:&g blue:&b alpha:nil];
+        r = [ColorUtilities convertExtendedComponent:r];
+        g = [ColorUtilities convertExtendedComponent:g];
+        b = [ColorUtilities convertExtendedComponent:b];
+        
+        
 #else
         Color *tmp = [color colorUsingColorSpace:[ColorUtilities colorSpace]];
         r = tmp.redComponent;
         g = tmp.greenComponent;
         b = tmp.blueComponent;
+
 #endif
         
         // Convert the components to numbers (unsigned decimal integer) between 0 and 255
@@ -136,11 +142,28 @@ static NSMutableDictionary *passwordTextColors;
         blueHexValue=[NSString stringWithFormat:@"%02X", blueIntValue];
         
         // Concatenate the red, green, and blue components' hex strings together
-        return [NSString stringWithFormat:@"%@%@%@", redHexValue, greenHexValue, blueHexValue];
+        NSString *hex = [NSString stringWithFormat:@"%@%@%@", redHexValue, greenHexValue, blueHexValue];
+        hex = [hex substringToIndex:6]; //make sure it is only 6 characters
+        return hex;
     }
     return @"000000";
 }
 
+/**
+ Converts an extended colorspace component into a normal 0 - 1 component
+
+ @param component extended colorspace component to convert
+ @return CGFloat from 0 - 1
+ */
++(CGFloat)convertExtendedComponent:(CGFloat)component {
+    if (component < 0) {
+        return 0;
+    }
+    if (component > 1) {
+        return 1;
+    }
+    return component;
+}
 /**
  Gets the color of a pattern type item
  
