@@ -28,12 +28,18 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var doneButton: UIButton!
-    
-    func setType(type: PickerTypes, passwordType: PFPasswordType) {
+    func display(delegate: PickerViewControllerDelegate, parentViewController: UIViewController) {
+        self.delegate = delegate
+        modalPresentationStyle = .overFullScreen
+        parentViewController.present(self, animated: true, completion: nil)
+        
+    }
+    func setType(delegate: PickerViewControllerDelegate, parentViewController: UIViewController, type: PickerTypes, passwordType: PFPasswordType) {
         pickerType = type
         self.passwordType = passwordType
+        display(delegate: delegate, parentViewController: parentViewController)
     }
-    func setNumberType(title: String, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
+    func setNumberType(delegate: PickerViewControllerDelegate, parentViewController: UIViewController, title: String, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
         lowerRange = l
         upperRange = u
         step = s
@@ -44,7 +50,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         pickerType = .NumberType
         numberTypeTitle = title
+        display(delegate: delegate, parentViewController: parentViewController)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapFrom(recognizer:)))

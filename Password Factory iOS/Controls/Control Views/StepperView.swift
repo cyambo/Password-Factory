@@ -59,12 +59,9 @@ class StepperView: ControlView, PickerViewControllerDelegate {
         if let vc = storyboard.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController {
             let percent = isPercent ? " (%)" : ""
             let pickerTitle = "\(label ?? "Select")\(percent)"
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.setNumberType(title: pickerTitle, current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
-            vc.delegate = self
-            //TODO: fix when picker on top of picker - uses same presented view controller
-            if let r = UIApplication.shared.keyWindow?.rootViewController {
-                r.present(vc, animated: true, completion: nil)
+    
+            if let r = parentViewController {
+                vc.setNumberType(delegate: self, parentViewController: r, title: pickerTitle, current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
             }
         }
     }

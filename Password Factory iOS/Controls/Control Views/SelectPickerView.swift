@@ -170,11 +170,8 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         }
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController {
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.setType(type: pick,passwordType: pass)
-            vc.delegate = self
-            if let r = UIApplication.shared.keyWindow?.rootViewController {
-                r.present(vc, animated: true, completion: nil)
+            if let r = parentViewController {
+                vc.setType(delegate: self, parentViewController: r, type: pick,passwordType: pass)
             }
         }
     }

@@ -44,11 +44,11 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     @objc func loadColorPicker() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "ColorPickerView") as? ColorPickerViewController {
-            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalPresentationStyle = .overFullScreen
             
             vc.delegate = self
             vc.setColor(wellView.backgroundColor ?? UIColor.blue, andTitle: label ?? "")
-            self.parentViewController?.present(vc, animated: true, completion: nil)
+            parentViewController?.present(vc, animated: true, completion: nil)
         }
     }
     

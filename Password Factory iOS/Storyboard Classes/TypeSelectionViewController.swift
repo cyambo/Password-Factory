@@ -100,9 +100,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     /// - Parameter sender: default sender
     @IBAction func pressedPreferencesButton(_ sender: UIButton) {
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "PreferencesView") as? PreferencesViewController {
-            vc.modalPresentationStyle = .overCurrentContext
-            
-            if let r = UIApplication.shared.keyWindow?.rootViewController {
+            vc.modalPresentationStyle = .overFullScreen
+            if let r = view.parentViewController {
                 r.present(vc, animated: true, completion: nil)
             }
         }
