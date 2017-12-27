@@ -80,6 +80,9 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !isEnabled {
+            return
+        }
         let key = getDefaultsKey()
         d.setInteger(indexPath.row, forKey: key)
         delegate?.controlChanged(nil, defaultsKey: key)

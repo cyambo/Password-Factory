@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TypeSelectionViewController: UIViewController, UITextFieldDelegate, DefaultsManagerDelegate, ControlViewDelegate {
+class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, ControlViewDelegate {
 
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
@@ -54,7 +54,6 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         super.viewWillAppear(animated)
         setSelectedPasswordType()
         selectType(typeSelectionControl)
-//        generatePassword()
     }
     override func viewWillDisappear(_ animated: Bool) {
         if let p = d.prefsPlist {
@@ -88,7 +87,6 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
             return
         }
         passwordTypeTitle.text = c.getNameFor(type: selType)
-
         currentViewController = selectedViewController
         
         controlsView.addSubview(currentView)
@@ -190,7 +188,6 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         let index = passwordController.getIndexBy(currType)
         //select it
         typeSelectionControl.selectedSegmentIndex = Int(index)
-        
     }
     
     /// Gets the view controller for password type
@@ -207,7 +204,6 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
             vc.typeSelectionViewController = self
             return vc
         }
-        
         return nil
     }
     
@@ -217,31 +213,13 @@ class TypeSelectionViewController: UIViewController, UITextFieldDelegate, Defaul
         d.observeDefaults(self, keys: toObserve)
     }
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
-        //whenever a default changes, generate a password
-        if keyPath == "storedPasswordTableSelectedRow" {
-            return
-        }
-        //TODO: do not generate on color changes
         if keyPath == "enableAdvanced" || keyPath == "storePasswords" {
             setupSegments()
             setSelectedPasswordType()
             selectType(typeSelectionControl)
-        } else {
-//            generatePassword()
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        //this is called when a user types in the password field
-        //highlight and update the counter
-        updatePasswordField(textField.text ?? "", strength: Double(self.currentViewController?.passwordStrength ?? 0.0))
-        //if the done button is pressed, didmiss the keyboard
-        if string == "\n" {
-            textField.endEditing(true)
-            return false
-        }
-        return true
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         viewControllers.removeAll()

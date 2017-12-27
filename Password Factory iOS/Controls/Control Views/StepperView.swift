@@ -103,5 +103,10 @@ class StepperView: ControlView, PickerViewControllerDelegate {
         }
 
     }
+    override func setEnabled(_ enabled: Bool) {
+        super.setEnabled(enabled)
+        controlStepper.isEnabled = enabled
+        valueLabel.isEnabled = enabled
+    }
 
 }

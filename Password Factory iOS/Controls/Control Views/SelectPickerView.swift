@@ -80,7 +80,10 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         }
 
     }
-    
+    override func setEnabled(_ enabled: Bool) {
+        super.setEnabled(enabled)
+        controlButton.isEnabled = enabled
+    }
     /// Sets the button title to the selected number
     func setupNumberType() {
         guard let numberTypeKey = getDefaultsKey() else {

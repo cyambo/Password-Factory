@@ -54,6 +54,10 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         }
         controlText.text = d.string(forKey: dk)
     }
+    override func setEnabled(_ enabled: Bool) {
+        super.setEnabled(enabled)
+        controlText.isEnabled = enabled
+    }
     /// Dismisses the keyboard when done is pressed
     ///
     /// - Parameter textField: default

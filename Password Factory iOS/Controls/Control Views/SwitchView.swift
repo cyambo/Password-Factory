@@ -43,7 +43,10 @@ class SwitchView: ControlView {
             controlSwitch.addTarget(self, action: #selector(changeSwitch), for: .valueChanged)
         }
     }
-    
+    override func setEnabled(_ enabled: Bool) {
+        super.setEnabled(enabled)
+        controlSwitch.isEnabled = enabled
+    }
     /// sets defaults for the switch state
     @objc func changeSwitch() {
         if let key = defaultsKey {

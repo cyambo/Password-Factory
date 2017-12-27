@@ -20,8 +20,8 @@ NSString  *_previousKeyPath;
 @property (nonatomic, strong) NSUserDefaults *standardDefaults;
 @property (nonatomic, strong) NSMutableDictionary *standardDefaultsCache;
 @property (nonatomic, strong) NSMutableDictionary *sharedDefaultsCache;
-@property (nonatomic, strong) NSMutableArray *bridgedContexts;
-
+@property (nonatomic, strong) NSMutableDictionary *observers;
+@property (nonatomic, strong) NSMutableArray *kvos;
 @end
 @implementation DefaultsManager
 
@@ -62,9 +62,10 @@ static DefaultsManager *dm = nil;
 }
 -(instancetype)init {
     self = [super init];
-    self.bridgedContexts = [[NSMutableArray alloc] init];
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
+    self.observers = [[NSMutableDictionary alloc] init];
+    self.kvos = [[NSMutableArray alloc] init];
     [self loadPreferencesFromPlist];
     [self setupCache];
     [self addObservers];
@@ -301,7 +302,10 @@ static DefaultsManager *dm = nil;
 -(void)addObservers {
     NSUserDefaults *d = self.standardDefaults;
     for (NSString *k in self.prefsPlist) {
-        [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
+        if (![self.kvos containsObject:k]) {
+            [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
+            [self.kvos addObject:k];
+        }
     }
 }
 -(void)setupCache {
@@ -326,23 +330,24 @@ static DefaultsManager *dm = nil;
     self.sharedDefaultsCache = sh;
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    //checking if we have a context, if so, we called from
-    //which means it was setup in setDefaultsObservers
-    if (context != nil) {
-        id c = (__bridge id)context;
-        //if so, see if it conforms to our protocol
-        if ([self timeThresholdForKeyPathExceeded:keyPath]) {
-            //and then only call it if it isnt a duplicate call (because of bug by apple)
-            if ([c conformsToProtocol:@protocol(DefaultsManagerDelegate)]) {
-                [(id <DefaultsManagerDelegate>)c observeValue:keyPath change:change];
-            }
-        }
+    //don't do anything if we are a duplicate event
+    if (![self timeThresholdForKeyPathExceeded:keyPath]) {
         return;
     }
     //don't do anything if the change is null
     if (change[@"new"] == [NSNull null]) {
         return;
     }
+    //check to see if we have any observers
+    if (self.observers[keyPath]) {
+        for(id o in self.observers[keyPath]) {
+            //if the item conforms to the protocol, call it
+            if ([o conformsToProtocol:@protocol(DefaultsManagerDelegate)]) {
+                [(id <DefaultsManagerDelegate>)o observeValue:keyPath change:change];
+            }
+        }
+    }
+    //store in shared, and cache
     NSString *sharedKeyPath = [keyPath stringByAppendingString:@"Shared"];
     [self.standardDefaultsCache setObject:change[@"new"] forKey:keyPath];
     [self.sharedDefaultsCache setObject:change[@"new"] forKey:sharedKeyPath];
@@ -416,18 +421,30 @@ static DefaultsManager *dm = nil;
 }
 
 /**
- Sets an array of keys to observe on NSUserDefaults
+ Sets an array of keys that will be called on NSUserDefaults changes
 
  @param observer object that we are observing from
  @param keys array of keys to observe
  */
 -(void)observeDefaults:(NSObject *)observer keys:(NSArray *)keys {
-    NSUserDefaults *d = self.standardDefaults;
-    //saving the observer object so that it won't get deallocated
-    [self.bridgedContexts addObject:observer];
-    //add the observers
+    //add the observers to our array
     for (NSString* key in keys) {
-        [d addObserver:self forKeyPath:key options: NSKeyValueObservingOptionNew context:(__bridge void * _Nullable)observer];
+        //if there is no observer-key array, make one and add our object
+        if (self.observers[key] == nil) {
+            NSMutableArray *a = [[NSMutableArray alloc] init];
+            [a addObject:observer];
+            self.observers[key] = a;
+        } else { //otherwise see if the object is already in there, if not, add it
+            if (![self.observers[key] containsObject:observer]) {
+                [self.observers[key] addObject:observer];
+            }
+        }
+        //make sure we add the key as an observer
+        if (![self.kvos containsObject:key]) {
+            NSUserDefaults *d = self.standardDefaults;
+            [d addObserver:self forKeyPath:key options:NSKeyValueObservingOptionNew context:NULL];
+            [self.kvos addObject:key];
+        }
     }
 }
 
@@ -439,14 +456,8 @@ static DefaultsManager *dm = nil;
  */
 -(void)removeDefaultsObservers:(NSObject *)observer keys:(NSArray *)keys  {
     //remove the observer from the array, so it will be deallocated
-    for(NSInteger i = self.bridgedContexts.count - 1; i >=0 ; i--) {
-        if ([self.bridgedContexts[i] isEqual:observer]) {
-            [self.bridgedContexts removeObjectAtIndex:i];
-        }
-    }
-    NSUserDefaults *d = self.standardDefaults;
-    for (NSString* key in keys) {
-        [d removeObserver:self forKeyPath:key context:(__bridge void *)observer];
+    for(NSString *key in self.observers) {
+        [self.observers[key] removeObject:observer];
     }
 }
 

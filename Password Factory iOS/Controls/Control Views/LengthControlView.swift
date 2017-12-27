@@ -66,6 +66,10 @@ class LengthControlView: ControlView {
         let length = Int(slider.value)
         sizeLabel.text = "\(length)"
     }
+    override func setEnabled(_ enabled: Bool) {
+        super.setEnabled(enabled)
+        slider.isEnabled = enabled
+    }
     /// action when length is changed
     ///
     /// - Parameter sender: default sender

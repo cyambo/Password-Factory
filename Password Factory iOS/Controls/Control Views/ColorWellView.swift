@@ -61,4 +61,9 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         let color = ColorUtilities.color(fromHexString: d.string(forKey: dk))
         wellView.backgroundColor = color
     }
+    
+    override func setEnabled(_ enabled: Bool) {
+        super.setEnabled(enabled)
+        wellView.isEnabled = enabled
+    }
 }
