@@ -23,15 +23,10 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
     var passwordType = PFPasswordType.randomType
     let controller = PasswordController.get(false)
     
-
     override func viewWillAppear(_ animated: Bool) {
         passwordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.randomType
         super.viewWillAppear(animated)
         controlChanged(nil, defaultsKey: "")
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func controlChanged(_ control: UIControl?, defaultsKey: String) {

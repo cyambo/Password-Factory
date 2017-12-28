@@ -54,15 +54,13 @@ class StepperView: ControlView, PickerViewControllerDelegate {
         valueLabel.titleLabel?.font = PFConstants.labelFont
         setStepperLabel()
     }
+
     @objc func loadPicker() {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController {
-            let percent = isPercent ? " (%)" : ""
-            let pickerTitle = "\(label ?? "Select")\(percent)"
-    
-            if let r = parentViewController {
-                vc.setNumberType(delegate: self, parentViewController: r, title: pickerTitle, current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
-            }
+        let percent = isPercent ? " (%)" : ""
+        let pickerTitle = "\(label ?? "Select")\(percent)"
+
+        if let p = parentViewController {
+            Utilities.displayNumberPicker(source: valueLabel, delegate: self, parentViewController: p, title: pickerTitle, current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
         }
     }
     
@@ -104,6 +102,10 @@ class StepperView: ControlView, PickerViewControllerDelegate {
         super.setEnabled(enabled)
         controlStepper.isEnabled = enabled
         valueLabel.isEnabled = enabled
+    }
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        valueLabel.backgroundColor = tintColor
     }
 
 }

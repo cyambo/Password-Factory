@@ -12,7 +12,7 @@ protocol PickerViewControllerDelegate: class {
 }
 
 /// Displays a picker view
-class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate {
+class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
     weak var delegate: PickerViewControllerDelegate?
     let c = PFConstants.instance
     var pickerType = PickerTypes.CaseType
@@ -28,18 +28,12 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var doneButton: UIButton!
-    func display(delegate: PickerViewControllerDelegate, parentViewController: UIViewController) {
-        self.delegate = delegate
-        modalPresentationStyle = .overFullScreen
-        parentViewController.present(self, animated: true, completion: nil)
-        
-    }
-    func setType(delegate: PickerViewControllerDelegate, parentViewController: UIViewController, type: PickerTypes, passwordType: PFPasswordType) {
+
+    func setType(type: PickerTypes, passwordType: PFPasswordType) {
         pickerType = type
         self.passwordType = passwordType
-        display(delegate: delegate, parentViewController: parentViewController)
     }
-    func setNumberType(delegate: PickerViewControllerDelegate, parentViewController: UIViewController, title: String, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
+    func setNumberType(title: String, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
         lowerRange = l
         upperRange = u
         step = s
@@ -50,7 +44,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         pickerType = .NumberType
         numberTypeTitle = title
-        display(delegate: delegate, parentViewController: parentViewController)
     }
     
     override func viewDidLoad() {
@@ -135,7 +128,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let pt = c.getPasswordType(by: UInt(row))
             return c.passwordTypes[pt]
         case .NumberType:
-            return "\(row * Int(step))"
+            let val = Int(lowerRange) + (row * Int(step))
+            return "\(val)"
         }
     }
     
@@ -178,5 +172,5 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func pressedDone(_ sender: UIButton) {
         done()
     }
-    
+
 }

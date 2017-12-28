@@ -445,6 +445,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BZN-tI-oUS">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdI-JW-Dba" userLabel="Translucent View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="0.74813630850000001" blue="0.65703667529999998" alpha="0.75" colorSpace="deviceRGB"/>
+                            </view>
                             <visualEffectView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xo-a0-89d">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jtd-hU-apQ">
@@ -501,13 +508,22 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1xo-a0-89d" firstAttribute="leading" secondItem="F8e-EU-QSR" secondAttribute="leading" id="2AE-Rq-EA6"/>
+                            <constraint firstItem="p2h-pd-ZnD" firstAttribute="bottom" secondItem="tdI-JW-Dba" secondAttribute="bottom" id="2FA-QH-1sf"/>
                             <constraint firstAttribute="bottom" secondItem="1xo-a0-89d" secondAttribute="bottom" id="2iK-0J-zB9"/>
+                            <constraint firstItem="BZN-tI-oUS" firstAttribute="leading" secondItem="p2h-pd-ZnD" secondAttribute="leading" id="4G9-vy-4o8"/>
                             <constraint firstItem="sz4-nc-1EV" firstAttribute="centerY" secondItem="p2h-pd-ZnD" secondAttribute="centerY" id="8B7-PL-BvX"/>
+                            <constraint firstItem="tdI-JW-Dba" firstAttribute="top" secondItem="F8e-EU-QSR" secondAttribute="top" id="Lcg-wJ-KCU"/>
+                            <constraint firstItem="BZN-tI-oUS" firstAttribute="top" secondItem="p2h-pd-ZnD" secondAttribute="top" id="WLC-Nt-aYJ"/>
                             <constraint firstItem="sz4-nc-1EV" firstAttribute="centerX" secondItem="p2h-pd-ZnD" secondAttribute="centerX" id="Wkw-Hb-PBY"/>
+                            <constraint firstItem="p2h-pd-ZnD" firstAttribute="bottom" secondItem="BZN-tI-oUS" secondAttribute="bottom" id="ZNb-la-83W"/>
+                            <constraint firstItem="tdI-JW-Dba" firstAttribute="trailing" secondItem="p2h-pd-ZnD" secondAttribute="trailing" id="a2p-dg-r9m"/>
+                            <constraint firstItem="p2h-pd-ZnD" firstAttribute="trailing" secondItem="BZN-tI-oUS" secondAttribute="trailing" id="edF-Kg-s4y"/>
                             <constraint firstAttribute="top" secondItem="1xo-a0-89d" secondAttribute="top" id="eeo-QN-Btg"/>
                             <constraint firstAttribute="trailing" secondItem="1xo-a0-89d" secondAttribute="trailing" id="hcC-0n-hog"/>
+                            <constraint firstItem="tdI-JW-Dba" firstAttribute="leading" secondItem="p2h-pd-ZnD" secondAttribute="leading" id="jqX-cV-hsX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p2h-pd-ZnD"/>
                     </view>
@@ -519,6 +535,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THI-Xz-eOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="V3J-eQ-9xe" customClass="StyleKit" customModule="Password_Factory_iOS" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="gradientBackgroundTargets" destination="BZN-tI-oUS" collectionClass="NSMutableArray" id="ogh-5f-47x"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1916" y="260"/>
         </scene>

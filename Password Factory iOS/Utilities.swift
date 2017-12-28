@@ -66,5 +66,46 @@ class Utilities: NSObject {
         h.setAttributes(attrs, range: NSMakeRange(0, passwordString.length))
         return h
     }
+    private class func loadPickerFromStoryboard() -> (PickerViewController?) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController
+    }
+    public class func displayPicker(source: UIView, delegate: PickerViewControllerDelegate, parentViewController: UIViewController, type: PickerTypes, passwordType: PFPasswordType) {
+        guard let vc = loadPickerFromStoryboard() else {
+            return
+        }
+        vc.setType(type: type, passwordType: passwordType)
+        showPicker(delegate: delegate, pickerViewController: vc, parentViewController: parentViewController, source: source)
+        
+    }
+    public class func displayNumberPicker(source: UIView, delegate: PickerViewControllerDelegate, parentViewController: UIViewController, title: String, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
+        guard let vc = loadPickerFromStoryboard() else {
+            return
+        }
+        vc.setNumberType(title: title, current: current, lowerRange: l, upperRange: u, step: s)
+        vc.delegate = delegate
+        showPicker(delegate: delegate, pickerViewController: vc, parentViewController: parentViewController, source: source)
+        
+    }
+    private class func showPicker(delegate: PickerViewControllerDelegate, pickerViewController: PickerViewController, parentViewController: UIViewController, source: UIView) {
+        var pvc = parentViewController
+        if parentViewController.isKind(of: PasswordsViewController.self) {
+            pvc = UIApplication.shared.keyWindow?.rootViewController ?? parentViewController
+        }
+        pickerViewController.delegate = delegate
+        pickerViewController.modalPresentationStyle = .popover
+        if let pop = pickerViewController.popoverPresentationController {
+            pop.permittedArrowDirections = .any
+            pop.sourceView = source
+            pop.sourceRect = source.bounds
+            pop.delegate = pickerViewController
+            if let v = pickerViewController.view {
+                pickerViewController.preferredContentSize = pickerViewController.containerView.bounds.size
+            }
+
+            pickerViewController.view.bounds = pickerViewController.containerView.bounds
+        }
+        pvc.present(pickerViewController, animated: true, completion: nil)
+    }
 
 }

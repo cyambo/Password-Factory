@@ -21,7 +21,6 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         pickerType = PickerTypes(rawValue: pickerTypeString) ?? .CaseType
         passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
     }
-
     override func addViews() {
         super.addViews()
         addSubview(controlButton)
@@ -168,11 +167,8 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         guard let pick = pickerType else {
             return
         }
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController {
-            if let r = parentViewController {
-                vc.setType(delegate: self, parentViewController: r, type: pick,passwordType: pass)
-            }
+        if let p = parentViewController {
+            Utilities.displayPicker(source: controlButton, delegate: self, parentViewController: p, type: pick, passwordType: pass)
         }
     }
     
@@ -207,7 +203,10 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
             delegate?.controlChanged(controlButton, defaultsKey: key)
         }
         controlButton.setTitle(t, for: .normal)
-        
+    }
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        controlButton.backgroundColor = tintColor
     }
 
 }

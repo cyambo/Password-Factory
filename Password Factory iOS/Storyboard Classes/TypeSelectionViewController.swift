@@ -55,11 +55,17 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         setSelectedPasswordType()
         selectType(typeSelectionControl)
     }
+
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         if let p = d.prefsPlist {
             d.removeDefaultsObservers(self, keys: Array(p))
         }
+        currentViewController?.view.removeFromSuperview()
+        currentViewController = nil
+        viewControllers.removeAll()
     }
+    
     /// Inserts the segments based upon preferences
     func setupSegments() {
         passwordController.useStoredType = d.bool(forKey: "storePasswords")
@@ -78,8 +84,10 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     ///
     /// - Parameter sender: default sender
     @IBAction func selectType(_ sender: UISegmentedControl) {
-        currentViewController?.view.removeFromSuperview()
         let selType = passwordController.getPasswordType(by: UInt(typeSelectionControl.selectedSegmentIndex))
+
+        currentViewController?.view.removeFromSuperview()
+
         guard let selectedViewController = getViewController(selType) else {
             return
         }
@@ -90,7 +98,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         currentViewController = selectedViewController
         
         controlsView.addSubview(currentView)
-        view.fillViewInContainer(currentView)
+        controlsView.fillViewInContainer(currentView)
         
         self.d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
     }
@@ -214,7 +222,6 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
         return nil
     }
-    
     /// sets observers for the defaults keys we want to monitor
     func setObservers() {
         let toObserve = ["activeControl", "enableAdvanced", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor"]

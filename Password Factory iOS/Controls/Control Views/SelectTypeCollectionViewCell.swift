@@ -18,7 +18,6 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
 
     let c = PFConstants.instance
     let d = DefaultsManager.get()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
@@ -70,7 +69,7 @@ class SelectTypeCollectionViewCell: UICollectionViewCell {
             backgroundColor = backgroundColor?.withAlphaComponent(0.5)
         }
     }
-    
+
     /// Adds the image and label to the view and uses vfl to position them in the view
     func setupView() {
 
