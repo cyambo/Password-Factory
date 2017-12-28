@@ -78,11 +78,11 @@ class Utilities: NSObject {
         showPicker(delegate: delegate, pickerViewController: vc, parentViewController: parentViewController, source: source)
         
     }
-    public class func displayNumberPicker(source: UIView, delegate: PickerViewControllerDelegate, parentViewController: UIViewController, title: String, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
+    public class func displayNumberPicker(source: UIView, delegate: PickerViewControllerDelegate, parentViewController: UIViewController, title: String, isPercent: Bool, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
         guard let vc = loadPickerFromStoryboard() else {
             return
         }
-        vc.setNumberType(title: title, current: current, lowerRange: l, upperRange: u, step: s)
+        vc.setNumberType(title: title, isPercent: isPercent, current: current, lowerRange: l, upperRange: u, step: s)
         vc.delegate = delegate
         showPicker(delegate: delegate, pickerViewController: vc, parentViewController: parentViewController, source: source)
         
@@ -99,11 +99,10 @@ class Utilities: NSObject {
             pop.sourceView = source
             pop.sourceRect = source.bounds
             pop.delegate = pickerViewController
-            if let v = pickerViewController.view {
-                pickerViewController.preferredContentSize = pickerViewController.containerView.bounds.size
-            }
-
-            pickerViewController.view.bounds = pickerViewController.containerView.bounds
+            _ = pickerViewController.view //this loads the view and sets sizes
+            pickerViewController.preferredContentSize = pickerViewController.itemPickerView.bounds.size
+            
+            pickerViewController.view.bounds = pickerViewController.itemPickerView.bounds
         }
         pvc.present(pickerViewController, animated: true, completion: nil)
     }

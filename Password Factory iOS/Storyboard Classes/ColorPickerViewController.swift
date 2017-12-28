@@ -12,7 +12,7 @@ protocol ColorPickerViewControllerDelegate: class {
     func selectedColor(_ color: UIColor)
 }
 
-class ColorPickerViewController: UIViewController {
+class ColorPickerViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     weak var delegate: ColorPickerViewControllerDelegate?
     var pickerColor: UIColor!
     var pickerTitle = ""
@@ -55,9 +55,10 @@ class ColorPickerViewController: UIViewController {
         titleLabel.roundCorners(corners: [.topLeft, .topRight])
         rightButton.addBorder([.top,.left],color: PFConstants.tintColor)
         leftButton.addBorder([.top],color: PFConstants.tintColor)
-
     }
-
-
-
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        if let c = picker?.color {
+            delegate?.selectedColor(c)
+        }
+    }
 }

@@ -163,7 +163,13 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(s.count())
+        let c = s.count()
+        let max = d.integer(forKey: "maxStoredPasswords")
+        if c > max {
+            return max
+        } else {
+            return Int(c)
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44

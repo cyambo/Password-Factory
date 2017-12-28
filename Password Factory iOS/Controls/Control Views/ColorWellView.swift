@@ -44,7 +44,18 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     @objc func loadColorPicker() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "ColorPickerView") as? ColorPickerViewController {
-            vc.modalPresentationStyle = .overFullScreen
+            vc.modalPresentationStyle = .popover
+            if let pop = vc.popoverPresentationController {
+                pop.permittedArrowDirections = .any
+                pop.sourceView = wellView
+                pop.sourceRect = wellView.bounds
+                pop.delegate = vc
+                _ = vc.view
+                let pb = vc.picker.bounds
+                let b = CGRect(x: 0, y: 0, width: pb.size.width + 14, height: pb.size.height + 14)
+                vc.preferredContentSize = b.size
+                vc.view.bounds = b            
+            }
             
             vc.delegate = self
             vc.setColor(wellView.backgroundColor ?? UIColor.blue, andTitle: label ?? "")

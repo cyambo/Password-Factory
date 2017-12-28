@@ -23,7 +23,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var currentNumber : UInt = 0
     var step : UInt = 1
     var numberTypeTitle = ""
-    
+    var isPercent = false
     @IBOutlet weak var itemPickerView: UIPickerView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -33,7 +33,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerType = type
         self.passwordType = passwordType
     }
-    func setNumberType(title: String, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
+    func setNumberType(title: String, isPercent: Bool, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
         lowerRange = l
         upperRange = u
         step = s
@@ -44,6 +44,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         pickerType = .NumberType
         numberTypeTitle = title
+        self.isPercent = isPercent
+        
     }
     
     override func viewDidLoad() {
@@ -129,7 +131,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return c.passwordTypes[pt]
         case .NumberType:
             let val = Int(lowerRange) + (row * Int(step))
-            return "\(val)"
+            let percent = isPercent ? "%" : ""
+            return "\(val)\(percent)"
         }
     }
     
@@ -170,6 +173,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         done()
     }
     @IBAction func pressedDone(_ sender: UIButton) {
+        done()
+    }
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         done()
     }
 

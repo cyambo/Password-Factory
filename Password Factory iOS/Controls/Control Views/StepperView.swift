@@ -56,11 +56,10 @@ class StepperView: ControlView, PickerViewControllerDelegate {
     }
 
     @objc func loadPicker() {
-        let percent = isPercent ? " (%)" : ""
-        let pickerTitle = "\(label ?? "Select")\(percent)"
+        let pickerTitle = "\(label ?? "Select")"
 
         if let p = parentViewController {
-            Utilities.displayNumberPicker(source: valueLabel, delegate: self, parentViewController: p, title: pickerTitle, current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
+            Utilities.displayNumberPicker(source: valueLabel, delegate: self, parentViewController: p, title: pickerTitle, isPercent: isPercent, current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
         }
     }
     
