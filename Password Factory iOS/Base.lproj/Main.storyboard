@@ -68,8 +68,24 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLN-pe-r9C" userLabel="Strength" customClass="StrengthMeter" customModule="Password_Factory_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="116" width="375" height="32"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cj-CO-apB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Crack Time">
+                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toggleCrackTime:" destination="fD8-6D-Gbm" eventType="touchUpInside" id="CsA-2Q-PNJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6cj-CO-apB" secondAttribute="bottom" id="CaY-eV-33b"/>
+                                    <constraint firstItem="6cj-CO-apB" firstAttribute="top" secondItem="lLN-pe-r9C" secondAttribute="top" id="FWH-mE-MQF"/>
+                                    <constraint firstAttribute="trailing" secondItem="6cj-CO-apB" secondAttribute="trailing" id="J2y-bs-7pc"/>
+                                    <constraint firstItem="6cj-CO-apB" firstAttribute="leading" secondItem="lLN-pe-r9C" secondAttribute="leading" id="fan-Qc-653"/>
                                     <constraint firstAttribute="height" constant="32" id="opm-Ip-hF4"/>
                                 </constraints>
                             </view>
@@ -238,6 +254,7 @@
                     <connections>
                         <outlet property="controlsView" destination="NWI-dR-N5M" id="Gir-CN-NxR"/>
                         <outlet property="copyButton" destination="Vug-YN-pqk" id="Vue-Zb-y03"/>
+                        <outlet property="crackTimeButton" destination="6cj-CO-apB" id="jZJ-lj-1Wg"/>
                         <outlet property="generateButton" destination="a3p-3g-Cie" id="3H6-G5-ruC"/>
                         <outlet property="passwordDisplay" destination="FjP-Mb-z7A" id="u7z-mB-36p"/>
                         <outlet property="passwordLengthDisplay" destination="yk6-Cd-qFq" id="wQc-wG-Xfg"/>

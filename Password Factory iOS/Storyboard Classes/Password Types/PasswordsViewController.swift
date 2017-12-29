@@ -18,7 +18,7 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
     var typeSelectionViewController : TypeSelectionViewController?
     
     var passwordStrength: Float = 0.0
-    var strengthText = ""
+    var crackTimeString: String = ""
     var currentPassword = ""
     var passwordType = PFPasswordType.randomType
     let controller = PasswordController.get(false)
@@ -33,17 +33,23 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
         typeSelectionViewController?.controlChanged(control, defaultsKey: defaultsKey)
     }
     func generatePassword() -> String {
-        passwordStrength = 0.0
-        strengthText = ""
         currentPassword = ""
         controller?.generatePassword(passwordType)
         guard let password = controller?.password else {
             return ""
         }
         currentPassword = password
-        if let s = controller?.getPasswordStrength() {
-            passwordStrength = s
-        }
+        updateStrength(withCrackTime: d.bool(forKey: "displayCrackTime"))
         return currentPassword
+    }
+    func updateStrength(withCrackTime: Bool) {
+        crackTimeString = ""
+        passwordStrength = 0.0
+        controller?.generateCrackTimeString = withCrackTime
+        controller?.updatePasswordStrength()
+        if withCrackTime {
+           crackTimeString = controller?.getCrackTimeString() ?? ""
+        }
+        passwordStrength = controller?.getPasswordStrength() ?? 0.0
     }
 }

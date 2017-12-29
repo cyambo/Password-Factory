@@ -20,6 +20,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     var currentViewController: PasswordsViewController?
     var viewControllers = [PFPasswordType : UIViewController]()
     
+    @IBOutlet weak var crackTimeButton: UIButton!
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var generateButton: UIButton!
     @IBOutlet weak var passwordTypeTitle: UILabel!
@@ -50,6 +51,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
         passwordDisplay.text = ""
         passwordFont = passwordDisplay.font ?? passwordFont
+        crackTimeButton.setTitle("", for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +122,16 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
     }
     
+    /// Toggles the display of the crack time over strength meter
+    ///
+    /// - Parameter sender: default sender
+    @IBAction func toggleCrackTime(_ sender: UIButton) {
+        let displayCT = !d.bool(forKey: "displayCrackTime")
+        d.setBool(displayCT, forKey: "displayCrackTime")
+        currentViewController?.updateStrength(withCrackTime: displayCT)
+        crackTimeButton.setTitle(currentViewController?.crackTimeString.uppercased() ?? "", for: .normal)
+    }
+    
     @IBAction func pressedZoomButton(_ sender: UIButton) {
     }
     
@@ -161,12 +173,13 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                 guard let strength = self.currentViewController?.passwordStrength else {
                     return
                 }
+                let crackTime = self.currentViewController?.crackTimeString ?? ""
                 if p.count == 0 || strength == 0 {
                     print("BREAKPOINT LOG - COUNT STRENGTH ZERO")
                 }
                 //update the password field
-                DispatchQueue.main.async { [unowned self, p, strength] in
-                    self.updatePasswordField(p, strength: Double(strength))
+                DispatchQueue.main.async { [unowned self, p, strength, crackTime] in
+                    self.updatePasswordField(p, strength: Double(strength), crackTime: crackTime)
                 }
                 if type != .storedType && !active {
                     //store on the main thread
@@ -184,7 +197,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     /// Updates the password field with the attributed text as well as updating the length counter
     ///
     /// - Parameter password: password to put in field
-    func updatePasswordField(_ password: String, strength: Double) {
+    func updatePasswordField(_ password: String, strength: Double, crackTime: String) {
         if password.count == 0 {
             print("BREAKPOINT LOG - ZERO PASSWORD")
         }
@@ -195,6 +208,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         passwordDisplay.frame.size = size
         passwordScrollView.contentSize = size
         passwordLengthDisplay.text = "\(passwordDisplay.text?.count ?? 0)"
+        crackTimeButton.setTitle(crackTime.uppercased(), for: .normal)
     }
     
     /// selects the current password type on the segmented control
@@ -229,7 +243,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     }
     /// sets observers for the defaults keys we want to monitor
     func setObservers() {
-        let toObserve = ["activeControl", "enableAdvanced", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor"]
+        let toObserve = ["enableAdvanced", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor"]
         d.observeDefaults(self, keys: toObserve)
     }
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
@@ -242,7 +256,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                 return
             }
             //if not, we are updating colors
-            updatePasswordField(passwordDisplay.text ?? "", strength: strengthMeter.strength * 100)
+            updatePasswordField(passwordDisplay.text ?? "", strength: strengthMeter.strength * 100, crackTime: crackTimeButton.titleLabel?.text ?? "")
         }
     }
     

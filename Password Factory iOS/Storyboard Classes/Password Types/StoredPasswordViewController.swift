@@ -157,7 +157,15 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
             guard let s = Double(st) else {
                 return
             }
-            typeSelectionViewController?.updatePasswordField(p, strength: s)
+            var ct = ""
+            if let c = controller {
+                c.password = p
+                if d.bool(forKey: "displayCrackTime") {
+                    c.generateCrackTimeString = true
+                    ct = c.getCrackTimeString()
+                }
+            }
+            typeSelectionViewController?.updatePasswordField(p, strength: s, crackTime: ct)
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
