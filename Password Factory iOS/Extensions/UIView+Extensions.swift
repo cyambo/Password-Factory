@@ -76,14 +76,22 @@ extension UIView {
         if sides.contains(.left) {
             borders.append(CGRect(x:0, y:0, width:width, height: frame.size.height))
         }
+        if let s = layer.sublayers {
+            for l in s {
+                //if we find that class, remove it so we don't have duplicate borders
+                if l.isKind(of: BorderedLayer.self) {
+                    l.removeFromSuperlayer()
+                }
+            }
+        }
+
         for b in borders {
-            let border = CALayer()
+            let border = BorderedLayer() //using an empty class to identify borders
             layer.masksToBounds = true
             border.backgroundColor = color.cgColor
             border.frame = b
             layer.addSublayer(border)
         }
-        //TODO: need to fix when view updates and adds borders, the old ones stay
     }
 
     func addGradient(_ topColor: UIColor = UIColor(white: 1, alpha: 1), _ bottomColor: UIColor = UIColor(white: 0.98, alpha: 1)) {
@@ -172,3 +180,4 @@ extension UIView {
         addConstraint(NSLayoutConstraint.init(item: firstView, attribute: attribute, relatedBy: .equal, toItem: secondView, attribute: attribute, multiplier: 1, constant: 1))
     }
 }
+class BorderedLayer: CALayer {}
