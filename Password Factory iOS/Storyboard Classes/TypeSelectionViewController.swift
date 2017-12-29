@@ -20,6 +20,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     var currentViewController: PasswordsViewController?
     var viewControllers = [PFPasswordType : UIViewController]()
     
+    @IBOutlet weak var copyButton: UIButton!
+    @IBOutlet weak var generateButton: UIButton!
     @IBOutlet weak var passwordTypeTitle: UILabel!
     @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var controlsView: UIView!
@@ -77,7 +79,6 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
             let image = TypeIcons.getTypeIcon(currType)
             typeSelectionControl.insertSegment(with: image, at: i, animated: true)
         }
-        
     }
     
     /// Called when type is selected on the segmented control - animates the next one into the view
@@ -85,7 +86,11 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     /// - Parameter sender: default sender
     @IBAction func selectType(_ sender: UISegmentedControl) {
         let selType = passwordController.getPasswordType(by: UInt(typeSelectionControl.selectedSegmentIndex))
-
+        if selType == .storedType {
+            generateButton.isEnabled = false
+        } else {
+            generateButton.isEnabled = true
+        }
         currentViewController?.view.removeFromSuperview()
 
         guard let selectedViewController = getViewController(selType) else {

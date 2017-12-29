@@ -68,6 +68,10 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         let sort = NSSortDescriptor.init(key: sortName, ascending: ascending)
         s.setSortDescriptor(sort)
         storedPasswordsTable.reloadData()
+        if storedPasswordsTable.numberOfSections > 0 && storedPasswordsTable.numberOfRows(inSection: 0) > 0 {
+            storedPasswordsTable.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        }
+        
     }
     func getImageForSort(_ sort : SortTypes) -> UIImage {
         let baseImage: UIImage

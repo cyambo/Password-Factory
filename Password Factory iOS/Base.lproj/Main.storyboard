@@ -237,6 +237,8 @@
                     </view>
                     <connections>
                         <outlet property="controlsView" destination="NWI-dR-N5M" id="Gir-CN-NxR"/>
+                        <outlet property="copyButton" destination="Vug-YN-pqk" id="Vue-Zb-y03"/>
+                        <outlet property="generateButton" destination="a3p-3g-Cie" id="3H6-G5-ruC"/>
                         <outlet property="passwordDisplay" destination="FjP-Mb-z7A" id="u7z-mB-36p"/>
                         <outlet property="passwordLengthDisplay" destination="yk6-Cd-qFq" id="wQc-wG-Xfg"/>
                         <outlet property="passwordScrollView" destination="eDF-xA-Mpa" id="uN3-JV-HAH"/>
