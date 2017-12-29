@@ -102,7 +102,7 @@
     if(settings[@"useNumbers"]) {
         self.factory.useNumbers = [(NSNumber *)settings[@"useNumbers"] boolValue];
     }
-    self.password = @"";
+    NSString *currPassword = @"";
     switch (type) {
         case PFRandomType: //random
             if (settings[@"caseType"]) {
@@ -110,19 +110,19 @@
             } else {
                 self.factory.caseType = PFLowerCase;
             }
-            self.password = [self.factory generateRandom];
+            currPassword = [self.factory generateRandom];
             break;
         case PFPatternType: //pattern
-            self.password = [self.factory generatePattern:settings[@"patternText"]];
+            currPassword = [self.factory generatePattern:settings[@"patternText"]];
             break;
             
         case PFPronounceableType: //pronounceable
             self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
-            self.password = [self.factory generatePronounceableWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
+            currPassword = [self.factory generatePronounceableWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
             break;
         case PFPassphraseType: //passphrase:
             self.factory.caseType = (PFCaseType)[(NSNumber *)settings[@"caseType"] integerValue];
-            self.password = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
+            currPassword = [self.factory generatePassphraseWithSeparatorType:(PFSeparatorType)[(NSNumber *)settings[@"separatorType"] integerValue]];
             break;
         case PFAdvancedType:
             self.factory.caseType = 0;
@@ -145,12 +145,13 @@
             }
             self.factory.replaceAmbiguous = [settings[@"replaceAmbiguous"] boolValue];
             self.factory.truncate = [settings[@"truncateAt"] integerValue];
-            self.password = [self.factory transformPassword:settings[@"generatedPassword"] symbolCasePrecent:[settings[@"symbolCasePercent"] integerValue] accentedCasePercent:[settings[@"accentedCasePercent"] integerValue]];
+            currPassword = [self.factory transformPassword:settings[@"generatedPassword"] symbolCasePrecent:[settings[@"symbolCasePercent"] integerValue] accentedCasePercent:[settings[@"accentedCasePercent"] integerValue]];
             break;
         case PFStoredType:
-            self.password = settings[@"storedPassword"];
+            currPassword = settings[@"storedPassword"];
             break;
     }
+    self.password = currPassword;
     [self updatePasswordStrength];
     if (self.delegate && !settings[@"noDisplay"]) {
         [self.delegate passwordChanged:self.password];

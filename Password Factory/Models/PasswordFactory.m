@@ -30,8 +30,8 @@
 
 /**
  Singleton Get Method
-
- @return PaswordFactory 
+ 
+ @return PaswordFactory
  */
 + (instancetype)get {
     static dispatch_once_t once = 0;
@@ -39,11 +39,11 @@
     
     dispatch_once(&once, ^ {
         singleton = [[PasswordFactory alloc] init];
-
+        
     });
     
     return singleton;
-
+    
 }
 - (id)init {
     self = [super init];
@@ -69,9 +69,9 @@
  */
 - (NSString *)generatePronounceable {
     NSMutableString *p = [[NSMutableString alloc] init];
-
+    
     int i = 0;
-
+    
     while ([p getUnicodeLength] < self.length) {
         NSString *append = [self caseString:[self getPronounceableForLength:(self.length - [p getUnicodeLength])]];
         if ([append isEqual: @""]) {
@@ -82,7 +82,7 @@
             }
             [p appendString:append];
         }
-
+        
         i++;
     }
     return p;
@@ -95,9 +95,9 @@
  *  @return pronounceable password with separator and approximately .length property
  */
 - (NSString *)generatePronounceableWithSeparatorType:(PFSeparatorType)separatorType {
-
+    
     [self setSeparatorFromType:separatorType];
-
+    
     return [self generatePronounceable];
 }
 #pragma mark Pronounceable Utilities
@@ -194,8 +194,8 @@
 }
 
 /**
-  Generates a passphrase using the separator code constant
-
+ Generates a passphrase using the separator code constant
+ 
  @param separatorType PFSeparatorType separator
  @return passphrase
  */
@@ -212,10 +212,10 @@
  *  @return word to fit
  */
 -(NSString *)getPassphraseForLength:(NSUInteger)length {
-
+    
     NSString *found;
     int spun = 0;
-
+    
     while (!found && spun <= 40) {
         spun ++;
         int currLength = [SecureRandom randomInt:8] + 4;
@@ -238,79 +238,109 @@
 
 /**
  Generates a random password of length
-
+ 
  @param length length of password
  @return randomized password
  */
 - (NSString *)generateRandomWithLength:(NSUInteger)length {
-    [self setCharacterRange];
+    NSUInteger count = [self getCharacterRange];
     NSMutableString *curr = [[NSMutableString alloc] init];
-    for(int i=0;i<length;i++){
-        int at = [SecureRandom randomInt:(uint)self.currentRange.count];
-        //TODO: dies here sometimes with array index over length
-        [curr appendString:[self.currentRange objectAtIndex:at]];
+    for(int atLength=0; atLength < length; atLength++){
+        int currentRandomPosition = [SecureRandom randomInt:(uint)count];
+        int rangeCounter = 0;
+        NSString *toAppend;
+        for(int atRangeItem = 0; atRangeItem < self.currentRange.count; atRangeItem++) {
+            int previousRangeCounter = rangeCounter;
+            NSNumber *atRange = self.currentRange[atRangeItem][0];
+            rangeCounter += [atRange integerValue];
+            if (currentRandomPosition < rangeCounter) {
+                id fromRandom = self.currentRange[atRangeItem][1];
+                if ([fromRandom isKindOfClass:[NSString class]]) {
+                    int num = currentRandomPosition - previousRangeCounter;
+                    char from = [(NSString *)fromRandom characterAtIndex:num];
+                    toAppend = [NSString stringWithFormat:@"%c",from];
+                } else {
+                    toAppend = [self randomFromArray:(NSArray *)fromRandom];
+                }
+                break;
+            }
+            if (toAppend != nil) {
+                break;
+            }
+        }
+        if (toAppend != nil) {
+            [curr appendString:toAppend];
+        }
     }
+    self.currentRange = nil;
     return curr;
 }
 #pragma mark Random Password Utilities
+
 /**
- *  Gets the characters used for a random password based upon settings
+ Gets the range array for generating random passwords
+
+ @return total number of characters in range
  */
-- (void)setCharacterRange {
-    NSMutableString *tmp = [[NSMutableString alloc] init];
+-(NSUInteger)getCharacterRange {
+    NSMutableArray *r = [[NSMutableArray alloc] init];
+    NSUInteger count = 0;
     if (self.useSymbols) {
-        [tmp appendString:self.c.symbols];
+        count += [self addRange:self.c.symbols toArray:r];
     }
     if (self.avoidAmbiguous) {
         if (self.caseType == PFUpperCase) {
-            [tmp appendString:self.c.nonAmbiguousUpperCase];
+            count += [self addRange:self.c.nonAmbiguousUpperCase toArray:r];
         } else {
-            [tmp appendString:self.c.nonAmbiguousLowerCase];
+            count += [self addRange:self.c.nonAmbiguousLowerCase toArray:r];
         }
         if (self.useNumbers) {
-            [tmp appendString:self.c.nonAmbiguousNumbers];
+            count += [self addRange:self.c.nonAmbiguousNumbers toArray:r];
         }
         
     } else {
         if(self.caseType == PFUpperCase) {
-            [tmp appendString:self.c.upperCase];
+            count += [self addRange:self.c.upperCase toArray:r];
         } else {
-            [tmp appendString:self.c.lowerCase];
+            count += [self addRange:self.c.lowerCase toArray:r];
         }
         if (self.useNumbers) {
-            [tmp appendString:self.c.numbers];
+            count += [self addRange:self.c.numbers toArray:r];
         }
     }
     if (self.caseType == PFMixedCase) {
         if (self.avoidAmbiguous) {
-            [tmp appendString:self.c.nonAmbiguousUpperCase];
+            count += [self addRange:self.c.nonAmbiguousUpperCase toArray:r];
         } else {
-            [tmp appendString:self.c.upperCase];
+            count += [self addRange:self.c.upperCase toArray:r];
         }
     }
-
-    NSMutableDictionary *d = [[NSMutableDictionary alloc] init];
-    //using a dictionary to make all the letters unique
-    for(int i = 0; i < tmp.length; i++) {
-        NSRange r = NSMakeRange(i, 1);
-        d[[tmp substringWithRange:r]] = @(1);
-    }
-    self.currentRange = [[d allKeys] mutableCopy];
     if (self.useEmoji) {
-        //only putting a small number of random emojis in the pool
-        //because if we use all of them it messes up the balance of characters and displays
-        //mostly emoji
-        for (int i = 0; i < PFPasswordNumEmojiInRandom; i++) {
-            [self.currentRange addObject:[self randomFromArray:self.emojis]];
-        }
+        count += PFPasswordNumEmojiInRandom;
+        [r addObject:@[@(PFPasswordNumEmojiInRandom), self.emojis]];
     }
-    
+    self.currentRange = r;
+    return count;
 }
+
+/**
+ Utility method to add an item to the range
+
+ @param add String to add
+ @param a current range
+ @return number of characters added
+ */
+-(NSUInteger)addRange:(NSString *)add toArray:(NSMutableArray *)a {
+    NSArray *o = @[@(add.length), add];
+    [a addObject:o];
+    return add.length;
+}
+
 #pragma mark Pattern Password
 
 /**
  Generates a pattern password
-
+ 
  @param pattern Pattern to use
  @return generated passwords
  */
@@ -322,7 +352,7 @@
     //using 'NSStringEnumerationByComposedCharacterSequences' so that emoji and other extended characters are enumerated as a single character
     [pattern enumerateSubstringsInRange:NSMakeRange(0, pattern.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
         
-
+        
         //dealing with escape - skip to next and place it
         if ([character isEqualToString:@"\\"]) { //the slash will escape the next character and display it exactly as typed
             isEscaped = YES;
@@ -333,7 +363,7 @@
             isEscaped = NO;
             return;
         }
-
+        
         NSString *toAppend;
         //will replace the special pattern characters with their proper randomized value
         if(self.c.patternCharacterToType[character]) {
@@ -408,7 +438,7 @@
             //not a pattern character, so just append
             toAppend = character;
         }
-
+        
         [s appendString:toAppend];
     }];
     return s;
@@ -417,7 +447,7 @@
 
 /**
  Transforms the passed in password
-
+ 
  @param source password to transform
  @param symbol percent of symbolCase to use
  @param accent percent of accentedCase to use
@@ -493,7 +523,7 @@
 
 /**
  Changes the case of the string based upon self.caseType
-
+ 
  @param toCase string to
  @return cased string
  */
@@ -519,8 +549,8 @@
 
 
 /**
-  Gets the strings that are used to build up the passwords
-
+ Gets the strings that are used to build up the passwords
+ 
  @param type PFCharacterType to check
  @return character type string
  */
@@ -538,7 +568,7 @@
 
 /**
  Returns if a character is part of password character type item
-
+ 
  @param type PFCharacterType - i.e UpperCase
  @param character character to check
  @return true if character is part of builder item
@@ -646,16 +676,16 @@
  *  @return path of file
  */
 -(NSString *)getApplicationSupportDirectory:(NSString *)withFile {
-
+    
     NSError *error;
     NSFileManager *fm = [NSFileManager defaultManager];
-
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *appS = [paths firstObject];
     NSString *executableName =
     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"]; //appending the app name
     appS = [appS stringByAppendingPathComponent:executableName];
-
+    
     //Creating the directory if it needs to be
     if(![fm fileExistsAtPath:appS]) {
         
@@ -664,7 +694,7 @@
                        attributes:nil
                             error:&error];
     }
-
+    
     appS = [appS stringByAppendingPathComponent:withFile];
     return appS;
 }
@@ -676,7 +706,7 @@
  *  @return YES if it is a 'bad' word 'NO' if it is not
  */
 - (BOOL)isBadWord:(NSString *)word {
-
+    
     if ([self.badWords containsObject:word]) {
         return YES;
     }
@@ -696,7 +726,7 @@
 
 /**
  Returns all the passsword types in a dictionary keyed by PFPasswordType
-
+ 
  @return all password types
  */
 -(NSDictionary *)getAllPasswordTypes {

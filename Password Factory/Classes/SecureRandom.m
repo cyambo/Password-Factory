@@ -22,7 +22,12 @@
     int32_t randomNumber = 0;
     uint result = SecRandomCopyBytes(kSecRandomDefault, 4, (uint8_t*) &randomNumber);
     if(result == 0) {
-        return randomNumber % limit;
+        uint n =  randomNumber % limit;
+        if (n > limit) {
+            return limit; //if for some reason n is over the limit, return the limit (should never reach this)
+        } else {
+            return n;
+        }
     } else {
         NSLog(@"SecRandomCopyBytes failed for some reason");
     }
