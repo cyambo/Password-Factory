@@ -21,6 +21,7 @@ class BorderedView: UIView {
     override func prepareForInterfaceBuilder() {
         setDisplay()
     }
+
     func setDisplay() {
         var sides = UIRectEdge()
         if topBorder { sides.insert(.top) }

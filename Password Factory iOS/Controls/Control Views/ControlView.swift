@@ -46,7 +46,6 @@ class ControlView: UIView, DefaultsManagerDelegate {
     
     /// Initialize current control, only called from init
     func initializeControls() {
-        layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         d.setBool(false, forKey: "activeControl")
     }
     
@@ -57,8 +56,14 @@ class ControlView: UIView, DefaultsManagerDelegate {
     
     /// Sets up the view when display is ready
     func setupView() {
+        var sideMargin : CGFloat =  16.0
+        if let width = UIApplication.shared.keyWindow?.rootViewController?.view.frame.size.width {
+            if width > 500.0 {
+                sideMargin = (width - 500.0) / 2.0
+            }
+        }
+        layoutMargins = UIEdgeInsets(top: 8, left: sideMargin, bottom: 8, right: sideMargin)
         addBorder([.bottom],color: PFConstants.cellBorderColor)
-        addGradient()
         setLabel()
         setEnabledObserver()
     }

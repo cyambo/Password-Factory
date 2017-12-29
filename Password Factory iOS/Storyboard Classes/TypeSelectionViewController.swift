@@ -44,9 +44,9 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         //setup a global gesture that will dismiss the keyboard on a tap in the background
         if keyboardDismissGesture == nil {
             //setting a tap gesture to dismiss keyboard when tapped outside of keyboard view
-            keyboardDismissGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+            keyboardDismissGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
             keyboardDismissGesture?.cancelsTouchesInView = false
-            self.view.addGestureRecognizer(keyboardDismissGesture!)
+            view.addGestureRecognizer(keyboardDismissGesture!)
         }
         passwordDisplay.text = ""
         passwordFont = passwordDisplay.font ?? passwordFont
@@ -105,7 +105,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         controlsView.addSubview(currentView)
         controlsView.fillViewInContainer(currentView)
         
-        self.d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
+        d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
     }
     
     /// Displays the preferences modal
@@ -143,7 +143,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     }
     /// Generates password from the current view controller
     func generatePassword() {
-        let active = self.d.bool(forKey: "activeControl")
+        let active = d.bool(forKey: "activeControl")
         //running the password generation if we are not an active control, or if we are an active control make sure the last operation finished
         if !active || (active &&  queue.operationCount == 0) {
             queue.addOperation { [unowned self, active] in

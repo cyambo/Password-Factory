@@ -29,7 +29,7 @@ extension UIView {
     }
     /// Removes subviews from UIView
     func removeSubviews() {
-        self.subviews.forEach({
+        subviews.forEach({
             if !($0 is UILayoutSupport) {
                 $0.removeSubviews()
                 $0.removeFromSuperview()
@@ -38,13 +38,13 @@ extension UIView {
     }
     /// Removes constraints from subviews
     func removeConstraintsOnSubviews() {
-        self.subviews.forEach({
+        subviews.forEach({
             $0.removeConstraints($0.constraints)
         })
     }
     /// Removes subviews and constraints from view
     func removeSubviewsAndConstraints() {
-        self.subviews.forEach({
+        subviews.forEach({
             $0.removeSubviewsAndConstraints()
             $0.removeConstraints($0.constraints)
             $0.removeFromSuperview()
@@ -83,10 +83,10 @@ extension UIView {
             border.frame = b
             layer.addSublayer(border)
         }
+        //TODO: need to fix when view updates and adds borders, the old ones stay
     }
 
     func addGradient(_ topColor: UIColor = UIColor(white: 1, alpha: 1), _ bottomColor: UIColor = UIColor(white: 0.98, alpha: 1)) {
-        return;
         let gradient = CAGradientLayer()
         gradient.frame = bounds
         gradient.colors = [topColor.cgColor, bottomColor.cgColor]

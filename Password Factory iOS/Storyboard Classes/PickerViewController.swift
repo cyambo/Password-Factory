@@ -52,7 +52,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapFrom(recognizer:)))
         tap.delegate = self
-        self.view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,11 +82,11 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     /// Sets the title
     func setupTitle() {
         if pickerType == .PasswordType {
-            self.titleLabel.text = "Password Source"
+            titleLabel.text = "Password Source"
         } else if pickerType == .NumberType {
-            self.titleLabel.text = numberTypeTitle
+            titleLabel.text = numberTypeTitle
         } else {
-            self.titleLabel.text = "Select \(pickerType.rawValue)"
+            titleLabel.text = "Select \(pickerType.rawValue)"
         }
         titleLabel.backgroundColor = PFConstants.tintColor
         titleLabel.textColor = UIColor.white
@@ -138,7 +138,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     /// Called when done is pressed, or the background is tapped
     func done() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         let selected = itemPickerView.selectedRow(inComponent: 0)
         delegate?.selectedItem(type: pickerType, index: selected)
     }
