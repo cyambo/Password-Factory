@@ -28,7 +28,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     var ascending = false
 
     override func awakeFromNib() {
-        d.observeDefaults(self, keys: ["maxStoredPasswords"])
+        d.observeDefaults(self, keys: ["maxStoredPasswords", "storePasswords"])
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +114,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     }
 
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
-        if keyPath == "maxStoredPasswords" {
+        if keyPath == "maxStoredPasswords" || keyPath == "storePasswords" {
             s.changedMaxStorageAmount()
             storedPasswordsTable.reloadData()
         }
@@ -159,10 +159,8 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
             }
             var ct = ""
             if let c = controller {
-                c.password = p
                 if d.bool(forKey: "displayCrackTime") {
-                    c.generateCrackTimeString = true
-                    ct = c.getCrackTimeString()
+                    ct = c.getCrackTime(p)
                 }
             }
             typeSelectionViewController?.updatePasswordField(p, strength: s, crackTime: ct)

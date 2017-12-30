@@ -229,6 +229,13 @@
     }
     return self.passwordStrength.crackTimeString;
 }
+-(NSString *)getCrackTimeString:(NSString *)password {
+    self.password = password;
+    self.passwordStrength.crackTimeString = @"";
+    self.generateCrackTimeString = YES;
+    return [self getCrackTimeString];
+    
+}
 #pragma mark PasswordFactory methods
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character {
     return [self.factory isCharacterType:type character:character];

@@ -40,6 +40,7 @@
 - (void)updatePasswordStrength;
 - (float)getPasswordStrength;
 - (NSString *)getCrackTimeString;
+-(NSString *)getCrackTimeString:(NSString *)password;
 - (BOOL)isCharacterType:(PFCharacterType)type character:(NSString *)character;
 - (NSString *)getNameForPasswordType: (PFPasswordType)type;
 - (NSDictionary *)getAllPasswordTypes;
