@@ -61,6 +61,7 @@
 		402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
+		4043C76A1FF6C4EF00F9A446 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */; };
 		40496FBB1FE843F30099158C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40496FBA1FE843F30099158C /* UIView+Extensions.swift */; };
 		404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		404B6D611FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
@@ -289,6 +290,7 @@
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
 		403DF3A41FC8F56C0057E15C /* MenuPopover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuPopover.m; sourceTree = "<group>"; };
+		4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		40496FBA1FE843F30099158C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		404B6D5E1FBE76CB00B281E5 /* NSString+UnicodeLength.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+UnicodeLength.h"; sourceTree = "<group>"; };
 		404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeLength.m"; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 				402C96521FD5D69600E2B37E /* PickerViewController.swift */,
 				40E9D1681FE04BC100FE1A1C /* TypeSelectionViewController.swift */,
 				40974E321FE485B800AC2772 /* PreferencesViewController.swift */,
+				4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */,
 			);
 			path = "Storyboard Classes";
 			sourceTree = "<group>";
@@ -1680,6 +1683,7 @@
 				40189F5A1FD46A6000D87217 /* PronounceablePasswordViewController.swift in Sources */,
 				400108131FD3338000594304 /* constants.m in Sources */,
 				40E9D1691FE04BC100FE1A1C /* TypeSelectionViewController.swift in Sources */,
+				4043C76A1FF6C4EF00F9A446 /* ZoomViewController.swift in Sources */,
 				405118581FD622CA00E3FDFB /* PasswordStorage.m in Sources */,
 				400108241FD3370500594304 /* NSString+RandomCase.m in Sources */,
 				405118571FD6220200E3FDFB /* Passwords+CoreDataProperties.m in Sources */,

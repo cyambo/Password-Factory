@@ -20,6 +20,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     var currentViewController: PasswordsViewController?
     var viewControllers = [PFPasswordType : UIViewController]()
     
+    @IBOutlet weak var zoomButton: ZoomButton!
     @IBOutlet weak var crackTimeButton: UIButton!
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var generateButton: UIButton!
@@ -132,7 +133,29 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         crackTimeButton.setTitle(currentViewController?.crackTimeString.uppercased() ?? "", for: .normal)
     }
     
+    
+    /// Displays a zoomed password
+    ///
+    /// - Parameter sender: default sender
     @IBAction func pressedZoomButton(_ sender: UIButton) {
+        if let zoomViewController = mainStoryboard?.instantiateViewController(withIdentifier: "ZoomView") as? ZoomViewController {
+            zoomViewController.modalPresentationStyle = .popover
+            let size = zoomViewController.formatPassword(password: passwordDisplay.text ?? "")
+            if let pop = zoomViewController.popoverPresentationController {
+                pop.permittedArrowDirections = .any
+                pop.backgroundColor = zoomViewController.bgColor
+                pop.sourceView = zoomButton
+                pop.sourceRect = zoomButton.bounds
+                var height = (size.height + 4.0) * ceil(size.width / 580)
+                let width = size.width < 600 ? (size.width + 40) : 600
+                if height > 700 { height = 700 }
+                
+                zoomViewController.preferredContentSize = CGSize.init(width: width, height: height)
+            }
+            present(zoomViewController, animated: true, completion:{
+                zoomViewController.zoomedPassword.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
+            })
+        }
     }
     
     /// Generates password when button is pressed

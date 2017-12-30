@@ -37,7 +37,7 @@ class Utilities: NSObject {
     class func highlightPasswordString(password: String, font: UIFont) -> NSAttributedString {
         let passwordString = password as NSString
         let highlighted = getNonHighlightedString(s: password, font: font)
-        passwordString.enumerateSubstrings(in: NSMakeRange(0, passwordString.length), options: .byComposedCharacterSequences, using: {
+        passwordString.enumerateSubstrings(in: NSRange.init(location: 0, length: passwordString.length), options: .byComposedCharacterSequences, using: {
             (substring, substringRange, _, _) in
             if substring?.count == 1 {
                 let attrs = [
@@ -49,7 +49,27 @@ class Utilities: NSObject {
         })
         return highlighted
     }
-    
+    class func dodgeHighlightedPasswordString(password: String, font: UIFont, backgroundColor: UIColor) -> NSAttributedString {
+        guard let password = highlightPassword(password: password, font: font).mutableCopy() as? NSMutableAttributedString else {
+            return NSAttributedString()
+        }
+        let passwordString = password.string as NSString
+        passwordString.enumerateSubstrings(in: NSRange.init(location: 0, length: passwordString.length), options: .byComposedCharacterSequences, using: {
+            (substring, substringRange, _, _) in
+            if substring?.count == 1 {
+                var effectiveRange = substringRange
+                if let textColor = password.attribute(.foregroundColor, at: substringRange.location, effectiveRange: &effectiveRange) as? UIColor {
+                    let dodged = ColorUtilities.dodgeColor(textColor, backgroundColor: backgroundColor)
+                    let attrs = [
+                        NSAttributedStringKey.foregroundColor:dodged as Any,
+                        ]
+                    password.addAttributes(attrs, range: substringRange)
+                }
+            }
+        })
+        return password
+        
+    }
     /// Gets the non-highlighted string using the font and default color
     ///
     /// - Parameters:
