@@ -180,7 +180,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     func generatePassword() {
         let active = d.bool(forKey: "activeControl")
         //running the password generation if we are not an active control, or if we are an active control make sure the last operation finished
-        if !active || (active &&  queue.operationCount == 0) {
+        if queue.operationCount == 0 {
             queue.addOperation { [unowned self, active] in
                 guard let p = self.currentViewController?.generatePassword() else {
                     DispatchQueue.main.async { [unowned self] in

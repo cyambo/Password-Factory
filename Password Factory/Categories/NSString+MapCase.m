@@ -53,7 +53,7 @@ static NSDictionary *map = nil;
     [self enumerateSubstringsInRange:NSMakeRange(0, self.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
         
         BOOL replaced = NO;
-        if(toReplace.count) {
+        if(toReplace != nil && toReplace.count) {
             NSUInteger item = [toReplace[0] integerValue];
             if (item == i) {
                 replaced = YES;
@@ -67,7 +67,6 @@ static NSDictionary *map = nil;
         i++;
     
     }];
-
     return retval;
 }
 - (NSString *)getRandomSymbolForLetter:(NSString*)letter {
