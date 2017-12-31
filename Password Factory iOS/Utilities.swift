@@ -183,5 +183,13 @@ class Utilities: NSObject {
         UIGraphicsEndImageContext()
         return screenshot
     }
-
+    public class func getSideMarginsForControls() -> CGFloat {
+        var sideMargin : CGFloat =  16.0
+        if let width = UIApplication.shared.keyWindow?.rootViewController?.view.frame.size.width {
+            if width > 500.0 {
+                sideMargin = (width - 500.0) / 2.0
+            }
+        }
+        return sideMargin
+    }
 }

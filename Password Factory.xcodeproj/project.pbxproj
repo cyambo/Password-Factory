@@ -49,6 +49,7 @@
 		40189F5C1FD46A6D00D87217 /* PassphrasePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5B1FD46A6D00D87217 /* PassphrasePasswordViewController.swift */; };
 		40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */; };
 		40189F601FD46A8F00D87217 /* AdvancedPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */; };
+		401BC7211FF968B0008C7927 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401BC7201FF968B0008C7927 /* HeaderLabel.swift */; };
 		4025FC271FE5C2B50036BE3C /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4025FC261FE5C2B50036BE3C /* DeleteButton.swift */; };
 		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
 		402C96431FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
@@ -278,6 +279,7 @@
 		40189F5B1FD46A6D00D87217 /* PassphrasePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphrasePasswordViewController.swift; sourceTree = "<group>"; };
 		40189F5D1FD46A7F00D87217 /* StoredPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredPasswordViewController.swift; sourceTree = "<group>"; };
 		40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPasswordViewController.swift; sourceTree = "<group>"; };
+		401BC7201FF968B0008C7927 /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		4025FC261FE5C2B50036BE3C /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		402C96411FD4C53B00E2B37E /* ColorUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorUtilities.h; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */,
 				400E45CF1FD78A1E00A3F4F7 /* BigTypeIconView.swift */,
 				4054836F1FE9B1F000E42EF6 /* BorderedView.swift */,
+				401BC7201FF968B0008C7927 /* HeaderLabel.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1697,6 +1700,7 @@
 				4051185D1FD62E2600E3FDFB /* ZoomButton.swift in Sources */,
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
+				401BC7211FF968B0008C7927 /* HeaderLabel.swift in Sources */,
 				406E8FE11FE30E7400A76765 /* LengthControlView.swift in Sources */,
 				405531F61FEF3F1200E77A84 /* UIImage+Extensions.swift in Sources */,
 				40496FBB1FE843F30099158C /* UIView+Extensions.swift in Sources */,

@@ -56,12 +56,7 @@ class ControlView: UIView, DefaultsManagerDelegate {
     
     /// Sets up the view when display is ready
     func setupView() {
-        var sideMargin : CGFloat =  16.0
-        if let width = UIApplication.shared.keyWindow?.rootViewController?.view.frame.size.width {
-            if width > 500.0 {
-                sideMargin = (width - 500.0) / 2.0
-            }
-        }
+        let sideMargin = Utilities.getSideMarginsForControls()
         layoutMargins = UIEdgeInsets(top: 8, left: sideMargin, bottom: 8, right: sideMargin)
         addBorder([.bottom],color: PFConstants.cellBorderColor)
         setLabel()
