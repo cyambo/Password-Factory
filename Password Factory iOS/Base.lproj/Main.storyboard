@@ -1543,204 +1543,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfn-8Q-33l">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AjP-Xg-Nm4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="regular"/>
-                            </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD2-LM-EkB">
-                                <rect key="frame" x="16" y="36" width="343" height="615"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-b4-yD6" userLabel="Header" customClass="BorderedView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4c-rq-9ch">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
-                                        <color key="backgroundColor" red="0.99215686270000003" green="0.43921568630000002" blue="0.23921568630000001" alpha="1" colorSpace="deviceRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="FMy-h5-e21"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4c-rq-9ch">
+                                        <rect key="frame" x="16" y="53.5" width="284" height="38.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF9-o9-yQR">
-                                        <rect key="frame" x="0.0" y="36" width="343" height="543"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="eew-MJ-TLG">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="692"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bds-4z-5bU" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="jDg-k5-eLU"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-Dj-BZF" userLabel="Max Password Length" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="44" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="56" id="DIK-H2-zZf"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="maxPasswordLength"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Max Length"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                                <integer key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                                <integer key="value" value="100"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
-                                                                <integer key="value" value="5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1p-hu-HFb" userLabel="Enable Advanced" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="100" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="enableAdvanced"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Enable Advanced"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STE-09-qyK" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="156" width="343" height="44"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xup-A2-sDC" userLabel="Enable Stored" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="200" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="storePasswords"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Store Passwords"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="KGt-Hr-RKx" id="ozS-Rr-AEy"/>
-                                                        </connections>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWn-q6-7cQ" userLabel="Amount To Store" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="256" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="maxStoredPasswords"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Amount To Store"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                                <integer key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                                <integer key="value" value="500"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
-                                                                <integer key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="storePasswords"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53i-oo-3kh" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="312" width="343" height="44"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5V-Ia-V1b" userLabel="Text Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="356" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Text Color"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="defaultTextColor"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soT-oz-KrN" userLabel="Color Password Text" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="412" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="colorPasswordText"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Color Password Text"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPp-gZ-aYm" userLabel="Uppercase Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="468" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="upperTextColor"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Uppercase Letters"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WG2-5P-lfb" userLabel="Lowercase Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="524" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="lowerTextColor"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Lowercase Letters"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwH-s0-Oqs" userLabel="Numbers Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="580" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="numberTextColor"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Numbers"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5am-K1-F3G" userLabel="Symbols Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="636" width="343" height="56"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="symbolTextColor"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="label" value="Symbols"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="UPp-gZ-aYm" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="2f3-1o-Nhs"/>
-                                                    <constraint firstItem="ux6-Dj-BZF" firstAttribute="height" secondItem="R1p-hu-HFb" secondAttribute="height" id="2y7-pV-M5d"/>
-                                                    <constraint firstItem="R1p-hu-HFb" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="3Uf-X4-xvN"/>
-                                                    <constraint firstItem="fwH-s0-Oqs" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="5K8-Fb-ACS"/>
-                                                    <constraint firstItem="UPp-gZ-aYm" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="5o0-Ha-rYl"/>
-                                                    <constraint firstItem="wWn-q6-7cQ" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="6CV-Mr-UrY"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ux6-Dj-BZF" secondAttribute="trailing" id="9R8-3Q-MSz"/>
-                                                    <constraint firstItem="WG2-5P-lfb" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="HTN-HQ-X6J"/>
-                                                    <constraint firstItem="Xup-A2-sDC" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="NwE-h9-Vzw"/>
-                                                    <constraint firstItem="S5V-Ia-V1b" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="Rug-Qp-iuH"/>
-                                                    <constraint firstItem="53i-oo-3kh" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="TvT-cH-f9n"/>
-                                                    <constraint firstItem="5am-K1-F3G" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="YHy-An-u7Z"/>
-                                                    <constraint firstItem="soT-oz-KrN" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="dSd-RU-aVF"/>
-                                                    <constraint firstItem="fwH-s0-Oqs" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="fGB-fU-wsC"/>
-                                                    <constraint firstItem="5am-K1-F3G" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="fT9-kK-zRT"/>
-                                                    <constraint firstItem="ux6-Dj-BZF" firstAttribute="height" secondItem="Xup-A2-sDC" secondAttribute="height" id="jck-yM-cmU"/>
-                                                    <constraint firstItem="wWn-q6-7cQ" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="kSc-AU-6SZ"/>
-                                                    <constraint firstItem="S5V-Ia-V1b" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="kXo-hz-MKV"/>
-                                                    <constraint firstItem="ux6-Dj-BZF" firstAttribute="leading" secondItem="eew-MJ-TLG" secondAttribute="leading" id="lAS-Ve-IsH"/>
-                                                    <constraint firstItem="WG2-5P-lfb" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="mbI-9y-fz3"/>
-                                                    <constraint firstItem="STE-09-qyK" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="qUE-6x-GGz"/>
-                                                    <constraint firstItem="bds-4z-5bU" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="uek-Mf-zpP"/>
-                                                    <constraint firstItem="STE-09-qyK" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="w4N-KP-4mp"/>
-                                                    <constraint firstItem="soT-oz-KrN" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="xQF-xL-l1h"/>
-                                                    <constraint firstItem="53i-oo-3kh" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="yHR-B0-YK3"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="eew-MJ-TLG" firstAttribute="leading" secondItem="yF9-o9-yQR" secondAttribute="leading" id="G9l-1b-tsR"/>
-                                            <constraint firstItem="eew-MJ-TLG" firstAttribute="top" secondItem="yF9-o9-yQR" secondAttribute="top" id="HiM-5f-AEa"/>
-                                            <constraint firstAttribute="bottom" secondItem="eew-MJ-TLG" secondAttribute="bottom" id="P6a-wp-Z09"/>
-                                            <constraint firstAttribute="trailing" secondItem="eew-MJ-TLG" secondAttribute="trailing" id="drf-fB-bOo"/>
-                                        </constraints>
-                                    </scrollView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFG-id-j4P" userLabel="Done">
-                                        <rect key="frame" x="0.0" y="579" width="343" height="36"/>
+                                        <rect key="frame" x="308" y="58" width="51" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="Ckr-JR-fDm"/>
+                                            <constraint firstAttribute="width" constant="51" id="Vhu-rN-3X5"/>
+                                            <constraint firstAttribute="height" constant="30" id="rMG-V1-t6n"/>
                                         </constraints>
                                         <state key="normal" title="Done"/>
                                         <connections>
@@ -1750,37 +1566,206 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="T4c-rq-9ch" firstAttribute="top" secondItem="sD2-LM-EkB" secondAttribute="top" id="78K-1X-vN5"/>
-                                    <constraint firstItem="yF9-o9-yQR" firstAttribute="trailing" secondItem="T4c-rq-9ch" secondAttribute="trailing" id="JLE-Us-mie"/>
-                                    <constraint firstAttribute="trailing" secondItem="GFG-id-j4P" secondAttribute="trailing" id="KM8-Bo-1yZ"/>
-                                    <constraint firstItem="T4c-rq-9ch" firstAttribute="leading" secondItem="sD2-LM-EkB" secondAttribute="leading" id="PZt-d4-KoU"/>
-                                    <constraint firstAttribute="bottom" secondItem="GFG-id-j4P" secondAttribute="bottom" id="Wjp-Gk-8xh"/>
-                                    <constraint firstItem="GFG-id-j4P" firstAttribute="leading" secondItem="sD2-LM-EkB" secondAttribute="leading" id="ZnT-7D-Zzg"/>
-                                    <constraint firstItem="ux6-Dj-BZF" firstAttribute="width" secondItem="T4c-rq-9ch" secondAttribute="width" id="c3s-lL-x73"/>
-                                    <constraint firstItem="yF9-o9-yQR" firstAttribute="leading" secondItem="T4c-rq-9ch" secondAttribute="leading" id="gvS-pv-fQK"/>
-                                    <constraint firstItem="yF9-o9-yQR" firstAttribute="width" secondItem="T4c-rq-9ch" secondAttribute="width" id="ihG-q6-1Ko"/>
-                                    <constraint firstItem="yF9-o9-yQR" firstAttribute="top" secondItem="T4c-rq-9ch" secondAttribute="bottom" id="msi-bv-CHV"/>
-                                    <constraint firstAttribute="trailing" secondItem="T4c-rq-9ch" secondAttribute="trailing" id="nCY-oX-ZPN"/>
-                                    <constraint firstItem="GFG-id-j4P" firstAttribute="top" secondItem="yF9-o9-yQR" secondAttribute="bottom" id="y2j-dC-N6r"/>
+                                    <constraint firstAttribute="bottom" secondItem="T4c-rq-9ch" secondAttribute="bottom" constant="8" id="2OO-ib-IiT"/>
+                                    <constraint firstItem="GFG-id-j4P" firstAttribute="centerY" secondItem="T4c-rq-9ch" secondAttribute="centerY" id="LdG-n9-FDy"/>
+                                    <constraint firstAttribute="height" constant="100" id="PLq-Dq-RXl"/>
+                                    <constraint firstItem="T4c-rq-9ch" firstAttribute="leading" secondItem="9gc-b4-yD6" secondAttribute="leadingMargin" constant="8" id="UyW-uR-lOk"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="GFG-id-j4P" secondAttribute="trailing" constant="8" id="mJZ-h6-KEm"/>
+                                    <constraint firstItem="GFG-id-j4P" firstAttribute="leading" secondItem="T4c-rq-9ch" secondAttribute="trailing" constant="8" id="yfk-6D-hCh"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorder" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF9-o9-yQR">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="eew-MJ-TLG">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="692"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bds-4z-5bU" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="jDg-k5-eLU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-Dj-BZF" userLabel="Max Password Length" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="DIK-H2-zZf"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="maxPasswordLength"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Max Length"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <integer key="value" value="100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1p-hu-HFb" userLabel="Enable Advanced" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="100" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="enableAdvanced"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Enable Advanced"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STE-09-qyK" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="156" width="375" height="44"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xup-A2-sDC" userLabel="Enable Stored" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="200" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="storePasswords"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Store Passwords"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="KGt-Hr-RKx" id="ozS-Rr-AEy"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWn-q6-7cQ" userLabel="Amount To Store" customClass="StepperView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="256" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="maxStoredPasswords"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Amount To Store"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <integer key="value" value="500"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="storePasswords"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53i-oo-3kh" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="312" width="375" height="44"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5V-Ia-V1b" userLabel="Text Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="356" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Text Color"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="defaultTextColor"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soT-oz-KrN" userLabel="Color Password Text" customClass="SwitchView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="412" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="colorPasswordText"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Color Password Text"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPp-gZ-aYm" userLabel="Uppercase Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="468" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="upperTextColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Uppercase Letters"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WG2-5P-lfb" userLabel="Lowercase Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="524" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="lowerTextColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Lowercase Letters"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwH-s0-Oqs" userLabel="Numbers Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="580" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="numberTextColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Numbers"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5am-K1-F3G" userLabel="Symbols Color" customClass="ColorWellView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="636" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="symbolTextColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Symbols"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="UPp-gZ-aYm" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="2f3-1o-Nhs"/>
+                                            <constraint firstItem="ux6-Dj-BZF" firstAttribute="height" secondItem="R1p-hu-HFb" secondAttribute="height" id="2y7-pV-M5d"/>
+                                            <constraint firstItem="R1p-hu-HFb" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="3Uf-X4-xvN"/>
+                                            <constraint firstItem="fwH-s0-Oqs" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="5K8-Fb-ACS"/>
+                                            <constraint firstItem="UPp-gZ-aYm" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="5o0-Ha-rYl"/>
+                                            <constraint firstItem="wWn-q6-7cQ" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="6CV-Mr-UrY"/>
+                                            <constraint firstAttribute="trailing" secondItem="ux6-Dj-BZF" secondAttribute="trailing" id="9R8-3Q-MSz"/>
+                                            <constraint firstItem="WG2-5P-lfb" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="HTN-HQ-X6J"/>
+                                            <constraint firstItem="Xup-A2-sDC" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="NwE-h9-Vzw"/>
+                                            <constraint firstItem="S5V-Ia-V1b" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="Rug-Qp-iuH"/>
+                                            <constraint firstItem="53i-oo-3kh" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="TvT-cH-f9n"/>
+                                            <constraint firstItem="5am-K1-F3G" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="YHy-An-u7Z"/>
+                                            <constraint firstItem="soT-oz-KrN" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="dSd-RU-aVF"/>
+                                            <constraint firstItem="fwH-s0-Oqs" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="fGB-fU-wsC"/>
+                                            <constraint firstItem="5am-K1-F3G" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="fT9-kK-zRT"/>
+                                            <constraint firstItem="ux6-Dj-BZF" firstAttribute="height" secondItem="Xup-A2-sDC" secondAttribute="height" id="jck-yM-cmU"/>
+                                            <constraint firstItem="wWn-q6-7cQ" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="kSc-AU-6SZ"/>
+                                            <constraint firstItem="S5V-Ia-V1b" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="kXo-hz-MKV"/>
+                                            <constraint firstItem="ux6-Dj-BZF" firstAttribute="leading" secondItem="eew-MJ-TLG" secondAttribute="leading" id="lAS-Ve-IsH"/>
+                                            <constraint firstItem="WG2-5P-lfb" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="mbI-9y-fz3"/>
+                                            <constraint firstItem="STE-09-qyK" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="qUE-6x-GGz"/>
+                                            <constraint firstItem="bds-4z-5bU" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="uek-Mf-zpP"/>
+                                            <constraint firstItem="STE-09-qyK" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="w4N-KP-4mp"/>
+                                            <constraint firstItem="soT-oz-KrN" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="xQF-xL-l1h"/>
+                                            <constraint firstItem="53i-oo-3kh" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="yHR-B0-YK3"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eew-MJ-TLG" firstAttribute="width" secondItem="yF9-o9-yQR" secondAttribute="width" id="32I-Fu-EvI"/>
+                                    <constraint firstItem="eew-MJ-TLG" firstAttribute="leading" secondItem="yF9-o9-yQR" secondAttribute="leading" id="9fu-vx-rgG"/>
+                                    <constraint firstAttribute="bottom" secondItem="eew-MJ-TLG" secondAttribute="bottom" id="PLA-b3-TkN"/>
+                                    <constraint firstAttribute="trailing" secondItem="eew-MJ-TLG" secondAttribute="trailing" id="QuW-xz-8KV"/>
+                                    <constraint firstItem="eew-MJ-TLG" firstAttribute="top" secondItem="yF9-o9-yQR" secondAttribute="top" id="ZSM-Kl-QZE"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="sD2-LM-EkB" firstAttribute="top" secondItem="AF0-5N-ELN" secondAttribute="top" constant="16" id="4DC-bE-IIa"/>
-                            <constraint firstAttribute="top" secondItem="xfn-8Q-33l" secondAttribute="top" id="CE2-tg-tvv"/>
-                            <constraint firstItem="xfn-8Q-33l" firstAttribute="leading" secondItem="koU-Aw-Ur0" secondAttribute="leading" id="CrY-gL-r3Y"/>
-                            <constraint firstItem="sD2-LM-EkB" firstAttribute="leading" secondItem="AF0-5N-ELN" secondAttribute="leading" constant="16" id="NGF-rq-Pvh"/>
-                            <constraint firstItem="AF0-5N-ELN" firstAttribute="trailing" secondItem="sD2-LM-EkB" secondAttribute="trailing" constant="16" id="fcu-3e-236"/>
-                            <constraint firstAttribute="trailing" secondItem="xfn-8Q-33l" secondAttribute="trailing" id="guB-Oe-ieY"/>
-                            <constraint firstItem="AF0-5N-ELN" firstAttribute="bottom" secondItem="sD2-LM-EkB" secondAttribute="bottom" constant="16" id="m6C-z2-Wsx"/>
-                            <constraint firstAttribute="bottom" secondItem="xfn-8Q-33l" secondAttribute="bottom" id="sOJ-WZ-RIY"/>
+                            <constraint firstItem="yF9-o9-yQR" firstAttribute="top" secondItem="9gc-b4-yD6" secondAttribute="bottom" id="0ST-5O-c1U"/>
+                            <constraint firstItem="AF0-5N-ELN" firstAttribute="bottom" secondItem="yF9-o9-yQR" secondAttribute="bottom" id="7xi-6H-uD2"/>
+                            <constraint firstItem="9gc-b4-yD6" firstAttribute="top" secondItem="koU-Aw-Ur0" secondAttribute="top" id="9LA-oP-CBp"/>
+                            <constraint firstItem="yF9-o9-yQR" firstAttribute="trailing" secondItem="9gc-b4-yD6" secondAttribute="trailing" id="Csi-oS-WpH"/>
+                            <constraint firstItem="9gc-b4-yD6" firstAttribute="leading" secondItem="koU-Aw-Ur0" secondAttribute="leading" id="QKI-c1-6oU"/>
+                            <constraint firstItem="yF9-o9-yQR" firstAttribute="leading" secondItem="9gc-b4-yD6" secondAttribute="leading" id="QhH-9g-IPt"/>
+                            <constraint firstAttribute="trailing" secondItem="9gc-b4-yD6" secondAttribute="trailing" id="pEj-V1-L9T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AF0-5N-ELN"/>
                     </view>
                     <connections>
-                        <outlet property="controlsContainer" destination="sD2-LM-EkB" id="3ha-6h-COU"/>
                         <outlet property="doneButton" destination="GFG-id-j4P" id="LCk-Cv-22a"/>
-                        <outlet property="titleLabel" destination="T4c-rq-9ch" id="5ni-AB-p1l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJf-ST-hCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
