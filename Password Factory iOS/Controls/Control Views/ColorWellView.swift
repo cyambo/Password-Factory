@@ -12,18 +12,22 @@ import UIKit
 class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
 
     let wellView = UIButton.init()
-    
+    let colorWellView = UIView.init()
     override func addViews() {
         super.addViews()
         addSubview(controlLabel)
         addSubview(wellView)
+        wellView.addSubview(colorWellView)
+        colorWellView.isUserInteractionEnabled = false
     }
     override func setupView() {
         super.setupView()
         let views = ["label" : controlLabel, "well" : wellView]
         addVFLConstraints(constraints: ["H:|-[label(==200)]-8-[well]-|","V:|-[well]-|"], views: views)
         centerViewVertically(controlLabel)
+        wellView.fillViewInContainer(colorWellView, margins: 8)
         setFromDefaults()
+        
         wellView.addTarget(self, action: #selector(loadColorPicker), for: .touchUpInside)
     }
     
@@ -31,7 +35,7 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     ///
     /// - Parameter color: selected color
     func selectedColor(_ color: UIColor) {
-        wellView.backgroundColor = color
+        setWellColor(color)
         if let colorString = ColorUtilities.color(toHexString: color) {
             if let key = defaultsKey {
                 d.setObject(colorString, forKey: key)
@@ -58,7 +62,7 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
             }
             
             vc.delegate = self
-            vc.setColor(wellView.backgroundColor ?? UIColor.blue, andTitle: label ?? "")
+            vc.setColor(colorWellView.backgroundColor ?? UIColor.blue, andTitle: label ?? "")
             parentViewController?.present(vc, animated: true, completion: nil)
         }
     }
@@ -69,10 +73,14 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
             return
         }
         wellView.roundCorners()
-        let color = ColorUtilities.color(fromHexString: d.string(forKey: dk))
-        wellView.backgroundColor = color
+        colorWellView.roundCorners(withBorder: true, andRadius: 5)
+        let color = ColorUtilities.color(fromHexString: d.string(forKey: dk)) ?? UIColor.blue
+        setWellColor(color)
     }
-    
+    func setWellColor(_ color : UIColor) {
+        colorWellView.backgroundColor = color
+        wellView.backgroundColor = color.withAlphaComponent(0.3)
+    }
     override func setEnabled(_ enabled: Bool) {
         super.setEnabled(enabled)
         wellView.isEnabled = enabled

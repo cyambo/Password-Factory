@@ -103,8 +103,9 @@ extension UIView {
     /// Rounds the corners of view
     ///
     /// - Parameter withBorder: add border if needed
-    func roundCorners(withBorder: Bool = false) {
-        layer.cornerRadius = 10.0
+    /// - Parameter andRadius: setRadius
+    func roundCorners(withBorder: Bool = false, andRadius radius : CGFloat = 10) {
+        layer.cornerRadius = radius
         layer.masksToBounds = true
         if(withBorder) {
             addBorder()
