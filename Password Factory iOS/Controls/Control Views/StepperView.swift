@@ -15,10 +15,10 @@ class StepperView: ControlView, PickerViewControllerDelegate {
     @IBInspectable public var maxValue: Int = 100 //maximum value of the stepper
     @IBInspectable public var stepValue: Int = 1 //step for each press
     @IBInspectable public var isPercent: Bool = false //is it a percent meter
+    
     let controlStepper = UIStepper.init()
     let valueLabel = UIButton.init()
     
-
     override func addViews() {
         super.addViews()
         addSubview(controlStepper)

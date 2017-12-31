@@ -1581,7 +1581,7 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="eew-MJ-TLG">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="692"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="848"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bds-4z-5bU" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1642,7 +1642,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="maxStoredPasswords"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Amount To Store"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Amount"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="minValue">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1713,16 +1713,40 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d9-iQ-CFy" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="692" width="375" height="44"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIO-0K-uI2" userLabel="Reset Warnings" customClass="ButtonControlView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="736" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Reset All Warnings"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H34-s7-CPG" userLabel="Reset Defaults" customClass="ButtonControlView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="792" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Reset to Defaults"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="H34-s7-CPG" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="0Lg-o8-eFo"/>
                                             <constraint firstItem="UPp-gZ-aYm" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="2f3-1o-Nhs"/>
                                             <constraint firstItem="ux6-Dj-BZF" firstAttribute="height" secondItem="R1p-hu-HFb" secondAttribute="height" id="2y7-pV-M5d"/>
                                             <constraint firstItem="R1p-hu-HFb" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="3Uf-X4-xvN"/>
                                             <constraint firstItem="fwH-s0-Oqs" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="5K8-Fb-ACS"/>
+                                            <constraint firstItem="H34-s7-CPG" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="5a3-We-ih1"/>
                                             <constraint firstItem="UPp-gZ-aYm" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="5o0-Ha-rYl"/>
                                             <constraint firstItem="wWn-q6-7cQ" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="6CV-Mr-UrY"/>
                                             <constraint firstAttribute="trailing" secondItem="ux6-Dj-BZF" secondAttribute="trailing" id="9R8-3Q-MSz"/>
+                                            <constraint firstItem="4d9-iQ-CFy" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="HAw-e5-BsG"/>
                                             <constraint firstItem="WG2-5P-lfb" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="HTN-HQ-X6J"/>
+                                            <constraint firstItem="rIO-0K-uI2" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="Ilh-xa-Lbt"/>
                                             <constraint firstItem="Xup-A2-sDC" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="NwE-h9-Vzw"/>
                                             <constraint firstItem="S5V-Ia-V1b" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="Rug-Qp-iuH"/>
                                             <constraint firstItem="53i-oo-3kh" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="TvT-cH-f9n"/>
@@ -1735,8 +1759,10 @@
                                             <constraint firstItem="S5V-Ia-V1b" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="kXo-hz-MKV"/>
                                             <constraint firstItem="ux6-Dj-BZF" firstAttribute="leading" secondItem="eew-MJ-TLG" secondAttribute="leading" id="lAS-Ve-IsH"/>
                                             <constraint firstItem="WG2-5P-lfb" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="mbI-9y-fz3"/>
+                                            <constraint firstItem="rIO-0K-uI2" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="oVk-t4-nl7"/>
                                             <constraint firstItem="STE-09-qyK" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="qUE-6x-GGz"/>
                                             <constraint firstItem="bds-4z-5bU" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="uek-Mf-zpP"/>
+                                            <constraint firstItem="4d9-iQ-CFy" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="w0I-Kv-EFV"/>
                                             <constraint firstItem="STE-09-qyK" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="w4N-KP-4mp"/>
                                             <constraint firstItem="soT-oz-KrN" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="xQF-xL-l1h"/>
                                             <constraint firstItem="53i-oo-3kh" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="yHR-B0-YK3"/>

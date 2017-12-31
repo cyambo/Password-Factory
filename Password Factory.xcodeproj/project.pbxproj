@@ -93,6 +93,7 @@
 		4058DF301F92995800CCB6E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4058DF2F1F92995800CCB6E7 /* main.m */; };
 		405CCF3A1B82691200448FF5 /* PasswordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 409586071B8112FD00393B99 /* PasswordFactory.m */; };
 		405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
+		405DE43D1FF9852200F4A6C0 /* ButtonControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405DE43C1FF9852200F4A6C0 /* ButtonControlView.swift */; };
 		406BD2331FD315C100D0E854 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BD2321FD315C000D0E854 /* StyleKit.swift */; };
 		406BD2351FD3166100D0E854 /* StrengthMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BD2341FD3166100D0E854 /* StrengthMeter.swift */; };
 		406C388A1B844D0100F471E7 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585F61B8112FD00393B99 /* StyleKit.m */; };
@@ -319,6 +320,7 @@
 		4058DF2E1F92995800CCB6E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4058DF2F1F92995800CCB6E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4058DF311F92995800CCB6E7 /* Password_Factory_Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Password_Factory_Helper.entitlements; sourceTree = "<group>"; };
+		405DE43C1FF9852200F4A6C0 /* ButtonControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonControlView.swift; sourceTree = "<group>"; };
 		406BD2321FD315C000D0E854 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		406BD2341FD3166100D0E854 /* StrengthMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthMeter.swift; sourceTree = "<group>"; };
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 				40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */,
 				406E8FE01FE30E7400A76765 /* LengthControlView.swift */,
 				40974E301FE4828400AC2772 /* ColorWellView.swift */,
+				405DE43C1FF9852200F4A6C0 /* ButtonControlView.swift */,
 				40C110D21FE73D4200D0B893 /* ControlView.swift */,
 			);
 			path = "Control Views";
@@ -1703,6 +1706,7 @@
 				401BC7211FF968B0008C7927 /* HeaderLabel.swift in Sources */,
 				406E8FE11FE30E7400A76765 /* LengthControlView.swift in Sources */,
 				405531F61FEF3F1200E77A84 /* UIImage+Extensions.swift in Sources */,
+				405DE43D1FF9852200F4A6C0 /* ButtonControlView.swift in Sources */,
 				40496FBB1FE843F30099158C /* UIView+Extensions.swift in Sources */,
 				40189F5E1FD46A7F00D87217 /* StoredPasswordViewController.swift in Sources */,
 				40E580451FDDA2B800AD7DB9 /* SelectPickerView.swift in Sources */,

@@ -17,6 +17,7 @@ class ControlView: UIView, DefaultsManagerDelegate {
     @IBInspectable public var label: String? //label to display
     @IBInspectable public var defaultsKey: String? //defaults key to use
     @IBInspectable public var enabledKey: String? //key to observe to determine if the control is enabled or disabled
+    @IBInspectable public var showAlertKey: String? //if set the control will show an alert before allowing the change to be made
     @IBOutlet var delegate: ControlViewDelegate?
     
     let d = DefaultsManager.get()

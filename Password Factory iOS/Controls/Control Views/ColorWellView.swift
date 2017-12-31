@@ -22,10 +22,10 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     }
     override func setupView() {
         super.setupView()
-        let views = ["label" : controlLabel, "well" : wellView]
-        addVFLConstraints(constraints: ["H:|-[label(==200)]-8-[well]-|","V:|-[well]-|"], views: views)
+        let views = ["label" : controlLabel, "well" : wellView, "color" : colorWellView]
+        addVFLConstraints(constraints: ["H:|-[label(==200)]-8-[well]-|","V:|-(12)-[well]-(12)-|"], views: views)
+        addVFLConstraints(constraints: ["H:|-(8)-[color]-(8)-|","V:|-(1)-[color]-(1)-|"], views: views)
         centerViewVertically(controlLabel)
-        wellView.fillViewInContainer(colorWellView, margins: 8)
         setFromDefaults()
         
         wellView.addTarget(self, action: #selector(loadColorPicker), for: .touchUpInside)
@@ -72,14 +72,14 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         guard let dk = defaultsKey else {
             return
         }
-        wellView.roundCorners()
-        colorWellView.roundCorners(withBorder: true, andRadius: 5)
+        wellView.roundCorners(withBorder: false, andRadius: 4)
+        colorWellView.roundCorners(withBorder: false, andRadius: 4)
         let color = ColorUtilities.color(fromHexString: d.string(forKey: dk)) ?? UIColor.blue
         setWellColor(color)
     }
     func setWellColor(_ color : UIColor) {
         colorWellView.backgroundColor = color
-        wellView.backgroundColor = color.withAlphaComponent(0.3)
+        wellView.backgroundColor = color.withAlphaComponent(0.1)
     }
     override func setEnabled(_ enabled: Bool) {
         super.setEnabled(enabled)
