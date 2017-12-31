@@ -18,7 +18,7 @@ class ZoomViewController: UIViewController {
     var dismissGesture: UITapGestureRecognizer?
     var formattedPassword : NSMutableAttributedString?
     var password: String?
-    let font = UIFont.init(name: "Menlo-Bold", size: 56)
+    let font = UIFont.init(name: "Menlo", size: 56)
     let bgColor = UIColor.init(white: 0.3, alpha: 1.0)
 
     override func viewDidLoad() {
@@ -43,9 +43,10 @@ class ZoomViewController: UIViewController {
             return CGSize.zero
         }
         let style = NSMutableParagraphStyle.init()
-        style.paragraphSpacing = 8
-        style.lineSpacing = 8
+        style.paragraphSpacing = 10
+        style.lineSpacing = 10
         h.addAttribute(.paragraphStyle, value: style, range: NSRange.init(location: 0, length: h.length))
+        h.addAttribute(.kern, value: 2, range: NSRange.init(location: 0, length: h.length))
         formattedPassword = h
         return h.size()
     }
