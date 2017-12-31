@@ -68,7 +68,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
         currentViewController?.view.removeFromSuperview()
         currentViewController = nil
-        viewControllers.removeAll()
+        removeChildViewControllers()
     }
     
     /// Inserts the segments based upon preferences
@@ -260,6 +260,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: typeName + "Password") as? PasswordsViewController {
             viewControllers[passwordType] = vc
             vc.typeSelectionViewController = self
+            addChildViewController(vc)
             return vc
         }
         return nil
@@ -271,6 +272,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     }
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
         if let key = keyPath {
+            print("KEY \(key)")
             //are we toggling advanced or stored
             if key == "enableAdvanced" || key == "storePasswords" {
                 setupSegments()
@@ -285,9 +287,15 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        viewControllers.removeAll()
+        removeChildViewControllers()
     }
     
+    
+    /// Removes all password view controllers from the viewControllers dict, and child view controllers
+    func removeChildViewControllers() {
+        viewControllers.removeAll()
+        _ = childViewControllers.map{ $0.removeFromParentViewController() }
+    }
     
 }
 

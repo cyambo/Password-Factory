@@ -28,7 +28,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     var ascending = false
 
     override func awakeFromNib() {
-        d.observeDefaults(self, keys: ["maxStoredPasswords", "storePasswords"])
+        d.observeDefaults(self, keys: ["maxStoredPasswords", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor"])
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,8 +116,8 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
         if keyPath == "maxStoredPasswords" || keyPath == "storePasswords" {
             s.changedMaxStorageAmount()
-            storedPasswordsTable.reloadData()
         }
+        storedPasswordsTable.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

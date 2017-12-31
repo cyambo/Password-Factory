@@ -28,7 +28,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var doneButton: UIButton!
-
+    @IBOutlet weak var imageView: UIImageView!
+    
     func setType(type: PickerTypes, passwordType: PFPasswordType) {
         pickerType = type
         self.passwordType = passwordType
@@ -53,6 +54,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapFrom(recognizer:)))
         tap.delegate = self
         view.addGestureRecognizer(tap)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,6 +67,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             rowToSelect = Int((currentNumber - lowerRange) / step)
         }
         itemPickerView.selectRow(rowToSelect, inComponent: 0, animated: false)
+        imageView.image = Utilities.screenshot()
         setupTitle()
 
     }

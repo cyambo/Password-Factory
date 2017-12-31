@@ -529,12 +529,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BZN-tI-oUS">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdI-JW-Dba" userLabel="Translucent View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="0.74813630850000001" blue="0.65703667529999998" alpha="0.75" colorSpace="deviceRGB"/>
-                            </view>
+                            </imageView>
                             <visualEffectView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xo-a0-89d">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jtd-hU-apQ">
@@ -594,35 +590,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1xo-a0-89d" firstAttribute="leading" secondItem="F8e-EU-QSR" secondAttribute="leading" id="2AE-Rq-EA6"/>
-                            <constraint firstItem="p2h-pd-ZnD" firstAttribute="bottom" secondItem="tdI-JW-Dba" secondAttribute="bottom" id="2FA-QH-1sf"/>
                             <constraint firstAttribute="bottom" secondItem="1xo-a0-89d" secondAttribute="bottom" id="2iK-0J-zB9"/>
-                            <constraint firstItem="BZN-tI-oUS" firstAttribute="leading" secondItem="p2h-pd-ZnD" secondAttribute="leading" id="4G9-vy-4o8"/>
+                            <constraint firstItem="BZN-tI-oUS" firstAttribute="leading" secondItem="F8e-EU-QSR" secondAttribute="leading" id="4G9-vy-4o8"/>
                             <constraint firstItem="sz4-nc-1EV" firstAttribute="centerY" secondItem="p2h-pd-ZnD" secondAttribute="centerY" id="8B7-PL-BvX"/>
-                            <constraint firstItem="tdI-JW-Dba" firstAttribute="top" secondItem="F8e-EU-QSR" secondAttribute="top" id="Lcg-wJ-KCU"/>
-                            <constraint firstItem="BZN-tI-oUS" firstAttribute="top" secondItem="p2h-pd-ZnD" secondAttribute="top" id="WLC-Nt-aYJ"/>
+                            <constraint firstItem="BZN-tI-oUS" firstAttribute="top" secondItem="F8e-EU-QSR" secondAttribute="top" id="WLC-Nt-aYJ"/>
                             <constraint firstItem="sz4-nc-1EV" firstAttribute="centerX" secondItem="p2h-pd-ZnD" secondAttribute="centerX" id="Wkw-Hb-PBY"/>
-                            <constraint firstItem="p2h-pd-ZnD" firstAttribute="bottom" secondItem="BZN-tI-oUS" secondAttribute="bottom" id="ZNb-la-83W"/>
-                            <constraint firstItem="tdI-JW-Dba" firstAttribute="trailing" secondItem="p2h-pd-ZnD" secondAttribute="trailing" id="a2p-dg-r9m"/>
-                            <constraint firstItem="p2h-pd-ZnD" firstAttribute="trailing" secondItem="BZN-tI-oUS" secondAttribute="trailing" id="edF-Kg-s4y"/>
+                            <constraint firstAttribute="bottom" secondItem="BZN-tI-oUS" secondAttribute="bottom" id="ZNb-la-83W"/>
+                            <constraint firstAttribute="trailing" secondItem="BZN-tI-oUS" secondAttribute="trailing" id="edF-Kg-s4y"/>
                             <constraint firstAttribute="top" secondItem="1xo-a0-89d" secondAttribute="top" id="eeo-QN-Btg"/>
                             <constraint firstAttribute="trailing" secondItem="1xo-a0-89d" secondAttribute="trailing" id="hcC-0n-hog"/>
-                            <constraint firstItem="tdI-JW-Dba" firstAttribute="leading" secondItem="p2h-pd-ZnD" secondAttribute="leading" id="jqX-cV-hsX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p2h-pd-ZnD"/>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="sz4-nc-1EV" id="wsS-Yu-bL2"/>
                         <outlet property="doneButton" destination="AEi-mc-6vM" id="4Rg-ou-jpd"/>
+                        <outlet property="imageView" destination="BZN-tI-oUS" id="UWF-D8-rIe"/>
                         <outlet property="itemPickerView" destination="UDE-eY-3fA" id="vhn-Gf-Ney"/>
                         <outlet property="titleLabel" destination="8S4-pG-fnz" id="qxv-s4-xCo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THI-Xz-eOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="V3J-eQ-9xe" customClass="StyleKit" customModule="Password_Factory_iOS" customModuleProvider="target">
-                    <connections>
-                        <outletCollection property="gradientBackgroundTargets" destination="BZN-tI-oUS" collectionClass="NSMutableArray" id="ogh-5f-47x"/>
-                    </connections>
-                </customObject>
+                <customObject id="V3J-eQ-9xe" customClass="StyleKit" customModule="Password_Factory_iOS" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1916" y="260"/>
         </scene>
@@ -1783,10 +1772,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TYN-Yf-hSF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-xf-cQf" userLabel="Translucent View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="0.74813630850000001" blue="0.65703667529999998" alpha="0.75" colorSpace="deviceRGB"/>
-                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Th-cW-A0Z">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8s5-Wq-GS2">
@@ -1852,17 +1837,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Eeb-xf-cQf" firstAttribute="bottom" secondItem="AN1-mV-g49" secondAttribute="bottom" id="5Gu-PD-ccb"/>
                             <constraint firstItem="TYN-Yf-hSF" firstAttribute="leading" secondItem="AN1-mV-g49" secondAttribute="leading" id="AOG-IU-d8r"/>
                             <constraint firstAttribute="bottom" secondItem="7Th-cW-A0Z" secondAttribute="bottom" id="GM5-ft-gyt"/>
                             <constraint firstItem="zrv-aj-fOO" firstAttribute="centerX" secondItem="Uzd-HV-dhu" secondAttribute="centerX" id="NlY-ji-Zc2"/>
                             <constraint firstItem="zrv-aj-fOO" firstAttribute="centerY" secondItem="Uzd-HV-dhu" secondAttribute="centerY" id="ONe-z3-e4a"/>
                             <constraint firstItem="TYN-Yf-hSF" firstAttribute="trailing" secondItem="AN1-mV-g49" secondAttribute="trailing" id="U4Z-Ty-IIu"/>
-                            <constraint firstItem="Eeb-xf-cQf" firstAttribute="top" secondItem="Uzd-HV-dhu" secondAttribute="top" id="c8P-Ku-L4c"/>
                             <constraint firstItem="7Th-cW-A0Z" firstAttribute="top" secondItem="Uzd-HV-dhu" secondAttribute="top" id="gFl-fg-Mys"/>
                             <constraint firstItem="TYN-Yf-hSF" firstAttribute="top" secondItem="Uzd-HV-dhu" secondAttribute="top" id="mux-WQ-w5a"/>
-                            <constraint firstItem="Eeb-xf-cQf" firstAttribute="trailing" secondItem="AN1-mV-g49" secondAttribute="trailing" id="nOM-zF-Ajp"/>
-                            <constraint firstItem="Eeb-xf-cQf" firstAttribute="leading" secondItem="AN1-mV-g49" secondAttribute="leading" id="nee-ou-66U"/>
                             <constraint firstItem="7Th-cW-A0Z" firstAttribute="leading" secondItem="Uzd-HV-dhu" secondAttribute="leading" id="q4B-Yi-102"/>
                             <constraint firstAttribute="trailing" secondItem="7Th-cW-A0Z" secondAttribute="trailing" id="tae-jZ-f7F"/>
                             <constraint firstItem="AN1-mV-g49" firstAttribute="bottom" secondItem="TYN-Yf-hSF" secondAttribute="bottom" id="yq9-hY-gid"/>
@@ -1870,6 +1851,7 @@
                         <viewLayoutGuide key="safeArea" id="AN1-mV-g49"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImage" destination="TYN-Yf-hSF" id="n44-dz-MwR"/>
                         <outlet property="container" destination="zrv-aj-fOO" id="whr-tj-7jJ"/>
                         <outlet property="leftButton" destination="bG6-BP-1Gv" id="20O-Jo-qPu"/>
                         <outlet property="picker" destination="0yd-oO-cGt" id="2vy-Sr-ThR"/>
@@ -1878,11 +1860,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVL-6j-dO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="NUC-bf-5aX" customClass="StyleKit" customModule="Password_Factory_iOS" customModuleProvider="target">
-                    <connections>
-                        <outletCollection property="gradientBackgroundTargets" destination="TYN-Yf-hSF" collectionClass="NSMutableArray" id="3oB-EB-yUe"/>
-                    </connections>
-                </customObject>
+                <customObject id="NUC-bf-5aX" customClass="StyleKit" customModule="Password_Factory_iOS" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="3260" y="260"/>
         </scene>

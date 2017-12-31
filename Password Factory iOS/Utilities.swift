@@ -49,6 +49,14 @@ class Utilities: NSObject {
         })
         return highlighted
     }
+    
+    /// Highlights and dodge color a password
+    ///
+    /// - Parameters:
+    ///   - password: password to highlight
+    ///   - font: font to use
+    ///   - backgroundColor: background color of view (used for dodge)
+    /// - Returns: Dodged color password
     class func dodgeHighlightedPasswordString(password: String, font: UIFont, backgroundColor: UIColor) -> NSAttributedString {
         guard let password = highlightPassword(password: password, font: font).mutableCopy() as? NSMutableAttributedString else {
             return NSAttributedString()
@@ -70,6 +78,7 @@ class Utilities: NSObject {
         return password
         
     }
+    
     /// Gets the non-highlighted string using the font and default color
     ///
     /// - Parameters:
@@ -86,10 +95,23 @@ class Utilities: NSObject {
         h.setAttributes(attrs, range: NSMakeRange(0, passwordString.length))
         return h
     }
+    
+    /// Loads the picker controller from the storyboard//FIXME:
+    ///
+    /// - Returns: PickerViewController
     private class func loadPickerFromStoryboard() -> (PickerViewController?) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "PickerView") as? PickerViewController
     }
+    
+    /// Displays the picker controller on screen either in a popover or full screen
+    ///
+    /// - Parameters:
+    ///   - source: view of button clicked
+    ///   - delegate: PickerViewControllerDelegate object
+    ///   - parentViewController: the parent view controller to display
+    ///   - type: PickerType
+    ///   - passwordType: PFPasswordType
     public class func displayPicker(source: UIView, delegate: PickerViewControllerDelegate, parentViewController: UIViewController, type: PickerTypes, passwordType: PFPasswordType) {
         guard let vc = loadPickerFromStoryboard() else {
             return
@@ -98,6 +120,19 @@ class Utilities: NSObject {
         showPicker(delegate: delegate, pickerViewController: vc, parentViewController: parentViewController, source: source)
         
     }
+    
+    /// Displays a number picker
+    ///
+    /// - Parameters:
+    ///   - source: view of button clicked
+    ///   - delegate: PickerViewControllerDelegate object
+    ///   - parentViewController: the parent view controller to display
+    ///   - title: Title of picker
+    ///   - isPercent: Is the picker a percent picker
+    ///   - current: current number value
+    ///   - l: lower value
+    ///   - u: upper value
+    ///   - s: step value
     public class func displayNumberPicker(source: UIView, delegate: PickerViewControllerDelegate, parentViewController: UIViewController, title: String, isPercent: Bool, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
         guard let vc = loadPickerFromStoryboard() else {
             return
@@ -107,6 +142,14 @@ class Utilities: NSObject {
         showPicker(delegate: delegate, pickerViewController: vc, parentViewController: parentViewController, source: source)
         
     }
+    
+    /// Private class method to show the picker
+    ///
+    /// - Parameters:
+    ///   - delegate: PickerViewControllerDelegate object
+    ///   - pickerViewController: PickerViewController
+    ///   - parentViewController: Parent View Controller
+    ///   - source: source button
     private class func showPicker(delegate: PickerViewControllerDelegate, pickerViewController: PickerViewController, parentViewController: UIViewController, source: UIView) {
         var pvc = parentViewController
         if parentViewController.isKind(of: PasswordsViewController.self) {
@@ -125,6 +168,20 @@ class Utilities: NSObject {
             pickerViewController.view.bounds = pickerViewController.itemPickerView.bounds
         }
         pvc.present(pickerViewController, animated: true, completion: nil)
+    }
+    
+    /// Gets a screenshot of the current window
+    ///
+    /// - Returns: UIImage screenshot
+    public class func screenshot() -> UIImage {
+        guard let layer = UIApplication.shared.keyWindow?.layer else { return UIImage() }
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+        guard let currentContext = UIGraphicsGetCurrentContext() else { UIGraphicsEndImageContext(); return UIImage() }
+        layer.render(in: currentContext)
+        guard let screenshot = UIGraphicsGetImageFromCurrentImageContext() else { UIGraphicsEndImageContext(); return UIImage() }
+        UIGraphicsEndImageContext()
+        return screenshot
     }
 
 }

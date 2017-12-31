@@ -22,7 +22,12 @@ class ColorPickerViewController: UIViewController, UIPopoverPresentationControll
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var picker: SwiftHSVColorPicker!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        backgroundImage.image = Utilities.screenshot()
+    }
     func setColor(_ color: UIColor, andTitle title: String) {
         pickerTitle = title
         if pickerTitle.last == "s" {
