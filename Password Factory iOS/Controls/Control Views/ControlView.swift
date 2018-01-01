@@ -62,6 +62,7 @@ class ControlView: UIView, DefaultsManagerDelegate {
         addBorder([.bottom],color: PFConstants.cellBorderColor)
         setLabel()
         setEnabledObserver()
+        backgroundColor = UIColor.white
     }
     
     /// Sets up the obeverver for an enabled key
