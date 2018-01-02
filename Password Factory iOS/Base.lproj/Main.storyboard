@@ -1186,6 +1186,10 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedPrefixPattern"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Prefix Pattern"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="controlGroup" value="advancedTextInput"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="controlGroupIndex">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="pyS-d0-K6C" id="U1U-qg-ET5"/>
@@ -1206,6 +1210,10 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedSuffixPattern"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Suffix Pattern"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="controlGroup" value="advancedTextInput"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="controlGroupIndex">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="pyS-d0-K6C" id="WF8-hx-MzO"/>
@@ -1226,6 +1234,10 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedFindRegex"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Find Regex"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="controlGroup" value="advancedTextInput"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="controlGroupIndex">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="pyS-d0-K6C" id="Knx-Hc-SNd"/>
@@ -1253,6 +1265,10 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="advancedReplacePattern"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Replace Pattern"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="controlGroup" value="advancedTextInput"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="controlGroupIndex">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="pyS-d0-K6C" id="zAp-Cn-5SQ"/>

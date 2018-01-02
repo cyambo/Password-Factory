@@ -34,6 +34,33 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         let n = NotificationCenter.default
         n.addObserver(self, selector: #selector(textChanged), name: .UITextFieldTextDidChange, object: controlText)
         controlText.font = PFConstants.labelFont
+        setupAccessoryView()
+    }
+    
+    /// Creates the keyboard accessory view that contains the left and right arrows to select items in the control group
+    func setupAccessoryView() {
+        if controlGroup != nil {
+            let accessory = UIView.init(frame: CGRect.init(x: 0, y: 0, width: frame.size.width, height: 45))
+            accessory.backgroundColor = UIColor.lightGray
+            let leftButton = UIButton.init()
+            leftButton.setImage(StyleKit.imageOfLeftArrow(strokeColor: UIColor.white), for: .normal)
+            leftButton.addTarget(self, action: #selector(goToPreviousItemInControlGroup), for: .touchUpInside)
+            let rightButton = UIButton.init()
+            rightButton.setImage(StyleKit.imageOfRightArrow(strokeColor: UIColor.white), for: .normal)
+            rightButton.addTarget(self, action: #selector(goToNextItemInControlGroup), for: .touchUpInside)
+            accessory.addSubview(leftButton)
+            accessory.addSubview(rightButton)
+            let aViews = ["left" : leftButton, "right" : rightButton]
+            accessory.addVFLConstraints(constraints: ["H:|-[left(==30)]","H:[right(==30)]-|","V:[left(==30)]","V:[right(==30)]"], views: aViews)
+            accessory.centerViewVertically(leftButton)
+            accessory.centerViewVertically(rightButton)
+            controlText.inputAccessoryView = accessory
+        }
+    }
+    
+    /// Selects the controlText item
+    override func selectCurrentControlGroupItem() {
+        controlText.selectAll(self)
     }
     /// Sets the parameters of the text field
     func setupTextField() {
@@ -72,6 +99,10 @@ class TextFieldView: ControlView, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         endAction()
     }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     /// Observer method called when text changes
     @objc func textChanged() {
         //do we have anything in the text
@@ -102,6 +133,5 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         }
         //storing last change to check to see if it is called with the same value twice because of ios bug
         prevChange = toChange
-        
     }
 }

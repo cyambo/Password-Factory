@@ -18,8 +18,10 @@ class ControlView: UIView, DefaultsManagerDelegate {
     @IBInspectable public var defaultsKey: String? //defaults key to use
     @IBInspectable public var enabledKey: String? //key to observe to determine if the control is enabled or disabled
     @IBInspectable public var showAlertKey: String? //if set the control will show an alert before allowing the change to be made
+    @IBInspectable public var controlGroup: String? //sets the group the control belongs to
+    @IBInspectable public var controlGroupIndex: Int = 0 //Index of the control group item
     @IBOutlet var delegate: ControlViewDelegate?
-    
+    static var controlGroups = [String:[Int:ControlView]]()
     let d = DefaultsManager.get()
     let c = PFConstants.instance
     var isEnabled : Bool = true
@@ -75,11 +77,90 @@ class ControlView: UIView, DefaultsManagerDelegate {
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         if newWindow != nil {
-            return
+            addToControlGroup()
+        } else {
+            removeFromControlGroup()
+            if let ek = enabledKey{
+                d.removeDefaultsObservers(self, keys: [ek])
+            }
         }
-        if let ek = enabledKey{
-            d.removeDefaultsObservers(self, keys: [ek])
+
+    }
+    
+    /// Called when the view appears and adds the item to a control group if set
+    func addToControlGroup() {
+        guard let cg = controlGroup else { return }
+        if ControlView.controlGroups[cg] == nil {
+            ControlView.controlGroups[cg] = [Int:ControlView]()
         }
+        ControlView.controlGroups[cg]?[controlGroupIndex] = self
+    }
+    
+    /// Removes the item from the control group
+    func removeFromControlGroup() {
+        guard let cg = controlGroup else { return }
+        if ControlView.controlGroups[cg] != nil {
+            ControlView.controlGroups[cg]?.removeValue(forKey: controlGroupIndex)
+        }
+    }
+    
+    /// Gets the controlGroupIndex for the next item
+    ///
+    /// - Parameter reversed: reverse the direction
+    /// - Returns: controlGroupIndex of next item
+    func getNextControlGroupIndex(reversed: Bool = false) -> Int? {
+        guard let cg = controlGroup else { return nil }
+        guard let views = ControlView.controlGroups[cg] else { return nil }
+        var viewIndex = views.keys.sorted()
+        if reversed {
+            viewIndex = viewIndex.reversed()
+        }
+        var found : Int?
+        for index in viewIndex {
+            if !reversed {
+                if index > controlGroupIndex {
+                    found = index
+                    break
+                }
+            } else {
+                if index < controlGroupIndex {
+                    found = index
+                    break
+                }
+            }
+
+        }
+        //if it isn't found that means we rolled over, so get the first item
+        if found == nil {
+            found = viewIndex.first
+        }
+        return found!
+    }
+    
+    /// Button action to go to the next item in the control group
+    @objc func goToNextItemInControlGroup() {
+        guard let found = getNextControlGroupIndex() else { return }
+        selectControlGroupItem(found)
+    }
+    
+    /// Button action to go to the previous item in the control group
+    @objc func goToPreviousItemInControlGroup() {
+        guard let found = getNextControlGroupIndex(reversed: true) else { return }
+        selectControlGroupItem(found)
+    }
+    
+    /// Called from the button action to select the item at controlGroupIndex
+    ///
+    /// - Parameter atIndex: controlGroupIndex to select
+    private func selectControlGroupItem(_ atIndex: Int) {
+        guard let cg = controlGroup else { return }
+        guard let views = ControlView.controlGroups[cg] else { return }
+        views[atIndex]?.selectCurrentControlGroupItem()
+    }
+    
+    /// Called to select the current control group item - override in each of the types for specific actions
+    func selectCurrentControlGroupItem() {
+
     }
     /// Puts the label text on the label, and sets the font
     func setLabel() {
