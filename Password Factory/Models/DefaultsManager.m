@@ -331,7 +331,6 @@ static DefaultsManager *dm = nil;
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     //don't do anything if we are a duplicate event
-    NSLog(@"KEYP %@",keyPath);
     if (![self timeThresholdForKeyPathExceeded:keyPath]) {
         return;
     }
@@ -339,7 +338,6 @@ static DefaultsManager *dm = nil;
     if (change[@"new"] == [NSNull null]) {
         return;
     }
-    NSLog(@"KEYP SUCCESS %@",keyPath);
     //check to see if we have any observers
     if (self.observers[keyPath]) {
         for(id o in self.observers[keyPath]) {

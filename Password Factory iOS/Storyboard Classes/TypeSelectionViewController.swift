@@ -146,9 +146,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                 pop.backgroundColor = zoomViewController.bgColor
                 pop.sourceView = zoomButton
                 pop.sourceRect = zoomButton.bounds
-                var height = (size.height + 4.0) * ceil(size.width / 580)
+                let height = (size.height + 4.0) * ceil(size.width / 580)
                 let width = size.width < 600 ? (size.width + 40) : 600
-                if height > 700 { height = 700 }
                 
                 zoomViewController.preferredContentSize = CGSize.init(width: width, height: height)
             }

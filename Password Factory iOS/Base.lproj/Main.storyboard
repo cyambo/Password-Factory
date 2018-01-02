@@ -282,52 +282,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndi-Rs-3cM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-5J-ePn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-5J-ePn">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sk0-dg-wDy">
-                                                <rect key="frame" x="8" y="28" width="359" height="631"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <attributedString key="attributedText"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                            </textView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="sk0-dg-wDy" firstAttribute="top" secondItem="8xg-5J-ePn" secondAttribute="topMargin" id="52f-9w-ea9"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="sk0-dg-wDy" secondAttribute="bottom" id="Bon-Qx-RmO"/>
-                                            <constraint firstItem="sk0-dg-wDy" firstAttribute="leading" secondItem="8xg-5J-ePn" secondAttribute="leadingMargin" id="Za2-QC-6ve"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="sk0-dg-wDy" secondAttribute="trailing" id="qgw-sh-4tt"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sk0-dg-wDy">
+                                        <rect key="frame" x="8" y="28" width="359" height="631"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <attributedString key="attributedText"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="8xg-5J-ePn" firstAttribute="top" secondItem="Ndi-Rs-3cM" secondAttribute="topMargin" id="LNp-3f-f97"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="8xg-5J-ePn" secondAttribute="bottom" id="PNx-ek-3iw"/>
-                                    <constraint firstItem="8xg-5J-ePn" firstAttribute="leading" secondItem="Ndi-Rs-3cM" secondAttribute="leadingMargin" id="VHj-ml-z4Q"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="8xg-5J-ePn" secondAttribute="trailing" id="dWI-zN-udn"/>
+                                    <constraint firstItem="sk0-dg-wDy" firstAttribute="leading" secondItem="8xg-5J-ePn" secondAttribute="leadingMargin" id="R0Q-4y-aLv"/>
+                                    <constraint firstAttribute="bottom" secondItem="sk0-dg-wDy" secondAttribute="bottom" constant="8" id="ls4-ay-Ekk"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="sk0-dg-wDy" secondAttribute="trailing" id="ub1-V8-z8R"/>
+                                    <constraint firstItem="sk0-dg-wDy" firstAttribute="top" secondItem="8xg-5J-ePn" secondAttribute="topMargin" id="vcb-TT-fWH"/>
                                 </constraints>
-                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Ndi-Rs-3cM" firstAttribute="top" secondItem="qag-ps-ilz" secondAttribute="top" id="1mM-jH-phX"/>
-                            <constraint firstItem="Ndi-Rs-3cM" firstAttribute="leading" secondItem="qag-ps-ilz" secondAttribute="leading" id="4E1-x1-Yfr"/>
-                            <constraint firstAttribute="trailing" secondItem="Ndi-Rs-3cM" secondAttribute="trailing" id="VSS-V9-EEA"/>
-                            <constraint firstAttribute="bottom" secondItem="Ndi-Rs-3cM" secondAttribute="bottom" id="ZYG-se-ilH"/>
+                            <constraint firstItem="8xg-5J-ePn" firstAttribute="bottom" secondItem="qag-ps-ilz" secondAttribute="bottom" id="AMh-n8-YZK"/>
+                            <constraint firstItem="8xg-5J-ePn" firstAttribute="trailing" secondItem="qag-ps-ilz" secondAttribute="trailing" id="hxe-KN-dZd"/>
+                            <constraint firstItem="8xg-5J-ePn" firstAttribute="leading" secondItem="qag-ps-ilz" secondAttribute="leading" id="nkm-67-IcG"/>
+                            <constraint firstItem="8xg-5J-ePn" firstAttribute="top" secondItem="qag-ps-ilz" secondAttribute="top" id="puQ-bS-pBP"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="50" left="50" bottom="50" right="50"/>
                         <viewLayoutGuide key="safeArea" id="SuV-n1-puJ"/>
                     </view>
                     <connections>
-                        <outlet property="backgroundView" destination="Ndi-Rs-3cM" id="7eW-jw-lw2"/>
                         <outlet property="containerView" destination="8xg-5J-ePn" id="4Wk-qN-gDt"/>
                         <outlet property="zoomedPassword" destination="sk0-dg-wDy" id="0GB-TN-HO2"/>
                     </connections>

@@ -18,7 +18,7 @@ class ZoomViewController: UIViewController {
     var dismissGesture: UITapGestureRecognizer?
     var formattedPassword : NSMutableAttributedString?
     var password: String?
-    let font = UIFont.init(name: "Menlo", size: 56)
+    let font = UIFont.init(name: "Menlo", size: 59)
     let bgColor = UIColor.init(white: 0.3, alpha: 1.0)
 
     override func viewDidLoad() {
