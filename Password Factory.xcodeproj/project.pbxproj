@@ -155,6 +155,7 @@
 		40C4C8AF1F9E9C0900F31070 /* emojis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40C4C8AD1F9E9C0900F31070 /* emojis.txt */; };
 		40C69F301FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */; };
 		40C87A291FAE2D3100D784B0 /* PasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C87A281FAE2D3100D784B0 /* PasswordController.m */; };
+		40C8E03B1FFB1C5D00056827 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C8E03A1FFB1C5D00056827 /* AlertViewController.swift */; };
 		40CC4D881F91B4620093A9B8 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */; };
 		40D428DA1FBFBE310024965B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428D91FBFBE310024965B /* Utilities.m */; };
 		40D428DB1FBFBE310024965B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D428D91FBFBE310024965B /* Utilities.m */; };
@@ -409,6 +410,7 @@
 		40C69F2F1FCCA4340009E325 /* VerticallyCenteredTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticallyCenteredTextFieldCell.m; sourceTree = "<group>"; };
 		40C87A271FAE2D3100D784B0 /* PasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordController.h; sourceTree = "<group>"; };
 		40C87A281FAE2D3100D784B0 /* PasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordController.m; sourceTree = "<group>"; };
+		40C8E03A1FFB1C5D00056827 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		40D428D81FBFBE310024965B /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		40D428D91FBFBE310024965B /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				40E9D1681FE04BC100FE1A1C /* TypeSelectionViewController.swift */,
 				40974E321FE485B800AC2772 /* PreferencesViewController.swift */,
 				4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */,
+				40C8E03A1FFB1C5D00056827 /* AlertViewController.swift */,
 			);
 			path = "Storyboard Classes";
 			sourceTree = "<group>";
@@ -1704,6 +1707,7 @@
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
 				401BC7211FF968B0008C7927 /* HeaderLabel.swift in Sources */,
+				40C8E03B1FFB1C5D00056827 /* AlertViewController.swift in Sources */,
 				406E8FE11FE30E7400A76765 /* LengthControlView.swift in Sources */,
 				405531F61FEF3F1200E77A84 /* UIImage+Extensions.swift in Sources */,
 				405DE43D1FF9852200F4A6C0 /* ButtonControlView.swift in Sources */,

@@ -18,7 +18,6 @@ class Utilities: NSObject {
     ///   - font: font to use
     /// - Returns: attrbuted string that is highlighted with colors set in prefs
     public class func highlightPassword(password: String, font: UIFont) ->NSAttributedString {
-        
         if(DefaultsManager.get().bool(forKey: "colorPasswordText")) {
             //color it
             return Utilities.highlightPasswordString(password: password, font: font)
@@ -96,7 +95,7 @@ class Utilities: NSObject {
         return h
     }
     
-    /// Loads the picker controller from the storyboard//FIXME:
+    /// Loads the picker controller from the storyboard
     ///
     /// - Returns: PickerViewController
     private class func loadPickerFromStoryboard() -> (PickerViewController?) {
@@ -118,7 +117,6 @@ class Utilities: NSObject {
         }
         vc.setType(type: type, passwordType: passwordType)
         showPicker(delegate: delegate, pickerViewController: vc, parentViewController: parentViewController, source: source)
-        
     }
     
     /// Displays a number picker
@@ -149,27 +147,60 @@ class Utilities: NSObject {
     ///   - delegate: PickerViewControllerDelegate object
     ///   - pickerViewController: PickerViewController
     ///   - parentViewController: Parent View Controller
-    ///   - source: source button
+    ///   - source: UIView of control that triggered picker
     private class func showPicker(delegate: PickerViewControllerDelegate, pickerViewController: PickerViewController, parentViewController: UIViewController, source: UIView) {
+        pickerViewController.delegate = delegate
+        _ = pickerViewController.view
+        showPopover(parentViewController: parentViewController, viewControllerToShow: pickerViewController, popoverBounds: pickerViewController.itemPickerView.bounds, source: source)
+    }
+    
+    /// Shows an alert if not hidden
+    ///
+    /// - Parameters:
+    ///   - delegate: alertViewControllerDelegate
+    ///   - alertKey: key of alert message
+    ///   - parentViewController: parent view controller
+    ///   - source: UIView of control that triggered alert
+    class func showAlert(delegate: AlertViewControllerDelegate, alertKey: String, parentViewController: UIViewController, source: UIView) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        guard let alertViewController = storyboard.instantiateViewController(withIdentifier: "AlertView") as? AlertViewController else { return }
+        alertViewController.delegate = delegate
+        _ = alertViewController.view
+        if !alertViewController.checkIfHidden(alertKeyToShow: alertKey) {
+            showPopover(parentViewController: parentViewController, viewControllerToShow: alertViewController, popoverBounds: alertViewController.containerView.bounds, source: source)
+        }
+    }
+    
+    /// Shows a viewController as a popover or modal view
+    ///
+    /// - Parameters:
+    ///   - parentViewController: parent view controller of view
+    ///   - viewControllerToShow: UIViewController that is displayed in a popover
+    ///   - popoverBounds: bounds of popover to show
+    ///   - source: UIView of control that triggered popover
+    private class func showPopover(parentViewController: UIViewController, viewControllerToShow: UIViewController, popoverBounds: CGRect, source: UIView) {
         var pvc = parentViewController
+        //if the parent is PasswordsViewController, use the root view controller
         if parentViewController.isKind(of: PasswordsViewController.self) {
             pvc = UIApplication.shared.keyWindow?.rootViewController ?? parentViewController
         }
-        pickerViewController.delegate = delegate
-        pickerViewController.modalPresentationStyle = .popover
-        if let pop = pickerViewController.popoverPresentationController {
+        //set to popover
+        viewControllerToShow.modalPresentationStyle = .popover
+        //load the popover
+        if let pop = viewControllerToShow.popoverPresentationController {
             pop.permittedArrowDirections = .any
             pop.sourceView = source
             pop.sourceRect = source.bounds
-            pop.delegate = pickerViewController
-            _ = pickerViewController.view //this loads the view and sets sizes
-            pickerViewController.preferredContentSize = pickerViewController.itemPickerView.bounds.size
-            
-            pickerViewController.view.bounds = pickerViewController.itemPickerView.bounds
+            if let del = viewControllerToShow as? UIPopoverPresentationControllerDelegate {
+                pop.delegate = del
+            }
+            //set the size and bounds
+            viewControllerToShow.preferredContentSize = popoverBounds.size
+            viewControllerToShow.view.bounds = popoverBounds
         }
-        pvc.present(pickerViewController, animated: true, completion: nil)
+        pvc.present(viewControllerToShow, animated: true, completion: nil)
     }
-    
+
     /// Gets a screenshot of the current window
     ///
     /// - Returns: UIImage screenshot
@@ -183,8 +214,14 @@ class Utilities: NSObject {
         UIGraphicsEndImageContext()
         return screenshot
     }
+    
+    
+    /// Gets the side margins for controls which centers and makes the margins bigger them on big screens
+    ///
+    /// - Returns: margin to use
     public class func getSideMarginsForControls() -> CGFloat {
         var sideMargin : CGFloat =  16.0
+        //if the width is greater than 500 then expand the margins
         if let width = UIApplication.shared.keyWindow?.rootViewController?.view.frame.size.width {
             if width > 500.0 {
                 sideMargin = (width - 500.0) / 2.0

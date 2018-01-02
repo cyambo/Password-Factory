@@ -12,14 +12,18 @@ import UIKit
 @objc public protocol ControlViewDelegate: class {
     func controlChanged(_ control: UIControl?, defaultsKey: String)
 }
-class ControlView: UIView, DefaultsManagerDelegate {
-    
+class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate {
+
     @IBInspectable public var label: String? //label to display
     @IBInspectable public var defaultsKey: String? //defaults key to use
     @IBInspectable public var enabledKey: String? //key to observe to determine if the control is enabled or disabled
     @IBInspectable public var showAlertKey: String? //if set the control will show an alert before allowing the change to be made
+    @IBInspectable public var showAlertKeyAlternate: String? //if set the control will show an alert before allowing the change to be made
+    
     @IBInspectable public var controlGroup: String? //sets the group the control belongs to
     @IBInspectable public var controlGroupIndex: Int = 0 //Index of the control group item
+    @IBInspectable public var bordered: Bool = true //show the border or not
+    @IBInspectable public var autoMargins: Bool = true //to use automatic margins for big screens
     @IBOutlet var delegate: ControlViewDelegate?
     static var controlGroups = [String:[Int:ControlView]]()
     let d = DefaultsManager.get()
@@ -42,6 +46,7 @@ class ControlView: UIView, DefaultsManagerDelegate {
         super.prepareForInterfaceBuilder()
         setupView()
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setupView()
@@ -59,12 +64,16 @@ class ControlView: UIView, DefaultsManagerDelegate {
     
     /// Sets up the view when display is ready
     func setupView() {
-        let sideMargin = Utilities.getSideMarginsForControls()
-        layoutMargins = UIEdgeInsets(top: 8, left: sideMargin, bottom: 8, right: sideMargin)
-        addBorder([.bottom],color: PFConstants.cellBorderColor)
+        if autoMargins {
+            let sideMargin = Utilities.getSideMarginsForControls()
+            layoutMargins = UIEdgeInsets(top: 8, left: sideMargin, bottom: 8, right: sideMargin)
+        }
+        if bordered {
+            addBorder([.bottom],color: PFConstants.cellBorderColor)
+        }
         setLabel()
-        setEnabledObserver()
         backgroundColor = UIColor.white
+        controlLabel.adjustsFontSizeToFitWidth = true
     }
     
     /// Sets up the obeverver for an enabled key
@@ -78,13 +87,13 @@ class ControlView: UIView, DefaultsManagerDelegate {
         super.willMove(toWindow: newWindow)
         if newWindow != nil {
             addToControlGroup()
+            setEnabledObserver()
         } else {
             removeFromControlGroup()
             if let ek = enabledKey{
                 d.removeDefaultsObservers(self, keys: [ek])
             }
         }
-
     }
     
     /// Called when the view appears and adds the item to a control group if set
@@ -162,6 +171,7 @@ class ControlView: UIView, DefaultsManagerDelegate {
     func selectCurrentControlGroupItem() {
 
     }
+    
     /// Puts the label text on the label, and sets the font
     func setLabel() {
         controlLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -195,7 +205,6 @@ class ControlView: UIView, DefaultsManagerDelegate {
         }
     }
     
-    
     /// Called to enable or disable the controls
     ///
     /// - Parameter enabled: bool for enabled status
@@ -209,7 +218,14 @@ class ControlView: UIView, DefaultsManagerDelegate {
         }
     }
     
-    /// Used when a defaults key changes
+    /// AlertViewControllerDelegate method - called when alert is dismissed
+    ///
+    /// - Parameter continue: whether or not to continue with action
+    func canContinueWithAction(canContinue: Bool) {
+        
+    }
+    
+    /// Called when a defaults key changes - DefaultsManagerDelegate method
     ///
     /// - Parameters:
     ///   - keyPath: defaults key

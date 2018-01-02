@@ -28,6 +28,7 @@ class SwitchView: ControlView {
         addSubview(controlSwitch)
         addSubview(controlLabel)
     }
+    
     /// Adds and positions the switch and label
     override func setupView() {
         super.setupView()
@@ -36,7 +37,7 @@ class SwitchView: ControlView {
         addVFLConstraints(constraints: ["H:|-[label]-8-[switch(==52)]-|"], views: views)
         centerViewVertically(controlLabel)
         centerViewVertically(controlSwitch)
-        
+
         //sets the state and action for the switch
         if let key = defaultsKey {
             controlSwitch.setOn((d.bool(forKey: key)), animated: false)
@@ -49,12 +50,35 @@ class SwitchView: ControlView {
     }
     /// sets defaults for the switch state
     @objc func changeSwitch() {
-        if let key = defaultsKey {
-            d.setBool(controlSwitch.isOn, forKey: key)
-            delegate?.controlChanged(controlSwitch, defaultsKey: key)
+        if defaultsKey == nil { return }
+        if showAlertKey != nil || showAlertKeyAlternate != nil {
+            guard let pvc = parentViewController else { return }
+            var currentAlertKey: String?
+            if showAlertKey != nil && controlSwitch.isOn {
+                currentAlertKey = showAlertKey
+            } else if showAlertKeyAlternate != nil && !controlSwitch.isOn {
+                currentAlertKey = showAlertKeyAlternate
+            }
+            if let ak = currentAlertKey {
+                Utilities.showAlert(delegate: self, alertKey: ak, parentViewController: pvc, source: controlSwitch)
+            }
+            
+        } else {
+            switchChanged()
         }
     }
-    
+    func switchChanged() {
+        guard let key = defaultsKey else { return }
+        d.setBool(controlSwitch.isOn, forKey: key)
+        delegate?.controlChanged(controlSwitch, defaultsKey: key)
+    }
+    override func canContinueWithAction(canContinue: Bool) {
+        if canContinue {
+            switchChanged()
+        } else {
+            controlSwitch.isOn = !controlSwitch.isOn
+        }
+    }
     /// Called when the view is tapped
     ///
     /// - Parameter recognizer: default

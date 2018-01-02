@@ -48,7 +48,7 @@ final class PFConstants: NSObject {
     public let caseTypeIndex: [PFCaseType]
     public let separatorTypeIndex: [PFSeparatorType]
     public let patternTypeIndex: [PFPatternTypeItem]
-    
+    public var errorMessages = [String: String]()
     //init is private for singleton
     private override init() {
         //converting all the arrays and dictionaries to ones with proper types
@@ -88,7 +88,13 @@ final class PFConstants: NSObject {
         patternTypeToCharacter = Dictionary.init(uniqueKeysWithValues: c.patternTypeToCharacter.map {
             key, value in ( PFPatternTypeItem(rawValue:key as! Int)!, value as! String)
         })
+        errorMessages["extendedCharacterWarning"] = ExtendedCharacterWarning
+        errorMessages["storedPasswordOffWarning"] = StoredPasswordOffWarning
+        errorMessages["storedPasswordOnWarning"] = StoredPasswordOnWarning
+        errorMessages["resetToDefaultsWarning"] = ResetToDefaultsWarning
+        errorMessages["resetAllDialogsWarning"] = ResetAllDialogsWarning
     }
+
     public func getPasswordType(by: UInt) -> PFPasswordType {
         return c.getPasswordType(by: by)
     }

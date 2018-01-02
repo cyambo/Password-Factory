@@ -271,7 +271,6 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     }
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
         if let key = keyPath {
-            print("KEY \(key)")
             //are we toggling advanced or stored
             if key == "enableAdvanced" || key == "storePasswords" {
                 setupSegments()
