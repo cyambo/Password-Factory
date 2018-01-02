@@ -111,6 +111,7 @@ extern NSString * const StartAtLoginNotInApplicationsWarning;
 extern NSString * const StoredPasswordOffWarning;
 extern NSString * const StoredPasswordOnWarning;
 extern NSString * const ResetToDefaultsWarning;
+extern NSString * const ResetToDefaultsWarningiOS;
 extern NSString * const ResetAllDialogsWarning;
 extern NSString * const PasswordSaveError;
 extern NSString * const MenuRestartMessage;

@@ -60,7 +60,7 @@ class SwitchView: ControlView {
                 currentAlertKey = showAlertKeyAlternate
             }
             if let ak = currentAlertKey {
-                Utilities.showAlert(delegate: self, alertKey: ak, parentViewController: pvc, source: controlSwitch)
+                Utilities.showAlert(delegate: self, alertKey: ak, parentViewController: pvc, disableAlertHiding: disableAlertHiding, source: controlSwitch)
             }
             
         } else {

@@ -17,6 +17,7 @@ protocol AlertViewControllerDelegate: class {
 class AlertViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     weak var delegate: AlertViewControllerDelegate?
     
+    @IBOutlet weak var hideSwitchViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var alertText: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hideSwitchView: SwitchView!
@@ -26,13 +27,17 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
     @IBOutlet weak var containerView: UIView!
     
     var alertKey: String?
+    var disableAlertHiding: Bool = false
     let c = PFConstants.instance
     let d = DefaultsManager.get()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //setup hideSwitch
         hideSwitchView.autoMargins = false
+        hideSwitchView.clipsToBounds = true
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         backgroundImage.image = Utilities.screenshot()
         titleLabel.backgroundColor = PFConstants.tintColor
@@ -43,7 +48,9 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
         cancelButton.addBorder([.top,.right], color: PFConstants.tintColor, width: 0.5)
         okButton.addBorder([.top], color: PFConstants.tintColor, width: 0.5)
         cancelButton.setTitleColor(UIColor.red, for: .normal)
-        
+        if disableAlertHiding == true {
+            hideSwitchViewHeightConstraint.constant = 0
+        }
         //load the alert message
         if let ak = alertKey {
             if let message = c.errorMessages[ak] {
@@ -76,7 +83,6 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
         guard let f = ak.first else { return nil }
         let firstChar = String(describing: f).uppercased()
         return "hide\(firstChar)\(ak.dropFirst())"
-        
     }
     
     /// User cancelled the action

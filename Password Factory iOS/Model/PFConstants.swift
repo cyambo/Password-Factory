@@ -91,7 +91,7 @@ final class PFConstants: NSObject {
         errorMessages["extendedCharacterWarning"] = ExtendedCharacterWarning
         errorMessages["storedPasswordOffWarning"] = StoredPasswordOffWarning
         errorMessages["storedPasswordOnWarning"] = StoredPasswordOnWarning
-        errorMessages["resetToDefaultsWarning"] = ResetToDefaultsWarning
+        errorMessages["resetToDefaultsWarning"] = ResetToDefaultsWarningiOS
         errorMessages["resetAllDialogsWarning"] = ResetAllDialogsWarning
     }
 

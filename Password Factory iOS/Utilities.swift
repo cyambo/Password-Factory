@@ -150,7 +150,7 @@ class Utilities: NSObject {
     ///   - source: UIView of control that triggered picker
     private class func showPicker(delegate: PickerViewControllerDelegate, pickerViewController: PickerViewController, parentViewController: UIViewController, source: UIView) {
         pickerViewController.delegate = delegate
-        _ = pickerViewController.view
+        _ = pickerViewController.view //load and layout the view
         showPopover(parentViewController: parentViewController, viewControllerToShow: pickerViewController, popoverBounds: pickerViewController.itemPickerView.bounds, source: source)
     }
     
@@ -161,11 +161,12 @@ class Utilities: NSObject {
     ///   - alertKey: key of alert message
     ///   - parentViewController: parent view controller
     ///   - source: UIView of control that triggered alert
-    class func showAlert(delegate: AlertViewControllerDelegate, alertKey: String, parentViewController: UIViewController, source: UIView) {
+    class func showAlert(delegate: AlertViewControllerDelegate, alertKey: String, parentViewController: UIViewController, disableAlertHiding: Bool, source: UIView) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let alertViewController = storyboard.instantiateViewController(withIdentifier: "AlertView") as? AlertViewController else { return }
         alertViewController.delegate = delegate
-        _ = alertViewController.view
+        alertViewController.disableAlertHiding = disableAlertHiding
+        _ = alertViewController.view //load and layout the view
         if !alertViewController.checkIfHidden(alertKeyToShow: alertKey) {
             showPopover(parentViewController: parentViewController, viewControllerToShow: alertViewController, popoverBounds: alertViewController.containerView.bounds, source: source)
         }

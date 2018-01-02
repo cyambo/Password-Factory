@@ -19,6 +19,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     @IBInspectable public var enabledKey: String? //key to observe to determine if the control is enabled or disabled
     @IBInspectable public var showAlertKey: String? //if set the control will show an alert before allowing the change to be made
     @IBInspectable public var showAlertKeyAlternate: String? //if set the control will show an alert before allowing the change to be made
+    @IBInspectable public var disableAlertHiding: Bool = false //disables the ability to hide the alert
     
     @IBInspectable public var controlGroup: String? //sets the group the control belongs to
     @IBInspectable public var controlGroupIndex: Int = 0 //Index of the control group item
@@ -36,6 +37,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
         initializeControls()
         addViews()
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addViews()
@@ -83,6 +85,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
             setEnabled(d.bool(forKey: ek))
         }
     }
+    
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         if newWindow != nil {
@@ -224,7 +227,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     func canContinueWithAction(canContinue: Bool) {
         
     }
-    
+
     /// Called when a defaults key changes - DefaultsManagerDelegate method
     ///
     /// - Parameters:

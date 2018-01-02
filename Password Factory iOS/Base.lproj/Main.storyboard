@@ -1731,14 +1731,26 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Reset All Warnings"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="showAlertKey" value="resetAllDialogsWarning"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="resetAllDialogs"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableAlertHiding" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="KGt-Hr-RKx" id="Ab5-M7-Zfn"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H34-s7-CPG" userLabel="Reset Defaults" customClass="ButtonControlView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="792" width="375" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Reset to Defaults"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="showAlertKey" value="resetToDefaultsWarning"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="resetToDefaults"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableAlertHiding" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="KGt-Hr-RKx" id="wse-Xj-OVd"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -1943,8 +1955,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Do not do that because it is a problem" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRm-oS-vBp">
-                                        <rect key="frame" x="8" y="44" width="284" height="110"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <rect key="frame" x="16" y="52" width="268" height="94"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1979,7 +1991,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="bRm-oS-vBp" firstAttribute="leading" secondItem="HF9-yY-bQn" secondAttribute="leading" constant="8" id="3uy-IW-qyU"/>
+                                    <constraint firstItem="bRm-oS-vBp" firstAttribute="leading" secondItem="HF9-yY-bQn" secondAttribute="leading" constant="16" id="3uy-IW-qyU"/>
                                     <constraint firstItem="I2u-Lx-dl2" firstAttribute="height" secondItem="m26-zu-M4f" secondAttribute="height" id="Bvl-oO-nez"/>
                                     <constraint firstItem="m26-zu-M4f" firstAttribute="leading" secondItem="I2u-Lx-dl2" secondAttribute="trailing" id="DWi-HG-7pj"/>
                                     <constraint firstItem="I2u-Lx-dl2" firstAttribute="leading" secondItem="HF9-yY-bQn" secondAttribute="leading" id="FYZ-ez-8EU"/>
@@ -1989,16 +2001,13 @@
                                     <constraint firstAttribute="trailing" secondItem="m26-zu-M4f" secondAttribute="trailing" id="NMy-PZ-Fps"/>
                                     <constraint firstAttribute="bottom" secondItem="I2u-Lx-dl2" secondAttribute="bottom" id="QgF-Si-S06"/>
                                     <constraint firstAttribute="height" constant="250" id="T5l-9B-TYi"/>
-                                    <constraint firstItem="fsi-5R-Sow" firstAttribute="top" secondItem="bRm-oS-vBp" secondAttribute="bottom" constant="8" id="XD5-iX-HDQ"/>
-                                    <constraint firstItem="bRm-oS-vBp" firstAttribute="leading" secondItem="HF9-yY-bQn" secondAttribute="leading" constant="8" id="YX5-9f-noR"/>
-                                    <constraint firstItem="bRm-oS-vBp" firstAttribute="top" secondItem="fI6-CZ-Dzh" secondAttribute="bottom" constant="8" id="ZJ3-ZR-iLw"/>
-                                    <constraint firstAttribute="trailing" secondItem="bRm-oS-vBp" secondAttribute="trailing" constant="8" id="bW1-5N-8OM"/>
+                                    <constraint firstItem="fsi-5R-Sow" firstAttribute="top" secondItem="bRm-oS-vBp" secondAttribute="bottom" constant="16" id="XD5-iX-HDQ"/>
+                                    <constraint firstItem="bRm-oS-vBp" firstAttribute="top" secondItem="fI6-CZ-Dzh" secondAttribute="bottom" constant="16" id="ZJ3-ZR-iLw"/>
                                     <constraint firstItem="m26-zu-M4f" firstAttribute="leading" secondItem="I2u-Lx-dl2" secondAttribute="trailing" id="gvi-43-JGt"/>
                                     <constraint firstItem="I2u-Lx-dl2" firstAttribute="top" secondItem="fsi-5R-Sow" secondAttribute="bottom" constant="8" id="jjn-Ku-SiM"/>
                                     <constraint firstAttribute="bottom" secondItem="m26-zu-M4f" secondAttribute="bottom" id="q8T-UW-kS6"/>
                                     <constraint firstAttribute="width" constant="300" id="qEe-Il-1V4"/>
-                                    <constraint firstItem="bRm-oS-vBp" firstAttribute="top" secondItem="fI6-CZ-Dzh" secondAttribute="bottom" constant="8" id="s5l-QK-CDj"/>
-                                    <constraint firstAttribute="trailing" secondItem="bRm-oS-vBp" secondAttribute="trailing" constant="8" id="tQm-2o-28I"/>
+                                    <constraint firstAttribute="trailing" secondItem="bRm-oS-vBp" secondAttribute="trailing" constant="16" id="tQm-2o-28I"/>
                                     <constraint firstItem="fsi-5R-Sow" firstAttribute="leading" secondItem="HF9-yY-bQn" secondAttribute="leading" constant="8" id="x3e-cz-y8z"/>
                                     <constraint firstAttribute="trailing" secondItem="fsi-5R-Sow" secondAttribute="trailing" constant="8" id="y5y-s7-oD4"/>
                                     <constraint firstItem="I2u-Lx-dl2" firstAttribute="width" secondItem="m26-zu-M4f" secondAttribute="width" id="yeo-sg-Q9U"/>
@@ -2026,6 +2035,7 @@
                         <outlet property="cancelButton" destination="I2u-Lx-dl2" id="tmA-rC-iE1"/>
                         <outlet property="containerView" destination="HF9-yY-bQn" id="4Sy-40-HDk"/>
                         <outlet property="hideSwitchView" destination="fsi-5R-Sow" id="tAC-FM-bTJ"/>
+                        <outlet property="hideSwitchViewHeightConstraint" destination="KAE-UM-khP" id="95i-s2-3KZ"/>
                         <outlet property="okButton" destination="m26-zu-M4f" id="Iql-o5-5gW"/>
                         <outlet property="titleLabel" destination="fI6-CZ-Dzh" id="qBj-GQ-JjE"/>
                     </connections>
