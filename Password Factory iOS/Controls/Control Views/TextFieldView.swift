@@ -17,11 +17,12 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         super.addViews()
         addSubview(controlText)
         addSubview(controlLabel)
-        setupTextField()
+        
     }
     /// sets the position of the views and adds observers for the text field
     override func setupView() {
         super.setupView()
+        setupTextField()
         controlText.borderStyle = .roundedRect
         controlText.backgroundColor = UIColor.white.withAlphaComponent(0.75)
         
@@ -48,20 +49,29 @@ class TextFieldView: ControlView, UITextFieldDelegate {
             let rightButton = UIButton.init()
             rightButton.setImage(StyleKit.imageOfRightArrow(strokeColor: UIColor.white), for: .normal)
             rightButton.addTarget(self, action: #selector(goToNextItemInControlGroup), for: .touchUpInside)
+            let doneButton = UIButton.init(type: .system)
+            doneButton.setTitle("Done", for: .normal)
+            doneButton.setTitleColor(UIColor.white, for: .normal)
+            doneButton.addTarget(self, action: #selector(done), for: .touchUpInside)
             accessory.addSubview(leftButton)
             accessory.addSubview(rightButton)
-            let aViews = ["left" : leftButton, "right" : rightButton]
-            accessory.addVFLConstraints(constraints: ["H:|-[left(==30)]","H:[right(==30)]-|","V:[left(==30)]","V:[right(==30)]"], views: aViews)
+            accessory.addSubview(doneButton)
+            let aViews = ["left" : leftButton, "right" : rightButton, "done" : doneButton]
+            accessory.addVFLConstraints(constraints: ["H:|-[left(==30)]-[right(==30)]","H:[done(==50)]-|","V:[left(==30)]","V:[right(==30)]"], views: aViews)
             accessory.centerViewVertically(leftButton)
             accessory.centerViewVertically(rightButton)
+            accessory.centerViewVertically(doneButton)
             controlText.inputAccessoryView = accessory
         }
     }
-    
+    @objc func done() {
+        controlText.resignFirstResponder()
+    }
     /// Selects the controlText item
     override func selectCurrentControlGroupItem() {
         controlText.selectAll(self)
     }
+    
     /// Sets the parameters of the text field
     func setupTextField() {
         controlText.autocapitalizationType = .none
@@ -69,11 +79,18 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         controlText.smartQuotesType = .no
         controlText.smartInsertDeleteType = .no
         controlText.spellCheckingType = .no
-        controlText.returnKeyType = .done
+        
+        //if it is a part of a control group make return a next button
+        if controlGroup != nil {
+            controlText.returnKeyType = .next
+        } else { //otherwise it is a done button
+            controlText.returnKeyType = .done
+        }
         controlText.clearButtonMode = .always
         controlText.autocorrectionType = .no
         controlText.delegate = self
     }
+    
     /// sets the text field with defaults value
     func setTextFieldFromDefaults() {
         guard let dk = defaultsKey else {
@@ -81,16 +98,27 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         }
         controlText.text = d.string(forKey: dk)
     }
+    
+    
+    /// Control View enable / disable action
+    ///
+    /// - Parameter enabled: false if disabled
     override func setEnabled(_ enabled: Bool) {
         super.setEnabled(enabled)
         controlText.isEnabled = enabled
     }
-    /// Dismisses the keyboard when done is pressed
+    
+    /// Dismisses the keyboard, or goes to next item in the control group when return key is pressed
     ///
     /// - Parameter textField: default
     /// - Returns: true to return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        controlText.resignFirstResponder()
+        if controlGroup == nil {
+            controlText.resignFirstResponder()
+        } else {
+            goToNextItemInControlGroup()
+        }
+        
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -103,6 +131,7 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
     /// Observer method called when text changes
     @objc func textChanged() {
         //do we have anything in the text

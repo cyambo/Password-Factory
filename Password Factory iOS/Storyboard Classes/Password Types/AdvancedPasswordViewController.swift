@@ -33,17 +33,28 @@ class AdvancedPasswordViewController: PasswordsViewController {
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
         let keyboardOrigin = stackView.convert(keyboardViewEndFrame.origin, to: scrollView)
-        
+
         if let fr = getFirstResponderView() {
+            var yPos: CGFloat = 0.0
             if notification.name == Notification.Name.UIKeyboardWillHide {
-                //move first responder back to bottom
-                let scrollPoint = CGPoint.init(x: 0.0, y: fr.frame.origin.y - keyboardViewEndFrame.size.height)
-                scrollView.setContentOffset(scrollPoint, animated: true)
+                //move first responder back to bottom, only if the stackview does not fit in the scrollview
+                if stackView.frame.size.height >= scrollView.frame.size.height {
+                   yPos = (fr.frame.origin.y + fr.frame.height) - keyboardViewEndFrame.size.height
+                }
             } else if notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-                //if the keyboard is shown , scroll the first responder view into frame
-                let scrollPoint = CGPoint.init(x: 0.0, y:(fr.frame.origin.y + fr.frame.height) - keyboardOrigin.y)
-                scrollView.setContentOffset(scrollPoint, animated: true)
+                //only scroll if the keyboard obscures the view
+                if keyboardOrigin.y < scrollView.frame.height {
+                    //if the keyboard is shown , scroll the first responder view into frame
+                    yPos = (fr.frame.origin.y + fr.frame.height) - keyboardOrigin.y
+                }
             }
+            //don't scroll where the stack view starts below the top
+            if yPos < 0 {
+                yPos = 0
+            }
+            
+            let scrollPoint = CGPoint.init(x: 0.0, y:yPos)
+            scrollView.setContentOffset(scrollPoint, animated: true)
         }
 
     }
