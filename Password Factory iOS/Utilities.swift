@@ -161,11 +161,12 @@ class Utilities: NSObject {
     ///   - alertKey: key of alert message
     ///   - parentViewController: parent view controller
     ///   - source: UIView of control that triggered alert
-    class func showAlert(delegate: AlertViewControllerDelegate, alertKey: String, parentViewController: UIViewController, disableAlertHiding: Bool, source: UIView) {
+    class func showAlert(delegate: AlertViewControllerDelegate, alertKey: String, parentViewController: UIViewController, disableAlertHiding: Bool, onlyContinue: Bool, source: UIView) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let alertViewController = storyboard.instantiateViewController(withIdentifier: "AlertView") as? AlertViewController else { return }
         alertViewController.delegate = delegate
         alertViewController.disableAlertHiding = disableAlertHiding
+        alertViewController.onlyContinue = onlyContinue
         _ = alertViewController.view //load and layout the view
         if !alertViewController.checkIfHidden(alertKeyToShow: alertKey) {
             showPopover(parentViewController: parentViewController, viewControllerToShow: alertViewController, popoverBounds: alertViewController.containerView.bounds, source: source)

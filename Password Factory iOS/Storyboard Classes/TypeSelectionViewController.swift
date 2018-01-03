@@ -255,7 +255,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
             }
         }
         if showExtendedCharacterAlert {
-            Utilities.showAlert(delegate: self, alertKey: "extendedCharacterWarning", parentViewController: self, disableAlertHiding: false, source: passwordDisplay)
+            Utilities.showAlert(delegate: self, alertKey: "extendedCharacterWarning", parentViewController: self, disableAlertHiding: true, onlyContinue: true, source: passwordDisplay)
+            d.setBool(true, forKey: "hideExtendedCharacterWarning")
         } else {
             updatePasswordField(password, crackTime: crackTime)
         }

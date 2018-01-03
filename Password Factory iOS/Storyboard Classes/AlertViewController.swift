@@ -28,6 +28,7 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
     
     var alertKey: String?
     var disableAlertHiding: Bool = false
+    var onlyContinue: Bool = false
     let c = PFConstants.instance
     let d = DefaultsManager.get()
     
@@ -42,15 +43,19 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
         backgroundImage.image = Utilities.screenshot()
         titleLabel.backgroundColor = PFConstants.tintColor
         titleLabel.textColor = UIColor.white
-        containerView.roundCorners()
-        containerView.dropShadow()
-        titleLabel.roundCorners(corners: [.topLeft, .topRight])
-        cancelButton.addBorder([.top,.right], color: PFConstants.tintColor, width: 0.5)
-        okButton.addBorder([.top], color: PFConstants.tintColor, width: 0.5)
-        cancelButton.setTitleColor(UIColor.red, for: .normal)
+
+        
         if disableAlertHiding == true {
             hideSwitchViewHeightConstraint.constant = 0
         }
+        if onlyContinue {
+            cancelButton.removeFromSuperview()
+            let views = ["ok" : okButton as Any]
+            containerView.addVFLConstraints(constraints: ["H:|-(0)-[ok]-(0)-|"], views: views)
+        }
+        
+
+
         //load the alert message
         if let ak = alertKey {
             if let message = c.errorMessages[ak] {
@@ -59,7 +64,15 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
         }
         titleLabel.text = "Alert"
     }
-    
+    override func viewWillLayoutSubviews() {
+        containerView.roundCorners()
+        containerView.dropShadow()
+        titleLabel.roundCorners(corners: [.topLeft, .topRight])
+        if cancelButton != nil {
+            cancelButton.addBorder([.top,.right], color: PFConstants.tintColor, width: 0.5)
+        }
+        okButton.addBorder([.top], color: PFConstants.tintColor, width: 0.5)
+    }
     /// Returns true if the alert is hidden, if it is it will call delegate automatically
     ///
     /// - Parameter alertKeyToShow: alertKey for the view - allows to get error message and hidden key

@@ -31,7 +31,7 @@ class ButtonControlView: ControlView {
         if defaultsKey == nil { return }
         if let ak = showAlertKey {
             guard let pvc = parentViewController else { return }
-            Utilities.showAlert(delegate: self, alertKey: ak, parentViewController: pvc, disableAlertHiding: disableAlertHiding, source: controlButton)
+            Utilities.showAlert(delegate: self, alertKey: ak, parentViewController: pvc, disableAlertHiding: disableAlertHiding, onlyContinue: false, source: controlButton)
         } else {
             canContinueWithAction(canContinue: true)
         }
