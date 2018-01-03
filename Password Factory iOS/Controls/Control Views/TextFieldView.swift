@@ -40,8 +40,8 @@ class TextFieldView: ControlView, UITextFieldDelegate {
     /// Creates the keyboard accessory view that contains the left and right arrows to select items in the control group
     func setupAccessoryView() {
         if controlGroup != nil {
-            let accessory = UIView.init(frame: CGRect.init(x: 0, y: 0, width: frame.size.width, height: 45))
-            accessory.backgroundColor = UIColor.lightGray
+            let accessory = UIView.init(frame: CGRect.init(x: 0, y: 0, width: frame.size.width, height: 44))
+            accessory.backgroundColor = UIColor(red:0.73, green:0.75, blue:0.78, alpha:1.0)
             let leftButton = UIButton.init()
             leftButton.setImage(StyleKit.imageOfLeftArrow(strokeColor: UIColor.white), for: .normal)
             leftButton.addTarget(self, action: #selector(goToPreviousItemInControlGroup), for: .touchUpInside)

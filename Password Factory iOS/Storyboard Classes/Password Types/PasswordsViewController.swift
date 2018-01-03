@@ -26,7 +26,6 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
     override func viewWillAppear(_ animated: Bool) {
         passwordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.randomType
         super.viewWillAppear(animated)
-        controlChanged(nil, defaultsKey: "")
     }
 
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
