@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, ControlViewDelegate, AlertViewControllerDelegate {
+class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, ControlViewDelegate, AlertViewControllerDelegate, PreferencesViewControllerDelegate {
 
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
@@ -116,22 +116,33 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
         generatePassword()
     }
-    
+    func updateAndSelectSegment() {
+        let currSel = typeSelectionControl.selectedSegmentIndex
+        setupSegments()
+        setSelectedPasswordType()
+        if currSel != typeSelectionControl.selectedSegmentIndex {
+            selectType(typeSelectionControl)
+        }
+    }
     /// Displays the preferences modal
     ///
     /// - Parameter sender: default sender
     @IBAction func pressedPreferencesButton(_ sender: UIButton) {
-        
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "PreferencesView") as? PreferencesViewController {
             vc.modalPresentationStyle = .overFullScreen
+            vc.delegate = self
             if let r = view.parentViewController {
-                r.present(vc, animated: true, completion: {
-                    print("C OMPLET")
-                })
+                r.present(vc, animated: true, completion: nil)
             }
         }
     }
-    
+    func preferencesDismissed(defaultsReset: Bool) {
+        if defaultsReset {
+           typeSelectionControl.selectedSegmentIndex = -1
+            viewControllers.removeAll()
+        }
+        updateAndSelectSegment()
+    }
     /// Toggles the display of the crack time over strength meter
     ///
     /// - Parameter sender: default sender
@@ -248,8 +259,6 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         } else {
             updatePasswordField(password, crackTime: crackTime)
         }
-
-
     }
     private func updatePasswordField(_ password: String, crackTime: String) {
         var size = (password as NSString).size(withAttributes: [NSAttributedStringKey.font: passwordFont])
@@ -303,9 +312,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         if let key = keyPath {
             //are we toggling advanced or stored
             if key == "enableAdvanced" || key == "storePasswords" {
-                setupSegments()
-                setSelectedPasswordType()
-                selectType(typeSelectionControl)
+                updateAndSelectSegment()
                 return
             }
             //if not, we are updating colors
@@ -318,12 +325,10 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         removeChildViewControllers()
     }
     
-    
     /// Removes all password view controllers from the viewControllers dict, and child view controllers
     func removeChildViewControllers() {
         viewControllers.removeAll()
         _ = childViewControllers.map{ $0.removeFromParentViewController() }
     }
-    
 }
 

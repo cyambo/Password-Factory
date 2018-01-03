@@ -22,6 +22,7 @@ NSString  *_previousKeyPath;
 @property (nonatomic, strong) NSMutableDictionary *sharedDefaultsCache;
 @property (nonatomic, strong) NSMutableDictionary *observers;
 @property (nonatomic, strong) NSMutableArray *kvos;
+@property (nonatomic, assign) bool stopObservers;
 @end
 @implementation DefaultsManager
 
@@ -66,6 +67,7 @@ static DefaultsManager *dm = nil;
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
     self.observers = [[NSMutableDictionary alloc] init];
     self.kvos = [[NSMutableArray alloc] init];
+    self.stopObservers = false;
     [self loadPreferencesFromPlist];
     [self setupCache];
     [self addObservers];
@@ -291,13 +293,14 @@ static DefaultsManager *dm = nil;
 - (void)getPrefsFromPlist:(BOOL)initialize {
     [self loadDefaultsPlist];
     NSUserDefaults *d = self.standardDefaults;
-    
+    self.stopObservers = true;
     //taking plist and filling in defaults if none set
     for (NSString *k in self.prefsPlist) {
         if (initialize || ([d objectForKey:k] == nil)) {
             [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
         }
     }
+    self.stopObservers = false;
 }
 -(void)addObservers {
     NSUserDefaults *d = self.standardDefaults;
@@ -330,6 +333,9 @@ static DefaultsManager *dm = nil;
     self.sharedDefaultsCache = sh;
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (self.stopObservers) {
+        return;
+    }
     //don't do anything if we are a duplicate event
     if (![self timeThresholdForKeyPathExceeded:keyPath]) {
         return;

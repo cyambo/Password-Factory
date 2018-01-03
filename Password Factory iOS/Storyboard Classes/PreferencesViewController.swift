@@ -7,12 +7,14 @@
 //
 
 import UIKit
-
+@objc public protocol PreferencesViewControllerDelegate: class {
+    func preferencesDismissed(defaultsReset: Bool)
+}
 class PreferencesViewController: UIViewController, ControlViewDelegate  {
     
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-
+    weak var delegate: PreferencesViewControllerDelegate?
     let d = DefaultsManager.get()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,14 +33,16 @@ class PreferencesViewController: UIViewController, ControlViewDelegate  {
                 self.d.resetDialogs()
             })
         } else if defaultsKey == "resetToDefaults" {
-            dismiss(animated: true, completion: {
+            dismiss(animated: true, completion: { [unowned self] in
                 DefaultsManager.restoreUserDefaults()
+                self.delegate?.preferencesDismissed(defaultsReset: true)
                 self.dismiss(animated: true, completion: nil)
             })
         }
     }
     @IBAction func done(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        delegate?.preferencesDismissed(defaultsReset: false)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
