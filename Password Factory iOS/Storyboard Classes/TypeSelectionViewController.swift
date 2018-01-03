@@ -13,13 +13,19 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
     var keyboardDismissGesture: UITapGestureRecognizer?
+    
     let d = DefaultsManager.get()
     let c = PFConstants.instance
     let s = PasswordStorage.get()!
+    
     let queue = OperationQueue()
+    
     var currentViewController: PasswordsViewController?
     var viewControllers = [PFPasswordType : UIViewController]()
+    
     var extendedCharacterRegex: NSRegularExpression?
+    var storedPassword: String?
+    
     @IBOutlet weak var zoomButton: ZoomButton!
     @IBOutlet weak var crackTimeButton: UIButton!
     @IBOutlet weak var copyButton: UIButton!
@@ -116,14 +122,18 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
         generatePassword()
     }
+    
+    /// Updates the segments based upon preferences and selects a segment based on defaults
     func updateAndSelectSegment() {
         let currSel = typeSelectionControl.selectedSegmentIndex
         setupSegments()
         setSelectedPasswordType()
+        //only select a new segment if our selection changed because that segment was removed
         if currSel != typeSelectionControl.selectedSegmentIndex {
             selectType(typeSelectionControl)
         }
     }
+    
     /// Displays the preferences modal
     ///
     /// - Parameter sender: default sender
@@ -136,13 +146,20 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
             }
         }
     }
+    
+    
+    /// PreferencesViewController delegate method, called when prefs was dismissed
+    ///
+    /// - Parameter defaultsReset: true if the defaults were reset
     func preferencesDismissed(defaultsReset: Bool) {
         if defaultsReset {
-           typeSelectionControl.selectedSegmentIndex = -1
+            //if the defaults were reset, reload all the viewControllers and segments
+            typeSelectionControl.selectedSegmentIndex = -1
             viewControllers.removeAll()
         }
         updateAndSelectSegment()
     }
+    
     /// Toggles the display of the crack time over strength meter
     ///
     /// - Parameter sender: default sender
@@ -158,19 +175,14 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     /// - Parameter sender: default sender
     @IBAction func pressedZoomButton(_ sender: UIButton) {
         if let zoomViewController = mainStoryboard?.instantiateViewController(withIdentifier: "ZoomView") as? ZoomViewController {
-            zoomViewController.modalPresentationStyle = .popover
+            
             let size = zoomViewController.formatPassword(password: passwordDisplay.text ?? "")
-            if let pop = zoomViewController.popoverPresentationController {
-                pop.permittedArrowDirections = .any
-                pop.backgroundColor = zoomViewController.bgColor
-                pop.sourceView = zoomButton
-                pop.sourceRect = zoomButton.bounds
-                let height = (size.height + 4.0) * ceil(size.width / 580)
-                let width = size.width < 600 ? (size.width + 40) : 600
-                
-                zoomViewController.preferredContentSize = CGSize.init(width: width, height: height)
-            }
-            present(zoomViewController, animated: true, completion:{
+            //setting the size of the popover to grow and shrink with the password size
+            let height = (size.height + 4.0) * ceil(size.width / 580)
+            let width = size.width < 600 ? (size.width + 40) : 600
+            let contentBounds = CGRect.init(x: 0, y: 0, width: width, height: height)
+            storedPassword = passwordDisplay.text //store the current password so it gets displayed when this view reappears
+            Utilities.showPopover(parentViewController: self, viewControllerToShow: zoomViewController, popoverBounds: contentBounds, source: zoomButton, completion: {
                 zoomViewController.zoomedPassword.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
             })
         }
@@ -192,13 +204,29 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
     }
     
+    
+    /// ControlView delegate method
+    ///
+    /// - Parameters:
+    ///   - control: control that was changed
+    ///   - defaultsKey: defaultsKey of control
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
         generatePassword()
     }
     
     /// Generates password from the current view controller
     func generatePassword() {
-        let active = d.bool(forKey: "activeControl")
+        //if there is a stored password from the zoomView just show it
+        if let sp = storedPassword {
+            storedPassword = nil
+            if let controller = PasswordController.get(false) {
+                controller.password = sp
+                controller.updatePasswordStrength()
+                updatePasswordField(sp, strength: Double(controller.getPasswordStrength()), crackTime: controller.getCrackTimeString())
+                return
+            }
+        }
+        let active = d.bool(forKey: "activeControl") //activeControl is set when dragging or holding down the stepper
         //running the password generation if we are not an active control, or if we are an active control make sure the last operation finished
         if queue.operationCount == 0 {
             queue.addOperation { [unowned self, active] in
@@ -217,19 +245,15 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                     return
                 }
                 let crackTime = self.currentViewController?.crackTimeString ?? ""
-                if p.count == 0 || strength == 0 {
-                    print("BREAKPOINT LOG - COUNT STRENGTH ZERO")
-                }
+
                 //update the password field
                 DispatchQueue.main.async { [unowned self, p, strength, crackTime] in
                     self.updatePasswordField(p, strength: Double(strength), crackTime: crackTime)
                 }
+                //store if we are not active or a stored type
                 if type != .storedType && !active {
                     //store on the main thread
                     DispatchQueue.main.async { [unowned self, p, strength, type] in
-                        if strength / 100.0 == 0 && p.count > 0 {
-                            print("BREAKPOINT LOG - ZERO STRENGTH")
-                        }
                         self.s.storePassword(p, strength: Float(strength / 100.0), type: type)
                     }
                 }
@@ -241,38 +265,49 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     ///
     /// - Parameter password: password to put in field
     func updatePasswordField(_ password: String, strength: Double, crackTime: String) {
-        if password.count == 0 {
-            print("BREAKPOINT LOG - ZERO PASSWORD")
-        }
         strengthMeter.updateStrength(s: strength)
         var showExtendedCharacterAlert = false
+        //checking to see if we displayed an extended character
         if let r = extendedCharacterRegex {
+            //and if it wasn't hidden
             if (!d.bool(forKey: "hideExtendedCharacterWarning")) {
+                //checking to see if there was an extended character
                 let m = r.matches(in: password, options: [], range: NSRange.init(location: 0, length: (password as NSString).length))
                 if m.count > 0 {
                     showExtendedCharacterAlert = true
                 }
             }
         }
+        //there was an extended character, so show the alert only once
         if showExtendedCharacterAlert {
             Utilities.showAlert(delegate: self, alertKey: "extendedCharacterWarning", parentViewController: self, disableAlertHiding: true, onlyContinue: true, source: passwordDisplay)
             d.setBool(true, forKey: "hideExtendedCharacterWarning")
-        } else {
-            updatePasswordField(password, crackTime: crackTime)
         }
+        updatePasswordField(password)
+        //set the crack time string
+        crackTimeButton.setTitle(crackTime.uppercased(), for: .normal)
     }
-    private func updatePasswordField(_ password: String, crackTime: String) {
-        var size = (password as NSString).size(withAttributes: [NSAttributedStringKey.font: passwordFont])
+    
+    /// Updates the password field, sets the length, and resizes the label so that it will scroll properly
+    ///
+    /// - Parameter password: password to display
+    private func updatePasswordField(_ password: String) {
+        let highlightedPassword = Utilities.highlightPassword(password: password, font: passwordFont)
+        var size = highlightedPassword.size()
         size = CGSize.init(width: size.width, height: passwordDisplay.frame.size.height)
-        passwordDisplay.attributedText = Utilities.highlightPassword(password: password, font: passwordFont)
+        passwordDisplay.attributedText = highlightedPassword
         passwordDisplay.frame.size = size
         passwordScrollView.contentSize = size
         passwordLengthDisplay.text = "\(passwordDisplay.text?.count ?? 0)"
-        crackTimeButton.setTitle(crackTime.uppercased(), for: .normal)
     }
+    
+    /// AlertViewControllerDelegate method - called when alert is dismissed
+    ///
+    /// - Parameter canContinue: whether or not to continue with the action that triggered the alert
     func canContinueWithAction(canContinue: Bool) {
         generatePassword()
     }
+    
     /// selects the current password type on the segmented control
     func setSelectedPasswordType() {
         //get the password type raw value
@@ -304,11 +339,18 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
         return nil
     }
+    
     /// sets observers for the defaults keys we want to monitor
     func setObservers() {
         let toObserve = ["enableAdvanced", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor"]
         d.observeDefaults(self, keys: toObserve)
     }
+    
+    /// DefaultsManagerDelegate method - called when an observed key is changed
+    ///
+    /// - Parameters:
+    ///   - keyPath: key changed
+    ///   - change: change dictionary
     func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
         if let key = keyPath {
             //are we toggling advanced or stored
@@ -324,6 +366,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         removeChildViewControllers()
+        updateAndSelectSegment()
     }
     
     /// Removes all password view controllers from the viewControllers dict, and child view controllers

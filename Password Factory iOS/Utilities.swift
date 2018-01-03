@@ -180,7 +180,7 @@ class Utilities: NSObject {
     ///   - viewControllerToShow: UIViewController that is displayed in a popover
     ///   - popoverBounds: bounds of popover to show
     ///   - source: UIView of control that triggered popover
-    private class func showPopover(parentViewController: UIViewController, viewControllerToShow: UIViewController, popoverBounds: CGRect, source: UIView) {
+    public class func showPopover(parentViewController: UIViewController, viewControllerToShow: UIViewController, popoverBounds: CGRect, source: UIView, completion: (() ->Void)? = nil) {
         var pvc = parentViewController
         //if the parent is PasswordsViewController, use the root view controller
         if parentViewController.isKind(of: PasswordsViewController.self) {
@@ -200,7 +200,7 @@ class Utilities: NSObject {
             viewControllerToShow.preferredContentSize = popoverBounds.size
             viewControllerToShow.view.bounds = popoverBounds
         }
-        pvc.present(viewControllerToShow, animated: true, completion: nil)
+        pvc.present(viewControllerToShow, animated: true, completion: completion)
     }
 
     /// Gets a screenshot of the current window
