@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, ControlViewDelegate {
+class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, ControlViewDelegate, AlertViewControllerDelegate {
 
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
@@ -19,7 +19,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     let queue = OperationQueue()
     var currentViewController: PasswordsViewController?
     var viewControllers = [PFPasswordType : UIViewController]()
-    
+    var extendedCharacterRegex: NSRegularExpression?
     @IBOutlet weak var zoomButton: ZoomButton!
     @IBOutlet weak var crackTimeButton: UIButton!
     @IBOutlet weak var copyButton: UIButton!
@@ -29,14 +29,19 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     @IBOutlet weak var controlsView: UIView!
     @IBOutlet weak var typeSelectionControl: UISegmentedControl!
     
+    var passwordFont = UIFont.systemFont(ofSize: 24.0)
     @IBOutlet weak var passwordScrollView: UIScrollView!
     @IBOutlet weak var passwordDisplay: UILabel!
-    var passwordFont = UIFont.systemFont(ofSize: 24.0)
     @IBOutlet weak var passwordLengthDisplay: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+        do {
+            extendedCharacterRegex = try NSRegularExpression.init(pattern: "[^A-Za-z0-9\(c.escapedSymbols)]", options: .caseInsensitive)
+        } catch {
+            extendedCharacterRegex = nil
+        }
         setObservers()
     }
     
@@ -59,8 +64,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         super.viewWillAppear(animated)
         setSelectedPasswordType()
         selectType(typeSelectionControl)
+        
     }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let p = d.prefsPlist {
@@ -107,18 +112,22 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         
         controlsView.addSubview(currentView)
         controlsView.fillViewInContainer(currentView)
-        
+    
         d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
+        generatePassword()
     }
     
     /// Displays the preferences modal
     ///
     /// - Parameter sender: default sender
     @IBAction func pressedPreferencesButton(_ sender: UIButton) {
+        
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "PreferencesView") as? PreferencesViewController {
             vc.modalPresentationStyle = .overFullScreen
             if let r = view.parentViewController {
-                r.present(vc, animated: true, completion: nil)
+                r.present(vc, animated: true, completion: {
+                    print("C OMPLET")
+                })
             }
         }
     }
@@ -132,7 +141,6 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         currentViewController?.updateStrength(withCrackTime: displayCT)
         crackTimeButton.setTitle(currentViewController?.crackTimeString.uppercased() ?? "", for: .normal)
     }
-    
     
     /// Displays a zoomed password
     ///
@@ -172,9 +180,11 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
             UIPasteboard.general.string = currPass
         }
     }
+    
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
         generatePassword()
     }
+    
     /// Generates password from the current view controller
     func generatePassword() {
         let active = d.bool(forKey: "activeControl")
@@ -224,6 +234,24 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
             print("BREAKPOINT LOG - ZERO PASSWORD")
         }
         strengthMeter.updateStrength(s: strength)
+        var showExtendedCharacterAlert = false
+        if let r = extendedCharacterRegex {
+            if (!d.bool(forKey: "hideExtendedCharacterWarning")) {
+                let m = r.matches(in: password, options: [], range: NSRange.init(location: 0, length: (password as NSString).length))
+                if m.count > 0 {
+                    showExtendedCharacterAlert = true
+                }
+            }
+        }
+        if showExtendedCharacterAlert {
+            Utilities.showAlert(delegate: self, alertKey: "extendedCharacterWarning", parentViewController: self, disableAlertHiding: false, source: passwordDisplay)
+        } else {
+            updatePasswordField(password, crackTime: crackTime)
+        }
+
+
+    }
+    private func updatePasswordField(_ password: String, crackTime: String) {
         var size = (password as NSString).size(withAttributes: [NSAttributedStringKey.font: passwordFont])
         size = CGSize.init(width: size.width, height: passwordDisplay.frame.size.height)
         passwordDisplay.attributedText = Utilities.highlightPassword(password: password, font: passwordFont)
@@ -232,7 +260,9 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         passwordLengthDisplay.text = "\(passwordDisplay.text?.count ?? 0)"
         crackTimeButton.setTitle(crackTime.uppercased(), for: .normal)
     }
-    
+    func canContinueWithAction(canContinue: Bool) {
+        generatePassword()
+    }
     /// selects the current password type on the segmented control
     func setSelectedPasswordType() {
         //get the password type raw value

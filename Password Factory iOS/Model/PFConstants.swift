@@ -49,6 +49,8 @@ final class PFConstants: NSObject {
     public let separatorTypeIndex: [PFSeparatorType]
     public let patternTypeIndex: [PFPatternTypeItem]
     public var errorMessages = [String: String]()
+    public var escapedSymbols: String = ""
+    
     //init is private for singleton
     private override init() {
         //converting all the arrays and dictionaries to ones with proper types
@@ -93,6 +95,7 @@ final class PFConstants: NSObject {
         errorMessages["storedPasswordOnWarning"] = StoredPasswordOnWarning
         errorMessages["resetToDefaultsWarning"] = ResetToDefaultsWarningiOS
         errorMessages["resetAllDialogsWarning"] = ResetAllDialogsWarning
+        escapedSymbols = c.escapedSymbols
     }
 
     public func getPasswordType(by: UInt) -> PFPasswordType {
