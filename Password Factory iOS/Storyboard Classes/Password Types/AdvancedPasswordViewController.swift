@@ -17,8 +17,6 @@ class AdvancedPasswordViewController: PasswordsViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     
-    var previousScrollOffset : CGFloat = 0.0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let nc = NotificationCenter.default
@@ -38,13 +36,12 @@ class AdvancedPasswordViewController: PasswordsViewController {
         
         if let fr = getFirstResponderView() {
             if notification.name == Notification.Name.UIKeyboardWillHide {
-                //keep the view in the same place if we hide it
-                scrollView.setContentOffset(CGPoint(x: 0.0, y: previousScrollOffset), animated: true)
-                previousScrollOffset = 0.0
+                //move first responder back to bottom
+                let scrollPoint = CGPoint.init(x: 0.0, y: fr.frame.origin.y - keyboardViewEndFrame.size.height)
+                scrollView.setContentOffset(scrollPoint, animated: true)
             } else if notification.name == Notification.Name.UIKeyboardWillChangeFrame {
                 //if the keyboard is shown , scroll the first responder view into frame
-                let scrollPoint = CGPoint(x: 0.0, y:(fr.frame.origin.y + fr.frame.height) - keyboardOrigin.y)
-                previousScrollOffset = scrollView.contentOffset.y
+                let scrollPoint = CGPoint.init(x: 0.0, y:(fr.frame.origin.y + fr.frame.height) - keyboardOrigin.y)
                 scrollView.setContentOffset(scrollPoint, animated: true)
             }
         }
