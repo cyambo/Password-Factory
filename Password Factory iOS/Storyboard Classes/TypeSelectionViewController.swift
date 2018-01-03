@@ -66,8 +66,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         selectType(typeSelectionControl)
         
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         if let p = d.prefsPlist {
             d.removeDefaultsObservers(self, keys: Array(p))
         }
@@ -75,7 +75,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         currentViewController = nil
         removeChildViewControllers()
     }
-    
+
     /// Inserts the segments based upon preferences
     func setupSegments() {
         passwordController.useStoredType = d.bool(forKey: "storePasswords")
@@ -112,7 +112,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         
         controlsView.addSubview(currentView)
         controlsView.fillViewInContainer(currentView)
-    
+        currentViewController?.didMove(toParentViewController: self)
         d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
         generatePassword()
     }
@@ -329,7 +329,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     /// Removes all password view controllers from the viewControllers dict, and child view controllers
     func removeChildViewControllers() {
         viewControllers.removeAll()
-        _ = childViewControllers.map{ $0.removeFromParentViewController() }
+        _ = childViewControllers.map{ $0.willMove(toParentViewController: nil); $0.removeFromParentViewController() }
     }
 }
 

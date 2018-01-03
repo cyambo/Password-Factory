@@ -207,14 +207,14 @@ class Utilities: NSObject {
     ///
     /// - Returns: UIImage screenshot
     public class func screenshot() -> UIImage {
-        guard let layer = UIApplication.shared.keyWindow?.layer else { return UIImage() }
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
-        guard let currentContext = UIGraphicsGetCurrentContext() else { UIGraphicsEndImageContext(); return UIImage() }
-        layer.render(in: currentContext)
-        guard let screenshot = UIGraphicsGetImageFromCurrentImageContext() else { UIGraphicsEndImageContext(); return UIImage() }
+        guard let view = UIApplication.shared.keyWindow?.rootViewController?.view else { return UIImage() }
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
+        
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        return screenshot
+        return image
     }
     
     
