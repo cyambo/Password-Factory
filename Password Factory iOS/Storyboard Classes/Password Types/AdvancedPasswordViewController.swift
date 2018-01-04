@@ -33,13 +33,15 @@ class AdvancedPasswordViewController: PasswordsViewController {
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
         let keyboardOrigin = stackView.convert(keyboardViewEndFrame.origin, to: scrollView)
-
         if let fr = getFirstResponderView() {
             var yPos: CGFloat = 0.0
             if notification.name == Notification.Name.UIKeyboardWillHide {
                 //move first responder back to bottom, only if the stackview does not fit in the scrollview
                 if stackView.frame.size.height >= scrollView.frame.size.height {
-                   yPos = (fr.frame.origin.y + fr.frame.height) - keyboardViewEndFrame.size.height
+                   yPos = (fr.frame.origin.y) - keyboardViewEndFrame.size.height
+                    if yPos > stackView.frame.size.height - scrollView.frame.size.height {
+                        yPos = stackView.frame.size.height - scrollView.frame.size.height
+                    }
                 }
             } else if notification.name == Notification.Name.UIKeyboardWillChangeFrame {
                 //only scroll if the keyboard obscures the view
@@ -52,11 +54,10 @@ class AdvancedPasswordViewController: PasswordsViewController {
             if yPos < 0 {
                 yPos = 0
             }
-            
             let scrollPoint = CGPoint.init(x: 0.0, y:yPos)
+            
             scrollView.setContentOffset(scrollPoint, animated: true)
         }
-
     }
     
     /// Gets the view of the first responder, if it is one of the advanced text fields

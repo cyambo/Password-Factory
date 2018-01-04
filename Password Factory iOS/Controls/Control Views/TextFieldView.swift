@@ -69,7 +69,9 @@ class TextFieldView: ControlView, UITextFieldDelegate {
     }
     /// Selects the controlText item
     override func selectCurrentControlGroupItem() {
-        controlText.selectAll(self)
+        controlText.becomeFirstResponder()
+        controlText.selectedTextRange = controlText.textRange(from: controlText.endOfDocument, to: controlText.endOfDocument)
+
     }
     
     /// Sets the parameters of the text field
