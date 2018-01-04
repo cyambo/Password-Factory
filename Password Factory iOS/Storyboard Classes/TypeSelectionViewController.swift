@@ -50,7 +50,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
         setObservers()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSegments()
@@ -72,6 +72,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         selectType(typeSelectionControl)
         
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if let p = d.prefsPlist {
@@ -147,7 +148,6 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
     }
     
-    
     /// PreferencesViewController delegate method, called when prefs was dismissed
     ///
     /// - Parameter defaultsReset: true if the defaults were reset
@@ -203,7 +203,6 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
             UIPasteboard.general.string = currPass
         }
     }
-    
     
     /// ControlView delegate method
     ///

@@ -26,12 +26,23 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             patternText.text = String(describing: p)
             highlightPatternString()
         }
+        patternText.textContainer.lineBreakMode = .byCharWrapping
+        patternText.textContainer.maximumNumberOfLines = 1
+        
         patternButtonCollectionView.roundCorners()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         patternText.contentOffset.y = -patternText.contentInset.top
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let sideMargin = Utilities.getSideMarginsForControls()
+        view.layoutMargins = UIEdgeInsets(top: 8, left: sideMargin, bottom: 8, right: sideMargin)
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
     }
@@ -44,6 +55,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         }
         return true
     }
+    
     func textViewDidChange(_ textView: UITextView) {
         typeLabel.text = ""
         if(textView.text.count > 0) {
@@ -58,6 +70,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         updatePattern(patternText.text)
         highlightPatternString()
     }
+    
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         return true
     }
@@ -66,6 +79,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         d.setObject(pattern, forKey: "userPattern")
         controlChanged(nil, defaultsKey: "userPattern")
     }
+    
     /// highlights the pattern string, or uses default color based upon defaults
     func highlightPatternString() {
         if(d.bool(forKey: "colorPasswordText")) {
@@ -74,6 +88,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
             patternText.attributedText = Utilities.getNonHighlightedString(s: patternText.text, font: patternTextFont)
         }
     }
+    
     /// Highlights the pattern string based upon defaults
     func highlightPattern() {
         let highlighted = NSMutableAttributedString()
@@ -96,9 +111,11 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         }
         patternText.attributedText = highlighted
     }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return c.patternTypeIndex.count
     }
@@ -109,6 +126,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         cell.setPatternTypeItem(pti)
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let patternItem = c.patternTypeIndex[indexPath.row]
         let patternCharacter = c.patternTypeToCharacter[patternItem] ?? ""
@@ -125,6 +143,7 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         updatePattern("")
 
     }
+    
     @IBAction func deleteLast(_ sender: Any) {
         patternText.text = String(patternText.text.dropLast())
         updatePattern(patternText.text)
