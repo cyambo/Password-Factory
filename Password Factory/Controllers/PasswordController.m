@@ -227,7 +227,11 @@
     if (!cts.length) {
         [self updatePasswordStrength];
     }
-    return self.passwordStrength.crackTimeString;
+    cts = self.passwordStrength.crackTimeString;
+    if (cts != nil) {
+        return cts;
+    }
+    return @"";
 }
 -(NSString *)getCrackTimeString:(NSString *)password {
     self.password = password;

@@ -23,6 +23,7 @@ class PopupViewController: UIViewController, UIGestureRecognizerDelegate, UIPopo
         tap.delegate = self
         view.addGestureRecognizer(tap)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //set the background to th e screenshot if there is a background image
@@ -35,6 +36,7 @@ class PopupViewController: UIViewController, UIGestureRecognizerDelegate, UIPopo
             titleLabel.textColor = UIColor.white
         }
     }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         //round and shadow the container view
@@ -83,13 +85,22 @@ class PopupViewController: UIViewController, UIGestureRecognizerDelegate, UIPopo
         //cancel when popover moves
         cancel()
     }
+    
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         //complete when popover is dismissed
         done()
     }
+    
+    /// Action for done or OK button
+    ///
+    /// - Parameter sender: default sender
     @IBAction func pressedDone(_ sender: Any) {
         done()
     }
+    
+    /// Action for cancel button
+    ///
+    /// - Parameter sender: default sender
     @IBAction func pressedCancel(_ sender: Any) {
         cancel()
     }
