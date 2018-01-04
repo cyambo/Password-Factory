@@ -47,23 +47,15 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     /// Loads the color picker modal
     @objc func loadColorPicker() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "ColorPickerView") as? ColorPickerViewController {
-            vc.modalPresentationStyle = .popover
-            if let pop = vc.popoverPresentationController {
-                pop.permittedArrowDirections = .any
-                pop.sourceView = wellView
-                pop.sourceRect = wellView.bounds
-                pop.delegate = vc
-                _ = vc.view
-                let pb = vc.picker.bounds
-                let b = CGRect(x: 0, y: 0, width: pb.size.width + 14, height: pb.size.height + 14)
-                vc.preferredContentSize = b.size
-                vc.view.bounds = b            
+        if let colorPickerViewController = storyboard.instantiateViewController(withIdentifier: "ColorPickerView") as? ColorPickerViewController {
+            _ = colorPickerViewController.view
+            let pb = colorPickerViewController.picker.bounds
+            let pickerBounds = CGRect(x: 0, y: 0, width: pb.size.width + 14, height: pb.size.height + 14)
+            colorPickerViewController.setColor(colorWellView.backgroundColor ?? UIColor.blue, andTitle: label ?? "")
+            colorPickerViewController.delegate = self
+            if let pvc = parentViewController {
+                Utilities.showPopover(parentViewController: pvc, viewControllerToShow: colorPickerViewController, popoverBounds: pickerBounds, source: colorWellView)
             }
-            
-            vc.delegate = self
-            vc.setColor(colorWellView.backgroundColor ?? UIColor.blue, andTitle: label ?? "")
-            parentViewController?.present(vc, animated: true, completion: nil)
         }
     }
     

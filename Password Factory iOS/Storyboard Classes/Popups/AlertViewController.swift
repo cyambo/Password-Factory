@@ -14,17 +14,14 @@ protocol AlertViewControllerDelegate: class {
     /// - Parameter canContinue: true if the action can proceed
     func canContinueWithAction(canContinue: Bool)
 }
-class AlertViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class AlertViewController: PopupViewController {
     weak var delegate: AlertViewControllerDelegate?
     
     @IBOutlet weak var hideSwitchViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var alertText: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hideSwitchView: SwitchView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var containerView: UIView!
     
     var alertKey: String?
     var disableAlertHiding: Bool = false
@@ -40,9 +37,7 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        backgroundImage.image = Utilities.screenshot()
-        titleLabel.backgroundColor = PFConstants.tintColor
-        titleLabel.textColor = UIColor.white
+        super.viewWillAppear(animated)
 
         
         if disableAlertHiding == true {
@@ -54,8 +49,6 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
             containerView.addVFLConstraints(constraints: ["H:|-(0)-[ok]-(0)-|"], views: views)
         }
         
-
-
         //load the alert message
         if let ak = alertKey {
             if let message = c.errorMessages[ak] {
@@ -65,9 +58,8 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
         titleLabel.text = "Alert"
     }
     override func viewWillLayoutSubviews() {
-        containerView.roundCorners()
-        containerView.dropShadow()
-        titleLabel.roundCorners(corners: [.topLeft, .topRight])
+        super.viewWillLayoutSubviews()
+        
         if cancelButton != nil {
             cancelButton.addBorder([.top,.right], color: PFConstants.tintColor, width: 0.5)
         }
@@ -99,27 +91,19 @@ class AlertViewController: UIViewController, UIPopoverPresentationControllerDele
     }
     
     /// User cancelled the action
-    ///
-    /// - Parameter sender: default sender
-    @IBAction func pressedCancel(_ sender: UIButton) {
+    override func cancel() {
+        super.cancel()
         self.delegate?.canContinueWithAction(canContinue: false)
-        dismiss(animated: true, completion: nil)
     }
     
     /// User OK'd the action
-    ///
-    /// - Parameter sender: default sender
-    @IBAction func pressedOk(_ sender: UIButton) {
+    override func done() {
+        super.done()
         self.delegate?.canContinueWithAction(canContinue: true)
-        dismiss(animated: true, completion: nil)
     }
-    
-    func popoverPresentationController(_ popoverPresentationController: UIPopoverPresentationController, willRepositionPopoverTo rect: UnsafeMutablePointer<CGRect>, in view: AutoreleasingUnsafeMutablePointer<UIView>) {
-        self.delegate?.canContinueWithAction(canContinue: false)
-    }
-    
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        self.delegate?.canContinueWithAction(canContinue: false)
+        
+    override func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        cancel()
     }
     
 }

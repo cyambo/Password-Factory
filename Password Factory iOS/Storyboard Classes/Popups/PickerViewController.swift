@@ -12,7 +12,7 @@ protocol PickerViewControllerDelegate: class {
 }
 
 /// Displays a picker view
-class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
+class PickerViewController: PopupViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     weak var delegate: PickerViewControllerDelegate?
     let c = PFConstants.instance
     var pickerType = PickerTypes.CaseType
@@ -25,15 +25,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var numberTypeTitle = ""
     var isPercent = false
     @IBOutlet weak var itemPickerView: UIPickerView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
+
     
     func setType(type: PickerTypes, passwordType: PFPasswordType) {
         pickerType = type
         self.passwordType = passwordType
     }
+    
     func setNumberType(title: String, isPercent: Bool, current: UInt, lowerRange l: UInt, upperRange u: UInt, step s: UInt) {
         lowerRange = l
         upperRange = u
@@ -46,16 +45,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerType = .NumberType
         numberTypeTitle = title
         self.isPercent = isPercent
-        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapFrom(recognizer:)))
-        tap.delegate = self
-        view.addGestureRecognizer(tap)
-        
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         var rowToSelect = 0
@@ -67,18 +58,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             rowToSelect = Int((currentNumber - lowerRange) / step)
         }
         itemPickerView.selectRow(rowToSelect, inComponent: 0, animated: false)
-        imageView.image = Utilities.screenshot()
         setupTitle()
-
     }
     override func viewDidLayoutSubviews() {
-        setupView()
-    }
-    /// Sets up the views to be displayed
-    func setupView() {
-        containerView.roundCorners()
-        containerView.dropShadow()
-        titleLabel.roundCorners(corners: [.topLeft, .topRight])
         doneButton.addBorder([.top],color: PFConstants.tintColor)
     }
     
@@ -91,8 +73,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         } else {
             titleLabel.text = "Select \(pickerType.rawValue)"
         }
-        titleLabel.backgroundColor = PFConstants.tintColor
-        titleLabel.textColor = UIColor.white
     }
     func getNumberOfSteps() -> Int {
         return Int((upperRange - lowerRange) / step) + 1
@@ -140,7 +120,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     /// Called when done is pressed, or the background is tapped
-    func done() {
+    override func done() {
+        super.done()
         dismiss(animated: true, completion: nil)
         let selected = itemPickerView.selectedRow(inComponent: 0)
         delegate?.selectedItem(type: pickerType, index: selected)
@@ -159,27 +140,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         return nil
     }
-    
-    /// Gesture recognizer delegate - only accept touches outside of the picker display
-    ///
-    /// - Parameters:
-    ///   - gestureRecognizer: gesture recognizer
-    ///   - touch: touches
-    /// - Returns: bool for accepting touches
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if (touch.view?.isDescendant(of: containerView))! {
-            return false
-        }
-        return true
-    }
-    @objc func handleTapFrom(recognizer : UITapGestureRecognizer) {
-        done()
-    }
-    @IBAction func pressedDone(_ sender: UIButton) {
-        done()
-    }
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        done()
-    }
+
+
+
 
 }

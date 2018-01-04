@@ -41,6 +41,7 @@
 		400F03DA1FD07F03008BD579 /* PasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03D91FD07F03008BD579 /* PasswordTextView.m */; };
 		400F03E01FD0827E008BD579 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03DF1FD0827E008BD579 /* TextView.m */; };
 		400F03E31FD09941008BD579 /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400F03E21FD09941008BD579 /* ScrollView.m */; };
+		401106C91FFE934900635263 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401106C81FFE934800635263 /* PopupViewController.swift */; };
 		4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
 		4012E5201B9B4F4700BAF217 /* OnlyIntegerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E51F1B9B4F4700BAF217 /* OnlyIntegerFormatter.m */; };
 		40189F561FD46A1B00D87217 /* RandomPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F551FD46A1B00D87217 /* RandomPasswordViewController.swift */; };
@@ -271,6 +272,7 @@
 		400F03DF1FD0827E008BD579 /* TextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
 		400F03E11FD09941008BD579 /* ScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
 		400F03E21FD09941008BD579 /* ScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
+		401106C81FFE934800635263 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		4012E50E1B9750FA00BAF217 /* NSString+SymbolCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymbolCase.h"; sourceTree = "<group>"; };
 		4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymbolCase.m"; sourceTree = "<group>"; };
 		4012E51E1B9B4F4700BAF217 /* OnlyIntegerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyIntegerFormatter.h; sourceTree = "<group>"; };
@@ -524,13 +526,10 @@
 		400108101FD3321500594304 /* Storyboard Classes */ = {
 			isa = PBXGroup;
 			children = (
+				401106CA1FFE954100635263 /* Popups */,
 				40189F541FD46A0300D87217 /* Password Types */,
-				4054ABEA1FE4999D009FE668 /* ColorPickerViewController.swift */,
-				402C96521FD5D69600E2B37E /* PickerViewController.swift */,
 				40E9D1681FE04BC100FE1A1C /* TypeSelectionViewController.swift */,
 				40974E321FE485B800AC2772 /* PreferencesViewController.swift */,
-				4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */,
-				40C8E03A1FFB1C5D00056827 /* AlertViewController.swift */,
 			);
 			path = "Storyboard Classes";
 			sourceTree = "<group>";
@@ -625,6 +624,18 @@
 				40E453591FCBA4FD0075F490 /* BoxView.m */,
 			);
 			path = Preferences;
+			sourceTree = "<group>";
+		};
+		401106CA1FFE954100635263 /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				401106C81FFE934800635263 /* PopupViewController.swift */,
+				4054ABEA1FE4999D009FE668 /* ColorPickerViewController.swift */,
+				402C96521FD5D69600E2B37E /* PickerViewController.swift */,
+				4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */,
+				40C8E03A1FFB1C5D00056827 /* AlertViewController.swift */,
+			);
+			path = Popups;
 			sourceTree = "<group>";
 		};
 		40189F541FD46A0300D87217 /* Password Types */ = {
@@ -1704,6 +1715,7 @@
 				405118551FD621FC00E3FDFB /* StoredPasswordModel.xcdatamodeld in Sources */,
 				402C96531FD5D69600E2B37E /* PickerViewController.swift in Sources */,
 				4051185D1FD62E2600E3FDFB /* ZoomButton.swift in Sources */,
+				401106C91FFE934900635263 /* PopupViewController.swift in Sources */,
 				402C964A1FD5B31200E2B37E /* Utilities.swift in Sources */,
 				40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */,
 				401BC7211FF968B0008C7927 /* HeaderLabel.swift in Sources */,

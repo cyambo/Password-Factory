@@ -8,27 +8,19 @@
 
 import UIKit
 
-class ZoomViewController: UIViewController {
+class ZoomViewController: PopupViewController {
     
-
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var zoomedPassword: UITextView!
-    @IBOutlet weak var containerView: UIView!
-    
-    var dismissGesture: UITapGestureRecognizer?
+
     var formattedPassword : NSMutableAttributedString?
     var password: String?
     let font = UIFont.init(name: "Menlo", size: 59)
-    let bgColor = UIColor.init(white: 0.3, alpha: 1.0)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //add a dismiss gesture
-        if dismissGesture == nil {
-            dismissGesture = UITapGestureRecognizer(target: self, action: #selector(closeWindow))
-            view.addGestureRecognizer(dismissGesture!)
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = UIColor.init(white: 0.3, alpha: 1.0)
     }
+
     
     /// Formats the password and highlights it
     ///
@@ -39,12 +31,14 @@ class ZoomViewController: UIViewController {
         guard let f = font else {
             return CGSize.zero
         }
-        guard let h =  Utilities.dodgeHighlightedPasswordString(password: password, font: f, backgroundColor: bgColor).mutableCopy() as? NSMutableAttributedString else {
+        guard let bg = backgroundColor else { return CGSize.zero }
+        guard let h =  Utilities.dodgeHighlightedPasswordString(password: password, font: f, backgroundColor: bg).mutableCopy() as? NSMutableAttributedString else {
             return CGSize.zero
         }
         let style = NSMutableParagraphStyle.init()
         style.paragraphSpacing = 10
         style.lineSpacing = 10
+        style.alignment = .justified
         h.addAttribute(.paragraphStyle, value: style, range: NSRange.init(location: 0, length: h.length))
         h.addAttribute(.kern, value: 2, range: NSRange.init(location: 0, length: h.length))
         formattedPassword = h
@@ -53,8 +47,7 @@ class ZoomViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        containerView.backgroundColor = bgColor
-        view.backgroundColor = bgColor
+        view.backgroundColor = backgroundColor
         setPasswordView()
     }
     
@@ -67,7 +60,4 @@ class ZoomViewController: UIViewController {
         zoomedPassword.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
     }
 
-    @objc func closeWindow() {
-        dismiss(animated: true, completion: nil)
-    }
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class Utilities: NSObject {
 
-    
     /// Highlights a password string, or returns it in the default color based upon defaults
     ///
     /// - Parameters:
@@ -180,34 +179,43 @@ class Utilities: NSObject {
     ///   - viewControllerToShow: UIViewController that is displayed in a popover
     ///   - popoverBounds: bounds of popover to show
     ///   - source: UIView of control that triggered popover
-    public class func showPopover(parentViewController: UIViewController, viewControllerToShow: UIViewController, popoverBounds: CGRect, source: UIView, completion: (() ->Void)? = nil) {
-        var pvc = parentViewController
+    public class func showPopover(parentViewController: UIViewController, viewControllerToShow: PopupViewController, popoverBounds: CGRect, source: UIView, completion: (() ->Void)? = nil) {
+        var parent = parentViewController
         //if the parent is PasswordsViewController, use the root view controller
         if parentViewController.isKind(of: PasswordsViewController.self) {
-            pvc = UIApplication.shared.keyWindow?.rootViewController ?? parentViewController
+            parent = UIApplication.shared.keyWindow?.rootViewController ?? parentViewController
         }
         //set to popover
+        viewControllerToShow.screenshot = Utilities.screenshot(parent.view)
         viewControllerToShow.modalPresentationStyle = .popover
         //load the popover
         if let pop = viewControllerToShow.popoverPresentationController {
             pop.permittedArrowDirections = .any
             pop.sourceView = source
             pop.sourceRect = source.bounds
-            if let del = viewControllerToShow as? UIPopoverPresentationControllerDelegate {
-                pop.delegate = del
+            pop.delegate = viewControllerToShow
+            if viewControllerToShow.backgroundColor != nil {
+                pop.backgroundColor = viewControllerToShow.backgroundColor
+            } else {
+                pop.backgroundColor = UIColor.white
             }
             //set the size and bounds
             viewControllerToShow.preferredContentSize = popoverBounds.size
             viewControllerToShow.view.bounds = popoverBounds
         }
-        pvc.present(viewControllerToShow, animated: true, completion: completion)
+        parent.present(viewControllerToShow, animated: true, completion: completion)
     }
 
     /// Gets a screenshot of the current window
     ///
     /// - Returns: UIImage screenshot
-    public class func screenshot() -> UIImage {
-        guard let view = UIApplication.shared.keyWindow?.rootViewController?.view else { return UIImage() }
+    public class func screenshot(_ viewToScreenShot: UIView? = nil) -> UIImage {
+        var currentView = viewToScreenShot
+        
+        if currentView == nil {
+            currentView = UIApplication.shared.keyWindow?.rootViewController?.view
+        }
+        guard let view = currentView else { return UIImage() }
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
         
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
