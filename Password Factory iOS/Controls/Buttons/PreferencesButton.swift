@@ -11,18 +11,18 @@ import UIKit
 @IBDesignable
 
 /// Preferences Button
-class PreferencesButton: UIButton {
+class PreferencesButton: UIBarButtonItem {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         setDisplay()
     }
     override func awakeFromNib() {
+        super.awakeFromNib()
         setDisplay()
     }
     func setDisplay() {
-        super.awakeFromNib()
-        setImage(StyleKit.imageOfPreferencesButton(strokeColor: UIColor.black), for: .normal)
-        setTitle("", for: .normal)
+        image = StyleKit.imageOfPreferencesButton(strokeColor: UIColor.black)
+        title = ""
     }
     
 }

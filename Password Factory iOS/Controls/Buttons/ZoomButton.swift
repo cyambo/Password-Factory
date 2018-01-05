@@ -16,10 +16,10 @@ class ZoomButton: UIButton {
         setDisplay()
     }
     override func awakeFromNib() {
+        super.awakeFromNib()
         setDisplay()
     }
     func setDisplay() {
-        super.awakeFromNib()
         setImage(StyleKit.imageOfZoom(), for: .normal)
         setTitle("", for: .normal)
     }

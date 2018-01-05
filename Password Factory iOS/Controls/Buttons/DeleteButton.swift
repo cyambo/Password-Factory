@@ -16,10 +16,10 @@ class DeleteButton: UIButton {
         setDisplay()
     }
     override func awakeFromNib() {
+        super.awakeFromNib()
         setDisplay()
     }
     func setDisplay() {
-        super.awakeFromNib()
         setImage(StyleKit.imageOfDeleteButon, for: .normal)
         setTitle("", for: .normal)
     }

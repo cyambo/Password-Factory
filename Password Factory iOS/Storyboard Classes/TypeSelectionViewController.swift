@@ -10,6 +10,7 @@ import UIKit
 
 class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, ControlViewDelegate, AlertViewControllerDelegate, PreferencesViewControllerDelegate {
 
+
     let passwordController = PasswordController.get(false)!
     var mainStoryboard: UIStoryboard?
     var keyboardDismissGesture: UITapGestureRecognizer?
@@ -30,7 +31,6 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     @IBOutlet weak var crackTimeButton: UIButton!
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var generateButton: UIButton!
-    @IBOutlet weak var passwordTypeTitle: UILabel!
     @IBOutlet weak var strengthMeter: StrengthMeter!
     @IBOutlet weak var controlsView: UIView!
     @IBOutlet weak var typeSelectionControl: UISegmentedControl!
@@ -42,17 +42,20 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
         mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         do {
             extendedCharacterRegex = try NSRegularExpression.init(pattern: "[^A-Za-z0-9\(c.escapedSymbols)]", options: .caseInsensitive)
         } catch {
             extendedCharacterRegex = nil
         }
+        navigationController?.navigationBar.isTranslucent = false
         setObservers()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupSegments()
         //setup a global gesture that will dismiss the keyboard on a tap in the background
         if keyboardDismissGesture == nil {
@@ -114,7 +117,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         guard let currentView = selectedViewController.view else {
             return
         }
-        passwordTypeTitle.text = c.getNameFor(type: selType)
+        navigationItem.title = c.getNameFor(type: selType)
         currentViewController = selectedViewController
         
         controlsView.addSubview(currentView)
@@ -135,16 +138,10 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         }
     }
     
-    /// Displays the preferences modal
-    ///
-    /// - Parameter sender: default sender
-    @IBAction func pressedPreferencesButton(_ sender: UIButton) {
+    @IBAction func pressedPreferences(_ sender: Any) {
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "PreferencesView") as? PreferencesViewController {
-            vc.modalPresentationStyle = .overFullScreen
             vc.delegate = self
-            if let r = view.parentViewController {
-                r.present(vc, animated: true, completion: nil)
-            }
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
