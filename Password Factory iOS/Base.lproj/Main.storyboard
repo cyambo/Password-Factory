@@ -160,7 +160,7 @@
                                             <segment title="Second"/>
                                         </segments>
                                         <connections>
-                                            <action selector="selectType:" destination="fD8-6D-Gbm" eventType="valueChanged" id="2NC-A5-dYb"/>
+                                            <action selector="selectTypeFromControl:" destination="fD8-6D-Gbm" eventType="valueChanged" id="2NC-A5-dYb"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
@@ -242,7 +242,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="956" y="-55"/>
+            <point key="canvasLocation" x="388" y="-107"/>
         </scene>
         <!--Zoom View Controller-->
         <scene sceneID="atx-kW-hMY">
@@ -277,7 +277,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aT4-U7-aKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="xgv-Ff-k9G"/>
             </objects>
-            <point key="canvasLocation" x="3767" y="958"/>
+            <point key="canvasLocation" x="4974" y="260"/>
         </scene>
         <!--Random Password-->
         <scene sceneID="9Ox-ap-9QA">
@@ -460,7 +460,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvU-K2-ZbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2048.8000000000002" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="2332" y="-371"/>
+        </scene>
+        <!--Home Screen Action-->
+        <scene sceneID="Eke-Ar-fK4">
+            <objects>
+                <tableViewController storyboardIdentifier="HomeActionView" id="xjQ-kd-KaF" userLabel="Home Screen Action" customClass="SetHomeScreenActionsViewController" customModule="Password_Factory_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aYc-p8-9bf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="ActionCell" id="gFn-Xm-sRb">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gFn-Xm-sRb" id="XIj-O3-H7s">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xjQ-kd-KaF" id="A8I-wo-CtW"/>
+                            <outlet property="delegate" destination="xjQ-kd-KaF" id="vb1-xQ-GCC"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q6b-ZO-Sbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1738" y="-107"/>
         </scene>
         <!--Picker View-->
         <scene sceneID="dRx-9E-Y08">
@@ -555,7 +583,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THI-Xz-eOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="V3J-eQ-9xe" customClass="StyleKit" customModule="Password_Factory_iOS" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="2825" y="245"/>
+            <point key="canvasLocation" x="2918" y="260"/>
         </scene>
         <!--Pattern Password-->
         <scene sceneID="yGa-KQ-i4O">
@@ -694,7 +722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ns-ps-eyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2636" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="2919" y="-371"/>
         </scene>
         <!--Pronounceable Password-->
         <scene sceneID="4FY-f8-Dzz">
@@ -819,7 +847,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fr7-fk-vIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3208.8000000000002" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="3492" y="-371"/>
         </scene>
         <!--Passphrase Password-->
         <scene sceneID="fg4-ld-zbQ">
@@ -947,7 +975,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YlV-ph-LPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3792.8000000000002" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="4076" y="-371"/>
         </scene>
         <!--Advanced Password-->
         <scene sceneID="kn3-uf-17k">
@@ -1268,7 +1296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I87-ky-ZAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4364" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="4647" y="-371"/>
         </scene>
         <!--Stored Password-->
         <scene sceneID="Mxh-6y-FBy">
@@ -1491,7 +1519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yli-AI-Ibm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4948" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="5231" y="-371"/>
         </scene>
         <!--Preferences View-->
         <scene sceneID="QRT-0E-Lo3">
@@ -1505,7 +1533,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="eew-MJ-TLG">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="848"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="948"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bds-4z-5bU" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1639,14 +1667,31 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="colorPasswordText"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d9-iQ-CFy" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvQ-Qo-Bnz" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="692" width="375" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIO-0K-uI2" userLabel="Reset Warnings" customClass="ButtonControlView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gef-YO-snA" userLabel="Shortcuts" customClass="ButtonControlView" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="736" width="375" height="56"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Shortcuts"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="homeScreenShortcut"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="KGt-Hr-RKx" id="PMO-cB-gft"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d9-iQ-CFy" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="792" width="375" height="44"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIO-0K-uI2" userLabel="Reset Warnings" customClass="ButtonControlView" customModule="Password_Factory_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="836" width="375" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Reset All Warnings"/>
@@ -1659,7 +1704,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H34-s7-CPG" userLabel="Reset Defaults" customClass="ButtonControlView" customModule="Password_Factory_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="792" width="375" height="56"/>
+                                                <rect key="frame" x="0.0" y="892" width="375" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Reset to Defaults"/>
@@ -1686,6 +1731,8 @@
                                             <constraint firstItem="WG2-5P-lfb" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="HTN-HQ-X6J"/>
                                             <constraint firstItem="rIO-0K-uI2" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="Ilh-xa-Lbt"/>
                                             <constraint firstItem="Xup-A2-sDC" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="NwE-h9-Vzw"/>
+                                            <constraint firstItem="gef-YO-snA" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="Qt5-gK-Nwy"/>
+                                            <constraint firstItem="YvQ-Qo-Bnz" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="RQ3-gP-2ML"/>
                                             <constraint firstItem="S5V-Ia-V1b" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="Rug-Qp-iuH"/>
                                             <constraint firstItem="53i-oo-3kh" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="TvT-cH-f9n"/>
                                             <constraint firstItem="5am-K1-F3G" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="YHy-An-u7Z"/>
@@ -1699,7 +1746,9 @@
                                             <constraint firstItem="WG2-5P-lfb" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="mbI-9y-fz3"/>
                                             <constraint firstItem="rIO-0K-uI2" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="oVk-t4-nl7"/>
                                             <constraint firstItem="STE-09-qyK" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="qUE-6x-GGz"/>
+                                            <constraint firstItem="YvQ-Qo-Bnz" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="qdd-3E-dk0"/>
                                             <constraint firstItem="bds-4z-5bU" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="uek-Mf-zpP"/>
+                                            <constraint firstItem="gef-YO-snA" firstAttribute="height" secondItem="ux6-Dj-BZF" secondAttribute="height" id="v9a-AY-vWB"/>
                                             <constraint firstItem="4d9-iQ-CFy" firstAttribute="width" secondItem="bds-4z-5bU" secondAttribute="width" id="w0I-Kv-EFV"/>
                                             <constraint firstItem="STE-09-qyK" firstAttribute="height" secondItem="bds-4z-5bU" secondAttribute="height" id="w4N-KP-4mp"/>
                                             <constraint firstItem="soT-oz-KrN" firstAttribute="width" secondItem="ux6-Dj-BZF" secondAttribute="width" id="xQF-xL-l1h"/>
@@ -1732,7 +1781,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJf-ST-hCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714" y="44"/>
+            <point key="canvasLocation" x="1062" y="-107"/>
         </scene>
         <!--Color Picker View Controller-->
         <scene sceneID="ykn-JV-wDr">
@@ -1976,7 +2025,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G92-Te-hAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="-72"/>
+            <point key="canvasLocation" x="-308" y="-107"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.99215686274509807" green="0.4392156862745098" blue="0.23921568627450979" alpha="1" colorSpace="deviceRGB"/>

@@ -72,7 +72,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setSelectedPasswordType()
-        selectType(typeSelectionControl)
+        selectTypeFromControl(typeSelectionControl)
         
     }
     
@@ -102,7 +102,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     /// Called when type is selected on the segmented control - animates the next one into the view
     ///
     /// - Parameter sender: default sender
-    @IBAction func selectType(_ sender: UISegmentedControl) {
+    @IBAction func selectTypeFromControl(_ sender: UISegmentedControl) {
         let selType = passwordController.getPasswordType(by: UInt(typeSelectionControl.selectedSegmentIndex))
         if selType == .storedType {
             generateButton.isEnabled = false
@@ -134,7 +134,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         setSelectedPasswordType()
         //only select a new segment if our selection changed because that segment was removed
         if currSel != typeSelectionControl.selectedSegmentIndex {
-            selectType(typeSelectionControl)
+            selectTypeFromControl(typeSelectionControl)
         }
     }
     

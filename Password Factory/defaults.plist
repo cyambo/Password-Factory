@@ -98,5 +98,16 @@
 	<false/>
 	<key>hideMenuRestartWarning</key>
 	<false/>
+	<key>enabledHomeScreenItems</key>
+	<array>
+		<integer>401</integer>
+		<integer>402</integer>
+		<integer>403</integer>
+		<integer>404</integer>
+	</array>
+	<key>disabledHomeScreenItems</key>
+	<array>
+		<integer>405</integer>
+	</array>
 </dict>
 </plist>

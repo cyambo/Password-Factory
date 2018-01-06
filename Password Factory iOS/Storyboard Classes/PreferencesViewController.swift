@@ -31,19 +31,26 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
     }
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
         //checking to see if storePasswords was disabled
-        if defaultsKey == "storePasswords" {
+        switch defaultsKey {
+        case "storePasswords":
             if let isOn = (control as? UISwitch)?.isOn {
                 if !isOn {
                     PasswordStorage.get().deleteAllEntities()
                 }
             }
-        } else if defaultsKey == "resetAllDialogs" {
+        case "resetAllDialogs":
             self.d.resetDialogs()
             self.navigationController?.popViewController(animated: true)
-        } else if defaultsKey == "resetToDefaults" {
+        case "resetToDefaults":
             DefaultsManager.restoreUserDefaults()
             didResetDefaults = true
             self.navigationController?.popViewController(animated: true)
+        case "homeScreenShortcut":
+            let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+            navigationController?.pushViewController(mainStoryboard.instantiateViewController(withIdentifier: "HomeActionView") , animated: true)
+        default:
+            return
         }
+
     }
 }

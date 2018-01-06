@@ -16,9 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIView.appearance().tintColor = PFConstants.tintColor
+        Utilities.setHomeScreenActions()
         return true
     }
-
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleShortCutItem(shortCutItem: shortcutItem))
+    }
+    func handleShortCutItem(shortCutItem: UIApplicationShortcutItem) -> Bool {
+//        let d = DefaultsManager.get()
+//        if let key = Int(shortCutItem.type) {
+//            if let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+//                if let typeVC = navController.viewControllers[0] as? TypeSelectionViewController {
+//                    d.setInteger(key, forKey: "selectedPasswordType")
+////                    guard let selType = typeVC.setSelectedPasswordType() else { return true }
+////                    typeVC.selectAndDisplay(type: selType, copy: true)
+//                }
+//            }
+//        }
+        return true
+    }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -38,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+        Utilities.setHomeScreenActions()
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 

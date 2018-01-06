@@ -239,4 +239,20 @@ class Utilities: NSObject {
         }
         return sideMargin
     }
+    
+    public class func setHomeScreenActions() {
+        let d = DefaultsManager.get()
+        let c = PFConstants.instance
+        
+        let enabled = d.object(forKey: "enabledHomeScreenItems") as? [Int] ?? [Int]()
+        var shortCutItems = [UIApplicationShortcutItem]()
+        for typeInt in enabled {
+            if let passwordType = PFPasswordType.init(rawValue: typeInt) {
+                let icon = UIApplicationShortcutIcon.init(templateImageName: c.getNameFor(type: passwordType))
+                let quickAction = UIApplicationShortcutItem(type: "\(typeInt)", localizedTitle: c.getNameFor(type: passwordType), localizedSubtitle: nil, icon: icon, userInfo: nil)
+                shortCutItems.append(quickAction)
+            }
+        }
+        UIApplication.shared.shortcutItems = shortCutItems
+    }
 }
