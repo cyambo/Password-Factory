@@ -32,6 +32,8 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
         //checking to see if storePasswords was disabled
         switch defaultsKey {
+        case "enableAdvanced":
+            Utilities.setHomeScreenActions()
         case "storePasswords":
             if let isOn = (control as? UISwitch)?.isOn {
                 if !isOn {

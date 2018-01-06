@@ -240,19 +240,27 @@ class Utilities: NSObject {
         return sideMargin
     }
     
+    /// Sets the home screen actions from defaults
     public class func setHomeScreenActions() {
         let d = DefaultsManager.get()
         let c = PFConstants.instance
         
         let enabled = d.object(forKey: "enabledHomeScreenItems") as? [Int] ?? [Int]()
         var shortCutItems = [UIApplicationShortcutItem]()
+        let enableAdvanced = d.bool(forKey: "enableAdvanced")
         for typeInt in enabled {
             if let passwordType = PFPasswordType.init(rawValue: typeInt) {
+                //if advanced is not enabled, and the type is advanced, do not add it
+                if passwordType == .advancedType && !enableAdvanced { continue }
+                //set the icon
                 let icon = UIApplicationShortcutIcon.init(templateImageName: c.getNameFor(type: passwordType))
+                //and the action
                 let quickAction = UIApplicationShortcutItem(type: "\(typeInt)", localizedTitle: c.getNameFor(type: passwordType), localizedSubtitle: nil, icon: icon, userInfo: nil)
+                //add it to the actions
                 shortCutItems.append(quickAction)
             }
         }
+        //save it
         UIApplication.shared.shortcutItems = shortCutItems
     }
 }

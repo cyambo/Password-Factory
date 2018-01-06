@@ -1571,6 +1571,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="enableAdvanced"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Enable Advanced"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="KGt-Hr-RKx" id="Vpg-wJ-Agf"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STE-09-qyK" customClass="HeaderLabel" customModule="Password_Factory_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="156" width="375" height="44"/>
