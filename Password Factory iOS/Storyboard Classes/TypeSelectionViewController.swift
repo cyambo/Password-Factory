@@ -71,9 +71,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setSelectedPasswordType()
+        _ = setSelectedPasswordType()
         selectTypeFromControl(typeSelectionControl)
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -104,40 +103,52 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     /// - Parameter sender: default sender
     @IBAction func selectTypeFromControl(_ sender: UISegmentedControl) {
         let selType = passwordController.getPasswordType(by: UInt(typeSelectionControl.selectedSegmentIndex))
-        if selType == .storedType {
+        selectAndDisplay(type: selType, copy: false)
+    }
+    
+    /// Selects the current password type and displays the password view
+    ///
+    /// - Parameters:
+    ///   - type: password type to display
+    ///   - withCopy: if the password should be copied to clipboard
+    func selectAndDisplay(type: PFPasswordType, copy withCopy: Bool) {
+        if type == .storedType {
             generateButton.isEnabled = false
         } else {
             generateButton.isEnabled = true
         }
         currentViewController?.view.removeFromSuperview()
-
-        guard let selectedViewController = getViewController(selType) else {
+        
+        guard let selectedViewController = getViewController(type) else {
             return
         }
         guard let currentView = selectedViewController.view else {
             return
         }
-        navigationItem.title = c.getNameFor(type: selType)
+        navigationItem.title = "\(c.getNameFor(type: type))"
         currentViewController = selectedViewController
         
         controlsView.addSubview(currentView)
         controlsView.fillViewInContainer(currentView)
         currentViewController?.didMove(toParentViewController: self)
-        d.setInteger(selType.rawValue, forKey: "selectedPasswordType")
-        generatePassword()
+        d.setInteger(type.rawValue, forKey: "selectedPasswordType")
+        generatePassword(withCopy: withCopy)
     }
     
     /// Updates the segments based upon preferences and selects a segment based on defaults
     func updateAndSelectSegment() {
         let currSel = typeSelectionControl.selectedSegmentIndex
         setupSegments()
-        setSelectedPasswordType()
+        _ = setSelectedPasswordType()
         //only select a new segment if our selection changed because that segment was removed
         if currSel != typeSelectionControl.selectedSegmentIndex {
             selectTypeFromControl(typeSelectionControl)
         }
     }
     
+    /// Pushes prefs onto navigation controller
+    ///
+    /// - Parameter sender: default sender
     @IBAction func pressedPreferences(_ sender: Any) {
         if let vc = mainStoryboard?.instantiateViewController(withIdentifier: "PreferencesView") as? PreferencesViewController {
             vc.delegate = self
@@ -196,6 +207,11 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     ///
     /// - Parameter sender: default sender
     @IBAction func pressedCopyButton(_ sender: Any) {
+        copyPasswordToPasteboard()
+    }
+    
+    /// Copies current password to pasteboard
+    func copyPasswordToPasteboard() {
         if let currPass = passwordDisplay.text {
             UIPasteboard.general.string = currPass
         }
@@ -210,8 +226,11 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         generatePassword()
     }
     
+    
     /// Generates password from the current view controller
-    func generatePassword() {
+    ///
+    /// - Parameter withCopy: and if the password should be copied to clipboard
+    func generatePassword(withCopy: Bool = false) {
         //if there is a stored password from the zoomView just show it
         if let sp = storedPassword {
             storedPassword = nil
@@ -245,6 +264,9 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                 //update the password field
                 DispatchQueue.main.async { [unowned self, p, strength, crackTime] in
                     self.updatePasswordField(p, strength: Double(strength), crackTime: crackTime)
+                    if withCopy {
+                        self.copyPasswordToPasteboard()
+                    }
                 }
                 //store if we are not active or a stored type
                 if type != .storedType && !active {
@@ -304,18 +326,21 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         generatePassword()
     }
     
-    /// selects the current password type on the segmented control
-    func setSelectedPasswordType() {
+    /// Selects password type from defaults and sets the segmented control to that value
+    ///
+    /// - Returns: type that was selected
+    func setSelectedPasswordType() -> PFPasswordType? {
         //get the password type raw value
         let typeInt = d.integer(forKey: "selectedPasswordType")
         //convert it to enum
         guard let currType = PFPasswordType.init(rawValue: typeInt) else {
-            return
+            return nil
         }
         //get the index
         let index = passwordController.getIndexBy(currType)
         //select it
         typeSelectionControl.selectedSegmentIndex = Int(index)
+        return currType
     }
     
     /// Gets the view controller for password type

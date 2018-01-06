@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIView.appearance().tintColor = PFConstants.tintColor
         Utilities.setHomeScreenActions()
@@ -23,16 +22,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(handleShortCutItem(shortCutItem: shortcutItem))
     }
     func handleShortCutItem(shortCutItem: UIApplicationShortcutItem) -> Bool {
-//        let d = DefaultsManager.get()
-//        if let key = Int(shortCutItem.type) {
-//            if let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-//                if let typeVC = navController.viewControllers[0] as? TypeSelectionViewController {
-//                    d.setInteger(key, forKey: "selectedPasswordType")
-////                    guard let selType = typeVC.setSelectedPasswordType() else { return true }
-////                    typeVC.selectAndDisplay(type: selType, copy: true)
-//                }
-//            }
-//        }
+        let d = DefaultsManager.get()
+        //get the type of the shortcut item
+        if let key = Int(shortCutItem.type) {
+            //make sure everything is good and it is a navigation controller
+            if let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                //and that the root is the TypeSelectionViewController
+                if let typeVC = navController.viewControllers[0] as? TypeSelectionViewController {
+                    //if there is more than one controller, (ie prefs is shown)
+                    if navController.viewControllers.count > 1 {
+                        let navCount = navController.viewControllers.count
+                        //pop them all off to the beginning
+                        for _ in 1 ..< navCount  {
+                            navController.popViewController(animated: false)
+                        }
+                    }
+                    //set the defaults key for the type selected from the shortcut
+                    d.setInteger(key, forKey: "selectedPasswordType")
+                    //and select and display it
+                    guard let selType = typeVC.setSelectedPasswordType() else { return true }
+                    typeVC.selectAndDisplay(type: selType, copy: true)
+                }
+            }
+        }
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {
@@ -41,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+        Utilities.setHomeScreenActions()
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
@@ -54,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        Utilities.setHomeScreenActions()
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
