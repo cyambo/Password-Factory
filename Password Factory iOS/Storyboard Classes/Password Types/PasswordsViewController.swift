@@ -33,11 +33,9 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
     }
     func generatePassword() -> String {
         currentPassword = ""
-        controller?.generatePassword(passwordType)
-        guard let password = controller?.password else {
+        guard let currentPassword = controller?.generatePassword(passwordType) else {
             return ""
         }
-        currentPassword = password
         updateStrength(withCrackTime: d.bool(forKey: "displayCrackTime"))
         return currentPassword
     }

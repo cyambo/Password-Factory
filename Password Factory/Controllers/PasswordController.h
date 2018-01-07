@@ -33,7 +33,11 @@
 @property (nonatomic, assign) BOOL useAdvancedType;
 @property (nonatomic, strong) NSString *password;
 + (instancetype)get:(BOOL)useShared;
+#ifdef IS_MACOS
 - (void)generatePassword:(PFPasswordType)type;
+#else
+- (NSString *)generatePassword:(PFPasswordType)type;
+#endif
 - (NSString *)generatePassword:(PFPasswordType)type withSettings:(NSDictionary *)settings;
 - (void)setPasswordValue:(NSString *)passwordValue;
 - (NSString *)getPasswordValue;

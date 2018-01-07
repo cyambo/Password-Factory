@@ -56,21 +56,23 @@
 
  @param type PFPasswordType
  */
+
+#ifdef IS_MACOS
 - (void)generatePassword:(PFPasswordType)type {
-    
     if (type != PFStoredType) {
         NSDictionary *settings = [self getPasswordSettingsByType:type];
         [self generatePassword:type withSettings:settings];
     } else {
-#ifdef IS_MACOS
         PasswordTypesViewController *vc = [self getViewControllerForPasswordType:type];
         [vc selectRandomFromStored];
-#else
-        NSDictionary *settings = [self getPasswordSettingsByType:type];
-        [self generatePassword:type withSettings:settings];
-#endif
     }
 }
+#else
+- (NSString *)generatePassword:(PFPasswordType)type {
+    NSDictionary *settings = [self getPasswordSettingsByType:type];
+    return [self generatePassword:type withSettings:settings];
+}
+#endif
 
 /**
  Generates password
