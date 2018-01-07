@@ -127,6 +127,17 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         selectFirstPassword = true
         
     }
+    override func updateStrength(withCrackTime: Bool) {
+        //load the currently selected password
+        let selectedIndex = d.integer(forKey: "storedPasswordTableSelectedRow")
+        guard let p = s.password(at: UInt(selectedIndex)) else { return }
+        currentPassword = p.password ?? ""
+        //and set it
+        controller?.password = currentPassword
+        //so the crack time can be properly generated
+        super.updateStrength(withCrackTime: withCrackTime)
+        
+    }
     override func generatePassword() -> String {
         var index  = 0
         if !selectFirstPassword {
@@ -147,6 +158,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        d.setObject(indexPath.row, forKey: "storedPasswordTableSelectedRow")
         if let cell = storedPasswordsTable.cellForRow(at: indexPath) as? StoredPasswordTableViewCell {
             guard let p = cell.password.text else {
                 return
@@ -163,6 +175,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
                     ct = c.getCrackTime(p)
                 }
             }
+            
             typeSelectionViewController?.updatePasswordField(p, strength: s, crackTime: ct)
         }
     }
