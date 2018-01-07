@@ -146,7 +146,12 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         selectFirstPassword = false
         selectPasswordAtIndex(index)
         d.setObject(index, forKey: "storedPasswordTableSelectedRow")
-        return super.generatePassword()
+        var password = ""
+        //run on the main queue because coredata needs to be on the main queue
+        DispatchQueue.main.sync {
+            password = super.generatePassword()
+        }
+        return password
         
     }
     func selectPasswordAtIndex(_ index: Int){
@@ -154,7 +159,8 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
             return
         }
         DispatchQueue.main.async {
-           self.storedPasswordsTable.selectRow(at: IndexPath.init(row: Int(index), section: 0), animated: true, scrollPosition: .top)
+            let indexPath = IndexPath.init(row: Int(index), section: 0)
+            self.storedPasswordsTable.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

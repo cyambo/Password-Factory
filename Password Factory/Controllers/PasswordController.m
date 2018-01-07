@@ -329,7 +329,7 @@
             [settings addEntriesFromDictionary:[self generateAdvancedPasswordSettings]];
             break;
         case PFStoredType: //stored
-
+            
             if ([self.storage count] && [d integerForKey:@"storedPasswordTableSelectedRow"] >=0) {
                 settings[@"storedPassword"] = [self.storage passwordAtIndex:[d integerForKey:@"storedPasswordTableSelectedRow"]].password;
             } else {

@@ -168,7 +168,11 @@
  @return number of objects
  */
 -(NSUInteger)count {
-    return self.fetchedResultsController.sections[0].numberOfObjects;
+    NSUInteger c = 0;
+    if (self.fetchedResultsController.sections[0]) {
+       c = self.fetchedResultsController.sections[0].numberOfObjects;
+    }
+    return c;
 }
 
 /**
