@@ -39,9 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     //set the defaults key for the type selected from the shortcut
                     d.setInteger(key, forKey: "selectedPasswordType")
-                    //and select and display it
-                    guard let selType = typeVC.setSelectedPasswordType() else { return true }
-                    typeVC.selectAndDisplay(type: selType, copy: true)
+                    //and select and display it only if the view has been loaded
+                    //if it wasn't loaded we are in launch and just setting the default is enough
+                    if navController.viewControllers[0].isViewLoaded {
+                        guard let selType = typeVC.setSelectedPasswordType() else { return true }
+                        typeVC.selectAndDisplay(type: selType, copy: true)
+                    }
                 }
             }
         }

@@ -30,24 +30,31 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
         navigationItem.title = "Preferences"
     }
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
-        //checking to see if storePasswords was disabled
+        //does any special actions for control changes in preferences
         switch defaultsKey {
         case "enableAdvanced":
+            //update the home screen actions when advanced is changed
             Utilities.setHomeScreenActions()
         case "storePasswords":
+            //if store passwords is turned off, delete everything
             if let isOn = (control as? UISwitch)?.isOn {
                 if !isOn {
                     PasswordStorage.get().deleteAllEntities()
                 }
             }
         case "resetAllDialogs":
+            //reset the dialogs and pop to type selection
             self.d.resetDialogs()
             self.navigationController?.popViewController(animated: true)
         case "resetToDefaults":
+            //delete all stored passwords, and restore defaults
+            PasswordStorage.get().deleteAllEntities()
             DefaultsManager.restoreUserDefaults()
             didResetDefaults = true
+            //and pop to type selection
             self.navigationController?.popViewController(animated: true)
         case "homeScreenShortcut":
+            //push the home actions controller on 
             let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
             navigationController?.pushViewController(mainStoryboard.instantiateViewController(withIdentifier: "HomeActionView") , animated: true)
         default:

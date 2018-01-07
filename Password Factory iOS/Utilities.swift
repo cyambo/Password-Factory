@@ -225,7 +225,6 @@ class Utilities: NSObject {
         return image
     }
     
-    
     /// Gets the side margins for controls which centers and makes the margins bigger them on big screens
     ///
     /// - Returns: margin to use

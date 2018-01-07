@@ -339,7 +339,10 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         //get the index
         let index = passwordController.getIndexBy(currType)
         //select it
-        typeSelectionControl.selectedSegmentIndex = Int(index)
+        if typeSelectionControl != nil {
+            typeSelectionControl.selectedSegmentIndex = Int(index)
+        }
+        
         return currType
     }
     
