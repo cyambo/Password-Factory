@@ -35,10 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let d = DefaultsManager.get()
         //get the type of the shortcut item
         if let key = Int(shortCutItem.type) {
+            
+            //set the defaults key for the type selected from the shortcut
+            d.setInteger(key, forKey: "selectedPasswordType")
+            
             //make sure everything is good and it is a navigation controller
             if let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                 //and that the root is the TypeSelectionViewController
                 if let typeVC = navController.viewControllers[0] as? TypeSelectionViewController {
+
                     //if there is more than one controller, (ie prefs is shown)
                     if navController.viewControllers.count > 1 {
                         let navCount = navController.viewControllers.count
@@ -47,8 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             navController.popViewController(animated: false)
                         }
                     }
-                    //set the defaults key for the type selected from the shortcut
-                    d.setInteger(key, forKey: "selectedPasswordType")
+
                     //and select and display it only if the view has been loaded
                     //if it wasn't loaded we are in launch and just setting the default is enough
                     if navController.viewControllers[0].isViewLoaded {

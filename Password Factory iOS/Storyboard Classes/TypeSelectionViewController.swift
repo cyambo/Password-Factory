@@ -25,7 +25,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     var viewControllers = [PFPasswordType : UIViewController]()
     
     var extendedCharacterRegex: NSRegularExpression?
-    var storedPassword: String?
+    var savedPassword: String?
     
     @IBOutlet weak var zoomButton: ZoomButton!
     @IBOutlet weak var crackTimeButton: UIButton!
@@ -189,7 +189,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
             let height = (size.height + 4.0) * ceil(size.width / 580)
             let width = size.width < 600 ? (size.width + 40) : 600
             let contentBounds = CGRect.init(x: 0, y: 0, width: width, height: height)
-            storedPassword = passwordDisplay.text //store the current password so it gets displayed when this view reappears
+            savedPassword = passwordDisplay.text //store the current password so it gets displayed when this view reappears
             Utilities.showPopover(parentViewController: self, viewControllerToShow: zoomViewController, popoverBounds: contentBounds, source: zoomButton, completion: {
                 zoomViewController.zoomedPassword.scrollRangeToVisible(NSRange.init(location: 0, length: 0))
             })
@@ -232,8 +232,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     /// - Parameter withCopy: and if the password should be copied to clipboard
     func generatePassword(withCopy: Bool = false) {
         //if there is a stored password from the zoomView just show it
-        if let sp = storedPassword {
-            storedPassword = nil
+        if let sp = savedPassword {
+            savedPassword = nil
             if let controller = PasswordController.get(false) {
                 controller.password = sp
                 controller.updatePasswordStrength()

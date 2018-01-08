@@ -20,25 +20,27 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
     var passwordStrength: Float = 0.0
     var crackTimeString: String = ""
     var currentPassword = ""
-    var passwordType = PFPasswordType.randomType
+    var passwordType: PFPasswordType?
     let controller = PasswordController.get(false)
     
     override func viewWillAppear(_ animated: Bool) {
         passwordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.randomType
         super.viewWillAppear(animated)
     }
-
+    
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
         typeSelectionViewController?.controlChanged(control, defaultsKey: defaultsKey)
     }
+    
     func generatePassword() -> String {
         currentPassword = ""
-        guard let currentPassword = controller?.generatePassword(passwordType) else {
-            return ""
-        }
+        guard let pt = passwordType else { return "" }
+        guard let currentPassword = controller?.generatePassword(pt) else { return "" }
+        print("CURRWN TPASSS \(currentPassword)")
         updateStrength(withCrackTime: d.bool(forKey: "displayCrackTime"))
         return currentPassword
     }
+    
     func updateStrength(withCrackTime: Bool) {
         crackTimeString = ""
         passwordStrength = 0.0
