@@ -2,6 +2,7 @@
 
 NSString * const SupportEmailAddress = @"support@password-factory.com";
 NSString * const SharedDefaultsAppGroup = @"XWE2VMM384.com.cloudthirteen.Password-Factory";
+NSString * const iCloudContainer = @"iCloud.com.password-factory.app";
 NSString * const NotificationSoundName = @"Hero";
 NSString * const HelperIdentifier = @"com.cloudthirteen.Password-Factory-Helper";
 NSString * const AppIdentifier = @"com.cloudthirteen.Password-Factory";

@@ -10,7 +10,5 @@
 #import "Passwords+CoreDataClass.h"
 
 @implementation Passwords
-+ (NSString *)primaryKey {
-    return @"password";
-}
+
 @end

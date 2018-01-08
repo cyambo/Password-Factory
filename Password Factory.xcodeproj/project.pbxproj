@@ -64,6 +64,8 @@
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
 		4043C76A1FF6C4EF00F9A446 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */; };
+		404866812002CDA5008A751F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404866802002CDA5008A751F /* CloudKit.framework */; };
+		404866832002CDD9008A751F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404866822002CDD9008A751F /* CloudKit.framework */; };
 		40496FBB1FE843F30099158C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40496FBA1FE843F30099158C /* UIView+Extensions.swift */; };
 		404B6D601FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
 		404B6D611FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */; };
@@ -299,6 +301,8 @@
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
 		403DF3A41FC8F56C0057E15C /* MenuPopover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuPopover.m; sourceTree = "<group>"; };
 		4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
+		404866802002CDA5008A751F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		404866822002CDD9008A751F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		40496FBA1FE843F30099158C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		404B6D5E1FBE76CB00B281E5 /* NSString+UnicodeLength.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+UnicodeLength.h"; sourceTree = "<group>"; };
 		404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeLength.m"; sourceTree = "<group>"; };
@@ -490,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8F7D5EC513BE2FA6E1E7B25 /* Pods_Password_Factory_iOS.framework in Frameworks */,
+				404866832002CDD9008A751F /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +516,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				404866812002CDA5008A751F /* CloudKit.framework in Frameworks */,
 				40CC4D881F91B4620093A9B8 /* ServiceManagement.framework in Frameworks */,
 				2E9A49AEC010B8A883A56F50 /* libPods-Password Factory.a in Frameworks */,
 			);
@@ -1051,6 +1057,8 @@
 		F9FEF77E1307D364CA2465EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				404866822002CDD9008A751F /* CloudKit.framework */,
+				404866802002CDA5008A751F /* CloudKit.framework */,
 				405118591FD6263F00E3FDFB /* CoreData.framework */,
 				40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */,
 				409E13B91B8258170041541B /* NotificationCenter.framework */,
@@ -1253,6 +1261,12 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					40AAB5E01F8EC68000324759 = {
@@ -1276,7 +1290,13 @@
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -1504,6 +1524,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget-resources.sh",
+				"${PODS_ROOT}/SyncKit/SyncKit/Classes/CoreData/QSCloudKitSyncModel.xcdatamodeld",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json",
 			);
@@ -1586,7 +1607,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle,
+				"$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle",
+				"${PODS_ROOT}/SyncKit/SyncKit/Classes/CoreData/QSCloudKitSyncModel.xcdatamodeld",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json",
 			);
@@ -2017,6 +2039,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Password Factory iOS/Password Factory iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;
@@ -2055,6 +2078,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Password Factory iOS/Password Factory iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;

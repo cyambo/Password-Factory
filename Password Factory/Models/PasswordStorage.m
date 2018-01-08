@@ -12,10 +12,11 @@
 #import "constants.h"
 #import "DefaultsManager.h"
 #import "NSString+UnicodeLength.h"
+#import <SyncKit/QSCloudKitSynchronizer+CoreData.h>
 #ifndef IOS
 #import "AppDelegate.h"
 #endif
-@interface PasswordStorage ()
+@interface PasswordStorage () <QSCoreDataChangeManagerDelegate>
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
 @property (nonatomic, strong) NSSortDescriptor *sort;
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) DefaultsManager *d;
 @property (nonatomic, strong) NSString *prev;
+@property (nonatomic, strong) QSCloudKitSynchronizer *synchronizer;
 @end
 @implementation PasswordStorage
 
@@ -56,6 +58,9 @@
     self.container.persistentStoreDescriptions = @[description];
     [self.container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDescription, NSError * _Nullable error) {
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
+        
+        self.synchronizer = [QSCloudKitSynchronizer cloudKitSynchronizerWithContainerName:iCloudContainer managedObjectContext:self.container.viewContext changeManagerDelegate:self];
+        
         if(error) {
 #ifndef IOS
             AppDelegate *d = [NSApplication sharedApplication].delegate;
@@ -137,6 +142,11 @@
 #endif
         }
     }
+    [self.synchronizer synchronizeWithCompletion:^(NSError *error) {
+        if (error) {
+           NSLog(@"YO ERR %@",error.localizedDescription);
+        }
+    }];
 }
 
 /**
@@ -229,6 +239,9 @@
         [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteAllFailedError];
 #endif
     }
+    [self.synchronizer synchronizeWithCompletion:^(NSError *error) {
+        NSLog(@"YO");
+    }];
     [self loadSavedData];
 }
 
@@ -239,4 +252,32 @@
     [self loadSavedData];
     [self deleteOverMaxItems];
 }
+- (void)changeManager:(QSCoreDataChangeManager *)changeManager didImportChanges:(NSManagedObjectContext *)importContext completion:(void (^)(NSError *))completion {
+    __block NSError *error = nil;
+    [importContext performBlockAndWait:^{
+        [importContext save:&error];
+    }];
+    
+    if (!error) {
+        
+        [self.container.viewContext performBlockAndWait:^{
+            [self.container.viewContext save:&error];
+        }];
+    } else {
+        NSLog(@"DID IMPORT ERR %@",error.localizedDescription);
+    }
+    completion(error);
+}
+
+- (void)changeManagerRequestsContextSave:(QSCoreDataChangeManager *)changeManager completion:(void (^)(NSError *))completion {
+    __block NSError *error = nil;
+    [self.container.viewContext performBlockAndWait:^{
+        [self.container.viewContext save:&error];
+    }];
+    if (error) {
+        NSLog(@"REQ ERR %@",error.localizedDescription);
+    }
+    completion(error);
+}
+
 @end
