@@ -15,9 +15,13 @@
 #import <CoreData/CoreData.h>
 #import "constants.h"
 #import "Passwords+CoreDataProperties.h"
-
+@class PasswordStorage;
+@protocol PasswordStorageDelegate <NSObject>
+-(void)receivedUpdatedData;
+@end
 @interface PasswordStorage : NSObject <NSFetchedResultsControllerDelegate>
 +(instancetype) get;
+@property (nonatomic, weak) id <PasswordStorageDelegate> delegate;
 @property (nonatomic, assign) NSUInteger maximumPasswordsStored;
 -(NSUInteger)count;
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type;
@@ -27,4 +31,5 @@
 -(void)loadSavedData;
 -(void)deleteAllEntities;
 -(void)changedMaxStorageAmount;
+-(void)receivedUpdatedData;
 @end

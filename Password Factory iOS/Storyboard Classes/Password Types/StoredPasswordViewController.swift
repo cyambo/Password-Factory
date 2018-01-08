@@ -8,7 +8,9 @@
 
 import UIKit
 
-class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate, UITableViewDataSource, DefaultsManagerDelegate{
+class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate, UITableViewDataSource, DefaultsManagerDelegate, PasswordStorageDelegate{
+
+    
     let s = PasswordStorage.get()!
     enum SortTypes : Int {
         case PasswordType = 9901
@@ -32,6 +34,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        s.delegate = self
         sortButtons = [
             .PasswordType : typeButton,
             .Password : passwordButton,
@@ -48,6 +51,11 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         if let sort = SortTypes.init(rawValue: sender.tag) {
             changeSort(sort)
         }
+    }
+    func receivedUpdatedData() {
+        let range = NSRange.init(location: 0, length: 1)
+        let sections = NSIndexSet.init(indexesIn: range)
+        self.storedPasswordsTable.reloadSections(sections as IndexSet, with: .automatic)
     }
     func changeSort(_ toSort: SortTypes) {
         if sortedBy != toSort {

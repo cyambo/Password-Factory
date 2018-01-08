@@ -18,6 +18,7 @@ NSString  *_previousKeyPath;
 @interface DefaultsManager ()
 @property (nonatomic, strong) NSUserDefaults *sharedDefaults;
 @property (nonatomic, strong) NSUserDefaults *standardDefaults;
+@property (nonatomic, strong) NSUbiquitousKeyValueStore *keyStore;
 @property (nonatomic, strong) NSMutableDictionary *standardDefaultsCache;
 @property (nonatomic, strong) NSMutableDictionary *sharedDefaultsCache;
 @property (nonatomic, strong) NSMutableDictionary *observers;
@@ -65,6 +66,7 @@ static DefaultsManager *dm = nil;
     self = [super init];
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
+    self.keyStore = [[NSUbiquitousKeyValueStore alloc] init];
     self.observers = [[NSMutableDictionary alloc] init];
     self.kvos = [[NSMutableArray alloc] init];
     self.stopObservers = false;

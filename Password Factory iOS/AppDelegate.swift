@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import UserNotifications
+import CloudKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,8 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIView.appearance().tintColor = PFConstants.tintColor
         Utilities.setHomeScreenActions()
+        application.registerForRemoteNotifications()
         return true
     }
+
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        let cloudKitNotification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String : NSObject])
+        
+        PasswordStorage.get().receivedUpdatedData()
+    }
+
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         completionHandler(handleShortCutItem(shortCutItem: shortcutItem))
     }

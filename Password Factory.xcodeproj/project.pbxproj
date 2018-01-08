@@ -1291,7 +1291,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -1607,7 +1607,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle,
 				"${PODS_ROOT}/SyncKit/SyncKit/Classes/CoreData/QSCloudKitSyncModel.xcdatamodeld",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json",

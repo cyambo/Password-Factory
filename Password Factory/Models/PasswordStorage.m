@@ -60,7 +60,7 @@
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
         
         self.synchronizer = [QSCloudKitSynchronizer cloudKitSynchronizerWithContainerName:iCloudContainer managedObjectContext:self.container.viewContext changeManagerDelegate:self];
-        
+
         if(error) {
 #ifndef IOS
             AppDelegate *d = [NSApplication sharedApplication].delegate;
@@ -72,6 +72,9 @@
     self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
     [self loadSavedData];
     [self deleteOverMaxItems];
+    [self.synchronizer subscribeForUpdateNotificationsWithCompletion:^(NSError *error) {
+        NSLog(@"UPDATE YO");
+    }];
     return self;
 }
 
@@ -142,13 +145,30 @@
 #endif
         }
     }
+    [self synchronizeWithRemote];
+}
+-(void)synchronize:(BOOL)callDelegate {
     [self.synchronizer synchronizeWithCompletion:^(NSError *error) {
         if (error) {
-           NSLog(@"YO ERR %@",error.localizedDescription);
+            NSLog(@"SYNC ERR ERR %@",error.localizedDescription);
+        } else {
+            [self loadSavedData];
+            [self deleteOverMaxItems];
+            if (callDelegate) {
+                if (self.delegate != nil) {
+
+                    [self.delegate receivedUpdatedData];
+                }
+            }
         }
     }];
 }
-
+-(void)synchronizeWithRemote {
+    [self synchronize:false];
+}
+-(void)receivedUpdatedData {
+    [self synchronize:true];
+}
 /**
  Loads saved passwords with sorting
  */
@@ -239,9 +259,7 @@
         [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteAllFailedError];
 #endif
     }
-    [self.synchronizer synchronizeWithCompletion:^(NSError *error) {
-        NSLog(@"YO");
-    }];
+    [self synchronizeWithRemote];
     [self loadSavedData];
 }
 
@@ -252,6 +270,7 @@
     [self loadSavedData];
     [self deleteOverMaxItems];
 }
+
 - (void)changeManager:(QSCoreDataChangeManager *)changeManager didImportChanges:(NSManagedObjectContext *)importContext completion:(void (^)(NSError *))completion {
     __block NSError *error = nil;
     [importContext performBlockAndWait:^{
@@ -259,7 +278,6 @@
     }];
     
     if (!error) {
-        
         [self.container.viewContext performBlockAndWait:^{
             [self.container.viewContext save:&error];
         }];
