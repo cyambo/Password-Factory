@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIView.appearance().tintColor = PFConstants.tintColor
         Utilities.setHomeScreenActions()
         application.registerForRemoteNotifications()
+        Utilities.setRemoteStore()
         return true
     }
 

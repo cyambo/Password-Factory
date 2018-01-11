@@ -53,12 +53,21 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
             PasswordStorage.get().deleteAllEntities()
             DefaultsManager.restoreUserDefaults()
             
-            //and pop to type selection
-            
         case "homeScreenShortcut":
             //push the home actions controller on 
             let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
             navigationController?.pushViewController(mainStoryboard.instantiateViewController(withIdentifier: "HomeActionView") , animated: true)
+        case "enableRemoteStore":
+            Utilities.setRemoteStore()
+            if d.bool(forKey: "enableRemoteStore") {
+                didResetDefaults = true
+                self.navigationController?.popViewController(animated: true)
+            }
+        case "eraseRemoteStore":
+            DefaultsManager.removeRemoteDefaults()
+            if d.bool(forKey: "storePasswords") {
+                PasswordStorage.get().deleteAllRemoteObjects()
+            }
         default:
             return
         }

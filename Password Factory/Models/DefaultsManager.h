@@ -17,13 +17,17 @@
 @property (nonatomic, strong) NSDictionary   * _Nullable prefsPlist;
 +(instancetype _Nonnull) get;
 +(instancetype _Nonnull) getShared;
++(instancetype _Nonnull) get:(NSArray * _Nonnull)disabledKeys enableShared:(BOOL)enableShared;
 +(NSUserDefaults *_Nonnull)sharedDefaults;
 +(NSUserDefaults *_Nonnull)standardDefaults;
 +(void)restoreUserDefaults;
++(void)removeRemoteDefaults;
 -(void)resetDialogs;
 -(void)syncToSharedDefaults;
 @property (nonatomic, assign) BOOL useShared;
+@property (nonatomic, assign) BOOL enableRemoteStore;
 - (void)enableShared:(BOOL)enable;
+- (void)enableRemoteStore:(BOOL)enable;
 - (NSString * _Nullable)stringForKey:(NSString * _Nonnull)key;
 - (NSInteger)integerForKey:(NSString * _Nonnull)key;
 - (BOOL)boolForKey:(NSString * _Nonnull)key;
@@ -36,4 +40,5 @@
 -(BOOL)timeThresholdForKeyPathExceeded:(NSString * _Nonnull)key;
 -(void)observeDefaults:(NSObject * _Nonnull)observer keys:(NSArray * _Nonnull)keys;
 -(void)removeDefaultsObservers:(NSObject *  _Nonnull)observer keys:(NSArray *  _Nonnull)keys;
+-(void)disableRemoteSyncForKeys:(NSArray *_Nonnull)keys;
 @end

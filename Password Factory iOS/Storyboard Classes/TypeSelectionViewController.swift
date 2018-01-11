@@ -125,7 +125,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         guard let currentView = selectedViewController.view else {
             return
         }
-        navigationItem.title = "\(c.getNameFor(type: type))"
+        navigationItem.title = c.getNameFor(type: type)
         currentViewController = selectedViewController
         
         controlsView.addSubview(currentView)

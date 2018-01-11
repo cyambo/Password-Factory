@@ -262,4 +262,21 @@ class Utilities: NSObject {
         //save it
         UIApplication.shared.shortcutItems = shortCutItems
     }
+    
+    /// Sets the remote store status based on defaults
+    public class func setRemoteStore() {
+        let d = DefaultsManager.get(["enableRemoteStore","selectedPasswordType"], enableShared: false)
+        if (d.bool(forKey: "enableRemoteStore")) {
+            //register for notifications
+            UIApplication.shared.registerForRemoteNotifications()
+            //and enable remote store
+            d.enableRemoteStore(true)
+            PasswordStorage.get().enableRemoteStorage(true)
+            
+        } else {
+            UIApplication.shared.unregisterForRemoteNotifications()
+            d.enableRemoteStore(false)
+            PasswordStorage.get().enableRemoteStorage(false)
+        }
+    }
 }

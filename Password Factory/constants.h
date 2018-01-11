@@ -116,5 +116,9 @@ extern NSString * const ResetToDefaultsWarningiOS;
 extern NSString * const ResetAllDialogsWarning;
 extern NSString * const PasswordSaveError;
 extern NSString * const MenuRestartMessage;
+extern NSString * const remoteStoreChangeAlertWarning;
+extern NSString * const enableRemoteStoreWarning;
+extern NSString * const disableRemoteStoreWarning;
+extern NSString * const eraseRemoteStoreWarning;
 #endif
 

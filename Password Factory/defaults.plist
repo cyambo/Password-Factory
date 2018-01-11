@@ -98,6 +98,8 @@
 	<false/>
 	<key>hideMenuRestartWarning</key>
 	<false/>
+	<key>enableRemoteStore</key>
+	<false/>
 	<key>enabledHomeScreenItems</key>
 	<array>
 		<integer>401</integer>

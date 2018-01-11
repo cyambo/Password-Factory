@@ -48,6 +48,15 @@ class SwitchView: ControlView {
         super.setEnabled(enabled)
         controlSwitch.isEnabled = enabled
     }
+    override func updateFromObserver(change: Any?) {
+        guard let ch = change as? Bool else { return }
+        if controlSwitch.isOn != ch {
+            controlSwitch.isOn = ch
+            changeSwitch()
+            alertChangeFromiCloud()
+        }
+
+    }
     /// sets defaults for the switch state
     @objc func changeSwitch() {
         if defaultsKey == nil { return }

@@ -36,7 +36,6 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
         currentPassword = ""
         guard let pt = passwordType else { return "" }
         guard let currentPassword = controller?.generatePassword(pt) else { return "" }
-        print("CURRWN TPASSS \(currentPassword)")
         updateStrength(withCrackTime: d.bool(forKey: "displayCrackTime"))
         return currentPassword
     }

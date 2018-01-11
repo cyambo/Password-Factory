@@ -79,23 +79,31 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     }
     
     /// Sets up the obeverver for an enabled key
-    func setEnabledObserver() {
+    func setObservers() {
         if let ek = enabledKey{
             d.observeDefaults(self, keys: [ek])
             setEnabled(d.bool(forKey: ek))
         }
+        if let dk = defaultsKey {
+            d.observeDefaults(self, keys: [dk])
+        }
     }
-    
+    func removeObservers() {
+        if let ek = enabledKey{
+            d.removeDefaultsObservers(self, keys: [ek])
+        }
+        if let dk = defaultsKey {
+            d.removeDefaultsObservers(self, keys: [dk])
+        }
+    }
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         if newWindow != nil {
             addToControlGroup()
-            setEnabledObserver()
+            setObservers()
         } else {
             removeFromControlGroup()
-            if let ek = enabledKey{
-                d.removeDefaultsObservers(self, keys: [ek])
-            }
+            removeObservers()
         }
     }
     
@@ -237,12 +245,23 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
         guard let ch = change else {
             return
         }
-        guard let enabled = ch["new"] as? Bool else {
-            return
+        if keyPath == enabledKey {
+            guard let enabled = ch["new"] as? Bool else {
+                return
+            }
+            setEnabled(enabled)
+        } else if keyPath == defaultsKey {
+            updateFromObserver(change: ch["new"])
         }
-        setEnabled(enabled)
+
     }
-    
+    func updateFromObserver(change: Any?) {
+        
+    }
+    func alertChangeFromiCloud() {
+        guard let pvc = parentViewController else { return }
+        Utilities.showAlert(delegate: self, alertKey: "remoteStoreChangeAlert", parentViewController: pvc, disableAlertHiding: false, onlyContinue: true, source: controlLabel)
+    }
     /// Touch Down action, calls startAction
     ///
     /// - Parameter sender: default sender

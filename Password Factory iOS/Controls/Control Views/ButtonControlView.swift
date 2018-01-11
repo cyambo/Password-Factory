@@ -27,6 +27,10 @@ class ButtonControlView: ControlView {
         super.setLabel()
         controlButton.setTitle(label ?? "", for: .normal)
     }
+    override func setEnabled(_ enabled: Bool) {
+        super.setEnabled(enabled)
+        controlButton.isEnabled = enabled
+    }
     @objc func pressedButton() {
         if defaultsKey == nil { return }
         if let ak = showAlertKey {

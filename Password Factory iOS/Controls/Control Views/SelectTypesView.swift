@@ -17,6 +17,14 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
     var currentSelectType = PickerTypes.CaseType
     var currentPasswordType = PFPasswordType.pronounceableType
     var collection:UICollectionView!
+    override var defaultsKey: String? {
+        get {
+            return getDefaultsKey()
+        }
+        set {
+            self.defaultsKey = newValue
+        }
+    }
     override func awakeFromNib() {
         currentSelectType = PickerTypes(rawValue: (selectType)) ?? .CaseType
         currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
@@ -59,12 +67,33 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         collection.delegate = self
     }
     override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
         if (newWindow != nil) {
             //scroll to the selected item when the view appears
             scrollToSelected()
         }
     }
+    override func updateFromObserver(change: Any?) {
+        guard let ch = change as? Int else { return }
+        var selectedItem = -1
+        if let indexPaths = collection.indexPathsForSelectedItems {
+            if indexPaths.count != 0 {
+                if let indexPath = collection.indexPathsForSelectedItems?[0] {
+                    selectedItem = indexPath.row
+                }
+            }
+        }
 
+        if selectedItem != ch {
+            let indexPath = IndexPath.init(row: ch, section: 0)
+            collection.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+            collection.reloadData()
+            d.setInteger(ch, forKey: getDefaultsKey())
+            delegate?.controlChanged(nil, defaultsKey: getDefaultsKey())
+        }
+        
+        
+    }
     /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
         let index = d.integer(forKey: getDefaultsKey())
@@ -88,6 +117,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         delegate?.controlChanged(nil, defaultsKey: key)
         collectionView.reloadData()
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         switch currentSelectType {

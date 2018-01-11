@@ -24,6 +24,7 @@ NSString  *_previousKeyPath;
 @property (nonatomic, strong) NSMutableDictionary *observers;
 @property (nonatomic, strong) NSMutableArray *kvos;
 @property (nonatomic, assign) bool stopObservers;
+@property (nonatomic, strong) NSMutableArray *disabledSyncKeys;
 @end
 @implementation DefaultsManager
 
@@ -44,7 +45,20 @@ static DefaultsManager *dm = nil;
     }
     return dm;
 }
-
++(instancetype) get:(NSArray *)disabledKeys enableShared:(BOOL)enableShared {
+    if(!dm) {
+        static dispatch_once_t once = 0;
+        dispatch_once(&once, ^ {
+            dm = [[DefaultsManager alloc] init];
+            [dm enableShared:enableShared];
+            [dm disableRemoteSyncForKeys:disabledKeys];
+        });
+    } else {
+        [dm enableShared:enableShared];
+        [dm disableRemoteSyncForKeys:disabledKeys];
+    }
+    return dm;
+}
 /**
  Singleton get method, enables shared and since we are shared
  we do not sync to shared defaults as the shared defaults are the
@@ -59,14 +73,21 @@ static DefaultsManager *dm = nil;
             dm = [[DefaultsManager alloc] init];
             [dm enableShared:YES];
         });
+    } else {
+        [dm enableShared:YES];
     }
     return dm;
 }
+
+/**
+ Initializes DefaultsManager
+
+ @return DefaultsManager object
+ */
 -(instancetype)init {
     self = [super init];
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
-    self.keyStore = [[NSUbiquitousKeyValueStore alloc] init];
     self.observers = [[NSMutableDictionary alloc] init];
     self.kvos = [[NSMutableArray alloc] init];
     self.stopObservers = false;
@@ -75,9 +96,54 @@ static DefaultsManager *dm = nil;
     [self addObservers];
     return self;
 }
+
+/**
+ Sets DefaultsManager to use shared defaults as the definitive source
+
+ @param enable enable bool
+ */
 -(void)enableShared:(BOOL)enable {
     self.useShared = enable;
 }
+
+/**
+ Enables the iCloud remote KVO store
+
+ @param enable enable bopol
+ */
+-(void)enableRemoteStore:(BOOL)enable {
+    self.enableRemoteStore = enable;
+    if (enable) {
+        //initialize the store
+        self.keyStore = [[NSUbiquitousKeyValueStore alloc] init];
+        //set the change observer
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(storeDidChange:) name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:self.keyStore];
+    } else {
+        //erase the key store and disable the change observer
+        if (self.keyStore != nil) {
+            [NSNotificationCenter.defaultCenter removeObserver:self name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:self.keyStore];
+            self.keyStore = nil;
+        }
+        self.disabledSyncKeys = nil;
+    }
+}
+
+/**
+ Disables sync to remote iCloud KVO for certain keys
+
+ @param keys array of keys to not sync
+ */
+-(void)disableRemoteSyncForKeys:(NSArray *)keys {
+    if (self.disabledSyncKeys == nil) {
+        self.disabledSyncKeys = [[NSMutableArray alloc] init];
+    }
+    for (NSString *k in keys) {
+        if (![self.disabledSyncKeys containsObject:k]) {
+            [self.disabledSyncKeys addObject:k];
+        }
+    }
+}
+
 /**
  Gets the shared defaults for the app
 
@@ -105,9 +171,21 @@ static DefaultsManager *dm = nil;
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[DefaultsManager standardDefaults] removePersistentDomainForName:appDomain];
     [[DefaultsManager sharedDefaults] removePersistentDomainForName:SharedDefaultsAppGroup];
+    [DefaultsManager removeRemoteDefaults];
     [[DefaultsManager get] getPrefsFromPlist:true];
 }
 
+/**
+ Erases all remote iCloud KVO defaults
+ */
++(void)removeRemoteDefaults {
+    if ([DefaultsManager get].keyStore != nil) {
+        NSDictionary *kvs = [[DefaultsManager get].keyStore dictionaryRepresentation];
+        for (NSString *key in [kvs allKeys]) {
+            [[DefaultsManager get].keyStore removeObjectForKey:key];
+        }
+    }
+}
 /**
  Sets all dialogs to be shown
  */
@@ -227,7 +305,7 @@ static DefaultsManager *dm = nil;
 }
 
 /**
- Sets object in defaults, shared defaults and cache
+ Sets object in defaults, shared defaults, key store and cache
 
  @param object object to set
  @param key defaults key
@@ -236,11 +314,25 @@ static DefaultsManager *dm = nil;
     if (object == nil) {
         return;
     }
-    [self.standardDefaults setObject:object forKey:key];
-    [self.standardDefaultsCache setObject:object forKey:key];
+    //only set the objects if they are different from stored
+    if (![self compareDefaultsObject:[self.standardDefaults objectForKey:key] two:object]) {
+        [self.standardDefaults setObject:object forKey:key];
+        [self.standardDefaultsCache setObject:object forKey:key];
+    }
+    if (self.enableRemoteStore) {
+        if (self.disabledSyncKeys == nil || ![self.disabledSyncKeys containsObject:key]) {
+            if (![self compareDefaultsObject:[self.keyStore objectForKey:key] two:object]) {
+                [self.keyStore setObject:object forKey:key];
+            }
+        }
+
+    }
+
     NSString *sharedKey = [key stringByAppendingString:@"Shared"];
-    [self.sharedDefaults setObject:object forKey:sharedKey];
-    [self.sharedDefaultsCache setObject:object forKey:sharedKey];
+    if (![self compareDefaultsObject:[self.sharedDefaults objectForKey:sharedKey] two:object]) {
+        [self.sharedDefaults setObject:object forKey:sharedKey];
+        [self.sharedDefaultsCache setObject:object forKey:sharedKey];
+    }
 }
 
 /**
@@ -295,15 +387,63 @@ static DefaultsManager *dm = nil;
 - (void)getPrefsFromPlist:(BOOL)initialize {
     [self loadDefaultsPlist];
     NSUserDefaults *d = self.standardDefaults;
+    NSUbiquitousKeyValueStore *store = self.keyStore;
     self.stopObservers = true;
     //taking plist and filling in defaults if none set
     for (NSString *k in self.prefsPlist) {
-        if (initialize || ([d objectForKey:k] == nil)) {
+        id defaultsObject = [d objectForKey:k];
+        id storeObject = [store objectForKey:k];
+        //if this is an initialization, just set directly from plist
+        if (initialize) {
             [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+        //if the store has it and we don't set from the store
+        } else if (self.enableRemoteStore) {
+            if (defaultsObject == nil && storeObject != nil) {
+                [self setObject:[store objectForKey:k] forKey:k];
+                //if both don't have it, set from plist
+            } else if (defaultsObject == nil && storeObject == nil) {
+                [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+                //if there is no stored object set from plist
+            } else if (storeObject == nil) {
+                [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+                //if they are different, pull from stored
+            } else if ([self compareDefaultsObject:storeObject two:defaultsObject]) {
+                [self setObject:[store objectForKey:k] forKey:k];
+                //otherwise set from plist
+            } else {
+                [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+            }
+        } else {
+            if(defaultsObject == nil) {
+                [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+            }
         }
+
     }
     self.stopObservers = false;
 }
+
+/**
+ Called when an item on the remote key store has changed
+
+ @param notification remote notification
+ */
+-(void)storeDidChange:(NSNotification *)notification {
+    if (notification.userInfo && notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
+        for (NSString *item in notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
+            NSLog(@"ITEM %@",item);
+            id object = [self.keyStore objectForKey:item];
+            //do not set nil object
+            if (object != nil) {
+                [self setObject:object forKey:item];
+            }
+        }
+    }
+}
+
+/**
+ Adds observers for every key in defaults.plist
+ */
 -(void)addObservers {
     NSUserDefaults *d = self.standardDefaults;
     for (NSString *k in self.prefsPlist) {
@@ -313,6 +453,10 @@ static DefaultsManager *dm = nil;
         }
     }
 }
+
+/**
+ Sets up the defaults cache which is used when a macOS bug causes defaults to be nil
+ */
 -(void)setupCache {
     NSMutableDictionary *st = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *sh = [[NSMutableDictionary alloc] init];
@@ -334,6 +478,15 @@ static DefaultsManager *dm = nil;
     self.standardDefaultsCache = st;
     self.sharedDefaultsCache = sh;
 }
+
+/**
+ Called when an object in the defaults.plist has changed
+
+ @param keyPath key of the changed object
+ @param object object that changed
+ @param change change description
+ @param context context
+ */
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (self.stopObservers) {
         return;
@@ -360,6 +513,9 @@ static DefaultsManager *dm = nil;
     [self.standardDefaultsCache setObject:change[@"new"] forKey:keyPath];
     [self.sharedDefaultsCache setObject:change[@"new"] forKey:sharedKeyPath];
     [self.sharedDefaults setObject:change[@"new"] forKey:sharedKeyPath];
+    if (self.enableRemoteStore) {
+       [self.keyStore setObject:change[@"new"] forKey:keyPath];
+    }
 }
 /**
  Syncs our plist to the sharedDefaults manager for use in the today extension

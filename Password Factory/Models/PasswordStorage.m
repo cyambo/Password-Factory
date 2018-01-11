@@ -25,6 +25,7 @@
 @property (nonatomic, strong) DefaultsManager *d;
 @property (nonatomic, strong) NSString *prev;
 @property (nonatomic, strong) QSCloudKitSynchronizer *synchronizer;
+@property (nonatomic, assign) BOOL enableRemoteStorage;
 @end
 @implementation PasswordStorage
 
@@ -59,7 +60,7 @@
     [self.container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDescription, NSError * _Nullable error) {
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
         
-        self.synchronizer = [QSCloudKitSynchronizer cloudKitSynchronizerWithContainerName:iCloudContainer managedObjectContext:self.container.viewContext changeManagerDelegate:self];
+        [self loadSynchronizer];
 
         if(error) {
 #ifndef IOS
@@ -77,7 +78,12 @@
     }];
     return self;
 }
+-(void)loadSynchronizer {
+    if (self.enableRemoteStorage) {
+        self.synchronizer = [QSCloudKitSynchronizer cloudKitSynchronizerWithContainerName:iCloudContainer managedObjectContext:self.container.viewContext changeManagerDelegate:self];
+    }
 
+}
 /**
  Stores the password in Core Data
 
@@ -148,20 +154,23 @@
     [self synchronizeWithRemote];
 }
 -(void)synchronize:(BOOL)callDelegate {
-    [self.synchronizer synchronizeWithCompletion:^(NSError *error) {
-        if (error) {
-            NSLog(@"SYNC ERR ERR %@",error.localizedDescription);
-        } else {
-            [self loadSavedData];
-            [self deleteOverMaxItems];
-            if (callDelegate) {
-                if (self.delegate != nil) {
-
-                    [self.delegate receivedUpdatedData];
+    if (self.enableRemoteStorage) {
+        [self.synchronizer synchronizeWithCompletion:^(NSError *error) {
+            if (error) {
+                NSLog(@"SYNC ERR ERR %@",error.localizedDescription);
+            } else {
+                [self loadSavedData];
+                [self deleteOverMaxItems];
+                if (callDelegate) {
+                    if (self.delegate != nil) {
+                        
+                        [self.delegate receivedUpdatedData];
+                    }
                 }
             }
-        }
-    }];
+        }];
+    }
+
 }
 -(void)synchronizeWithRemote {
     [self synchronize:false];
@@ -259,10 +268,25 @@
         [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteAllFailedError];
 #endif
     }
-    [self synchronizeWithRemote];
     [self loadSavedData];
 }
-
+-(void)deleteAllRemoteObjects {
+    if (self.synchronizer != nil) {
+        [self.synchronizer eraseRemoteAndLocalDataWithCompletion:^(NSError *error) {
+            [self loadSynchronizer];
+        }];
+    }
+    [self deleteAllEntities];
+}
+-(void)enableRemoteStorage:(BOOL)enabled {
+    self.enableRemoteStorage = enabled;
+    if (enabled) {
+       [self loadSynchronizer];
+    } else {
+        self.synchronizer = nil;
+    }
+    
+}
 /**
  Called when max storage amount was changed
  */
