@@ -1572,6 +1572,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="iCloud Sync"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="showAlertKey" value="enableRemoteStoreWarning"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="showAlertKeyAlternate" value="disableRemoteStoreWarning"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="iCloudIsAvailable"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="KGt-Hr-RKx" id="OOQ-Ym-nun"/>
@@ -1739,7 +1740,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Erase iCloud Data"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="showAlertKey" value="eraseRemoteStoreWarning"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="eraseRemoteStore"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="enableRemoteStore"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="iCloudIsAvailable"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="KGt-Hr-RKx" id="g7f-1b-stC"/>

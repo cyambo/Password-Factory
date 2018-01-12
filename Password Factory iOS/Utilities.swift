@@ -265,15 +265,28 @@ class Utilities: NSObject {
     
     /// Sets the remote store status based on defaults
     public class func setRemoteStore() {
-        let d = DefaultsManager.get(["enableRemoteStore","selectedPasswordType"], enableShared: false)
-        if (d.bool(forKey: "enableRemoteStore")) {
+        //load defaults and set keys to not sync
+        let d = DefaultsManager.get(["enableRemoteStore","selectedPasswordType","storePasswords","activeControl"], enableShared: false)
+        //check to see if iCloud is available, and set the key to enable the sync switch
+        let iCloudAvailable = FileManager.default.ubiquityIdentityToken != nil
+        d.setBool(iCloudAvailable, forKey: "iCloudIsAvailable")
+        //if remote store is set and iCloud is available
+        if (iCloudAvailable && d.bool(forKey: "enableRemoteStore")) {
             //register for notifications
             UIApplication.shared.registerForRemoteNotifications()
-            //and enable remote store
+            //and enable remote kvo store
             d.enableRemoteStore(true)
-            PasswordStorage.get().enableRemoteStorage(true)
+            
+            if d.bool(forKey: "storePasswords") {
+                //enable password CloudKit sync
+                PasswordStorage.get().enableRemoteStorage(true)
+            }
+
+            //and reset the home screen actions because they may have changed
+            setHomeScreenActions()
             
         } else {
+            d.setBool(false, forKey: "enableRemoteStore")
             UIApplication.shared.unregisterForRemoteNotifications()
             d.enableRemoteStore(false)
             PasswordStorage.get().enableRemoteStorage(false)

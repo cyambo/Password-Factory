@@ -14,7 +14,7 @@ static mach_timebase_info_data_t _sTimebaseInfo;
 
 uint64_t  _newTime, _previousTime, _elapsed, _elapsedNano, _threshold;
 NSString  *_previousKeyPath;
-
+static NSArray *globalDisabledKeys;
 @interface DefaultsManager ()
 @property (nonatomic, strong) NSUserDefaults *sharedDefaults;
 @property (nonatomic, strong) NSUserDefaults *standardDefaults;
@@ -49,9 +49,10 @@ static DefaultsManager *dm = nil;
     if(!dm) {
         static dispatch_once_t once = 0;
         dispatch_once(&once, ^ {
+            globalDisabledKeys = disabledKeys;
             dm = [[DefaultsManager alloc] init];
             [dm enableShared:enableShared];
-            [dm disableRemoteSyncForKeys:disabledKeys];
+            
         });
     } else {
         [dm enableShared:enableShared];
@@ -91,6 +92,9 @@ static DefaultsManager *dm = nil;
     self.observers = [[NSMutableDictionary alloc] init];
     self.kvos = [[NSMutableArray alloc] init];
     self.stopObservers = false;
+    [self disableRemoteSyncForKeys:globalDisabledKeys];
+    [self enableRemoteStore:[self.standardDefaults boolForKey:@"enableRemoteStore"]];
+    
     [self loadPreferencesFromPlist];
     [self setupCache];
     [self addObservers];
@@ -117,7 +121,8 @@ static DefaultsManager *dm = nil;
         //initialize the store
         self.keyStore = [[NSUbiquitousKeyValueStore alloc] init];
         //set the change observer
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(storeDidChange:) name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:self.keyStore];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(remoteStoreDidChange:) name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:self.keyStore];
+        [self getPrefsFromPlist:false];
     } else {
         //erase the key store and disable the change observer
         if (self.keyStore != nil) {
@@ -144,6 +149,24 @@ static DefaultsManager *dm = nil;
     }
 }
 
+/**
+ Checks to see if key should be synced to remote key store
+
+ @param key key to check
+ @return YES if can sync
+ */
+-(BOOL)canSyncKey:(NSString *)key {
+    //if it isn't in the prefs plist, then don't sync
+    if(self.prefsPlist[key] == nil) {
+        return NO;
+    }
+    //if it is in the disabled sync keys array, do not sync
+    if (self.disabledSyncKeys != nil && [self.disabledSyncKeys containsObject:key]) {
+        return NO;
+    }
+    //othwise, sync
+    return YES;
+}
 /**
  Gets the shared defaults for the app
 
@@ -180,10 +203,13 @@ static DefaultsManager *dm = nil;
  */
 +(void)removeRemoteDefaults {
     if ([DefaultsManager get].keyStore != nil) {
-        NSDictionary *kvs = [[DefaultsManager get].keyStore dictionaryRepresentation];
+        
+        NSUbiquitousKeyValueStore *store = [DefaultsManager get].keyStore;
+        NSDictionary *kvs = [store dictionaryRepresentation];
         for (NSString *key in [kvs allKeys]) {
-            [[DefaultsManager get].keyStore removeObjectForKey:key];
+            [store removeObjectForKey:key];
         }
+        NSLog(@"YOP");
     }
 }
 /**
@@ -305,7 +331,7 @@ static DefaultsManager *dm = nil;
 }
 
 /**
- Sets object in defaults, shared defaults, key store and cache
+ Sets object in defaults, and the observer handles the rest
 
  @param object object to set
  @param key defaults key
@@ -314,27 +340,36 @@ static DefaultsManager *dm = nil;
     if (object == nil) {
         return;
     }
-    //only set the objects if they are different from stored
-    if (![self compareDefaultsObject:[self.standardDefaults objectForKey:key] two:object]) {
-        [self.standardDefaults setObject:object forKey:key];
-        [self.standardDefaultsCache setObject:object forKey:key];
+    //set the defaults
+    [self.standardDefaults setObject:object forKey:key];
+    //if we are not in prefs plist, then there is no observer, so call store
+    //object directly
+    if (self.prefsPlist[key] == nil) {
+        [self storeObject:object forKey:key];
     }
+}
+
+/**
+ Stores object in cache, shared, and remote store
+
+ @param object object to store
+ @param keyPath key of object
+ */
+-(void)storeObject:(id)object forKey:(NSString *)keyPath {
+    [self.standardDefaultsCache setObject:object forKey:keyPath];
     if (self.enableRemoteStore) {
-        if (self.disabledSyncKeys == nil || ![self.disabledSyncKeys containsObject:key]) {
-            if (![self compareDefaultsObject:[self.keyStore objectForKey:key] two:object]) {
-                [self.keyStore setObject:object forKey:key];
+        if ([self canSyncKey:keyPath]) {
+            if (![self compareDefaultsObject:[self.keyStore objectForKey:keyPath] two:object]) {
+                [self.keyStore setObject:object forKey:keyPath];
             }
         }
-
     }
-
-    NSString *sharedKey = [key stringByAppendingString:@"Shared"];
+    NSString *sharedKey = [keyPath stringByAppendingString:@"Shared"];
     if (![self compareDefaultsObject:[self.sharedDefaults objectForKey:sharedKey] two:object]) {
         [self.sharedDefaults setObject:object forKey:sharedKey];
         [self.sharedDefaultsCache setObject:object forKey:sharedKey];
     }
 }
-
 /**
  Sets bool in defaults, shared defaults and cache
 
@@ -390,36 +425,40 @@ static DefaultsManager *dm = nil;
     NSUbiquitousKeyValueStore *store = self.keyStore;
     self.stopObservers = true;
     //taking plist and filling in defaults if none set
+    BOOL currentRemoteStore = self.enableRemoteStore;
+    self.enableRemoteStore = NO;
     for (NSString *k in self.prefsPlist) {
         id defaultsObject = [d objectForKey:k];
         id storeObject = [store objectForKey:k];
+        id plistObject = [self.prefsPlist objectForKey:k];
         //if this is an initialization, just set directly from plist
         if (initialize) {
-            [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+            [self setObject:plistObject forKey:k];
         //if the store has it and we don't set from the store
-        } else if (self.enableRemoteStore) {
+        } else if (self.enableRemoteStore && [self canSyncKey:k]) {
             if (defaultsObject == nil && storeObject != nil) {
-                [self setObject:[store objectForKey:k] forKey:k];
+                [self setObject:storeObject forKey:k];
                 //if both don't have it, set from plist
             } else if (defaultsObject == nil && storeObject == nil) {
-                [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+                [self setObject:plistObject forKey:k];
                 //if there is no stored object set from plist
             } else if (storeObject == nil) {
-                [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+                [self setObject:plistObject forKey:k];
                 //if they are different, pull from stored
-            } else if ([self compareDefaultsObject:storeObject two:defaultsObject]) {
-                [self setObject:[store objectForKey:k] forKey:k];
+            } else if (![self compareDefaultsObject:storeObject two:defaultsObject]) {
+                [self setObject:storeObject forKey:k];
                 //otherwise set from plist
             } else {
-                [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+                [self setObject:plistObject forKey:k];
             }
         } else {
             if(defaultsObject == nil) {
-                [self setObject:[self.prefsPlist objectForKey:k] forKey:k];
+                [self setObject:plistObject forKey:k];
             }
         }
 
     }
+    self.enableRemoteStore = currentRemoteStore;
     self.stopObservers = false;
 }
 
@@ -428,16 +467,21 @@ static DefaultsManager *dm = nil;
 
  @param notification remote notification
  */
--(void)storeDidChange:(NSNotification *)notification {
+-(void)remoteStoreDidChange:(NSNotification *)notification {
     if (notification.userInfo && notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
+        BOOL currentRemoteStore = self.enableRemoteStore;
+        self.enableRemoteStore = false;
         for (NSString *item in notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
-            NSLog(@"ITEM %@",item);
+            NSLog(@"REMOTE ITEM CHANGE %@",item);
+
             id object = [self.keyStore objectForKey:item];
             //do not set nil object
             if (object != nil) {
                 [self setObject:object forKey:item];
             }
+            
         }
+        self.enableRemoteStore = currentRemoteStore;
     }
 }
 
@@ -480,7 +524,7 @@ static DefaultsManager *dm = nil;
 }
 
 /**
- Called when an object in the defaults.plist has changed
+ Called when an object has changed
 
  @param keyPath key of the changed object
  @param object object that changed
@@ -488,9 +532,7 @@ static DefaultsManager *dm = nil;
  @param context context
  */
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (self.stopObservers) {
-        return;
-    }
+
     //don't do anything if we are a duplicate event
     if (![self timeThresholdForKeyPathExceeded:keyPath]) {
         return;
@@ -500,7 +542,7 @@ static DefaultsManager *dm = nil;
         return;
     }
     //check to see if we have any observers
-    if (self.observers[keyPath]) {
+    if (!self.stopObservers && self.observers[keyPath]) {
         for(id o in self.observers[keyPath]) {
             //if the item conforms to the protocol, call it
             if ([o conformsToProtocol:@protocol(DefaultsManagerDelegate)]) {
@@ -508,14 +550,7 @@ static DefaultsManager *dm = nil;
             }
         }
     }
-    //store in shared, and cache
-    NSString *sharedKeyPath = [keyPath stringByAppendingString:@"Shared"];
-    [self.standardDefaultsCache setObject:change[@"new"] forKey:keyPath];
-    [self.sharedDefaultsCache setObject:change[@"new"] forKey:sharedKeyPath];
-    [self.sharedDefaults setObject:change[@"new"] forKey:sharedKeyPath];
-    if (self.enableRemoteStore) {
-       [self.keyStore setObject:change[@"new"] forKey:keyPath];
-    }
+    [self storeObject:change[@"new"] forKey:keyPath];
 }
 /**
  Syncs our plist to the sharedDefaults manager for use in the today extension
@@ -539,7 +574,7 @@ static DefaultsManager *dm = nil;
 
  @param one first object to compare
  @param two second objecct to compare
- @return equality of the two
+ @return if they are equal
  */
 -(BOOL)compareDefaultsObject:(id)one two:(id) two {
 
@@ -550,6 +585,9 @@ static DefaultsManager *dm = nil;
     //two numbers
     if ([one isKindOfClass:[NSNumber class]] && [two isKindOfClass:[NSNumber class]]) {
         return [(NSNumber *)one isEqualToNumber:(NSNumber *)two];
+    }
+    if ([one isKindOfClass:[NSArray class]] && [two isKindOfClass:[NSArray class]]) {
+        return [(NSArray *)one isEqualToArray:(NSArray *)two];
     }
     //both nil
     if (one == nil && two == nil) {
@@ -622,7 +660,6 @@ static DefaultsManager *dm = nil;
     //remove the observer from the array, so it will be deallocated
     for(NSString *key in self.observers) {
         if ([keys containsObject:key]) {
-            NSLog(@"REMOVED KEY %@ %@", key, observer.class);
             [self.observers[key] removeObject:observer];
         }
     }

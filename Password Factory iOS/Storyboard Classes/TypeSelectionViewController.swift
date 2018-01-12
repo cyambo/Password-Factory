@@ -11,14 +11,13 @@ import UIKit
 class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, ControlViewDelegate, AlertViewControllerDelegate, PreferencesViewControllerDelegate {
 
 
-    let passwordController = PasswordController.get(false)!
+    let passwordController: PasswordController
     var mainStoryboard: UIStoryboard?
     var keyboardDismissGesture: UITapGestureRecognizer?
     
-    let d = DefaultsManager.get()
-    let c = PFConstants.instance
-    let s = PasswordStorage.get()!
-    
+    let d: DefaultsManager
+    let c: PFConstants
+
     let queue = OperationQueue()
     
     var currentViewController: PasswordsViewController?
@@ -41,8 +40,15 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     @IBOutlet weak var passwordLengthDisplay: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
+        Utilities.setRemoteStore()
+        Utilities.setHomeScreenActions()
+        passwordController = PasswordController.get(false)!
+        d = DefaultsManager.get()
+        c = PFConstants.instance
+        
         super.init(coder: aDecoder)
 
+        
         mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         do {
             extendedCharacterRegex = try NSRegularExpression.init(pattern: "[^A-Za-z0-9\(c.escapedSymbols)]", options: .caseInsensitive)
@@ -271,8 +277,8 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                 //store if we are not active or a stored type
                 if type != .storedType && !active && self.d.bool(forKey: "storePasswords"){
                     //store on the main thread
-                    DispatchQueue.main.async { [unowned self, p, strength, type] in
-                        self.s.storePassword(p, strength: Float(strength / 100.0), type: type)
+                    DispatchQueue.main.async { [p, strength, type] in
+                        PasswordStorage.get()!.storePassword(p, strength: Float(strength / 100.0), type: type)
                     }
                 }
             }
