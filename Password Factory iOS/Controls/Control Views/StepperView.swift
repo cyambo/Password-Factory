@@ -87,7 +87,13 @@ class StepperView: ControlView, PickerViewControllerDelegate {
             valueLabel.setTitle("--", for: .normal)
         }
     }
-    
+    override func updateFromObserver(change: Any?) {
+        guard let ch = change as? Int else { return }
+        if controlStepper.value != Double(ch) {
+            controlStepper.value = Double(ch)
+            changeStepper()
+        }
+    }
     /// Called when stepper is changed, will set defaults and label
     @objc func changeStepper() {
         if let key = defaultsKey {

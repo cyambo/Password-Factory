@@ -13,6 +13,7 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
 
     let wellView = UIButton.init()
     let colorWellView = UIView.init()
+    var currentHexColor: String?
     override func addViews() {
         super.addViews()
         addSubview(controlLabel)
@@ -39,11 +40,21 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         if let colorString = ColorUtilities.color(toHexString: color) {
             if let key = defaultsKey {
                 d.setObject(colorString, forKey: key)
-                delegate?.controlChanged(nil, defaultsKey: key)
+                delegate?.controlChanged(wellView, defaultsKey: key)
             }
         }
     }
-    
+    override func updateFromObserver(change: Any?) {
+        guard let ch = change as? String else { return }
+        guard let key = defaultsKey else { return }
+        guard let color = ColorUtilities.color(fromHexString: ch) else { return }
+        if ch != currentHexColor {
+            setWellColor(color)
+            delegate?.controlChanged(wellView, defaultsKey: key)
+            alertChangeFromiCloud()
+        }
+
+    }
     /// Loads the color picker modal
     @objc func loadColorPicker() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -70,6 +81,7 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         setWellColor(color)
     }
     func setWellColor(_ color : UIColor) {
+        currentHexColor = ColorUtilities.color(toHexString: color)
         colorWellView.backgroundColor = color
         wellView.backgroundColor = color.withAlphaComponent(0.1)
     }

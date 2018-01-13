@@ -30,6 +30,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     let d = DefaultsManager.get()
     let c = PFConstants.instance
     var isEnabled : Bool = true
+    var isActive: Bool = false
     let controlLabel = UILabel.init() //label of the view
     
     required init?(coder aDecoder: NSCoder) {
@@ -203,6 +204,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     ///
     /// - Parameter sender: default sender
     func startAction(_ sender: UIControl? = nil) {
+        isActive = true
         d.setBool(true, forKey: "activeControl")
     }
     
@@ -210,6 +212,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     ///
     /// - Parameter sender: default sender
     func endAction(_ sender: UIControl? = nil) {
+        isActive = false
         d.setBool(false, forKey: "activeControl")
         if let key = defaultsKey {
             delegate?.controlChanged(sender, defaultsKey: key)

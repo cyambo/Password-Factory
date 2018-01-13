@@ -64,7 +64,16 @@ class LengthControlView: ControlView {
             delegate?.controlChanged(slider, defaultsKey: key)
         }
     }
-    
+    override func updateFromObserver(change: Any?) {
+        if (!isActive) {
+            guard let ch = change as? Int else { return }
+            if Int(slider.value) != ch {
+                print("CHANGE \(ch)")
+                slider.value = Float(ch)
+                lengthChanged()
+            }
+        }
+    }
     /// Sets the size label text based upon the slider value
     func setSizeLabelText() {
         let length = Int(slider.value)

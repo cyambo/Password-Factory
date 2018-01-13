@@ -17,10 +17,22 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
     
     var pickerType: PickerTypes?
     var passwordType: PFPasswordType?
+    var currentIndex: Int = -1
+    
+    override var defaultsKey: String? {
+        get {
+            return getDefaultsKey()
+        }
+        set {
+            self.defaultsKey = newValue
+        }
+    }
+    
     override func awakeFromNib() {
         pickerType = PickerTypes(rawValue: pickerTypeString) ?? .CaseType
         passwordType = PFPasswordType.init(rawValue: passwordTypeInt)
     }
+    
     override func addViews() {
         super.addViews()
         addSubview(controlButton)
@@ -28,9 +40,13 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         //sets button action
         controlButton.addTarget(self, action: #selector(openPicker), for: .touchUpInside)
     }
+    
     /// Positions the views in the container
     override func setupView() {
         super.setupView()
+        if let key = getDefaultsKey() {
+            currentIndex = d.integer(forKey: key)
+        }
         controlButton.roundCorners()
         controlButton.backgroundColor = PFConstants.tintColor
         controlButton.setTitleColor(UIColor.white, for: .normal)
@@ -77,12 +93,13 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
                 setupNumberType()
             }
         }
-
     }
+    
     override func setEnabled(_ enabled: Bool) {
         super.setEnabled(enabled)
         controlButton.isEnabled = enabled
     }
+    
     /// Sets the button title to the selected number
     func setupNumberType() {
         guard let numberTypeKey = getDefaultsKey() else {
@@ -90,6 +107,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         }
         controlButton.setTitle("\(d.integer(forKey: numberTypeKey))", for: .normal)
     }
+    
     /// sets the title if we are the password type
     func setupPasswordtype() {
         guard let passwordTypeKey = getDefaultsKey() else {
@@ -97,8 +115,8 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         }
         let buttonPasswordType = c.getPasswordType(by: UInt(d.integer(forKey: passwordTypeKey)))
         controlButton.setTitle(c.passwordTypes[buttonPasswordType], for: .normal)
-
     }
+    
     /// sets the title if we are the case type
     func setupCaseType() {
         guard let caseTypeKey = getDefaultsKey() else {
@@ -158,7 +176,6 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         return "\(typeName)\(suffix)"
     }
 
-    
     /// Opens the picker view
     @objc func openPicker() {
         guard let pass = passwordType else {
@@ -178,8 +195,17 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
     ///   - type: type of picker
     ///   - index: index of selection
     func selectedItem(type: PickerTypes, index: Int) {
+        currentIndex = index
+        if let key = getDefaultsKey() {
+            d.setInteger(index, forKey: key)
+        }
+        updateSelection(index: index)
+    }
+    
+    func updateSelection(index: Int) {
         var t = "--"
         var i = index
+        guard let type = pickerType else { return }
         switch (type) {
         case .CaseType:
             if passwordType! == .advancedType {
@@ -188,7 +214,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
             if i < 0 {
                 t = "No Change"
             } else {
-               t = c.caseTypes[c.getCaseType(by: UInt(i))] ?? t
+                t = c.caseTypes[c.getCaseType(by: UInt(i))] ?? t
             }
             
         case .SeparatorType:
@@ -199,11 +225,23 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
             t = "\(i)"
         }
         if let key = getDefaultsKey() {
-            d.setInteger(index, forKey: key)
+            
             delegate?.controlChanged(controlButton, defaultsKey: key)
         }
         controlButton.setTitle(t, for: .normal)
     }
+    override func updateFromObserver(change: Any?) {
+        guard let ch = change as? Int else { return }
+        if ch != currentIndex {
+            currentIndex = ch
+            updateSelection(index: ch)
+            alertChangeFromiCloud()
+        }
+
+        
+        
+    }
+    /// Overriding this because the tint color changes when a popover happens
     override func tintColorDidChange() {
         super.tintColorDidChange()
         controlButton.backgroundColor = tintColor

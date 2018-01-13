@@ -29,19 +29,23 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         currentSelectType = PickerTypes(rawValue: (selectType)) ?? .CaseType
         currentPasswordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.pronounceableType
     }
+    
     override func initializeControls() {
         super.initializeControls()
         setupCollectionView()
     }
+    
     override func addViews() {
         super.addViews()
         addSubview(controlLabel)
         addSubview(collection)
     }
+    
     override func setLabel() {
         super.setLabel()
         controlLabel.text = "\(currentSelectType.rawValue)"
     }
+    
     override func setupView() {
         super.setupView()
 
@@ -49,7 +53,6 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         addVFLConstraints(constraints: ["H:|-[label]-|","H:|-[collection]-|","V:|-[label(==20)]-8-[collection(>=50)]"], views: views)
         collection.roundCorners()
         controlLabel.addBorder([.bottom],color: PFConstants.cellBorderColor.withAlphaComponent(0.25))
-
     }
     
     /// Sets up the collection view
@@ -90,6 +93,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
             collection.reloadData()
             d.setInteger(ch, forKey: getDefaultsKey())
             delegate?.controlChanged(nil, defaultsKey: getDefaultsKey())
+            alertChangeFromiCloud()
         }
         
         

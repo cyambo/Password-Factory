@@ -101,6 +101,13 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         controlText.text = d.string(forKey: dk)
     }
     
+    override func updateFromObserver(change: Any?) {
+        guard let ch = change as? String else { return }
+        if controlText.text != ch {
+            controlText.text = ch
+            alertChangeFromiCloud()
+        }
+    }
     
     /// Control View enable / disable action
     ///
@@ -124,10 +131,10 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        startAction()
+        endAction()
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        endAction()
+        startAction()
     }
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
