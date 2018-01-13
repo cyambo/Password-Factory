@@ -99,12 +99,14 @@ class TextFieldView: ControlView, UITextFieldDelegate {
             return
         }
         controlText.text = d.string(forKey: dk)
+        currentValue = controlText.text
     }
     
     override func updateFromObserver(change: Any?) {
         guard let ch = change as? String else { return }
         if controlText.text != ch {
             controlText.text = ch
+            currentValue = ch
             alertChangeFromiCloud()
         }
     }
@@ -165,6 +167,7 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         }
         if let key = defaultsKey {
             d.setObject(toChange, forKey: key)
+            currentValue = toChange
             if prevChange != toChange { //don't call the delegate if it is a duplicate
                 delegate?.controlChanged(controlText, defaultsKey: key)
             }

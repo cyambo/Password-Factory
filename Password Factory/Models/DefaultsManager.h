@@ -33,6 +33,7 @@
 - (BOOL)boolForKey:(NSString * _Nonnull)key;
 - (float)floatForKey:(NSString * _Nonnull)key;
 -(id _Nullable)objectForKey:(NSString * _Nonnull)key;
+-(void)storeObject:(id _Nullable)object forKey:(NSString * _Nonnull)keyPath;
 -(void)setObject:(id _Nullable)object forKey:(NSString * _Nonnull)key;
 -(void)setBool:(BOOL)object forKey:(NSString * _Nonnull)key;
 -(void)setInteger:(NSInteger)object forKey:(NSString * _Nonnull)key;

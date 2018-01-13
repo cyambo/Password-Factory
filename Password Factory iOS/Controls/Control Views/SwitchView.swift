@@ -40,6 +40,7 @@ class SwitchView: ControlView {
 
         //sets the state and action for the switch
         if let key = defaultsKey {
+            currentValue = d.bool(forKey: key)
             controlSwitch.setOn((d.bool(forKey: key)), animated: false)
             controlSwitch.addTarget(self, action: #selector(changeSwitch), for: .valueChanged)
         }
@@ -79,6 +80,7 @@ class SwitchView: ControlView {
     func switchChanged() {
         guard let key = defaultsKey else { return }
         d.setBool(controlSwitch.isOn, forKey: key)
+        currentValue = controlSwitch.isOn
         delegate?.controlChanged(controlSwitch, defaultsKey: key)
     }
     override func canContinueWithAction(canContinue: Bool) {

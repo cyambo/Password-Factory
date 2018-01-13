@@ -82,6 +82,7 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
     }
     func setWellColor(_ color : UIColor) {
         currentHexColor = ColorUtilities.color(toHexString: color)
+        currentValue = currentHexColor
         colorWellView.backgroundColor = color
         wellView.backgroundColor = color.withAlphaComponent(0.1)
     }

@@ -53,6 +53,7 @@ class LengthControlView: ControlView {
         slider.minimumValue = 5.0
         slider.maximumValue = d.float(forKey: "maxPasswordLength")
         slider.setValue(d.float(forKey: "passwordLength"), animated: false)
+        currentValue = d.integer(forKey: "passwordLength")
         setSizeLabelText()
     }
     
@@ -61,6 +62,7 @@ class LengthControlView: ControlView {
         if let key = defaultsKey {
             setSizeLabelText()
             d.setInteger(Int(slider.value), forKey: key)
+            currentValue = Int(slider.value)
             delegate?.controlChanged(slider, defaultsKey: key)
         }
     }
@@ -68,9 +70,10 @@ class LengthControlView: ControlView {
         if (!isActive) {
             guard let ch = change as? Int else { return }
             if Int(slider.value) != ch {
-                print("CHANGE \(ch)")
                 slider.value = Float(ch)
+                currentValue = ch
                 lengthChanged()
+                alertChangeFromiCloud()
             }
         }
     }

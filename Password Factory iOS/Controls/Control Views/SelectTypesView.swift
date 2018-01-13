@@ -92,6 +92,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
             collection.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
             collection.reloadData()
             d.setInteger(ch, forKey: getDefaultsKey())
+            currentValue = ch
             delegate?.controlChanged(nil, defaultsKey: getDefaultsKey())
             alertChangeFromiCloud()
         }
@@ -101,6 +102,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
     /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
         let index = d.integer(forKey: getDefaultsKey())
+        currentValue = index
         collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
     }
     
@@ -118,6 +120,7 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         }
         let key = getDefaultsKey()
         d.setInteger(indexPath.row, forKey: key)
+        currentValue = indexPath.row
         delegate?.controlChanged(nil, defaultsKey: key)
         collectionView.reloadData()
     }

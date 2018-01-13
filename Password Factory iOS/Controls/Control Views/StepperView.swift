@@ -48,6 +48,7 @@ class StepperView: ControlView, PickerViewControllerDelegate {
         
         if let key = defaultsKey {
             controlStepper.value = Double(d.integer(forKey: key))
+            currentValue = d.integer(forKey: key)
             controlStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
             valueLabel.addTarget(self, action: #selector(loadPicker), for: .touchUpInside)
         }
@@ -76,6 +77,7 @@ class StepperView: ControlView, PickerViewControllerDelegate {
     func setStepperLabel() {
         if let key = defaultsKey {
             let val = d.integer(forKey: key)
+            currentValue = val
             if val == 0 && defaultsKey == "advancedTruncateAt" {
                 valueLabel.setTitle("None", for: .normal)
             } else {
@@ -91,13 +93,16 @@ class StepperView: ControlView, PickerViewControllerDelegate {
         guard let ch = change as? Int else { return }
         if controlStepper.value != Double(ch) {
             controlStepper.value = Double(ch)
+            currentValue = ch
             changeStepper()
+            alertChangeFromiCloud()
         }
     }
     /// Called when stepper is changed, will set defaults and label
     @objc func changeStepper() {
         if let key = defaultsKey {
             d.setInteger(Int(controlStepper.value), forKey: key)
+            currentValue = Int(controlStepper.value)
             setStepperLabel()
             delegate?.controlChanged(controlStepper, defaultsKey: key)
         }

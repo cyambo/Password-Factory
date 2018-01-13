@@ -46,6 +46,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         super.setupView()
         if let key = getDefaultsKey() {
             currentIndex = d.integer(forKey: key)
+            currentValue = currentValue
         }
         controlButton.roundCorners()
         controlButton.backgroundColor = PFConstants.tintColor
@@ -105,6 +106,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         guard let numberTypeKey = getDefaultsKey() else {
             return
         }
+        currentValue = d.integer(forKey: numberTypeKey)
         controlButton.setTitle("\(d.integer(forKey: numberTypeKey))", for: .normal)
     }
     
@@ -113,6 +115,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         guard let passwordTypeKey = getDefaultsKey() else {
             return
         }
+        currentValue = d.integer(forKey: passwordTypeKey)
         let buttonPasswordType = c.getPasswordType(by: UInt(d.integer(forKey: passwordTypeKey)))
         controlButton.setTitle(c.passwordTypes[buttonPasswordType], for: .normal)
     }
@@ -126,6 +129,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
             return
         }
         var index = d.integer(forKey: caseTypeKey)
+        currentValue = index
         var title = ""
         if pt == .advancedType { //advanced starts with No Change and doesn't have title case
             index = index - 1
@@ -144,6 +148,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         guard let separatorTypeKey = getDefaultsKey() else {
             return
         }
+        currentValue = d.integer(forKey: separatorTypeKey)
         let separatorType = c.getSeparatorType(by: UInt(d.integer(forKey: separatorTypeKey)))
         controlButton.setTitle(c.separatorTypes[separatorType], for: .normal)
     }
@@ -232,6 +237,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
     }
     override func updateFromObserver(change: Any?) {
         guard let ch = change as? Int else { return }
+        currentValue = ch
         if ch != currentIndex {
             currentIndex = ch
             updateSelection(index: ch)

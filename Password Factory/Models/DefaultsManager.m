@@ -359,9 +359,12 @@ static DefaultsManager *dm = nil;
     [self.standardDefaultsCache setObject:object forKey:keyPath];
     if (self.enableRemoteStore) {
         if ([self canSyncKey:keyPath]) {
-            if (![self compareDefaultsObject:[self.keyStore objectForKey:keyPath] two:object]) {
-                [self.keyStore setObject:object forKey:keyPath];
+            if (![self boolForKey:@"activeControl"]) {
+                if (![self compareDefaultsObject:[self.keyStore objectForKey:keyPath] two:object]) {
+                    [self.keyStore setObject:object forKey:keyPath];
+                }
             }
+
         }
     }
     NSString *sharedKey = [keyPath stringByAppendingString:@"Shared"];

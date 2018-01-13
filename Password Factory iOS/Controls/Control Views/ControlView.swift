@@ -32,6 +32,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     var isEnabled : Bool = true
     var isActive: Bool = false
     let controlLabel = UILabel.init() //label of the view
+    var currentValue: Any? //current value of the control
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -208,13 +209,14 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
         d.setBool(true, forKey: "activeControl")
     }
     
-    /// Called when a control action is started, and unsets the activeControl key
+    /// Called when a control action has ended, and unsets the activeControl key
     ///
     /// - Parameter sender: default sender
     func endAction(_ sender: UIControl? = nil) {
         isActive = false
         d.setBool(false, forKey: "activeControl")
         if let key = defaultsKey {
+            d.store(currentValue, forKey: key)
             delegate?.controlChanged(sender, defaultsKey: key)
         }
     }
@@ -261,6 +263,8 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     func updateFromObserver(change: Any?) {
         
     }
+    
+    /// Shows an alert indicating there was a change from iCloud on the currently viewed scren
     func alertChangeFromiCloud() {
         guard let pvc = parentViewController else { return }
         Utilities.showAlert(delegate: self, alertKey: "remoteStoreChangeAlert", parentViewController: pvc, disableAlertHiding: false, onlyContinue: true, source: controlLabel)
