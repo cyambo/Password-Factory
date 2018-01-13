@@ -7,7 +7,6 @@
 //
 
 
-
 #import "PasswordStorage.h"
 #import "constants.h"
 #import "DefaultsManager.h"
@@ -73,16 +72,17 @@
     self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
     [self loadSavedData];
     [self deleteOverMaxItems];
-    [self.synchronizer subscribeForUpdateNotificationsWithCompletion:^(NSError *error) {
-        NSLog(@"UPDATE YO");
-    }];
+
+
     return self;
 }
 -(void)loadSynchronizer {
     if (self.enableRemoteStorage) {
         self.synchronizer = [QSCloudKitSynchronizer cloudKitSynchronizerWithContainerName:iCloudContainer managedObjectContext:self.container.viewContext changeManagerDelegate:self];
+        [self.synchronizer subscribeForUpdateNotificationsWithCompletion:^(NSError *error) {
+            NSLog(@"UPDATE YO");
+        }];
     }
-
 }
 /**
  Stores the password in Core Data
@@ -153,9 +153,10 @@
     }
     [self synchronizeWithRemote];
 }
--(void)synchronize:(BOOL)callDelegate {
+-(void)synchronize:(BOOL)callDelegate completion:(void (^)(BOOL))completionHandler{
     if (self.enableRemoteStorage) {
         [self.synchronizer synchronizeWithCompletion:^(NSError *error) {
+
             if (error) {
                 NSLog(@"SYNC ERR ERR %@",error.localizedDescription);
             } else {
@@ -168,15 +169,18 @@
                     }
                 }
             }
+            if (completionHandler != nil) {
+                completionHandler(error != nil);
+            }
         }];
     }
 
 }
 -(void)synchronizeWithRemote {
-    [self synchronize:false];
+    [self synchronize:false completion:nil];
 }
--(void)receivedUpdatedData {
-    [self synchronize:true];
+-(void)receivedUpdatedData:(void (^)(BOOL))completionHandler {
+    [self synchronize:true completion:completionHandler];
 }
 /**
  Loads saved passwords with sorting

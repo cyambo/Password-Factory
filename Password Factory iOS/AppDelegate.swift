@@ -27,8 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let cloudKitNotification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String : NSObject])
-        
-        PasswordStorage.get().receivedUpdatedData()
+
+        PasswordStorage.get().receivedUpdatedData { (complete) in
+            if complete {
+                completionHandler(.newData)
+            } else {
+                completionHandler(.failed)
+            }
+        }
     }
 
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {

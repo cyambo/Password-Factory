@@ -33,5 +33,5 @@
 -(void)deleteAllRemoteObjects;
 -(void)enableRemoteStorage:(BOOL)enabled;
 -(void)changedMaxStorageAmount;
--(void)receivedUpdatedData;
+-(void)receivedUpdatedData:(void (^)(BOOL))completionHandler;
 @end

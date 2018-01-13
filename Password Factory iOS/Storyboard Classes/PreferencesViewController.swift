@@ -42,6 +42,7 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
                     PasswordStorage.get().deleteAllEntities()
                 }
             }
+            Utilities.setRemoteStore()
         case "resetAllDialogs":
             //reset the dialogs and pop to type selection
             self.d.resetDialogs()
