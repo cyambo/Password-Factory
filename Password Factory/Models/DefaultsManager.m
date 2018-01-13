@@ -429,7 +429,9 @@ static DefaultsManager *dm = nil;
     self.stopObservers = true;
     //taking plist and filling in defaults if none set
     BOOL currentRemoteStore = self.enableRemoteStore;
-    self.enableRemoteStore = NO;
+    if (!initialize) {
+        self.enableRemoteStore = NO;
+    }
     for (NSString *k in self.prefsPlist) {
         id defaultsObject = [d objectForKey:k];
         id storeObject = [store objectForKey:k];
@@ -438,7 +440,7 @@ static DefaultsManager *dm = nil;
         if (initialize) {
             [self setObject:plistObject forKey:k];
         //if the store has it and we don't set from the store
-        } else if (self.enableRemoteStore && [self canSyncKey:k]) {
+        } else if (currentRemoteStore && [self canSyncKey:k]) {
             if (defaultsObject == nil && storeObject != nil) {
                 [self setObject:storeObject forKey:k];
                 //if both don't have it, set from plist

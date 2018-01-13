@@ -50,10 +50,10 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
         case "resetToDefaults":
             //delete all stored passwords, and restore defaults
             didResetDefaults = true
-            self.navigationController?.popViewController(animated: true)
             PasswordStorage.get().deleteAllEntities()
             DefaultsManager.restoreUserDefaults()
-            
+            self.navigationController?.popViewController(animated: true)
+
         case "homeScreenShortcut":
             //push the home actions controller on 
             let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)

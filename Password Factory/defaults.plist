@@ -102,6 +102,12 @@
 	<false/>
 	<key>hideResetToDefaultsWarning</key>
 	<false/>
+	<key>hideEnableRemoteStoreWarning</key>
+	<false/>
+	<key>hideRemoteStoreChangeWarning</key>
+	<false/>
+	<key>hideDisableRemoteStoreWarning</key>
+	<false/>
 	<key>enableRemoteStore</key>
 	<false/>
 	<key>enabledHomeScreenItems</key>

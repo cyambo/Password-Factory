@@ -95,7 +95,7 @@ final class PFConstants: NSObject {
         errorMessages["storedPasswordOnWarning"] = StoredPasswordOnWarning
         errorMessages["resetToDefaultsWarning"] = ResetToDefaultsWarningiOS
         errorMessages["resetAllDialogsWarning"] = ResetAllDialogsWarning
-        errorMessages["remoteStoreChangeAlert"] = remoteStoreChangeAlertWarning
+        errorMessages["remoteStoreChangeWarning"] = remoteStoreChangeWarning
         errorMessages["enableRemoteStoreWarning"] = enableRemoteStoreWarning
         errorMessages["disableRemoteStoreWarning"] = disableRemoteStoreWarning
         errorMessages["eraseRemoteStoreWarning"] = eraseRemoteStoreWarning
