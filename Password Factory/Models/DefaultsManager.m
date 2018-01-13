@@ -473,17 +473,21 @@ static DefaultsManager *dm = nil;
 -(void)remoteStoreDidChange:(NSNotification *)notification {
     if (notification.userInfo && notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
         BOOL currentRemoteStore = self.enableRemoteStore;
+        //don't re-sync changes back to iCloud
         self.enableRemoteStore = false;
+        //go through the notification
         for (NSString *item in notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
             NSLog(@"REMOTE ITEM CHANGE %@",item);
-
+            //get the new value
             id object = [self.keyStore objectForKey:item];
             //do not set nil object
             if (object != nil) {
+                //store it
                 [self setObject:object forKey:item];
             }
             
         }
+        //reenable remote store
         self.enableRemoteStore = currentRemoteStore;
     }
 }
