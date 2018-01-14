@@ -22,7 +22,7 @@ static NSArray *globalDisabledKeys;
 @property (nonatomic, strong) NSMutableDictionary *standardDefaultsCache;
 @property (nonatomic, strong) NSMutableDictionary *sharedDefaultsCache;
 @property (nonatomic, strong) NSMutableDictionary *observers;
-@property (nonatomic, strong) NSMutableArray *kvos;
+@property (nonatomic, strong) NSMutableDictionary *kvos;
 @property (nonatomic, assign) bool stopObservers;
 @property (nonatomic, strong) NSMutableArray *disabledSyncKeys;
 @end
@@ -87,17 +87,19 @@ static DefaultsManager *dm = nil;
  */
 -(instancetype)init {
     self = [super init];
+    [self loadDefaultsPlist];
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
     self.observers = [[NSMutableDictionary alloc] init];
-    self.kvos = [[NSMutableArray alloc] init];
+    self.kvos = [[NSMutableDictionary alloc] init];
     self.stopObservers = false;
+    [self setupCache];
+    [self addObservers];
     [self disableRemoteSyncForKeys:globalDisabledKeys];
     [self enableRemoteStore:[self.standardDefaults boolForKey:@"enableRemoteStore"]];
     
     [self loadPreferencesFromPlist];
-    [self setupCache];
-    [self addObservers];
+
     return self;
 }
 
@@ -119,9 +121,11 @@ static DefaultsManager *dm = nil;
     self.enableRemoteStore = enable;
     if (enable) {
         //initialize the store
-        self.keyStore = [[NSUbiquitousKeyValueStore alloc] init];
+        self.keyStore = [NSUbiquitousKeyValueStore defaultStore];
+
         //set the change observer
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(remoteStoreDidChange:) name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:self.keyStore];
+        [self.keyStore synchronize];
         [self getPrefsFromPlist:false];
     } else {
         //erase the key store and disable the change observer
@@ -145,6 +149,9 @@ static DefaultsManager *dm = nil;
     for (NSString *k in keys) {
         if (![self.disabledSyncKeys containsObject:k]) {
             [self.disabledSyncKeys addObject:k];
+            if (self.kvos[k]) {
+                [self.kvos removeObjectForKey:k];
+            }
         }
     }
 }
@@ -342,9 +349,9 @@ static DefaultsManager *dm = nil;
     }
     //set the defaults
     [self.standardDefaults setObject:object forKey:key];
-    //if we are not in prefs plist, then there is no observer, so call store
+    //if we are not in kvos, then there is no observer, so call store
     //object directly
-    if (self.prefsPlist[key] == nil) {
+    if (self.kvos[key] == nil) {
         [self storeObject:object forKey:key];
     }
 }
@@ -441,18 +448,22 @@ static DefaultsManager *dm = nil;
             [self setObject:plistObject forKey:k];
         //if the store has it and we don't set from the store
         } else if (currentRemoteStore && [self canSyncKey:k]) {
+            //if defaults is nil and store isn't set from store
             if (defaultsObject == nil && storeObject != nil) {
                 [self setObject:storeObject forKey:k];
-                //if both don't have it, set from plist
+            //if both don't have it, set from plist
             } else if (defaultsObject == nil && storeObject == nil) {
                 [self setObject:plistObject forKey:k];
-                //if there is no stored object set from plist
+            //if there is no stored object set from plist
             } else if (storeObject == nil) {
                 [self setObject:plistObject forKey:k];
-                //if they are different, pull from stored
+            //if they are different, pull from stored
             } else if (![self compareDefaultsObject:storeObject two:defaultsObject]) {
                 [self setObject:storeObject forKey:k];
-                //otherwise set from plist
+            //if they are the same, and do not equal the plist item, do nothing
+            } else if ([self compareDefaultsObject:storeObject two:defaultsObject] && storeObject != plistObject){
+                //do nothing
+            //otherwise set from plist
             } else {
                 [self setObject:plistObject forKey:k];
             }
@@ -500,9 +511,9 @@ static DefaultsManager *dm = nil;
 -(void)addObservers {
     NSUserDefaults *d = self.standardDefaults;
     for (NSString *k in self.prefsPlist) {
-        if (![self.kvos containsObject:k]) {
+        if (self.kvos[k] == nil) {
             [d addObserver:self forKeyPath:k options:NSKeyValueObservingOptionNew context:NULL];
-            [self.kvos addObject:k];
+            self.kvos[k] = @YES;
         }
     }
 }
@@ -511,25 +522,9 @@ static DefaultsManager *dm = nil;
  Sets up the defaults cache which is used when a macOS bug causes defaults to be nil
  */
 -(void)setupCache {
-    NSMutableDictionary *st = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *sh = [[NSMutableDictionary alloc] init];
-    NSUserDefaults *d = self.standardDefaults;
-    NSUserDefaults *h = self.sharedDefaults;
-    for (NSString *k in self.prefsPlist) {
-        if([d objectForKey:k] != nil) {
-            [st setObject:[d objectForKey:k] forKey:k];
-        } else {
-            [st setObject:[self.prefsPlist objectForKey:k] forKey:k];
-        }
-        NSString *sharedKey = [k stringByAppendingString:@"Shared"];
-        if([h objectForKey:sharedKey] != nil) {
-            [sh setObject:[h objectForKey:sharedKey] forKey:sharedKey];
-        } else {
-            [sh setObject:[self.prefsPlist objectForKey:k] forKey:sharedKey];
-        }
-    }
-    self.standardDefaultsCache = st;
-    self.sharedDefaultsCache = sh;
+
+    self.standardDefaultsCache = [[NSMutableDictionary alloc] init];
+    self.sharedDefaultsCache = [[NSMutableDictionary alloc] init];
 }
 
 /**
@@ -651,10 +646,10 @@ static DefaultsManager *dm = nil;
             }
         }
         //make sure we add the key as an observer
-        if (![self.kvos containsObject:key]) {
+        if (self.kvos[key] == nil) {
             NSUserDefaults *d = self.standardDefaults;
             [d addObserver:self forKeyPath:key options:NSKeyValueObservingOptionNew context:NULL];
-            [self.kvos addObject:key];
+            self.kvos[key] = @YES;
         }
     }
 }

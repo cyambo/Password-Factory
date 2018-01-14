@@ -11,17 +11,8 @@ import UIKit
 /// View containing a switch and a label connected to defaults
 class SwitchView: ControlView {
 
-    var touchGesture: UITapGestureRecognizer? //tap gesture recognizer that fills the view and toggles the switch
-    let controlSwitch = UISwitch.init()
 
-    override func initializeControls() {
-        super.initializeControls()
-        isUserInteractionEnabled = true
-        touchGesture = UITapGestureRecognizer.init(target: self, action: #selector(touched))
-        if (touchGesture != nil) {
-            addGestureRecognizer(touchGesture!)
-        }
-    }
+    let controlSwitch = UISwitch.init()
 
     override func addViews() {
         super.addViews()
@@ -89,12 +80,5 @@ class SwitchView: ControlView {
         } else {
             controlSwitch.isOn = !controlSwitch.isOn
         }
-    }
-    /// Called when the view is tapped
-    ///
-    /// - Parameter recognizer: default
-    @objc func touched(recognizer : UITapGestureRecognizer) {
-        controlSwitch.setOn(!controlSwitch.isOn, animated: true)
-        changeSwitch()
     }
 }
