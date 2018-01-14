@@ -521,25 +521,9 @@ static DefaultsManager *dm = nil;
  Sets up the defaults cache which is used when a macOS bug causes defaults to be nil
  */
 -(void)setupCache {
-    NSMutableDictionary *st = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *sh = [[NSMutableDictionary alloc] init];
-    NSUserDefaults *d = self.standardDefaults;
-    NSUserDefaults *h = self.sharedDefaults;
-    for (NSString *k in self.prefsPlist) {
-        if([d objectForKey:k] != nil) {
-            [st setObject:[d objectForKey:k] forKey:k];
-        } else {
-            [st setObject:[self.prefsPlist objectForKey:k] forKey:k];
-        }
-        NSString *sharedKey = [k stringByAppendingString:@"Shared"];
-        if([h objectForKey:sharedKey] != nil) {
-            [sh setObject:[h objectForKey:sharedKey] forKey:sharedKey];
-        } else {
-            [sh setObject:[self.prefsPlist objectForKey:k] forKey:sharedKey];
-        }
-    }
-    self.standardDefaultsCache = st;
-    self.sharedDefaultsCache = sh;
+
+    self.standardDefaultsCache = [[NSMutableDictionary alloc] init];
+    self.sharedDefaultsCache = [[NSMutableDictionary alloc] init];
 }
 
 /**

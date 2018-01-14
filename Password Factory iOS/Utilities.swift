@@ -10,7 +10,7 @@
 import UIKit
 
 class Utilities: NSObject {
-
+    
     /// Highlights a password string, or returns it in the default color based upon defaults
     ///
     /// - Parameters:
@@ -182,13 +182,17 @@ class Utilities: NSObject {
     ///   - source: UIView of control that triggered popover
     public class func showPopover(parentViewController: UIViewController, viewControllerToShow: PopupViewController, popoverBounds: CGRect, source: UIView, completion: (() ->Void)? = nil) {
         var parent = parentViewController
+
         //if the parent is PasswordsViewController, use the root view controller
         if parentViewController.isKind(of: PasswordsViewController.self) {
             parent = UIApplication.shared.keyWindow?.rootViewController ?? parentViewController
         }
+        //make sure parent is not presenting anything
+        guard parent.presentedViewController == nil else { return }
         //set to popover
         viewControllerToShow.screenshot = Utilities.screenshot(parent.view)
         viewControllerToShow.modalPresentationStyle = .popover
+
         //load the popover
         if let pop = viewControllerToShow.popoverPresentationController {
             pop.permittedArrowDirections = .any
