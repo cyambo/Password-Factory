@@ -40,7 +40,6 @@ static DefaultsManager *dm = nil;
         static dispatch_once_t once = 0;
         dispatch_once(&once, ^ {
             dm = [[DefaultsManager alloc] init];
-            [dm syncToSharedDefaults];
         });
     }
     return dm;
@@ -90,6 +89,13 @@ static DefaultsManager *dm = nil;
     [self loadDefaultsPlist];
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL loadedPlist = NO;
+    //check to see if it was initialized, if it wasn't this is the first load, so initialize from plist
+    if (![self.standardDefaults boolForKey:@"initializedDefaults"]) {
+        [self getPrefsFromPlist:true];
+        [self.standardDefaults setBool:YES forKey:@"initializedDefaults"];
+        loadedPlist = YES;
+    }
     self.observers = [[NSMutableDictionary alloc] init];
     self.kvos = [[NSMutableDictionary alloc] init];
     self.stopObservers = false;
@@ -97,9 +103,9 @@ static DefaultsManager *dm = nil;
     [self addObservers];
     [self disableRemoteSyncForKeys:globalDisabledKeys];
     [self enableRemoteStore:[self.standardDefaults boolForKey:@"enableRemoteStore"]];
-    
-    [self loadPreferencesFromPlist];
-
+    if (!loadedPlist) {
+        [self getPrefsFromPlist:false];
+    }
     return self;
 }
 
@@ -409,14 +415,7 @@ static DefaultsManager *dm = nil;
 -(void)setFloat:(float)object forKey:(NSString *)key {
     [self setObject:@(object) forKey:key];
 }
-/**
- Makes sure our preferences are loaded only at launch
- */
--(void)loadPreferencesFromPlist {
-    if (!self.prefsPlist) {
-        [self getPrefsFromPlist:false];
-    }
-}
+
 /**
  Loads our defaults.plist into a dictionary
  */
@@ -522,9 +521,25 @@ static DefaultsManager *dm = nil;
  Sets up the defaults cache which is used when a macOS bug causes defaults to be nil
  */
 -(void)setupCache {
-
-    self.standardDefaultsCache = [[NSMutableDictionary alloc] init];
-    self.sharedDefaultsCache = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *st = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *sh = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *d = self.standardDefaults;
+    NSUserDefaults *h = self.sharedDefaults;
+    for (NSString *k in self.prefsPlist) {
+        if([d objectForKey:k] != nil) {
+            [st setObject:[d objectForKey:k] forKey:k];
+        } else {
+            [st setObject:[self.prefsPlist objectForKey:k] forKey:k];
+        }
+        NSString *sharedKey = [k stringByAppendingString:@"Shared"];
+        if([h objectForKey:sharedKey] != nil) {
+            [sh setObject:[h objectForKey:sharedKey] forKey:sharedKey];
+        } else {
+            [sh setObject:[self.prefsPlist objectForKey:k] forKey:sharedKey];
+        }
+    }
+    self.standardDefaultsCache = st;
+    self.sharedDefaultsCache = sh;
 }
 
 /**
@@ -556,22 +571,7 @@ static DefaultsManager *dm = nil;
     }
     [self storeObject:change[@"new"] forKey:keyPath];
 }
-/**
- Syncs our plist to the sharedDefaults manager for use in the today extension
- */
--(void)syncToSharedDefaults {
-    [self loadDefaultsPlist];
-    NSUserDefaults *sharedDefaults = self.sharedDefaults;
-    NSUserDefaults *d = self.standardDefaults;
-    for (NSString *key in self.prefsPlist) {
-        NSString *k = [key stringByAppendingString:@"Shared"]; //Appending shared to shared defaults because KVO will cause the observer to be called
-        id obj = [d objectForKey:key];
-        //syncing to shared defaults
-        if(![self compareDefaultsObject:[sharedDefaults objectForKey:k] two:obj]) {
-            [sharedDefaults setObject:[d objectForKey:key] forKey:k];
-        }
-    }
-}
+
 /**
  Compares two objects from defaults plist and NSUserDefaults
  Cant just use == or isEqual because of the different classes stored
