@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (sha1)
-
+-(NSString *)sha1;
 @end

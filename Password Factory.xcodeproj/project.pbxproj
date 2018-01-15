@@ -61,6 +61,10 @@
 		402C96531FD5D69600E2B37E /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C96521FD5D69600E2B37E /* PickerViewController.swift */; };
 		402CF5A01FDC6FE10037C56D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402CF59F1FDC6FE10037C56D /* TextFieldView.swift */; };
 		402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CA1B8112D600393B99 /* MasterViewControllerTests.m */; };
+		40333F4C200AABC0001FD6C9 /* NSString+sha1.m in Sources */ = {isa = PBXBuildFile; fileRef = 40333F4B200AABC0001FD6C9 /* NSString+sha1.m */; };
+		40333F4D200AABC0001FD6C9 /* NSString+sha1.m in Sources */ = {isa = PBXBuildFile; fileRef = 40333F4B200AABC0001FD6C9 /* NSString+sha1.m */; };
+		40333F4E200AABC0001FD6C9 /* NSString+sha1.m in Sources */ = {isa = PBXBuildFile; fileRef = 40333F4B200AABC0001FD6C9 /* NSString+sha1.m */; };
+		40333F4F200AABC0001FD6C9 /* NSString+sha1.m in Sources */ = {isa = PBXBuildFile; fileRef = 40333F4B200AABC0001FD6C9 /* NSString+sha1.m */; };
 		403DF3A21FC8EB9E0057E15C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A11FC8EB9E0057E15C /* MainWindowController.m */; };
 		403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 403DF3A41FC8F56C0057E15C /* MenuPopover.m */; };
 		4043C76A1FF6C4EF00F9A446 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043C7691FF6C4EF00F9A446 /* ZoomViewController.swift */; };
@@ -296,6 +300,8 @@
 		402C964D1FD5C57C00E2B37E /* PasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextView.swift; sourceTree = "<group>"; };
 		402C96521FD5D69600E2B37E /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		402CF59F1FDC6FE10037C56D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		40333F4A200AABC0001FD6C9 /* NSString+sha1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+sha1.h"; sourceTree = "<group>"; };
+		40333F4B200AABC0001FD6C9 /* NSString+sha1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+sha1.m"; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
@@ -761,6 +767,8 @@
 				4004F1D51FBA4E200093DA3F /* NSString+ColorWithHexColorString.m */,
 				404B6D5E1FBE76CB00B281E5 /* NSString+UnicodeLength.h */,
 				404B6D5F1FBE76CB00B281E5 /* NSString+UnicodeLength.m */,
+				40333F4A200AABC0001FD6C9 /* NSString+sha1.h */,
+				40333F4B200AABC0001FD6C9 /* NSString+sha1.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1699,6 +1707,7 @@
 				40855E0E1FBD2D10005BD8F4 /* Passwords+CoreDataProperties.m in Sources */,
 				406C388C1B844D0A00F471E7 /* StrengthBox.m in Sources */,
 				406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */,
+				40333F4E200AABC0001FD6C9 /* NSString+sha1.m in Sources */,
 				406C388A1B844D0100F471E7 /* StyleKit.m in Sources */,
 				400E83831FC4CB55006CE51A /* StrengthMeter.m in Sources */,
 				404B6D611FBE76CB00B281E5 /* NSString+UnicodeLength.m in Sources */,
@@ -1711,6 +1720,7 @@
 			files = (
 				404D73CB1FD61B3D00A6FA0D /* PasswordController.m in Sources */,
 				405483701FE9B1F000E42EF6 /* BorderedView.swift in Sources */,
+				40333F4F200AABC0001FD6C9 /* NSString+sha1.m in Sources */,
 				4025FC271FE5C2B50036BE3C /* DeleteButton.swift in Sources */,
 				400210F11FDB316600D272BB /* StepperView.swift in Sources */,
 				402CF5A01FDC6FE10037C56D /* TextFieldView.swift in Sources */,
@@ -1847,6 +1857,7 @@
 				409586271B8112FD00393B99 /* NSColor+NSColorHexadecimalValue.m in Sources */,
 				40EC53061FC8A804007F6EFF /* ExportWindow.m in Sources */,
 				40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */,
+				40333F4C200AABC0001FD6C9 /* NSString+sha1.m in Sources */,
 				403DF3A51FC8F56C0057E15C /* MenuPopover.m in Sources */,
 				40DAB5801B843734003F5C3D /* DefaultsManager.m in Sources */,
 				40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */,
@@ -1861,6 +1872,7 @@
 				400108201FD3360300594304 /* SecureRandom.m in Sources */,
 				402EF2651FC9FE8F000C567F /* MasterViewControllerTests.m in Sources */,
 				409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */,
+				40333F4D200AABC0001FD6C9 /* NSString+sha1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

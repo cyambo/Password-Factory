@@ -95,6 +95,7 @@ typedef NS_ENUM(NSInteger, PFErrorCode) {
 extern NSString * const SupportEmailAddress;
 extern NSString * const SharedDefaultsAppGroup;
 extern NSString * const iCloudContainer;
+extern NSString * const iCloudContainerZone;
 extern NSString * const NotificationSoundName;
 extern NSString * const HelperIdentifier;
 extern NSString * const AppIdentifier;

@@ -6,24 +6,27 @@
 //  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
 
-
+@import  CloudKit;
 #import "PasswordStorage.h"
 #import "constants.h"
 #import "DefaultsManager.h"
 #import "NSString+UnicodeLength.h"
-#import <SyncKit/QSCloudKitSynchronizer+CoreData.h>
+#import "NSString+sha1.h"
+
 #ifndef IOS
 #import "AppDelegate.h"
 #endif
-@interface PasswordStorage () <QSCoreDataChangeManagerDelegate>
+@interface PasswordStorage ()
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
 @property (nonatomic, strong) NSSortDescriptor *sort;
 @property (nonatomic, strong) NSPersistentContainer *container;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) CKContainer *cloudKitContainer;
+@property (nonatomic, strong) CKDatabase *cloudKitDatabase;
+@property (nonatomic, strong) CKRecordZone *cloudKitRecordZone;
 @property (nonatomic, strong) DefaultsManager *d;
 @property (nonatomic, strong) NSString *prev;
-@property (nonatomic, strong) QSCloudKitSynchronizer *synchronizer;
 @property (nonatomic, assign) BOOL enableRemoteStorage;
 @end
 @implementation PasswordStorage
@@ -59,8 +62,6 @@
     [self.container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDescription, NSError * _Nullable error) {
         self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
         
-        [self loadSynchronizer];
-
         if(error) {
 #ifndef IOS
             AppDelegate *d = [NSApplication sharedApplication].delegate;
@@ -68,6 +69,9 @@
 #endif
         }
     }];
+    if (self.enableRemoteStorage) {
+        [self loadCloudKitContainer];
+    }
     //set to sort with newest on top
     self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
     [self loadSavedData];
@@ -76,14 +80,7 @@
 
     return self;
 }
--(void)loadSynchronizer {
-    if (self.enableRemoteStorage) {
-        self.synchronizer = [QSCloudKitSynchronizer cloudKitSynchronizerWithContainerName:iCloudContainer managedObjectContext:self.container.viewContext changeManagerDelegate:self];
-        [self.synchronizer subscribeForUpdateNotificationsWithCompletion:^(NSError *error) {
-            NSLog(@"UPDATE YO");
-        }];
-    }
-}
+
 /**
  Stores the password in Core Data
 
@@ -104,6 +101,9 @@
         pw.type = type;
         pw.length = [password getUnicodeLength];
         pw.time = [NSDate date];
+        if (self.enableRemoteStorage) {
+            [self storeRemote:pw];
+        }
         //save it
         [self saveContext];
         [self loadSavedData];
@@ -132,6 +132,9 @@
         }
         for(Passwords *p in items) {
             [self.container.viewContext deleteObject:p];
+            if (self.enableRemoteStorage) {
+                [self deleteRemote:p];
+            }
         }
         [self saveContext];
     }
@@ -153,34 +156,12 @@
     }
     [self synchronizeWithRemote];
 }
--(void)synchronize:(BOOL)callDelegate completion:(void (^)(BOOL))completionHandler{
-    if (self.enableRemoteStorage) {
-        [self.synchronizer synchronizeWithCompletion:^(NSError *error) {
 
-            if (error) {
-                NSLog(@"SYNC ERR ERR %@",error.localizedDescription);
-            } else {
-                [self loadSavedData];
-                [self deleteOverMaxItems];
-                if (callDelegate) {
-                    if (self.delegate != nil) {
-                        
-                        [self.delegate receivedUpdatedData];
-                    }
-                }
-            }
-            if (completionHandler != nil) {
-                completionHandler(error != nil);
-            }
-        }];
-    }
-
-}
 -(void)synchronizeWithRemote {
-    [self synchronize:false completion:nil];
+    
 }
 -(void)receivedUpdatedData:(void (^)(BOOL))completionHandler {
-    [self synchronize:true completion:completionHandler];
+    
 }
 /**
  Loads saved passwords with sorting
@@ -242,10 +223,12 @@
  */
 -(void)deleteItemAtIndex:(NSUInteger)index {
     Passwords *curr = [self passwordAtIndex:index];
+    if (self.enableRemoteStorage) {
+        [self deleteRemote:curr];
+    }
     [self.container.viewContext deleteObject:curr];
     [self saveContext];
     [self loadSavedData];
-    
 }
 /**
  Changes the sort descriptor
@@ -275,22 +258,64 @@
     [self loadSavedData];
 }
 -(void)deleteAllRemoteObjects {
-    if (self.synchronizer != nil) {
-        [self.synchronizer eraseRemoteAndLocalDataWithCompletion:^(NSError *error) {
-            [self loadSynchronizer];
-        }];
-    }
-    [self deleteAllEntities];
+    __weak PasswordStorage *weakSelf = self;
+    [self.cloudKitDatabase deleteRecordZoneWithID:self.cloudKitRecordZone.zoneID completionHandler:^(CKRecordZoneID * _Nullable zoneID, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"CK ZON DEL %@",error.localizedDescription);
+        }
+        [weakSelf deleteAllEntities];
+    }];
+    
+}
+-(void)loadCloudKitContainer {
+
+    self.cloudKitContainer = [CKContainer containerWithIdentifier:iCloudContainer];
+    self.cloudKitDatabase = self.cloudKitContainer.privateCloudDatabase;
+    self.cloudKitRecordZone = [[CKRecordZone alloc] initWithZoneName:iCloudContainerZone];
+    [self.cloudKitDatabase saveRecordZone:self.cloudKitRecordZone completionHandler:^(CKRecordZone * _Nullable zone, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"CK ZON CR %@",error.localizedDescription);
+        }
+    }];
+    
 }
 -(void)enableRemoteStorage:(BOOL)enabled {
     self.enableRemoteStorage = enabled;
     if (enabled) {
-       [self loadSynchronizer];
+        [self loadCloudKitContainer];
     } else {
-        self.synchronizer = nil;
+
     }
     
 }
+-(CKRecordID *)getRecordIDFor:(Passwords *)password {
+    NSString *salt = [NSString stringWithFormat:@"%@%d%f",password.password,password.type,password.time.timeIntervalSince1970];
+    return [[CKRecordID alloc] initWithRecordName:[salt sha1] zoneID:self.cloudKitRecordZone.zoneID];
+}
+-(void)deleteRemote:(Passwords *)password {
+    CKRecordID *recordID = [self getRecordIDFor:password];
+    [self.cloudKitDatabase deleteRecordWithID:recordID completionHandler:^(CKRecordID * _Nullable recordID, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"CK DEL ERR %@",error.localizedDescription);
+        }
+    }];
+}
+-(void)storeRemote:(Passwords *)password {
+    CKRecordID *recordID = [self getRecordIDFor:password];
+    CKRecord *record = [[CKRecord alloc] initWithRecordType:@"Passwords" recordID:recordID];
+    [record setObject:password.password forKey:@"password"];
+    [record setObject:[NSNumber numberWithFloat:password.strength] forKey:@"strength"];
+    [record setObject:password.time forKey:@"time"];
+    [record setObject:[NSNumber numberWithInt:password.type] forKey:@"type"];
+    [record setObject:[NSNumber numberWithInt:password.length] forKey:@"length"];
+    
+    [self.cloudKitDatabase saveRecord:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"CK SAVE ERR %@",error.localizedDescription);
+        }
+    }];
+}
+
 /**
  Called when max storage amount was changed
  */
@@ -299,31 +324,6 @@
     [self deleteOverMaxItems];
 }
 
-- (void)changeManager:(QSCoreDataChangeManager *)changeManager didImportChanges:(NSManagedObjectContext *)importContext completion:(void (^)(NSError *))completion {
-    __block NSError *error = nil;
-    [importContext performBlockAndWait:^{
-        [importContext save:&error];
-    }];
-    
-    if (!error) {
-        [self.container.viewContext performBlockAndWait:^{
-            [self.container.viewContext save:&error];
-        }];
-    } else {
-        NSLog(@"DID IMPORT ERR %@",error.localizedDescription);
-    }
-    completion(error);
-}
 
-- (void)changeManagerRequestsContextSave:(QSCoreDataChangeManager *)changeManager completion:(void (^)(NSError *))completion {
-    __block NSError *error = nil;
-    [self.container.viewContext performBlockAndWait:^{
-        [self.container.viewContext save:&error];
-    }];
-    if (error) {
-        NSLog(@"REQ ERR %@",error.localizedDescription);
-    }
-    completion(error);
-}
 
 @end
