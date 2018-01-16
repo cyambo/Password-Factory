@@ -66,9 +66,8 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
             }
         case "eraseRemoteStore":
             DefaultsManager.removeRemoteDefaults()
-            if d.bool(forKey: "storePasswords") {
-                PasswordStorage.get().deleteAllRemoteObjects()
-            }
+            PasswordStorage.get().deleteAllRemoteObjects()
+            
         default:
             return
         }

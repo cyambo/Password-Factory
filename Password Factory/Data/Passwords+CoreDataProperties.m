@@ -2,7 +2,7 @@
 //  Passwords+CoreDataProperties.m
 //  
 //
-//  Created by Cristiana Yambo on 12/22/17.
+//  Created by Cristiana Yambo on 1/15/18.
 //
 //
 
@@ -14,10 +14,11 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"Passwords"];
 }
 
+@dynamic length;
 @dynamic password;
 @dynamic strength;
 @dynamic time;
 @dynamic type;
-@dynamic length;
+@dynamic passwordID;
 
 @end

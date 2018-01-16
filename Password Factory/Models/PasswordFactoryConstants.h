@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSArray *caseTypeIndex;
 @property (nonatomic, strong) NSArray *separatorTypeIndex;
 @property (nonatomic, strong) NSArray *patternTypeIndex;
+@property (nonatomic, strong) NSArray *disabledSyncKeys;
 -(PFPasswordType)getPasswordTypeByIndex:(NSUInteger)index;
 -(PFCaseType)getCaseTypeByIndex:(NSUInteger)index;
 -(PFSeparatorType)getSeparatorTypeByIndex:(NSUInteger)index;

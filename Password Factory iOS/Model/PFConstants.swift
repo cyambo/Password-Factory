@@ -50,11 +50,12 @@ final class PFConstants: NSObject {
     public let patternTypeIndex: [PFPatternTypeItem]
     public var errorMessages = [String: String]()
     public var escapedSymbols: String = ""
-    
+    public var disabledSyncKeys = [String]()
     //init is private for singleton
     private override init() {
         //converting all the arrays and dictionaries to ones with proper types
         //rather than Any?
+        
         phoneticSounds = c.phoneticSounds.map { $0 as! String }
         phoneticSoundsTwo = c.phoneticSoundsTwo.map { $0 as! String }
         phoneticSoundsThree = c.phoneticSoundsThree.map { $0 as! String }
@@ -100,6 +101,7 @@ final class PFConstants: NSObject {
         errorMessages["disableRemoteStoreWarning"] = disableRemoteStoreWarning
         errorMessages["eraseRemoteStoreWarning"] = eraseRemoteStoreWarning
         escapedSymbols = c.escapedSymbols
+        disabledSyncKeys = c.disabledSyncKeys.map { $0 as! String }
     }
 
     public func getPasswordType(by: UInt) -> PFPasswordType {

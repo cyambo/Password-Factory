@@ -6,7 +6,7 @@
 //  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
 
-@import  CloudKit;
+
 #import "PasswordStorage.h"
 #import "constants.h"
 #import "DefaultsManager.h"
@@ -28,9 +28,10 @@
 @property (nonatomic, strong) DefaultsManager *d;
 @property (nonatomic, strong) NSString *prev;
 @property (nonatomic, assign) BOOL enableRemoteStorage;
+@property (nonatomic, strong) CKSubscription *subscription;
 @end
 @implementation PasswordStorage
-
+#pragma  mark init
 /**
  Singleon Get
 
@@ -69,9 +70,7 @@
 #endif
         }
     }];
-    if (self.enableRemoteStorage) {
-        [self loadCloudKitContainer];
-    }
+    [self enableRemoteStorage:self.enableRemoteStorage];
     //set to sort with newest on top
     self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
     [self loadSavedData];
@@ -81,64 +80,7 @@
     return self;
 }
 
-/**
- Stores the password in Core Data
-
- @param password Password to be stored
- @param strength strength of password
- @param type PFPasswordType of password
- */
--(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type {
-    if (self.prev != nil && [password isEqualToString:self.prev]) { //getting duplicates from bug in observer on ios, so, just return
-        return;
-    }
-    self.prev = password;
-    if (password && password.length) { //don't store 0 length passwords
-        //setup the core data class
-        Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
-        pw.password = password;
-        pw.strength = strength;
-        pw.type = type;
-        pw.length = [password getUnicodeLength];
-        pw.time = [NSDate date];
-        if (self.enableRemoteStorage) {
-            [self storeRemote:pw];
-        }
-        //save it
-        [self saveContext];
-        [self loadSavedData];
-        [self deleteOverMaxItems];
-    }
-}
-
-/**
- Deletes any items over the max number of stored passwords set
- */
--(void)deleteOverMaxItems {
-    self.maximumPasswordsStored = [self.d integerForKey:@"maxStoredPasswords"];
-    if ([self count] > self.maximumPasswordsStored) {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Passwords"];
-        
-        fetchRequest.fetchLimit = [self count] - self.maximumPasswordsStored;
-        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
-        
-        NSError *error = nil;
-        NSArray *items = [self.container.viewContext executeFetchRequest:fetchRequest error:&error];
-        if (error.localizedDescription) {
-#ifndef IOS
-            AppDelegate *d = [NSApplication sharedApplication].delegate;
-            [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteOverMaxFetchError];
-#endif
-        }
-        for(Passwords *p in items) {
-            [self.container.viewContext deleteObject:p];
-            if (self.enableRemoteStorage) {
-                [self deleteRemote:p];
-            }
-        }
-        [self saveContext];
-    }
-}
+#pragma mark Save / Load
 
 /**
  Saves any updates
@@ -157,12 +99,6 @@
     [self synchronizeWithRemote];
 }
 
--(void)synchronizeWithRemote {
-    
-}
--(void)receivedUpdatedData:(void (^)(BOOL))completionHandler {
-    
-}
 /**
  Loads saved passwords with sorting
  */
@@ -185,6 +121,50 @@
 #endif
     }
 }
+#pragma mark Store
+/**
+ Stores the password in Core Data with the current date
+
+ @param password Password to be stored
+ @param strength strength of password
+ @param type PFPasswordType of password
+ */
+-(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type {
+    [self storePassword:password strength:strength type:type time:[NSDate date]];
+}
+
+/**
+ Stores the password in Core Data with the specified date
+ 
+ @param password Password to be stored
+ @param strength strength of password
+ @param type PFPasswordType of password
+ @param time time of creation
+ */
+-(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type time:(NSDate *)time {
+    if (self.prev != nil && [password isEqualToString:self.prev]) { //getting duplicates from bug in observer on ios, so, just return
+        return;
+    }
+    self.prev = password;
+    if (password && password.length) { //don't store 0 length passwords
+        //setup the core data class
+        Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
+        pw.password = password;
+        pw.strength = strength;
+        pw.type = type;
+        pw.length = [password getUnicodeLength];
+        pw.time = time;
+        pw.passwordID = [self getIDFor:pw];
+        if (self.enableRemoteStorage) {
+            [self storeRemote:pw];
+        }
+        //save it
+        [self saveContext];
+        [self loadSavedData];
+        [self deleteOverMaxItems];
+    }
+}
+#pragma mark Fetch Info
 
 /**
  Gets the number of objects stored
@@ -217,6 +197,53 @@
 }
 
 /**
+ Gets a password by passwordID
+
+ @param passwordID password ID string
+ @return password found
+ */
+-(Passwords *)passwordWithID:(NSString *)passwordID {
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
+    [req setPredicate:[NSPredicate predicateWithFormat:@"passwordID == %@",passwordID]];
+    NSError *error = nil;
+    NSArray *results = [self.container.viewContext executeFetchRequest:req error:&error];
+    if (results.count) {
+        return results[0];
+    }
+    return nil;
+    
+}
+#pragma mark Delete
+
+/**
+ Deletes any items over the max number of stored passwords set
+ */
+-(void)deleteOverMaxItems {
+    self.maximumPasswordsStored = [self.d integerForKey:@"maxStoredPasswords"];
+    if ([self count] > self.maximumPasswordsStored) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Passwords"];
+        
+        fetchRequest.fetchLimit = [self count] - self.maximumPasswordsStored;
+        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
+        
+        NSError *error = nil;
+        NSArray *items = [self.container.viewContext executeFetchRequest:fetchRequest error:&error];
+        if (error.localizedDescription) {
+#ifndef IOS
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteOverMaxFetchError];
+#endif
+        }
+        for(Passwords *p in items) {
+            [self.container.viewContext deleteObject:p];
+            if (self.enableRemoteStorage) {
+                [self deleteRemote:p];
+            }
+        }
+        [self saveContext];
+    }
+}
+/**
  Deletes the item at index
 
  @param index index of item to delete
@@ -226,17 +253,30 @@
     if (self.enableRemoteStorage) {
         [self deleteRemote:curr];
     }
-    [self.container.viewContext deleteObject:curr];
-    [self saveContext];
-    [self loadSavedData];
+    [self deletePassword:curr];
 }
-/**
- Changes the sort descriptor
 
- @param sortDescriptor to sort
+
+/**
+ Deletes a password with a passwordID
+
+ @param passwordID password ID
  */
--(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor {
-    self.sort = sortDescriptor;
+-(void)deletePasswordWithID:(NSString *)passwordID {
+    Passwords *password = [self passwordWithID:passwordID];
+    if (password != nil) {
+        [self deletePassword:password];
+    }
+}
+
+/**
+ Deletes a password item from CoreData
+
+ @param password password to delete
+ */
+-(void)deletePassword:(Passwords *)password {
+    [self.container.viewContext deleteObject:password];
+    [self saveContext];
     [self loadSavedData];
 }
 
@@ -257,63 +297,18 @@
     }
     [self loadSavedData];
 }
--(void)deleteAllRemoteObjects {
-    __weak PasswordStorage *weakSelf = self;
-    [self.cloudKitDatabase deleteRecordZoneWithID:self.cloudKitRecordZone.zoneID completionHandler:^(CKRecordZoneID * _Nullable zoneID, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"CK ZON DEL %@",error.localizedDescription);
-        }
-        [weakSelf deleteAllEntities];
-    }];
-    
-}
--(void)loadCloudKitContainer {
 
-    self.cloudKitContainer = [CKContainer containerWithIdentifier:iCloudContainer];
-    self.cloudKitDatabase = self.cloudKitContainer.privateCloudDatabase;
-    self.cloudKitRecordZone = [[CKRecordZone alloc] initWithZoneName:iCloudContainerZone];
-    [self.cloudKitDatabase saveRecordZone:self.cloudKitRecordZone completionHandler:^(CKRecordZone * _Nullable zone, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"CK ZON CR %@",error.localizedDescription);
-        }
-    }];
-    
-}
--(void)enableRemoteStorage:(BOOL)enabled {
-    self.enableRemoteStorage = enabled;
-    if (enabled) {
-        [self loadCloudKitContainer];
-    } else {
 
-    }
-    
-}
--(CKRecordID *)getRecordIDFor:(Passwords *)password {
-    NSString *salt = [NSString stringWithFormat:@"%@%d%f",password.password,password.type,password.time.timeIntervalSince1970];
-    return [[CKRecordID alloc] initWithRecordName:[salt sha1] zoneID:self.cloudKitRecordZone.zoneID];
-}
--(void)deleteRemote:(Passwords *)password {
-    CKRecordID *recordID = [self getRecordIDFor:password];
-    [self.cloudKitDatabase deleteRecordWithID:recordID completionHandler:^(CKRecordID * _Nullable recordID, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"CK DEL ERR %@",error.localizedDescription);
-        }
-    }];
-}
--(void)storeRemote:(Passwords *)password {
-    CKRecordID *recordID = [self getRecordIDFor:password];
-    CKRecord *record = [[CKRecord alloc] initWithRecordType:@"Passwords" recordID:recordID];
-    [record setObject:password.password forKey:@"password"];
-    [record setObject:[NSNumber numberWithFloat:password.strength] forKey:@"strength"];
-    [record setObject:password.time forKey:@"time"];
-    [record setObject:[NSNumber numberWithInt:password.type] forKey:@"type"];
-    [record setObject:[NSNumber numberWithInt:password.length] forKey:@"length"];
-    
-    [self.cloudKitDatabase saveRecord:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"CK SAVE ERR %@",error.localizedDescription);
-        }
-    }];
+#pragma mark Misc
+
+/**
+ Changes the sort descriptor
+ 
+ @param sortDescriptor to sort
+ */
+-(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor {
+    self.sort = sortDescriptor;
+    [self loadSavedData];
 }
 
 /**
@@ -323,6 +318,289 @@
     [self loadSavedData];
     [self deleteOverMaxItems];
 }
+
+
+/**
+ Enables CloudKit remote storage
+
+ @param enabled enabled boolean
+ */
+-(void)enableRemoteStorage:(BOOL)enabled {
+    self.enableRemoteStorage = enabled;
+    if (enabled) {
+        __weak PasswordStorage *weakSelf = self;
+        [self loadCloudKitContainer:^{
+            [weakSelf loadSubscription];
+            [weakSelf fetchRemoteChanges];
+            
+        }];
+        
+    } else {
+        //TODO: disable properly
+    }
+}
+-(NSString *)getIDFor:(Passwords *)password {
+    NSString *salt = [NSString stringWithFormat:@"%@%d",password.password,password.type];
+    return [salt sha1];
+}
+#pragma mark CloudKit
+
+
+/**
+ Loads the CloudKit container
+
+ @param completionHandler called on completion
+ */
+-(void)loadCloudKitContainer:(void (^)(void))completionHandler {
+
+    self.cloudKitContainer = [CKContainer containerWithIdentifier:iCloudContainer];
+    self.cloudKitDatabase = self.cloudKitContainer.privateCloudDatabase;
+    self.cloudKitRecordZone = [[CKRecordZone alloc] initWithZoneName:iCloudContainerZone];
+    [self.cloudKitDatabase saveRecordZone:self.cloudKitRecordZone completionHandler:^(CKRecordZone * _Nullable zone, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"CK ZON CR %@",error.localizedDescription);
+        } else if (completionHandler != nil) {
+            completionHandler();
+        }
+    }];
+}
+
+
+/**
+ Creates, or loads the subscription so we can get updates in real time
+ */
+-(void)loadSubscription {
+    if (self.subscription == nil) {
+        __weak PasswordStorage* weakSelf = self;
+        if ([self.d stringForKey:@"cloudKitSubscriptionID"].length) {
+            [self.cloudKitDatabase fetchSubscriptionWithID:[self.d stringForKey:@"cloudKitSubscriptionID"] completionHandler:^(CKSubscription * _Nullable subscription, NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"CK SUB FT %@",error.localizedDescription);
+                } else {
+                    weakSelf.subscription = subscription;
+                }
+                
+            }];
+        } else {
+            [self.cloudKitDatabase fetchAllSubscriptionsWithCompletionHandler:^(NSArray<CKSubscription *> * _Nullable subscriptions, NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"CK SUB FA %@",error.localizedDescription);
+                } else {
+                    if (subscriptions != nil && subscriptions.count) {
+                        for(int i = 0; i < subscriptions.count; i++) {
+                            CKSubscription *sub = subscriptions[i];
+                            if ([sub.notificationInfo.alertLocalizationKey isEqualToString:@"password_remote_update"]) {
+                                weakSelf.subscription = sub;
+                            }
+                        }
+                    }
+                    if (weakSelf.subscription == nil) {
+                        NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
+                        weakSelf.subscription = [[CKQuerySubscription alloc] initWithRecordType:@"Passwords" predicate: predicate options:CKQuerySubscriptionOptionsFiresOnRecordCreation | CKQuerySubscriptionOptionsFiresOnRecordDeletion ];
+//
+                        CKNotificationInfo *info = [[CKNotificationInfo alloc] init];
+                        info.alertLocalizationKey = @"password_remote_update";
+//                        info.
+                        info.desiredKeys = @[@"password",@"time",@"type",@"strength"];
+                        weakSelf.subscription.notificationInfo = info;
+
+                        
+                        [weakSelf.cloudKitDatabase saveSubscription:self.subscription completionHandler:^(CKSubscription * _Nullable subscription, NSError * _Nullable error) {
+                            if (error) {
+                                NSLog(@"CK SUB CR %@",error.localizedDescription);
+                            }
+                            //TODO: save id in defaults
+                        }];
+                    }
+                }
+            }];
+
+        }
+    }
+}
+
+/**
+ Fetches remote changes since last load
+ */
+-(void)fetchRemoteChanges {
+    CKFetchRecordZoneChangesOptions *opt = [[CKFetchRecordZoneChangesOptions alloc] init];
+    NSData *token = [self.d objectForKey:@"cloudKitChangeToken"];
+    if (token) {
+        CKServerChangeToken *t = [NSKeyedUnarchiver unarchiveObjectWithData:token];
+        if (t != nil){
+            opt.previousServerChangeToken = t;
+        }
+    }
+    CKFetchRecordZoneChangesOperation *op = [[CKFetchRecordZoneChangesOperation alloc] initWithRecordZoneIDs:@[self.cloudKitRecordZone.zoneID] optionsByRecordZoneID:@{self.cloudKitRecordZone.zoneID : opt}];
+    op.fetchAllChanges = YES;
+    
+    __weak PasswordStorage* weakSelf = self;
+    
+    [op setRecordChangedBlock:^(CKRecord * _Nonnull record) {
+        Passwords *search;
+        if ((search = [weakSelf passwordWithID:record.recordID.recordName])) {
+            [weakSelf deletePassword:search];
+        } else {
+            Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
+            pw.password = [record objectForKey:@"password"];
+            pw.strength = [(NSNumber *)[record objectForKey:@"strength"] floatValue];
+            pw.type = [(NSNumber *)[record objectForKey:@"type"] integerValue];
+            pw.length = [(NSNumber *)[record objectForKey:@"length"] integerValue];
+            pw.time = [record objectForKey:@"time"];
+            pw.passwordID = record.recordID.recordName;
+        }
+    }];
+    [op setRecordWithIDWasDeletedBlock:^(CKRecordID * _Nonnull recordID, NSString * _Nonnull recordType) {
+        [weakSelf deletePasswordWithID:recordID.recordName];
+    }];
+    [op setRecordZoneChangeTokensUpdatedBlock:^(CKRecordZoneID * _Nonnull recordZoneID, CKServerChangeToken * _Nullable serverChangeToken, NSData * _Nullable clientChangeTokenData) {
+        [self saveChangeToken:serverChangeToken];
+        NSLog(@"TOK UP");
+    }];
+    [op setRecordZoneFetchCompletionBlock:^(CKRecordZoneID * _Nonnull recordZoneID, CKServerChangeToken * _Nullable serverChangeToken, NSData * _Nullable clientChangeTokenData, BOOL moreComing, NSError * _Nullable recordZoneError) {
+        NSLog(@"COMPLETE"); //save token here
+        if (serverChangeToken != nil && !moreComing) {
+            [self saveChangeToken:serverChangeToken];
+            [weakSelf saveContext];
+            [weakSelf loadSavedData];
+            [weakSelf deleteOverMaxItems];
+        }
+    }];
+    [self.cloudKitDatabase addOperation:op];
+    
+}
+
+/**
+ Saves the server change token in defaults
+
+ @param token server token to save
+ */
+-(void)saveChangeToken:(CKServerChangeToken *)token {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:token];
+    [self.d setObject:data forKey:@"cloudKitChangeToken"];
+}
+
+/**
+ Deletes all the passwords in cloudkit - does this by deleting the zone
+ */
+-(void)deleteAllRemoteObjects {
+
+    __weak PasswordStorage *weakSelf = self;
+    CKModifyRecordZonesOperation *modifyZoneOp = [[CKModifyRecordZonesOperation alloc] initWithRecordZonesToSave:nil recordZoneIDsToDelete:@[self.cloudKitRecordZone.zoneID]];
+    modifyZoneOp.modifyRecordZonesCompletionBlock = ^(NSArray<CKRecordZone *> * _Nullable savedRecordZones, NSArray<CKRecordZoneID *> * _Nullable deletedRecordZoneIDs, NSError * _Nullable operationError) {
+        if (operationError) {
+            NSLog(@"CK ZON DEL %@",operationError.localizedDescription);
+        } else {
+            [weakSelf deleteSubscription];
+            
+            if (weakSelf.enableRemoteStorage) {
+                [weakSelf deleteAllEntities];
+                [weakSelf loadCloudKitContainer:nil];
+            }
+            
+        }
+    };
+    [self.cloudKitDatabase addOperation:modifyZoneOp];
+    
+    self.cloudKitRecordZone = nil;
+    self.cloudKitDatabase = nil;
+    self.cloudKitContainer = nil;
+    
+//    [self.cloudKitDatabase deleteRecordZoneWithID:zone completionHandler:^(CKRecordZoneID * _Nullable zoneID, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"CK ZON DEL %@",error.localizedDescription);
+//        }
+//    }];
+
+}
+-(void)deleteSubscription {
+    if (self.subscription) {
+        CKModifySubscriptionsOperation *modifySubOp = [[CKModifySubscriptionsOperation alloc] initWithSubscriptionsToSave:nil subscriptionIDsToDelete:@[self.subscription.subscriptionID]];
+        modifySubOp.completionBlock = ^{
+            NSLog(@"SU?B DEL");
+        };
+        [self.cloudKitDatabase addOperation:modifySubOp];
+        self.subscription = nil;
+        [self.cloudKitDatabase addOperation:modifySubOp];
+    }
+}
+/**
+ Returns the CKRecordID for a password
+
+ @param password password to get id
+ @return CKRecordID
+ */
+-(CKRecordID *)getRecordIDFor:(Passwords *)password {
+    return [[CKRecordID alloc] initWithRecordName:[self getIDFor:password] zoneID:self.cloudKitRecordZone.zoneID];
+}
+
+/**
+ Deletes a password in cloudkit
+
+ @param password password to delete
+ */
+-(void)deleteRemote:(Passwords *)password {
+    CKRecordID *recordID = [self getRecordIDFor:password];
+    [self.cloudKitDatabase deleteRecordWithID:recordID completionHandler:^(CKRecordID * _Nullable recordID, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"CK DEL ERR %@",error.localizedDescription);
+        }
+    }];
+}
+-(void)getRemote:(CKRecordID *)record completionHandler:(void (^)(CKRecord *))completion {
+    [self.cloudKitDatabase fetchRecordWithID:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"CK FR ERR %@" , error.localizedDescription);
+            completion(nil);
+        } else {
+            completion(record);
+        }
+    }];
+}
+
+/**
+ Stores a password in CloudKit
+
+ @param password password to store
+ */
+-(void)storeRemote:(Passwords *)password {
+    CKRecordID *recordID = [self getRecordIDFor:password];
+    CKRecord *record = [[CKRecord alloc] initWithRecordType:@"Passwords" recordID:recordID];
+    [record setObject:password.password forKey:@"password"];
+    [record setObject:[NSNumber numberWithFloat:password.strength] forKey:@"strength"];
+    [record setObject:password.time forKey:@"time"];
+    [record setObject:[NSNumber numberWithInt:password.type] forKey:@"type"];
+    [record setObject:[NSNumber numberWithInt:password.length] forKey:@"length"];
+    if (record != nil) {
+        [self.cloudKitDatabase saveRecord:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"CK SAVE ERR %@",error.localizedDescription);
+            }
+        }];
+    }
+
+}
+-(void)synchronizeWithRemote {
+    
+}
+-(void)receivedUpdatedData:(CKQueryNotification *)notification complete:(void (^)(BOOL))completionHandler {
+    if (notification.queryNotificationReason == CKQueryNotificationReasonRecordCreated) {
+        //checking to see if all data was received
+        if (notification.recordFields.count == 4) {
+            NSDictionary *r = notification.recordFields;
+            NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[(NSNumber *)r[@"time"] floatValue]];
+            [self storePassword:r[@"password"] strength:[(NSNumber *)r[@"strength"] floatValue] type:[(NSNumber *)r[@"type"] integerValue]  time:date];
+            completionHandler(YES);
+        }
+    } else if (notification.queryNotificationReason == CKQueryNotificationReasonRecordDeleted) {
+        if (notification.recordID.recordName != nil) {
+            [self deletePasswordWithID:notification.recordID.recordName];
+            completionHandler(YES);
+        }
+    }
+    completionHandler(NO);
+}
+
 
 
 

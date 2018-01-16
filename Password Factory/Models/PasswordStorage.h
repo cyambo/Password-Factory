@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+@import  CloudKit;
 #import "constants.h"
 #import "Passwords+CoreDataProperties.h"
 @class PasswordStorage;
@@ -33,5 +34,5 @@
 -(void)deleteAllRemoteObjects;
 -(void)enableRemoteStorage:(BOOL)enabled;
 -(void)changedMaxStorageAmount;
--(void)receivedUpdatedData:(void (^)(BOOL))completionHandler;
+-(void)receivedUpdatedData:(CKQueryNotification *)notification complete:(void (^)(BOOL))completionHandler;
 @end

@@ -10,7 +10,6 @@ import UIKit
 
 class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate, UITableViewDataSource, DefaultsManagerDelegate, PasswordStorageDelegate{
 
-    
     let s = PasswordStorage.get()!
     enum SortTypes : Int {
         case PasswordType = 9901
@@ -163,9 +162,8 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
         
     }
     func selectPasswordAtIndex(_ index: Int){
-        if index > Int(s.count()) - 1 {
-            return
-        }
+        if index > Int(s.count()) - 1 { return }
+        if s.count() <= 0 { return }
         DispatchQueue.main.async {
             let indexPath = IndexPath.init(row: Int(index), section: 0)
             self.storedPasswordsTable.selectRow(at: indexPath, animated: true, scrollPosition: .top)

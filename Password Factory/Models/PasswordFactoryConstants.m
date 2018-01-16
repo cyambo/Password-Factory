@@ -108,7 +108,12 @@
         [e appendString:[NSString stringWithFormat:@"\\%c",[self.symbols characterAtIndex:i]]];
     }
     self.escapedSymbols = e;
-
+    self.disabledSyncKeys = @[@"enableRemoteStore",
+                              @"selectedPasswordType",
+                              @"storePasswords",
+                              @"activeControl",
+                              @"iCloudIsAvailable",
+                              @"cloudKitChangeToken"];
 }
 
 /**

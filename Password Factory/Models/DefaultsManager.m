@@ -222,7 +222,6 @@ static DefaultsManager *dm = nil;
         for (NSString *key in [kvs allKeys]) {
             [store removeObjectForKey:key];
         }
-        NSLog(@"YOP");
     }
 }
 /**
