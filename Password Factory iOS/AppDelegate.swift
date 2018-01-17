@@ -8,7 +8,7 @@
 
 import UIKit
 import UserNotifications
-import CloudKit
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,18 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let notification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String : NSObject])
-        PasswordStorage.get().receivedUpdatedData(notification) { (complete) in
-            if complete {
-                completionHandler(.newData)
-                if let storedVC = ((application.keyWindow?.rootViewController as? UINavigationController)?.viewControllers[0] as? TypeSelectionViewController)?.currentViewController as? StoredPasswordViewController {
-                    storedVC.receivedUpdatedData()
-                }
-                
-            } else {
-                completionHandler(.failed)
-            }
-        }
+
     }
 
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {

@@ -1481,13 +1481,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory iOS/Pods-Password Factory iOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SyncKit-framework/SyncKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ZXCVBN-framework/ZXCVBN.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHSVColorPicker/SwiftHSVColorPicker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SyncKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZXCVBN.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHSVColorPicker.framework",
 			);
@@ -1535,7 +1533,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget-resources.sh",
-				"${PODS_ROOT}/SyncKit/SyncKit/Classes/CoreData/QSCloudKitSyncModel.xcdatamodeld",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json",
 			);
@@ -1628,7 +1625,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-resources.sh",
 				"$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle",
-				"${PODS_ROOT}/SyncKit/SyncKit/Classes/CoreData/QSCloudKitSyncModel.xcdatamodeld",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json",
 			);

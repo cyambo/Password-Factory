@@ -8,7 +8,7 @@
 //
 
 import UIKit
-import CloudKit
+
 
 class Utilities: NSObject {
     
@@ -285,7 +285,7 @@ class Utilities: NSObject {
             
             if d.bool(forKey: "storePasswords") {
                 //enable password CloudKit sync
-                PasswordStorage.get().enableRemoteStorage(true)                
+//                PasswordStorage.get().enableRemoteStorage(true)
             }
 
             //and reset the home screen actions because they may have changed
@@ -295,7 +295,7 @@ class Utilities: NSObject {
             d.setBool(false, forKey: "enableRemoteStore")
             UIApplication.shared.unregisterForRemoteNotifications()
             d.enableRemoteStore(false)
-            PasswordStorage.get().enableRemoteStorage(false)
+//            PasswordStorage.get().enableRemoteStorage(false)
         }
     }
 }

@@ -85,13 +85,11 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle"
-  install_resource "${PODS_ROOT}/SyncKit/SyncKit/Classes/CoreData/QSCloudKitSyncModel.xcdatamodeld"
   install_resource "${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json"
   install_resource "${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle"
-  install_resource "${PODS_ROOT}/SyncKit/SyncKit/Classes/CoreData/QSCloudKitSyncModel.xcdatamodeld"
   install_resource "${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json"
   install_resource "${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json"
 fi

@@ -113,10 +113,7 @@
                               @"storePasswords",
                               @"activeControl",
                               @"iCloudIsAvailable",
-                              @"cloudKitChangeToken",
-                              @"storedPasswordTableSelectedRow",
-                              @"cloudKitSynced",
-                              @"cloudKitZoneLoaded"];
+                              @"storedPasswordTableSelectedRow"];
 }
 
 /**

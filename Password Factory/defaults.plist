@@ -110,14 +110,6 @@
 	<false/>
 	<key>enableRemoteStore</key>
 	<false/>
-	<key>cloudKitChangeToken</key>
-	<data></data>
-	<key>cloudKitZoneLoaded</key>
-	<integer>0</integer>
-	<key>cloudKitZoneCreated</key>
-	<integer>0</integer>
-	<key>cloudKitSynced</key>
-	<false/>
 	<key>enabledHomeScreenItems</key>
 	<array>
 		<integer>401</integer>
