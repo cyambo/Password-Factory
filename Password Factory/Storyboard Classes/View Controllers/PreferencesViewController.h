@@ -6,8 +6,8 @@
 //  Copyright (c) 2017 Cristiana Yambo. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <MASShortcut/Shortcut.h>
+@import Cocoa;
+@import MASShortcut;
 
 
 @interface PreferencesViewController : NSViewController <NSTextFieldDelegate>

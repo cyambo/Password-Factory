@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <OCMock.h>
+@import OCMock;
 #import "NSColor+NSColorHexadecimalValue.h"
 #import "MasterViewController.h"
 #import "DefaultsManager.h"

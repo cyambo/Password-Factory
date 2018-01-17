@@ -6,15 +6,15 @@
 //  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
 #import "constants.h"
-#import <Foundation/Foundation.h>
+@import Foundation;
 #if TARGET_OS_OSX
 #define Color NSColor
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 #define IS_MACOS 1
 #else
 #define IS_IOS 1
 #define Color UIColor
-#import <UIKit/UIKit.h>
+@import UIKit;
 #endif
 @interface ColorUtilities : NSObject
 +(Color *)getPasswordTextColor:(NSString *)subsring;

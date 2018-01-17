@@ -16,7 +16,7 @@
 #ifndef IOS
 #import "AppDelegate.h"
 #endif
-@interface PasswordStorage () <DefaultsManagerDelegate>
+@interface PasswordStorage ()
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
 @property (nonatomic, strong) NSSortDescriptor *sort;

@@ -23,7 +23,6 @@
 +(void)restoreUserDefaults;
 +(void)removeRemoteDefaults;
 -(void)resetDialogs;
--(void)syncToSharedDefaults;
 @property (nonatomic, assign) BOOL useShared;
 @property (nonatomic, assign) BOOL enableRemoteStore;
 - (void)enableShared:(BOOL)enable;

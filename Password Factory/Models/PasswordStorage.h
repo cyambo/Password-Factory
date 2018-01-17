@@ -30,7 +30,6 @@
 -(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor;
 -(void)loadSavedData;
 -(void)deleteAllEntities;
--(void)deleteAllRemoteObjects;
 -(void)enableRemoteStorage:(BOOL)enabled;
 -(void)changedMaxStorageAmount;
 

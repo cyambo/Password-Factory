@@ -1,21 +1,24 @@
 PODS:
   - MASShortcut (2.3.6)
   - OCMock (3.4.1)
+  - Seam3 (1.4.6)
   - SwiftHSVColorPicker (1.1.1)
   - ZXCVBN (1.0.5)
 
 DEPENDENCIES:
   - MASShortcut
   - OCMock
+  - Seam3
   - SwiftHSVColorPicker
   - ZXCVBN
 
 SPEC CHECKSUMS:
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
+  Seam3: 63a2defea7e3985c8974aa202c2321ed4f749b81
   SwiftHSVColorPicker: 69c9028dea168e0f8ee2439d31a899cf1df95678
   ZXCVBN: f3888e3f6363b8cf57bcc32857a9bc09f9f9e18e
 
-PODFILE CHECKSUM: 177268eb19ee459b6cc810e42508142fef357d6d
+PODFILE CHECKSUM: bcf3725911e107b8048f915aaa7c1a54d10dc82a
 
 COCOAPODS: 1.3.1

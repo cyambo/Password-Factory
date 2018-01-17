@@ -5,7 +5,7 @@
 //  Created by Cristiana Yambo on 8/20/15.
 //  Copyright (c) 2015 Cristiana Yambo. All rights reserved.
 //
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 #ifndef Password_Factory_constants_h
 #define Password_Factory_constants_h
