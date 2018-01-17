@@ -1,7 +1,5 @@
 # Uncomment this line to define a global platform for your project
 
-
-
 target 'Password Factory'  do
     platform :osx, '10.11'
     pod 'ZXCVBN'

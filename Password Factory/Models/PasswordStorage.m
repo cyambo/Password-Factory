@@ -12,11 +12,11 @@
 #import "DefaultsManager.h"
 #import "NSString+UnicodeLength.h"
 #import "NSString+sha1.h"
-
+@import Reachability;
 #ifndef IOS
 #import "AppDelegate.h"
 #endif
-@interface PasswordStorage ()
+@interface PasswordStorage () <DefaultsManagerDelegate>
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
 @property (nonatomic, strong) NSSortDescriptor *sort;
@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString *prev;
 @property (nonatomic, assign) BOOL enableRemoteStorage;
 @property (nonatomic, strong) CKSubscription *recordSubscription;
+@property (nonatomic, strong) NSDate *currentZoneCreationDate;
 @end
 @implementation PasswordStorage
 #pragma  mark init
@@ -234,6 +235,7 @@
             [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteOverMaxFetchError];
 #endif
         }
+        //TODO: batch delete?
         for(Passwords *p in items) {
             [self.container.viewContext deleteObject:p];
             if (self.enableRemoteStorage) {
@@ -328,6 +330,7 @@
 -(void)enableRemoteStorage:(BOOL)enabled {
     self.enableRemoteStorage = enabled;
     if (enabled) {
+        [self.d observeDefaults:self keys:@[@"cloudKitZoneCreated"]];
         NSLog(@"ENABLING REMOTE STORAGE");
         __weak PasswordStorage *weakSelf = self;
         [self loadCloudKitContainer:^{
@@ -339,11 +342,20 @@
         }];
         
     } else {
+        [self.d removeDefaultsObservers:self keys:@[@"cloudKitZoneCreated"]];
         //TODO: disable properly
     }
 }
+
+
+/**
+ Returns the unique id for a Password item
+
+ @param password <#password description#>
+ @return <#return value description#>
+ */
 -(NSString *)getIDFor:(Passwords *)password {
-    NSString *salt = [NSString stringWithFormat:@"%@%d",password.password,password.type];
+    NSString *salt = [NSString stringWithFormat:@"%@%d%lf",password.password,password.type,password.time.timeIntervalSinceReferenceDate];
     return [salt sha1];
 }
 #pragma mark CloudKit
@@ -363,10 +375,40 @@
     [self.cloudKitDatabase saveRecordZone:self.cloudKitRecordZone completionHandler:^(CKRecordZone * _Nullable zone, NSError * _Nullable error) {
         if (error) {
             NSLog(@"CK ZON CR %@",error.localizedDescription);
-        } else if (completionHandler != nil) {
+        } else {
             NSLog(@"LOADED CK CONTAINER ZONE");
-            [weakSelf.d setObject:zone.zoneID.zoneName forKey:@"cloudKitZoneID"];
-            completionHandler();
+            //checking to see when the zone was created and loaded to determine what to sync
+            float zoneTime = [weakSelf.d floatForKey:@"cloudKitZoneCreated"];
+            float zoneLoaded = [weakSelf.d floatForKey:@"cloudKitZoneLoaded"];
+            //if both are zero, then it is a new zone, so set to now
+            if (zoneTime == 0 && zoneLoaded == 0) {
+                zoneTime = [NSDate date].timeIntervalSinceReferenceDate;
+                zoneLoaded = zoneTime;
+            //if zone loaded is zero and zone time is set that means we never synced so, sync to zoneTime
+            //and load the zone
+            } else if (zoneTime > zoneLoaded) {
+                //synchronize with remote
+                //delete everything before zoneLoaded and sync everything after
+                [weakSelf synchronizeWithRemote];
+//                zoneLoaded = zoneTime;
+                
+                NSLog(@"NEED TO SYNC");
+            
+            } else if (zoneTime == 0 && zoneLoaded != 0) {
+                NSLog(@"ZONE TIME ZERO");
+            } else if (zoneTime < zoneLoaded) {
+                NSLog(@"ZONE TIME LESS");
+                zoneLoaded = zoneTime; //shouldn't ever get here
+            }
+            //set current creation date
+            weakSelf.currentZoneCreationDate = [NSDate dateWithTimeIntervalSinceReferenceDate:zoneTime];
+            
+            [weakSelf.d setFloat:zoneLoaded forKey:@"cloudKitZoneLoaded"];
+            [weakSelf.d setFloat:zoneTime forKey:@"cloudKitZoneCreated"];
+            if (completionHandler != nil) {
+               completionHandler();
+            }
+            
         }
     }];
 }
@@ -496,29 +538,31 @@
 -(void)deleteAllRemoteObjects {
 
     __weak PasswordStorage *weakSelf = self;
-    [self.d setObject:@"" forKey:@"cloudKitZoneID"];
-    CKModifyRecordZonesOperation *modifyZoneOp = [[CKModifyRecordZonesOperation alloc] initWithRecordZonesToSave:nil recordZoneIDsToDelete:@[self.cloudKitRecordZone.zoneID]];
-    modifyZoneOp.modifyRecordZonesCompletionBlock = ^(NSArray<CKRecordZone *> * _Nullable savedRecordZones, NSArray<CKRecordZoneID *> * _Nullable deletedRecordZoneIDs, NSError * _Nullable operationError) {
-        if (operationError) {
-            NSLog(@"CK ZON DEL %@",operationError.localizedDescription);
-        } else {
-            NSLog(@"DELETE ALL REMOTE OBJECTS");
-            [weakSelf deleteSubscriptions];
-            
-            if (weakSelf.enableRemoteStorage) {
-                NSLog(@"DELETING LOCAL OBJECTS");
-                [weakSelf deleteAllEntities];
-                [weakSelf loadCloudKitContainer:nil];
+    if (self.cloudKitRecordZone != nil) {
+        CKModifyRecordZonesOperation *modifyZoneOp = [[CKModifyRecordZonesOperation alloc] initWithRecordZonesToSave:nil recordZoneIDsToDelete:@[self.cloudKitRecordZone.zoneID]];
+        modifyZoneOp.modifyRecordZonesCompletionBlock = ^(NSArray<CKRecordZone *> * _Nullable savedRecordZones, NSArray<CKRecordZoneID *> * _Nullable deletedRecordZoneIDs, NSError * _Nullable operationError) {
+            if (operationError) {
+                NSLog(@"CK ZON DEL %@",operationError.localizedDescription);
+            } else {
+                NSLog(@"DELETE ALL REMOTE OBJECTS");
+                [weakSelf deleteSubscriptions];
+                [self.d setObject:nil forKey:@"cloudKitChangeToken"];
+                [self.d setFloat:0.0 forKey:@"cloudKitZoneCreated"];
+                [self.d setFloat:0.0 forKey:@"cloudKitZoneLoaded"];
+                if (weakSelf.enableRemoteStorage) {
+                    NSLog(@"DELETING LOCAL OBJECTS");
+                    [weakSelf deleteAllEntities];
+                    [weakSelf loadCloudKitContainer:nil];
+                }
+                
             }
-            
-        }
-    };
-    [self.cloudKitDatabase addOperation:modifyZoneOp];
-    
-    self.cloudKitRecordZone = nil;
-    self.cloudKitDatabase = nil;
-    self.cloudKitContainer = nil;
-
+        };
+        [self.cloudKitDatabase addOperation:modifyZoneOp];
+        
+        self.cloudKitRecordZone = nil;
+        self.cloudKitDatabase = nil;
+        self.cloudKitContainer = nil;
+    }
 }
 -(void)deleteSubscriptions {
 
@@ -622,4 +666,18 @@
     }
     completionHandler(NO);
 }
+- (void)observeValue:(NSString * _Nullable)keyPath change:(NSDictionary * _Nullable)change {
+    if ([keyPath isEqualToString:@"cloudKitZoneCreated"]) {
+        if (self.currentZoneCreationDate != nil) {
+            float currentZoneTime = self.currentZoneCreationDate.timeIntervalSinceReferenceDate;
+            float changedZonedTime = [(NSNumber *)change[@"new"] floatValue];
+            if (changedZonedTime > currentZoneTime) {
+                NSLog(@"REMOTE DELETE ALL");
+                [self deleteAllEntities];
+                [self loadCloudKitContainer:nil];
+            }
+        }
+    }
+}
+
 @end

@@ -356,13 +356,13 @@
 		03369C5E64557016FD1675C81DCAF1F9 /* OCMFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMFunctions.m; path = Source/OCMock/OCMFunctions.m; sourceTree = "<group>"; };
 		04233068B71A37E4B48CCC133711AEF7 /* MASKeyMasks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyMasks.h; path = Framework/MASKeyMasks.h; sourceTree = "<group>"; };
 		047BA6724132B1A83929B40387524D34 /* QSSyncedEntity+CoreDataClass.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "QSSyncedEntity+CoreDataClass.m"; path = "SyncKit/Classes/CoreData/QSSyncedEntity+CoreDataClass.m"; sourceTree = "<group>"; };
-		04D8E0200F9DAB9FA9EE8B11CDC2A8AC /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ja.lproj; sourceTree = "<group>"; };
+		04D8E0200F9DAB9FA9EE8B11CDC2A8AC /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ja.lproj; sourceTree = "<group>"; };
 		0653AB1624742261F9A70F27BAF92D1F /* QSSyncedEntity+CoreDataProperties.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "QSSyncedEntity+CoreDataProperties.m"; path = "SyncKit/Classes/CoreData/QSSyncedEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
 		0817D3092EFD4BD1BFF53F79BE88CDE1 /* QSRecord+CoreDataClass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "QSRecord+CoreDataClass.h"; path = "SyncKit/Classes/CoreData/QSRecord+CoreDataClass.h"; sourceTree = "<group>"; };
 		083A9804FAB7E010354980E446CBA847 /* ZXCVBN-framework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZXCVBN-framework-dummy.m"; sourceTree = "<group>"; };
 		083DB192622019B54C6F2E640481D83E /* QSChangeManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QSChangeManager.h; path = SyncKit/Classes/QSSynchronizer/QSChangeManager.h; sourceTree = "<group>"; };
 		088A705E58A1CC164BFC9502E56D7E3A /* OCMRealObjectForwarder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMRealObjectForwarder.h; path = Source/OCMock/OCMRealObjectForwarder.h; sourceTree = "<group>"; };
-		08B4877B6ECBA9A8B66553D4C9619E3C /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = fr.lproj; sourceTree = "<group>"; };
+		08B4877B6ECBA9A8B66553D4C9619E3C /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = fr.lproj; sourceTree = "<group>"; };
 		08BE3C931B86D30A3E004418BEE24850 /* BBPasswordStrength.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BBPasswordStrength.h; path = ZXCVBN/BBPasswordStrength.h; sourceTree = "<group>"; };
 		099DEDF9A77773B36531CAB6E1A56827 /* OCMReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMReturnValueProvider.h; path = Source/OCMock/OCMReturnValueProvider.h; sourceTree = "<group>"; };
 		0A2B2B9C0C738B475EBEB0F37D2BD143 /* Pods-Password Factory Widget-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Password Factory Widget-dummy.m"; sourceTree = "<group>"; };
@@ -378,14 +378,14 @@
 		1889EB7B5F150B943CB0862E6C2BEB41 /* SwiftHSVColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHSVColorPicker-prefix.pch"; sourceTree = "<group>"; };
 		1A65840E4F47013174C1904D3C2CD4EB /* OCProtocolMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCProtocolMockObject.h; path = Source/OCMock/OCProtocolMockObject.h; sourceTree = "<group>"; };
 		1B870139EC42F1A08614A07F61C54252 /* ResourceBundle-MASShortcut-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MASShortcut-Info.plist"; sourceTree = "<group>"; };
-		1BD1269881D78BAF9227F0C4B37003E6 /* libPods-Password Factory Widget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory Widget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BD1269881D78BAF9227F0C4B37003E6 /* libPods-Password Factory Widget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Password Factory Widget.a"; path = "libPods-Password Factory Widget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E66F81CEACABD30DCD9A777211CBB44 /* SyncKit-library-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SyncKit-library-prefix.pch"; path = "../SyncKit-library/SyncKit-library-prefix.pch"; sourceTree = "<group>"; };
 		1F74ECE053F7B00613E18BF39D45CCFB /* QSEntityIdentifierUpdateMigrationPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QSEntityIdentifierUpdateMigrationPolicy.h; path = SyncKit/Classes/CoreData/QSEntityIdentifierUpdateMigrationPolicy.h; sourceTree = "<group>"; };
 		204D113DB6220549512A1038796134DD /* MASLocalization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLocalization.h; path = Framework/MASLocalization.h; sourceTree = "<group>"; };
 		21CCEE1A8F6D07D414225FD7CA673496 /* NSValue+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValue+OCMAdditions.m"; path = "Source/OCMock/NSValue+OCMAdditions.m"; sourceTree = "<group>"; };
 		2232DEAA3482ABB199C51366383D2A55 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		2242745C3CB46F4392043AEFE583224D /* QSPrimaryKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QSPrimaryKey.h; path = SyncKit/Classes/QSSynchronizer/QSPrimaryKey.h; sourceTree = "<group>"; };
-		253DB271C04012018505F2A86C5E803E /* Pods_Password_Factory_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Password_Factory_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		253DB271C04012018505F2A86C5E803E /* Pods_Password_Factory_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Password_Factory_iOS.framework; path = "Pods-Password Factory iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2565D93F63565B289BC49134E6ED6D6F /* OCMMacroState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMMacroState.h; path = Source/OCMock/OCMMacroState.h; sourceTree = "<group>"; };
 		2764BA73BF2CBB277483A9B72F2C6340 /* Pods-Password Factory iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Password Factory iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		2777B6315A8CA8138BE8DDB8C5CCC869 /* Pods-Password FactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Password FactoryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -394,41 +394,41 @@
 		293F97AB2E870DB1B0282D2FF3F6AF57 /* BBPatternCenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BBPatternCenter.m; path = ZXCVBN/BBPatternCenter.m; sourceTree = "<group>"; };
 		2AA95F7E06CD6EB826D7B80021CB893C /* QSPendingRelationship+CoreDataClass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "QSPendingRelationship+CoreDataClass.h"; path = "SyncKit/Classes/CoreData/QSPendingRelationship+CoreDataClass.h"; sourceTree = "<group>"; };
 		2AE427BBD5226911883369B2A7A28922 /* MASLocalization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLocalization.m; path = Framework/MASLocalization.m; sourceTree = "<group>"; };
-		2B032700DE607FF9111B37960D7F1924 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = es.lproj; sourceTree = "<group>"; };
+		2B032700DE607FF9111B37960D7F1924 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = es.lproj; sourceTree = "<group>"; };
 		2F33EA94EBEAEB432F2B5EF7779BE2DB /* Pods-Password Factory iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Password Factory iOS-resources.sh"; sourceTree = "<group>"; };
 		2F3A4AC1D7BE79D61F8FB508F96C17A7 /* QSSyncedEntity+CoreDataClass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "QSSyncedEntity+CoreDataClass.h"; path = "SyncKit/Classes/CoreData/QSSyncedEntity+CoreDataClass.h"; sourceTree = "<group>"; };
-		301118640DA856A841368D1AF1915F59 /* libSyncKit-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSyncKit-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3041AB3B7724FA7C29D1A3E7569C924E /* libPods-Password Factory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		301118640DA856A841368D1AF1915F59 /* libSyncKit-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libSyncKit-library.a"; path = "libSyncKit-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3041AB3B7724FA7C29D1A3E7569C924E /* libPods-Password Factory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Password Factory.a"; path = "libPods-Password Factory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		313899946CD26FC1AA3CD253478FD7A4 /* OCMock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMock.h; path = Source/OCMock/OCMock.h; sourceTree = "<group>"; };
 		315E3368AB9E07E98F58E4C813BBE8E8 /* OCMInvocationMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMInvocationMatcher.m; path = Source/OCMock/OCMInvocationMatcher.m; sourceTree = "<group>"; };
 		316D30E2A109E6557479B3BFD64C9500 /* MASShortcut-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut-dummy.m"; sourceTree = "<group>"; };
 		32102BD6B12B159CC8D28B931C6AD662 /* OCMBlockArgCaller.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMBlockArgCaller.h; path = Source/OCMock/OCMBlockArgCaller.h; sourceTree = "<group>"; };
-		3219FA1B1BA9CC81D734568F4B457626 /* ZXCVBN-framework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "ZXCVBN-framework.modulemap"; sourceTree = "<group>"; };
-		32C0B170F9F5CED66C6E8B0179BBA62E /* Pods-Password Factory iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Password Factory iOS.modulemap"; sourceTree = "<group>"; };
+		3219FA1B1BA9CC81D734568F4B457626 /* ZXCVBN-framework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "ZXCVBN-framework.modulemap"; sourceTree = "<group>"; };
+		32C0B170F9F5CED66C6E8B0179BBA62E /* Pods-Password Factory iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Password Factory iOS.modulemap"; sourceTree = "<group>"; };
 		32C4CD4C81D910F401D81A2694618D8C /* OCMFunctionsPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMFunctionsPrivate.h; path = Source/OCMock/OCMFunctionsPrivate.h; sourceTree = "<group>"; };
 		338A5E5D6A3EFD52718E0B694F2F81AF /* OCMRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMRecorder.m; path = Source/OCMock/OCMRecorder.m; sourceTree = "<group>"; };
-		35D823A0F6DE32756B283A8BBF8E43AE /* libZXCVBN-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libZXCVBN-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35D823A0F6DE32756B283A8BBF8E43AE /* libZXCVBN-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libZXCVBN-library.a"; path = "libZXCVBN-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36E6E6B9B699551EBEAC0247C3B1AAEC /* Shortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
 		37E744AC712A99BD09056CE3D9839B32 /* Pods-Password Factory iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Password Factory iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		386516ADA40EF7C73BAD03F77AC0A5F9 /* QSPendingRelationship+CoreDataProperties.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "QSPendingRelationship+CoreDataProperties.m"; path = "SyncKit/Classes/CoreData/QSPendingRelationship+CoreDataProperties.m"; sourceTree = "<group>"; };
-		3AFFC04C18898D5F9F3FA00E15177677 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ko.lproj; sourceTree = "<group>"; };
+		3AFFC04C18898D5F9F3FA00E15177677 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ko.lproj; sourceTree = "<group>"; };
 		3B0E509FD4ABA3168C7B5690C41709E7 /* MASShortcutMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitor.m; path = Framework/MASShortcutMonitor.m; sourceTree = "<group>"; };
 		3B46EE8804119A1878153E16CE983CAC /* MASShortcut-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-prefix.pch"; sourceTree = "<group>"; };
-		3BEF926D4423AA09824FB5E64C5942DF /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = de.lproj; sourceTree = "<group>"; };
+		3BEF926D4423AA09824FB5E64C5942DF /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = de.lproj; sourceTree = "<group>"; };
 		3EB9A41B3334D43ACA912E962DED8BBA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		3F1D0FC4F38B0BCEC0EF364997183949 /* OCMNotificationPoster.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMNotificationPoster.m; path = Source/OCMock/OCMNotificationPoster.m; sourceTree = "<group>"; };
 		3F2B6355AD4732CEB9AEBBF7887EC062 /* QSCloudKitSynchronizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QSCloudKitSynchronizer.m; path = SyncKit/Classes/QSSynchronizer/QSCloudKitSynchronizer.m; sourceTree = "<group>"; };
 		41710572221AD1FD11D7125B55F57B79 /* QSCoreDataChangeManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QSCoreDataChangeManager.m; path = SyncKit/Classes/CoreData/QSCoreDataChangeManager.m; sourceTree = "<group>"; };
 		42A1369B2D823584A6ADB90AEDE5B9C7 /* OCMStubRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMStubRecorder.m; path = Source/OCMock/OCMStubRecorder.m; sourceTree = "<group>"; };
 		430082924380F777FDEAC999F6C56731 /* NSManagedObjectContext+QSFetch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+QSFetch.h"; path = "SyncKit/Classes/CoreData/NSManagedObjectContext+QSFetch.h"; sourceTree = "<group>"; };
-		4317A39CDFCC2B21DBCE07F6963588A7 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ru.lproj; sourceTree = "<group>"; };
+		4317A39CDFCC2B21DBCE07F6963588A7 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ru.lproj; sourceTree = "<group>"; };
 		45B71FA60A52C8DA46DBCF799FC94FAB /* ZXCVBN-library.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "ZXCVBN-library.xcconfig"; path = "../ZXCVBN-library/ZXCVBN-library.xcconfig"; sourceTree = "<group>"; };
 		466FFC43BE93ECC7376AFB63F25979B9 /* MASShortcutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = Framework/MASShortcutView.m; sourceTree = "<group>"; };
 		47A8BB26A562837E4F3F829F39A6D696 /* BBDateMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BBDateMatcher.m; path = ZXCVBN/BBDateMatcher.m; sourceTree = "<group>"; };
 		4864ABDF25CEFC3381155EA5587331BA /* SwiftHSVColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftHSVColorPicker.xcconfig; sourceTree = "<group>"; };
 		48C92F8E4553E7D2A41C458C0F2055DC /* SwiftHSVColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftHSVColorPicker-dummy.m"; sourceTree = "<group>"; };
-		49B8934EEBD8A9CD810FE803009BD54B /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = it.lproj; sourceTree = "<group>"; };
-		4A3817F98C6BCEF275B10EB5ED656A23 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
+		49B8934EEBD8A9CD810FE803009BD54B /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = it.lproj; sourceTree = "<group>"; };
+		4A3817F98C6BCEF275B10EB5ED656A23 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = en.lproj; sourceTree = "<group>"; };
 		4D5B40724448433D204FA545870893E7 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+OCMAdditions.h"; path = "Source/OCMock/NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		4D7DCD6298E927AEAFC7E104DCB2AA51 /* Pods-Password Factory iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Password Factory iOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		4E13A0C9E2C8E49CE07DD73773C33FD9 /* OCMBlockArgCaller.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBlockArgCaller.m; path = Source/OCMock/OCMBlockArgCaller.m; sourceTree = "<group>"; };
@@ -437,7 +437,7 @@
 		5045DF96DBE3B5F4A1F1DCDA5AED440E /* NSObject+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+OCMAdditions.m"; path = "Source/OCMock/NSObject+OCMAdditions.m"; sourceTree = "<group>"; };
 		5049795B1D88B719E8D03CB52961C6C2 /* OCMObserverRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMObserverRecorder.h; path = Source/OCMock/OCMObserverRecorder.h; sourceTree = "<group>"; };
 		5073635AA937D62AC84C0A435E125756 /* OCMRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMRecorder.h; path = Source/OCMock/OCMRecorder.h; sourceTree = "<group>"; };
-		5333F2A3DB002F1A82B6B19D6ACBFB82 /* adjacency_graphs.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = adjacency_graphs.json; path = tools/generated/adjacency_graphs.json; sourceTree = "<group>"; };
+		5333F2A3DB002F1A82B6B19D6ACBFB82 /* adjacency_graphs.json */ = {isa = PBXFileReference; includeInIndex = 1; name = adjacency_graphs.json; path = tools/generated/adjacency_graphs.json; sourceTree = "<group>"; };
 		54EBFEB536F8EA80CECC0AE2E0AF0615 /* ZXCVBN-framework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZXCVBN-framework-prefix.pch"; sourceTree = "<group>"; };
 		5513AEA7D6B669EC6E53193DFACB20F5 /* OCObserverMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCObserverMockObject.m; path = Source/OCMock/OCObserverMockObject.m; sourceTree = "<group>"; };
 		5673C9BE86DE64859CCDC6A84AF9D561 /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASDictionaryTransformer.m; path = Framework/MASDictionaryTransformer.m; sourceTree = "<group>"; };
@@ -450,12 +450,12 @@
 		5CA978720F8EA4B35FC40B4595124E02 /* SyncKit-framework.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SyncKit-framework.xcconfig"; sourceTree = "<group>"; };
 		5CEC9EFDC953096C39FEDFCCC0CE218B /* SyncKit-framework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SyncKit-framework-dummy.m"; sourceTree = "<group>"; };
 		5F4D62586B1EEE5B1F07C861F2C53E72 /* ZXCVBN-framework.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ZXCVBN-framework.xcconfig"; sourceTree = "<group>"; };
-		5F5E4AAB6A0146A15B58FAF893882697 /* SwiftHSVColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftHSVColorPicker.modulemap; sourceTree = "<group>"; };
+		5F5E4AAB6A0146A15B58FAF893882697 /* SwiftHSVColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftHSVColorPicker.modulemap; sourceTree = "<group>"; };
 		624DED462004C985ABA6AF57A75AFD63 /* QSCloudKitSynchronizer+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "QSCloudKitSynchronizer+Private.h"; path = "SyncKit/Classes/QSSynchronizer/QSCloudKitSynchronizer+Private.h"; sourceTree = "<group>"; };
 		629A62EC353CB77B4DCFC73185871575 /* SelectedColorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectedColorView.swift; path = Source/SelectedColorView.swift; sourceTree = "<group>"; };
 		62BD65993FDF820AA113BEDDB6D0DA28 /* OCMMacroState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMMacroState.m; path = Source/OCMock/OCMMacroState.m; sourceTree = "<group>"; };
 		63BCE80A4B09F0E194FBFF3CD7F2CD22 /* OCMReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMReturnValueProvider.m; path = Source/OCMock/OCMReturnValueProvider.m; sourceTree = "<group>"; };
-		655EE447C187D8E5E8EB057C87408E89 /* libMASShortcut.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMASShortcut.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		655EE447C187D8E5E8EB057C87408E89 /* libMASShortcut.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMASShortcut.a; path = libMASShortcut.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		66099EE0FE2A8CEA3E37B9CD414979E5 /* ZXCVBN-framework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZXCVBN-framework-umbrella.h"; sourceTree = "<group>"; };
 		667A9CD12E16753756FB4C775A3F633A /* OCMExceptionReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMExceptionReturnValueProvider.h; path = Source/OCMock/OCMExceptionReturnValueProvider.h; sourceTree = "<group>"; };
 		667AA47E356A013D8B0CB7C3AF7D975E /* MASHotKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASHotKey.m; path = Framework/MASHotKey.m; sourceTree = "<group>"; };
@@ -474,7 +474,7 @@
 		702CF29E60471A00500A1378FCE25ECC /* QSEntityIdentifierUpdateMigrationPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QSEntityIdentifierUpdateMigrationPolicy.m; path = SyncKit/Classes/CoreData/QSEntityIdentifierUpdateMigrationPolicy.m; sourceTree = "<group>"; };
 		707FE97C2EB17CD3908566E1284FA172 /* Pods-Password Factory-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Password Factory-resources.sh"; sourceTree = "<group>"; };
 		7162E13BE33D112922D4DB224A71371F /* OCMBoxedReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMBoxedReturnValueProvider.h; path = Source/OCMock/OCMBoxedReturnValueProvider.h; sourceTree = "<group>"; };
-		7279098A9C7854B3AE0D1C39402207B5 /* frequency_lists.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = frequency_lists.json; path = tools/generated/frequency_lists.json; sourceTree = "<group>"; };
+		7279098A9C7854B3AE0D1C39402207B5 /* frequency_lists.json */ = {isa = PBXFileReference; includeInIndex = 1; name = frequency_lists.json; path = tools/generated/frequency_lists.json; sourceTree = "<group>"; };
 		72B1DCDD9A5FC1A0712F32E744414637 /* OCMock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OCMock.xcconfig; sourceTree = "<group>"; };
 		72C010CA1E5C3F050B6A9A04C431737A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		76439FC40249E200070465CE3B143061 /* QSPendingRelationship+CoreDataProperties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "QSPendingRelationship+CoreDataProperties.h"; path = "SyncKit/Classes/CoreData/QSPendingRelationship+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -500,7 +500,7 @@
 		8F9936776440A0358DAAE0B89AE000DC /* QSCloudKitSynchronizer+CoreData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "QSCloudKitSynchronizer+CoreData.h"; path = "SyncKit/Classes/CoreData/QSCloudKitSynchronizer+CoreData.h"; sourceTree = "<group>"; };
 		914C3A5E3339A0FD353BB012B5DE0462 /* OCMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMockObject.m; path = Source/OCMock/OCMockObject.m; sourceTree = "<group>"; };
 		918D7BF0619EA015C84070F5EA1A939A /* ColorUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorUtils.swift; path = Source/ColorUtils.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93C496F73F439022EEF14F891CEECB29 /* Pods-Password Factory iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Password Factory iOS-umbrella.h"; sourceTree = "<group>"; };
 		948D1130139455CBD6609F4FE4C9EEF4 /* OCProtocolMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCProtocolMockObject.m; path = Source/OCMock/OCProtocolMockObject.m; sourceTree = "<group>"; };
 		950268150152E2FE44C3E8BC9099DD9B /* OCMStubRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMStubRecorder.h; path = Source/OCMock/OCMStubRecorder.h; sourceTree = "<group>"; };
@@ -515,7 +515,7 @@
 		9C8B66759CBE437659298F1C5AFD376D /* OCMPassByRefSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMPassByRefSetter.h; path = Source/OCMock/OCMPassByRefSetter.h; sourceTree = "<group>"; };
 		9E0717983E710C845E71903A888A9117 /* QSCloudKitSynchronizer+CoreData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "QSCloudKitSynchronizer+CoreData.m"; path = "SyncKit/Classes/CoreData/QSCloudKitSynchronizer+CoreData.m"; sourceTree = "<group>"; };
 		9E5A4AA647D16A138395CDF1A2D43F9A /* NSMethodSignature+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMethodSignature+OCMAdditions.h"; path = "Source/OCMock/NSMethodSignature+OCMAdditions.h"; sourceTree = "<group>"; };
-		9EF8751E5DA0FC7177B92261A7AC7CE6 /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EF8751E5DA0FC7177B92261A7AC7CE6 /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Password FactoryTests.a"; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1647CE5BEC352CD7C7D4CC1F72E8EBB /* Pods-Password Factory Widget-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Password Factory Widget-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A20589FBE86FCC09B90D12BA64FE0E21 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
 		A235093AD0FF60EFDA0CF0ECD1034164 /* BBPasswordStrength.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BBPasswordStrength.m; path = ZXCVBN/BBPasswordStrength.m; sourceTree = "<group>"; };
@@ -537,17 +537,17 @@
 		B3731BA103442D4779737B4652FFBB57 /* Pods-Password FactoryTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Password FactoryTests-frameworks.sh"; sourceTree = "<group>"; };
 		B45A6522F2523494655E038FB1B3DA01 /* SyncKit-framework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SyncKit-framework-prefix.pch"; sourceTree = "<group>"; };
 		B503D8DFBA7A386CDAC35BF972C793BE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
-		B5BC671D31E772E73B7825B0E7450EEC /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = nl.lproj; sourceTree = "<group>"; };
+		B5BC671D31E772E73B7825B0E7450EEC /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = nl.lproj; sourceTree = "<group>"; };
 		B80A040ACABD32664D1C671E7F9AC239 /* OCMArgAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMArgAction.m; path = Source/OCMock/OCMArgAction.m; sourceTree = "<group>"; };
 		B835C5E595F7B5159CFAD73AC17745B7 /* OCMArgAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMArgAction.h; path = Source/OCMock/OCMArgAction.h; sourceTree = "<group>"; };
 		B84B91685C0EE84A434D8B7B736B2092 /* BBEntropyCenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BBEntropyCenter.m; path = ZXCVBN/BBEntropyCenter.m; sourceTree = "<group>"; };
 		B8D508F8680C95DA352A033D133239E5 /* MASShortcutMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutMonitor.h; path = Framework/MASShortcutMonitor.h; sourceTree = "<group>"; };
-		BC0FC20B04E0EAD4C72F7C1CBBFA4C74 /* ZXCVBN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZXCVBN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC14BE59C05C6DEC708D8E161434D118 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
+		BC0FC20B04E0EAD4C72F7C1CBBFA4C74 /* ZXCVBN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZXCVBN.framework; path = "ZXCVBN-framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC14BE59C05C6DEC708D8E161434D118 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
 		BC2369CF3B48592A78C21BA17A7482AA /* BBDictionaryMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BBDictionaryMatcher.m; path = ZXCVBN/BBDictionaryMatcher.m; sourceTree = "<group>"; };
 		BCAF0276DAE8FB076C644C963819B61A /* MASShortcut.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MASShortcut.xcconfig; sourceTree = "<group>"; };
 		BCE0DCAA14CF3F943C4EA28E59E7FA19 /* OCMInvocationExpectation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMInvocationExpectation.m; path = Source/OCMock/OCMInvocationExpectation.m; sourceTree = "<group>"; };
-		BF891347B2E05C2BF44C87A80F79B4F2 /* SyncKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SyncKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF891347B2E05C2BF44C87A80F79B4F2 /* SyncKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SyncKit.framework; path = "SyncKit-framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD040791012AF6326179E837A2F8B60 /* OCMArg.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMArg.h; path = Source/OCMock/OCMArg.h; sourceTree = "<group>"; };
 		C01B36D24A00CD81DDDA7291D0A47C24 /* SyncKit-framework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SyncKit-framework-umbrella.h"; sourceTree = "<group>"; };
 		C1CAB863C3D01B0341FDD9669379ED9D /* BBRepeatMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BBRepeatMatcher.m; path = ZXCVBN/BBRepeatMatcher.m; sourceTree = "<group>"; };
@@ -555,12 +555,12 @@
 		C56E080B544DE62517F7CF0C1DD47114 /* OCMBlockCaller.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBlockCaller.m; path = Source/OCMock/OCMBlockCaller.m; sourceTree = "<group>"; };
 		C57DD91AB512A17B16BB1F0B8E74947E /* NSManagedObjectContext+QSFetch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+QSFetch.m"; path = "SyncKit/Classes/CoreData/NSManagedObjectContext+QSFetch.m"; sourceTree = "<group>"; };
 		C6A064BAB5445DADCFD5F494798BC417 /* QSCloudKitSyncModel.xcdatamodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcdatamodel; path = QSCloudKitSyncModel.xcdatamodel; sourceTree = "<group>"; };
-		C6D9BA75ADCEBFF78C00BAE85ACC2800 /* libOCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCMock.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6F3D3AA1CC25A27ABCC12BB343081B1 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
-		C785EA73743BA0F310F12BC448B4934A /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = cs.lproj; sourceTree = "<group>"; };
+		C6D9BA75ADCEBFF78C00BAE85ACC2800 /* libOCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libOCMock.a; path = libOCMock.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6F3D3AA1CC25A27ABCC12BB343081B1 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
+		C785EA73743BA0F310F12BC448B4934A /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = cs.lproj; sourceTree = "<group>"; };
 		C973B841CB773B484F633E9F0074D3C1 /* Pods-Password FactoryTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Password FactoryTests-dummy.m"; sourceTree = "<group>"; };
 		C9EB99012E61CC353A517356B0F42AC9 /* Pods-Password FactoryTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Password FactoryTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		CA107F41C52F318C0B55745618658F0F /* SyncKit-framework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "SyncKit-framework.modulemap"; sourceTree = "<group>"; };
+		CA107F41C52F318C0B55745618658F0F /* SyncKit-framework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "SyncKit-framework.modulemap"; sourceTree = "<group>"; };
 		CBACC44E717ECD7FB632785FD4A1FE87 /* Pods-Password Factory iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Password Factory iOS-frameworks.sh"; sourceTree = "<group>"; };
 		CE5A5C20C674A029DD7409997C7BCBFB /* Pods-Password Factory Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Password Factory Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		CFEE55B11C3C8CBFEF135D5E9DE615D3 /* MASShortcutValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutValidator.m; path = Framework/MASShortcutValidator.m; sourceTree = "<group>"; };
@@ -570,7 +570,7 @@
 		D3D7A191AFD8A519ACC4A2EFCF5A813E /* OCMock-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OCMock-dummy.m"; sourceTree = "<group>"; };
 		D5ABA394537521AFFC45C81638F831A6 /* Pods-Password Factory-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Password Factory-acknowledgements.plist"; sourceTree = "<group>"; };
 		D74B65E404961D710FDAA57C5866E700 /* QSSyncedEntityState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QSSyncedEntityState.h; path = SyncKit/Classes/QSSynchronizer/QSSyncedEntityState.h; sourceTree = "<group>"; };
-		D7D368BCDEB84F1EA57760CFE6AAE7DE /* MASShortcut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MASShortcut.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7D368BCDEB84F1EA57760CFE6AAE7DE /* MASShortcut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MASShortcut.bundle; path = MASShortcut.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E41F1802A5D64CB830330197FC9390 /* OCMExceptionReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMExceptionReturnValueProvider.m; path = Source/OCMock/OCMExceptionReturnValueProvider.m; sourceTree = "<group>"; };
 		DA02C4AE074848D33D2607E1C6357011 /* MASShortcutBinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutBinder.h; path = Framework/MASShortcutBinder.h; sourceTree = "<group>"; };
 		DC2AF815056AD1E7ED76FE1B2A03242E /* MASShortcutValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutValidator.h; path = Framework/MASShortcutValidator.h; sourceTree = "<group>"; };
@@ -589,7 +589,7 @@
 		EFF3B5468D6B1B6DBBCEED13CAFE5FC5 /* SyncKitLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SyncKitLog.h; path = SyncKit/Classes/QSSynchronizer/SyncKitLog.h; sourceTree = "<group>"; };
 		F177E91CDFBE09FDB8A66DB51EAF0DBF /* BBPattern.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BBPattern.m; path = ZXCVBN/BBPattern.m; sourceTree = "<group>"; };
 		F1CB94192A60998F6E46A2458E39FC06 /* BBSpatialMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BBSpatialMatcher.m; path = ZXCVBN/BBSpatialMatcher.m; sourceTree = "<group>"; };
-		F61A57FA483420C0630AFB2F64D2634B /* SwiftHSVColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHSVColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61A57FA483420C0630AFB2F64D2634B /* SwiftHSVColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftHSVColorPicker.framework; path = SwiftHSVColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F882E4E0888AF247210210AC21FD4A37 /* MASShortcutBinder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutBinder.m; path = Framework/MASShortcutBinder.m; sourceTree = "<group>"; };
 		F98BD6DB2925DBC4B181D0C6C6A073B6 /* ZXCVBN-library-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ZXCVBN-library-dummy.m"; path = "../ZXCVBN-library/ZXCVBN-library-dummy.m"; sourceTree = "<group>"; };
 		FA299456EE2AAD3DD1C03E98A8DEC225 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -600,7 +600,7 @@
 		FCA6C7EF81772F4444A8AECAEC7ED017 /* QSSyncedEntity+CoreDataProperties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "QSSyncedEntity+CoreDataProperties.h"; path = "SyncKit/Classes/CoreData/QSSyncedEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
 		FDA4495077DA46D0EDFA4686B3AB69FC /* NSValue+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValue+OCMAdditions.h"; path = "Source/OCMock/NSValue+OCMAdditions.h"; sourceTree = "<group>"; };
 		FDCED3EACAB1F01F1171AB541F8439EE /* BBDateMatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BBDateMatcher.h; path = ZXCVBN/BBDateMatcher.h; sourceTree = "<group>"; };
-		FEA3D16B117E41B2650BB0DC67014250 /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = pl.lproj; sourceTree = "<group>"; };
+		FEA3D16B117E41B2650BB0DC67014250 /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = pl.lproj; sourceTree = "<group>"; };
 		FEADC02C1188584B1105178311F6C80F /* NSMethodSignature+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMethodSignature+OCMAdditions.m"; path = "Source/OCMock/NSMethodSignature+OCMAdditions.m"; sourceTree = "<group>"; };
 		FFFAB5072AC441FE14008310D2CD0742 /* OCMLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMLocation.h; path = Source/OCMock/OCMLocation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -782,6 +782,7 @@
 				DF704627E6681023885A02C8B714FC05 /* Resources */,
 				0B70950EE435E8AD0192075340831637 /* Support Files */,
 			);
+			name = MASShortcut;
 			path = MASShortcut;
 			sourceTree = "<group>";
 		};
@@ -885,6 +886,7 @@
 				91F4E0527FA3D6E76D43B67C04544F39 /* CoreData */,
 				7842B0FC0561BFB1DF5E103831200C7E /* Support Files */,
 			);
+			name = SyncKit;
 			path = SyncKit;
 			sourceTree = "<group>";
 		};
@@ -898,6 +900,7 @@
 				D01C9D55C90C80EA009E004E2CB39A66 /* SwiftHSVColorPicker.swift */,
 				06A13916311C0BA70A160701C2565294 /* Support Files */,
 			);
+			name = SwiftHSVColorPicker;
 			path = SwiftHSVColorPicker;
 			sourceTree = "<group>";
 		};
@@ -1006,6 +1009,7 @@
 				948D1130139455CBD6609F4FE4C9EEF4 /* OCProtocolMockObject.m */,
 				11CFD38622D220EAB6F6A1BF2E975525 /* Support Files */,
 			);
+			name = OCMock;
 			path = OCMock;
 			sourceTree = "<group>";
 		};
@@ -1158,6 +1162,7 @@
 				FEE9FCA90D1BC996CA62C39D80297E42 /* Resources */,
 				AB106FCBB44E1B111BD0FD5CE59887A8 /* Support Files */,
 			);
+			name = ZXCVBN;
 			path = ZXCVBN;
 			sourceTree = "<group>";
 		};
@@ -1581,7 +1586,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2255,7 +2260,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -2744,7 +2748,6 @@
 			children = (
 				C6A064BAB5445DADCFD5F494798BC417 /* QSCloudKitSyncModel.xcdatamodel */,
 			);
-			currentVersion = C6A064BAB5445DADCFD5F494798BC417 /* QSCloudKitSyncModel.xcdatamodel */;
 			name = QSCloudKitSyncModel.xcdatamodeld;
 			path = SyncKit/Classes/CoreData/QSCloudKitSyncModel.xcdatamodeld;
 			sourceTree = "<group>";
