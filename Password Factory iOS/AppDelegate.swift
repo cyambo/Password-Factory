@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        guard let cloudKitNotification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String : NSObject]) as? CKQueryNotification else { return }
-        PasswordStorage.get().receivedUpdatedData(cloudKitNotification) { (complete) in
+        let notification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String : NSObject])
+        PasswordStorage.get().receivedUpdatedData(notification) { (complete) in
             if complete {
                 completionHandler(.newData)
                 if let storedVC = ((application.keyWindow?.rootViewController as? UINavigationController)?.viewControllers[0] as? TypeSelectionViewController)?.currentViewController as? StoredPasswordViewController {

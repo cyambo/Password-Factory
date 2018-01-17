@@ -34,5 +34,5 @@
 -(void)deleteAllRemoteObjects;
 -(void)enableRemoteStorage:(BOOL)enabled;
 -(void)changedMaxStorageAmount;
--(void)receivedUpdatedData:(CKQueryNotification *)notification complete:(void (^)(BOOL))completionHandler;
+-(void)receivedUpdatedData:(CKNotification *)notification complete:(void (^)(BOOL))completionHandler;
 @end

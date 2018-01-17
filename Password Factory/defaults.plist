@@ -112,8 +112,10 @@
 	<false/>
 	<key>cloudKitChangeToken</key>
 	<data></data>
-	<key>cloudKitSubscriptionID</key>
+	<key>cloudKitZoneID</key>
 	<string></string>
+	<key>cloudKitSynced</key>
+	<false/>
 	<key>enabledHomeScreenItems</key>
 	<array>
 		<integer>401</integer>
