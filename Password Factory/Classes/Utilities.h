@@ -12,4 +12,5 @@
 +(BOOL)isDarkMode;
 +(NSAttributedString *)colorText:(NSString *)text size:(NSUInteger)size;
 +(NSColor *)getBackgroundColor;
++(void)setRemoteStore;
 @end

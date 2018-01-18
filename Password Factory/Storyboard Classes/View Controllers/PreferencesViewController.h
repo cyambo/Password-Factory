@@ -6,8 +6,8 @@
 //  Copyright (c) 2017 Cristiana Yambo. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <MASShortcut/Shortcut.h>
+@import Cocoa;
+@import MASShortcut;
 
 
 @interface PreferencesViewController : NSViewController <NSTextFieldDelegate>
@@ -20,7 +20,7 @@
 @property (weak) IBOutlet NSColorWell *defaultColor;
 
 - (IBAction)changeColor:(id)sender;
-- (IBAction)changeStoredPassword:(NSButton *)sender;
+
 @property (weak) IBOutlet NSButton *storedPasswordCheckbox;
 
 @property (weak) IBOutlet NSButton *automaticallyClearClipboard;
@@ -47,10 +47,12 @@
 @property (weak) IBOutlet NSButton *addToLoginItems;
 - (IBAction)changeLoginItem:(NSButton *)sender;
 
-@property (weak) IBOutlet NSTextField *maxPasswordLength;
-
+@property (weak) IBOutlet NSButton *iCloudSync;
+    
 - (IBAction)resetToDefaults:(NSButton *)sender;
 - (IBAction)resetAllDialogs:(NSButton *)sender;
-
+- (IBAction)eraseRemoteStorage:(NSButton *)sender;
+    
+    
 
 @end

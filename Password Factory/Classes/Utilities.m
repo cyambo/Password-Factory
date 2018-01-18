@@ -82,4 +82,22 @@
         return [NSColor whiteColor];
     }
 }
+
++(void)setRemoteStore {
+    DefaultsManager *d = [DefaultsManager get:[PasswordFactoryConstants get].disabledSyncKeys enableShared:false];
+    BOOL iCloudIsAvailable = NSFileManager.defaultManager.ubiquityIdentityToken != nil;
+    [d setBool:iCloudIsAvailable forKey:@"iCloudIsAvailable"];
+    if (iCloudIsAvailable && [d boolForKey:@"enableRemoteStore"]) {
+        [[NSApplication sharedApplication] registerForRemoteNotificationTypes:NSRemoteNotificationTypeNone];
+        [d enableRemoteStore:YES];
+        if ([d boolForKey:@"storePasswords"]) {
+            
+        }
+    } else {
+        [d setBool:NO forKey:@"enableRemoteStore"];
+        [[NSApplication sharedApplication] unregisterForRemoteNotifications];
+        [d enableRemoteStore:NO];
+        //disable remote
+    }
+}
 @end
