@@ -12,7 +12,7 @@
 #import "DefaultsManager.h"
 #import "NSString+UnicodeLength.h"
 #import "NSString+sha1.h"
-@import Reachability;
+
 #ifndef IOS
 #import "AppDelegate.h"
 #endif
