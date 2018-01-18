@@ -7,7 +7,7 @@
 //
 
 @import Cocoa;
-@import MASShortcut;
+#import <MASShortcut/Shortcut.h>
 
 
 @interface PreferencesViewController : NSViewController <NSTextFieldDelegate>
