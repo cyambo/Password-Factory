@@ -8,7 +8,7 @@
 
 #import "PasswordStrength.h"
 #import "constants.h"
-@import ZXCVBN;
+#import "BBPasswordStrength.h"
 
 typedef NS_ENUM(NSInteger, PSApproximate) {
     PSLessThan,

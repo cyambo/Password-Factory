@@ -127,6 +127,7 @@ static DefaultsManager *dm = nil;
     self.enableRemoteStore = enable;
     if (enable) {
         //initialize the store
+
         self.keyStore = [NSUbiquitousKeyValueStore defaultStore];
 
         //set the change observer

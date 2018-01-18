@@ -16,6 +16,7 @@
 #import "ExportViewController.h"
 #import "MainWindowController.h"
 #import "MenuPopover.h"
+#import "Utilities.h"
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
@@ -351,6 +352,7 @@
     [self.masterViewController generateAndCopy];
 }
 -(void)applicationWillFinishLaunching:(NSNotification *)aNotification {
+    [Utilities setRemoteStore];
     //set selector for url scheme that is called by the widget to go back to the app
     NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
     [appleEventManager setEventHandler:self

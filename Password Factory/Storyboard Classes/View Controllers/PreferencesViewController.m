@@ -13,6 +13,7 @@
 #import "DefaultsManager.h"
 #import "constants.h"
 #import <ServiceManagement/ServiceManagement.h>
+#import "Utilities.h"
 #import "PasswordStorage.h"
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
@@ -132,6 +133,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             } else {
                 [appDelegate.masterViewController enableStoredPasswords];
             }
+            [Utilities setRemoteStore];
         }];
 
     } else {
@@ -141,6 +143,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             } else {
                 [appDelegate.masterViewController disableStoredPasswords];
             }
+            [Utilities setRemoteStore];
         }];
     }
 }
@@ -401,4 +404,10 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         }
     }];
 }
-@end
+- (IBAction)changeRemoteStorage:(NSButton *)sender {
+    [Utilities setRemoteStore];
+}
+    
+- (IBAction)eraseRemoteStorage:(NSButton *)sender {
+}
+    @end

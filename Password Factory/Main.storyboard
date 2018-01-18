@@ -443,7 +443,7 @@ Gw
             <objects>
                 <viewController storyboardIdentifier="PreferencesViewController" id="2B8-vP-6ly" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="J6I-It-7aA">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="471"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="497"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-V4-dQq">
@@ -461,7 +461,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="94H-KT-sT1">
-                                <rect key="frame" x="280" y="60" width="240" height="19"/>
+                                <rect key="frame" x="280" y="91" width="240" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Reset To Defaults" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lBz-g9-MVz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -471,7 +471,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iuF-b8-EqG">
-                                <rect key="frame" x="280" y="98" width="240" height="19"/>
+                                <rect key="frame" x="280" y="126" width="240" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Reset All Warnings and Dialogs" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8dP-2d-DZc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -480,11 +480,11 @@ Gw
                                     <action selector="resetAllDialogs:" target="2B8-vP-6ly" id="eTR-0H-F4r"/>
                                 </connections>
                             </button>
-                            <customView identifier="Global" translatesAutoresizingMaskIntoConstraints="NO" id="4XQ-5D-FU0" customClass="BoxView">
-                                <rect key="frame" x="20" y="215" width="240" height="248"/>
+                            <customView identifier="Global" translatesAutoresizingMaskIntoConstraints="NO" id="4XQ-5D-FU0" userLabel="Global" customClass="BoxView">
+                                <rect key="frame" x="20" y="215" width="240" height="277"/>
                                 <subviews>
                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TlR-35-7fX">
-                                        <rect key="frame" x="204" y="103" width="19" height="27"/>
+                                        <rect key="frame" x="204" y="132" width="19" height="27"/>
                                         <stepperCell key="cell" continuous="YES" alignment="left" increment="5" minValue="10" maxValue="500" doubleValue="100" id="0gQ-yc-DI5"/>
                                         <connections>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxStoredPasswords" id="bFt-c1-kXm"/>
@@ -492,7 +492,7 @@ Gw
                                         </connections>
                                     </stepper>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pBY-ph-p9a">
-                                        <rect key="frame" x="178" y="195" width="29" height="17"/>
+                                        <rect key="frame" x="178" y="224" width="29" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="iGF-yu-lbU">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -503,7 +503,7 @@ Gw
                                         </connections>
                                     </textField>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="sni-op-dwr">
-                                        <rect key="frame" x="18" y="47" width="115" height="23"/>
+                                        <rect key="frame" x="18" y="76" width="115" height="23"/>
                                         <buttonCell key="cell" type="check" title="Hide Dock Icon" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zFH-zE-neP">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -515,7 +515,7 @@ Gw
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DOG-J5-c1L">
-                                        <rect key="frame" x="18" y="194" width="137" height="19"/>
+                                        <rect key="frame" x="18" y="223" width="137" height="19"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Max Password Length" id="N9h-OI-znS">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -523,7 +523,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MOy-mQ-dx9" customClass="TextField">
-                                        <rect key="frame" x="178" y="108" width="29" height="17"/>
+                                        <rect key="frame" x="178" y="137" width="29" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="999" id="dKM-cE-VXT">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -535,7 +535,7 @@ Gw
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9jk-ed-Tq5" customClass="TextField">
-                                        <rect key="frame" x="18" y="107" width="103" height="19"/>
+                                        <rect key="frame" x="18" y="136" width="103" height="19"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Amount to Store" id="iY3-P1-mnV">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -554,14 +554,14 @@ Gw
                                         </connections>
                                     </textField>
                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-Wd-A8k">
-                                        <rect key="frame" x="204" y="190" width="19" height="27"/>
+                                        <rect key="frame" x="204" y="219" width="19" height="27"/>
                                         <stepperCell key="cell" continuous="YES" alignment="left" increment="5" minValue="10" maxValue="100" doubleValue="10" id="FaI-M1-zJi"/>
                                         <connections>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.maxPasswordLength" id="pC0-c7-Xox"/>
                                         </connections>
                                     </stepper>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="C7I-ja-Xha">
-                                        <rect key="frame" x="18" y="18" width="136" height="23"/>
+                                        <rect key="frame" x="18" y="47" width="136" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="7dk-Ui-34t"/>
                                         </constraints>
@@ -577,7 +577,7 @@ Gw
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FFH-Ml-qNn">
-                                        <rect key="frame" x="18" y="134" width="123" height="23"/>
+                                        <rect key="frame" x="18" y="163" width="123" height="23"/>
                                         <buttonCell key="cell" type="check" title="Store Passwords" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="csI-G9-6cf">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -587,7 +587,7 @@ Gw
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G9M-iD-qFg">
-                                        <rect key="frame" x="18" y="163" width="127" height="23"/>
+                                        <rect key="frame" x="18" y="192" width="127" height="23"/>
                                         <buttonCell key="cell" type="check" title="Enable Advanced" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IJi-PM-w1k">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -597,7 +597,7 @@ Gw
                                         </connections>
                                     </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="5KO-Sf-l0R">
-                                        <rect key="frame" x="18" y="76" width="97" height="23"/>
+                                        <rect key="frame" x="18" y="105" width="97" height="23"/>
                                         <buttonCell key="cell" type="check" title="Run in Menu" bezelStyle="regularSquare" imagePosition="left" inset="2" id="umK-du-Nif">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -607,6 +607,24 @@ Gw
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.isMenuApp" id="5UI-49-4oy"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A3W-P3-prY">
+                                        <rect key="frame" x="18" y="18" width="95" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="eF8-Ik-HBS"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="iCloud Sync" bezelStyle="regularSquare" imagePosition="left" inset="2" id="aud-Jw-uqZ">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <connections>
+                                                <binding destination="DGa-ye-VaM" name="value" keyPath="values.enableRemoteStore" id="xS9-Bx-wAg"/>
+                                            </connections>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="changeRemoteStorage:" target="2B8-vP-6ly" id="0a8-Xv-T9O"/>
+                                            <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.iCloudIsAvailable" id="QUs-xy-psr"/>
+                                            <binding destination="DGa-ye-VaM" name="value" keyPath="values.enableRemoteStore" id="vjs-QO-BAb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="TlR-35-7fX" firstAttribute="leading" secondItem="MOy-mQ-dx9" secondAttribute="trailing" constant="2" id="0E6-gf-Yeg"/>
@@ -614,8 +632,8 @@ Gw
                                     <constraint firstItem="G9M-iD-qFg" firstAttribute="leading" secondItem="FFH-Ml-qNn" secondAttribute="leading" id="3NF-Lb-l6g"/>
                                     <constraint firstItem="9jk-ed-Tq5" firstAttribute="height" secondItem="5KO-Sf-l0R" secondAttribute="height" id="6dl-0k-1c6"/>
                                     <constraint firstAttribute="trailing" secondItem="4Fq-Wd-A8k" secondAttribute="trailing" constant="20" id="9pf-Nj-r20"/>
-                                    <constraint firstAttribute="bottom" secondItem="C7I-ja-Xha" secondAttribute="bottom" constant="20" id="B3e-2W-ZtD"/>
                                     <constraint firstItem="C7I-ja-Xha" firstAttribute="leading" secondItem="4XQ-5D-FU0" secondAttribute="leading" constant="20" id="BA0-ly-HIV"/>
+                                    <constraint firstAttribute="bottom" secondItem="A3W-P3-prY" secondAttribute="bottom" constant="20" id="CXt-ln-Eoq"/>
                                     <constraint firstItem="C7I-ja-Xha" firstAttribute="top" secondItem="sni-op-dwr" secondAttribute="bottom" constant="10" id="Cn9-ZK-ez3"/>
                                     <constraint firstAttribute="width" constant="240" id="FPC-mh-cnc"/>
                                     <constraint firstItem="FFH-Ml-qNn" firstAttribute="top" secondItem="G9M-iD-qFg" secondAttribute="bottom" constant="10" id="ITj-2r-edl"/>
@@ -631,8 +649,10 @@ Gw
                                     <constraint firstItem="sni-op-dwr" firstAttribute="height" secondItem="C7I-ja-Xha" secondAttribute="height" id="Zoy-Pk-3Ip"/>
                                     <constraint firstItem="DOG-J5-c1L" firstAttribute="top" secondItem="4XQ-5D-FU0" secondAttribute="top" constant="35" id="ahd-Hl-mZZ"/>
                                     <constraint firstItem="FFH-Ml-qNn" firstAttribute="leading" secondItem="9jk-ed-Tq5" secondAttribute="leading" id="b1t-Tl-VWB"/>
+                                    <constraint firstItem="A3W-P3-prY" firstAttribute="top" secondItem="C7I-ja-Xha" secondAttribute="bottom" constant="10" id="g99-UA-toS"/>
                                     <constraint firstItem="pBY-ph-p9a" firstAttribute="centerY" secondItem="DOG-J5-c1L" secondAttribute="centerY" id="ipp-rL-Y6g"/>
                                     <constraint firstItem="FFH-Ml-qNn" firstAttribute="height" secondItem="9jk-ed-Tq5" secondAttribute="height" id="jZ9-yg-Nea"/>
+                                    <constraint firstItem="A3W-P3-prY" firstAttribute="leading" secondItem="C7I-ja-Xha" secondAttribute="leading" id="owc-WT-jRX"/>
                                     <constraint firstItem="DOG-J5-c1L" firstAttribute="leading" secondItem="G9M-iD-qFg" secondAttribute="leading" id="pQO-Ul-5De"/>
                                     <constraint firstItem="5KO-Sf-l0R" firstAttribute="top" secondItem="9jk-ed-Tq5" secondAttribute="bottom" constant="10" id="sn6-S0-GOf"/>
                                     <constraint firstItem="sni-op-dwr" firstAttribute="top" secondItem="5KO-Sf-l0R" secondAttribute="bottom" constant="10" id="tTJ-TW-WQ8"/>
@@ -644,7 +664,7 @@ Gw
                                     <userDefinedRuntimeAttribute type="string" keyPath="boxTitle" value="Global"/>
                                 </userDefinedRuntimeAttributes>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="zBV-Nn-h3d" customClass="BoxView">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="zBV-Nn-h3d" userLabel="Shortcut" customClass="BoxView">
                                 <rect key="frame" x="20" y="20" width="240" height="190"/>
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="O8W-vk-w7r">
@@ -769,8 +789,8 @@ Gw
                                     <userDefinedRuntimeAttribute type="string" keyPath="boxTitle" value="Hotkey"/>
                                 </userDefinedRuntimeAttributes>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="HuW-cg-qg8" customClass="BoxView">
-                                <rect key="frame" x="280" y="136" width="240" height="103"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="HuW-cg-qg8" userLabel="Clipboard" customClass="BoxView">
+                                <rect key="frame" x="280" y="165" width="240" height="103"/>
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="0HQ-6b-sTO">
                                         <rect key="frame" x="18" y="47" width="202" height="23"/>
@@ -839,8 +859,8 @@ Gw
                                     <userDefinedRuntimeAttribute type="string" keyPath="boxTitle" value="Clipboard Handling"/>
                                 </userDefinedRuntimeAttributes>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="gSQ-Lb-YNO" customClass="BoxView">
-                                <rect key="frame" x="280" y="244" width="240" height="219"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="gSQ-Lb-YNO" userLabel="Text" customClass="BoxView">
+                                <rect key="frame" x="280" y="273" width="240" height="219"/>
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="INO-jc-SFw">
                                         <rect key="frame" x="18" y="134" width="146" height="23"/>
@@ -1088,19 +1108,36 @@ Gw
                                     <action selector="quitOrRestartApplication:" target="2B8-vP-6ly" id="bWL-QW-IK4"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="AJT-p0-fbE">
+                                <rect key="frame" x="280" y="57" width="240" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Erase iCloud" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gdw-TK-6MC">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                    <connections>
+                                        <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.iCloudIsAvailable" id="RP7-eH-vlO"/>
+                                    </connections>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="eraseRemoteStorage:" target="2B8-vP-6ly" id="Idf-Rn-ARw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="HuW-cg-qg8" firstAttribute="leading" secondItem="iuF-b8-EqG" secondAttribute="leading" id="2dT-vI-b0N"/>
+                            <constraint firstItem="AJT-p0-fbE" firstAttribute="leading" secondItem="94H-KT-sT1" secondAttribute="leading" id="3IJ-lt-oZC"/>
+                            <constraint firstItem="4XQ-5D-FU0" firstAttribute="top" secondItem="J6I-It-7aA" secondAttribute="top" constant="5" id="3br-vR-GbE"/>
                             <constraint firstItem="HuW-cg-qg8" firstAttribute="width" secondItem="gSQ-Lb-YNO" secondAttribute="width" id="3p9-af-6Yq"/>
+                            <constraint firstItem="xp9-V4-dQq" firstAttribute="top" secondItem="AJT-p0-fbE" secondAttribute="bottom" constant="16.5" id="8oF-5l-0y1"/>
+                            <constraint firstItem="AJT-p0-fbE" firstAttribute="width" secondItem="94H-KT-sT1" secondAttribute="width" id="9sv-Z3-vNv"/>
+                            <constraint firstItem="AJT-p0-fbE" firstAttribute="top" secondItem="94H-KT-sT1" secondAttribute="bottom" constant="16.5" id="JcT-6d-sLs"/>
                             <constraint firstAttribute="bottom" secondItem="zBV-Nn-h3d" secondAttribute="bottom" constant="20" id="KAL-RO-oCz"/>
                             <constraint firstAttribute="trailing" secondItem="xp9-V4-dQq" secondAttribute="trailing" constant="20" id="L2D-2i-YQo"/>
                             <constraint firstItem="gSQ-Lb-YNO" firstAttribute="top" secondItem="4XQ-5D-FU0" secondAttribute="top" id="LbR-xQ-H0y"/>
                             <constraint firstItem="xp9-V4-dQq" firstAttribute="leading" secondItem="gTY-3a-D4r" secondAttribute="trailing" constant="20" id="NbA-Tv-BJt"/>
                             <constraint firstItem="zBV-Nn-h3d" firstAttribute="leading" secondItem="J6I-It-7aA" secondAttribute="leading" constant="20" id="Olm-8e-LQz"/>
-                            <constraint firstItem="94H-KT-sT1" firstAttribute="top" secondItem="iuF-b8-EqG" secondAttribute="bottom" constant="20" id="Oqw-5T-lnP"/>
+                            <constraint firstItem="94H-KT-sT1" firstAttribute="top" secondItem="iuF-b8-EqG" secondAttribute="bottom" constant="16.5" id="Oqw-5T-lnP"/>
                             <constraint firstItem="gSQ-Lb-YNO" firstAttribute="width" secondItem="4XQ-5D-FU0" secondAttribute="width" id="Yeq-Yr-kmA"/>
                             <constraint firstItem="gSQ-Lb-YNO" firstAttribute="leading" secondItem="4XQ-5D-FU0" secondAttribute="trailing" constant="20" id="agC-hB-FGR"/>
-                            <constraint firstItem="gTY-3a-D4r" firstAttribute="top" secondItem="94H-KT-sT1" secondAttribute="bottom" constant="20" id="dXE-Xd-k3n"/>
                             <constraint firstItem="4XQ-5D-FU0" firstAttribute="leading" secondItem="zBV-Nn-h3d" secondAttribute="leading" id="eRW-Nh-Hd4"/>
                             <constraint firstItem="HuW-cg-qg8" firstAttribute="top" secondItem="gSQ-Lb-YNO" secondAttribute="bottom" constant="5" id="eTf-L9-I4h"/>
                             <constraint firstItem="iuF-b8-EqG" firstAttribute="width" secondItem="94H-KT-sT1" secondAttribute="width" id="g3N-D1-G7i"/>
@@ -1124,6 +1161,7 @@ Gw
                         <outlet property="defaultColor" destination="dcr-yy-tEl" id="GVu-UI-fLL"/>
                         <outlet property="displayNotification" destination="O8W-vk-w7r" id="Kak-50-Qta"/>
                         <outlet property="enableGlobalHotkey" destination="y6L-bI-CPK" id="mvw-uh-0ot"/>
+                        <outlet property="iCloudSync" destination="A3W-P3-prY" id="4nL-Kw-LkB"/>
                         <outlet property="lowercaseTextColor" destination="8wy-JD-kmX" id="kiY-SJ-A8S"/>
                         <outlet property="numbersColor" destination="Cy3-ZI-YnJ" id="FRJ-hS-R6X"/>
                         <outlet property="playNotificationSound" destination="DeC-TX-RaX" id="gyx-pb-Aa2"/>

@@ -110,6 +110,8 @@
 	<false/>
 	<key>enableRemoteStore</key>
 	<false/>
+	<key>iCloudIsAvailable</key>
+	<false/>
 	<key>enabledHomeScreenItems</key>
 	<array>
 		<integer>401</integer>
