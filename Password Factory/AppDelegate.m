@@ -29,6 +29,18 @@
 @end
 @implementation AppDelegate
 
+-(void)applicationWillFinishLaunching:(NSNotification *)aNotification {
+    [Utilities setRemoteStore];
+    //set selector for url scheme that is called by the widget to go back to the app
+    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
+    [appleEventManager setEventHandler:self
+                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+                         forEventClass:kInternetEventClass andEventID:kAEGetURL];
+    //remove enter full screen menu item
+    [[DefaultsManager get] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
+    [self handleGetURLEvent:nil withReplyEvent:nil];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 
     DefaultsManager *d = [DefaultsManager get];
@@ -351,17 +363,7 @@
     [self.masterViewController selectPaswordType:sender.tag];
     [self.masterViewController generateAndCopy];
 }
--(void)applicationWillFinishLaunching:(NSNotification *)aNotification {
-    [Utilities setRemoteStore];
-    //set selector for url scheme that is called by the widget to go back to the app
-    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
-    [appleEventManager setEventHandler:self
-                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
-                         forEventClass:kInternetEventClass andEventID:kAEGetURL];
-    //remove enter full screen menu item
-    [[DefaultsManager get] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
-    [self handleGetURLEvent:nil withReplyEvent:nil];
-}
+
 
 /**
  Called when the gear is pressed on the widget - it uses our url scheme to open the application if it is not running, or switch to it if it is active

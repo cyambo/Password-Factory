@@ -116,8 +116,6 @@
 	<integer>0</integer>
 	<key>cloudKitZoneCreated</key>
 	<integer>0</integer>
-	<key>cloudKitSynced</key>
-	<false/>
 	<key>enabledHomeScreenItems</key>
 	<array>
 		<integer>401</integer>

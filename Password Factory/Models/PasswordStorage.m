@@ -29,7 +29,7 @@
 @property (nonatomic, strong) NSString *prev;
 @property (nonatomic, assign) BOOL enableRemoteStorage;
 @property (nonatomic, strong) CKSubscription *recordSubscription;
-@property (nonatomic, strong) NSDate *currentZoneCreationDate;
+
 @end
 @implementation PasswordStorage
 #pragma  mark init
@@ -97,7 +97,6 @@
 #endif
         }
     }
-
 }
 
 /**
@@ -156,6 +155,7 @@
         pw.length = [password getUnicodeLength];
         pw.time = time;
         pw.passwordID = [self getIDFor:pw];
+        pw.synced = NO;
         if (self.enableRemoteStorage && !fromRemote) {
             [self storeRemote:pw];
         }
@@ -237,7 +237,12 @@
         }
         //TODO: batch delete?
         for(Passwords *p in items) {
-            [self.container.viewContext deleteObject:p];
+            @try {
+                [self.container.viewContext deleteObject:p];
+            }
+            @catch (NSException *e) {
+                NSLog(@"BATCH DELETE ERR %@",e);
+            }
             if (self.enableRemoteStorage) {
                 [self deleteRemote:p];
             }
@@ -336,9 +341,7 @@
         [self loadCloudKitContainer:^{
             [weakSelf loadSubscription];
             [weakSelf fetchRemoteChanges];
-            if (![weakSelf.d boolForKey:@"cloudKitSynced"]) {
-                [weakSelf synchronizeWithRemote];
-            }
+            [weakSelf synchronizeWithRemote];
         }];
         
     } else {
@@ -351,8 +354,8 @@
 /**
  Returns the unique id for a Password item
 
- @param password <#password description#>
- @return <#return value description#>
+ @param password password to getr unique id
+ @return unique id
  */
 -(NSString *)getIDFor:(Passwords *)password {
     NSString *salt = [NSString stringWithFormat:@"%@%d%lf",password.password,password.type,password.time.timeIntervalSinceReferenceDate];
@@ -384,24 +387,22 @@
             if (zoneTime == 0 && zoneLoaded == 0) {
                 zoneTime = [NSDate date].timeIntervalSinceReferenceDate;
                 zoneLoaded = zoneTime;
-            //if zone loaded is zero and zone time is set that means we never synced so, sync to zoneTime
+            //if zone loaded is zero and zone time is set that means we never synced
             //and load the zone
             } else if (zoneTime > zoneLoaded) {
                 //synchronize with remote
-                //delete everything before zoneLoaded and sync everything after
                 [weakSelf synchronizeWithRemote];
-//                zoneLoaded = zoneTime;
+                //set zone loaded to now
+                zoneLoaded = [NSDate date].timeIntervalSinceReferenceDate;
                 
                 NSLog(@"NEED TO SYNC");
             
             } else if (zoneTime == 0 && zoneLoaded != 0) {
-                NSLog(@"ZONE TIME ZERO");
-            } else if (zoneTime < zoneLoaded) {
-                NSLog(@"ZONE TIME LESS");
-                zoneLoaded = zoneTime; //shouldn't ever get here
+                NSLog(@"ZONE TIME ZERO"); //shouldn't get here, but if we do set zoneTime to zoneLoaded and sync
+                zoneTime = zoneLoaded;
+                [weakSelf synchronizeWithRemote];
             }
             //set current creation date
-            weakSelf.currentZoneCreationDate = [NSDate dateWithTimeIntervalSinceReferenceDate:zoneTime];
             
             [weakSelf.d setFloat:zoneLoaded forKey:@"cloudKitZoneLoaded"];
             [weakSelf.d setFloat:zoneTime forKey:@"cloudKitZoneCreated"];
@@ -464,7 +465,14 @@
     }];
 }
 -(void)synchronizeWithRemote {
-    
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
+    [req setPredicate:[NSPredicate predicateWithFormat:@"synced == 0"]];
+    NSError *error = nil;
+    NSArray *results = [self.container.viewContext executeFetchRequest:req error:&error];
+    for(Passwords *p in results) {
+        [self storeRemote:p];
+    }
+
 }
 /**
  Fetches remote changes since last load
@@ -498,6 +506,7 @@
             pw.length = [(NSNumber *)[record objectForKey:@"length"] integerValue];
             pw.time = [record objectForKey:@"time"];
             pw.passwordID = record.recordID.recordName;
+            pw.synced = YES;
             NSLog(@"FETCH ADD %@",pw.password);
         }
     }];
@@ -632,15 +641,25 @@
     [record setObject:[NSNumber numberWithInt:password.type] forKey:@"type"];
     [record setObject:[NSNumber numberWithInt:password.length] forKey:@"length"];
     if (record != nil) {
+        __weak PasswordStorage *weakSelf = self;
         [self.cloudKitDatabase saveRecord:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"CK SAVE ERR %@",error.localizedDescription);
+                //if there is a failure, do nothing, so we can try later
+                if (error.code == CKErrorServerRecordChanged) { // item already in db so mark it at synced
+                    password.synced = YES;
+                    [weakSelf saveContext];
+                }
             } else {
                 NSLog(@"REMOTE STORED %@",password.password);
+                //mark the password as synced, and save it
+                password.synced = YES;
+                [weakSelf saveContext];
+                [weakSelf synchronizeWithRemote];
             }
+            
         }];
     }
-
 }
 
 -(void)receivedUpdatedData:(CKNotification *)notification complete:(void (^)(BOOL))completionHandler {
@@ -667,10 +686,14 @@
     completionHandler(NO);
 }
 - (void)observeValue:(NSString * _Nullable)keyPath change:(NSDictionary * _Nullable)change {
+    //checking for an updated zone creation time - that means iCloud data was erased
     if ([keyPath isEqualToString:@"cloudKitZoneCreated"]) {
-        if (self.currentZoneCreationDate != nil) {
-            float currentZoneTime = self.currentZoneCreationDate.timeIntervalSinceReferenceDate;
+        //load our create time
+        float currentZoneTime = [self.d floatForKey:@"cloudKitZoneCreated"];
+        if (currentZoneTime != 0.0) {
+            //get the changed time
             float changedZonedTime = [(NSNumber *)change[@"new"] floatValue];
+            //and if it is latger than our time, delete and reload everything
             if (changedZonedTime > currentZoneTime) {
                 NSLog(@"REMOTE DELETE ALL");
                 [self deleteAllEntities];

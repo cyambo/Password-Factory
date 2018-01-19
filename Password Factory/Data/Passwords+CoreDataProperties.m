@@ -2,7 +2,7 @@
 //  Passwords+CoreDataProperties.m
 //  
 //
-//  Created by Cristiana Yambo on 1/15/18.
+//  Created by Cristiana Yambo on 1/18/18.
 //
 //
 
@@ -16,9 +16,10 @@
 
 @dynamic length;
 @dynamic password;
+@dynamic passwordID;
 @dynamic strength;
 @dynamic time;
 @dynamic type;
-@dynamic passwordID;
+@dynamic synced;
 
 @end

@@ -115,6 +115,7 @@
 		40855E0E1FBD2D10005BD8F4 /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
 		40855E0F1FBD2D15005BD8F4 /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
 		408BCD091FCE498400EC8B39 /* PatternTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408BCD081FCE498400EC8B39 /* PatternTextView.m */; };
+		4093E29920110D8600D7DAA6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404866802002CDA5008A751F /* CloudKit.framework */; };
 		40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40940E291FC6249300CA1261 /* ExportViewController.m */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
 		409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CD1B8112D600393B99 /* PreferencesWindowTestClass.m */; };
@@ -490,6 +491,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4093E29920110D8600D7DAA6 /* CloudKit.framework in Frameworks */,
 				409E13BA1B8258170041541B /* NotificationCenter.framework in Frameworks */,
 				BDA020FF08F21426109CD901 /* libPods-Password Factory Widget.a in Frameworks */,
 			);
@@ -1259,6 +1261,12 @@
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					40AAB5CD1F8EC67F00324759 = {
@@ -2007,7 +2015,7 @@
 				INFOPLIST_FILE = "Password Factory Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2027,7 +2035,7 @@
 				INFOPLIST_FILE = "Password Factory Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

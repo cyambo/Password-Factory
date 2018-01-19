@@ -2,7 +2,7 @@
 //  Passwords+CoreDataProperties.h
 //  
 //
-//  Created by Cristiana Yambo on 1/15/18.
+//  Created by Cristiana Yambo on 1/18/18.
 //
 //
 
@@ -17,10 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) int16_t length;
 @property (nullable, nonatomic, copy) NSString *password;
+@property (nullable, nonatomic, copy) NSString *passwordID;
 @property (nonatomic) float strength;
 @property (nullable, nonatomic, copy) NSDate *time;
 @property (nonatomic) int16_t type;
-@property (nullable, nonatomic, copy) NSString *passwordID;
+@property (nonatomic) BOOL synced;
 
 @end
 
