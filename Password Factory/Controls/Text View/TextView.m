@@ -82,7 +82,10 @@
     text = [text stringByReplacingOccurrencesOfString:@"\r" withString:@""];
     NSDictionary *attributes = [self getTextAttributes];
     NSAttributedString *string = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    NSArray *ranges = self.selectedRanges;
     [self.textStorage setAttributedString:string];
+    self.selectedRanges = ranges;
+
     [self setDefaults];
 }
 

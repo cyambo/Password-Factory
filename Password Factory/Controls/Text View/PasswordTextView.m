@@ -22,7 +22,9 @@
     [super setText:text];
     //color the text if necessary
     NSAttributedString *s = [Utilities colorText:self.textStorage.string size:self.textSize];
+    NSArray *ranges = self.selectedRanges;
     [self.textStorage setAttributedString:s];
+    self.selectedRanges = ranges;
 }
 
 - (NSTouchBar *)makeTouchBar {

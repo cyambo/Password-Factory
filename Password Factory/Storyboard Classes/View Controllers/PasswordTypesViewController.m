@@ -162,12 +162,14 @@
  @param sender default sender
  */
 - (IBAction)changeLength:(id)sender {
-    if ([self.delegate getPasswordLength:self.passwordType] != self.passwordLength) {
-        self.passwordLength = [self.delegate getPasswordLength:self.passwordType];
-        [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
-        //do not call the delegate if sender is nil
-        if (sender != nil) {
-            [self callDelegate];
+    if (self.passwordLengthSlider != nil) {
+        if ([self.delegate getPasswordLength:self.passwordType] != self.passwordLength) {
+            self.passwordLength = [self.delegate getPasswordLength:self.passwordType];
+            [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
+            //do not call the delegate if sender is nil
+            if (sender != nil) {
+                [self callDelegate];
+            }
         }
     }
 }

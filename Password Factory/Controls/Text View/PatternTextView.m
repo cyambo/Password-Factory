@@ -77,7 +77,9 @@
         [s endEditing];
         
     }
+    NSArray *ranges = self.selectedRanges;
     [self.textStorage setAttributedString:s];
+    self.selectedRanges = ranges;
 }
 
 -(void)setText:(NSString *)text {
