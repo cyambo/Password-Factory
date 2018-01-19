@@ -217,7 +217,7 @@
 - (void)testStrengthMeter {
     [self.mvc.password setPasswordValue:@"1"]; //set the password
     [self.mvc setPasswordStrength]; //run the strength update method
-    float currStrength = self.mvc.passwordStrengthLevel.floatValue; //get the new strength
+    float currStrength = self.mvc.passwordStrengthLevel.strength; //get the new strength
     NSDictionary *settings = @{
                                @"caseType": @(PFMixedCase),
                                @"avoidAmbiguous":@(YES),
@@ -225,7 +225,7 @@
                                };
     [self.mvc.password generatePassword:PFRandomType withSettings:settings];
 
-    XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.floatValue, @"Password strength meter not updated with change"); //check to see if strength changed with updates
+    XCTAssertNotEqual(currStrength, self.mvc.passwordStrengthLevel.strength, @"Password strength meter not updated with change"); //check to see if strength changed with updates
     
 }
 /**
@@ -253,12 +253,12 @@
     //testing pattern change
     [self.mvc.passwordField setText:@"c"]; //set the password field
     [self.mvc controlTextDidChange:mockNotification]; //run notification
-    float currStrength = self.mvc.passwordStrengthLevel.floatValue;
+    float currStrength = self.mvc.passwordStrengthLevel.strength;
     
     [self.mvc.passwordField setText:@"!@#$%$#@@#$"]; //change the password field
     [self.mvc controlTextDidChange:mockNotification];
     //make sure the strength changed when the password field changed
-    XCTAssertTrue(currStrength != self.mvc.passwordStrengthLevel.floatValue, @"Password strength did not update when passwordField is entered manually");
+    XCTAssertTrue(currStrength != self.mvc.passwordStrengthLevel.strength, @"Password strength did not update when passwordField is entered manually");
 }
 /**
  Test changing the tab on the main window

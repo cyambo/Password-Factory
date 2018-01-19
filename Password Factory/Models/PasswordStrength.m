@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
 };
 
 /**
- Analyzes password and sets shows the strength of the password as a number from 1-100, also can calculate a nicely formatted string of the crack time
+ Analyzes password and sets shows the strength of the password as a number from 0 - 1, also can calculate a nicely formatted string of the crack time
  */
 @interface PasswordStrength ()
 
@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
 }
 
 /**
- Updates the password strength property which is a strength value that is from 0 to 100
+ Updates the password strength property which is a strength value that is from 0 to 1
 
  @param password Password to check
  @param withCt also calculate crack time as a string
@@ -50,11 +50,11 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
     
     ct = log10(ct); //strength display is logarithmic
     ct /= .265; //this multiplier will give a nice scale
-    self.strength = ct;
+    self.strength = ct / 100;
     if (self.strength < 0.0) {
         self.strength = 0.0;
-    } else if (self.strength > 100.0) {
-        self.strength = 100.0;
+    } else if (self.strength > 1.0) {
+        self.strength = 1.0;
     }
 }
 

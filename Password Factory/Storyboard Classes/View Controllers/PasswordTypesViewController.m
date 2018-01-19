@@ -323,8 +323,8 @@
     } else if ([tableColumn.identifier isEqualToString:@"Strength"]) {
         c = [tableView makeViewWithIdentifier:@"StrengthCell" owner:nil];
         float strength = p.strength;
-        [c.textField setStringValue: [NSString stringWithFormat:@"%d",(int)strength]];
-        NSColor *strengthColor = [StrengthControl getStrengthColorForStrength:strength/100];
+        [c.textField setStringValue: [NSString stringWithFormat:@"%d",(int)(strength * 100)]];
+        NSColor *strengthColor = [StrengthControl getStrengthColorForStrength:strength];
         NSMutableAttributedString *a = [[NSMutableAttributedString alloc] initWithAttributedString:c.textField.attributedStringValue];
         [a addAttribute:NSForegroundColorAttributeName value:strengthColor range:NSMakeRange(0, a.length)];
         [c.textField setAttributedStringValue:a];

@@ -32,10 +32,9 @@
 -(void)updateStrength:(float)strength {
     //bounds fitting
     if (strength < 0.0) {strength = 0.0;}
-    if (strength > 100.0) {strength = 100.0;}
-    if (strength >=0.0 && strength <= 100.0) {
-        self.strength = strength/100;
-        self.floatValue = strength;
+    if (strength > 1.0) {strength = 1.0;}
+    if (strength >=0.0 && strength <= 1.0) {
+        self.strength = strength;
         [self setNeedsDisplay:YES];
     }
 }

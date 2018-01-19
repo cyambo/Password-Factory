@@ -213,8 +213,8 @@
     }
     //update the password display
     [self updatePasswordField];
-    //Update the password strength - updateStrength takes 0-100 value
-    [self.passwordStrengthLevel updateStrength:s * 100];
+    //Update the password strength
+    [self.passwordStrengthLevel updateStrength:s];
 
     //copy to pasteboard
     [self copyToClipboard:nil];
@@ -239,7 +239,7 @@
 - (void)displayCopyNotification {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     [notification setTitle:@"Password Copied"];
-    [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",self.passwordStrengthLevel.floatValue ]];
+    [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",(self.passwordStrengthLevel.strength * 100) ]];
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     //Set the sound if the user configured it
     if ([[DefaultsManager get] boolForKey:@"globalHotkeyPlaySound"]) {
@@ -572,7 +572,7 @@
             if (![curr isEqualToString:self.lastStoredPassword]) {
                 //all good, so store it
                 self.stored = YES;
-                [self.storage storePassword:curr strength:[self.password getPasswordStrength]/100 type:currType];
+                [self.storage storePassword:curr strength:[self.password getPasswordStrength] type:currType];
                 self.lastStoredPassword = curr;
             }
         }

@@ -503,7 +503,6 @@
         Passwords *search;
         if ((search = [weakSelf passwordWithID:record.recordID.recordName])) {
             NSLog(@"FETCH MODIFY %@",search.password);
-//            [weakSelf deletePassword:search];
         } else {
             Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
             pw.password = [record objectForKey:@"password"];

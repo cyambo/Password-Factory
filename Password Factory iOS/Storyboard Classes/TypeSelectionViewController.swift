@@ -278,7 +278,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
                 if type != .storedType && !active && self.d.bool(forKey: "storePasswords"){
                     //store on the main thread
                     DispatchQueue.main.async { [p, strength, type] in
-                        PasswordStorage.get()!.storePassword(p, strength: Float(strength / 100.0), type: type)
+                        PasswordStorage.get()!.storePassword(p, strength: Float(strength), type: type)
                     }
                 }
             }
