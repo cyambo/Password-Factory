@@ -10,6 +10,7 @@
 #import "Utilities.h"
 #import "DefaultsManager.h"
 #import "PasswordFactory.h"
+#import "PasswordStorage.h"
 #import "PasswordFactoryConstants.h"
 #import "NSString+ColorWithHexColorString.h"
 #import "ColorUtilities.h"
@@ -91,12 +92,13 @@
         [[NSApplication sharedApplication] registerForRemoteNotificationTypes:NSRemoteNotificationTypeNone];
         [d enableRemoteStore:YES];
         if ([d boolForKey:@"storePasswords"]) {
-            
+            [[PasswordStorage get] enableRemoteStorage:true];
         }
     } else {
         [d setBool:NO forKey:@"enableRemoteStore"];
         [[NSApplication sharedApplication] unregisterForRemoteNotifications];
         [d enableRemoteStore:NO];
+        [[PasswordStorage get] enableRemoteStorage:false];
         //disable remote
     }
 }

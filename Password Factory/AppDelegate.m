@@ -144,6 +144,18 @@
         self.passwordToZoom = nil;
     }
 }
+
+-(void)application:(NSApplication *)application didReceiveRemoteNotification:(NSDictionary<NSString *,id> *)userInfo {
+    CKNotification *n = [CKNotification notificationFromRemoteNotificationDictionary:userInfo];
+    [[PasswordStorage get] receivedUpdatedData:n complete:^(BOOL complete) {
+        if (complete) {
+            PFPasswordType currType = [self.masterViewController getSelectedPasswordType];
+            if (currType == PFStoredType) {
+                [self.masterViewController.currentPasswordTypeViewController.storedPasswordTable reloadData];
+            }
+        }
+    }];
+}
 /**
  Toggles the display of the popover in the menu app
 

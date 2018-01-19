@@ -10,7 +10,7 @@ import UIKit
 
 
 /// Controller for pattern password
-class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, DefaultsManagerDelegate {
 
     @IBOutlet weak var patternButtonCollectionView: UICollectionView! //contains the pattern letter buttons
     @IBOutlet weak var typeLabel: UILabel! //displays the pattern type of the last entered letter
@@ -35,8 +35,12 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         patternText.contentOffset.y = -patternText.contentInset.top
+        d.observeDefaults(self, keys: ["userPattern"]);
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        d.removeDefaultsObservers(self, keys: ["userPattern"])
+    }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let sideMargin = Utilities.getSideMarginsForControls()
@@ -148,6 +152,15 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         patternText.text = String(patternText.text.dropLast())
         updatePattern(patternText.text)
         highlightPatternString()
+    }
+    
+    func observeValue(_ keyPath: String?, change: [AnyHashable : Any]?) {
+        if (keyPath == "userPattern") {
+            guard let ch = change else { return }
+            guard let s = ch["new"] as? String else { return }
+            patternText.text = s
+            highlightPatternString()
+        }
     }
     
 }

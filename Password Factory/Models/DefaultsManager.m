@@ -9,6 +9,7 @@
 #include <mach/mach_time.h>
 #import "DefaultsManager.h"
 #import "constants.h"
+#import "PasswordFactoryConstants.h"
 
 static mach_timebase_info_data_t _sTimebaseInfo;
 
@@ -40,6 +41,7 @@ static DefaultsManager *dm = nil;
         static dispatch_once_t once = 0;
         dispatch_once(&once, ^ {
             dm = [[DefaultsManager alloc] init];
+            [dm disableRemoteSyncForKeys:[PasswordFactoryConstants get].disabledSyncKeys];
         });
     }
     return dm;

@@ -572,7 +572,7 @@
             if (![curr isEqualToString:self.lastStoredPassword]) {
                 //all good, so store it
                 self.stored = YES;
-                [self.storage storePassword:curr strength:[self.password getPasswordStrength] type:currType];
+                [self.storage storePassword:curr strength:[self.password getPasswordStrength]/100 type:currType];
                 self.lastStoredPassword = curr;
             }
         }

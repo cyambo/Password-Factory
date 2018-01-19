@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString *prev;
 @property (nonatomic, assign) BOOL enableRemoteStorage;
 @property (nonatomic, strong) CKSubscription *recordSubscription;
+@property (nonatomic, assign) BOOL hasUnsyncedChanges;
 
 @end
 @implementation PasswordStorage
@@ -71,6 +72,7 @@
 #endif
         }
     }];
+    self.hasUnsyncedChanges = YES;
     [self enableRemoteStorage:self.enableRemoteStorage];
     //set to sort with newest on top
     self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
@@ -130,6 +132,9 @@
  @param type PFPasswordType of password
  */
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type {
+    if (strength > 1.0) {
+        NSLog(@"STRENGTH ERRRR");
+    }
     [self storePassword:password strength:strength type:type time:[NSDate date] fromRemote:NO];
 }
 
@@ -472,6 +477,7 @@
     for(Passwords *p in results) {
         [self storeRemote:p];
     }
+    self.hasUnsyncedChanges = NO;
 
 }
 /**
@@ -640,22 +646,28 @@
     [record setObject:password.time forKey:@"time"];
     [record setObject:[NSNumber numberWithInt:password.type] forKey:@"type"];
     [record setObject:[NSNumber numberWithInt:password.length] forKey:@"length"];
-    if (record != nil) {
+    if (record != nil && !password.synced) {
         __weak PasswordStorage *weakSelf = self;
         [self.cloudKitDatabase saveRecord:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"CK SAVE ERR %@",error.localizedDescription);
                 //if there is a failure, do nothing, so we can try later
                 if (error.code == CKErrorServerRecordChanged) { // item already in db so mark it at synced
+                    NSLog(@"ALREADY SYNCED %@",password.password);
                     password.synced = YES;
                     [weakSelf saveContext];
+                } else {
+                    weakSelf.hasUnsyncedChanges = YES;
                 }
             } else {
                 NSLog(@"REMOTE STORED %@",password.password);
                 //mark the password as synced, and save it
                 password.synced = YES;
                 [weakSelf saveContext];
-                [weakSelf synchronizeWithRemote];
+                if (weakSelf.hasUnsyncedChanges) {
+                    [weakSelf synchronizeWithRemote];
+                }
+
             }
             
         }];

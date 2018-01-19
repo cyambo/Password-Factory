@@ -34,7 +34,9 @@
     NSUserDefaults *d = [DefaultsManager standardDefaults];
     [d addObserver:self forKeyPath:@"colorPasswordText" options:NSKeyValueObservingOptionNew context:NULL];
     [d addObserver:self forKeyPath:@"AppleInterfaceStyle" options:NSKeyValueObservingOptionNew context:NULL];
+    [d addObserver:self forKeyPath:@"userPattern" options:NSKeyValueObservingOptionNew context:NULL];
 }
+
 /**
  NSTextViewDelegate method
 
@@ -45,7 +47,12 @@
     [self colorPatternText];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    [self colorPatternText];
+    if ([keyPath isEqualToString:@"userPattern"]) {
+        [self setText:change[@"new"]];
+    } else {
+       [self colorPatternText];
+    }
+    
 }
 
 -(void)colorPatternText {
