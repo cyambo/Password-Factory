@@ -45,13 +45,14 @@
     DefaultsManager *d = [DefaultsManager get];
     NSUInteger maxPasswordLength = [d integerForKey:@"maxPasswordLength"];
     if (self.passwordLengthSlider) {
-        NSUInteger length = [self.delegate getPasswordLength]; //but we have to get the original length
+        NSUInteger length = [self.delegate getPasswordLength:self.passwordType]; //but we have to get the original length
 
         self.passwordLengthSlider.maxValue = maxPasswordLength;
         //if our length is greater than the max, set it to max
         if (length > maxPasswordLength) {
             length = maxPasswordLength;
-            [d setInteger:maxPasswordLength forKey:@"passwordLength"];
+            NSString *key = [NSString stringWithFormat:@"%@PasswordLength",[[self.c getNameForPasswordType:self.passwordType] lowercaseString]];
+            [d setInteger:maxPasswordLength forKey:key];
         }
         [self.passwordLengthSlider setIntegerValue:length]; //and set it back because the changing of maxValue messes up the slider
     }
@@ -161,8 +162,8 @@
  @param sender default sender
  */
 - (IBAction)changeLength:(id)sender {
-    if ([self.delegate getPasswordLength] != self.passwordLength) {
-        self.passwordLength = [self.delegate getPasswordLength];
+    if ([self.delegate getPasswordLength:self.passwordType] != self.passwordLength) {
+        self.passwordLength = [self.delegate getPasswordLength:self.passwordType];
         [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
         //do not call the delegate if sender is nil
         if (sender != nil) {

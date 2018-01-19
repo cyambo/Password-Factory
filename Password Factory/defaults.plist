@@ -36,7 +36,11 @@
 	<integer>0</integer>
 	<key>randomUseNumbers</key>
 	<true/>
-	<key>passwordLength</key>
+	<key>randomPasswordLength</key>
+	<integer>20</integer>
+	<key>passphrasePasswordLength</key>
+	<integer>20</integer>
+	<key>pronounceablePasswordLength</key>
 	<integer>20</integer>
 	<key>pronounceableSeparatorTypeIndex</key>
 	<integer>1</integer>
@@ -113,6 +117,8 @@
 	<key>cloudKitChangeToken</key>
 	<data></data>
 	<key>cloudKitInitialSyncPerformed</key>
+	<false/>
+	<key>activeControl</key>
 	<false/>
 	<key>enabledHomeScreenItems</key>
 	<array>

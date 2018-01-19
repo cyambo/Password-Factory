@@ -52,8 +52,11 @@ class LengthControlView: ControlView {
         slider.addTarget(self, action: #selector(changeLengthSlider(_:)), for: .valueChanged)
         slider.minimumValue = 5.0
         slider.maximumValue = d.float(forKey: "maxPasswordLength")
-        slider.setValue(d.float(forKey: "passwordLength"), animated: false)
-        currentValue = d.integer(forKey: "passwordLength")
+        if let key = defaultsKey {
+            slider.setValue(d.float(forKey: key), animated: false)
+            currentValue = d.integer(forKey: key)
+        }
+
         setSizeLabelText()
     }
     

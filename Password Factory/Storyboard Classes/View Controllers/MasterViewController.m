@@ -122,7 +122,10 @@
         //updating the max password length slider when the max password length value has changed from preferences
         if (self.currentPasswordTypeViewController.passwordLengthSlider) {
             NSSlider *slider = self.currentPasswordTypeViewController.passwordLengthSlider;
-            [self updateForMaxPasswordLength:new slider:slider key:@"passwordLength"];
+            //TODO: password length
+            PFPasswordType *type = [self getSelectedPasswordType];
+            NSString *key = [NSString stringWithFormat:@"%@PasswordLength",[[self.c getNameForPasswordType:type] lowercaseString]];
+            [self updateForMaxPasswordLength:new slider:slider key:key];
             [self.currentPasswordTypeViewController changeLength:slider];
         }
         //updating the truncate slider

@@ -309,19 +309,21 @@
     settings[@"useSymbols"] = @([d boolForKey:@"randomUseSymbols"]);
     settings[@"useEmoji"] = @([d boolForKey:@"randomUseEmoji"]);
     settings[@"useNumbers"] = @([d boolForKey:@"randomUseNumbers"]);
-    settings[@"passwordLength"] = @([self getPasswordLength]);
-    
+    settings[@"passwordLength"] = @20; //just set a default length
     switch (type) {
         case PFRandomType: //random
+            settings[@"passwordLength"] = @([self getPasswordLength:type]);
             settings[@"caseType"] = @([self getCaseTypeForType:type]);
             break;
         case PFPatternType: //pattern
             settings[@"patternText"] = [d stringForKey:@"userPattern"];
             break;
         case PFPronounceableType: //pronounceable
+            settings[@"passwordLength"] = @([self getPasswordLength:type]);
             settings[@"caseType"] = @([self getCaseTypeForType:type]);
             settings[@"separatorType"] = @([self getSeparatorTypeForType:type]);
         case PFPassphraseType: //passphrase:
+            settings[@"passwordLength"] = @([self getPasswordLength:type]);
             settings[@"caseType"] = @([self getCaseTypeForType:type]);
             settings[@"separatorType"] = @([self getSeparatorTypeForType:type]);
             break;
@@ -398,8 +400,10 @@
  
  @return password length
  */
--(NSUInteger)getPasswordLength {
-    return [self.defaults integerForKey:@"passwordLength"];
+-(NSUInteger)getPasswordLength:(PFPasswordType)type {
+    //TODO: password length
+    NSString *key = [NSString stringWithFormat:@"%@PasswordLength",[[self.c getNameForPasswordType:type] lowercaseString]];
+    return [self.defaults integerForKey:key];
 }
 
 -(NSUInteger)getTruncateLength {

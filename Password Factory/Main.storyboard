@@ -621,8 +621,8 @@ Gw
                                         </buttonCell>
                                         <connections>
                                             <action selector="changeRemoteStorage:" target="2B8-vP-6ly" id="0a8-Xv-T9O"/>
-                                            <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.iCloudIsAvailable" id="QUs-xy-psr"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.enableRemoteStore" id="vjs-QO-BAb"/>
+                                            <binding destination="DGa-ye-VaM" name="enabled" keyPath="values.iCloudIsAvailable" id="QUs-xy-psr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1460,7 +1460,7 @@ Gw
                                 <accessibility description="Password Length Slider" identifier="passwordLengthSlider"/>
                                 <connections>
                                     <action selector="changeLength:" target="IdK-28-YZe" id="gFM-gu-INc"/>
-                                    <binding destination="ZGa-yO-4eO" name="value" keyPath="values.passwordLength" id="CTx-is-Ple"/>
+                                    <binding destination="ZGa-yO-4eO" name="value" keyPath="values.randomPasswordLength" id="6Ek-2Q-bx7"/>
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-mZ-cgj">
@@ -1732,7 +1732,7 @@ Gw
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="60" doubleValue="10.526315789473685" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Sqd-6F-q5B"/>
                                 <connections>
                                     <action selector="changeLength:" target="sdy-bB-1Ah" id="ju4-4R-tgl"/>
-                                    <binding destination="Mal-f5-XKJ" name="value" keyPath="values.passwordLength" id="e4T-V2-5Ow"/>
+                                    <binding destination="Mal-f5-XKJ" name="value" keyPath="values.passphrasePasswordLength" id="1Hh-7F-EIQ"/>
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-3j-rGw">
@@ -2025,7 +2025,7 @@ Gw
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="5" maxValue="60" doubleValue="22.5" tickMarkPosition="below" sliderType="linear" id="Ukq-gS-y0u"/>
                                 <connections>
                                     <action selector="changeLength:" target="d6t-4y-fZf" id="WUt-kH-D79"/>
-                                    <binding destination="WUy-a4-IIG" name="value" keyPath="values.passwordLength" id="pjl-IT-0UD"/>
+                                    <binding destination="WUy-a4-IIG" name="value" keyPath="values.pronounceablePasswordLength" id="fLw-Pn-ALM"/>
                                 </connections>
                             </slider>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yWf-3E-p7P">

@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         UIView.appearance().tintColor = PFConstants.tintColor
 
@@ -25,12 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let notification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String : NSObject])
         PasswordStorage.get().receivedUpdatedData(notification) { (complete) in
             if complete {
                 completionHandler(.newData)
+                //if the current vc is stored, then reload data on it to show updates
                 if let storedVC = ((application.keyWindow?.rootViewController as? UINavigationController)?.viewControllers[0] as? TypeSelectionViewController)?.currentViewController as? StoredPasswordViewController {
                     storedVC.receivedUpdatedData()
                 }

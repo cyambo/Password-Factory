@@ -86,7 +86,6 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
                 }
             }
         }
-
         if selectedItem != ch {
             let indexPath = IndexPath.init(row: ch, section: 0)
             collection.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
@@ -99,11 +98,14 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
         
         
     }
+    
     /// Scrolls to the currently selected item with animation
     func scrollToSelected() {
         let index = d.integer(forKey: getDefaultsKey())
-        currentValue = index
-        collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
+        if (index >= 0 && index < collection.numberOfItems(inSection: 0)) {
+            currentValue = index
+            collection?.scrollToItem(at: IndexPath.init(row: index, section: 0), at: .centeredHorizontally, animated: true)
+        }
     }
     
     /// Gets the current defaults key

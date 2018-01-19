@@ -300,7 +300,7 @@
                                                     <constraint firstAttribute="height" constant="88" id="iv8-60-HqC"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="passwordLength"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="randomPasswordLength"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="Sl1-Tc-FzO" id="o3I-xx-tEL"/>
@@ -745,7 +745,7 @@
                                                     <constraint firstAttribute="height" constant="88" id="Psg-0s-z74"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="passwordLength"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="pronounceablePasswordLength"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="vEx-Tj-Bk3" id="7nP-l1-sBE"/>
@@ -870,7 +870,7 @@
                                                     <constraint firstAttribute="height" constant="88" id="LZB-tt-B1b"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="passwordLength"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="passphrasePasswordLength"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="6fA-LE-ub7" id="pJP-9R-rK0"/>
