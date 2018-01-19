@@ -460,6 +460,36 @@
 }
 
 /**
+ Saves the server change token in defaults
+
+ @param token server token to save
+ */
+-(void)saveChangeToken:(CKServerChangeToken *)token {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:token];
+    [self.d setObject:data forKey:@"cloudKitChangeToken"];
+}
+
+#pragma mark CloudKit Fetch
+
+/**
+ Retrieves a remote object from a recordID
+ 
+ @param record recordID to fetch
+ @param completion completion with recordID
+ */
+-(void)getRemote:(CKRecordID *)record completionHandler:(void (^)(CKRecord *))completion {
+    [self.cloudKitDatabase fetchRecordWithID:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"CK FR ERR %@" , error.localizedDescription);
+            completion(nil);
+        } else {
+            NSLog(@"GET REMOTE RECORD %@",record.recordID.recordName);
+            completion(record);
+        }
+    }];
+}
+
+/**
  Fetches remote changes since last load
  */
 -(void)fetchRemoteChanges {
@@ -525,17 +555,6 @@
 }
 
 /**
- Saves the server change token in defaults
-
- @param token server token to save
- */
--(void)saveChangeToken:(CKServerChangeToken *)token {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:token];
-    [self.d setObject:data forKey:@"cloudKitChangeToken"];
-}
-
-
-/**
  Retrieves all the remotely stored record ids
 
  @param completionHandler called with all found record ids
@@ -553,6 +572,17 @@
     }];
 
 }
+/**
+ Returns the CKRecordID for a password
+ 
+ @param password password to get id
+ @return CKRecordID
+ */
+-(CKRecordID *)getRecordIDFor:(Passwords *)password {
+    return [[CKRecordID alloc] initWithRecordName:[self getIDFor:password] zoneID:self.cloudKitRecordZone.zoneID];
+}
+
+#pragma mark CloudKit Delete
 /**
  Deletes all the passwords in cloudkit
  */
@@ -602,15 +632,6 @@
         self.recordSubscription = nil;
     }
 }
-/**
- Returns the CKRecordID for a password
-
- @param password password to get id
- @return CKRecordID
- */
--(CKRecordID *)getRecordIDFor:(Passwords *)password {
-    return [[CKRecordID alloc] initWithRecordName:[self getIDFor:password] zoneID:self.cloudKitRecordZone.zoneID];
-}
 
 /**
  Deletes a password in cloudkit
@@ -628,25 +649,7 @@
     }];
 }
 
-
-/**
- Retrieves a remote object from a recordID
-
- @param record recordID to fetch
- @param completion completion with recordID
- */
--(void)getRemote:(CKRecordID *)record completionHandler:(void (^)(CKRecord *))completion {
-    [self.cloudKitDatabase fetchRecordWithID:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"CK FR ERR %@" , error.localizedDescription);
-            completion(nil);
-        } else {
-            NSLog(@"GET REMOTE RECORD %@",record.recordID.recordName);
-            completion(record);
-        }
-    }];
-}
-
+#pragma mark CloudKit Store
 /**
  Stores a password in CloudKit
 
@@ -690,6 +693,7 @@
     }
 }
 
+#pragma mark CloudKit Push
 
 /**
  Data was received from a push notification
