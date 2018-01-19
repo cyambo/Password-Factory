@@ -16,7 +16,7 @@
 #ifndef IOS
 #import "AppDelegate.h"
 #endif
-@interface PasswordStorage () <DefaultsManagerDelegate>
+@interface PasswordStorage ()
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
 @property (nonatomic, strong) NSSortDescriptor *sort;
@@ -170,7 +170,7 @@
         [self deleteOverMaxItems];
     }
 }
-#pragma mark Fetch Info
+#pragma mark Fetch
 
 /**
  Gets the number of objects stored
@@ -340,7 +340,6 @@
 -(void)enableRemoteStorage:(BOOL)enabled {
     self.enableRemoteStorage = enabled;
     if (enabled) {
-        [self.d observeDefaults:self keys:@[@"cloudKitZoneCreated"]];
         NSLog(@"ENABLING REMOTE STORAGE");
         __weak PasswordStorage *weakSelf = self;
         [self loadCloudKitContainer:^{
@@ -350,11 +349,9 @@
         }];
         
     } else {
-        [self.d removeDefaultsObservers:self keys:@[@"cloudKitZoneCreated"]];
         //TODO: disable properly
     }
 }
-
 
 /**
  Returns the unique id for a Password item
@@ -366,8 +363,8 @@
     NSString *salt = [NSString stringWithFormat:@"%@%d%lf",password.password,password.type,password.time.timeIntervalSinceReferenceDate];
     return [salt sha1];
 }
-#pragma mark CloudKit
 
+#pragma mark CloudKit
 
 /**
  Loads the CloudKit container
@@ -379,38 +376,11 @@
     self.cloudKitContainer = [CKContainer containerWithIdentifier:iCloudContainer];
     self.cloudKitDatabase = self.cloudKitContainer.privateCloudDatabase;
     self.cloudKitRecordZone = [[CKRecordZone alloc] initWithZoneName:iCloudContainerZone];
-    __weak PasswordStorage *weakSelf = self;
     [self.cloudKitDatabase saveRecordZone:self.cloudKitRecordZone completionHandler:^(CKRecordZone * _Nullable zone, NSError * _Nullable error) {
         if (error) {
             NSLog(@"CK ZON CR %@",error.localizedDescription);
         } else {
             NSLog(@"LOADED CK CONTAINER ZONE");
-            //checking to see when the zone was created and loaded to determine what to sync
-            float zoneTime = [weakSelf.d floatForKey:@"cloudKitZoneCreated"];
-            float zoneLoaded = [weakSelf.d floatForKey:@"cloudKitZoneLoaded"];
-            //if both are zero, then it is a new zone, so set to now
-            if (zoneTime == 0 && zoneLoaded == 0) {
-                zoneTime = [NSDate date].timeIntervalSinceReferenceDate;
-                zoneLoaded = zoneTime;
-            //if zone loaded is zero and zone time is set that means we never synced
-            //and load the zone
-            } else if (zoneTime > zoneLoaded) {
-                //synchronize with remote
-                [weakSelf synchronizeWithRemote];
-                //set zone loaded to now
-                zoneLoaded = [NSDate date].timeIntervalSinceReferenceDate;
-                
-                NSLog(@"NEED TO SYNC");
-            
-            } else if (zoneTime == 0 && zoneLoaded != 0) {
-                NSLog(@"ZONE TIME ZERO"); //shouldn't get here, but if we do set zoneTime to zoneLoaded and sync
-                zoneTime = zoneLoaded;
-                [weakSelf synchronizeWithRemote];
-            }
-            //set current creation date
-            
-            [weakSelf.d setFloat:zoneLoaded forKey:@"cloudKitZoneLoaded"];
-            [weakSelf.d setFloat:zoneTime forKey:@"cloudKitZoneCreated"];
             if (completionHandler != nil) {
                completionHandler();
             }
@@ -448,6 +418,10 @@
     }
 }
 
+
+/**
+ Creates the record subscription
+ */
 -(void)createRecordSubscription {
 
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
@@ -469,6 +443,11 @@
         //TODO: save id in defaults
     }];
 }
+
+
+/**
+ Syncronizes any unsynced passwords to remote
+ */
 -(void)synchronizeWithRemote {
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
     [req setPredicate:[NSPredicate predicateWithFormat:@"synced == 0"]];
@@ -478,26 +457,31 @@
         [self storeRemote:p];
     }
     self.hasUnsyncedChanges = NO;
-
 }
+
 /**
  Fetches remote changes since last load
  */
 -(void)fetchRemoteChanges {
     NSLog(@"FETCHING REMOTE CHANGES");
+    //loading the change token from defaults
     CKFetchRecordZoneChangesOptions *opt = [[CKFetchRecordZoneChangesOptions alloc] init];
     NSData *token = [self.d objectForKey:@"cloudKitChangeToken"];
     if (token) {
+        //if it is found, set the token
         CKServerChangeToken *t = [NSKeyedUnarchiver unarchiveObjectWithData:token];
         if (t != nil){
             opt.previousServerChangeToken = t;
         }
     }
+    
+    //setup the operation
     CKFetchRecordZoneChangesOperation *op = [[CKFetchRecordZoneChangesOperation alloc] initWithRecordZoneIDs:@[self.cloudKitRecordZone.zoneID] optionsByRecordZoneID:@{self.cloudKitRecordZone.zoneID : opt}];
     op.fetchAllChanges = YES;
     
     __weak PasswordStorage* weakSelf = self;
     
+    //block for changed records either insert or modify a record
     [op setRecordChangedBlock:^(CKRecord * _Nonnull record) {
         
         Passwords *search;
@@ -515,14 +499,19 @@
             NSLog(@"FETCH ADD %@",pw.password);
         }
     }];
+    //block for deleted records, will delete local record
     [op setRecordWithIDWasDeletedBlock:^(CKRecordID * _Nonnull recordID, NSString * _Nonnull recordType) {
         [weakSelf deletePasswordWithID:recordID.recordName];
         NSLog(@"FETCH DELETE ID %@",recordID.recordName);
     }];
+    
+    //token updated, so save
     [op setRecordZoneChangeTokensUpdatedBlock:^(CKRecordZoneID * _Nonnull recordZoneID, CKServerChangeToken * _Nullable serverChangeToken, NSData * _Nullable clientChangeTokenData) {
         [self saveChangeToken:serverChangeToken];
         NSLog(@"FETCH TOKEN UPDATE");
     }];
+    
+    //operation complete, so save everything
     [op setRecordZoneFetchCompletionBlock:^(CKRecordZoneID * _Nonnull recordZoneID, CKServerChangeToken * _Nullable serverChangeToken, NSData * _Nullable clientChangeTokenData, BOOL moreComing, NSError * _Nullable recordZoneError) {
         if (serverChangeToken != nil && !moreComing) {
             NSLog(@"FETCH UPDATE COMPLETE"); //save token here
@@ -533,7 +522,6 @@
         }
     }];
     [self.cloudKitDatabase addOperation:op];
-    
 }
 
 /**
@@ -546,38 +534,58 @@
     [self.d setObject:data forKey:@"cloudKitChangeToken"];
 }
 
+
 /**
- Deletes all the passwords in cloudkit - does this by deleting the zone
+ Retrieves all the remotely stored record ids
+
+ @param completionHandler called with all found record ids
+ */
+-(void)fetchAllRemoteRecordIDs:(void (^)(NSArray*))completionHandler {
+    NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
+    CKQuery *query = [[CKQuery alloc] initWithRecordType:@"Passwords" predicate:predicate];
+    
+    [self.cloudKitDatabase performQuery:query inZoneWithID:self.cloudKitRecordZone.zoneID completionHandler:^(NSArray *results, NSError *error) {
+        NSMutableArray *ids = [[NSMutableArray alloc] init];
+        for (CKRecord *record in results) {
+            [ids addObject:record.recordID];
+        }
+        completionHandler(ids);
+    }];
+
+}
+/**
+ Deletes all the passwords in cloudkit
  */
 -(void)deleteAllRemoteObjects {
 
     __weak PasswordStorage *weakSelf = self;
-    if (self.cloudKitRecordZone != nil) {
-        CKModifyRecordZonesOperation *modifyZoneOp = [[CKModifyRecordZonesOperation alloc] initWithRecordZonesToSave:nil recordZoneIDsToDelete:@[self.cloudKitRecordZone.zoneID]];
-        modifyZoneOp.modifyRecordZonesCompletionBlock = ^(NSArray<CKRecordZone *> * _Nullable savedRecordZones, NSArray<CKRecordZoneID *> * _Nullable deletedRecordZoneIDs, NSError * _Nullable operationError) {
-            if (operationError) {
-                NSLog(@"CK ZON DEL %@",operationError.localizedDescription);
-            } else {
-                NSLog(@"DELETE ALL REMOTE OBJECTS");
-                [weakSelf deleteSubscriptions];
-                [self.d setObject:nil forKey:@"cloudKitChangeToken"];
-                [self.d setFloat:0.0 forKey:@"cloudKitZoneCreated"];
-                [self.d setFloat:0.0 forKey:@"cloudKitZoneLoaded"];
-                if (weakSelf.enableRemoteStorage) {
-                    NSLog(@"DELETING LOCAL OBJECTS");
-                    [weakSelf deleteAllEntities];
-                    [weakSelf loadCloudKitContainer:nil];
+
+    [self fetchAllRemoteRecordIDs:^(NSArray *recordIds) {
+        if (recordIds.count) {
+            CKModifyRecordsOperation *op = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:nil recordIDsToDelete:recordIds];
+            op.modifyRecordsCompletionBlock = ^(NSArray<CKRecord *> * _Nullable savedRecords, NSArray<CKRecordID *> * _Nullable deletedRecordIDs, NSError * _Nullable operationError) {
+                if (operationError) {
+                    NSLog(@"DELETE BATCH FAIL %@",operationError.localizedDescription);
+                } else {
+                    NSLog(@"DELETED %d REMOTE OBJECTS",(int)recordIds.count);
+                    [weakSelf deleteSubscriptions];
+                    if (weakSelf.enableRemoteStorage) {
+                        NSLog(@"DELETING LOCAL OBJECTS");
+                        [weakSelf deleteAllEntities];
+                        [weakSelf loadCloudKitContainer:nil];
+                    }
                 }
-                
-            }
-        };
-        [self.cloudKitDatabase addOperation:modifyZoneOp];
-        
-        self.cloudKitRecordZone = nil;
-        self.cloudKitDatabase = nil;
-        self.cloudKitContainer = nil;
-    }
+            };
+            [self.cloudKitDatabase addOperation:op];
+        }
+    }];
+
 }
+
+
+/**
+ deletes the record subscriptions
+ */
 -(void)deleteSubscriptions {
 
     if (self.recordSubscription != nil) {
@@ -593,7 +601,6 @@
         [self.cloudKitDatabase addOperation:modifySubOp];
         self.recordSubscription = nil;
     }
-
 }
 /**
  Returns the CKRecordID for a password
@@ -620,6 +627,14 @@
         }
     }];
 }
+
+
+/**
+ Retrieves a remote object from a recordID
+
+ @param record recordID to fetch
+ @param completion completion with recordID
+ */
 -(void)getRemote:(CKRecordID *)record completionHandler:(void (^)(CKRecord *))completion {
     [self.cloudKitDatabase fetchRecordWithID:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
         if(error) {
@@ -662,17 +677,26 @@
                 NSLog(@"REMOTE STORED %@",password.password);
                 //mark the password as synced, and save it
                 password.synced = YES;
-                [weakSelf saveContext];
+                if (password.inserted) {
+                    [weakSelf saveContext];
+                }
+                
                 if (weakSelf.hasUnsyncedChanges) {
                     [weakSelf synchronizeWithRemote];
                 }
-
             }
             
         }];
     }
 }
 
+
+/**
+ Data was received from a push notification
+
+ @param notification CKNotification from push
+ @param completionHandler called when complete, and sets success
+ */
 -(void)receivedUpdatedData:(CKNotification *)notification complete:(void (^)(BOOL))completionHandler {
     if ([notification isKindOfClass:[CKQueryNotification class]]) {
         CKQueryNotification *queryNotification = (CKQueryNotification *)notification;
@@ -696,22 +720,6 @@
     }
     completionHandler(NO);
 }
-- (void)observeValue:(NSString * _Nullable)keyPath change:(NSDictionary * _Nullable)change {
-    //checking for an updated zone creation time - that means iCloud data was erased
-    if ([keyPath isEqualToString:@"cloudKitZoneCreated"]) {
-        //load our create time
-        float currentZoneTime = [self.d floatForKey:@"cloudKitZoneCreated"];
-        if (currentZoneTime != 0.0) {
-            //get the changed time
-            float changedZonedTime = [(NSNumber *)change[@"new"] floatValue];
-            //and if it is latger than our time, delete and reload everything
-            if (changedZonedTime > currentZoneTime) {
-                NSLog(@"REMOTE DELETE ALL");
-                [self deleteAllEntities];
-                [self loadCloudKitContainer:nil];
-            }
-        }
-    }
-}
+
 
 @end
