@@ -405,9 +405,35 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     }];
 }
 - (IBAction)changeRemoteStorage:(NSButton *)sender {
-    [Utilities setRemoteStore];
+    NSString *message;
+    if (sender.state == NSControlStateValueOn) {
+        message = enableRemoteStoreWarning;
+    } else {
+        message = disableRemoteStoreWarning;
+    }
+    AppDelegate *d = [NSApplication sharedApplication].delegate;
+    [d.alertWindowController displayAlertWithBlock:message defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
+        if(!cancelled) {
+            [Utilities setRemoteStore];
+        } else {
+            if (sender.state == NSControlStateValueOn) {
+                sender.state = NSControlStateValueOff;
+            } else {
+                sender.state = NSControlStateValueOn;
+            }
+        }
+    }];
+    
 }
     
 - (IBAction)eraseRemoteStorage:(NSButton *)sender {
+    AppDelegate *d = [NSApplication sharedApplication].delegate;
+    [d.alertWindowController displayAlertWithBlock:eraseRemoteStoreWarning defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
+        if(!cancelled) {
+            [DefaultsManager removeRemoteDefaults];
+            [[PasswordStorage get] deleteAllRemoteObjects];
+        }
+    }];
+
 }
     @end
