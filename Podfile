@@ -4,21 +4,18 @@ target 'Password Factory'  do
     platform :osx, '10.11'
     pod 'ZXCVBN'
     pod 'MASShortcut'
-    pod 'SyncKit/CoreData'
 end
 
 target 'Password Factory iOS'  do
     use_frameworks!
     platform :ios, '10.0'
     pod 'ZXCVBN'
-    pod 'SyncKit/CoreData'
     pod 'SwiftHSVColorPicker'
 end
 
 target 'Password Factory Widget' do
     platform :osx, '10.11'
     pod 'ZXCVBN'
-    pod 'SyncKit/CoreData'
 end;
 
 target 'Password FactoryTests' do
