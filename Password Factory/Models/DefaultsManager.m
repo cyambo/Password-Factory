@@ -12,10 +12,10 @@
 #import "PasswordFactoryConstants.h"
 
 static mach_timebase_info_data_t _sTimebaseInfo;
-
+static BOOL _useSharedDataSource = NO;
 uint64_t  _newTime, _previousTime, _elapsed, _elapsedNano, _threshold;
 NSString  *_previousKeyPath;
-static NSArray *globalDisabledKeys;
+
 @interface DefaultsManager ()
 @property (nonatomic, strong) NSUserDefaults *sharedDefaults;
 @property (nonatomic, strong) NSUserDefaults *standardDefaults;
@@ -26,6 +26,7 @@ static NSArray *globalDisabledKeys;
 @property (nonatomic, strong) NSMutableDictionary *kvos;
 @property (nonatomic, assign) bool stopObservers;
 @property (nonatomic, strong) NSMutableArray *disabledSyncKeys;
+@property (nonatomic, assign) BOOL useRemoteStorage;
 @end
 @implementation DefaultsManager
 
@@ -41,42 +42,7 @@ static DefaultsManager *dm = nil;
         static dispatch_once_t once = 0;
         dispatch_once(&once, ^ {
             dm = [[DefaultsManager alloc] init];
-            [dm disableRemoteSyncForKeys:[PasswordFactoryConstants get].disabledSyncKeys];
         });
-    }
-    return dm;
-}
-+(instancetype) get:(NSArray *)disabledKeys enableShared:(BOOL)enableShared {
-    if(!dm) {
-        static dispatch_once_t once = 0;
-        dispatch_once(&once, ^ {
-            globalDisabledKeys = disabledKeys;
-            dm = [[DefaultsManager alloc] init];
-            [dm enableShared:enableShared];
-            
-        });
-    } else {
-        [dm enableShared:enableShared];
-        [dm disableRemoteSyncForKeys:disabledKeys];
-    }
-    return dm;
-}
-/**
- Singleton get method, enables shared and since we are shared
- we do not sync to shared defaults as the shared defaults are the
- definitive source, rather than the main defaults
-
- @return DefaultsManager Instance
- */
-+(instancetype)getShared {
-    if(!dm) {
-        static dispatch_once_t once = 0;
-        dispatch_once(&once, ^ {
-            dm = [[DefaultsManager alloc] init];
-            [dm enableShared:YES];
-        });
-    } else {
-        [dm enableShared:YES];
     }
     return dm;
 }
@@ -103,21 +69,13 @@ static DefaultsManager *dm = nil;
     self.stopObservers = false;
     [self setupCache];
     [self addObservers];
-    [self disableRemoteSyncForKeys:globalDisabledKeys];
+    [self disableRemoteSyncForKeys:[PasswordFactoryConstants get].disabledSyncKeys];
     [self enableRemoteStore:[self.standardDefaults boolForKey:@"enableRemoteStore"]];
     if (!loadedPlist) {
         [self getPrefsFromPlist:false];
     }
+    [self syncToSharedDefaults];
     return self;
-}
-
-/**
- Sets DefaultsManager to use shared defaults as the definitive source
-
- @param enable enable bool
- */
--(void)enableShared:(BOOL)enable {
-    self.useShared = enable;
 }
 
 /**
@@ -126,7 +84,7 @@ static DefaultsManager *dm = nil;
  @param enable enable bopol
  */
 -(void)enableRemoteStore:(BOOL)enable {
-    self.enableRemoteStore = enable;
+    self.useRemoteStorage = enable;
     if (enable) {
         //initialize the store
 
@@ -163,6 +121,29 @@ static DefaultsManager *dm = nil;
             }
         }
     }
+}
+
+/**
+ Syncs our plist to the sharedDefaults manager for use in the today extension
+ */
+-(void)syncToSharedDefaults {
+    //don't sync back if we are using the shared data source
+    if (!DefaultsManager.useSharedDataSource) {
+        [self loadDefaultsPlist];
+        NSUserDefaults *sharedDefaults = self.sharedDefaults;
+        NSUserDefaults *d = self.standardDefaults;
+        for (NSString *key in self.prefsPlist) {
+            NSString *k = [key stringByAppendingString:@"Shared"]; //Appending shared to shared defaults because KVO will cause the observer to be called
+            id obj = [d objectForKey:key];
+            //syncing to shared defaults
+            if ([self canSyncKey:k]) {
+                if(![self compareDefaultsObject:[sharedDefaults objectForKey:k] two:obj]) {
+                    [sharedDefaults setObject:[d objectForKey:key] forKey:k];
+                }
+            }
+        }
+    }
+
 }
 
 /**
@@ -240,19 +221,7 @@ static DefaultsManager *dm = nil;
         }
     }
 }
-/**
- Gets the key and adds 'Shared' if we are using shared
 
- @param key key to get
- @return returned key
- */
--(NSString *)getKey:(NSString *)key {
-    if (self.useShared) {
-        return [key stringByAppendingString:@"Shared"];
-    } else {
-        return key;
-    }
-}
 
 /**
  Gets shared or standard defaults based on useShared
@@ -260,7 +229,7 @@ static DefaultsManager *dm = nil;
  @return defaults
  */
 - (NSUserDefaults *)getDefaults {
-    if(self.useShared) {
+    if(DefaultsManager.useSharedDataSource) {
         return self.sharedDefaults;
     } else {
         return self.standardDefaults;
@@ -276,7 +245,7 @@ static DefaultsManager *dm = nil;
 -(id)objectForKey:(NSString *)key {
     id object;
     id cached;
-    if(self.useShared) {
+    if(DefaultsManager.useSharedDataSource) {
         key = [key stringByAppendingString:@"Shared"];
         object = [self.sharedDefaults objectForKey:key];
         cached = [self.sharedDefaultsCache objectForKey:key];
@@ -372,20 +341,23 @@ static DefaultsManager *dm = nil;
  */
 -(void)storeObject:(id)object forKey:(NSString *)keyPath {
     [self.standardDefaultsCache setObject:object forKey:keyPath];
-    if (self.enableRemoteStore) {
-        if ([self canSyncKey:keyPath]) {
+    if ([self canSyncKey:keyPath]) {
+        if (self.useRemoteStorage) {
             if (![self boolForKey:@"activeControl"]) {
                 if (![self compareDefaultsObject:[self.keyStore objectForKey:keyPath] two:object]) {
                     [self.keyStore setObject:object forKey:keyPath];
                 }
             }
-
         }
-    }
-    NSString *sharedKey = [keyPath stringByAppendingString:@"Shared"];
-    if (![self compareDefaultsObject:[self.sharedDefaults objectForKey:sharedKey] two:object]) {
-        [self.sharedDefaults setObject:object forKey:sharedKey];
-        [self.sharedDefaultsCache setObject:object forKey:sharedKey];
+        //don't store back if we are using shared
+        if (!DefaultsManager.useSharedDataSource) {
+            NSString *sharedKey = [keyPath stringByAppendingString:@"Shared"];
+            if (![self compareDefaultsObject:[self.sharedDefaults objectForKey:sharedKey] two:object]) {
+                [self.sharedDefaults setObject:object forKey:sharedKey];
+                [self.sharedDefaultsCache setObject:object forKey:sharedKey];
+            }
+        }
+
     }
 }
 /**
@@ -436,9 +408,9 @@ static DefaultsManager *dm = nil;
     NSUbiquitousKeyValueStore *store = self.keyStore;
     self.stopObservers = true;
     //taking plist and filling in defaults if none set
-    BOOL currentRemoteStore = self.enableRemoteStore;
+    BOOL currentRemoteStore = self.useRemoteStorage;
     if (!initialize) {
-        self.enableRemoteStore = NO;
+        self.useRemoteStorage = NO;
     }
     for (NSString *k in self.prefsPlist) {
         id defaultsObject = [d objectForKey:k];
@@ -475,7 +447,7 @@ static DefaultsManager *dm = nil;
         }
 
     }
-    self.enableRemoteStore = currentRemoteStore;
+    self.useRemoteStorage = currentRemoteStore;
     self.stopObservers = false;
 }
 
@@ -486,9 +458,9 @@ static DefaultsManager *dm = nil;
  */
 -(void)remoteStoreDidChange:(NSNotification *)notification {
     if (notification.userInfo && notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
-        BOOL currentRemoteStore = self.enableRemoteStore;
+        BOOL currentRemoteStore = self.useRemoteStorage;
         //don't re-sync changes back to iCloud
-        self.enableRemoteStore = false;
+        self.useRemoteStorage = false;
         //go through the notification
         for (NSString *item in notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
             NSLog(@"REMOTE ITEM CHANGE %@",item);
@@ -502,7 +474,7 @@ static DefaultsManager *dm = nil;
             
         }
         //reenable remote store
-        self.enableRemoteStore = currentRemoteStore;
+        self.useRemoteStorage = currentRemoteStore;
     }
 }
 
@@ -654,5 +626,10 @@ static DefaultsManager *dm = nil;
         }
     }
 }
-
++(BOOL)useSharedDataSource {
+    return _useSharedDataSource;
+}
++(void)setUseSharedDataSource:(BOOL)useSharedDataSource {
+    _useSharedDataSource = useSharedDataSource;
+}
 @end

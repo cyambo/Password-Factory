@@ -42,7 +42,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     required init?(coder aDecoder: NSCoder) {
         Utilities.setRemoteStore()
         Utilities.setHomeScreenActions()
-        passwordController = PasswordController.get(false)!
+        passwordController = PasswordController.get()!
         d = DefaultsManager.get()
         c = PFConstants.instance
         
@@ -240,7 +240,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         //if there is a stored password from the zoomView just show it
         if let sp = savedPassword {
             savedPassword = nil
-            if let controller = PasswordController.get(false) {
+            if let controller = PasswordController.get() {
                 controller.password = sp
                 controller.updatePasswordStrength()
                 updatePasswordField(sp, strength: Double(controller.getPasswordStrength()), crackTime: controller.getCrackTimeString())

@@ -116,8 +116,6 @@
 	<false/>
 	<key>cloudKitChangeToken</key>
 	<data></data>
-	<key>cloudKitInitialSyncPerformed</key>
-	<false/>
 	<key>activeControl</key>
 	<false/>
 	<key>enabledHomeScreenItems</key>

@@ -13,7 +13,7 @@ class SetHomeScreenActionsViewController: UITableViewController {
     var disabledItems = [PFPasswordType]()
     let d = DefaultsManager.get()
     let c = PFConstants.instance
-    let passwordController = PasswordController.get(false)
+    let passwordController = PasswordController.get()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

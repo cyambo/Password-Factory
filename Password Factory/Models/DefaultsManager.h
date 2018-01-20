@@ -15,17 +15,13 @@
 @end
 @interface DefaultsManager : NSObject
 @property (nonatomic, strong) NSDictionary   * _Nullable prefsPlist;
+@property (class, nonatomic, assign) BOOL useSharedDataSource;
 +(instancetype _Nonnull) get;
-+(instancetype _Nonnull) getShared;
-+(instancetype _Nonnull) get:(NSArray * _Nonnull)disabledKeys enableShared:(BOOL)enableShared;
 +(NSUserDefaults *_Nonnull)sharedDefaults;
 +(NSUserDefaults *_Nonnull)standardDefaults;
 +(void)restoreUserDefaults;
 +(void)removeRemoteDefaults;
 -(void)resetDialogs;
-@property (nonatomic, assign) BOOL useShared;
-@property (nonatomic, assign) BOOL enableRemoteStore;
-- (void)enableShared:(BOOL)enable;
 - (void)enableRemoteStore:(BOOL)enable;
 - (NSString * _Nullable)stringForKey:(NSString * _Nonnull)key;
 - (NSInteger)integerForKey:(NSString * _Nonnull)key;

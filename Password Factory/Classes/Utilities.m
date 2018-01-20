@@ -32,7 +32,7 @@
     DefaultsManager *d = [DefaultsManager get];
     //default text color from prefs
     BOOL highlighted = [d boolForKey:@"colorPasswordText"];
-
+    text = text == nil ? @"" : text;
     //not highlighted, so use the default color
     if (!highlighted) {
         NSColor *dColor = [[d stringForKey:@"defaultTextColor"] colorWithHexColorString];
@@ -85,7 +85,7 @@
 }
 
 +(void)setRemoteStore {
-    DefaultsManager *d = [DefaultsManager get:[PasswordFactoryConstants get].disabledSyncKeys enableShared:false];
+    DefaultsManager *d = [DefaultsManager get];
     BOOL iCloudIsAvailable = NSFileManager.defaultManager.ubiquityIdentityToken != nil;
     [d setBool:iCloudIsAvailable forKey:@"iCloudIsAvailable"];
     if (iCloudIsAvailable && [d boolForKey:@"enableRemoteStore"]) {

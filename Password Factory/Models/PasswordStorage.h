@@ -24,6 +24,7 @@
 +(instancetype) get;
 @property (nonatomic, weak) id <PasswordStorageDelegate> delegate;
 @property (nonatomic, assign) NSUInteger maximumPasswordsStored;
+@property (class, nonatomic, assign) BOOL disableRemoteFetchChanges;
 -(NSUInteger)count;
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type;
 -(Passwords *)passwordAtIndex:(NSUInteger)index;

@@ -16,6 +16,8 @@
 #ifndef IOS
 #import "AppDelegate.h"
 #endif
+
+static bool _disableRemoteFetchChanges = NO;
 @interface PasswordStorage ()
 @property (nonatomic, strong) NSMutableArray *passwords;
 @property (nonatomic, strong) NSMutableArray *sortedPasswords;
@@ -27,10 +29,9 @@
 @property (nonatomic, strong) CKRecordZone *cloudKitRecordZone;
 @property (nonatomic, strong) DefaultsManager *d;
 @property (nonatomic, strong) NSString *prev;
-@property (nonatomic, assign) BOOL enableRemoteStorage;
+@property (nonatomic, assign) BOOL useRemoteStore;
 @property (nonatomic, strong) CKSubscription *recordSubscription;
-@property (nonatomic, assign) BOOL hasUnsyncedChanges;
-
+@property (nonatomic, strong) NSMutableArray *syncInProgress;
 @end
 @implementation PasswordStorage
 #pragma  mark init
@@ -72,8 +73,8 @@
 #endif
         }
     }];
-    self.hasUnsyncedChanges = YES;
-    [self enableRemoteStorage:self.enableRemoteStorage];
+    self.syncInProgress = [[NSMutableArray alloc] init];
+    self.useRemoteStore = NO;
     //set to sort with newest on top
     self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
     [self loadSavedData];
@@ -132,9 +133,6 @@
  @param type PFPasswordType of password
  */
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type {
-    if (strength > 1.0) {
-        NSLog(@"STRENGTH ERRRR");
-    }
     [self storePassword:password strength:strength type:type time:[NSDate date] fromRemote:NO];
 }
 
@@ -147,6 +145,9 @@
  @param time time of creation
  */
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type time:(NSDate *)time fromRemote:(BOOL)fromRemote {
+    if (strength > 1.0) {
+        NSLog(@"STRENGTH ERRRR");
+    }
     if (self.prev != nil && [password isEqualToString:self.prev]) { //getting duplicates from bug in observer on ios, so, just return
         return;
     }
@@ -160,9 +161,14 @@
         pw.length = [password getUnicodeLength];
         pw.time = time;
         pw.passwordID = [self getIDFor:pw];
-        pw.synced = NO;
-        if (self.enableRemoteStorage && !fromRemote) {
-            [self storeRemote:pw];
+        if (fromRemote) {
+            pw.synced = YES;
+        } else {
+            pw.synced = NO;
+        }
+        
+        if (self.useRemoteStore && !fromRemote) {
+            [self synchronizeWithRemote];
         }
         //save it
         [self saveContext];
@@ -248,7 +254,7 @@
             @catch (NSException *e) {
                 NSLog(@"BATCH DELETE ERR %@",e);
             }
-            if (self.enableRemoteStorage) {
+            if (self.useRemoteStore) {
                 [self deleteRemote:p];
             }
         }
@@ -262,7 +268,7 @@
  */
 -(void)deleteItemAtIndex:(NSUInteger)index {
     Passwords *curr = [self passwordAtIndex:index];
-    if (self.enableRemoteStorage) {
+    if (self.useRemoteStore) {
         [self deleteRemote:curr];
     }
     [self deletePassword:curr];
@@ -338,7 +344,7 @@
  @param enabled enabled boolean
  */
 -(void)enableRemoteStorage:(BOOL)enabled {
-    self.enableRemoteStorage = enabled;
+    self.useRemoteStore = enabled;
     if (enabled) {
         NSLog(@"ENABLING REMOTE STORAGE");
         __weak PasswordStorage *weakSelf = self;
@@ -349,10 +355,32 @@
         }];
         
     } else {
-        //TODO: disable properly
+        self.cloudKitDatabase = nil;
+        self.cloudKitContainer = nil;
+        self.cloudKitRecordZone = nil;
+        self.recordSubscription = nil;
+        [self.syncInProgress removeAllObjects];
+        [self.d setObject:nil forKey:@"cloudKitChangeToken"];
     }
 }
 
+/**
+ Method for static variable disableRemoteFetchChanges
+ 
+ @return disabled
+ */
++(BOOL)disableRemoteFetchChanges {
+    return _disableRemoteFetchChanges;
+}
+
+/**
+ Method for setting static variable
+ 
+ @param disableRemoteFetchChanges bool
+ */
++(void)setDisableRemoteFetchChanges:(BOOL)disableRemoteFetchChanges {
+    _disableRemoteFetchChanges = disableRemoteFetchChanges;
+}
 /**
  Returns the unique id for a Password item
 
@@ -449,14 +477,19 @@
  Syncronizes any unsynced passwords to remote
  */
 -(void)synchronizeWithRemote {
-    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
-    [req setPredicate:[NSPredicate predicateWithFormat:@"synced == 0"]];
-    NSError *error = nil;
-    NSArray *results = [self.container.viewContext executeFetchRequest:req error:&error];
-    for(Passwords *p in results) {
-        [self storeRemote:p];
+    if (!PasswordStorage.disableRemoteFetchChanges) {
+        NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
+        [req setPredicate:[NSPredicate predicateWithFormat:@"synced == 0"]];
+        NSError *error = nil;
+        NSArray *results = [self.container.viewContext executeFetchRequest:req error:&error];
+        
+        for(Passwords *p in results) {
+            if (![self.syncInProgress containsObject:p.passwordID]) {
+                [self.syncInProgress addObject:p.passwordID];
+                [self storeRemote:p];
+            }
+        }
     }
-    self.hasUnsyncedChanges = NO;
 }
 
 /**
@@ -493,6 +526,7 @@
  Fetches remote changes since last load
  */
 -(void)fetchRemoteChanges {
+    if (PasswordStorage.disableRemoteFetchChanges) { return; }
     NSLog(@"FETCHING REMOTE CHANGES");
     //loading the change token from defaults
     CKFetchRecordZoneChangesOptions *opt = [[CKFetchRecordZoneChangesOptions alloc] init];
@@ -583,6 +617,7 @@
 }
 
 #pragma mark CloudKit Delete
+
 /**
  Deletes all the passwords in cloudkit
  */
@@ -599,7 +634,7 @@
                 } else {
                     NSLog(@"DELETED %d REMOTE OBJECTS",(int)recordIds.count);
                     [weakSelf deleteSubscriptions];
-                    if (weakSelf.enableRemoteStorage) {
+                    if (weakSelf.useRemoteStore) {
                         NSLog(@"DELETING LOCAL OBJECTS");
                         [weakSelf deleteAllEntities];
                         [weakSelf loadCloudKitContainer:nil];
@@ -611,7 +646,6 @@
     }];
 
 }
-
 
 /**
  deletes the record subscriptions
@@ -673,8 +707,6 @@
                     NSLog(@"ALREADY SYNCED %@",password.password);
                     password.synced = YES;
                     [weakSelf saveContext];
-                } else {
-                    weakSelf.hasUnsyncedChanges = YES;
                 }
             } else {
                 NSLog(@"REMOTE STORED %@",password.password);
@@ -683,12 +715,11 @@
                 if (password.inserted) {
                     [weakSelf saveContext];
                 }
+
+                [weakSelf synchronizeWithRemote];
                 
-                if (weakSelf.hasUnsyncedChanges) {
-                    [weakSelf synchronizeWithRemote];
-                }
             }
-            
+            [weakSelf.syncInProgress removeObject:password.passwordID];
         }];
     }
 }

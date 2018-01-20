@@ -42,7 +42,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         //initialize everything
-        self.password = [PasswordController get:NO];
+        self.password = [PasswordController get];
         self.password.delegate = self;
         [self setOptionalTypes];
         DefaultsManager *d = [DefaultsManager get];

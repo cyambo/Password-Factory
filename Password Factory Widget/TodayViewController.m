@@ -31,8 +31,12 @@
 @implementation TodayViewController
 - (instancetype)init {
     self = [super init];
-    self.d = [DefaultsManager getShared];
-    self.passwordController = [PasswordController get:YES];
+    DefaultsManager.useSharedDataSource = YES;
+    PasswordStorage.disableRemoteFetchChanges = YES;
+    [Utilities setRemoteStore];
+    self.d = [DefaultsManager get];
+    
+    self.passwordController = [PasswordController get];
     self.passwordStrength = [[PasswordStrength alloc] init];
     self.storage = [PasswordStorage get];
     

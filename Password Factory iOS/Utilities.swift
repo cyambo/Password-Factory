@@ -272,7 +272,7 @@ class Utilities: NSObject {
     /// Sets the remote store status based on defaults
     public class func setRemoteStore() {
         //load defaults and set keys to not sync
-        let d = DefaultsManager.get(PFConstants.instance.disabledSyncKeys, enableShared: false)
+        let d = DefaultsManager.get()
         //check to see if iCloud is available, and set the key to enable the sync switch
         let iCloudAvailable = FileManager.default.ubiquityIdentityToken != nil
         d.setBool(iCloudAvailable, forKey: "iCloudIsAvailable")

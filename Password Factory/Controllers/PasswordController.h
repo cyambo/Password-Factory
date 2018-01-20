@@ -6,15 +6,12 @@
 //  Copyright © 2017 Cristiana Yambo. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import "constants.h"
 
-#if TARGET_OS_OSX
+#ifdef IS_MACOS
 #import "PasswordTypesViewController.h"
-#define IS_MACOS 1
-#else
-#define IS_IOS 1
 #endif
 
-#import "constants.h"
 #import "PasswordFactory.h"
 
 
@@ -32,7 +29,7 @@
 @property (nonatomic, assign) BOOL useStoredType;
 @property (nonatomic, assign) BOOL useAdvancedType;
 @property (nonatomic, strong) NSString *password;
-+ (instancetype)get:(BOOL)useShared;
++ (instancetype)get;
 #ifdef IS_MACOS
 - (void)generatePassword:(PFPasswordType)type;
 #else

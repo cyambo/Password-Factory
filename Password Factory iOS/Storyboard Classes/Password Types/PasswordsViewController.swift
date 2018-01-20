@@ -21,7 +21,7 @@ class PasswordsViewController: UIViewController, ControlViewDelegate  {
     var crackTimeString: String = ""
     var currentPassword = ""
     var passwordType: PFPasswordType?
-    let controller = PasswordController.get(false)
+    let controller = PasswordController.get()
     
     override func viewWillAppear(_ animated: Bool) {
         passwordType = PFPasswordType.init(rawValue: passwordTypeInt) ?? PFPasswordType.randomType

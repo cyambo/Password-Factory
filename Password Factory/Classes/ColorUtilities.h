@@ -7,12 +7,10 @@
 //
 #import "constants.h"
 #import <Foundation/Foundation.h>
-#if TARGET_OS_OSX
+#ifdef IS_MACOS
 #define Color NSColor
 #import <Cocoa/Cocoa.h>
-#define IS_MACOS 1
 #else
-#define IS_IOS 1
 #define Color UIColor
 #import <UIKit/UIKit.h>
 #endif

@@ -6,7 +6,11 @@
 //  Copyright (c) 2015 Cristiana Yambo. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-
+#if TARGET_OS_OSX
+#define IS_MACOS 1
+#else
+#define IS_IOS 1
+#endif
 #ifndef Password_Factory_constants_h
 #define Password_Factory_constants_h
 

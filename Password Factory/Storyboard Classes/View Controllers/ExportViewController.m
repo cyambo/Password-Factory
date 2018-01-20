@@ -25,7 +25,7 @@
     // Do view setup here.
 }
 -(void)viewWillAppear {
-    NSDictionary *types = [[PasswordController get:NO] getFilteredPasswordTypes];
+    NSDictionary *types = [[PasswordController get] getFilteredPasswordTypes];
     NSArray *keys = [[types allKeys] sortedArrayUsingSelector:@selector(compare:)];
     [self.passwordTypes removeAllItems];
     for(int i = 0; i < keys.count; i++) {
@@ -89,7 +89,7 @@
  */
 -(void)exportStored:(NSOutputStream *)stream {
     __block PasswordStorage *storage = [PasswordStorage get];
-    __block PasswordController *pvc = [PasswordController get:NO];
+    __block PasswordController *pvc = [PasswordController get];
     __block ExportViewController *s = self;
     __block NSOperation *op = [NSBlockOperation blockOperationWithBlock:^{
         //write header line
@@ -123,7 +123,7 @@
  @param amount number of passwords to generate
  */
 -(void)generatePasswords:(PFPasswordType)type stream:(NSOutputStream *)stream amount:(NSInteger)amount {
-    __block PasswordController *p = [PasswordController get:NO];
+    __block PasswordController *p = [PasswordController get];
     NSString *typeName = [p getNameForPasswordType:type];
     __block NSMutableDictionary *settings = [[p getPasswordSettingsByType:type] mutableCopy];
     settings[@"noDisplay"] = @(YES);

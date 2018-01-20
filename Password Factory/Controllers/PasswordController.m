@@ -27,22 +27,21 @@
 
  @return PasswordController instance
  */
-+ (instancetype)get:(BOOL)useShared {
++ (instancetype)get{
     static dispatch_once_t once = 0;
     static PasswordController *singleton = nil;
     
     dispatch_once(&once, ^ {
-        singleton = [[PasswordController alloc] initWithShared:useShared];
+        singleton = [[PasswordController alloc] init];
 
     });
 
     return singleton;
 }
--(instancetype)initWithShared:(BOOL)useShared {
+-(instancetype)init{
     self = [super init];
     self.defaults = [DefaultsManager get];
-    [self.defaults enableShared:useShared];
-    
+
     self.passwordStrength = [[PasswordStrength alloc] init];
     self.factory = [PasswordFactory get];
     self.c = [PasswordFactoryConstants get];
