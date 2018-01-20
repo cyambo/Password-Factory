@@ -23,7 +23,8 @@
  @param code PFErrorCode
  */
 -(void)displayError:(NSString *)errorDescription code:(PFErrorCode)code {
-    NSString *message = [NSString stringWithFormat:@"An application error has occurred.\nCode: %ld\nDescription: '%@'\nPlease send an email to\n%@\nwith the code and description",code,errorDescription,SupportEmailAddress];
+    NSString *m = NSLocalizedString(@"applicationErrorMessage", comment: :@"An application error has occurred.\nCode: %ld\nDescription: '%@'\nPlease send an email to\n%@\nwith the code and description");
+    NSString *message = [NSString stringWithFormat:m,code,errorDescription,SupportEmailAddress];
     [self displayAlert:message defaultsKey:nil window:nil];
 }
 /**

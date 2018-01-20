@@ -131,7 +131,7 @@
         }
         [insertControl setAction:@selector(insertCharacter:)];
         touchBarItem.view = insertControl;
-        touchBarItem.customizationLabel = @"Insert Pattern Character";
+        touchBarItem.customizationLabel = NSLocalizedString(@"touchBarPatternCustomizationLabel", comment: @"Insert Pattern Character");
         return touchBarItem;
     }
     return nil;

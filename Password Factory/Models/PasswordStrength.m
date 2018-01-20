@@ -71,17 +71,17 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
     //getting times that are less than a year, need to do this manually because the for loop below works in powers of ten
     //and to make the loop simpler the non-powers of ten time elements are hand written
     if ((approximate = [self checkApproximateToOne:ct]) != PSGreaterThan) {
-        s = @"a minute";
+        s = NSLocalizedString(@"approximateTimeMinute", comment: @"a minute");
     } else if ((approximate = [self checkApproximateToOne:(ct / 60)]) != PSGreaterThan) {
-        s = @"an hour";
+        s = NSLocalizedString(@"approximateTimeHour", comment: @"an hour");
     } else if ((approximate = [self checkApproximateToOne:(ct / (60 * 24))]) != PSGreaterThan) {
-        s = @"a day";
+        s = NSLocalizedString(@"approximateTimeDay", comment: @"a day");
     } else if ((approximate = [self checkApproximateToOne:(ct / (60 * 24 * 7))]) != PSGreaterThan) {
-        s = @"a week";
+        s = NSLocalizedString(@"approximateTimeWeek", comment: @"a week");
     } else if ((approximate = [self checkApproximateToOne:(ct / (60 * 24 * 30))]) != PSGreaterThan) {
-        s = @"a month";
+        s = NSLocalizedString(@"approximateTimeMonth", comment: @"a month");
     } else if ((ct / (60 * 24 * 7 * 30 * 365)) < 1) {
-        s = @"a year";
+        s = NSLocalizedString(@"approximateTimeYear", comment: @"a year");
     }
     //Greater than a year
     if (s == nil) {
@@ -90,7 +90,7 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
         if (ct < 10) { //less than ten years
             ct = floor(ct); //get number of years
             NSNumber *f = [NSNumber numberWithInt:ct];
-            s = [NSString stringWithFormat:@"%@ years",[self.numberFormatter stringFromNumber:f]]; //write out the numbers
+            s = [NSString stringWithFormat:NSLocalizedString(@"approximateYearsString", comment: @"%@ years"),[self.numberFormatter stringFromNumber:f]]; //write out the numbers
             approximate = PSAbout; //set approximate to 'about'
         }
         else {
@@ -110,29 +110,29 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
             }
             //we didn't fall out of the loop so we are less than 1e18 years
             if (s) {
-                s = [NSString stringWithFormat:@"%@ years",s];
+                s = [NSString stringWithFormat:NSLocalizedString(@"approximateYearsString", comment: @"%@ years"),s];
             }
         }
         //if we didn't set a string that means we are greater than 1e18 years
         if (s == nil) {
             approximate = PSGreaterThan; //so set it to greater than
-            s = @"one septillion years";
+            s = NSLocalizedString(@"approximateMaxTimeString", comment: @"one septillion years");
         }
     }
     NSString *prefix;
     //converting approximate enum to string
     switch (approximate) {
         case PSLessThan:
-            prefix = @"less than";
+            prefix = NSLocalizedString(@"approximateLessThan", comment: @"less than");
             break;
         case PSEqualTo:
-            prefix = @"";
+            prefix = NSLocalizedString(@"approximateEqual", comment: @"");
             break;
         case PSAbout:
-            prefix = @"about";
+            prefix = NSLocalizedString(@"approximateAbout", comment: @"about");
             break;
         case PSGreaterThan:
-            prefix = @"greater than";
+            prefix = NSLocalizedString(@"approximateGreaterThan", comment: @"greater than");
     }
     s = [NSString stringWithFormat:@"%@ %@",prefix,s];
     self.crackTimeString = s; //set and return the string

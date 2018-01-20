@@ -55,54 +55,57 @@
                                @(PFNonAmbiguousNumbers): self.nonAmbiguousNumbers,
                                };
     self.passwordTypes = @{
-                      @(PFRandomType): @"Random",
-                      @(PFPatternType): @"Pattern",
-                      @(PFPassphraseType): @"Passphrase",
-                      @(PFPronounceableType): @"Pronounceable",
-                      @(PFAdvancedType): @"Advanced",
-                      @(PFStoredType): @"Stored"
-                      };
+                           @(PFRandomType): NSLocalizedString(@"randomTypeName", comment: @"Random"),
+                           @(PFPatternType): NSLocalizedString(@"patternTypeName", comment: @"Pattern"),
+                           @(PFPassphraseType): NSLocalizedString(@"passphraseTypeName", comment: @"Passphrase"),
+                           @(PFPronounceableType): NSLocalizedString(@"pronounceableTypeName", comment: @"Pronounceable"),
+                           @(PFAdvancedType): NSLocalizedString(@"advancedTypeName", comment: @"Advanced"),
+                           @(PFStoredType): NSLocalizedString(@"storedTypeName", comment: @"Stored")
+                           };
+    
     self.caseTypes = @{
-                       @(PFLowerCase): @"Lowercase",
-                       @(PFUpperCase): @"Uppercase",
-                       @(PFMixedCase): @"Mixed Case",
-                       @(PFTitleCase): @"Title Case"
+                       @(PFLowerCase): NSLocalizedString(@"lowerCaseName", comment: @"Lowercase"),
+                       @(PFUpperCase): NSLocalizedString(@"upperCaseName", comment: @"Uppercase"),
+                       @(PFMixedCase): NSLocalizedString(@"mixedCaseName", comment: @"Mixed Case"),
+                       @(PFTitleCase): NSLocalizedString(@"titleCaseName", comment: @"Title Case")
                        };
+    
     self.separatorTypes = @{
-                            @(PFNoSeparator) : @"None",
-                            @(PFHyphenSeparator) : @"Hyphen",
-                            @(PFSpaceSeparator) : @"Space",
-                            @(PFUnderscoreSeparator) : @"Underscore",
-                            @(PFNumberSeparator) : @"Number",
-                            @(PFSymbolSeparator) : @"Symbol",
-                            @(PFCharacterSeparator) : @"Character",
-                            @(PFEmojiSeparator) : @"Emoji",
-                            @(PFRandomSeparator) : @"Random",
+                            @(PFNoSeparator) : NSLocalizedString(@"noneSeparatorTypeName", comment: @"None"),
+                            @(PFHyphenSeparator) : NSLocalizedString(@"hyphenSeparatorTypeName", comment: @"Hyphen"),
+                            @(PFSpaceSeparator) : NSLocalizedString(@"spaceSeparatorTypeName", comment: @"Space"),
+                            @(PFUnderscoreSeparator) : NSLocalizedString(@"underscoreSeparatorTypeName", comment: @"Underscore"),
+                            @(PFNumberSeparator) : NSLocalizedString(@"numberSeparatorTypeName", comment: @"Number"),
+                            @(PFSymbolSeparator) : NSLocalizedString(@"symbolSeparatorTypeName", comment: @"Symbol"),
+                            @(PFCharacterSeparator) : NSLocalizedString(@"characterSeparatorTypeName", comment: @"Character"),
+                            @(PFEmojiSeparator) : NSLocalizedString(@"emojiSeparatorTypeName", comment: @"Emoji"),
+                            @(PFRandomSeparator) : NSLocalizedString(@"randomSeparatorTypeName", comment: @"Random"),
                             
                             };
     self.patternBase = @{
-                        @(PFNumberType): @[@"#",@"Number"],
-                        @(PFLowerCaseWordType): @[@"w",@"Lowercase Word"],
-                        @(PFUpperCaseWordType): @[@"W",@"Uppercase Word"],
-                        @(PFRandomCaseWordType): @[@"d",@"Random Case Word"],
-                        @(PFTitleCaseWordType): @[@"D",@"Title Case Word"],
-                        @(PFLowerCaseShortWordType): @[@"s",@"Lowercase Short Word"],
-                        @(PFUpperCaseShortWordType): @[@"S",@"Uppercase Short Word"],
-                        @(PFRandomCaseShortWordType): @[@"h",@"Random Case Short Word"],
-                        @(PFTitleCaseShortWordType): @[@"H",@"Title Case Short Word"],
-                        @(PFSymbolType): @[@"!",@"Symbol"],
-                        @(PFLowerCaseCharacterType): @[@"c",@"Lowercase Character"],
-                        @(PFUpperCaseCharacterType): @[@"C",@"Uppercase Character"],
-                        @(PFNonAmbiguousCharacterType): @[@"a",@"Non-Ambiguous Lowercase Character"],
-                        @(PFNonAmbiguousUpperCaseCharacterType): @[@"A",@"Non-Ambiguous Uppercase Character"],
-                        @(PFNonAmbiguousNumberType): @[@"N",@"Non-Ambiguous Number"],
-                        @(PFLowerCasePhoneticSoundType): @[@"p",@"Lowercase Phonetic Sound"],
-                        @(PFUpperCasePhoneticSoundType): @[@"P",@"Uppercase Phonetic Sound"],
-                        @(PFRandomCasePhoneticSoundType): @[@"t",@"Random Case Phonetic Sound"],
-                        @(PFTitleCasePhoneticSoundType): @[@"T",@"Title Case Phonetic Sound"],
-                        @(PFEmojiType): @[@"e",@"Emoji"],
-                        @(PFRandomItemType): @[@"r",@"Random Item"]
-                        };
+                         @(PFNumberType): @[@"#",NSLocalizedString(@"numberPatternName", comment: @"Number")],
+                         @(PFLowerCaseWordType): @[@"w",NSLocalizedString(@"lowercaseWordPatternName", comment: @"Lowercase Word")],
+                         @(PFUpperCaseWordType): @[@"W",NSLocalizedString(@"uppercaseWordPatternName", comment: @"Uppercase Word")],
+                         @(PFRandomCaseWordType): @[@"d",NSLocalizedString(@"randomCaseWordPatternName", comment: @"Random Case Word")],
+                         @(PFTitleCaseWordType): @[@"D",NSLocalizedString(@"titleCaseWordPatternName", comment: @"Title Case Word")],
+                         @(PFLowerCaseShortWordType): @[@"s",NSLocalizedString(@"lowercaseShortWordPatternName", comment: @"Lowercase Short Word")],
+                         @(PFUpperCaseShortWordType): @[@"S",NSLocalizedString(@"uppercaseShortWordPatternName", comment: @"Uppercase Short Word")],
+                         @(PFRandomCaseShortWordType): @[@"h",NSLocalizedString(@"randomCaseShortWordPatternName", comment: @"Random Case Short Word")],
+                         @(PFTitleCaseShortWordType): @[@"H",NSLocalizedString(@"titleCaseShortWordPatternName", comment: @"Title Case Short Word")],
+                         @(PFSymbolType): @[@"!",NSLocalizedString(@"symbolPatternName", comment: @"Symbol")],
+                         @(PFLowerCaseCharacterType): @[@"c",NSLocalizedString(@"lowerCaseCharacterPatternName", comment: @"Lowercase Character")],
+                         @(PFUpperCaseCharacterType): @[@"C",NSLocalizedString(@"upperCaseCharacterPatternName", comment: @"Uppercase Character")],
+                         @(PFNonAmbiguousCharacterType): @[@"a",NSLocalizedString(@"nonAmbiguousLowercaseCharacterPatternName", comment: @"Non-Ambiguous Lowercase Character")],
+                         @(PFNonAmbiguousUpperCaseCharacterType): @[@"A",NSLocalizedString(@"nonAmbiguousUppercaseCharacterPatternName", comment: @"Non-Ambiguous Uppercase Character")],
+                         @(PFNonAmbiguousNumberType): @[@"N",NSLocalizedString(@"nonAmbiguousNumberPatternName", comment: @"Non-Ambiguous Number")],
+                         @(PFLowerCasePhoneticSoundType): @[@"p",NSLocalizedString(@"lowerCasePhoneticSoundPatternName", comment: @"Lowercase Phonetic Sound")],
+                         @(PFUpperCasePhoneticSoundType): @[@"P",NSLocalizedString(@"upperCasePhoneticSoundPatternName", comment: @"Uppercase Phonetic Sound")],
+                         @(PFRandomCasePhoneticSoundType): @[@"t",NSLocalizedString(@"randomCasePhoneticSoundPatternName", comment: @"Random Case Phonetic Sound")],
+                         @(PFTitleCasePhoneticSoundType): @[@"T",NSLocalizedString(@"titleCasePhoneticSoundPatternName", comment: @"Title Case Phonetic Sound")],
+                         @(PFEmojiType): @[@"e",NSLocalizedString(@"emojiPatternName", comment: @"Emoji")],
+                         @(PFRandomItemType): @[@"r",NSLocalizedString(@"randomItemPatternName", comment: @"Random Item")]
+                         };
+    
     NSMutableString *e = [[NSMutableString alloc] init];
     for(int i = 0; i < self.symbols.length; i++) {
         [e appendString:[NSString stringWithFormat:@"\\%c",[self.symbols characterAtIndex:i]]];
@@ -114,7 +117,10 @@
                               @"activeControl",
                               @"iCloudIsAvailable",
                               @"cloudKitChangeToken",
-                              @"storedPasswordTableSelectedRow"];
+                              @"storedPasswordTableSelectedRow",
+                              @"isMenuApp",
+                              @"hideDockIcon",
+                              @"addToLoginItems"];
 }
 
 /**

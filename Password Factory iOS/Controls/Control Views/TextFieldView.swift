@@ -50,7 +50,7 @@ class TextFieldView: ControlView, UITextFieldDelegate {
             rightButton.setImage(StyleKit.imageOfRightArrow(strokeColor: UIColor.white), for: .normal)
             rightButton.addTarget(self, action: #selector(goToNextItemInControlGroup), for: .touchUpInside)
             let doneButton = UIButton.init(type: .system)
-            doneButton.setTitle("Done", for: .normal)
+            doneButton.setTitle(NSLocalizedString("doneButton", comment: "Done"), for: .normal)
             doneButton.setTitleColor(UIColor.white, for: .normal)
             doneButton.addTarget(self, action: #selector(done), for: .touchUpInside)
             accessory.addSubview(leftButton)

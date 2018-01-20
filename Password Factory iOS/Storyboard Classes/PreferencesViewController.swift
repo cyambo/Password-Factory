@@ -27,7 +27,7 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
          scrollView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
-        navigationItem.title = "Preferences"
+        navigationItem.title = NSLocalizedString("preferencesTitle", comment: "Preferences")
     }
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
         //does any special actions for control changes in preferences

@@ -1636,7 +1636,7 @@
                                                 <rect key="frame" x="0.0" y="412" width="375" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Text Color"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Text"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="defaultTextColor"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>

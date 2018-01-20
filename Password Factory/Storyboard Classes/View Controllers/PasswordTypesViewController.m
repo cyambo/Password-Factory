@@ -129,7 +129,7 @@
         }
         //add a no change item to advanced type
         if (self.passwordType == PFAdvancedType) {
-            [self.caseTypeMenu insertItemWithTitle:@"No Change" atIndex:0];
+            [self.caseTypeMenu insertItemWithTitle:NSLocalizedString(@"noChangeMessage", comment: @"No Change") atIndex:0];
             [self.caseTypeMenu itemAtIndex:0].tag = 0;
         }
         NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",self.prefix];
@@ -147,7 +147,7 @@
     }
     if (self.insertMenu) {
         [self.insertMenu removeAllItems];
-        [self.insertMenu addItemWithTitle:@"Insert"];
+        [self.insertMenu addItemWithTitle:NSLocalizedString(@"insertMessage", comment: @"Insert")];
         for(int i = 0; i < self.c.patternTypeIndex.count; i++) {
             PFPatternTypeItem t = [(NSNumber *)self.c.patternTypeIndex[i] integerValue];
             [self.insertMenu addItemWithTitle:[self.c getNameForPatternTypeItem:t]];

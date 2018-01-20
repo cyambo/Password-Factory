@@ -68,13 +68,13 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         if let pt = pickerType {
             switch pt {
             case .CaseType:
-                controlLabel.text = "Case"
+                controlLabel.text = NSLocalizedString("casePickerLabel", comment: "Case")
             case .SeparatorType:
-                controlLabel.text = "Separator"
+                controlLabel.text = NSLocalizedString("separatorPickerLabel", comment: "Separator")
             case .PasswordType:
-                controlLabel.text = "Source"
+                controlLabel.text = NSLocalizedString("sourcePickerLabel", comment: "Source")
             case .NumberType:
-                controlLabel.text = "Range"
+                controlLabel.text = NSLocalizedString("rangePickerLabel", comment: "Range")
                 
             }
         }
@@ -135,7 +135,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
             index = index - 1
         }
         if index < 0 {
-            title = "No Change"
+            title = NSLocalizedString("noChangeMessage", comment: "No Change")
         } else {
             let caseType = c.getCaseType(by: UInt(index))
             title = c.caseTypes[caseType] ?? "--"
@@ -217,7 +217,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
                 i = i - 1
             }
             if i < 0 {
-                t = "No Change"
+                t = NSLocalizedString("noChangeMessage", comment: "No Change")
             } else {
                 t = c.caseTypes[c.getCaseType(by: UInt(i))] ?? t
             }

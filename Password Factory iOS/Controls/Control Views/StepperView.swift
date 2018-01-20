@@ -57,7 +57,8 @@ class StepperView: ControlView, PickerViewControllerDelegate {
     }
 
     @objc func loadPicker() {
-        let pickerTitle = "\(label ?? "Select")"
+        
+        let pickerTitle = label ?? NSLocalizedString("selectTitle", comment: "Select")
 
         if let p = parentViewController {
             Utilities.displayNumberPicker(source: valueLabel, delegate: self, parentViewController: p, title: pickerTitle, isPercent: isPercent, current: UInt(controlStepper.value), lowerRange: UInt(minValue), upperRange: UInt(maxValue), step: UInt(stepValue))
@@ -79,7 +80,7 @@ class StepperView: ControlView, PickerViewControllerDelegate {
             let val = d.integer(forKey: key)
             currentValue = val
             if val == 0 && defaultsKey == "advancedTruncateAt" {
-                valueLabel.setTitle("None", for: .normal)
+                valueLabel.setTitle(NSLocalizedString("noneStepperLabel", comment: "None"), for: .normal)
             } else {
                 let percent = isPercent ? "%" : ""
                 valueLabel.setTitle("\(val)\(percent)", for: .normal)

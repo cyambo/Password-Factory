@@ -30,7 +30,7 @@ class LengthControlView: ControlView {
         super.setupView()
         setupLengthSlider()
         setActions(slider)
-        controlLabel.text = "Length"
+        controlLabel.text = NSLocalizedString("lengthControlLabel", comment: "Length")
         sizeLabel.textAlignment = .right
         sizeLabel.font = UIFont.systemFont(ofSize: 32)
         //set container to height of 65 and to fill horizontally

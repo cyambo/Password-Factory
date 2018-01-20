@@ -127,7 +127,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     DefaultsManager *d = [DefaultsManager get];
     if(sender.state == NSControlStateValueOn) {
         [appDelegate.masterViewController enableStoredPasswords];
-        [appDelegate.alertWindowController displayAlertWithBlock:StoredPasswordOnWarning defaultsKey:@"hideStoredPasswordOnWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
+        [appDelegate.alertWindowController displayAlertWithBlock:NSLocalizedString(@"storedPasswordOnWarning", comment: @"") defaultsKey:@"hideStoredPasswordOnWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
             if(cancelled) {
                 [d setBool:NO forKey:@"storePasswords"];
             } else {
@@ -137,7 +137,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         }];
 
     } else {
-        [appDelegate.alertWindowController displayAlertWithBlock:StoredPasswordOffWarning defaultsKey:@"hideStoredPasswordOffWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
+        [appDelegate.alertWindowController displayAlertWithBlock:NSLocalizedString(@"storedPasswordOffWarning", comment: @"") defaultsKey:@"hideStoredPasswordOffWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
             if(cancelled) {
                 [d setBool:YES forKey:@"storePasswords"];
             } else {
@@ -202,6 +202,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         self.initialDockState = isMenuApp;
         self.initialMenuState = hideDockIcon;
         //since the values get changed when they are clicked, flip the one that was clicked to make it the same as the initial state
+        //TODO: use something other than title to update
         if ([sender.title isEqualToString:@"Hide Dock Icon"]) {
             self.initialDockState = !hideDockIcon;
         } else {
@@ -213,7 +214,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     //if the menu status has changed, if it is a menuApp and the dock state changes
     if ((isMenuApp ^ self.initialMenuState) || (isMenuApp && (hideDockIcon ^ self.initialDockState))) {
         AppDelegate *delegate = [NSApplication sharedApplication].delegate;
-        [delegate.alertWindowController displayAlert:MenuRestartMessage defaultsKey:@"hideMenuRestartWarning" window:self.view.window];
+        [delegate.alertWindowController displayAlert:NSLocalizedString(@"menuRestartMessage", comment: @"") defaultsKey:@"hideMenuRestartWarning" window:self.view.window];
         [self.quitButton setTitle:@"Restart"];
     }
 }
@@ -276,7 +277,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             self.addToLoginItems.state = NSControlStateValueOff;
             [d setBool:NO forKey:@"addToLoginItems"];
             AppDelegate *delegate = [NSApplication sharedApplication].delegate;
-            [delegate.alertWindowController displayAlert:StartAtLoginNotInApplicationsWarning defaultsKey:@"hideStartAtLoginNotInApplicationsWarning" window:self.view.window];
+            [delegate.alertWindowController displayAlert:NSLocalizedString(@"startAtLoginNotInApplicationsWarning", comment: @"") defaultsKey:@"hideStartAtLoginNotInApplicationsWarning" window:self.view.window];
             return;
         }
     }
@@ -373,7 +374,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  */
 - (IBAction)resetToDefaults:(NSButton *)sender {
     AppDelegate *d = [NSApplication sharedApplication].delegate;
-    [d.alertWindowController displayAlertWithBlock:ResetToDefaultsWarning defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
+    [d.alertWindowController displayAlertWithBlock:NSLocalizedString(@"resetToDefaultsWarning", comment: @"") defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
             //restore defaults
             [DefaultsManager restoreUserDefaults];
@@ -398,7 +399,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
  */
 - (IBAction)resetAllDialogs:(NSButton *)sender {
     AppDelegate *d = [NSApplication sharedApplication].delegate;
-    [d.alertWindowController displayAlertWithBlock:ResetAllDialogsWarning defaultsKey:nil  window:self.view.window closeBlock:^(BOOL cancelled) {
+    [d.alertWindowController displayAlertWithBlock:NSLocalizedString(@"resetAllDialogsWarning", comment: @"") defaultsKey:nil  window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
             [[DefaultsManager get] resetDialogs];
         }
@@ -407,9 +408,9 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 - (IBAction)changeRemoteStorage:(NSButton *)sender {
     NSString *message;
     if (sender.state == NSControlStateValueOn) {
-        message = enableRemoteStoreWarning;
+        message = NSLocalizedString(@"enableRemoteStoreWarning", comment: @"");
     } else {
-        message = disableRemoteStoreWarning;
+        message = NSLocalizedString(@"disableRemoteStoreWarning", comment: @"");;
     }
     AppDelegate *d = [NSApplication sharedApplication].delegate;
     [d.alertWindowController displayAlertWithBlock:message defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
@@ -428,7 +429,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     
 - (IBAction)eraseRemoteStorage:(NSButton *)sender {
     AppDelegate *d = [NSApplication sharedApplication].delegate;
-    [d.alertWindowController displayAlertWithBlock:eraseRemoteStoreWarning defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
+    [d.alertWindowController displayAlertWithBlock:NSLocalizedString(@"eraseRemoteStoreWarning", comment: @"") defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
             [DefaultsManager removeRemoteDefaults];
             [[PasswordStorage get] deleteAllRemoteObjects];

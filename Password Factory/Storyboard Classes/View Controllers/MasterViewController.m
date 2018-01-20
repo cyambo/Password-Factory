@@ -194,7 +194,7 @@
     BOOL ok = [pasteboard writeObjects:toPasteboard];
     if (!ok) {
         AppDelegate *d = [NSApplication sharedApplication].delegate;
-        [d.alertWindowController displayError:@"Pasteboard Write Failed" code:PFCoreDataLoadError];
+        [d.alertWindowController displayError:NSLocalizedString(@"pasteboardWriteFail", comment: @"Pasteboard write failed") code:PFCoreDataLoadError];
         
     }
 }
@@ -241,8 +241,8 @@
  */
 - (void)displayCopyNotification {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
-    [notification setTitle:@"Password Copied"];
-    [notification setInformativeText:[NSString stringWithFormat:@"Password with strength %2.0f copied to clipboard.",(self.passwordStrengthLevel.strength * 100) ]];
+    [notification setTitle:NSLocalizedString(@"passwordCopyNotificationTitle", comment: @"Password Copied")];
+    [notification setInformativeText:[NSString stringWithFormat:NSLocalizedString(@"pasteboardCopyNotification", comment: @"Password with strength %2.0f copied to clipboard."),(self.passwordStrengthLevel.strength * 100) ]];
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     //Set the sound if the user configured it
     if ([[DefaultsManager get] boolForKey:@"globalHotkeyPlaySound"]) {
@@ -384,7 +384,7 @@
         NSArray *m = [self.extendedCharacterRegex matchesInString:currPassword options:0 range:NSMakeRange(0, currPassword.length)];
         if (m.count) {
             AppDelegate *d = [NSApplication sharedApplication].delegate;
-            [d.alertWindowController displayAlert:ExtendedCharacterWarning defaultsKey:@"hideExtendedCharacterWarning" window:self.view.window];
+            [d.alertWindowController displayAlert:NSLocalizedString(@"extendedCharacterWarning", comment: @"") defaultsKey:@"hideExtendedCharacterWarning" window:self.view.window];
         }
     }
 
@@ -694,24 +694,24 @@
         [self setPasswordSegmentedControl:self.touchBarTypeControl];
         [self.touchBarTypeControl setAction:@selector(changePasswordTypeControl:)];
         touchBarItem.view = self.touchBarTypeControl;
-        touchBarItem.customizationLabel = @"Select Type";
+        touchBarItem.customizationLabel = NSLocalizedString(@"touchBarTypeSelectionLabel", comment: @"Select Type");
         return touchBarItem;
     }
     if ([identifier isEqualToString:@"GenerateButton"]) {
         NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"GenerateButton"];
-        NSButton *button = [NSButton buttonWithTitle:@"Generate"
+        NSButton *button = [NSButton buttonWithTitle:NSLocalizedString(@"touchBarGenerateButtonTitle", comment: @"Generate")
                                               target:self
                                               action:@selector(generateAction:)];
-        touchBarItem.customizationLabel = @"Generate";
+        touchBarItem.customizationLabel = NSLocalizedString(@"touchBarGenerateButtonLabel", comment: @"Generate");
         touchBarItem.view = button;
         return touchBarItem;
     }
     if ([identifier isEqualToString:@"CopyButton"]) {
         NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"CopyButton"];
-        NSButton *button = [NSButton buttonWithTitle:@"Copy"
+        NSButton *button = [NSButton buttonWithTitle:NSLocalizedString(@"touchBarCopyButtonTitle", comment: @"Copy")
                                               target:self
                                               action:@selector(copyToClipboard:)];
-        touchBarItem.customizationLabel = @"Copy";
+        touchBarItem.customizationLabel = NSLocalizedString(@"touchBarCopyButtonLabel", comment: @"Copy");
         touchBarItem.view = button;
         return touchBarItem;
     }

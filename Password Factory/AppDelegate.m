@@ -268,6 +268,7 @@
     DefaultsManager *d = [DefaultsManager get];
     PFPasswordType selected = [self.masterViewController getSelectedPasswordType];
     //If we are in the 'Tabs' menu, then disable the currently selected tab
+    //TODO: don't use title because of localization
     if ([m.parentItem.title isEqualToString:@"Types"]) {
         //get the selected tab identifier
         

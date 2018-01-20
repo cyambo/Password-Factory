@@ -48,7 +48,6 @@ final class PFConstants: NSObject {
     public let caseTypeIndex: [PFCaseType]
     public let separatorTypeIndex: [PFSeparatorType]
     public let patternTypeIndex: [PFPatternTypeItem]
-    public var errorMessages = [String: String]()
     public var escapedSymbols: String = ""
     public var disabledSyncKeys = [String]()
     //init is private for singleton
@@ -91,15 +90,7 @@ final class PFConstants: NSObject {
         patternTypeToCharacter = Dictionary.init(uniqueKeysWithValues: c.patternTypeToCharacter.map {
             key, value in ( PFPatternTypeItem(rawValue:key as! Int)!, value as! String)
         })
-        errorMessages["extendedCharacterWarning"] = ExtendedCharacterWarning
-        errorMessages["storedPasswordOffWarning"] = StoredPasswordOffWarning
-        errorMessages["storedPasswordOnWarning"] = StoredPasswordOnWarning
-        errorMessages["resetToDefaultsWarning"] = ResetToDefaultsWarningiOS
-        errorMessages["resetAllDialogsWarning"] = ResetAllDialogsWarning
-        errorMessages["remoteStoreChangeWarning"] = remoteStoreChangeWarning
-        errorMessages["enableRemoteStoreWarning"] = enableRemoteStoreWarning
-        errorMessages["disableRemoteStoreWarning"] = disableRemoteStoreWarning
-        errorMessages["eraseRemoteStoreWarning"] = eraseRemoteStoreWarning
+
         escapedSymbols = c.escapedSymbols
         disabledSyncKeys = c.disabledSyncKeys.map { $0 as! String }
     }

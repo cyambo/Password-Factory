@@ -25,9 +25,10 @@ class ColorPickerViewController: PopupViewController {
     func setColor(_ color: UIColor, andTitle title: String) {
         pickerTitle = title
         if pickerTitle.last == "s" {
-            pickerTitle = "\(pickerTitle.dropLast()) Color"
+            pickerTitle = String(pickerTitle.dropLast())
         }
-        pickerTitle = "Select \(pickerTitle)"
+        pickerTitle = String.localizedStringWithFormat(NSLocalizedString("colorPickerTitle", comment: "Select %@ Color"), String(pickerTitle))
+
         pickerColor = color
     }
     override func done() {

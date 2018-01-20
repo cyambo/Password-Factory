@@ -67,11 +67,11 @@ class PickerViewController: PopupViewController, UIPickerViewDelegate, UIPickerV
     /// Sets the title
     func setupTitle() {
         if pickerType == .PasswordType {
-            titleLabel.text = "Password Source"
+            titleLabel.text = NSLocalizedString("sourcePickerTitle", comment: "Password Source")
         } else if pickerType == .NumberType {
             titleLabel.text = numberTypeTitle
         } else {
-            titleLabel.text = "Select \(pickerType.rawValue)"
+            titleLabel.text = String.localizedStringWithFormat(NSLocalizedString("selectPickerTypeLabel", comment: "Select %@"), pickerType.rawValue)
         }
     }
     func getNumberOfSteps() -> Int {
@@ -100,7 +100,7 @@ class PickerViewController: PopupViewController, UIPickerViewDelegate, UIPickerV
         switch (pickerType) {
         case .CaseType:
             if row == 0 {
-                return "No Change"
+                return NSLocalizedString("noChangeMessage", comment: "No Change")
             } else {
                 let ct = c.getCaseType(by: UInt(row - 1))
                 return c.caseTypes[ct]

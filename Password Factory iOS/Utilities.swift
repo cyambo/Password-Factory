@@ -169,7 +169,7 @@ class Utilities: NSObject {
         alertViewController.disableAlertHiding = disableAlertHiding
         alertViewController.onlyContinue = onlyContinue
         _ = alertViewController.view //load and layout the view
-        if !alertViewController.checkIfHidden(alertKeyToShow: alertKey) {
+        if !alertViewController.checkIfHidden(alertKeyToShow: NSLocalizedString(alertKey, comment: "")) {
             showPopover(parentViewController: parentViewController, viewControllerToShow: alertViewController, popoverBounds: alertViewController.containerView.bounds, source: source)
         }
     }

@@ -51,11 +51,9 @@ class AlertViewController: PopupViewController {
         
         //load the alert message
         if let ak = alertKey {
-            if let message = c.errorMessages[ak] {
-                alertText.text = message
-            }
+            alertText.text = NSLocalizedString(ak, comment: "")
         }
-        titleLabel.text = "Alert"
+        titleLabel.text = NSLocalizedString("alertTitle", comment: "Alert")
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

@@ -112,18 +112,5 @@ extern NSString * const WordsByLengthWordsArchiveFilename;
 extern NSString * const EmojiArchiveFilename;
 extern NSString * const ZoomFontName;
 
-extern NSString * const ExtendedCharacterWarning;
-extern NSString * const StartAtLoginNotInApplicationsWarning;
-extern NSString * const StoredPasswordOffWarning;
-extern NSString * const StoredPasswordOnWarning;
-extern NSString * const ResetToDefaultsWarning;
-extern NSString * const ResetToDefaultsWarningiOS;
-extern NSString * const ResetAllDialogsWarning;
-extern NSString * const PasswordSaveError;
-extern NSString * const MenuRestartMessage;
-extern NSString * const remoteStoreChangeWarning;
-extern NSString * const enableRemoteStoreWarning;
-extern NSString * const disableRemoteStoreWarning;
-extern NSString * const eraseRemoteStoreWarning;
 #endif
 

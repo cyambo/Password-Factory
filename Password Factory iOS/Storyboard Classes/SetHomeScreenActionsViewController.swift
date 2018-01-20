@@ -17,7 +17,7 @@ class SetHomeScreenActionsViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        navigationItem.title = "Shortcuts"
+        navigationItem.title = NSLocalizedString("shortcutsTitle", comment: "Shortcuts")
         setupItems()
     }
 
@@ -190,9 +190,9 @@ class SetHomeScreenActionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = HeaderLabel()
         if section == 0 {
-            header.text = "Enabled (Max 4)"
+            header.text = NSLocalizedString("shortcutsEnabledTitle", comment: "Enabled (Max 4)")
         } else {
-            header.text = "Disabled"
+            header.text = NSLocalizedString("disabledTitle", comment: "Disabled")
         }
         return header
     }

@@ -41,7 +41,7 @@
     AppDelegate *d = [NSApplication sharedApplication].delegate;
     if ([identifier isEqualToString:@"ZoomButton"]) {
         NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"ZoomButton"];
-        NSButton *button = [NSButton buttonWithTitle:@"Zoom"
+        NSButton *button = [NSButton buttonWithTitle:NSLocalizedString(@"zoomButtonTitle", comment: @"Zoom")
                                               target:self
                                               action:@selector(zoomPassword)];
         button.image = [StyleKit imageOfZoomWithZoomStroke:[NSColor whiteColor]];
@@ -53,24 +53,24 @@
     if ([identifier isEqualToString:@"TypeSelection"]) {
         NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"TypeSelection"];
         touchBarItem.view = d.masterViewController.touchBarTypeControl;
-        touchBarItem.customizationLabel = @"Select Type";
+        touchBarItem.customizationLabel = NSLocalizedString(@"touchBarTypeSelectionLabel", comment: @"Select Type");
         return touchBarItem;
     }
     if ([identifier isEqualToString:@"GenerateButton"]) {
         NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"GenerateButton"];
-        NSButton *button = [NSButton buttonWithTitle:@"Generate"
+        NSButton *button = [NSButton buttonWithTitle:NSLocalizedString(@"touchBarGenerateButtonTitle", comment: @"Generate")
                                               target:self
                                               action:@selector(generatePassword)];
-        touchBarItem.customizationLabel = @"Generate";
+        touchBarItem.customizationLabel = NSLocalizedString(@"touchBarGenerateButtonLabel", comment: @"Generate");
         touchBarItem.view = button;
         return touchBarItem;
     }
     if ([identifier isEqualToString:@"CopyButton"]) {
         NSCustomTouchBarItem *touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:@"CopyButton"];
-        NSButton *button = [NSButton buttonWithTitle:@"Copy"
+        NSButton *button = [NSButton buttonWithTitle:NSLocalizedString(@"touchBarCopyButtonTitle", comment: @"Copy")
                                               target:self
                                               action:@selector(copyToClipboard)];
-        touchBarItem.customizationLabel = @"Copy";
+        touchBarItem.customizationLabel = NSLocalizedString(@"touchBarCopyButtonLabel", comment: @"Copy");
         touchBarItem.view = button;
         return touchBarItem;
     }

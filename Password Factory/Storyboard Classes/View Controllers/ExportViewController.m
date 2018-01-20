@@ -49,14 +49,14 @@
         //already running an export, so cancel
         [self.queue cancelAllOperations];
 
-        [self.exportButton setTitle:@"Export"];
+        [self.exportButton setTitle:NSLocalizedString(@"exportButton", comment: @"Export")];
     } else {
         NSSavePanel *panel = [NSSavePanel savePanel];
         panel.allowedFileTypes = @[@"csv"];
         NSInteger clicked = [panel runModal];
 
         if (clicked == NSFileHandlingPanelOKButton) {
-            [self.exportButton setTitle:@"Cancel"];
+            [self.exportButton setTitle:NSLocalizedString(@"cancelButton", comment: @"Cancel")];
             NSString *path = panel.URL.path;
             if ([[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil]) {
                 __block NSOutputStream *stream = [[NSOutputStream alloc] initToFileAtPath:path append:YES];
@@ -73,7 +73,7 @@
                 }
             } else {
                 AppDelegate *d = [NSApplication sharedApplication].delegate;
-                [d.alertWindowController displayAlert:PasswordSaveError defaultsKey:nil window:self.view.window];
+                [d.alertWindowController displayAlert:NSLocalizedString(@"passwordSaveError", comment: @"") defaultsKey:nil window:self.view.window];
             }
 
         }
@@ -93,21 +93,21 @@
     __block ExportViewController *s = self;
     __block NSOperation *op = [NSBlockOperation blockOperationWithBlock:^{
         //write header line
-        [s writeStringToStream:stream string:[s getCSVLine:@"Password" typeName:@"Type" strength:@"Strength"]];
+        [s writeStringToStream:stream string:[s getCSVLine:NSLocalizedString(@"passwordCSVHeader", comment: @"Password") typeName:NSLocalizedString(@"typeCSVHeader", comment: @"Type") strength:NSLocalizedString(@"strengthCSVHeader", comment: @"Strength")]];
         for(int i = 0; i < [storage count]; i++) {
             if ([op isCancelled]) { //stop if we are cancelled
                 break;
             }
             Passwords *p = [storage passwordAtIndex:i];
             if (p.password != nil) {
-                NSString *strength = [[NSNumber numberWithInteger:(int)p.strength] stringValue];
+                NSString *strength = [[NSNumber numberWithInteger:(int)(p.strength * 100.0)] stringValue];
                 NSString *typeName = [pvc getNameForPasswordType:(PFPasswordType)p.type];
                 [s writeStringToStream:stream string:[s getCSVLine:p.password typeName:typeName strength:strength]];
             }
         }
         [stream close];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [s.exportButton setTitle:@"Export"];
+            [s.exportButton setTitle:NSLocalizedString(@"exportButton", comment: @"Export")];
             [s.progress stopAnimation:nil];
         });
     }];
@@ -130,7 +130,7 @@
     __block ExportViewController *s = self;
     __block NSOperation *op = [NSBlockOperation blockOperationWithBlock:^{
         //write header line
-        [s writeStringToStream:stream string:[s getCSVLine:@"Password" typeName:@"Type" strength:@"Strength"]];
+        [s writeStringToStream:stream string:[s getCSVLine:NSLocalizedString(@"passwordCSVHeader", comment: @"Password") typeName:NSLocalizedString(@"typeCSVHeader", comment: @"Type") strength:NSLocalizedString(@"strengthCSVHeader", comment: @"Strength")]];
         for(int i = 0; i < amount; i++) {
             if ([op isCancelled]) { //stop if we are cancelled
                 break;
@@ -148,7 +148,7 @@
         }
         [stream close];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [s.exportButton setTitle:@"Export"];
+            [s.exportButton setTitle:NSLocalizedString(@"exportButton", comment: @"Export")];
             [s.progress stopAnimation:nil];
         });
     }];
