@@ -146,6 +146,13 @@
 		40A0A3CB1FBBCDAC009CEB5E /* Passwords+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */; };
 		40A0A3CC1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */; };
 		40A82C2E1FC50728007F603A /* Password Factory Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4058DF241F92995800CCB6E7 /* Password Factory Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		40A837CC2014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
+		40A837CD2014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
+		40A837CE2014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
+		40A837CF2014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
+		40A837D02014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
+		40A837D12014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
+		40A837D22014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
 		40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5D01F8EC67F00324759 /* AppDelegate.swift */; };
 		40AAB5D61F8EC67F00324759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D41F8EC67F00324759 /* Main.storyboard */; };
 		40AAB5D81F8EC67F00324759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D71F8EC67F00324759 /* Assets.xcassets */; };
@@ -400,6 +407,7 @@
 		40A0A3C91FBBCDAC009CEB5E /* Passwords+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Passwords+CoreDataClass.m"; sourceTree = "<group>"; };
 		40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Passwords+CoreDataProperties.m"; sourceTree = "<group>"; };
 		40A2E3DC1F92756A0044E2A1 /* frequency_lists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = frequency_lists.json; path = Pods/ZXCVBN/tools/generated/frequency_lists.json; sourceTree = SOURCE_ROOT; };
+		40A837CB2014115900468E1B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		40AAB5CE1F8EC67F00324759 /* Password Factory iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AAB5D01F8EC67F00324759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40AAB5D51F8EC67F00324759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -922,6 +930,7 @@
 		40FB0C121B810F10009193F8 = {
 			isa = PBXGroup;
 			children = (
+				40A837CB2014115900468E1B /* Localizable.strings */,
 				40FB0C1D1B810F10009193F8 /* Password Factory */,
 				4058DF251F92995800CCB6E7 /* Password Factory Helper */,
 				40FB0C311B810F10009193F8 /* Password FactoryTests */,
@@ -1355,6 +1364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */,
+				40A837CF2014115900468E1B /* Localizable.strings in Resources */,
 				4058DF2A1F92995800CCB6E7 /* Assets.xcassets in Resources */,
 				4058DF2D1F92995800CCB6E7 /* MainMenu.xib in Resources */,
 			);
@@ -1365,6 +1375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				409E13C61B8258170041541B /* TodayViewController.xib in Resources */,
+				40A837CE2014115900468E1B /* Localizable.strings in Resources */,
 				409E13C11B8258170041541B /* InfoPlist.strings in Resources */,
 				4001082A1FD3378400594304 /* defaults.plist in Resources */,
 				405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */,
@@ -1380,6 +1391,7 @@
 				40AAB5DB1F8EC67F00324759 /* LaunchScreen.storyboard in Resources */,
 				40E809AD1FD48CE50042AA8A /* frequency_lists.json in Resources */,
 				40E809AE1FD48CEB0042AA8A /* bad_words.json in Resources */,
+				40A837D02014115900468E1B /* Localizable.strings in Resources */,
 				40E809AF1FD48CF00042AA8A /* emojis.txt in Resources */,
 				407B6160200021B80043B073 /* Type Icons.xcassets in Resources */,
 				40AAB5D81F8EC67F00324759 /* Assets.xcassets in Resources */,
@@ -1391,6 +1403,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A837D12014115900468E1B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1398,6 +1411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A837D22014115900468E1B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1408,6 +1422,7 @@
 				409586101B8112FD00393B99 /* defaults.plist in Resources */,
 				4095860F1B8112FD00393B99 /* bad_words.json in Resources */,
 				40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */,
+				40A837CC2014115900468E1B /* Localizable.strings in Resources */,
 				402A42831FAA316F00615A2E /* Main.storyboard in Resources */,
 				40FB0C261B810F10009193F8 /* Images.xcassets in Resources */,
 				409586321B81131100393B99 /* PasswordFactory.help in Resources */,
@@ -1418,6 +1433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A837CD2014115900468E1B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1591,7 +1607,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.bundle,
 				"${PODS_ROOT}/ZXCVBN/tools/generated/adjacency_graphs.json",
 				"${PODS_ROOT}/ZXCVBN/tools/generated/frequency_lists.json",
 			);
