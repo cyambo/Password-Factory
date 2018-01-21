@@ -23,6 +23,7 @@
 "cancelButton" = "Cancel";
 "casePickerLabel" = "Case";
 "characterSeparatorTypeName" = "Character";
+"colorPickerTitle" = "Select %@ Color";
 "disabledTitle" = "Disabled";
 "disableRemoteStoreWarning" = "Disabling iCloud will not remove any stored iCloud data, and it will be available to other devices. To reset iCloud use the 'Erase iCloud Data' feature";
 "doneButton" = "Done";
@@ -57,6 +58,7 @@
 "pasteboardCopyNotification" = "Password with strength %2.0f copied to clipboard";
 "pasteboardWriteFail" = "Pasteboard write failed";
 "patternTypeName" = "Pattern";
+"preferencesTitle" = "Preferences";
 "pronounceableTypeName" = "Pronounceable";
 "randomCasePhoneticSoundPatternName" = "Random Case Phonetic Sound";
 "randomCaseShortWordPatternName" = "Random Case Short Word";
