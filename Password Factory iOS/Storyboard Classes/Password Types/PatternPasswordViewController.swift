@@ -86,11 +86,13 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
     
     /// highlights the pattern string, or uses default color based upon defaults
     func highlightPatternString() {
+        let selection = patternText.selectedRange;
         if(d.bool(forKey: "colorPasswordText")) {
             highlightPattern()
         } else {
             patternText.attributedText = Utilities.getNonHighlightedString(s: patternText.text, font: patternTextFont)
         }
+        patternText.selectedRange = selection
     }
     
     /// Highlights the pattern string based upon defaults
@@ -158,8 +160,11 @@ class PatternPasswordViewController: PasswordsViewController, UITextViewDelegate
         if (keyPath == "userPattern") {
             guard let ch = change else { return }
             guard let s = ch["new"] as? String else { return }
-            patternText.text = s
-            highlightPatternString()
+            if (patternText.text != s) {
+                patternText.text = s
+                highlightPatternString()
+            }
+            
         }
     }
     
