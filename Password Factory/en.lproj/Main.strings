@@ -1,0 +1,654 @@
+
+/* Class = "NSMenuItem"; title = "Types"; ObjectID = "0Vl-bn-7ao"; */
+"0Vl-bn-7ao.title" = "Types";
+
+/* Class = "NSMenuItem"; title = "Uppercase"; ObjectID = "1Dj-yq-Iii"; */
+"1Dj-yq-Iii.title" = "Uppercase";
+
+/* Class = "NSButtonCell"; title = "Automatically Clear Clipboard"; ObjectID = "1S8-Wr-kra"; */
+"1S8-Wr-kra.title" = "Automatically Clear Clipboard";
+
+/* Class = "NSButtonCell"; title = "Add to Login Items"; ObjectID = "1eX-tg-r2K"; */
+"1eX-tg-r2K.title" = "Add to Login Items";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "2Px-C9-VT2"; */
+"2Px-C9-VT2.title" = "Text Cell";
+
+/* Class = "NSButton"; ibExternalAccessibilityDescription = "Display Crack Time"; ObjectID = "3Wc-fT-aTv"; */
+"3Wc-fT-aTv.ibExternalAccessibilityDescription" = "Display Crack Time";
+
+/* Class = "NSMenuItem"; title = "Passphrase"; ObjectID = "4HN-fl-PVL"; */
+"4HN-fl-PVL.title" = "Passphrase";
+
+/* Class = "NSMenuItem"; title = "w - Lowercase Word"; ObjectID = "4Sn-VW-vAQ"; */
+"4Sn-VW-vAQ.title" = "w - Lowercase Word";
+
+/* Class = "NSButtonCell"; title = "Display Notification"; ObjectID = "4iZ-Ls-0ry"; */
+"4iZ-Ls-0ry.title" = "Display Notification";
+
+/* Class = "NSButtonCell"; title = "Quit"; ObjectID = "4nW-sV-lzw"; */
+"4nW-sV-lzw.title" = "Quit";
+
+/* Class = "NSTextFieldCell"; title = "ALERT TEXT"; ObjectID = "4y5-cC-L8r"; */
+"4y5-cC-L8r.title" = "ALERT TEXT";
+
+/* Class = "NSMenuItem"; title = "W - Uppercase Word"; ObjectID = "52H-hf-B1r"; */
+"52H-hf-B1r.title" = "W - Uppercase Word";
+
+/* Class = "NSTextFieldCell"; title = "Uppercase Letters"; ObjectID = "5Ic-ft-yAE"; */
+"5Ic-ft-yAE.title" = "Uppercase Letters";
+
+/* Class = "NSMenuItem"; title = "! - Symbol"; ObjectID = "5XW-rr-XtN"; */
+"5XW-rr-XtN.title" = "! - Symbol";
+
+/* Class = "NSMenuItem"; title = "c - Lowercase Character"; ObjectID = "5hg-lJ-FNE"; */
+"5hg-lJ-FNE.title" = "c - Lowercase Character";
+
+/* Class = "NSButtonCell"; title = "Do not show this message again"; ObjectID = "6Qt-P6-2C1"; */
+"6Qt-P6-2C1.title" = "Do not show this message again";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "6Zb-8s-iSa"; */
+"6Zb-8s-iSa.title" = "Edit";
+
+/* Class = "NSButtonCell"; title = "Export"; ObjectID = "6pt-FV-Dxy"; */
+"6pt-FV-Dxy.title" = "Export";
+
+/* Class = "NSTextFieldCell"; title = "50"; ObjectID = "7Tc-zU-o2V"; */
+"7Tc-zU-o2V.title" = "50";
+
+/* Class = "NSMenuItem"; title = "Random"; ObjectID = "7aU-0J-wpm"; */
+"7aU-0J-wpm.title" = "Random";
+
+/* Class = "NSTextFieldCell"; title = "Length"; ObjectID = "7b0-W3-raO"; */
+"7b0-W3-raO.title" = "Length";
+
+/* Class = "NSMenuItem"; title = "Lowercase"; ObjectID = "7c7-vZ-XEd"; */
+"7c7-vZ-XEd.title" = "Lowercase";
+
+/* Class = "NSTextFieldCell"; title = "Password"; ObjectID = "84C-WL-TXC"; */
+"84C-WL-TXC.title" = "Password";
+
+/* Class = "NSTextFieldCell"; title = "999"; ObjectID = "8DD-0o-NSY"; */
+"8DD-0o-NSY.title" = "999";
+
+/* Class = "NSMenuItem"; title = "s - Lowercase Short Word"; ObjectID = "8IL-vH-ow7"; */
+"8IL-vH-ow7.title" = "s - Lowercase Short Word";
+
+/* Class = "NSButtonCell"; title = "Reset All Warnings and Dialogs"; ObjectID = "8dP-2d-DZc"; */
+"8dP-2d-DZc.title" = "Reset All Warnings and Dialogs";
+
+/* Class = "NSMenuItem"; title = "Pronounceable"; ObjectID = "9dM-FI-K8M"; */
+"9dM-FI-K8M.title" = "Pronounceable";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "9rY-TN-vff"; */
+"9rY-TN-vff.title" = "Item 2";
+
+/* Class = "NSMenuItem"; title = "# - Number"; ObjectID = "9uf-XR-1ns"; */
+"9uf-XR-1ns.title" = "# - Number";
+
+/* Class = "NSMenuItem"; title = "C - Uppercase Character"; ObjectID = "AZE-nC-t7w"; */
+"AZE-nC-t7w.title" = "C - Uppercase Character";
+
+/* Class = "NSMenuItem"; title = "Character"; ObjectID = "AeC-C5-1me"; */
+"AeC-C5-1me.title" = "Character";
+
+/* Class = "NSTextFieldCell"; title = "None"; ObjectID = "AvJ-f8-ech"; */
+"AvJ-f8-ech.title" = "None";
+
+/* Class = "NSMenuItem"; title = "Number"; ObjectID = "BQI-2b-IuW"; */
+"BQI-2b-IuW.title" = "Number";
+
+/* Class = "NSButton"; ibExternalAccessibilityDescription = "Display Crack Time"; ObjectID = "Ba5-fo-EG7"; */
+"Ba5-fo-EG7.ibExternalAccessibilityDescription" = "Display Crack Time";
+
+/* Class = "NSButtonCell"; title = "Replace Ambiguous"; ObjectID = "Bbm-jw-ZfJ"; */
+"Bbm-jw-ZfJ.title" = "Replace Ambiguous";
+
+/* Class = "NSViewController"; title = "Main Interface"; ObjectID = "BgG-3K-KOz"; */
+"BgG-3K-KOz.title" = "Main Interface";
+
+/* Class = "NSButtonCell"; title = "Enable Global Hotkey"; ObjectID = "Ce3-Ia-BDl"; */
+"Ce3-Ia-BDl.title" = "Enable Global Hotkey";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "DhE-Ud-taR"; */
+"DhE-Ud-taR.title" = "Help";
+
+/* Class = "NSButtonCell"; title = "Copy"; ObjectID = "EH7-KO-weF"; */
+"EH7-KO-weF.title" = "Copy";
+
+/* Class = "NSButtonCell"; title = "Strength"; ObjectID = "Edx-7E-8uY"; */
+"Edx-7E-8uY.title" = "Strength";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "Ey0-un-AQv"; */
+"Ey0-un-AQv.title" = "100";
+
+/* Class = "NSMenuItem"; title = "Passphrase"; ObjectID = "Fty-PM-Dr9"; */
+"Fty-PM-Dr9.title" = "Passphrase";
+
+/* Class = "NSTextFieldCell"; title = "Numbers"; ObjectID = "GNj-4K-8jA"; */
+"GNj-4K-8jA.title" = "Numbers";
+
+/* Class = "NSButton"; ibExternalAccessibilityDescription = "Load Preferences"; ObjectID = "GWj-ev-HVw"; */
+"GWj-ev-HVw.ibExternalAccessibilityDescription" = "Load Preferences";
+
+/* Class = "NSMenuItem"; title = "t - Random Case Phonetic Sound"; ObjectID = "Gdu-Vu-c8n"; */
+"Gdu-Vu-c8n.title" = "t - Random Case Phonetic Sound";
+
+/* Class = "NSButtonCell"; title = "Reset iCloud"; ObjectID = "Gdw-TK-6MC"; */
+"Gdw-TK-6MC.title" = "Reset iCloud";
+
+/* Class = "NSTextFieldCell"; title = "!@#$"; ObjectID = "GiE-Xe-V7i"; */
+"GiE-Xe-V7i.title" = "!@#$";
+
+/* Class = "NSMenuItem"; title = "r - Random Item"; ObjectID = "Gmd-YV-Cln"; */
+"Gmd-YV-Cln.title" = "r - Random Item";
+
+/* Class = "NSMenuItem"; title = "Mixed Case"; ObjectID = "H7C-Kl-1fQ"; */
+"H7C-Kl-1fQ.title" = "Mixed Case";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "HMu-Fh-bP8"; */
+"HMu-Fh-bP8.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Basso"; ObjectID = "HOR-Rf-1Uc"; */
+"HOR-Rf-1Uc.title" = "Basso";
+
+/* Class = "NSMenuItem"; title = "Sosumi"; ObjectID = "HZW-kV-SDf"; */
+"HZW-kV-SDf.title" = "Sosumi";
+
+/* Class = "NSMenuItem"; title = "Advanced"; ObjectID = "HbZ-n3-Uz9"; */
+"HbZ-n3-Uz9.title" = "Advanced";
+
+/* Class = "NSMenuItem"; title = "Random"; ObjectID = "IAh-o3-NV2"; */
+"IAh-o3-NV2.title" = "Random";
+
+/* Class = "NSButtonCell"; title = "Enable Advanced"; ObjectID = "IJi-PM-w1k"; */
+"IJi-PM-w1k.title" = "Enable Advanced";
+
+/* Class = "NSMenuItem"; title = "Random"; ObjectID = "IdE-GW-uKy"; */
+"IdE-GW-uKy.title" = "Random";
+
+/* Class = "NSViewController"; title = "Random Password"; ObjectID = "IdK-28-YZe"; */
+"IdK-28-YZe.title" = "Random Password";
+
+/* Class = "NSMenuItem"; title = "Tink"; ObjectID = "Ifd-vy-k0C"; */
+"Ifd-vy-k0C.title" = "Tink";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "J9J-qR-ZmH"; */
+"J9J-qR-ZmH.title" = "File";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "JGx-iw-g9o"; */
+"JGx-iw-g9o.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "JSx-qg-Y2q"; */
+"JSx-qg-Y2q.title" = "Preferences…";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Jpm-vU-m0Z"; */
+"Jpm-vU-m0Z.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "K59-Xx-KHm"; */
+"K59-Xx-KHm.title" = "Item 3";
+
+/* Class = "NSMenuItem"; title = "Hyphen"; ObjectID = "KHN-vg-Rvh"; */
+"KHN-vg-Rvh.title" = "Hyphen";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "KXM-wo-1vZ"; */
+"KXM-wo-1vZ.title" = "Window";
+
+/* Class = "NSTextFieldCell"; title = "Prefix Pattern"; ObjectID = "KfA-FJ-VDR"; */
+"KfA-FJ-VDR.title" = "Prefix Pattern";
+
+/* Class = "NSButtonCell"; title = "Avoid Ambiguous"; ObjectID = "KiJ-ak-PRL"; */
+"KiJ-ak-PRL.title" = "Avoid Ambiguous";
+
+/* Class = "NSMenuItem"; title = "Uppercase"; ObjectID = "Lc0-mr-cAl"; */
+"Lc0-mr-cAl.title" = "Uppercase";
+
+/* Class = "NSTextFieldCell"; title = "Symbolize"; ObjectID = "MgI-Db-rnq"; */
+"MgI-Db-rnq.title" = "Symbolize";
+
+/* Class = "NSTextFieldCell"; title = "Max Password Length"; ObjectID = "N9h-OI-znS"; */
+"N9h-OI-znS.title" = "Max Password Length";
+
+/* Class = "NSTextFieldCell"; title = "S"; ObjectID = "NQ0-uy-dCM"; */
+"NQ0-uy-dCM.title" = "S";
+
+/* Class = "NSTextFieldCell"; title = "%"; ObjectID = "Nxo-06-NQE"; */
+"Nxo-06-NQE.title" = "%";
+
+/* Class = "NSButtonCell"; title = "Generate"; ObjectID = "O5H-aR-kSA"; */
+"O5H-aR-kSA.title" = "Generate";
+
+/* Class = "NSMenuItem"; title = "Quit Password Factory"; ObjectID = "OE7-QD-Uie"; */
+"OE7-QD-Uie.title" = "Quit Password Factory";
+
+/* Class = "NSButtonCell"; title = "Use Emoji"; ObjectID = "OV7-bb-eHc"; */
+"OV7-bb-eHc.title" = "Use Emoji";
+
+/* Class = "NSButtonCell"; title = "Play Sound"; ObjectID = "Oz1-AO-4GW"; */
+"Oz1-AO-4GW.title" = "Play Sound";
+
+/* Class = "NSMenuItem"; title = "Hide Password Factory"; ObjectID = "PBS-O1-hrm"; */
+"PBS-O1-hrm.title" = "Hide Password Factory";
+
+/* Class = "NSMenuItem"; title = "Password Factory Help"; ObjectID = "PPA-6s-ydf"; */
+"PPA-6s-ydf.title" = "Password Factory Help";
+
+/* Class = "NSMenuItem"; title = "N - Non-Ambiguous Number"; ObjectID = "Pw6-Cm-sQY"; */
+"Pw6-Cm-sQY.title" = "N - Non-Ambiguous Number";
+
+/* Class = "NSMenuItem"; title = "Blow"; ObjectID = "QtM-LK-uea"; */
+"QtM-LK-uea.title" = "Blow";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "R4Q-fN-6bs"; */
+"R4Q-fN-6bs.title" = "Copy";
+
+/* Class = "NSMenuItem"; title = "P - Uppercase Phonetic Sound"; ObjectID = "RAd-9v-Q2g"; */
+"RAd-9v-Q2g.title" = "P - Uppercase Phonetic Sound";
+
+/* Class = "NSTextFieldCell"; title = "Case Type"; ObjectID = "RHP-h6-RGf"; */
+"RHP-h6-RGf.title" = "Case Type";
+
+/* Class = "NSMenuItem"; title = "Number"; ObjectID = "RTD-mw-7L9"; */
+"RTD-mw-7L9.title" = "Number";
+
+/* Class = "NSMenuItem"; title = "e - Emoji"; ObjectID = "RTR-In-FU5"; */
+"RTR-In-FU5.title" = "e - Emoji";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "Rco-RH-wL6"; */
+"Rco-RH-wL6.title" = "Cancel";
+
+/* Class = "NSTextField"; ibExternalAccessibilityDescription = "Password Length"; ObjectID = "S1b-yo-daA"; */
+"S1b-yo-daA.ibExternalAccessibilityDescription" = "Password Length";
+
+/* Class = "NSTextFieldCell"; title = "Sound"; ObjectID = "S6N-jm-Wwv"; */
+"S6N-jm-Wwv.title" = "Sound";
+
+/* Class = "NSMenuItem"; title = "Emoji"; ObjectID = "SLl-co-CL3"; */
+"SLl-co-CL3.title" = "Emoji";
+
+/* Class = "NSMenuItem"; title = "Stored"; ObjectID = "SUA-Uf-SLR"; */
+"SUA-Uf-SLR.title" = "Stored";
+
+/* Class = "NSMenuItem"; title = "Space"; ObjectID = "SUU-qo-2Go"; */
+"SUU-qo-2Go.title" = "Space";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "SYN-6R-gn4"; */
+"SYN-6R-gn4.title" = "File";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "SkZ-oZ-uyM"; */
+"SkZ-oZ-uyM.title" = "Bring All to Front";
+
+/* Class = "NSTextFieldCell"; title = "Case Type"; ObjectID = "Szr-6U-93k"; */
+"Szr-6U-93k.title" = "Case Type";
+
+/* Class = "NSMenuItem"; title = "Underscore"; ObjectID = "T1R-Tv-efc"; */
+"T1R-Tv-efc.title" = "Underscore";
+
+/* Class = "NSMenuItem"; title = "None"; ObjectID = "TQA-63-jSr"; */
+"TQA-63-jSr.title" = "None";
+
+/* Class = "NSMenuItem"; title = "Bottle"; ObjectID = "Tv3-YK-ixe"; */
+"Tv3-YK-ixe.title" = "Bottle";
+
+/* Class = "NSWindow"; title = "Password Factory"; ObjectID = "U5Z-KO-ffe"; */
+"U5Z-KO-ffe.title" = "Password Factory";
+
+/* Class = "NSMenuItem"; title = "Pronounceable"; ObjectID = "UHS-Df-hyt"; */
+"UHS-Df-hyt.title" = "Pronounceable";
+
+/* Class = "NSTextFieldCell"; title = "%"; ObjectID = "Uz4-Xd-DjR"; */
+"Uz4-Xd-DjR.title" = "%";
+
+/* Class = "NSMenuItem"; title = "Character"; ObjectID = "VAB-cn-I6P"; */
+"VAB-cn-I6P.title" = "Character";
+
+/* Class = "NSTextFieldCell"; title = "Accenter"; ObjectID = "VJK-L0-IKe"; */
+"VJK-L0-IKe.title" = "Accenter";
+
+/* Class = "NSSlider"; ibExternalAccessibilityDescription = "Password Length Slider"; ObjectID = "VxG-08-KJ8"; */
+"VxG-08-KJ8.ibExternalAccessibilityDescription" = "Password Length Slider";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "Vyo-ib-HMF"; */
+"Vyo-ib-HMF.title" = "Table View Cell";
+
+/* Class = "NSMenuItem"; title = "Delete Stored Password"; ObjectID = "W2a-lU-wCO"; */
+"W2a-lU-wCO.title" = "Delete Stored Password";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "W7e-tg-TwE"; */
+"W7e-tg-TwE.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Space"; ObjectID = "Wa9-ia-Af1"; */
+"Wa9-ia-Af1.title" = "Space";
+
+/* Class = "NSMenuItem"; title = "Lowercase"; ObjectID = "WqG-P6-PxB"; */
+"WqG-P6-PxB.title" = "Lowercase";
+
+/* Class = "NSTableColumn"; headerCell.title = "Password Type"; ObjectID = "WsU-9S-LKl"; */
+"WsU-9S-LKl.headerCell.title" = "Password Type";
+
+/* Class = "NSMenuItem"; title = "Hyphen"; ObjectID = "XFF-c6-9ll"; */
+"XFF-c6-9ll.title" = "Hyphen";
+
+/* Class = "NSMenuItem"; title = "Contact Support"; ObjectID = "XRw-eT-SYf"; */
+"XRw-eT-SYf.title" = "Contact Support";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "YW2-Pc-JIU"; */
+"YW2-Pc-JIU.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Color"; ObjectID = "Zpk-7E-bK5"; */
+"Zpk-7E-bK5.title" = "Text Color";
+
+/* Class = "NSMenuItem"; title = "Frog"; ObjectID = "aW8-ga-RY9"; */
+"aW8-ga-RY9.title" = "Frog";
+
+/* Class = "NSMenu"; title = "Types"; ObjectID = "aXI-ej-NW0"; */
+"aXI-ej-NW0.title" = "Types";
+
+/* Class = "NSTextFieldCell"; title = "Amount to Export"; ObjectID = "aa9-4X-nbJ"; */
+"aa9-4X-nbJ.title" = "Amount to Export";
+
+/* Class = "NSMenuItem"; title = "Generate Password"; ObjectID = "ahs-5I-44E"; */
+"ahs-5I-44E.title" = "Generate Password";
+
+/* Class = "NSButtonCell"; title = "iCloud Sync"; ObjectID = "aud-Jw-uqZ"; */
+"aud-Jw-uqZ.title" = "iCloud Sync";
+
+/* Class = "NSTextFieldCell"; title = "50"; ObjectID = "awP-9E-xvw"; */
+"awP-9E-xvw.title" = "50";
+
+/* Class = "NSTextFieldCell"; title = "Ab3$"; ObjectID = "beU-Ah-RmI"; */
+"beU-Ah-RmI.title" = "Ab3$";
+
+/* Class = "NSTextFieldCell"; title = "abcd"; ObjectID = "clk-fB-e2w"; */
+"clk-fB-e2w.title" = "abcd";
+
+/* Class = "NSButtonCell"; title = "Store Passwords"; ObjectID = "csI-G9-6cf"; */
+"csI-G9-6cf.title" = "Store Passwords";
+
+/* Class = "NSMenuItem"; title = "Submarine"; ObjectID = "cwv-PO-7eb"; */
+"cwv-PO-7eb.title" = "Submarine";
+
+/* Class = "NSTextFieldCell"; title = "PASSWORD TYPE"; ObjectID = "d1b-2D-u5S"; */
+"d1b-2D-u5S.title" = "PASSWORD TYPE";
+
+/* Class = "NSViewController"; title = "Pronounceable Password"; ObjectID = "d6t-4y-fZf"; */
+"d6t-4y-fZf.title" = "Pronounceable Password";
+
+/* Class = "NSViewController"; title = "Menu Interface"; ObjectID = "dD8-aZ-j4o"; */
+"dD8-aZ-j4o.title" = "Menu Interface";
+
+/* Class = "NSTextFieldCell"; title = "999"; ObjectID = "dKM-cE-VXT"; */
+"dKM-cE-VXT.title" = "999";
+
+/* Class = "NSTextFieldCell"; title = "Truncate"; ObjectID = "dPr-kk-f4H"; */
+"dPr-kk-f4H.title" = "Truncate";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "dUt-Lo-vFz"; */
+"dUt-Lo-vFz.title" = "Item 1";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "dxb-qj-gUf"; */
+"dxb-qj-gUf.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "Funk"; ObjectID = "eCh-zs-DLc"; */
+"eCh-zs-DLc.title" = "Funk";
+
+/* Class = "NSTextFieldCell"; title = "Replace Pattern"; ObjectID = "eEU-JA-RUE"; */
+"eEU-JA-RUE.title" = "Replace Pattern";
+
+/* Class = "NSTextFieldCell"; title = "Symbols"; ObjectID = "eVc-tf-1rD"; */
+"eVc-tf-1rD.title" = "Symbols";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "ejF-iL-cGS"; */
+"ejF-iL-cGS.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Title Case"; ObjectID = "erb-VF-uGW"; */
+"erb-VF-uGW.title" = "Title Case";
+
+/* Class = "NSTextFieldCell"; title = "Length"; ObjectID = "fCN-XW-SWR"; */
+"fCN-XW-SWR.title" = "Length";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "fCl-4a-0qN"; */
+"fCl-4a-0qN.title" = "Paste";
+
+/* Class = "NSMenuItem"; title = "H - Title Case Short Word"; ObjectID = "fEd-mi-uKW"; */
+"fEd-mi-uKW.title" = "H - Title Case Short Word";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "fJS-fP-DYK"; */
+"fJS-fP-DYK.title" = "Help";
+
+/* Class = "NSMenuItem"; title = "Symbol"; ObjectID = "fhM-h8-Sbr"; */
+"fhM-h8-Sbr.title" = "Symbol";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "fv5-eN-JW0"; */
+"fv5-eN-JW0.title" = "Item 1";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "gcv-08-yI0"; */
+"gcv-08-yI0.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Pattern"; ObjectID = "guc-7s-a8V"; */
+"guc-7s-a8V.title" = "Pattern";
+
+/* Class = "NSTextFieldCell"; title = "PASSWORD"; ObjectID = "gwB-1y-Qel"; */
+"gwB-1y-Qel.title" = "PASSWORD";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "gyq-m1-Loi"; */
+"gyq-m1-Loi.title" = "Delete";
+
+/* Class = "NSTextFieldCell"; title = "999"; ObjectID = "hVk-fr-9qV"; */
+"hVk-fr-9qV.title" = "999";
+
+/* Class = "NSMenuItem"; title = "Insert"; ObjectID = "hxv-hc-dKQ"; */
+"hxv-hc-dKQ.title" = "Insert";
+
+/* Class = "NSTextFieldCell"; title = "999"; ObjectID = "iGF-yu-lbU"; */
+"iGF-yu-lbU.title" = "999";
+
+/* Class = "NSTextFieldCell"; title = "Amount to Store"; ObjectID = "iY3-P1-mnV"; */
+"iY3-P1-mnV.title" = "Amount to Store";
+
+/* Class = "NSMenuItem"; title = "Pop"; ObjectID = "ife-dh-QIV"; */
+"ife-dh-QIV.title" = "Pop";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "ig7-U6-Cin"; */
+"ig7-U6-Cin.title" = "Close";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "iga-ti-Jl5"; */
+"iga-ti-Jl5.title" = "Hide Others";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "j3x-J8-L8X"; */
+"j3x-J8-L8X.title" = "Cut";
+
+/* Class = "NSMenuItem"; title = "Title Case"; ObjectID = "j6R-4P-3mc"; */
+"j6R-4P-3mc.title" = "Title Case";
+
+/* Class = "NSTextFieldCell"; title = "99"; ObjectID = "j7H-M3-UyA"; */
+"j7H-M3-UyA.title" = "99";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "jQf-kE-t2M"; */
+"jQf-kE-t2M.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "50"; ObjectID = "ju9-pF-tTs"; */
+"ju9-pF-tTs.title" = "50";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "k9L-m4-mlt"; */
+"k9L-m4-mlt.title" = "OK";
+
+/* Class = "NSTextFieldCell"; title = "Length"; ObjectID = "kIM-hN-5W6"; */
+"kIM-hN-5W6.title" = "Length";
+
+/* Class = "NSMenu"; title = "Password Factory"; ObjectID = "kJy-TD-12l"; */
+"kJy-TD-12l.title" = "Password Factory";
+
+/* Class = "NSMenuItem"; title = "Hero"; ObjectID = "kK0-Mz-JH7"; */
+"kK0-Mz-JH7.title" = "Hero";
+
+/* Class = "NSMenuItem"; title = "T - Title Case Phonetic Sound"; ObjectID = "kgU-na-Sjp"; */
+"kgU-na-Sjp.title" = "T - Title Case Phonetic Sound";
+
+/* Class = "NSButtonCell"; title = "Reset To Defaults"; ObjectID = "lBz-g9-MVz"; */
+"lBz-g9-MVz.title" = "Reset To Defaults";
+
+/* Class = "NSButtonCell"; title = "CRACK TIME"; ObjectID = "m6X-Df-6t5"; */
+"m6X-Df-6t5.title" = "CRACK TIME";
+
+/* Class = "NSMenuItem"; title = "Lowercase"; ObjectID = "m9D-Wa-tve"; */
+"m9D-Wa-tve.title" = "Lowercase";
+
+/* Class = "NSWindow"; title = "Export Passwords"; ObjectID = "mFP-wr-Ley"; */
+"mFP-wr-Ley.title" = "Export Passwords";
+
+/* Class = "NSMenuItem"; title = "Password Factory"; ObjectID = "mHq-4z-k84"; */
+"mHq-4z-k84.title" = "Password Factory";
+
+/* Class = "NSTextFieldCell"; title = "Export From"; ObjectID = "mUg-bF-p3S"; */
+"mUg-bF-p3S.title" = "Export From";
+
+/* Class = "NSMenuItem"; title = "Mixed Case"; ObjectID = "mak-VE-F5m"; */
+"mak-VE-F5m.title" = "Mixed Case";
+
+/* Class = "NSTextFieldCell"; title = "Case"; ObjectID = "mdZ-eP-EsD"; */
+"mdZ-eP-EsD.title" = "Case";
+
+/* Class = "NSViewController"; title = "Advanced Password"; ObjectID = "mtc-B4-HHs"; */
+"mtc-B4-HHs.title" = "Advanced Password";
+
+/* Class = "NSButtonCell"; title = "Copy"; ObjectID = "mud-1V-YAU"; */
+"mud-1V-YAU.title" = "Copy";
+
+/* Class = "NSMenuItem"; title = "Export"; ObjectID = "nGT-t3-L6C"; */
+"nGT-t3-L6C.title" = "Export";
+
+/* Class = "NSMenuItem"; title = "None"; ObjectID = "na0-ey-EFI"; */
+"na0-ey-EFI.title" = "None";
+
+/* Class = "NSTextFieldCell"; title = "Case Type"; ObjectID = "ndz-mT-W6d"; */
+"ndz-mT-W6d.title" = "Case Type";
+
+/* Class = "NSMenuItem"; title = "d - Random Case Word"; ObjectID = "nr8-CT-hCG"; */
+"nr8-CT-hCG.title" = "d - Random Case Word";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "oth-DO-Nbl"; */
+"oth-DO-Nbl.title" = "Preferences";
+
+/* Class = "NSMenuItem"; title = "Purr"; ObjectID = "p4Y-mU-IVY"; */
+"p4Y-mU-IVY.title" = "Purr";
+
+/* Class = "NSMenuItem"; title = "a - Non-Ambiguous Character"; ObjectID = "pJG-9u-twF"; */
+"pJG-9u-twF.title" = "a - Non-Ambiguous Character";
+
+/* Class = "NSTextFieldCell"; title = "1234"; ObjectID = "pSJ-Zi-PcP"; */
+"pSJ-Zi-PcP.title" = "1234";
+
+/* Class = "NSMenuItem"; title = "p - Lowercase Phonetic Sound"; ObjectID = "pgn-yt-dMi"; */
+"pgn-yt-dMi.title" = "p - Lowercase Phonetic Sound";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "q7b-lQ-7RV"; */
+"q7b-lQ-7RV.title" = "100";
+
+/* Class = "NSMenuItem"; title = "Pattern"; ObjectID = "qCg-rz-uyY"; */
+"qCg-rz-uyY.title" = "Pattern";
+
+/* Class = "NSMenuItem"; title = "Emoji"; ObjectID = "qk5-5E-5KX"; */
+"qk5-5E-5KX.title" = "Emoji";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "qvB-HB-qZL"; */
+"qvB-HB-qZL.title" = "Minimize";
+
+/* Class = "NSTextFieldCell"; title = "Clear Time (s)"; ObjectID = "rPy-99-P1s"; */
+"rPy-99-P1s.title" = "Clear Time (s)";
+
+/* Class = "NSTextFieldCell"; title = "Lowercase Letters"; ObjectID = "rQ7-eN-H6J"; */
+"rQ7-eN-H6J.title" = "Lowercase Letters";
+
+/* Class = "NSTextFieldCell"; title = "Separator"; ObjectID = "s19-JE-uyw"; */
+"s19-JE-uyw.title" = "Separator";
+
+/* Class = "NSTextFieldCell"; title = "50"; ObjectID = "sXt-Sj-8TO"; */
+"sXt-Sj-8TO.title" = "50";
+
+/* Class = "NSViewController"; title = "Pattern Password"; ObjectID = "sd3-yQ-tvi"; */
+"sd3-yQ-tvi.title" = "Pattern Password";
+
+/* Class = "NSViewController"; title = "Passphrase Password"; ObjectID = "sdy-bB-1Ah"; */
+"sdy-bB-1Ah.title" = "Passphrase Password";
+
+/* Class = "NSTextFieldCell"; title = "Find Regex"; ObjectID = "sre-m7-vOc"; */
+"sre-m7-vOc.title" = "Find Regex";
+
+/* Class = "NSMenuItem"; title = "h - Random Case Short Word"; ObjectID = "t1x-QF-10D"; */
+"t1x-QF-10D.title" = "h - Random Case Short Word";
+
+/* Class = "NSMenuItem"; title = "About Password Factory"; ObjectID = "tNg-hy-IvM"; */
+"tNg-hy-IvM.title" = "About Password Factory";
+
+/* Class = "NSViewController"; title = "Stored Password"; ObjectID = "tOv-e7-BMt"; */
+"tOv-e7-BMt.title" = "Stored Password";
+
+/* Class = "NSMenuItem"; title = "Underscore"; ObjectID = "tTs-Mb-VL5"; */
+"tTs-Mb-VL5.title" = "Underscore";
+
+/* Class = "NSButtonCell"; title = "Use Numbers"; ObjectID = "u5v-ps-J9D"; */
+"u5v-ps-J9D.title" = "Use Numbers";
+
+/* Class = "NSTextFieldCell"; title = "ABCD"; ObjectID = "uP9-jV-NKH"; */
+"uP9-jV-NKH.title" = "ABCD";
+
+/* Class = "NSButtonCell"; title = "Run in Menu"; ObjectID = "umK-du-Nif"; */
+"umK-du-Nif.title" = "Run in Menu";
+
+/* Class = "NSMenuItem"; title = "D - Title Case Word"; ObjectID = "vWm-ly-7Rr"; */
+"vWm-ly-7Rr.title" = "D - Title Case Word";
+
+/* Class = "NSButtonCell"; title = "Use Symbols"; ObjectID = "vmd-7f-fe6"; */
+"vmd-7f-fe6.title" = "Use Symbols";
+
+/* Class = "NSMenuItem"; title = "Ping"; ObjectID = "vp4-GZ-xVu"; */
+"vp4-GZ-xVu.title" = "Ping";
+
+/* Class = "NSTextFieldCell"; title = "Suffix Pattern"; ObjectID = "vvk-Zz-FV6"; */
+"vvk-Zz-FV6.title" = "Suffix Pattern";
+
+/* Class = "NSWindow"; title = "Zoom"; ObjectID = "w0c-A8-iIJ"; */
+"w0c-A8-iIJ.title" = "Zoom";
+
+/* Class = "NSButtonCell"; title = "Type"; ObjectID = "w9V-QS-HPR"; */
+"w9V-QS-HPR.title" = "Type";
+
+/* Class = "NSTextFieldCell"; title = "Info To Export"; ObjectID = "wSH-QR-alZ"; */
+"wSH-QR-alZ.title" = "Info To Export";
+
+/* Class = "NSMenuItem"; title = "Random"; ObjectID = "x83-jX-84Z"; */
+"x83-jX-84Z.title" = "Random";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "xde-EM-e0U"; */
+"xde-EM-e0U.title" = "Select All";
+
+/* Class = "NSButtonCell"; title = "Generate"; ObjectID = "xfT-nW-gNK"; */
+"xfT-nW-gNK.title" = "Generate";
+
+/* Class = "NSMenuItem"; title = "S - Uppercase Short Word"; ObjectID = "xhI-Nt-YEt"; */
+"xhI-Nt-YEt.title" = "S - Uppercase Short Word";
+
+/* Class = "NSButtonCell"; title = "Color Password Text"; ObjectID = "xpM-i7-Fba"; */
+"xpM-i7-Fba.title" = "Color Password Text";
+
+/* Class = "NSMenuItem"; title = "Symbol"; ObjectID = "yE8-dQ-gjq"; */
+"yE8-dQ-gjq.title" = "Symbol";
+
+/* Class = "NSTextFieldCell"; title = "Separator"; ObjectID = "yOY-wq-tHt"; */
+"yOY-wq-tHt.title" = "Separator";
+
+/* Class = "NSMenuItem"; title = "Glass"; ObjectID = "ywE-B9-Xpn"; */
+"ywE-B9-Xpn.title" = "Glass";
+
+/* Class = "NSMenuItem"; title = "Morse"; ObjectID = "yxk-Lb-PEq"; */
+"yxk-Lb-PEq.title" = "Morse";
+
+/* Class = "NSButtonCell"; title = "Hide Dock Icon"; ObjectID = "zFH-zE-neP"; */
+"zFH-zE-neP.title" = "Hide Dock Icon";
+
+/* Class = "NSButtonCell"; title = "CRACK TIME"; ObjectID = "zOV-yx-Hav"; */
+"zOV-yx-Hav.title" = "CRACK TIME";
+
+/* Class = "NSMenuItem"; title = "A - Non-Ambiguous Uppercase Character"; ObjectID = "zcJ-HG-SMd"; */
+"zcJ-HG-SMd.title" = "A - Non-Ambiguous Uppercase Character";

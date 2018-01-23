@@ -1737,7 +1737,7 @@
                                                 <rect key="frame" x="0.0" y="1004" width="375" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Erase iCloud Data"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="label" value="Reset iCloud Data"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="showAlertKey" value="eraseRemoteStoreWarning"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="eraseRemoteStore"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="iCloudIsAvailable"/>

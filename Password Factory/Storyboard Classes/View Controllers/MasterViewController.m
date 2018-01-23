@@ -123,7 +123,7 @@
         if (self.currentPasswordTypeViewController.passwordLengthSlider) {
             NSSlider *slider = self.currentPasswordTypeViewController.passwordLengthSlider;
             //TODO: password length
-            PFPasswordType *type = [self getSelectedPasswordType];
+            PFPasswordType type = [self getSelectedPasswordType];
             NSString *key = [NSString stringWithFormat:@"%@PasswordLength",[[self.c getNameForPasswordType:type] lowercaseString]];
             [self updateForMaxPasswordLength:new slider:slider key:key];
             [self.currentPasswordTypeViewController changeLength:slider];
@@ -559,7 +559,6 @@
  */
 -(void)disableStoredPasswords {
     [self unsetStorePasswordTimer];
-    [self.storage deleteAllEntities];
 }
 /**
  Store a password in PasswordStorage
@@ -590,7 +589,7 @@
     PFPasswordType currType = [self getSelectedPasswordType];
     if (currType == PFStoredType) {
         NSUInteger index = self.currentPasswordTypeViewController.storedPasswordTable.selectedRow;
-        [self.storage deleteItemAtIndex:index];
+        [self.storage deleteItemAtIndex:index complete:nil];
         [self.currentPasswordTypeViewController.storedPasswordTable reloadData];
         NSUInteger count = [self.storage count];
         if (count && index < count) {

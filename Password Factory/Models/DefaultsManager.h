@@ -20,7 +20,7 @@
 +(NSUserDefaults *_Nonnull)sharedDefaults;
 +(NSUserDefaults *_Nonnull)standardDefaults;
 +(void)restoreUserDefaults;
-+(void)removeRemoteDefaults;
++(void)resetRemoteDefaults;
 -(void)resetDialogs;
 - (void)enableRemoteStore:(BOOL)enable;
 - (NSString * _Nullable)stringForKey:(NSString * _Nonnull)key;

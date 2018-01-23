@@ -90,16 +90,33 @@ static bool _disableRemoteFetchChanges = NO;
  Saves any updates
  */
 -(void)saveContext {
-    if (self.container.viewContext.hasChanges) {
-        NSError *error = nil;
-        [self.container.viewContext save:&error];
-        if (error.localizedDescription) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.container.viewContext.hasChanges) {
+            NSError *error = nil;
+            @try {
+                for(Passwords *p in self.container.viewContext.insertedObjects) {
+                    NSLog(@"--SAVECONTEXT--INSERTED %@",p.password);
+                }
+                for(Passwords *p in self.container.viewContext.deletedObjects) {
+                    NSLog(@"--SAVECONTEXT--DELETED %@",p.password);
+                }
+                for(Passwords *p in self.container.viewContext.updatedObjects) {
+                    NSLog(@"--SAVECONTEXT--UPDATED %@",p.password);
+                }
+                [self.container.viewContext save:&error];
+            }
+            @catch (NSException *e) {
+                NSLog(@"DED ERROR %@",e);
+            }
+            
+            if (error.localizedDescription) {
 #ifndef IOS
-            AppDelegate *d = [NSApplication sharedApplication].delegate;
-            [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataSaveFailedError];
+                AppDelegate *d = [NSApplication sharedApplication].delegate;
+                [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataSaveFailedError];
 #endif
+            }
         }
-    }
+    });
 }
 
 /**
@@ -249,7 +266,10 @@ static bool _disableRemoteFetchChanges = NO;
         //TODO: batch delete?
         for(Passwords *p in items) {
             @try {
-                [self.container.viewContext deleteObject:p];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.container.viewContext deleteObject:p];
+                });
+                
             }
             @catch (NSException *e) {
                 NSLog(@"BATCH DELETE ERR %@",e);
@@ -262,16 +282,16 @@ static bool _disableRemoteFetchChanges = NO;
     }
 }
 /**
- Deletes the item at index
+ Deletes a password at the index from local and remote
 
  @param index index of item to delete
  */
--(void)deleteItemAtIndex:(NSUInteger)index {
+-(void)deleteItemAtIndex:(NSUInteger)index complete:(void (^)(void))completionHandler {
     Passwords *curr = [self passwordAtIndex:index];
     if (self.useRemoteStore) {
         [self deleteRemote:curr];
     }
-    [self deletePassword:curr];
+    [self deletePassword:curr complete:completionHandler];
 }
 
 
@@ -282,8 +302,8 @@ static bool _disableRemoteFetchChanges = NO;
  */
 -(void)deletePasswordWithID:(NSString *)passwordID {
     Passwords *password = [self passwordWithID:passwordID];
-    if (password != nil) {
-        [self deletePassword:password];
+    if (password != nil && password.inserted) {
+        [self deletePassword:password complete:nil];
     }
 }
 
@@ -292,10 +312,15 @@ static bool _disableRemoteFetchChanges = NO;
 
  @param password password to delete
  */
--(void)deletePassword:(Passwords *)password {
-    [self.container.viewContext deleteObject:password];
-    [self saveContext];
-    [self loadSavedData];
+-(void)deletePassword:(Passwords *)password complete:(void (^)(void))completionHandler {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.container.viewContext deleteObject:password];
+        [self saveContext];
+        [self loadSavedData];
+        if (completionHandler != nil) {
+            completionHandler();
+        }
+    });
 }
 
 /**
@@ -621,7 +646,7 @@ static bool _disableRemoteFetchChanges = NO;
 /**
  Deletes all the passwords in cloudkit
  */
--(void)deleteAllRemoteObjects {
+-(void)deleteAllRemoteObjects:(void (^)(BOOL))completionHandler {
 
     __weak PasswordStorage *weakSelf = self;
 
@@ -629,17 +654,22 @@ static bool _disableRemoteFetchChanges = NO;
         if (recordIds.count) {
             CKModifyRecordsOperation *op = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:nil recordIDsToDelete:recordIds];
             op.modifyRecordsCompletionBlock = ^(NSArray<CKRecord *> * _Nullable savedRecords, NSArray<CKRecordID *> * _Nullable deletedRecordIDs, NSError * _Nullable operationError) {
+                BOOL success = NO;
                 if (operationError) {
                     NSLog(@"DELETE BATCH FAIL %@",operationError.localizedDescription);
                 } else {
+                    success = YES;
                     NSLog(@"DELETED %d REMOTE OBJECTS",(int)recordIds.count);
-                    [weakSelf deleteSubscriptions];
+//                    [weakSelf deleteSubscriptions];
                     if (weakSelf.useRemoteStore) {
                         NSLog(@"DELETING LOCAL OBJECTS");
                         [weakSelf deleteAllEntities];
-                        [weakSelf loadCloudKitContainer:nil];
                     }
                 }
+                if (completionHandler != nil) {
+                    completionHandler(success);
+                }
+                
             };
             [self.cloudKitDatabase addOperation:op];
         }

@@ -1,0 +1,150 @@
+
+/* Class = "UILabel"; text = "A"; ObjectID = "0Sf-kO-e2n"; */
+"0Sf-kO-e2n.text" = "A";
+
+/* Class = "UIButton"; normalTitle = "100"; ObjectID = "1rN-NO-7mx"; */
+"1rN-NO-7mx.normalTitle" = "100";
+
+/* Class = "UILabel"; text = "Prefix"; ObjectID = "1wu-Yt-RX8"; */
+"1wu-Yt-RX8.text" = "Prefix";
+
+/* Class = "UILabel"; text = "Case"; ObjectID = "3LX-Zz-BhG"; */
+"3LX-Zz-BhG.text" = "Case";
+
+/* Class = "UILabel"; text = "Reset"; ObjectID = "4d9-iQ-CFy"; */
+"4d9-iQ-CFy.text" = "Reset";
+
+/* Class = "UILabel"; text = "Separator"; ObjectID = "4nc-cm-nTH"; */
+"4nc-cm-nTH.text" = "Separator";
+
+/* Class = "UILabel"; text = "Text Color"; ObjectID = "53i-oo-3kh"; */
+"53i-oo-3kh.text" = "Text Color";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "5Dv-3n-TXD"; */
+"5Dv-3n-TXD.normalTitle" = "Done";
+
+/* Class = "UIButton"; normalTitle = "Crack Time"; ObjectID = "6cj-CO-apB"; */
+"6cj-CO-apB.normalTitle" = "Crack Time";
+
+/* Class = "UILabel"; text = "Picker Type"; ObjectID = "8S4-pG-fnz"; */
+"8S4-pG-fnz.text" = "Picker Type";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "AEi-mc-6vM"; */
+"AEi-mc-6vM.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "Replace Ambiguous"; ObjectID = "CkW-gg-uvY"; */
+"CkW-gg-uvY.text" = "Replace Ambiguous";
+
+/* Class = "UILabel"; text = "Use Symbols"; ObjectID = "D9w-Jc-66q"; */
+"D9w-Jc-66q.text" = "Use Symbols";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "I2u-Lx-dl2"; */
+"I2u-Lx-dl2.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Case"; ObjectID = "InW-LH-bTh"; */
+"InW-LH-bTh.text" = "Case";
+
+/* Class = "UILabel"; text = "Truncate At: None"; ObjectID = "Mvf-7D-idV"; */
+"Mvf-7D-idV.text" = "Truncate At: None";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "Q6l-rT-Wxr"; */
+"Q6l-rT-Wxr.text" = "Password";
+
+/* Class = "UILabel"; text = "Password Storage"; ObjectID = "STE-09-qyK"; */
+"STE-09-qyK.text" = "Password Storage";
+
+/* Class = "UINavigationItem"; title = "Password Type"; ObjectID = "SWS-Lt-iH5"; */
+"SWS-Lt-iH5.title" = "Password Type";
+
+/* Class = "UILabel"; text = "Type Label"; ObjectID = "SyX-cR-bpq"; */
+"SyX-cR-bpq.text" = "Type Label";
+
+/* Class = "UILabel"; text = "Case Type"; ObjectID = "V43-KJ-zCV"; */
+"V43-KJ-zCV.text" = "Case Type";
+
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "Vug-YN-pqk"; */
+"Vug-YN-pqk.normalTitle" = "Copy";
+
+/* Class = "UILabel"; text = "Symbolize: 0%"; ObjectID = "Xke-21-hNa"; */
+"Xke-21-hNa.text" = "Symbolize: 0%";
+
+/* Class = "UILabel"; text = "Home Screen"; ObjectID = "YvQ-Qo-Bnz"; */
+"YvQ-Qo-Bnz.text" = "Home Screen";
+
+/* Class = "UIButton"; normalTitle = "Generate"; ObjectID = "a3p-3g-Cie"; */
+"a3p-3g-Cie.normalTitle" = "Generate";
+
+/* Class = "UILabel"; text = "000"; ObjectID = "ag8-26-K4h"; */
+"ag8-26-K4h.text" = "000";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "bG6-BP-1Gv"; */
+"bG6-BP-1Gv.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Please Do not do that because it is a problem"; ObjectID = "bRm-oS-vBp"; */
+"bRm-oS-vBp.text" = "Please Do not do that because it is a problem";
+
+/* Class = "UILabel"; text = "Global"; ObjectID = "bds-4z-5bU"; */
+"bds-4z-5bU.text" = "Global";
+
+/* Class = "UIButton"; normalTitle = "LEN"; ObjectID = "d46-n8-h5g"; */
+"d46-n8-h5g.normalTitle" = "LEN";
+
+/* Class = "UILabel"; text = "Use Numbers"; ObjectID = "diO-cc-Mg5"; */
+"diO-cc-Mg5.text" = "Use Numbers";
+
+/* Class = "UILabel"; text = "Suffix"; ObjectID = "e1G-N3-Wjt"; */
+"e1G-N3-Wjt.text" = "Suffix";
+
+/* Class = "UILabel"; text = "Find"; ObjectID = "eVO-Ut-aVT"; */
+"eVO-Ut-aVT.text" = "Find";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ehz-Fz-X16"; */
+"ehz-Fz-X16.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "epd-gq-Wz9"; */
+"epd-gq-Wz9.normalTitle" = "Delete";
+
+/* Class = "UILabel"; text = "Alert Title"; ObjectID = "fI6-CZ-Dzh"; */
+"fI6-CZ-Dzh.text" = "Alert Title";
+
+/* Class = "UIBarButtonItem"; title = "PREFS"; ObjectID = "iOW-7o-QmZ"; */
+"iOW-7o-QmZ.title" = "PREFS";
+
+/* Class = "UISegmentedControl"; jUq-0Y-Ywb.segmentTitles[0] = "First"; ObjectID = "jUq-0Y-Ywb"; */
+"jUq-0Y-Ywb.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; jUq-0Y-Ywb.segmentTitles[1] = "Second"; ObjectID = "jUq-0Y-Ywb"; */
+"jUq-0Y-Ywb.segmentTitles[1]" = "Second";
+
+/* Class = "UILabel"; text = "Accenter: 0%"; ObjectID = "kD0-6C-upp"; */
+"kD0-6C-upp.text" = "Accenter: 0%";
+
+/* Class = "UIButton"; normalTitle = "t"; ObjectID = "lxO-4x-CKu"; */
+"lxO-4x-CKu.normalTitle" = "t";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "m26-zu-M4f"; */
+"m26-zu-M4f.normalTitle" = "OK";
+
+/* Class = "UIButton"; normalTitle = "Password"; ObjectID = "mJK-GC-XLR"; */
+"mJK-GC-XLR.normalTitle" = "Password";
+
+/* Class = "UILabel"; text = "Use Emoji"; ObjectID = "mhj-pu-2Ux"; */
+"mhj-pu-2Ux.text" = "Use Emoji";
+
+/* Class = "UILabel"; text = "Avoid Ambiguous"; ObjectID = "o7y-0s-rev"; */
+"o7y-0s-rev.text" = "Avoid Ambiguous";
+
+/* Class = "UILabel"; text = "Replace"; ObjectID = "oc6-GE-xE3"; */
+"oc6-GE-xE3.text" = "Replace";
+
+/* Class = "UIButton"; normalTitle = "Clear Pattern"; ObjectID = "qf7-hR-1v4"; */
+"qf7-hR-1v4.normalTitle" = "Clear Pattern";
+
+/* Class = "UILabel"; text = "Separator"; ObjectID = "srH-Q8-1ni"; */
+"srH-Q8-1ni.text" = "Separator";
+
+/* Class = "UILabel"; text = "999"; ObjectID = "vXF-g9-3rh"; */
+"vXF-g9-3rh.text" = "999";
+
+/* Class = "UILabel"; text = "0000"; ObjectID = "yk6-Cd-qFq"; */
+"yk6-Cd-qFq.text" = "0000";

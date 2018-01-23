@@ -126,7 +126,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     AppDelegate *appDelegate = [NSApplication sharedApplication].delegate;
     DefaultsManager *d = [DefaultsManager get];
     if(sender.state == NSControlStateValueOn) {
-        [appDelegate.masterViewController enableStoredPasswords];
+        
         [appDelegate.alertWindowController displayAlertWithBlock:NSLocalizedString(@"storedPasswordOnWarning", comment: @"") defaultsKey:@"hideStoredPasswordOnWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
             if(cancelled) {
                 [d setBool:NO forKey:@"storePasswords"];
@@ -142,8 +142,11 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
                 [d setBool:YES forKey:@"storePasswords"];
             } else {
                 [appDelegate.masterViewController disableStoredPasswords];
+                [[PasswordStorage get] deleteAllRemoteObjects:^(BOOL success) {
+                    [Utilities setRemoteStore];
+                }];
             }
-            [Utilities setRemoteStore];
+            
         }];
     }
 }
@@ -431,8 +434,8 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     AppDelegate *d = [NSApplication sharedApplication].delegate;
     [d.alertWindowController displayAlertWithBlock:NSLocalizedString(@"eraseRemoteStoreWarning", comment: @"") defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
-            [DefaultsManager removeRemoteDefaults];
-            [[PasswordStorage get] deleteAllRemoteObjects];
+            [DefaultsManager resetRemoteDefaults];
+            [[PasswordStorage get] deleteAllRemoteObjects:nil];
         }
     }];
 

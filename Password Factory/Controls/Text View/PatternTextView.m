@@ -48,7 +48,10 @@
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"userPattern"]) {
-        [self setText:change[@"new"]];
+        if ([change[@"new"] isKindOfClass:[NSString class]]) {
+            [self setText:change[@"new"]];
+        }
+        
     } else {
        [self colorPatternText];
     }

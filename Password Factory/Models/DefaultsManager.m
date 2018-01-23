@@ -100,7 +100,6 @@ static DefaultsManager *dm = nil;
             [NSNotificationCenter.defaultCenter removeObserver:self name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:self.keyStore];
             self.keyStore = nil;
         }
-        self.disabledSyncKeys = nil;
     }
 }
 
@@ -116,9 +115,6 @@ static DefaultsManager *dm = nil;
     for (NSString *k in keys) {
         if (![self.disabledSyncKeys containsObject:k]) {
             [self.disabledSyncKeys addObject:k];
-            if (self.kvos[k]) {
-                [self.kvos removeObjectForKey:k];
-            }
         }
     }
 }
@@ -191,20 +187,34 @@ static DefaultsManager *dm = nil;
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[DefaultsManager standardDefaults] removePersistentDomainForName:appDomain];
     [[DefaultsManager sharedDefaults] removePersistentDomainForName:SharedDefaultsAppGroup];
-    [DefaultsManager removeRemoteDefaults];
+    [DefaultsManager resetRemoteDefaults];
     [[DefaultsManager get] getPrefsFromPlist:true];
 }
 
 /**
- Erases all remote iCloud KVO defaults
+ Resets all remote iCloud KVO defaults
  */
-+(void)removeRemoteDefaults {
-    if ([DefaultsManager get].keyStore != nil) {
-        
-        NSUbiquitousKeyValueStore *store = [DefaultsManager get].keyStore;
++(void)resetRemoteDefaults {
+    NSUbiquitousKeyValueStore *store;
+    if ([DefaultsManager get].keyStore) {
+        store = [DefaultsManager get].keyStore;
+    } else {
+        store = [NSUbiquitousKeyValueStore defaultStore];
+    }
+    if (store != nil) {
+        [[DefaultsManager get] loadDefaultsPlist];
+        NSDictionary *prefs = [DefaultsManager get].prefsPlist;
+        //resetting iCloudKVS to default
+        for (NSString *key in prefs) {
+            [store setObject:[prefs objectForKey:key] forKey:key];
+        }
+        //checking to see if there were any added keys that are not in prefs, if so, delete them
         NSDictionary *kvs = [store dictionaryRepresentation];
         for (NSString *key in [kvs allKeys]) {
-            [store removeObjectForKey:key];
+            if (prefs[key] == nil) {
+                NSLog(@"DELETED EXTRANEOUS KEY %@",key);
+                [store removeObjectForKey:key];
+            }
         }
     }
 }
@@ -463,15 +473,18 @@ static DefaultsManager *dm = nil;
         self.useRemoteStorage = false;
         //go through the notification
         for (NSString *item in notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
-            NSLog(@"REMOTE ITEM CHANGE %@",item);
-            //get the new value
-            id object = [self.keyStore objectForKey:item];
-            //do not set nil object
-            if (object != nil) {
-                //store it
-                [self setObject:object forKey:item];
-            }
             
+            //only sync items that are enabled
+            if ([self canSyncKey:item]) {
+                NSLog(@"REMOTE ITEM CHANGE %@",item);
+                //get the new value
+                id object = [self.keyStore objectForKey:item];
+                //do not set nil object
+                if (object != nil) {
+                    //store it
+                    [self setObject:object forKey:item];
+                }
+            }
         }
         //reenable remote store
         self.useRemoteStorage = currentRemoteStore;

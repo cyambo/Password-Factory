@@ -25,7 +25,7 @@
 "characterSeparatorTypeName" = "Character";
 "colorPickerTitle" = "Select %@ Color";
 "disabledTitle" = "Disabled";
-"disableRemoteStoreWarning" = "Disabling iCloud will not remove any stored iCloud data, and it will be available to other devices. To reset iCloud use the 'Erase iCloud Data' feature";
+"disableRemoteStoreWarning" = "Disabling iCloud will not remove any stored iCloud data, and it will be available to other devices. To reset iCloud use the 'Reset iCloud Data' feature";
 "doneButton" = "Done";
 "emojiPatternName" = "Emoji";
 "emojiSeparatorTypeName" = "Emoji";

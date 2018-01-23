@@ -51,7 +51,6 @@
 		40189F601FD46A8F00D87217 /* AdvancedPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */; };
 		401BC7211FF968B0008C7927 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401BC7201FF968B0008C7927 /* HeaderLabel.swift */; };
 		4025FC271FE5C2B50036BE3C /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4025FC261FE5C2B50036BE3C /* DeleteButton.swift */; };
-		402A42831FAA316F00615A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402A42821FAA316F00615A2E /* Main.storyboard */; };
 		402C96431FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
 		402C96441FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
 		402C96451FD4C53B00E2B37E /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C96421FD4C53B00E2B37E /* ColorUtilities.m */; };
@@ -153,6 +152,7 @@
 		40A837D02014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
 		40A837D12014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
 		40A837D22014115900468E1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40A837CB2014115900468E1B /* Localizable.strings */; };
+		40A837D92014145B00468E1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A837DB2014145B00468E1B /* Main.storyboard */; };
 		40AAB5D11F8EC67F00324759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5D01F8EC67F00324759 /* AppDelegate.swift */; };
 		40AAB5D61F8EC67F00324759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D41F8EC67F00324759 /* Main.storyboard */; };
 		40AAB5D81F8EC67F00324759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AAB5D71F8EC67F00324759 /* Assets.xcassets */; };
@@ -301,7 +301,6 @@
 		40189F5F1FD46A8F00D87217 /* AdvancedPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPasswordViewController.swift; sourceTree = "<group>"; };
 		401BC7201FF968B0008C7927 /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		4025FC261FE5C2B50036BE3C /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
-		402A42821FAA316F00615A2E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		402C96411FD4C53B00E2B37E /* ColorUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorUtilities.h; sourceTree = "<group>"; };
 		402C96421FD4C53B00E2B37E /* ColorUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorUtilities.m; sourceTree = "<group>"; };
 		402C96491FD5B31200E2B37E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -408,6 +407,9 @@
 		40A0A3CA1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Passwords+CoreDataProperties.m"; sourceTree = "<group>"; };
 		40A2E3DC1F92756A0044E2A1 /* frequency_lists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = frequency_lists.json; path = Pods/ZXCVBN/tools/generated/frequency_lists.json; sourceTree = SOURCE_ROOT; };
 		40A837CB2014115900468E1B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		40A837DA2014145B00468E1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40A837DD2014146400468E1B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		40A837DF2014147D00468E1B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		40AAB5CE1F8EC67F00324759 /* Password Factory iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Factory iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AAB5D01F8EC67F00324759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40AAB5D51F8EC67F00324759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -973,7 +975,7 @@
 				40FB841C1FC5F81300474B94 /* Controllers */,
 				409586051B8112FD00393B99 /* Models */,
 				409586081B8112FD00393B99 /* Storyboard Classes */,
-				402A42821FAA316F00615A2E /* Main.storyboard */,
+				40A837DB2014145B00468E1B /* Main.storyboard */,
 				40FB0C201B810F10009193F8 /* AppDelegate.h */,
 				40FB0C211B810F10009193F8 /* AppDelegate.m */,
 				406E50611B81481B00A170CF /* Password Factory.entitlements */,
@@ -1423,7 +1425,7 @@
 				4095860F1B8112FD00393B99 /* bad_words.json in Resources */,
 				40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */,
 				40A837CC2014115900468E1B /* Localizable.strings in Resources */,
-				402A42831FAA316F00615A2E /* Main.storyboard in Resources */,
+				40A837D92014145B00468E1B /* Main.storyboard in Resources */,
 				40FB0C261B810F10009193F8 /* Images.xcassets in Resources */,
 				409586321B81131100393B99 /* PasswordFactory.help in Resources */,
 			);
@@ -1940,10 +1942,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		40A837DB2014145B00468E1B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40A837DA2014145B00468E1B /* Base */,
+				40A837DD2014146400468E1B /* en */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		40AAB5D41F8EC67F00324759 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				40AAB5D51F8EC67F00324759 /* Base */,
+				40A837DF2014147D00468E1B /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

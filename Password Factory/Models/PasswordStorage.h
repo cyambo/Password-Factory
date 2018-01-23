@@ -28,11 +28,11 @@
 -(NSUInteger)count;
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type;
 -(Passwords *)passwordAtIndex:(NSUInteger)index;
--(void)deleteItemAtIndex:(NSUInteger)index;
+-(void)deleteItemAtIndex:(NSUInteger)index complete:(void (^)(void))completionHandler;
 -(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor;
 -(void)loadSavedData;
 -(void)deleteAllEntities;
--(void)deleteAllRemoteObjects;
+-(void)deleteAllRemoteObjects:(void (^)(BOOL))completionHandler;
 -(void)enableRemoteStorage:(BOOL)enabled;
 -(void)changedMaxStorageAmount;
 -(void)receivedUpdatedData:(CKNotification *)notification complete:(void (^)(BOOL))completionHandler;

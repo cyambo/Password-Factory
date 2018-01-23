@@ -583,6 +583,7 @@ Gw
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
+                                            <action selector="changeStoredPassword:" target="2B8-vP-6ly" id="YyF-40-4LG"/>
                                             <binding destination="DGa-ye-VaM" name="value" keyPath="values.storePasswords" id="9Oh-G1-tB0"/>
                                         </connections>
                                     </button>
@@ -1110,7 +1111,7 @@ Gw
                             </button>
                             <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="AJT-p0-fbE">
                                 <rect key="frame" x="280" y="57" width="240" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="Erase iCloud" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gdw-TK-6MC">
+                                <buttonCell key="cell" type="roundRect" title="Reset iCloud Data" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gdw-TK-6MC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                     <connections>
