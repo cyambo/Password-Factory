@@ -589,12 +589,14 @@
     PFPasswordType currType = [self getSelectedPasswordType];
     if (currType == PFStoredType) {
         NSUInteger index = self.currentPasswordTypeViewController.storedPasswordTable.selectedRow;
-        [self.storage deleteItemAtIndex:index complete:nil];
-        [self.currentPasswordTypeViewController.storedPasswordTable reloadData];
-        NSUInteger count = [self.storage count];
-        if (count && index < count) {
-            [self.currentPasswordTypeViewController selectFromStored:index];
-        }
+        [self.storage deleteItemAtIndex:index complete:^{
+            [self.currentPasswordTypeViewController.storedPasswordTable reloadData];
+            NSUInteger count = [self.storage count];
+            if (count && index < count) {
+                [self.currentPasswordTypeViewController selectFromStored:index];
+            }
+        }];
+
     }
 }
 

@@ -436,4 +436,9 @@
     }
     return nil;
 }
+-(void)applicationWillTerminate:(NSNotification *)notification {
+    if ([[DefaultsManager get] boolForKey:@"storePasswords"]) {
+        [[PasswordStorage get] deleteOverMaxItems];
+    }
+}
 @end

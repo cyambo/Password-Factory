@@ -67,8 +67,10 @@
 "randomSeparatorTypeName" = "Random";
 "randomTypeName" = "Random";
 "rangePickerLabel" = "Range";
+"remoteStoreChangeWarning" = "A preference change was received from another device through iCloud";
 "resetAllDialogsWarning" = "All previously hidden dialogs will now be shown.";
 "resetToDefaultsWarning" = "All settings will be restored to their defaults, all stored passwords will be deleted, and Password Factory will restart.";
+
 "selectPickerTypeLabel" = "Select %@";
 "selectTitle" = "Select";
 "separatorPickerLabel" = "Separator";

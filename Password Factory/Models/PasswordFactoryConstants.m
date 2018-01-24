@@ -120,7 +120,8 @@
                               @"storedPasswordTableSelectedRow",
                               @"isMenuApp",
                               @"hideDockIcon",
-                              @"addToLoginItems"];
+                              @"addToLoginItems",
+                              @"cloudKitCurrentZoneStartTime"];
 }
 
 /**

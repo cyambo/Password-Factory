@@ -25,6 +25,7 @@
 @property (nonatomic, weak) id <PasswordStorageDelegate> delegate;
 @property (nonatomic, assign) NSUInteger maximumPasswordsStored;
 @property (class, nonatomic, assign) BOOL disableRemoteFetchChanges;
+@property (nonatomic, assign) BOOL useRemoteStore;
 -(NSUInteger)count;
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type;
 -(Passwords *)passwordAtIndex:(NSUInteger)index;
@@ -32,6 +33,7 @@
 -(void)setSortDescriptor:(NSSortDescriptor *)sortDescriptor;
 -(void)loadSavedData;
 -(void)deleteAllEntities;
+-(void)deleteOverMaxItems;
 -(void)deleteAllRemoteObjects:(void (^)(BOOL))completionHandler;
 -(void)enableRemoteStorage:(BOOL)enabled;
 -(void)changedMaxStorageAmount;

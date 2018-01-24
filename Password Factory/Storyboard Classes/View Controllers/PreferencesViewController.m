@@ -434,7 +434,11 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     AppDelegate *d = [NSApplication sharedApplication].delegate;
     [d.alertWindowController displayAlertWithBlock:NSLocalizedString(@"eraseRemoteStoreWarning", comment: @"") defaultsKey:nil window:self.view.window closeBlock:^(BOOL cancelled) {
         if(!cancelled) {
-            [DefaultsManager resetRemoteDefaults];
+            NSDictionary *override = nil;
+            if ([PasswordStorage get].useRemoteStore) {
+                override = @{@"cloudKitZoneStartTime" : @([NSDate date].timeIntervalSinceReferenceDate)};
+            }
+            [DefaultsManager resetRemoteDefaults:override];
             [[PasswordStorage get] deleteAllRemoteObjects:nil];
         }
     }];

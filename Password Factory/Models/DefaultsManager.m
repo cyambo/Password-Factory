@@ -187,14 +187,17 @@ static DefaultsManager *dm = nil;
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[DefaultsManager standardDefaults] removePersistentDomainForName:appDomain];
     [[DefaultsManager sharedDefaults] removePersistentDomainForName:SharedDefaultsAppGroup];
-    [DefaultsManager resetRemoteDefaults];
+    [DefaultsManager resetRemoteDefaults:nil];
     [[DefaultsManager get] getPrefsFromPlist:true];
 }
 
+
 /**
  Resets all remote iCloud KVO defaults
+
+ @param overrideValues overrides what the value will normally be with this
  */
-+(void)resetRemoteDefaults {
++(void)resetRemoteDefaults:(NSDictionary *)overrideValues {
     NSUbiquitousKeyValueStore *store;
     if ([DefaultsManager get].keyStore) {
         store = [DefaultsManager get].keyStore;
@@ -206,14 +209,20 @@ static DefaultsManager *dm = nil;
         NSDictionary *prefs = [DefaultsManager get].prefsPlist;
         //resetting iCloudKVS to default
         for (NSString *key in prefs) {
-            [store setObject:[prefs objectForKey:key] forKey:key];
+            id currVal = [prefs objectForKey:key];
+            if (overrideValues[key] != nil) {
+                currVal = overrideValues[key];
+            }
+            [store setObject:currVal forKey:key];
         }
         //checking to see if there were any added keys that are not in prefs, if so, delete them
         NSDictionary *kvs = [store dictionaryRepresentation];
         for (NSString *key in [kvs allKeys]) {
-            if (prefs[key] == nil) {
+            if (prefs[key] == nil && overrideValues[key] == nil) {
                 NSLog(@"DELETED EXTRANEOUS KEY %@",key);
                 [store removeObjectForKey:key];
+            } else if (overrideValues[key] != nil) {
+                [store setObject:overrideValues[key] forKey:key];
             }
         }
     }

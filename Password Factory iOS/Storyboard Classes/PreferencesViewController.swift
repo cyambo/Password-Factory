@@ -30,6 +30,7 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
         navigationItem.title = NSLocalizedString("preferencesTitle", comment: "Preferences")
     }
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
+        var override : [AnyHashable : Any]?
         //does any special actions for control changes in preferences
         switch defaultsKey {
         case "enableAdvanced":
@@ -64,7 +65,10 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
                 self.navigationController?.popViewController(animated: true)
             }
         case "eraseRemoteStore":
-            DefaultsManager.resetRemoteDefaults()
+            if (PasswordStorage.get().useRemoteStore) {
+                override = ["cloudKitZoneStartTime" : NSDate.timeIntervalSinceReferenceDate]
+            }
+            DefaultsManager.resetRemoteDefaults(override)
             PasswordStorage.get().deleteAllRemoteObjects({ (_) in });
         default:
             return

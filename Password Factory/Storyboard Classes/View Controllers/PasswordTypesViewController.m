@@ -16,11 +16,12 @@
 #import "StrengthControl.h"
 #import "Utilities.h"
 #import "SecureRandom.h"
-@interface PasswordTypesViewController () <NSTextFieldDelegate>
+@interface PasswordTypesViewController () <NSTextFieldDelegate, DefaultsManagerDelegate>
 
 @property (nonatomic, assign) NSInteger passwordLength;
 @property (nonatomic, assign) NSInteger truncateLength;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
+@property (nonatomic, strong) DefaultsManager *d;
 @property (nonatomic, strong) NSRegularExpression *findRegex;
 @property (nonatomic, strong) PasswordStorage *storage;
 @property (nonatomic, assign) BOOL didViewAppear;
@@ -35,24 +36,26 @@
     self.passwordLength = -1;
     self.truncateLength = -1;
     self.c = [PasswordFactoryConstants get];
+    self.d = [DefaultsManager get];
     self.storage = [PasswordStorage get];
     self.didViewAppear = NO;
+    [self.d observeDefaults:self keys:@[@"maxStoredPasswords", @"storePasswords", @"colorPasswordText", @"upperTextColor", @"lowerTextColor", @"symbolTextColor", @"defaultTextColor", @"cloudKitZoneStartTime"]];
     return self;
 }
+
 -(void)viewWillAppear {
     self.didViewAppear = NO;
     //setting the max password length
-    DefaultsManager *d = [DefaultsManager get];
-    NSUInteger maxPasswordLength = [d integerForKey:@"maxPasswordLength"];
+    NSUInteger maxPasswordLength = [self.d integerForKey:@"maxPasswordLength"];
     if (self.passwordLengthSlider) {
         NSUInteger length = [self.delegate getPasswordLength:self.passwordType]; //but we have to get the original length
-
+        
         self.passwordLengthSlider.maxValue = maxPasswordLength;
         //if our length is greater than the max, set it to max
         if (length > maxPasswordLength) {
             length = maxPasswordLength;
             NSString *key = [NSString stringWithFormat:@"%@PasswordLength",[[self.c getNameForPasswordType:self.passwordType] lowercaseString]];
-            [d setInteger:maxPasswordLength forKey:key];
+            [self.d setInteger:maxPasswordLength forKey:key];
         }
         [self.passwordLengthSlider setIntegerValue:length]; //and set it back because the changing of maxValue messes up the slider
     }
@@ -62,7 +65,7 @@
         NSUInteger truncateLength = [self.delegate getTruncateLength];
         if (truncateLength > maxPasswordLength) {
             truncateLength = maxPasswordLength;
-            [d setInteger:maxPasswordLength forKey:@"advancedTruncateAt"];
+            [self.d setInteger:maxPasswordLength forKey:@"advancedTruncateAt"];
         }
         [self.advancedTruncate setIntegerValue:truncateLength];
         [self changeAdvancedTruncate:nil];
@@ -73,11 +76,14 @@
         //reload the table data because stored passwords may have been updated
         [self.storage loadSavedData];
         [self.storedPasswordTable reloadData];
+        
         //select the first one if we have any data
         [self selectFromStored:0];
+        
     }
-    [self setAdvancedRegex];
 
+    [self setAdvancedRegex];
+    
 }
 -(void)viewDidAppear {
     self.didViewAppear = YES;
@@ -85,7 +91,7 @@
 
 /**
  Selects an item at index from stored password table
-
+ 
  @param index index to select
  */
 -(void)selectFromStored:(NSUInteger)index {
@@ -108,16 +114,16 @@
         //nothing in the table so just call the delegate to set the password and strength to nothing
         [self callDelegate];
     }
-
+    
 }
 /**
  Fills in the popup buttons with defaults from PF Constants
  */
 -(void)setupPopUpButtons {
-    DefaultsManager *d = [DefaultsManager get];
+    
     if (self.caseTypeMenu) {
         [self.caseTypeMenu removeAllItems];
-
+        
         for(int i = 0; i < self.c.caseTypeIndex.count; i++){
             PFCaseType t = [(NSNumber *)self.c.caseTypeIndex[i] integerValue];
             //don't display title case in random or advanced because it doesn't make sense
@@ -133,7 +139,7 @@
             [self.caseTypeMenu itemAtIndex:0].tag = 0;
         }
         NSString *name = [NSString stringWithFormat:@"%@CaseTypeIndex",self.prefix];
-        [self.caseTypeMenu selectItemAtIndex:[d integerForKey:name]];
+        [self.caseTypeMenu selectItemAtIndex:[self.d integerForKey:name]];
     }
     if (self.separatorTypeMenu) {
         [self.separatorTypeMenu removeAllItems];
@@ -143,7 +149,7 @@
             [self.separatorTypeMenu itemAtIndex:i].tag = t;
         }
         NSString *name = [NSString stringWithFormat:@"%@SeparatorTypeIndex",self.prefix];
-        [self.separatorTypeMenu selectItemAtIndex:[d integerForKey:name]];
+        [self.separatorTypeMenu selectItemAtIndex:[self.d integerForKey:name]];
     }
     if (self.insertMenu) {
         [self.insertMenu removeAllItems];
@@ -158,7 +164,7 @@
 
 /**
  Called when length slider is updated and sets all related length values
-
+ 
  @param sender default sender
  */
 - (IBAction)changeLength:(id)sender {
@@ -176,7 +182,7 @@
 
 /**
  Called when checkboxes are updaed
-
+ 
  @param sender default sender
  */
 - (IBAction)changeOptions:(id)sender {
@@ -185,7 +191,7 @@
 
 /**
  Inserts a value into the pattern field
-
+ 
  @param sender default sender
  */
 - (IBAction)selectInsertMenuItem:(id)sender {
@@ -198,7 +204,7 @@
 
 /**
  Sets the separator type based upon the dropdown
-
+ 
  @param sender default sender
  */
 - (IBAction)selectSeparatorType:(id)sender {
@@ -207,7 +213,7 @@
 
 /**
  Sets the case type based upon the dropdown
-
+ 
  @param sender default sender
  */
 - (IBAction)selectCaseType:(id)sender {
@@ -216,7 +222,7 @@
 
 /**
  delegate method for text field
-
+ 
  @param obj default sender
  */
 - (void)controlTextDidChange:(NSNotification *)obj {
@@ -246,7 +252,7 @@
 
 /**
  Called when one of the steppers on the advanced page is clicked
-
+ 
  @param sender default sender
  */
 - (IBAction)changeAdvancedStepper:(NSStepper *)sender {
@@ -270,7 +276,7 @@
 
 /**
  Called when truncate slider is changed
-
+ 
  @param sender default sender
  */
 - (IBAction)changeAdvancedTruncate:(NSSlider *)sender {
@@ -308,7 +314,12 @@
 }
 #pragma mark Table View
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [self.storage count];
+    int c = (int)[self.storage count];
+    int max = (int)[[DefaultsManager get] integerForKey:@"maxStoredPasswords"];
+    if (c > max) {
+        return max;
+    }
+    return c;
 }
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSTableCellView *c;
@@ -333,11 +344,11 @@
         [c.textField setAttributedStringValue:a];
     }
     
-
+    
     return c;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    [[DefaultsManager get] setInteger:self.storedPasswordTable.selectedRow forKey:@"storedPasswordTableSelectedRow"];
+    [self.d setInteger:self.storedPasswordTable.selectedRow forKey:@"storedPasswordTableSelectedRow"];
     [self callDelegate];
 }
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors {
@@ -349,4 +360,10 @@
     [tableView reloadData];
     [self selectFromStored:0]; //select the first
 }
+- (void)observeValue:(NSString * _Nullable)keyPath change:(NSDictionary * _Nullable)change {
+    if (self.storedPasswordTable) {
+        [self.storedPasswordTable reloadData];
+    }
+}
+
 @end
