@@ -51,7 +51,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
         
         mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         do {
-            extendedCharacterRegex = try NSRegularExpression.init(pattern: "[^A-Za-z0-9\(c.escapedSymbols)]", options: .caseInsensitive)
+            extendedCharacterRegex = try NSRegularExpression.init(pattern: "[^A-Za-z0-9 \(c.escapedSymbols)]", options: .caseInsensitive)
         } catch {
             extendedCharacterRegex = nil
         }

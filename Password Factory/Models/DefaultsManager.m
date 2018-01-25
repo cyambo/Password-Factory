@@ -54,9 +54,10 @@ static DefaultsManager *dm = nil;
  */
 -(instancetype)init {
     self = [super init];
-    [self loadDefaultsPlist];
+    [self setupCache];
     self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SharedDefaultsAppGroup];
     self.standardDefaults = [NSUserDefaults standardUserDefaults];
+    [self loadDefaultsPlist];
     BOOL loadedPlist = NO;
     //check to see if it was initialized, if it wasn't this is the first load, so initialize from plist
     if (![self.standardDefaults boolForKey:@"initializedDefaults"]) {
@@ -67,7 +68,7 @@ static DefaultsManager *dm = nil;
     self.observers = [[NSMutableDictionary alloc] init];
     self.kvos = [[NSMutableDictionary alloc] init];
     self.stopObservers = false;
-    [self setupCache];
+    
     [self addObservers];
     [self disableRemoteSyncForKeys:[PasswordFactoryConstants get].disabledSyncKeys];
     [self enableRemoteStore:[self.standardDefaults boolForKey:@"enableRemoteStore"]];
@@ -466,6 +467,8 @@ static DefaultsManager *dm = nil;
         }
 
     }
+    [self.standardDefaults synchronize];
+    [self.sharedDefaults synchronize];
     self.useRemoteStorage = currentRemoteStore;
     self.stopObservers = false;
 }

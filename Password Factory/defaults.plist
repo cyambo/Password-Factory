@@ -120,8 +120,6 @@
 	<integer>0</integer>
 	<key>cloudKitCurrentZoneStartTime</key>
 	<integer>0</integer>
-	<key>New item</key>
-	<string></string>
 	<key>activeControl</key>
 	<false/>
 	<key>enabledHomeScreenItems</key>

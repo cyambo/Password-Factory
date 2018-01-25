@@ -52,7 +52,7 @@
         self.stored = NO;
         self.storage = [PasswordStorage get];
         self.c = [PasswordFactoryConstants get];
-        NSString *regex = [NSString stringWithFormat:@"([^A-Za-z0-9%@])",self.c.escapedSymbols];
+        NSString *regex = [NSString stringWithFormat:@"([^A-Za-z0-9 %@])",self.c.escapedSymbols];
         NSError *error;
         self.extendedCharacterRegex = [[NSRegularExpression alloc] initWithPattern:regex options:NSRegularExpressionCaseInsensitive error:&error];
     }

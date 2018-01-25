@@ -160,6 +160,8 @@
 		40AAB5E61F8EC68000324759 /* Password_Factory_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5E51F8EC68000324759 /* Password_Factory_iOSTests.swift */; };
 		40AAB5F11F8EC68000324759 /* Password_Factory_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB5F01F8EC68000324759 /* Password_Factory_iOSUITests.swift */; };
 		40AB01E01FDB029F00D34027 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB01DF1FDB029F00D34027 /* SwitchView.swift */; };
+		40AECFC8201A6BB800C21967 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A2E3DC1F92756A0044E2A1 /* frequency_lists.json */; };
+		40AECFC9201A6BBD00C21967 /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A2E3DC1F92756A0044E2A1 /* frequency_lists.json */; };
 		40AFC65E1FBB7D3600CB5BDA /* ZoomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AFC65D1FBB7D3600CB5BDA /* ZoomWindow.m */; };
 		40B3CF171C0D276E00700173 /* NSString+RandomCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F3871B860791005FC25D /* NSString+RandomCase.m */; };
 		40B3CF181C0D276E00700173 /* NSString+SymbolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012E50F1B9750FA00BAF217 /* NSString+SymbolCase.m */; };
@@ -1379,6 +1381,7 @@
 				409E13C61B8258170041541B /* TodayViewController.xib in Resources */,
 				40A837CE2014115900468E1B /* Localizable.strings in Resources */,
 				409E13C11B8258170041541B /* InfoPlist.strings in Resources */,
+				40AECFC9201A6BBD00C21967 /* frequency_lists.json in Resources */,
 				4001082A1FD3378400594304 /* defaults.plist in Resources */,
 				405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */,
 				40C4C8AF1F9E9C0900F31070 /* emojis.txt in Resources */,
@@ -1425,6 +1428,7 @@
 				4095860F1B8112FD00393B99 /* bad_words.json in Resources */,
 				40C4C8AE1F9E9C0900F31070 /* emojis.txt in Resources */,
 				40A837CC2014115900468E1B /* Localizable.strings in Resources */,
+				40AECFC8201A6BB800C21967 /* frequency_lists.json in Resources */,
 				40A837D92014145B00468E1B /* Main.storyboard in Resources */,
 				40FB0C261B810F10009193F8 /* Images.xcassets in Resources */,
 				409586321B81131100393B99 /* PasswordFactory.help in Resources */,
