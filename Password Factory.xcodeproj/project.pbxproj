@@ -311,6 +311,7 @@
 		402CF59F1FDC6FE10037C56D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		40333F4A200AABC0001FD6C9 /* NSString+sha1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+sha1.h"; sourceTree = "<group>"; };
 		40333F4B200AABC0001FD6C9 /* NSString+sha1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+sha1.m"; sourceTree = "<group>"; };
+		403773C6201A8050004DE74F /* Password Factory Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Password Factory Helper.entitlements"; sourceTree = "<group>"; };
 		403DF3A01FC8EB9E0057E15C /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		403DF3A11FC8EB9E0057E15C /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		403DF3A31FC8F56C0057E15C /* MenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPopover.h; sourceTree = "<group>"; };
@@ -714,6 +715,7 @@
 		4058DF251F92995800CCB6E7 /* Password Factory Helper */ = {
 			isa = PBXGroup;
 			children = (
+				403773C6201A8050004DE74F /* Password Factory Helper.entitlements */,
 				4058DF261F92995800CCB6E7 /* AppDelegate.h */,
 				4058DF271F92995800CCB6E7 /* AppDelegate.m */,
 				4058DF291F92995800CCB6E7 /* Assets.xcassets */,
@@ -1264,12 +1266,17 @@
 					4058DF231F92995800CCB6E7 = {
 						CreatedOnToolsVersion = 9.0;
 						DevelopmentTeam = XWE2VMM384;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
+						};
 					};
 					409E13B71B8258170041541B = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = XWE2VMM384;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -1314,7 +1321,7 @@
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = XWE2VMM384;
 						LastSwiftMigration = 0910;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -1984,19 +1991,19 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Password Factory Helper/Password_Factory_Helper.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Password Factory Helper/Password Factory Helper.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XWE2VMM384;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Password Factory Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-Helper";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Helper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8f268ca9-620e-4de8-b196-b96812682be0";
+				PROVISIONING_PROFILE_SPECIFIER = "Password Factory Helper Development";
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -2010,19 +2017,19 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Password Factory Helper/Password_Factory_Helper.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Password Factory Helper/Password Factory Helper.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XWE2VMM384;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Password Factory Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-Helper";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Helper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8a298803-d50a-4ae2-a0dc-a0fc42277c51";
+				PROVISIONING_PROFILE_SPECIFIER = "Password Factory Helper Development";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2033,7 +2040,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Password Factory Widget/Password_Factory_Widget.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XWE2VMM384;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2043,10 +2050,10 @@
 				INFOPLIST_FILE = "Password Factory Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "33c85fa6-53bb-4d81-8e75-8f63b2a78fb9";
+				PROVISIONING_PROFILE_SPECIFIER = "Password Factory Widget Development";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -2057,16 +2064,16 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Password Factory Widget/Password_Factory_Widget.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XWE2VMM384;
 				INFOPLIST_FILE = "Password Factory Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e8043b9d-2d36-447b-ab2e-52f478de4fa6";
+				PROVISIONING_PROFILE_SPECIFIER = "Password Factory Widget Development";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2396,7 +2403,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XWE2VMM384;
 				INFOPLIST_FILE = "Password Factory/Info.plist";
@@ -2405,8 +2412,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "fd3b9c47-ca5c-44f9-88b4-b43c94a7e117";
+				PROVISIONING_PROFILE_SPECIFIER = "Password Factory Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2421,7 +2428,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Password Factory/Password Factory.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XWE2VMM384;
 				INFOPLIST_FILE = "Password Factory/Info.plist";
@@ -2430,8 +2437,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "fd3b9c47-ca5c-44f9-88b4-b43c94a7e117";
+				PROVISIONING_PROFILE_SPECIFIER = "Password Factory Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
