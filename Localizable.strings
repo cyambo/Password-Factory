@@ -31,6 +31,7 @@
 "emojiSeparatorTypeName" = "Emoji";
 "enableRemoteStoreWarning" = "All preferences and stored passwords will be stored in iCloud and will allow you to sync this information across devices";
 "eraseRemoteStoreWarning" = "All Passwords and preferences stored in iCloud will be deleted, and will be unavailable to any other devices";
+"errorDataLoadFail" = "Failed to load data";
 "exportButton" = "Export";
 "extendedCharacterWarning" = "Using emoji or other extended characters may not work with all systems. Please take caution when using this password.";
 "hyphenSeparatorTypeName" = "Hyphen";
@@ -49,7 +50,7 @@
 "nonAmbiguousUppercaseCharacterPatternName" = "Non-Ambiguous Uppercase Character";
 "noneSeparatorTypeName" = "None";
 "noneStepperLabel" = "None";
-"numberPatternName" = "numberPatternName";
+"numberPatternName" = "Number";
 "numberSeparatorTypeName" = "Number";
 "passphraseTypeName" = "Passphrase";
 "passwordCopyNotificationTitle" = "Password Copied";

@@ -137,7 +137,7 @@
             }
             
             [p generatePassword:type withSettings:settings];
-            NSString *strength = [[NSNumber numberWithInteger:(int)[p getPasswordStrength]] stringValue];
+            NSString *strength = [[NSNumber numberWithInteger:(int)([p getPasswordStrength] * 100)] stringValue];
             [s writeStringToStream:stream string:[s getCSVLine:p.password typeName:typeName strength:strength]];
             
             if (type == PFAdvancedType) {

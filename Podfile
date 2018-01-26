@@ -1,7 +1,7 @@
 # Uncomment this line to define a global platform for your project
 
 target 'Password Factory'  do
-    platform :osx, '10.11'
+    platform :osx, '10.12'
     pod 'ZXCVBN'
     pod 'MASShortcut'
 end
@@ -14,12 +14,12 @@ target 'Password Factory iOS'  do
 end
 
 target 'Password Factory Widget' do
-    platform :osx, '10.11'
+    platform :osx, '10.12'
     pod 'ZXCVBN'
 end;
 
 target 'Password FactoryTests' do
-    platform :osx, '10.11'
+    platform :osx, '10.12'
 	pod 'OCMock'
 end
 

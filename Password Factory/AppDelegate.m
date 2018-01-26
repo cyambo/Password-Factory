@@ -135,6 +135,9 @@
         self.showPrefs = NO;
         [self loadPreferences:nil];
     }
+    if (self.loadError) {
+        [self.alertWindowController displayError:self.loadError[@"MESSAGE"] code:[(NSNumber *)self.loadError[@"CODE"] intValue]];
+    }
 
 }
 -(void)applicationDidBecomeActive:(NSNotification *)notification {

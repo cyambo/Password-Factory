@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSWindowController *zoomWindowController;
 @property (nonatomic, strong) AlertWindowController *alertWindowController;
 @property (nonatomic, strong) NSWindowController *exportWindowController;
+@property (nonatomic, strong) NSDictionary *loadError;
 - (IBAction)generatePasswordFromMenu:(id)sender;
 - (IBAction)selectTypeFromMenu:(NSMenuItem *)sender;
 - (IBAction)deleteStoredPassword:(NSMenuItem *)sender;

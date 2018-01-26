@@ -80,7 +80,8 @@ typedef NS_ENUM(NSInteger, PFErrorCode) {
     PFCoreDataSaveFailedError,
     PFCoreDataLoadSavedDataFailedError,
     PFCoreDataDeleteAllFailedError,
-    PFPasteboardFailError
+    PFPasteboardFailError,
+    PFDataLoadError,
 };
 #define PFPasswordMinLength 5
 #define PFPasswordMaxLength 150

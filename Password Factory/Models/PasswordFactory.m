@@ -14,6 +14,10 @@
 #import "NSString+ReplaceAmbiguous.h"
 #import "SecureRandom.h"
 #import "NSString+UnicodeLength.h"
+
+#ifdef IS_MACOS
+#import "AppDelegate.h"
+#endif
 @interface PasswordFactory ()
 
 @property (nonatomic, strong) NSString *separator;
@@ -604,7 +608,7 @@
         NSDate *wDate = [fileManager attributesOfItemAtPath:wordsByLengthPath error:nil][@"NSFileCreationDate"];
         NSDate *jDate = [fileManager attributesOfItemAtPath:jsonPath error:nil][@"NSFileCreationDate"];
         
-        //comparing file dates to json path create date
+        //comparing file dates to json path create date to see if the json is newer
         if ([eDate compare:jDate] == NSOrderedDescending && [sDate compare:jDate] == NSOrderedDescending && [wDate compare:jDate] == NSOrderedDescending) {
             self.englishWords = [NSKeyedUnarchiver unarchiveObjectWithFile:englishWordsPath];
             self.shortWords = [NSKeyedUnarchiver unarchiveObjectWithFile:shortWordsPath];
@@ -630,22 +634,35 @@
     self.badWords = (NSArray *)[NSJSONSerialization JSONObjectWithData:bData options:0 error:nil];
     
     for (NSString *w in [dicts objectForKey:@"english"]) {
-        if ([w rangeOfCharacterFromSet:charSet].length == 0){
+        if ([w rangeOfCharacterFromSet:charSet].length == 0){ //remove any words that are not composed of alphanumeric characters
             if (![self isBadWord:w]) { //remove bad words
                 if (w.length > 6) { //main word list uses only words of length 6 or more
                     [e addObject:w];
                 }
-                if (w.length > 3 && w.length < 6) {
+                if (w.length > 3 && w.length < 6) { //adding words of length 3-6 to short words
                     [es addObject:w];
                 }
-                if ([wl objectForKey:@(w.length)]) {
+                //setting up words by length (wl)
+                if ([wl objectForKey:@(w.length)]) { //seeing if there already is length in words by length
                     [(NSMutableArray *)wl[@(w.length)] addObject: w];
-                } else {
-                    NSMutableArray *a = [[NSMutableArray alloc] initWithObjects:w, nil];
+                } else { //if not make the array for length
+                    NSMutableArray *a = [[NSMutableArray alloc] init];
+                    if (w != nil) {
+                        [a addObject:w];
+                    }
                     [wl setObject:a forKey:@(w.length)];
                 }
             }
         }
+    }
+    if (e.count == 0 ||  es.count == 0 || wl.count == 0) {
+#ifdef IS_MACOS
+        AppDelegate *d = [NSApplication sharedApplication].delegate;
+        d.loadError = @{
+                        @"MESSAGE": NSLocalizedString(@"errorDataLoadFail", comment: @"Loading data failed"),
+                        @"CODE" : @(PFDataLoadError)
+                        };
+#endif
     }
     self.englishWords = [[NSArray alloc] initWithArray:e];
     self.shortWords = [[NSArray alloc] initWithArray:es];
