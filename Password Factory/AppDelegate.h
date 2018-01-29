@@ -14,11 +14,11 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 
-@property (nonatomic, weak) NSWindow *currWindow;
-@property (nonatomic, weak) MasterViewController *masterViewController;
-@property (nonatomic, weak) PreferencesViewController *prefsViewController;
+@property (nonatomic, strong) NSWindow *currWindow;
+@property (nonatomic, strong) MasterViewController *masterViewController;
+@property (nonatomic, strong) PreferencesViewController *prefsViewController;
 @property (nonatomic, strong) NSWindowController *prefsWindowController;
-@property (nonatomic, weak) ZoomViewController *zoomViewController;
+@property (nonatomic, strong) ZoomViewController *zoomViewController;
 @property (nonatomic, strong) NSWindowController *zoomWindowController;
 @property (nonatomic, strong) AlertWindowController *alertWindowController;
 @property (nonatomic, strong) NSWindowController *exportWindowController;
