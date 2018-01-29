@@ -1096,7 +1096,7 @@ Gw
                                     <constraint firstItem="9xY-8e-0jc" firstAttribute="height" secondItem="hM1-dz-0bY" secondAttribute="height" id="z3a-R1-4f4"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="boxTitle" value="Password Text"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="boxTitle" value="Password Display"/>
                                 </userDefinedRuntimeAttributes>
                             </customView>
                             <button verticalHuggingPriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-3a-D4r" userLabel="Restart_Quit">
