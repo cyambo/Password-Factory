@@ -112,6 +112,7 @@ extern NSString * const EnglishWordsArchiveFilename;
 extern NSString * const ShortWordsArchiveFilename;
 extern NSString * const WordsByLengthWordsArchiveFilename;
 extern NSString * const EmojiArchiveFilename;
+extern NSString * const PhoneticSoundsArchiveFilename;
 extern NSString * const ZoomFontName;
 
 #endif

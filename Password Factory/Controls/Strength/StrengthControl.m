@@ -7,7 +7,7 @@
 //
 
 #import "StrengthControl.h"
-
+#import "ColorUtilities.h"
 @implementation StrengthControl
 -(instancetype)initWithFrame:(NSRect)frameRect {
     
@@ -18,16 +18,16 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
-    // Drawing code here.
 }
 -(NSColor *)getStrengthColor {
     return [StrengthControl getStrengthColorForStrength:self.strength];
 }
 +(NSColor *)getStrengthColorForStrength:(float)strength {
-    float hue = strength *.3;
-    NSColor *_strengthColors = [NSColor colorWithCalibratedRed: 0.848 green: 0.077 blue: 0.077 alpha: 1];
-    return [NSColor colorWithCalibratedHue: hue saturation: _strengthColors.saturationComponent brightness: _strengthColors.brightnessComponent alpha: _strengthColors.alphaComponent];
+    //creating a color from red to purple, with purple being the strongest
+    NSColor *baseColor = [NSColor colorWithCalibratedRed: 0.9 green: 0.077 blue: 0.077 alpha: 1];
+    float hue = strength *.7;
+    float saturation = baseColor.saturationComponent - (hue * 0.4);
+    return [NSColor colorWithCalibratedHue: hue saturation: saturation brightness: baseColor.brightnessComponent alpha: baseColor.alphaComponent];
 }
 -(void)updateStrength:(float)strength {
     //bounds fitting

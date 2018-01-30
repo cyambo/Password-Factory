@@ -232,6 +232,7 @@
     if (cts != nil) {
         return cts;
     }
+    
     return @"";
 }
 -(NSString *)getCrackTimeString:(NSString *)password {

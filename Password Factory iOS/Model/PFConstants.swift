@@ -32,9 +32,7 @@ final class PFConstants: NSObject {
     //properties with new ones because they are Any!
     static let instance = PFConstants() //access this for singleton
     let c = PasswordFactoryConstants.get()!
-    public let phoneticSounds: [String]
-    public let phoneticSoundsTwo: [String]
-    public let phoneticSoundsThree: [String]
+
     public let passwordCharacterTypes: [PFCharacterType:String]
     public let passwordTypes: [PFPasswordType:String]
     public let passwordNameToType: [String:PFPasswordType]
@@ -55,9 +53,6 @@ final class PFConstants: NSObject {
         //converting all the arrays and dictionaries to ones with proper types
         //rather than Any?
         
-        phoneticSounds = c.phoneticSounds.map { $0 as! String }
-        phoneticSoundsTwo = c.phoneticSoundsTwo.map { $0 as! String }
-        phoneticSoundsThree = c.phoneticSoundsThree.map { $0 as! String }
         passwordTypesIndex = c.passwordTypesIndex.map { PFPasswordType(rawValue:$0 as! Int)! }
         caseTypeIndex = c.caseTypeIndex.map { PFCaseType(rawValue:$0 as! Int)! }
         separatorTypeIndex = c.separatorTypeIndex.map { PFSeparatorType(rawValue:$0 as! Int)! }

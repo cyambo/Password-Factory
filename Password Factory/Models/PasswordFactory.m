@@ -27,6 +27,9 @@
 @property (nonatomic, strong) NSDictionary *wordsByLength;
 @property (nonatomic, strong) NSArray *emojis;
 @property (nonatomic, strong) NSArray *badWords;
+@property (nonatomic, strong) NSArray *phoneticSoundsTwo;
+@property (nonatomic, strong) NSArray *phoneticSoundsThree;
+@property (nonatomic, strong) NSArray *phoneticSounds;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @end
 
@@ -117,15 +120,15 @@
         return @"";
     }
     else if (length == 2) { //return a two length sound
-        return [self randomFromArray:self.c.phoneticSoundsTwo];
+        return [self randomFromArray:self.phoneticSoundsTwo];
     } else if (length == 3) { //return a three length sound
-        return [self randomFromArray:self.c.phoneticSoundsThree];
+        return [self randomFromArray:self.phoneticSoundsThree];
     }
     else { //return any length sound
         NSUInteger numSyllables = [SecureRandom randomInt:3] + 1;
         NSMutableString *sound = [[NSMutableString alloc] init];
         for(int i = 0; i <= numSyllables; i++) {
-            [sound appendString:[self randomFromArray:self.c.phoneticSounds]];
+            [sound appendString:[self randomFromArray:self.phoneticSounds]];
             if ((length - sound.length) < 3) {
                 break;
             }
@@ -415,16 +418,16 @@
                     toAppend = [self randomFromArray:self.emojis];
                     break;
                 case PFLowerCasePhoneticSoundType: //p - random phonetic sound
-                    toAppend = [[self randomFromArray:self.c.phoneticSounds] lowercaseString];
+                    toAppend = [[self randomFromArray:self.phoneticSounds] lowercaseString];
                     break;
                 case PFUpperCasePhoneticSoundType: //P - random uppercase phonetic sound
-                    toAppend = [[self randomFromArray:self.c.phoneticSounds] uppercaseString];
+                    toAppend = [[self randomFromArray:self.phoneticSounds] uppercaseString];
                     break;
                 case PFRandomCasePhoneticSoundType: //t - random case phonetic sound
-                    toAppend = [[self randomFromArray:self.c.phoneticSounds] randomCase];
+                    toAppend = [[self randomFromArray:self.phoneticSounds] randomCase];
                     break;
                 case PFTitleCasePhoneticSoundType: //T - title case phonetic sound
-                    toAppend = [[self randomFromArray:self.c.phoneticSounds] capitalizedString];
+                    toAppend = [[self randomFromArray:self.phoneticSounds] capitalizedString];
                     break;
                 case PFRandomItemType: //r - random symbol
                     toAppend = [self generateRandomWithLength:1];
@@ -580,42 +583,65 @@
 - (void)loadWords {
     //loading up our word list
     
-    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
-    NSString *badWordsPath = [[NSBundle mainBundle] pathForResource:@"bad_words" ofType:@"json"];
-    NSString *emojiPath = [[NSBundle mainBundle] pathForResource:@"emojis" ofType:@"txt"];
+    NSString *wordsDataPath = [[NSBundle mainBundle] pathForResource:@"frequency_lists" ofType:@"json"];
+    NSString *badWordsDataPath = [[NSBundle mainBundle] pathForResource:@"bad_words" ofType:@"json"];
+    NSString *emojiDataPath = [[NSBundle mainBundle] pathForResource:@"emojis" ofType:@"txt"];
+    NSString *phoneticDataPath = [[NSBundle mainBundle] pathForResource:@"sounds" ofType:@"json"];
     
-    NSString *englishWordsPath = [self getApplicationSupportDirectory:EnglishWordsArchiveFilename];
-    NSString *shortWordsPath = [self getApplicationSupportDirectory:ShortWordsArchiveFilename];
-    NSString *wordsByLengthPath = [self getApplicationSupportDirectory:WordsByLengthWordsArchiveFilename];
+    NSString *wordsArchivePath = [self getApplicationSupportDirectory:EnglishWordsArchiveFilename];
+    NSString *shortWordsArchivePath = [self getApplicationSupportDirectory:ShortWordsArchiveFilename];
+    NSString *wordsByLengthArchivePath = [self getApplicationSupportDirectory:WordsByLengthWordsArchiveFilename];
     NSString *emojiArchivePath = [self getApplicationSupportDirectory:EmojiArchiveFilename];
+    NSString *phoneticSoundsArchivePath = [self getApplicationSupportDirectory:PhoneticSoundsArchiveFilename];
     
+    NSArray *dataPaths = @[wordsDataPath, badWordsDataPath, emojiDataPath, phoneticDataPath];
+    NSArray *archivePaths = @[wordsArchivePath,shortWordsArchivePath,wordsByLengthArchivePath,emojiArchivePath,phoneticSoundsArchivePath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    //Checking to see if our cached files exist and are newer than our data files, if so, load them instead of parsing
-    if ([fileManager fileExistsAtPath:englishWordsPath] &&
-        [fileManager fileExistsAtPath:shortWordsPath] &&
-        [fileManager fileExistsAtPath:wordsByLengthPath] &&
-        [fileManager fileExistsAtPath:emojiPath]) {
-        NSDate *eDate = [fileManager attributesOfItemAtPath:englishWordsPath error:nil][@"NSFileCreationDate"];
-        NSDate *sDate = [fileManager attributesOfItemAtPath:shortWordsPath error:nil][@"NSFileCreationDate"];
-        NSDate *wDate = [fileManager attributesOfItemAtPath:wordsByLengthPath error:nil][@"NSFileCreationDate"];
-        NSDate *jDate = [fileManager attributesOfItemAtPath:jsonPath error:nil][@"NSFileCreationDate"];
-        
-        //comparing file dates to json path create date to see if the json is newer
-        if ([eDate compare:jDate] == NSOrderedDescending && [sDate compare:jDate] == NSOrderedDescending && [wDate compare:jDate] == NSOrderedDescending) {
-            self.englishWords = [NSKeyedUnarchiver unarchiveObjectWithFile:englishWordsPath];
-            self.shortWords = [NSKeyedUnarchiver unarchiveObjectWithFile:shortWordsPath];
-            self.wordsByLength = [NSKeyedUnarchiver unarchiveObjectWithFile:wordsByLengthPath];
-            self.emojis = [NSKeyedUnarchiver unarchiveObjectWithFile:emojiArchivePath];
+    BOOL missingArchives = NO;
+    for (NSString *path in archivePaths) {
+        if (![fileManager fileExistsAtPath:path]) {
+            missingArchives = YES;
+            break;
         }
-        //did we load the archive?
-        if (self.englishWords.count > 0 && self.shortWords > 0 && self.wordsByLength.count > 0 && self.emojis.count > 0) {
+    }
+    if (!missingArchives) {
+        __weak PasswordFactory* weakSelf = self;
+        //getting the date of the newest data item
+        NSString *newestDataPath = [dataPaths sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            return [[weakSelf getFileModificationDate:obj2] compare:[weakSelf getFileModificationDate:obj1]];
+        }][0];
+        //getting the date of the earliest archive item
+        NSString *oldestArchivePath = [archivePaths sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            return [[weakSelf getFileModificationDate:obj1] compare:[weakSelf getFileModificationDate:obj2]];
+        }][0];
+        
+        NSDate *newestDataDate = [self getFileModificationDate:newestDataPath];
+        NSDate *oldestArchiveDate = [self getFileModificationDate:oldestArchivePath];
+        //checking to see if our cache archives are older than the data
+        if ([newestDataDate compare:oldestArchiveDate] == NSOrderedAscending) {
+            //cache data is newer than archive, so load data
+            self.englishWords = [NSKeyedUnarchiver unarchiveObjectWithFile:wordsArchivePath];
+            self.shortWords = [NSKeyedUnarchiver unarchiveObjectWithFile:shortWordsArchivePath];
+            self.wordsByLength = [NSKeyedUnarchiver unarchiveObjectWithFile:wordsByLengthArchivePath];
+            self.emojis = [NSKeyedUnarchiver unarchiveObjectWithFile:emojiArchivePath];
+            NSDictionary *phoneticData = [NSKeyedUnarchiver unarchiveObjectWithFile:phoneticSoundsArchivePath];
+            if (phoneticData.count >1) {
+                self.phoneticSoundsTwo = phoneticData[@"two"];
+                self.phoneticSoundsThree = phoneticData[@"three"];
+                self.phoneticSounds = [self.phoneticSoundsTwo arrayByAddingObjectsFromArray:self.phoneticSoundsThree];
+            }
+        }
+        //checking to see if all of the archives loaded by checking the count of items in the dictionary
+        if (self.englishWords.count > 0 && self.shortWords > 0 && self.wordsByLength.count > 0 && self.emojis.count > 0 && self.phoneticSoundsTwo > 0 && self.phoneticSoundsThree > 0) {
             return;
         }
     }
-    //Archives didn't load, so parse out the words manually
+
+    //Archives didn't load, so parse the data files
+    
     //parsing out the data for our word lists
-    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+    NSData *jsonData = [NSData dataWithContentsOfFile:wordsDataPath];
     NSDictionary *dicts = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     NSMutableArray *e = [[NSMutableArray alloc] init];
     NSMutableArray *es = [[NSMutableArray alloc] init];
@@ -623,7 +649,7 @@
     NSMutableDictionary *wl = [[NSMutableDictionary alloc] init];
     //loading up our 'bad' words
     
-    NSData *bData = [NSData dataWithContentsOfFile:badWordsPath];
+    NSData *bData = [NSData dataWithContentsOfFile:badWordsDataPath];
     self.badWords = (NSArray *)[NSJSONSerialization JSONObjectWithData:bData options:0 error:nil];
     
     for (NSString *w in [dicts objectForKey:@"english"]) {
@@ -661,12 +687,12 @@
     self.shortWords = [[NSArray alloc] initWithArray:es];
     self.wordsByLength = [[NSDictionary alloc] initWithDictionary:wl];
     //Saving our word lists so we don't have to run this every time
-    [NSKeyedArchiver archiveRootObject:self.englishWords toFile:englishWordsPath];
-    [NSKeyedArchiver archiveRootObject:self.shortWords toFile:shortWordsPath];
-    [NSKeyedArchiver archiveRootObject:self.wordsByLength toFile:wordsByLengthPath];
+    [NSKeyedArchiver archiveRootObject:self.englishWords toFile:wordsArchivePath];
+    [NSKeyedArchiver archiveRootObject:self.shortWords toFile:shortWordsArchivePath];
+    [NSKeyedArchiver archiveRootObject:self.wordsByLength toFile:wordsByLengthArchivePath];
     
     //loading up the emojis
-    NSString *emojiText = [NSString stringWithContentsOfFile:emojiPath encoding:NSUTF8StringEncoding error:nil];
+    NSString *emojiText = [NSString stringWithContentsOfFile:emojiDataPath encoding:NSUTF8StringEncoding error:nil];
     NSMutableArray *em = [[NSMutableArray alloc] init];
     //using the enumerator because some emojis are multibyte strings
     [emojiText enumerateSubstringsInRange:NSMakeRange(0, emojiText.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable character, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
@@ -676,8 +702,40 @@
     }];
     self.emojis = (NSArray *)em;
     [NSKeyedArchiver archiveRootObject:self.emojis toFile:emojiArchivePath];
+    
+    //loading up phonetic sounds
+    NSData *pdata = [NSData dataWithContentsOfFile:phoneticDataPath];
+    NSDictionary *pjson = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:pdata options:0 error:nil];
+    NSMutableDictionary *pdict = [[NSMutableDictionary alloc] init];
+    pdict[@"two"] = [[NSMutableArray alloc] init];
+    pdict[@"three"] = [[NSMutableArray alloc] init];
+    for(NSString *ps in pjson) {
+        if (ps.length == 2) {
+            [pdict[@"two"] addObject:ps];
+        } else if (ps.length == 3) {
+            [pdict[@"three"] addObject:ps];
+        }
+    }
+    [NSKeyedArchiver archiveRootObject:pdict toFile:phoneticSoundsArchivePath];
+    self.phoneticSoundsThree = pdict[@"three"];
+    self.phoneticSoundsTwo = pdict[@"two"];
+    self.phoneticSounds = [self.phoneticSoundsTwo arrayByAddingObjectsFromArray:self.phoneticSoundsThree];
 }
 
+
+/**
+ Gets file modification date for a path
+
+ @param path path to get date
+ @return modification date
+ */
+-(NSDate *)getFileModificationDate:(NSString *)path {
+    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+    if (attributes != nil) {
+        return attributes[@"NSFileModificationDate"];
+    }
+    return nil;
+}
 /**
  *  Gets path to Application support directory for the app to allow saving of users and other data
  *

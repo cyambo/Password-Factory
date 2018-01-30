@@ -116,6 +116,9 @@
 		408BCD091FCE498400EC8B39 /* PatternTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408BCD081FCE498400EC8B39 /* PatternTextView.m */; };
 		4093E29920110D8600D7DAA6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404866802002CDA5008A751F /* CloudKit.framework */; };
 		40940E2A1FC6249300CA1261 /* ExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40940E291FC6249300CA1261 /* ExportViewController.m */; };
+		40945548202109B700153C1A /* sounds.json in Resources */ = {isa = PBXBuildFile; fileRef = 40945547202109B700153C1A /* sounds.json */; };
+		40945549202109B700153C1A /* sounds.json in Resources */ = {isa = PBXBuildFile; fileRef = 40945547202109B700153C1A /* sounds.json */; };
+		4094554A202109B700153C1A /* sounds.json in Resources */ = {isa = PBXBuildFile; fileRef = 40945547202109B700153C1A /* sounds.json */; };
 		409585D11B8112D600393B99 /* PasswordFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CB1B8112D600393B99 /* PasswordFactoryTests.m */; };
 		409585D21B8112D600393B99 /* PreferencesWindowTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585CD1B8112D600393B99 /* PreferencesWindowTestClass.m */; };
 		4095860F1B8112FD00393B99 /* bad_words.json in Resources */ = {isa = PBXBuildFile; fileRef = 409585D51B8112FD00393B99 /* bad_words.json */; };
@@ -362,6 +365,7 @@
 		408BCD081FCE498400EC8B39 /* PatternTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatternTextView.m; sourceTree = "<group>"; };
 		40940E281FC6249300CA1261 /* ExportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportViewController.h; sourceTree = "<group>"; };
 		40940E291FC6249300CA1261 /* ExportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportViewController.m; sourceTree = "<group>"; };
+		40945547202109B700153C1A /* sounds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sounds.json; sourceTree = "<group>"; };
 		409585CA1B8112D600393B99 /* MasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewControllerTests.m; sourceTree = "<group>"; };
 		409585CB1B8112D600393B99 /* PasswordFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordFactoryTests.m; sourceTree = "<group>"; };
 		409585CC1B8112D600393B99 /* PreferencesWindowTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowTestClass.h; sourceTree = "<group>"; };
@@ -758,6 +762,7 @@
 				409586311B81131100393B99 /* PasswordFactory.help */,
 				409585D51B8112FD00393B99 /* bad_words.json */,
 				40C4C8AD1F9E9C0900F31070 /* emojis.txt */,
+				40945547202109B700153C1A /* sounds.json */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1393,6 +1398,7 @@
 				4001082A1FD3378400594304 /* defaults.plist in Resources */,
 				405CCF3B1B8269D100448FF5 /* bad_words.json in Resources */,
 				40C4C8AF1F9E9C0900F31070 /* emojis.txt in Resources */,
+				40945549202109B700153C1A /* sounds.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1403,6 +1409,7 @@
 				4001082B1FD3378500594304 /* defaults.plist in Resources */,
 				40AAB5DB1F8EC67F00324759 /* LaunchScreen.storyboard in Resources */,
 				40E809AD1FD48CE50042AA8A /* frequency_lists.json in Resources */,
+				4094554A202109B700153C1A /* sounds.json in Resources */,
 				40E809AE1FD48CEB0042AA8A /* bad_words.json in Resources */,
 				40A837D02014115900468E1B /* Localizable.strings in Resources */,
 				40E809AF1FD48CF00042AA8A /* emojis.txt in Resources */,
@@ -1440,6 +1447,7 @@
 				40A837D92014145B00468E1B /* Main.storyboard in Resources */,
 				40FB0C261B810F10009193F8 /* Images.xcassets in Resources */,
 				409586321B81131100393B99 /* PasswordFactory.help in Resources */,
+				40945548202109B700153C1A /* sounds.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
