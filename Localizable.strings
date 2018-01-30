@@ -12,7 +12,7 @@
 "approximateEqual" = "";
 "approximateGreaterThan" = "greater than";
 "approximateLessThan" = "less than";
-"approximateMaxTimeString" = "one septillion years";
+"approximateMaxTimeString" = "one quadrillion years";
 "approximateTimeDay" = "a day";
 "approximateTimeHour" = "an hour";
 "approximateTimeMinute" = "a minute";
@@ -59,6 +59,7 @@
 "pasteboardCopyNotification" = "Password with strength %2.0f copied to clipboard";
 "pasteboardWriteFail" = "Pasteboard write failed";
 "patternTypeName" = "Pattern";
+"periodSeparatorTypeName" = "Period";
 "preferencesTitle" = "Preferences";
 "pronounceableTypeName" = "Pronounceable";
 "randomCasePhoneticSoundPatternName" = "Random Case Phonetic Sound";

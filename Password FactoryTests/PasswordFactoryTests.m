@@ -33,6 +33,7 @@ const int LONG_PASSWORD_LENGTH = 100;
                             @(PFHyphenSeparator):@"-?",
                             @(PFSpaceSeparator):@"\\s?",
                             @(PFUnderscoreSeparator):@"_?",
+                            @(PFPeriodSeparator):@"\\.?",
                             @(PFNumberSeparator):@"[0-9]",
                             @(PFSymbolSeparator):@"[!@#$%^&*(){};:.<>?/'_+=|\\-\\[\\]\\\"\\\\]",
                             @(PFCharacterSeparator):@"[A-Za-z]",

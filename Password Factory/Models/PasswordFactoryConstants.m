@@ -11,6 +11,7 @@
 
 @property (nonatomic, strong) NSDictionary *constants;
 @property (nonatomic, strong) NSDictionary *patternBase;
+@property (nonatomic, strong) NSDictionary *separatorBase;
 
 @end
 
@@ -70,16 +71,17 @@
                        @(PFTitleCase): NSLocalizedString(@"titleCaseName", comment: @"Title Case")
                        };
     
-    self.separatorTypes = @{
-                            @(PFNoSeparator) : NSLocalizedString(@"noneSeparatorTypeName", comment: @"None"),
-                            @(PFHyphenSeparator) : NSLocalizedString(@"hyphenSeparatorTypeName", comment: @"Hyphen"),
-                            @(PFSpaceSeparator) : NSLocalizedString(@"spaceSeparatorTypeName", comment: @"Space"),
-                            @(PFUnderscoreSeparator) : NSLocalizedString(@"underscoreSeparatorTypeName", comment: @"Underscore"),
-                            @(PFNumberSeparator) : NSLocalizedString(@"numberSeparatorTypeName", comment: @"Number"),
-                            @(PFSymbolSeparator) : NSLocalizedString(@"symbolSeparatorTypeName", comment: @"Symbol"),
-                            @(PFCharacterSeparator) : NSLocalizedString(@"characterSeparatorTypeName", comment: @"Character"),
-                            @(PFEmojiSeparator) : NSLocalizedString(@"emojiSeparatorTypeName", comment: @"Emoji"),
-                            @(PFRandomSeparator) : NSLocalizedString(@"randomSeparatorTypeName", comment: @"Random"),
+    self.separatorBase = @{
+                            @(PFNoSeparator) : @[NSLocalizedString(@"noneSeparatorTypeName", comment: @"None"), @""],
+                            @(PFHyphenSeparator) : @[NSLocalizedString(@"hyphenSeparatorTypeName", comment: @"Hyphen"), @"-"],
+                            @(PFSpaceSeparator) : @[NSLocalizedString(@"spaceSeparatorTypeName", comment: @"Space"), @" "],
+                            @(PFUnderscoreSeparator) : @[NSLocalizedString(@"underscoreSeparatorTypeName", comment: @"Underscore"),@"_"],
+                            @(PFPeriodSeparator) : @[NSLocalizedString(@"periodSeparatorTypeName", comment: @"Period"),@"."],
+                            @(PFNumberSeparator) : @[NSLocalizedString(@"numberSeparatorTypeName", comment: @"Number")],
+                            @(PFSymbolSeparator) : @[NSLocalizedString(@"symbolSeparatorTypeName", comment: @"Symbol")],
+                            @(PFCharacterSeparator) : @[NSLocalizedString(@"characterSeparatorTypeName", comment: @"Character")],
+                            @(PFEmojiSeparator) : @[NSLocalizedString(@"emojiSeparatorTypeName", comment: @"Emoji")],
+                            @(PFRandomSeparator) : @[NSLocalizedString(@"randomSeparatorTypeName", comment: @"Random")]
                             
                             };
     self.patternBase = @{
@@ -131,7 +133,7 @@
     //get indexes
     self.passwordTypesIndex = [[self.passwordTypes allKeys] sortedArrayUsingSelector:@selector(compare:)];
     self.caseTypeIndex = [[self.caseTypes allKeys] sortedArrayUsingSelector:@selector(compare:)];
-    self.separatorTypeIndex = [[self.separatorTypes allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    self.separatorTypeIndex = [[self.separatorBase allKeys] sortedArrayUsingSelector:@selector(compare:)];
     self.patternTypeIndex = [[self.patternBase allKeys] sortedArrayUsingSelector:@selector(compare:)];
     //building type name dictionary
     NSArray *tk = self.passwordTypes.allKeys;
@@ -151,10 +153,23 @@
         pd[key] = name;
         
     }
-    self.patternTypeToDescription = pd;
-    self.patternCharacterToType = pc;
-    self.patternTypeToName = pn;
-    self.patternTypeToCharacter = pt;
+    self.patternTypeToDescription = [pd copy];
+    self.patternCharacterToType = [pc copy];
+    self.patternTypeToName = [pn copy];
+    self.patternTypeToCharacter = [pt copy];
+    
+    NSMutableDictionary *st = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *sv = [[NSMutableDictionary alloc] init];
+    //build out the separator types dictionaries
+    for(NSNumber *key in self.separatorBase) {
+        NSArray *val = self.separatorBase[key];
+        st[key] = val[0];
+        if (val.count == 2) {
+            sv[key] = val[1];
+        }
+    }
+    self.separatorTypeValues = [sv copy];
+    self.separatorTypes = [st copy];
 }
 -(PFCaseType)getCaseTypeByIndex:(NSUInteger)index {
     return (PFCaseType)[(NSNumber *)self.caseTypeIndex[index] integerValue];

@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger,PFSeparatorType) {
     PFHyphenSeparator,
     PFSpaceSeparator,
     PFUnderscoreSeparator,
+    PFPeriodSeparator,
     PFNumberSeparator,
     PFSymbolSeparator,
     PFCharacterSeparator,

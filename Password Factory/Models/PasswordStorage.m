@@ -16,6 +16,8 @@
 #import "AppDelegate.h"
 #endif
 
+#define STORAGE_DEBUG 0
+
 static bool _disableRemoteFetchChanges = NO;
 @interface PasswordStorage () <DefaultsManagerDelegate>
 @property (nonatomic, strong) NSMutableArray *passwords;
@@ -96,14 +98,19 @@ static bool _disableRemoteFetchChanges = NO;
  Saves any updates
  */
 -(void)saveContext {
+#if STORAGE_DEBUG == 1
     if (self.savingContext) { NSLog(@"‼️‼️ALREADY SAVING"); return; }
+#endif
     self.savingContext = YES;
+#if STORAGE_DEBUG == 1
     NSLog(@"‼️--SAVING CONTEXT");
+#endif
     __weak PasswordStorage *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         if (weakSelf.container.viewContext.hasChanges) {
             NSError *error = nil;
             @try {
+#if STORAGE_DEBUG == 1
                 for(Passwords *p in weakSelf.container.viewContext.insertedObjects) {
                     NSLog(@"--SAVECONTEXT--INSERTED %@",p.password);
                 }
@@ -113,6 +120,7 @@ static bool _disableRemoteFetchChanges = NO;
                 for(Passwords *p in weakSelf.container.viewContext.updatedObjects) {
                     NSLog(@"--SAVECONTEXT--UPDATED %@",p.password);
                 }
+#endif
                 [weakSelf.container.viewContext save:&error];
             }
             @catch (NSException *e) {
@@ -175,7 +183,9 @@ static bool _disableRemoteFetchChanges = NO;
  */
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type time:(NSDate *)time fromRemote:(BOOL)fromRemote {
     if (strength > 1.0) {
+#if STORAGE_DEBUG == 1
         NSLog(@"STRENGTH ERRRR");
+#endif
     }
     if (self.prev != nil && [password isEqualToString:self.prev]) { //getting duplicates from bug in observer on ios, so, just return
         return;
@@ -454,9 +464,13 @@ static bool _disableRemoteFetchChanges = NO;
     __weak PasswordStorage *weakSelf = self;
     [self.cloudKitDatabase saveRecordZone:self.cloudKitRecordZone completionHandler:^(CKRecordZone * _Nullable zone, NSError * _Nullable error) {
         if (error) {
+#if STORAGE_DEBUG == 1
             NSLog(@"CK ZON CR %@",error.localizedDescription);
+#endif
         } else {
+#if STORAGE_DEBUG == 1
             NSLog(@"LOADED CK CONTAINER ZONE");
+#endif
             float startTime = [weakSelf.d floatForKey:@"cloudKitZoneStartTime"];
             float currentTime = [weakSelf.d floatForKey:@"cloudKitCurrentZoneStartTime"];
             //start time is zero, so this is a new zone
@@ -486,13 +500,17 @@ static bool _disableRemoteFetchChanges = NO;
 
         [self.cloudKitDatabase fetchAllSubscriptionsWithCompletionHandler:^(NSArray<CKSubscription *> * _Nullable subscriptions, NSError * _Nullable error) {
             if (error) {
+#if STORAGE_DEBUG == 1
                 NSLog(@"CK SUB FA %@",error.localizedDescription);
+#endif
             } else {
                 if (subscriptions != nil && subscriptions.count) {
                     for(int i = 0; i < subscriptions.count; i++) {
                         CKSubscription *sub = subscriptions[i];
                         if ([sub.notificationInfo.alertLocalizationKey isEqualToString:@"password_remote_update"]) {
+#if STORAGE_DEBUG == 1
                             NSLog(@"FOUND RECORD SUB");
+#endif
                             weakSelf.recordSubscription = sub;
                         }
                     }
@@ -525,9 +543,13 @@ static bool _disableRemoteFetchChanges = NO;
     
     [self.cloudKitDatabase saveSubscription:self.recordSubscription completionHandler:^(CKSubscription * _Nullable subscription, NSError * _Nullable error) {
         if (error) {
+#if STORAGE_DEBUG == 1
             NSLog(@"CK SUB CR %@",error.localizedDescription);
+#endif
         } else {
+#if STORAGE_DEBUG == 1
             NSLog(@"RECORD SUB CREATED");
+#endif
         }
         if (completion != nil) {
             completion(error == nil);
@@ -575,10 +597,14 @@ static bool _disableRemoteFetchChanges = NO;
 -(void)getRemote:(CKRecordID *)record completionHandler:(void (^)(CKRecord *))completion {
     [self.cloudKitDatabase fetchRecordWithID:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
         if(error) {
+#if STORAGE_DEBUG == 1
             NSLog(@"CK FR ERR %@" , error.localizedDescription);
+#endif
             completion(nil);
         } else {
+#if STORAGE_DEBUG == 1
             NSLog(@"GET REMOTE RECORD %@",record.recordID.recordName);
+#endif
             completion(record);
         }
     }];
@@ -589,7 +615,9 @@ static bool _disableRemoteFetchChanges = NO;
  */
 -(void)fetchRemoteChanges:(void (^)(BOOL))completion {
     if (PasswordStorage.disableRemoteFetchChanges) { return; }
+#if STORAGE_DEBUG == 1
     NSLog(@"FETCHING REMOTE CHANGES");
+#endif
     //loading the change token from defaults
     CKFetchRecordZoneChangesOptions *opt = [[CKFetchRecordZoneChangesOptions alloc] init];
     NSData *token = [self.d objectForKey:@"cloudKitChangeToken"];
@@ -612,7 +640,9 @@ static bool _disableRemoteFetchChanges = NO;
         
         Passwords *search;
         if ((search = [weakSelf passwordWithID:record.recordID.recordName])) {
+#if STORAGE_DEBUG == 1
             NSLog(@"FETCH MODIFY %@",search.password);
+#endif
         } else {
             Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
             pw.password = [record objectForKey:@"password"];
@@ -628,19 +658,25 @@ static bool _disableRemoteFetchChanges = NO;
     //block for deleted records, will delete local record
     [op setRecordWithIDWasDeletedBlock:^(CKRecordID * _Nonnull recordID, NSString * _Nonnull recordType) {
         [weakSelf deletePasswordWithID:recordID.recordName];
+#if STORAGE_DEBUG == 1
         NSLog(@"FETCH DELETE ID %@",recordID.recordName);
+#endif
     }];
     
     //token updated, so save
     [op setRecordZoneChangeTokensUpdatedBlock:^(CKRecordZoneID * _Nonnull recordZoneID, CKServerChangeToken * _Nullable serverChangeToken, NSData * _Nullable clientChangeTokenData) {
         [self saveChangeToken:serverChangeToken];
+#if STORAGE_DEBUG == 1
         NSLog(@"FETCH TOKEN UPDATE");
+#endif
     }];
     
     //operation complete, so save everything
     [op setRecordZoneFetchCompletionBlock:^(CKRecordZoneID * _Nonnull recordZoneID, CKServerChangeToken * _Nullable serverChangeToken, NSData * _Nullable clientChangeTokenData, BOOL moreComing, NSError * _Nullable recordZoneError) {
         if (!moreComing) {
+#if STORAGE_DEBUG == 1
             NSLog(@"FETCH UPDATE COMPLETE"); //save token here
+#endif
             if (serverChangeToken != nil) {
                 [self saveChangeToken:serverChangeToken];
             }
@@ -736,7 +772,9 @@ static bool _disableRemoteFetchChanges = NO;
     op.modifyRecordsCompletionBlock = ^(NSArray<CKRecord *> * _Nullable savedRecords, NSArray<CKRecordID *> * _Nullable deletedRecordIDs, NSError * _Nullable operationError) {
         BOOL success = NO;
         if (operationError) {
+#if STORAGE_DEBUG == 1
             NSLog(@"DELETE BATCH FAIL %@",operationError.localizedDescription);
+#endif
         } else {
             success = YES;
         }
@@ -758,11 +796,13 @@ static bool _disableRemoteFetchChanges = NO;
         CKModifySubscriptionsOperation *modifySubOp = [[CKModifySubscriptionsOperation alloc] initWithSubscriptionsToSave:nil subscriptionIDsToDelete:@[self.recordSubscription.subscriptionID]];
         
         modifySubOp.modifySubscriptionsCompletionBlock = ^(NSArray<CKSubscription *> * _Nullable savedSubscriptions, NSArray<NSString *> * _Nullable deletedSubscriptionIDs, NSError * _Nullable operationError) {
+#if STORAGE_DEBUG == 1
             if (operationError) {
                 NSLog(@"SUB DELETE ERR %@",operationError.localizedDescription);
             } else {
                 NSLog(@"DELETED SUBSCRIPTIONS");
             }
+#endif
         };
         [self.cloudKitDatabase addOperation:modifySubOp];
         self.recordSubscription = nil;
@@ -777,11 +817,13 @@ static bool _disableRemoteFetchChanges = NO;
 -(void)deleteRemote:(Passwords *)password {
     CKRecordID *recordID = [self getRecordIDFor:password];
     [self.cloudKitDatabase deleteRecordWithID:recordID completionHandler:^(CKRecordID * _Nullable recordID, NSError * _Nullable error) {
+#if STORAGE_DEBUG == 1
         if (error) {
             NSLog(@"CK DEL ERR %@",error.localizedDescription);
         } else {
             NSLog(@"DELETE REMOTE %@",recordID.recordName);
         }
+#endif
     }];
 }
 
@@ -804,17 +846,23 @@ static bool _disableRemoteFetchChanges = NO;
         [self.syncInProgress addObject:password.passwordID];
         [self.cloudKitDatabase saveRecord:record completionHandler:^(CKRecord * _Nullable record, NSError * _Nullable error) {
             if (error) {
+#if STORAGE_DEBUG == 1
                 NSLog(@"CK SAVE ERR %@",error.localizedDescription);
+#endif
                 //if there is a failure, do nothing, so we can try later
                 if (error.code == CKErrorServerRecordChanged) { // item already in db so mark it at synced
+#if STORAGE_DEBUG == 1
                     NSLog(@"ALREADY SYNCED %@",password.password);
+#endif
                     password.synced = YES;
                     [weakSelf saveContext];
                 } else {
                     
                 }
             } else {
+#if STORAGE_DEBUG == 1
                 NSLog(@"REMOTE STORED %@",password.password);
+#endif
                 //mark the password as synced, and save it
                 password.synced = YES;
                 if (password.inserted) {
@@ -842,14 +890,18 @@ static bool _disableRemoteFetchChanges = NO;
             if (queryNotification.recordFields.count == 4) {
                 
                 NSDictionary *r = queryNotification.recordFields;
+#if STORAGE_DEBUG == 1
                 NSLog(@"NOTIFY ADD %@",r[@"password"]);
+#endif
                 NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[(NSNumber *)r[@"time"] doubleValue]];
                 [self storePassword:r[@"password"] strength:[(NSNumber *)r[@"strength"] floatValue] type:[(NSNumber *)r[@"type"] integerValue]  time:date fromRemote:YES];
                 completionHandler(YES);
             }
         } else if (queryNotification.queryNotificationReason == CKQueryNotificationReasonRecordDeleted) {
             if (queryNotification.recordID.recordName != nil) {
+#if STORAGE_DEBUG == 1
                 NSLog(@"NOTIFY DELETE %@",queryNotification.recordID.recordName);
+#endif
                 [self deletePasswordWithID:queryNotification.recordID.recordName];
                 completionHandler(YES);
             }
@@ -864,7 +916,9 @@ static bool _disableRemoteFetchChanges = NO;
     float currentZoneTime = [self.d floatForKey:@"cloudKitCurrentZoneStartTime"];
     float changedZonedTime = toTime.timeIntervalSinceReferenceDate;
     if (changedZonedTime > currentZoneTime && changedZonedTime > 1) {
+#if STORAGE_DEBUG == 1
         NSLog(@"DELETING FROM BEFORE ZONE TIME");
+#endif
         [self.d setFloat:changedZonedTime forKey:@"cloudKitCurrentZoneStartTime"];
         [self deleteAllBeforeDate:[NSDate dateWithTimeIntervalSinceReferenceDate:changedZonedTime] withRemote:NO];
         [self fetchRemoteChanges:nil];

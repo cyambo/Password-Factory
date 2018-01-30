@@ -142,19 +142,10 @@
  */
 - (void)setSeparatorFromType:(PFSeparatorType)separatorType {
     NSString *sep = @"";
+    if (self.c.separatorTypeValues[@(separatorType)] != nil) {
+        sep = self.c.separatorTypeValues[@(separatorType)];
+    }
     switch (separatorType) {
-        case PFNoSeparator:
-            sep = @"";
-            break;
-        case PFHyphenSeparator:
-            sep = @"-";
-            break;
-        case PFSpaceSeparator:
-            sep = @" ";
-            break;
-        case PFUnderscoreSeparator:
-            sep = @"_";
-            break;
         case PFNumberSeparator:
             sep = [NSString stringWithFormat:@"%d",[SecureRandom randomInt:10]];
             break;
@@ -169,6 +160,8 @@
             break;
         case PFRandomSeparator:
             sep = [self generateRandomWithLength:1];
+            break;
+        default:
             break;
     }
     self.separator = sep;

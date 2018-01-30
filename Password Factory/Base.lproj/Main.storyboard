@@ -2564,7 +2564,7 @@ Gw
                                                     </userDefinedRuntimeAttributes>
                                                     <accessibility identifier="Password Type"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="Password" width="296" minWidth="296" maxWidth="3000" id="Wse-iP-CX1" userLabel="Password" customClass="StoredPasswordColumn">
+                                                <tableColumn identifier="Password" width="296" minWidth="285" maxWidth="3000" id="Wse-iP-CX1" userLabel="Password" customClass="StoredPasswordColumn">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2649,12 +2649,12 @@ Gw
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Mwp-uD-T28">
-                                    <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" controlSize="mini" horizontal="YES" id="Mwp-uD-T28">
+                                    <rect key="frame" x="-100" y="-100" width="11" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ozi-iT-ItH">
-                                    <rect key="frame" x="-100" y="-100" width="15" height="102"/>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" controlSize="mini" horizontal="NO" id="Ozi-iT-ItH">
+                                    <rect key="frame" x="-100" y="-100" width="11" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="VzJ-vo-MNv">

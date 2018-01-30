@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NSDictionary *passwordNameToType;
 @property (nonatomic, strong) NSDictionary *caseTypes;
 @property (nonatomic, strong) NSDictionary *separatorTypes;
+@property (nonatomic, strong) NSDictionary *separatorTypeValues;
 @property (nonatomic, strong) NSDictionary *patternCharacterToType;
 @property (nonatomic, strong) NSDictionary *patternTypeToName;
 @property (nonatomic, strong) NSDictionary *patternTypeToCharacter;

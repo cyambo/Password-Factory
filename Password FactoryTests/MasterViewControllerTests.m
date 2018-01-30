@@ -404,6 +404,8 @@
             case PFUnderscoreSeparator:
                 regexString = @"^([A-Z]+_)+[A-Z]*$";
                 break;
+            case PFPeriodSeparator:
+                regexString = @"^([A-Z]+\\.)+[A-Z]*$";
             case PFNumberSeparator:
                 regexString = @"^([A-Z]+[0-9])+[A-Z]*$";
                 break;

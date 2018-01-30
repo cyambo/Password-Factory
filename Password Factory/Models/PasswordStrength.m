@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
 
 /**
  Updates the password strength property which is a strength value that is from 0 to 1
-
+ 
  @param password Password to check
  @param withCt also calculate crack time as a string
  */
@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
 
 /**
  Gets a nice name for the crack time which is the number of years (or days,weeks,days,hours, minutes)
-
+ 
  @param crackTime the crack time
  @return a nicely formatted string
  */
@@ -96,7 +96,8 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
         else {
             //greater than ten years
             int count = 1;
-            while (s == nil && count < 18) { //setting the loop to max out at 10^18, which is the highest NSNumberFormatter works with
+            //determining the exponent of the crack time manually because large floats are very inexact
+            while (s == nil && count < 16) { //setting the loop to max out at 10^18, which is the highest NSNumberFormatter works with
                 ct /= 10;
                 if (ct < 10) {
                     int f = floor(ct);
@@ -104,19 +105,19 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
                     NSNumber *num = [NSDecimalNumber decimalNumberWithMantissa:f exponent:count isNegative:NO];
                     s = [self.numberFormatter stringFromNumber:num]; //write out the numbers
                     approximate = PSAbout;
-                    
                 }
                 count ++;
             }
             //we didn't fall out of the loop so we are less than 1e18 years
             if (s) {
+                
                 s = [NSString stringWithFormat:NSLocalizedString(@"approximateYearsString", comment: @"%@ years"),s];
             }
         }
         //if we didn't set a string that means we are greater than 1e18 years
         if (s == nil) {
             approximate = PSGreaterThan; //so set it to greater than
-            s = NSLocalizedString(@"approximateMaxTimeString", comment: @"one septillion years");
+            s = NSLocalizedString(@"approximateMaxTimeString", comment: @"one quintillion years");
         }
     }
     NSString *prefix;
@@ -141,7 +142,7 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
 
 /**
  returns the 'approximate' to one value, this is used to get prefix strings for time string
-
+ 
  @param check number approximate to 1.0
  @return PSApproximate value
  */
@@ -156,3 +157,4 @@ typedef NS_ENUM(NSInteger, PSApproximate) {
     return PSGreaterThan;
 }
 @end
+
