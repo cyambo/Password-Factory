@@ -20,14 +20,7 @@
     [super drawRect:dirtyRect];
 }
 -(NSColor *)getStrengthColor {
-    return [StrengthControl getStrengthColorForStrength:self.strength];
-}
-+(NSColor *)getStrengthColorForStrength:(float)strength {
-    //creating a color from red to purple, with purple being the strongest
-    NSColor *baseColor = [NSColor colorWithCalibratedRed: 0.9 green: 0.077 blue: 0.077 alpha: 1];
-    float hue = strength *.7;
-    float saturation = baseColor.saturationComponent - (hue * 0.4);
-    return [NSColor colorWithCalibratedHue: hue saturation: saturation brightness: baseColor.brightnessComponent alpha: baseColor.alphaComponent];
+    return [ColorUtilities getStrengthColor:self.strength];
 }
 -(void)updateStrength:(float)strength {
     //bounds fitting

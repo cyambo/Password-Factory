@@ -229,6 +229,39 @@ static NSMutableDictionary *passwordTextColors;
         return r;
     }
 }
++(Color *)getStrengthColor:(float)strength {
+    Color *baseColor;
+    CGFloat hue = strength *.7;
+    CGFloat brightness = 0.0;
+    CGFloat saturation = 0.0;
+    CGFloat r = 0.9;
+    CGFloat g = 0.077;
+    CGFloat b = 0.077;
+    CGFloat alpha = 1;
+    //creating a color from red to purple, with purple being the strongest
+    
+    //creating base color and getting saturation and brightness
+#if IS_IOS
+    baseColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
+    [baseColor getHue:nil saturation:&saturation brightness:&brightness alpha:&alpha];
+#else
+    baseColor = [Color colorWithCalibratedRed: r green: g blue: b alpha: 1];
+    saturation = baseColor.saturationComponent;
+    brightness = baseColor.brightnessComponent;
+    alpha = baseColor.alphaComponent;
+#endif
+    //computing saturation
+    saturation -= (hue * 0.4);
+    
+    //returning color
+#ifdef IS_IOS
+    return [[Color alloc] initWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
+#else
+    return [Color colorWithCalibratedHue: hue saturation: saturation brightness: baseColor.brightnessComponent alpha: alpha];
+#endif
+
+    
+}
 #ifdef IS_MACOS
 +(NSColorSpace *)colorSpace {
     return [NSColorSpace sRGBColorSpace];

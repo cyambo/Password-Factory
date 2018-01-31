@@ -27,9 +27,8 @@
 @property (nonatomic, strong) NSDictionary *wordsByLength;
 @property (nonatomic, strong) NSArray *emojis;
 @property (nonatomic, strong) NSArray *badWords;
-@property (nonatomic, strong) NSArray *phoneticSoundsTwo;
-@property (nonatomic, strong) NSArray *phoneticSoundsThree;
-@property (nonatomic, strong) NSArray *phoneticSounds;
+@property (nonatomic, strong) NSDictionary *phoneticSounds;
+@property (nonatomic, strong) NSCharacterSet *vowelSet;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @end
 
@@ -56,7 +55,7 @@
     self = [super init];
     if (self) {
         // Initialization code here.
-        
+        self.vowelSet = [NSCharacterSet characterSetWithCharactersInString:@"aeiouy"];
         [self loadWords];
         self.c = [PasswordFactoryConstants get];
         self.length = 5;
@@ -120,15 +119,31 @@
         return @"";
     }
     else if (length == 2) { //return a two length sound
-        return [self randomFromArray:self.phoneticSoundsTwo];
+        return [self randomFromArray:self.phoneticSounds[@"two"]];
     } else if (length == 3) { //return a three length sound
-        return [self randomFromArray:self.phoneticSoundsThree];
+        return [self randomFromArray:self.phoneticSounds[@"three"]];
     }
-    else { //return any length sound
+    else {
+        //generate a pronounceable item with 1 to 4 syllables
         NSUInteger numSyllables = [SecureRandom randomInt:3] + 1;
         NSMutableString *sound = [[NSMutableString alloc] init];
+        NSString *prev = @"";
         for(int i = 0; i <= numSyllables; i++) {
-            [sound appendString:[self randomFromArray:self.phoneticSounds]];
+            NSString *curr;
+            if (prev.length) {
+                //if the last character is a vowel, start the next with a consonant, and vice versa
+                unichar last = [prev characterAtIndex:(prev.length - 1)];
+                if ([self.vowelSet characterIsMember:last]) {
+                    curr = [self randomFromArray:self.phoneticSounds[@"consonantStart"]];
+                } else {
+                    curr = [self randomFromArray:self.phoneticSounds[@"vowelStart"]];
+                }
+            } else {
+                //pick from all of them if we are at the start
+                curr = [self randomFromArray:self.phoneticSounds[@"all"]];
+            }
+            [sound appendString:curr];
+            prev = curr;
             if ((length - sound.length) < 3) {
                 break;
             }
@@ -418,16 +433,16 @@
                     toAppend = [self randomFromArray:self.emojis];
                     break;
                 case PFLowerCasePhoneticSoundType: //p - random phonetic sound
-                    toAppend = [[self randomFromArray:self.phoneticSounds] lowercaseString];
+                    toAppend = [[self randomFromArray:self.phoneticSounds[@"all"]] lowercaseString];
                     break;
                 case PFUpperCasePhoneticSoundType: //P - random uppercase phonetic sound
-                    toAppend = [[self randomFromArray:self.phoneticSounds] uppercaseString];
+                    toAppend = [[self randomFromArray:self.phoneticSounds[@"all"]] uppercaseString];
                     break;
                 case PFRandomCasePhoneticSoundType: //t - random case phonetic sound
-                    toAppend = [[self randomFromArray:self.phoneticSounds] randomCase];
+                    toAppend = [[self randomFromArray:self.phoneticSounds[@"all"]] randomCase];
                     break;
                 case PFTitleCasePhoneticSoundType: //T - title case phonetic sound
-                    toAppend = [[self randomFromArray:self.phoneticSounds] capitalizedString];
+                    toAppend = [[self randomFromArray:self.phoneticSounds[@"all"]] capitalizedString];
                     break;
                 case PFRandomItemType: //r - random symbol
                     toAppend = [self generateRandomWithLength:1];
@@ -627,13 +642,26 @@
             self.emojis = [NSKeyedUnarchiver unarchiveObjectWithFile:emojiArchivePath];
             NSDictionary *phoneticData = [NSKeyedUnarchiver unarchiveObjectWithFile:phoneticSoundsArchivePath];
             if (phoneticData.count >1) {
-                self.phoneticSoundsTwo = phoneticData[@"two"];
-                self.phoneticSoundsThree = phoneticData[@"three"];
-                self.phoneticSounds = [self.phoneticSoundsTwo arrayByAddingObjectsFromArray:self.phoneticSoundsThree];
+                self.phoneticSounds = phoneticData;
             }
         }
-        //checking to see if all of the archives loaded by checking the count of items in the dictionary
-        if (self.englishWords.count > 0 && self.shortWords > 0 && self.wordsByLength.count > 0 && self.emojis.count > 0 && self.phoneticSoundsTwo > 0 && self.phoneticSoundsThree > 0) {
+        //checking to see if all of the archives loaded by checking the count of all the items loaded
+        NSArray *toCount = @[@(self.englishWords.count), @(self.shortWords.count), @(self.wordsByLength.count), @(self.emojis.count)];
+        BOOL loadSuccess = YES;
+        for (NSNumber *count in toCount) {
+            if(count == 0) {
+                loadSuccess = NO;
+            }
+        }
+        //checking the phonetic sounds archive
+        toCount = @[@"two",@"three",@"consonantStart",@"vowelStart",@"all"];
+        for (NSString *item in toCount) {
+            if ([(NSArray *)self.phoneticSounds[item] count] == 0) {
+                loadSuccess = NO;
+            }
+        }
+        //if all succeed, then return
+        if (loadSuccess) {
             return;
         }
     }
@@ -709,17 +737,29 @@
     NSMutableDictionary *pdict = [[NSMutableDictionary alloc] init];
     pdict[@"two"] = [[NSMutableArray alloc] init];
     pdict[@"three"] = [[NSMutableArray alloc] init];
+    pdict[@"all"] = [[NSMutableArray alloc] init];
+    pdict[@"vowelStart"] = [[NSMutableArray alloc] init];
+    pdict[@"consonantStart"] = [[NSMutableArray alloc] init];
     for(NSString *ps in pjson) {
+        NSMutableArray *toAdd = [[NSMutableArray alloc] initWithObjects:@"all", nil];
         if (ps.length == 2) {
-            [pdict[@"two"] addObject:ps];
+            [toAdd addObject:@"two"];
         } else if (ps.length == 3) {
-            [pdict[@"three"] addObject:ps];
+            [toAdd addObject:@"three"];
+        }
+        unichar first = [ps characterAtIndex:0];
+        if ([self.vowelSet characterIsMember:first]) {
+            //it's a vowel
+            [toAdd addObject:@"vowelStart"];
+        } else {
+            [toAdd addObject:@"consonantStart"];
+        }
+        for (NSString *insert in toAdd) {
+            [pdict[insert] addObject:ps];
         }
     }
     [NSKeyedArchiver archiveRootObject:pdict toFile:phoneticSoundsArchivePath];
-    self.phoneticSoundsThree = pdict[@"three"];
-    self.phoneticSoundsTwo = pdict[@"two"];
-    self.phoneticSounds = [self.phoneticSoundsTwo arrayByAddingObjectsFromArray:self.phoneticSoundsThree];
+    self.phoneticSounds = pdict;
 }
 
 

@@ -16,6 +16,7 @@
 #import "StrengthControl.h"
 #import "Utilities.h"
 #import "SecureRandom.h"
+#import "ColorUtilities.h"
 @interface PasswordTypesViewController () <NSTextFieldDelegate, DefaultsManagerDelegate>
 
 @property (nonatomic, assign) NSInteger passwordLength;
@@ -338,7 +339,7 @@
         c = [tableView makeViewWithIdentifier:@"StrengthCell" owner:nil];
         float strength = p.strength;
         [c.textField setStringValue: [NSString stringWithFormat:@"%d",(int)(strength * 100)]];
-        NSColor *strengthColor = [StrengthControl getStrengthColorForStrength:strength];
+        NSColor *strengthColor = [ColorUtilities getStrengthColor:strength];
         NSMutableAttributedString *a = [[NSMutableAttributedString alloc] initWithAttributedString:c.textField.attributedStringValue];
         [a addAttribute:NSForegroundColorAttributeName value:strengthColor range:NSMakeRange(0, a.length)];
         [c.textField setAttributedStringValue:a];

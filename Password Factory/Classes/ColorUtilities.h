@@ -22,6 +22,7 @@
 +(Color *)colorFromHexString:(NSString *)hex;
 +(Color *)getDefaultsColor:(NSString *)defaultsKey;
 +(void)setDefaultsColor:(NSString *)defaultsKey color:(Color *)color;
++(Color *)getStrengthColor:(float)strength;
 #ifdef IS_MACOS
 +(NSColorSpace *)colorSpace;
 #endif

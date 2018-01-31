@@ -108,7 +108,8 @@ class TypeIcons: NSObject {
             return StyleKit.imageOfRandomSeparator
         case .numberSeparator:
             return StyleKit.imageOfNumberSeparator
-            
+        case .periodSeparator:
+            return StyleKit.imageOfPeriodSeparator;            
         }
     }
 }

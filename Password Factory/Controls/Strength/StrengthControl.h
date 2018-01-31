@@ -12,5 +12,4 @@
 @property (nonatomic, assign) float strength;
 -(void)updateStrength:(float)strength;
 -(NSColor *)getStrengthColor;
-+(NSColor *)getStrengthColorForStrength:(float)strength;
 @end
