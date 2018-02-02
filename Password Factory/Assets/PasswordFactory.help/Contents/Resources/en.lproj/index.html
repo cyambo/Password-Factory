@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,15 +17,16 @@
             <a class="navbar-brand" href="#help_top">
                 <img src="gfx/icon.png" alt="Password Factory" style="width:40px" />
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsableNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse" id="collapsableNavbar">
+                <ul class="nav navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Window Basics</a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu scrollable-menu">
                             <a class="dropdown-item" href="#window_basics">Top</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#viewing_area">Viewing</a>
                             <a class="dropdown-item" href="#type_selection_area">Type Selection</a>
                             <a class="dropdown-item" href="#controls_area">Controls</a>
@@ -34,8 +34,9 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Password Types</a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu scrollable-menu">
                             <a class="dropdown-item" href="#password_type">Top</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#random_password">Random</a>
                             <a class="dropdown-item" href="#pattern_password">Pattern</a>
                             <a class="dropdown-item" href="#pronounceable_password">Pronounceable</a>
@@ -46,8 +47,9 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Controls</a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu scrollable-menu">
                             <a class="dropdown-item" href="#controls">Top</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#menubar">Menubar</a>
                             <a class="dropdown-item" href="#widget">Widget</a>
                             <a class="dropdown-item" href="#export">Export Passwords</a>
@@ -57,8 +59,9 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Preferences</a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu scrollable-menu">
                             <a class="dropdown-item" href="#preferences">Top</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#preferences_global">Global</a>
                             <a class="dropdown-item" href="#preferences_max_password">Max Password Length</a>
                             <a class="dropdown-item" href="#preferences_enable_advanced">Enable Advanced</a>
@@ -74,8 +77,9 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appendix</a></a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu scrollable-menu">
                             <a class="dropdown-item" href="#appendix">Top</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#password_length">Password Length</a>
                             <a class="dropdown-item" href="#password_strength">Password Strength</a>
                             <a class="dropdown-item" href="#separator_types">Separator Types</a>
@@ -91,7 +95,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#support">Contact Support</a>
+                        <a class="nav-link" href="mailto:support@password-factory.com">Support</a>
                     </li>
                 </ul>
             </div>
@@ -102,11 +106,12 @@
             </div>
         </div>
         <div class="row content">
-            <div class="col-2 header-column" id="window_basics">
-                <h2 class="rotate text-nowrap">Window Basics</h2>
-            </div>
-            <div class="col-10">
-                <section>
+            <div class="col">
+                <section id="window_basics">
+                    <div class="row row-header p-3">
+                        <h2>Window Basics</h2>
+                    </div>
+
                     <div class="container">
                         <div class="m-3 card w-75 mx-auto">
                                 <img alt="Main Window" class="card-img-top rounded" src="gfx/random-600w.png" />
@@ -126,7 +131,7 @@
                             </div>
                         </div>
                         <p>The viewing area consists of three sections, the password view, <a href="#password_strength">strength</a> meter, and the info area. It shows the currently generated password. The password is either shown in black or highlighted. When the password is highlighted each type of character is shown in a different color. See <a href="#preferences_password_display">preferences</a> for more information. The password displayed can be edited and the <a href="#password_strength">strength</a> will automatically update. Using this any password can have the <a href="#password_strength">strength</a> calculated by typing or pasting it into the password display.</p>
-                        <div class="m-5 card w-75 mx-auto">
+                        <div class="m-3 card w-75 mx-auto">
                             <div class="card-body strength-gradient"></div>
                             <div class="card-footer text-center">
                                 Strength Colors - From Weakest to Strongest
@@ -178,11 +183,11 @@
             </div>
         </div>
         <div class="row content">
-            <div class="col-2 header-column" id="password_type">
-                <h2 class="rotate text-nowrap">Password Types</h2>
-            </div>
-            <div class="col-10">
-                <section>
+            <div class="col">
+                <section id="password_type">
+                    <div class="row row-header p-3">
+                        <h2>Password Types</h2>
+                    </div>
                     <div class="container">
                         <section class="mt-4" id="random_password">
                             <h3 class="random header_image_type">Random Password</h3>
@@ -314,7 +319,7 @@
                                     Stored Password Table
                                 </div>
                             </div>
-                            <p>This section displays all the stored passwords. Passwords will only be stored if 'Store Passwords' is enabled in <a href="#preferences_global ">preferences</a>. See the <a href="#password_storage">password storage</a>section for more information on stored passwords.</p>
+                            <p>This section displays all the stored passwords. Passwords will only be stored if 'Store Passwords' is enabled in <a href="#preferences_global ">preferences</a>. See the <a href="#password_storage">password storage</a> section for more information on stored passwords.</p>
                             <p>The stored password table can be sorted by password type, password, or <a href="#password_strength">strength</a>. Clicking on the headers will sort the passwords according to that column. By default it sorts by time created, with the newest on top.</p>
                             <p>Pressing <kbd>⌘Delete</kbd> when selecting a password will delete it from the system.</p>
                         </section>
@@ -323,11 +328,11 @@
             </div>
         </div>
         <div class="row content">
-            <div class="col-2 header-column" id="controls">
-                <h2 class="rotate text-nowrap">Controls</h2>
-            </div>
-            <div class="col-10">
-                <section>
+            <div class="col">
+                <section id="controls">
+                    <div class="row row-header p-3">
+                        <h2>Controls</h2>
+                    </div>
                     <div class="container">
                         <section class="mt-4" id="menubar">
                         <h3>Menubar</h3>
@@ -407,11 +412,11 @@
             </div>
         </div>
         <div class="row content">
-            <div class="col-2 header-column" id="preferences">
-                <h2 class="rotate text-nowrap">Preferences</h2>
-            </div>
-            <div class="col-10">
-                <section>
+            <div class="col">
+                <section id="preferences">
+                    <div class="row row-header p-3">
+                        <h2>Preferences</h2>
+                    </div>
                     <div class="container">
                         <div class="m-3 card w-50 mx-auto">
                             <img alt="Preferences Window" class="card-img-top rounded" src="gfx/prefs.png"/>
@@ -481,11 +486,11 @@
             </div>
             </div>
             <div class="row content">
-                <div class="col-2 header-column" id="appendix">
-                    <h2 class="rotate text-nowrap">Appendix</h2>
-                </div>
                 <div class="col">
-                    <section>
+                    <section id="appendix">
+                        <div class="row row-header p-3">
+                            <h2>Appendix</h2>
+                        </div>
                         <div class="container">
                             <section class="mt-4" id="password_length">
                                 <h3>Password Length</h3>
@@ -494,18 +499,19 @@
                             <section class="mt-4" id="password_strength">
                                 <h3>Password Strength</h3>
                                 <p>Passwords have a strength from 0 to 100, with 100 being the strongest. Passwords with a strength of 50 and above are the strongest and should give you the best protection. The strength meter indicates strength with the size and color. Smaller widths are weaker, and larger widths are stronger. The color of the strength meter goes from red to purple, and below is a list of colors mapped to their strength and 'crack time'.</p>
+
                                 <ul class="strength-colors">
-                                    <li class="color_well" style="border-left-color:#ED2C16"><strong>0</strong> less than a minute</li>
-                                    <li class="color_well" style="border-left-color:#EC8720"><strong>10</strong> less than an hour</li>
-                                    <li class="color_well" style="border-left-color:#EAD229"><strong>20</strong> less than a week</li>
-                                    <li class="color_well" style="border-left-color:#B9E632"><strong>30</strong> greater than a year</li>
-                                    <li class="color_well" style="border-left-color:#72E53B"><strong>40</strong> about one thousand years</li>
-                                    <li class="color_well" style="border-left-color:#34E54E"><strong>50</strong> about three hundred thousand years</li>
-                                    <li class="color_well" style="border-left-color:#40E6A8"><strong>60</strong> about three hundred million years</li>
-                                    <li class="color_well" style="border-left-color:#48E8E1"><strong>70</strong> about one hundred billion years</li>
-                                    <li class="color_well" style="border-left-color:#55B9EA"><strong>80</strong> about sixty trillion years</li>
-                                    <li class="color_well" style="border-left-color:#5E89EA"><strong>90</strong> greater than one quadrillion years</li>
-                                    <li class="color_well" style="border-left-color:#846FEA"><strong>100</strong> greater than one quintillion years</li>
+                                    <li class="color_well s0"><strong>0</strong>less than a minute</li>
+                                    <li class="color_well s10"><strong>10</strong>less than an hour</li>
+                                    <li class="color_well s20"><strong>20</strong>less than a week</li>
+                                    <li class="color_well s30"><strong>30</strong>greater than a year</li>
+                                    <li class="color_well s40"><strong>40</strong>about one thousand years</li>
+                                    <li class="color_well s50"><strong>50</strong>about three hundred thousand years</li>
+                                    <li class="color_well s60"><strong>60</strong>about three hundred million years</li>
+                                    <li class="color_well s70"><strong>70</strong>about one hundred billion years</li>
+                                    <li class="color_well s80"><strong>80</strong>about sixty trillion years</li>
+                                    <li class="color_well s90"><strong>90</strong>greater than one quadrillion years</li>
+                                    <li class="color_well s100"><strong>100</strong>greater than one quintillion years</li>
                                 </ul>
                                 <p>Password strength and crack time should only be used as a guide. Creating a password that was indicated to be strong does not mean it is uncrackable. Password cracking and other techniques constantly evolve and no password is 100% secure.</p>
                             </section>
@@ -716,14 +722,15 @@
                             </section>
                         </div>
                     </section>
+                    <div class="icon-row"></div>
                 </div>
             </div>
-            <div class="row content mt-5" id="support">
+            <div class="row content p-5" id="support">
                 <div class="col text-center">
                         <div class="container">
-                            <p>To contact support send an email to <a href="mailto:support@password-factory.com">support@password-factory.com</a></p>
+                            <p><a href="mailto:support@password-factory.com">support@password-factory.com</a></p>
+                            <small>&copy;Copyright 2018 <a href="http://password-factory.com" target="_blank">Password Factory</a></small>
                         </div>
-                    <small>&copy;Copyright 2018 <a href="http://password-factory.com" target="_blank">Password Factory</a></small>
                 </div>
             </div>
         </div>
