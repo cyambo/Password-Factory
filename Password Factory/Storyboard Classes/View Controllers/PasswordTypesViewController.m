@@ -175,12 +175,29 @@
             [self.passwordLengthText setStringValue:[NSString stringWithFormat:@"%lu",self.passwordLength]];
             //do not call the delegate if sender is nil
             if (sender != nil) {
+                [self.d setBool:YES forKey:@"activeControl"];
+                //magic to call sliderDone when mouse up happens
+                [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sliderDone:) object:sender];
+                NSArray *objectToSend = @[@([sender floatValue]),[self.delegate getPasswordLengthKey:self.passwordType]];
+                [self performSelector: @selector(sliderDone:) withObject: objectToSend afterDelay: 0.0];
                 [self callDelegate];
             }
         }
     }
 }
 
+
+/**
+ Called when slider is finished
+
+ @param object array with slider value as first, and key as second
+ */
+-(void)sliderDone:(NSArray *)object {
+    NSNumber *value = object[0];
+    NSString *key = object[1];
+    [self.d setBool:NO forKey:@"activeControl"];
+    [self.d storeObject:value forKey:key];
+}
 /**
  Called when checkboxes are updaed
  
@@ -290,6 +307,11 @@
         }
         //do not call the delegate if sender is nil
         if (sender != nil) {
+            [self.d setBool:YES forKey:@"activeControl"];
+            //magic to call sliderDone when mouse up happens
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sliderDone:) object:sender];
+            NSArray *objectToSend = @[@([sender floatValue]),@"advancedTruncateAt"];
+            [self performSelector: @selector(sliderDone:) withObject: objectToSend afterDelay: 0.0];
             [self callDelegate];
         }
     }

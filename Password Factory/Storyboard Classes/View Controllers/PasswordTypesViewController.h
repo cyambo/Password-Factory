@@ -14,6 +14,7 @@
 @protocol PasswordTypesViewControllerDelegate <NSObject, NSTableViewDelegate>
 - (void)controlChanged:(PFPasswordType)type;
 - (NSUInteger)getPasswordLength:(PFPasswordType)type;
+- (NSString *)getPasswordLengthKey:(PFPasswordType)type;
 - (NSUInteger)getTruncateLength;
 @end
 @interface PasswordTypesViewController : NSViewController

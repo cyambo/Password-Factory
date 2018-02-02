@@ -401,11 +401,24 @@
  @return password length
  */
 -(NSUInteger)getPasswordLength:(PFPasswordType)type {
-    //TODO: password length
-    NSString *key = [NSString stringWithFormat:@"%@PasswordLength",[[self.c getNameForPasswordType:type] lowercaseString]];
-    return [self.defaults integerForKey:key];
+    return [self.defaults integerForKey:[self getPasswordLengthKey:type]];
 }
 
+/**
+ Gets the password length key for a password type
+
+ @param type password type
+ @return length key
+ */
+-(NSString *)getPasswordLengthKey:(PFPasswordType)type {
+    return [NSString stringWithFormat:@"%@PasswordLength",[[self.c getNameForPasswordType:type] lowercaseString]];
+}
+
+/**
+ Gets the truncation length set in advanced
+
+ @return truncate length
+ */
 -(NSUInteger)getTruncateLength {
     return [self.defaults integerForKey:@"advancedTruncateAt"];
 }
