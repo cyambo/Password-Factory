@@ -1,204 +1,731 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<html xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="sty/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="sty/style.css">
+    <script src="scrpt/jquery-3.3.1.min.js"></script>
+    <script src="scrpt/bootstrap.bundle.js"></script>
+    <script src="scrpt/main.js"></script>
     <title>Password Factory Help</title>
-    <meta name="robots" content="index" />
-    <link rel="stylesheet" type="text/css" href="sty/screen.css">
-
 </head>
 
-<body dir="ltr">
-
-    <div class="body">
-        <div id="sidebar">
-            <ul>
-                <li>
-                    <a href="#help_top">Top</a>
-                </li>
-                <li>
-                    <a href="window_basics">Window Basics</a>
-                </li>
-                <li>
-                    <a href="#viewing_area"></a>
-                </li>
-                <li>
-                    <a href="#generate_area">Generate Area</a>
-                </li>
-                <li>
-                    <a href="#random_generator">Random</a>
-                </li>
-                <li>
-                    <a href="#pattern_generator">Pattern</a>
-                </li>
-                <li>
-                    <a href="#pronounceable_generator">Pronounceable</a>
-                </li>
-                <li>
-                    <a href="#passphrase_generator">Passphrase</a>
-                </li>
-                <li>
-                    <a href="#widget">Widget</a>
-                </li>
-                <li>
-                    <a href="#preferences">Preferences</a>
-                </li>
-                <li>
-                    <a href="#preferences_password_display">Password Display</a>
-                </li>
-                <li>
-                    <a href="#preferences_hotkey">Hotkey</a>
-                </li>
-                <li>
-                    <a href="#preferences_clipboard">Clipboard</a>
-                </li>
-                <li>
-                    <a href="#preferences_menu">Menu</a>
-                </li>
-                <li>
-                    <a href="#preferences_login">Add to Login Items</a>
-                </li>
-            </ul>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm dark-background navbar-dark fixed-top">
+            <a class="navbar-brand" href="#help_top">
+                <img src="gfx/icon.png" alt="Password Factory" style="width:40px" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Window Basics</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#window_basics">Top</a>
+                            <a class="dropdown-item" href="#viewing_area">Viewing</a>
+                            <a class="dropdown-item" href="#type_selection_area">Type Selection</a>
+                            <a class="dropdown-item" href="#controls_area">Controls</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Password Types</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#password_type">Top</a>
+                            <a class="dropdown-item" href="#random_password">Random</a>
+                            <a class="dropdown-item" href="#pattern_password">Pattern</a>
+                            <a class="dropdown-item" href="#pronounceable_password">Pronounceable</a>
+                            <a class="dropdown-item" href="#passphrase_password">Passphrase</a>
+                            <a class="dropdown-item" href="#advanced_password">Advanced</a>
+                            <a class="dropdown-item" href="#stored_password">Stored</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Controls</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#controls">Top</a>
+                            <a class="dropdown-item" href="#menubar">Menubar</a>
+                            <a class="dropdown-item" href="#widget">Widget</a>
+                            <a class="dropdown-item" href="#export">Export Passwords</a>
+                            <a class="dropdown-item" href="#dock_menu">Dock Menu</a>
+                            <a class="dropdown-item" href="#keyboard_commands">Keyboard Commands</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Preferences</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#preferences">Top</a>
+                            <a class="dropdown-item" href="#preferences_global">Global</a>
+                            <a class="dropdown-item" href="#preferences_max_password">Max Password Length</a>
+                            <a class="dropdown-item" href="#preferences_enable_advanced">Enable Advanced</a>
+                            <a class="dropdown-item" href="#preferences_store_passwords">Store Passwords</a>
+                            <a class="dropdown-item" href="#preferences_run_in_menu">Run in Menu</a>
+                            <a class="dropdown-item" href="#preferences_login">Add to Login Items</a>
+                            <a class="dropdown-item" href="#preferences_icloud">iCloud Sync</a>
+                            <a class="dropdown-item" href="#preferences_password_display">Password Display</a>
+                            <a class="dropdown-item" href="#preferences_hotkey">Hotkey</a>
+                            <a class="dropdown-item" href="#preferences_clipboard">Clipboard</a>
+                            <a class="dropdown-item" href="#preferences_reset">Reset</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appendix</a></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#appendix">Top</a>
+                            <a class="dropdown-item" href="#password_length">Password Length</a>
+                            <a class="dropdown-item" href="#password_strength">Password Strength</a>
+                            <a class="dropdown-item" href="#separator_types">Separator Types</a>
+                            <a class="dropdown-item" href="#case_types">Case Types</a>
+                            <a class="dropdown-item" href="#ambiguous_characters">Ambiguous Characters</a>
+                            <a class="dropdown-item" href="#symbol_characters">Symbol Charactrers</a>
+                            <a class="dropdown-item" href="#phonetic_sounds">Phonetic Sounds</a>
+                            <a class="dropdown-item" href="#transform_symbolize">Symbolize</a>
+                            <a class="dropdown-item" href="#transform_accenter">Accenter</a>
+                            <a class="dropdown-item" href="#emojis_and_extended">Emojis and Extended Characters</a>
+                            <a class="dropdown-item" href="#icloud_sync">iCloud Sync</a>
+                            <a class="dropdown-item" href="#touchbar">Touch Bar</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#support">Contact Support</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row" id="help_top">
+            <div class="col dark-background border border-top-0 border-left-0 border-right-0">
+                <h1 class="p-3 text-white">Password Factory</h1>
+            </div>
         </div>
-        <div class="content">
-            <section id="help_top">
-                <h1>Password Factory Help</h1>
+        <div class="row content">
+            <div class="col-2 header-column" id="window_basics">
+                <h2 class="rotate text-nowrap">Window Basics</h2>
+            </div>
+            <div class="col-10">
+                <section>
+                    <div class="container">
+                        <div class="m-3 card w-75 mx-auto">
+                                <img alt="Main Window" class="card-img-top rounded" src="gfx/random-600w.png" />
+                            <div class="card-footer text-center">
+                                Main Window
+                            </div>
+                        </div>
+                        <p>The main window consists of three areas, the password viewing area, type selection area, and the controls area.</p>
 
-                <p class="p">Password Factory is a flexible password generator that can give you passwords in a variety of formats.</p>
-            </section>
 
-            <section id="window_basics">
-                <h2>Window Basics</h2>
+                        <section class="mt-4" id="viewing_area">
+                        <h3>Viewing Area</h3>
+                        <div class="m-3 card w-75 mx-auto">
+                            <img alt="Password Viewing Area" class="card-img-top rounded" src="gfx/viewing.png"/>
+                            <div class="card-footer text-center">
+                                Password Viewing Area
+                            </div>
+                        </div>
+                        <p>The viewing area consists of three sections, the password view, <a href="#password_strength">strength</a> meter, and the info area. It shows the currently generated password. The password is either shown in black or highlighted. When the password is highlighted each type of character is shown in a different color. See <a href="#preferences_password_display">preferences</a> for more information. The password displayed can be edited and the <a href="#password_strength">strength</a> will automatically update. Using this any password can have the <a href="#password_strength">strength</a> calculated by typing or pasting it into the password display.</p>
+                        <div class="m-5 card w-75 mx-auto">
+                            <div class="card-body strength-gradient"></div>
+                            <div class="card-footer text-center">
+                                Strength Colors - From Weakest to Strongest
+                            </div>
+                        </div>
 
-                <p>The window consists of the password viewing area and the password generating area.</p>
-                <section id="viewing_area">
-                    <h3>Viewing Area</h3>
-                    <img class="window" src="gfx/viewing.png" width="425" />
-                    <p>This area consists of three sections, the password viewing area, strength meter, and the control buttons.</p>
-                    <p>The password viewing area shows the currently generated password. The password is either shown in black or highlighted. When the password is highlighted each type of character is shown in a different color. <a href="#preferences_password_display">See Preferences - Password Display</a> for more information.</p>
-                    <p>Below the password field is the strength meter. The stength meter will fill and indicate the relative strength via a color. Red is weak, yellow is medium, and green is strong. The strength meter goes from 0 to 100 and 100 is the strongest.</p>
-                    <p>The strength level is only a guide, and will not assure your password won't be hacked</p>
-                    <p>To the right are two buttons, generate will generate a new password, and copy will copy the current password to the clipboard</p>
-                    <p>Clicking the gear button will open up the preferences window</p>
-                </section>
-                <section id="generate_area">
-                    <h3>Generate Area</h3>
-                    <p>This consists of four tabs 'Random', 'Pattern', 'Pronounceable' and 'Passphrase'. Each tab will generate a password using a different format.</p>
-                </section>
+                        <p>Behind the password field is the <a href="#password_strength">strength</a> meter. The strength meter will fill and indicate the relative strength via colors. Red is the weakest, green is very strong, and purple is super strong. Below is a list of the colors and the approximate '<a href="#password_strength">crack time</a>'.</p>
 
-            </section>
-            <section id="random_generator">
-                <h2>Random Password</h2>
-                <img class="window" src="gfx/random.png" width="425" />
-                <p>The random option will generate a random password based on the options selected.</p>
-                <dl>
-                    <dt>Length</dt>
-                    <dd>This slider will set the length of the generated password, from 5 to 40 characters</dd>
-                    <dt>Use Symbols</dt>
-                    <dd>If this is checked symbols (i.e !,$,%) will be randomly added</dd>
-                    <dt>Mixed Case</dt>
-                    <dd>When this is checked uppercase and lowercase characters will be used, if it is unchecked, only lowercase will be used</dd>
-                    <dt>Avoid Ambiguous Characters</dt>
-                    <dd>If checked, characters that look like other characters will not be used, for example, 0,O,1,L</dd>
-                </dl>
-            </section>
-            <section id="pattern_generator">
-                <h2>Pattern</h2>
-                <img class="window" src="gfx/pattern.png" width="425" />
-                <p>The password generated will be based upon the pattern typed in the pattern field. A pattern is a series of characters that are replaced with a random character or characters following the pattern. The pattern symbols are as follows</p>
-                <dl>
-                    <dt>#</dt>
-                    <dd>This will be replaced by a number</dd>
-                    <dt>!</dt>
-                    <dd>An exclamation point will be replaced by a symbol, such as #,%,^</dd>
-                    <dt>w</dt>
-                    <dd>A lowercase 'w' will be replaced by a lowercase 6 or more letter word</dd>
-                    <dt>W</dt>
-                    <dd>This is the same as 'w', but the word will be in all capital letters</dd>
-                    <dt>s</dt>
-                    <dd>An 's' will be replaced with a 3 to 6 letter word</dd>
-                    <dt>S</dt>
-                    <dd>The same as 's', but in all capital letters</dd>
-                    <dt>c</dt>
-                    <dd>This will be replaced by a single lowercase letter</dd>
-                    <dt>C</dt>
-                    <dd>A 'C' will be replaced by a single uppercase letter</dd>
-                </dl>
-                <p>When typing in the pattern field any character not in the pattern list will be used as is. If you want to insert any of the pattern characters directly precede with a '\'</p>
-                <p>For example the pattern 'cC\C!w' will be a lowercase letter, uppercase letter, C, a symbol, and a word which would give a result like 'kWC!senseless'</p>
-            </section>
-            <section id="pronounceable_generator">
-                <h2>Pronounceable</h2>
-                <img src="gfx/pronounceable.png" class="window" width="425" />
-                <p>The pronounceable tab will generate a random password that is pronounceable rather than random. There are two options for generating, length, and separator</p>
-                <p>The length slider will set the approximate length for the password, and the separator buttons toggle between six different separators</p>
-            </section>
-            <section id="passphrase_generator">
-                <h2>Passphrase</h2>
-                <img src="gfx/passphrase.png" class="window" width="425" />
-                <p>The passphrase tab will generate a passphrase style password. The password will consist of a series of words separated by your chosen separator character.</p>
-                <p>The length slider will set the approximate length of the passphrase, and the separator buttons will choose the separator. The word case buttons will set the case style of each of the words in the passphrase. </p>
-            </section>
-            <section id="widget">
-            	<h2>Widget</h2>
-            	<img src="gfx/widget.png" class="window" width="331" />
-            	<p>You can enable the widget by going to the notification center and clicking edit, and then you can add the "Password Factory" widget</p>
-                <img src="gfx/widget-add.png" class="window" width="331" />
-            	<p>The widget will generate passwords based upon the configuration of the Password Factory application. Therefore, if the 'Passphrase' type is set, then the widget will generate a 'Passphrase' password using the current settings. The widget can only generate and copy passwords, and if you wish to change the password type go back to the application by clicking the gear and change settings from there.</p>
-            </section>
-            <section id="preferences">
-                <h2>Preferences</h2>
-                <img class="window" src="gfx/prefs.png" width="277" />
-                <section id="preferences_password_display">
-                    <h3>Password Display</h3>
-                    <p>The password display section controls how the password is shown in the app. If 'Color Password Text" is checked the characters in the password will be colored. Coloring the password text will enable you to easily distinguish between similar characters. You can change the color of each character type by clicking on the color boxes and selecting a new color</p>
+                        <p>The <a href="#password_strength">strength</a> level is only a guide, and will not assure your password won't be hacked.</p>
+                        <p>To the right are two buttons, generate will generate a new password, and copy will copy the current password to the clipboard.</p>
+                        <p>Below the password is the info area, which consists of three parts.</p>
+
+                        <div class="m-3 card w-75 mx-auto">
+                            <img alt="Zoomed Password" class="card-img-top rounded" src="gfx/zoomed.png"/>
+                            <div class="card-footer text-center">
+                                Zoomed Password
+                            </div>
+                        </div>
+
+                        <p>To the left is the zoom button <img alt="Zoom Icon" src="gfx/zoom.png" class="inline" width="20" />, click on this to display the password in very large type. Clicking anywhere will dismiss the zoomed password window</p>
+
+
+                        <p>To the right is the length of the current password.</p>
+
+                        <p>And below the password is the '<a href="#password_strength">crack time</a>' display. Clicking directly below the password will show or hide the display. Which shows the calculated time it would take to potentially 'crack' the password.</p>
+                        <div class="m-3 card w-25 mx-auto">
+                            <img alt="Crack Time Display" class="card-img-top rounded" src="gfx/crack-time.png"/>
+                            <div class="card-footer text-center">
+                                Crack Time Display
+                            </div>
+                        </div>
+                        </section>
+                        <section class="mt-4" id="type_selection_area">
+                        <h3>Type Selection Area</h3>
+                        <div class="m-3 card w-25 mx-auto">
+                            <img alt="Type Selection" class="card-img-top rounded" src="gfx/selection.png" />
+                            <div class="card-footer text-center">
+                                Type Selection With All Available Types
+                            </div>
+                        </div>
+                        <p>The type selection area allows for selection of the different password types. Clicking on an item will change the currently selected type. In addition to the four standard password types, two additional types, '<a href="#advanced_password">Advanced</a>' and '<a href="#stored_password">Stored</a>' can be added from the preferences. <a href="#preferences_global">See Preferences - Global</a> for more information.</p>
+                        </section>
+                        <section class="mt-4" id="controls_area">
+                        <h3>Controls Area</h3>
+                        <p>The controls area displays the controls for the currently selected password type.</p>
+                        </section>
+                    </div>
                 </section>
-                <section id="preferences_hotkey">
-                    <h3>Generate and Copy Hotkey</h3>
-                    <p>The global hotkey will allow you to set a key command to autmatically generate a password and copy it to the clipboard.</p>
-                    <h4>Setting Global Hotkey</h4>
-                    <ol>
-                        <li>Make sure 'Enable Global Hotkey' is checked</li>
-                        <li>If there is a shortcut displayed, click the delete
-                            <img class="inline_image" src="gfx/delete.png" width="12" />button</li>
-                        <li>Click 'Record Shortcut'
-                            <img class="inline_image" src="gfx/record.png" width="167" />
-                        </li>
-                        <li>Press your desired key combination</li>
-                    </ol>
-                    <p>Now your global hotkey is set, you can press your key combination when in any app to copy a password to the clipboard</p>
-                    <p>There are two options for the global hotkey.</p>
-                    <dl>
-                        <dt>Display Notification</dt>
-                        <dd>Enabling this will show a copy notification in Notification Center when the global hotkey is pressed</dd>
-                        <dt>Play Sound</dt>
-                        <dd>If this is checked, a sound will be played whenever the global hotkey is pressed</dd>
-                    </dl>
-                </section>
-                <section id="preferences_clipboard">
-                    <h3>Clipboard Handling</h3>
-                    <p>Checking 'Automatically Clear Clipboard' will clear the clipboard of your password after the 'Clear Time' has passed. If you use a clipboard manager this may not remove the password from your clipboard manager</p>
-                </section>
-                <section id="preferences_menu">
-                    <h3>Menu Bar</h3>
-                    <p>If this is checked the app will run in the menu bar
-                        <img src="gfx/menu.png" class="inline" width="20" />. If you enable or disable this feature, you will have to restart the app for the setting to be changed. You can also hide the dock icon while running as a menu bar application, but changing this setting will also require you to restart the application.</p>
-                    <p class="note">
-                        Note: if you are running as a menu app, the app may modify the password display colors for legibility
-                    </p>
-                </section>
-                <section id="preferences_login">
-                    <h3>Add to Login Items</h3>
-                    <p>Checking this will add Password Factory to your login items. In order for the app to be added to your login items, it has to be installed in Applications
-                    </p>
-                    <p class="note">
-                        Note: If you add to login items it will not show up in your Accounts preferences, however it will start on login if it is checked
-                    </p>
-                </section>
-            </section>
+            </div>
         </div>
-    </div>
-</body>
+        <div class="row content">
+            <div class="col-2 header-column" id="password_type">
+                <h2 class="rotate text-nowrap">Password Types</h2>
+            </div>
+            <div class="col-10">
+                <section>
+                    <div class="container">
+                        <section class="mt-4" id="random_password">
+                            <h3 class="random header_image_type">Random Password</h3>
+                            <div class="m-3 card w-75 mx-auto">
+                                <img alt="Random Password Controls" class="card-img-top rounded" src="gfx/controls/random-control.png"/>
+                                <div class="card-footer text-center">
+                                    Random Password Controls
+                                </div>
+                            </div>
+                            <p>This type will generate a random password based on the options selected.</p>
+                            <dl class="row">
+                                <dt class="col-sm-3 text-right">Length</dt>
+                                <dd class="col-sm-9">This slider will set the <a href="#password_length">length</a> of the generated password</dd>
+                                <dt class="col-sm-3 text-right">Use Symbols</dt>
+                                <dd class="col-sm-9">If this is checked symbols (i.e !,$,%) will be randomly added</dd>
+                                <dt class="col-sm-3 text-right">Avoid <a href="#ambiguous_characters">Ambiguous</a></dt>
+                                <dd class="col-sm-9">If checked, characters that look similar to other characters will not be used, for example, 0,O,1,L</dd>
+                                <dt class="col-sm-3 text-right">Use Numbers</dt>
+                                <dd class="col-sm-9">Checking this will randomly add numbers to the password</dd>
+                                <dt class="col-sm-3 text-right">Use Emoji</dt>
+                                <dd class="col-sm-9">Enabling this will add random emojis to the password. See <a href="#emojis_and_extended">Emojis and Extended characters</a> for more information.</dd>
+                                <dt class="col-sm-3 text-right">Case Type</dt>
+                                <dd class="col-sm-9">Changing the case type will change the case of letters that are used. See <a href="#case_types">Case Types</a> for more information.</dd>
+                            </dl>
+                        </section>
+                        <section class="mt-4" id="pattern_password">
+                            <h3 class="pattern header_image_type">Pattern</h3>
+                            <div class="m-3 card w-75 mx-auto">
+                                <img alt="Pattern Password Controls" class="card-img-top rounded" src="gfx/controls/pattern-control.png"/>
+                                <div class="card-footer text-center">
+                                    Pattern Password Controls
+                                </div>
+                            </div>
+                            <p>The password generated will be based upon the pattern typed in the pattern field. A pattern is a series of characters that are replaced with a random character or characters following the pattern. Selecting an item in the 'insert' menu will add that pattern character to the current pattern. The pattern symbols are as follows:</p>
+                            <dl class="row">
+                                <dt class="col-sm-3 text-right">#</dt>
+                                <dd class="col-sm-9">Number</dd>
+                                <dt class="col-sm-3 text-right">w</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">lowercase</a> word with 6 or more characters</dd>
+                                <dt class="col-sm-3 text-right">W</dt>
+                                <dd class="col-sm-9">An <a href="#case_types">uppercase</a> word with 6 or more characters</dd>
+                                <dt class="col-sm-3 text-right">d</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">random case</a> word with 6 or more characters</dd>
+                                <dt class="col-sm-3 text-right">D</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">title case</a> word with 6 or more characters</dd>
+                                <dt class="col-sm-3 text-right">s</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">lowercase</a> word with 3 to 6 or more characters</dd>
+                                <dt class="col-sm-3 text-right">S</dt>
+                                <dd class="col-sm-9">An <a href="#case_types">uppercase</a> word with 3 to 6 or more characters</dd>
+                                <dt class="col-sm-3 text-right">h</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">random case</a> word with 3 to 6 or more characters</dd>
+                                <dt class="col-sm-3 text-right">H</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">title case</a> word with 3 to 6 or more characters</dd>
+                                <dt class="col-sm-3 text-right">!</dt>
+                                <dd class="col-sm-9">An ASCII symbol, e.g. #,$,^,>,~ etc See <a href="#symbol_characters">symbol characters</a> for more information</dd>
+                                <dt class="col-sm-3 text-right">c</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">lowercase</a> character</dd>
+                                <dt class="col-sm-3 text-right">C</dt>
+                                <dd class="col-sm-9">An <a href="#case_types">uppercase</a> character</dd>
+                                <dt class="col-sm-3 text-right">a</dt>
+                                <dd class="col-sm-9">A <a href="#ambiguous_characters">non-ambiguous</a> <a href="#case_types">lowercase</a> character</dd>
+                                <dt class="col-sm-3 text-right">A</dt>
+                                <dd class="col-sm-9">A <a href="#ambiguous_characters">non-ambiguous</a> <a href="#case_types">uppercase</a> character</dd>
+                                <dt class="col-sm-3 text-right">N</dt>
+                                <dd class="col-sm-9">A <a href="#ambiguous_characters">non-ambiguous</a> number</dd>
+                                <dt class="col-sm-3 text-right">p</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">lowercase</a> <a href="#phonetic_sounds">phonetic sound</a></dd>
+                                <dt class="col-sm-3 text-right">P</dt>
+                                <dd class="col-sm-9">An <a href="#case_types">uppercase</a> <a href="#phonetic_sounds">phonetic sound</a></dd>
+                                <dt class="col-sm-3 text-right">t</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">random case</a> <a href="#phonetic_sounds">phonetic sound</a></dd>
+                                <dt class="col-sm-3 text-right">T</dt>
+                                <dd class="col-sm-9">A <a href="#case_types">title case</a> <a href="#phonetic_sounds">phonetic sound</a></dd>
+                                <dt class="col-sm-3 text-right">e</dt>
+                                <dd class="col-sm-9">An <a href="#emojis_and_extended">emoji</a></dd>
+                                <dt class="col-sm-3 text-right">r</dt>
+                                <dd class="col-sm-9">A random character based upon settings in <a href="#random_password">random password</a></dd>
+                            </dl>
+                            <p>When typing in the pattern field any character not in the pattern list will be used as is. If you want to insert any of the pattern characters directly precede with a '\'.</p>
+                            <p>For example the pattern 'cC\C!w' will be a lowercase letter, uppercase letter, C, a symbol, and a word which would give a result like 'kWC!senseless'.</p>
+                        </section>
+                        <section class="mt-4" id="pronounceable_password">
+                            <h3 class="pronounceable header_image_type">Pronounceable</h3>
+                            <div class="m-3 card w-75 mx-auto">
+                                <img alt="Pronounceable Password Controls" class="card-img-top rounded" src="gfx/controls/pronounceable-control.png"/>
+                                <div class="card-footer text-center">
+                                    Pronounceable Password Controls
+                                </div>
+                            </div>
+                            <p>The pronounceable section will generate a random password by combining <a href="#phonetic_sounds">phonetic sounds</a> to make pronounceable, but gibberish words.</p>
+                            <p>The <a href="#password_length">length slider</a> will set the approximate length for the password. The <a href="#separator_types">separator</a> menu will change the separator that is used between words. And the <a href="#case_types">case types</a> menu will set the case type.</p>
+                            </section>
+                            <section class="mt-4" id="passphrase_password">
+                            <h3 class="passphrase header_image_type">Passphrase</h3>
+                            <div class="m-3 card w-75 mx-auto">
+                                <img alt="Passphrase Password Controls" class="card-img-top rounded" src="gfx/controls/passphrase-control.png"/>
+                                <div class="card-footer text-center">
+                                    Passphrase Password Controls
+                                </div>
+                            </div>
+                            <p>The passphrase section will generate a passphrase style password. It will consist of a series of words separated by your chosen separator character.</p>
+                            <p>The <a href="#password_length">length slider</a> will set the approximate length for the password. The <a href="#separator_types">separator</a> menu will change the separator that is used between words. And the <a href="#case_types">case types</a> menu will set the case type.</p>
+                        </section>
+                        <section class="mt-4" id="advanced_password">
+                            <h3 class="advanced header_image_type">Advanced</h3>
+                            <div class="m-3 card w-75 mx-auto">
+                                <img alt="Advanced Password Controls" class="card-img-top rounded" src="gfx/controls/advanced-control.png"/>
+                                <div class="card-footer text-center">
+                                    Advanced Password Controls
+                                </div>
+                            </div>
 
+                            <p>The advanced section allows for the transformation of the various password types to generate passwords that are not in a strict format. This section has seven different parts to fine tune the type of password generated. Enable this section in <a href="#preferences_global">preferences</a>.</p>
+                            <p>The source selection is to the upper left, and will set the base for the password. If nothing else is set it will generate a password exactly like the selected source.</p>
+                            <p>To the right of the source selection is the truncate slider, setting the truncation value will truncate the password to the selected length.</p>
+                            <p>Below the source selection is 'Replace <a href="#ambiguous_characters">Ambiguous</a>'. This will replace any ambiguous characters with one that is less ambiguous.</p>
+                            <p>Below that is the transformation section, there are two options 'Symbolize' and 'Accenter'.</p>
+                            <p><a href="#transform_symbolize">Symbolize</a> will replace characters with a random symbol representation of the character. For example, an A could be replaced by 4, /-\, @, ^, /\.</p>
+                            <p><a href="#transform_accenter">Accenter</a> will replace characters with accented and similar looking extended characters. For example a B could be replaced by ḃ, ɓ ,ḅ , ḇ.</p>
+                            <p>Both Symbolize and Accenter are set by changing the percent value. By putting it at a certain percent, it will replace approximately that percent of all characters. Setting both to 100% will only result in a 100% Symbolized password.</p>
+                            <p>To the right is the pattern section. The 'Prefix Pattern' will prepend the password with the pattern entered. The 'Suffix Pattern' will append that pattern to the password. The patterns use the same tokens as the <a href="#pattern_password">pattern</a> password.</p>
+                            <p>Below that is the regex section. This section allows for the addition of a single regular expression find and replace within the password. The regular expression allows for captures and other standard regular expression syntax. For a more in depth explanation of regular expressions see <a href="https://www.regular-expressions.info/quickstart.html" target="_blank">this site</a>.</p>
+                        </section>
+                        <section class="mt-4" id="stored_password">
+                            <h3 class="stored header_image_type">Stored</h3>
+                            <div class="m-3 card w-75 mx-auto">
+                                <img alt="Stored Password Table" class="card-img-top rounded" src="gfx/controls/stored-control.png"/>
+                                <div class="card-footer text-center">
+                                    Stored Password Table
+                                </div>
+                            </div>
+                            <p>This section displays all the stored passwords. Passwords will only be stored if 'Store Passwords' is enabled in <a href="#preferences_global ">preferences</a>. See the <a href="#password_storage">password storage</a>section for more information on stored passwords.</p>
+                            <p>The stored password table can be sorted by password type, password, or <a href="#password_strength">strength</a>. Clicking on the headers will sort the passwords according to that column. By default it sorts by time created, with the newest on top.</p>
+                            <p>Pressing <kbd>⌘Delete</kbd> when selecting a password will delete it from the system.</p>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-2 header-column" id="controls">
+                <h2 class="rotate text-nowrap">Controls</h2>
+            </div>
+            <div class="col-10">
+                <section>
+                    <div class="container">
+                        <section class="mt-4" id="menubar">
+                        <h3>Menubar</h3>
+                        <div class="m-3 card w-50 mx-auto">
+                            <img alt="Menu Window" class="card-img-top rounded" src="gfx/menu-window.png"/>
+                            <div class="card-footer text-center">
+                                Menu Window
+                            </div>
+                        </div>
+                        <p>When <a href="#preferences_run_in_menu">running in the menubar</a> the application uses a more compact interface. The interface functions the same as when it is running normally, however items are rearranged. To select a password type use the control at the top of the window and click the <a href="#type_icons">icon</a> to select, and the type name will show above the password display. The preferences window can be shown by clicking the gear icon on the bottom right.</p>
+                        </section>
+                        <section class="mt-4" id="widget">
+                        <h3>Widget</h3>
+                        <div class="m-3 card w-50 mx-auto">
+                            <img alt="Today Widget" class="card-img-top rounded" src="gfx/widget.png"/>
+                            <div class="card-footer text-center">
+                                Today Widget
+                            </div>
+                        </div>
+                        <p>The widget is enabled via going to the notification center and clicking edit, and then you can add the "Password Factory" widget.</p>
+                        <div class="m-3 card w-50 mx-auto">
+                            <img alt="Adding Widget" class="card-img-top rounded" src="gfx/widget-add.png"/>
+                            <div class="card-footer text-center">
+                                Adding Widget
+                            </div>
+                        </div>
+                        <p>The widget will generate passwords based upon the configuration of the Password Factory application. Therefore, if the 'Passphrase' type is set, then the widget will generate a 'Passphrase' password using the current settings. The widget can only generate and copy passwords, and if you wish to change the password type go back to the application by clicking the gear and change settings from there.</p>
+                        </section>
+                        <section class="mt-4" id="export">
+                        <h3>Exporting Passwords</h3>
+
+                        <div class="m-3 card w-25 mx-auto">
+                            <img alt="Export Window" class="card-img-top rounded" src="gfx/export.png"/>
+                            <div class="card-footer text-center">
+                                Export Window
+                            </div>
+                        </div>
+                        <p>The export function will create a CSV file containing a list of generated passwords. First choose which type to export. Choosing anything other than stored will generate a series of new passwords. Choosing stored will export all stored passwords. The number of passwords to generate is set by filling in the 'Amount to Export'. Additionally the 'Info to Export' options will add the password type and the <a href="#password_strength">strength</a> to the CSV file.</p>
+                        <p>Clicking 'Export' will export all the passwords to a file of your choosing. Large numbers of passwords can take an extended period of time to generate.</p>
+                        </section>
+                        <section class="mt-4" id="dock_menu">
+                        <h3>Dock Menu</h3>
+                        <div class="m-3 card w-25 mx-auto">
+                            <img alt="Dock Menu" class="card-img-top rounded" src="gfx/dock.png"/>
+                            <div class="card-footer text-center">
+                                Dock Menu
+                            </div>
+                        </div>
+                        <p>Clicking and holding on the dock icon will show the dock menu. Selecting one odf the password types will switch to that password type, generate a new password and copy it to the clipboard.</p>
+                        </section>
+                        <section class="mt-4" id="keyboard_commands">
+                        <h3>Keyboard Commands</h3>
+                        <p>Password factory has several key commands for controlling the application</p>
+                        <dl class="row">
+                            <dt class="col-sm-3 text-right"><kbd>⌘G</kbd></dt>
+                            <dd class="col-sm-9">Generates a new password</dd>
+                            <dt class="col-sm-3 text-right"><kbd>⌘E</kbd></dt>
+                            <dd class="col-sm-9">Opens the <a href="#export">export</a> window</dd>
+                            <dt class="col-sm-3 text-right"><kbd>⌘R</kbd></dt>
+                            <dd class="col-sm-9">Switches to '<a href="#random_password">Random</a>' Type</dd>
+                            <dt class="col-sm-3 text-right"><kbd>⌘T</kbd></dt>
+                            <dd class="col-sm-9">Switches to '<a href="#pattern_password">Pattern</a>' Type</dd>
+                            <dt class="col-sm-3 text-right"><kbd>⌘U</kbd></dt>
+                            <dd class="col-sm-9">Switches to '<a href="#pronounceable_password">Pronounceable</a>' Type</dd>
+                            <dt class="col-sm-3 text-right"><kbd>⌘P</kbd></dt>
+                            <dd class="col-sm-9">Switches to '<a href="#passphrase_password">Passphrase</a>' Type</dd>
+                            <dt class="col-sm-3 text-right"><kbd>⌘D</kbd></dt>
+                            <dd class="col-sm-9">Switches to '<a href="#advanced_password">Advanced</a>' Type</dd>
+                            <dt class="col-sm-3 text-right"><kbd>⌘O</kbd></dt>
+                            <dd class="col-sm-9">Switches to '<a href="#stored_password">Stored</a>' Type</dd>
+                            <dt class="col-sm-3 text-right"><kbd>⌘Delete</kbd></dt>
+                            <dd class="col-sm-9">Deletes the currently selected stored password</dd>
+                        </dl>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-2 header-column" id="preferences">
+                <h2 class="rotate text-nowrap">Preferences</h2>
+            </div>
+            <div class="col-10">
+                <section>
+                    <div class="container">
+                        <div class="m-3 card w-50 mx-auto">
+                            <img alt="Preferences Window" class="card-img-top rounded" src="gfx/prefs.png"/>
+                            <div class="card-footer text-center">
+                            Preferences Window
+                            </div>
+                        </div>
+                        <section class="mt-4" id="preferences_global">
+                            <h3>Global</h3>
+                            <p>This section contains all of the global settings for the application.</p>
+                            <h4 id="preferences_max_password">Max Password Length</h4>
+                            <p>Settings the max <a href="#password_length">length</a> sets the maximum length of the password sliders. This allows for longer passwords than the default.</p>
+                            <h4 id="preferences_enable_advanced">Enable Advanced</h4>
+                            <p>Checking this will enable the <a href="#advanced_password">advanced</a> password section.</p>
+                            <h4 id="preferences_store_passwords">Store Passwords</h4>
+                            <p>Enabling <a href="#password_storage">stored passwords</a> will save generated passwords. Setting the amount to store will set the maximum number of passwords stored. When disabling stored passwords, all locally stored passwords will be deleted.</p>
+                            <h4 id="preferences_run_in_menu">Run In Menu</h4>
+                            <p>If this is checked the app will run in the menu bar. If you enable or disable this feature, you will have to restart the app for the setting to be changed. You can also hide the dock icon while running as a menu bar application, but changing this setting will also require you to restart the application.</p>
+                            <h4 id="preferences_login">Add to Login Items</h4>
+                            <p>Checking this will add Password Factory to your login items. In order for the app to be added to your login items, it has to be installed in Applications.
+                            </p>
+                            <p class="text-info">
+                                Note: If you add to login items it will not show up in your Accounts preferences, however it will start on login if it is checked.
+                            </p>
+                            <h4 id="preferences_icloud">iCloud Sync</h4>
+                            <p>Checking iCloud Sync will sync all your passwords and settings to iCloud and will be available to all your macOS and iOS devices running Password Factory. See <a href="#icloud_sync">iCloud Sync</a> for more information.</p>
+                        </section>
+                        <section class="mt-4" id="preferences_password_display">
+                            <h3>Password Display</h3>
+                            <p>The password display section controls how the password is shown in the app. If 'Color Password Text" is checked the characters in the password will be colored. Coloring the password text will enable you to easily distinguish between similar characters. You can change the color of each character type by clicking on the color boxes and selecting a new color. The 'Text Color' item is the color of the text when it is not highlighted, and it also is the color of any character type that is not specified.</p>
+                        </section>
+                        <section class="mt-4" id="preferences_hotkey">
+                            <h3>Generate and Copy Hotkey</h3>
+                            <p>The global hotkey will allow you to set a key command to automatically generate a password and copy it to the clipboard.</p>
+                            <h4>Setting Global Hotkey</h4>
+                            <ol>
+                                <li>Make sure 'Enable Global Hotkey' is checked</li>
+                                <li>If there is a shortcut displayed, click the 'X' button to delete</li>
+                                <li>Click 'Record Shortcut'</li>
+                                <li>Press your desired key combination</li>
+                            </ol>
+                            <p>Now your global hotkey is set, you can press your key combination when in any app to copy a password to the clipboard.</p>
+                            <p>There are two options for the global hotkey.</p>
+                            <dl class="row">
+                                <dt class="col-sm-3 text-right">Display Notification</dt>
+                                <dd class="col-sm-9">Enabling this will show a copy notification in Notification Center when the global hotkey is pressed</dd>
+                                <dt class="col-sm-3 text-right">Play Sound</dt>
+                                <dd class="col-sm-9">If this is checked, a sound will be played whenever the global hotkey is pressed</dd>
+                            </dl>
+                        </section>
+                        <section class="mt-4" id="preferences_clipboard">
+                            <h3>Clipboard Handling</h3>
+                            <p>Checking 'Automatically Clear Clipboard' will clear the clipboard of your password after the 'Clear Time' has passed. If you use a clipboard manager this may not remove the password from your clipboard manager.</p>
+                        </section>
+                        <section class="mt-4" id="preferences_reset">
+                            <h3>Reset</h3>
+                            <p>The three reset buttons allow for resetting different parts of the application.</p>
+                            <h4>Reset All Warnings and Dialogs</h4>
+                            <p>Using this will show all hidden warnings and dialogs.</p>
+                            <h4>Reset to Defaults</h4>
+                            <p>Resetting to defaults will reset all preferences to their default values. All stored passwords will be deleted. And if iCloud is enabled, all stored preferences will be reset to default, and all passwords stored in iCloud will be deleted.</p>
+                            <h4>Reset iCloud</h4>
+                            <p>This will reset all iCloud preferences to the default values, and will delete all stored iCloud passwords. If iCloud Sync is enabled, then all local preferences will also be reset.</p>
+                        </section>
+                    </div>
+                </section>
+            </div>
+            </div>
+            <div class="row content">
+                <div class="col-2 header-column" id="appendix">
+                    <h2 class="rotate text-nowrap">Appendix</h2>
+                </div>
+                <div class="col">
+                    <section>
+                        <div class="container">
+                            <section class="mt-4" id="password_length">
+                                <h3>Password Length</h3>
+                                <p>The length of the password will always be shown to the bottom right of the password display. Occasionally the password length shown will differ from the slider length. This happens because the algorithm for passphrase and pronounceable passwords uses the length as an approximation. The length can be smaller or larger because it will not truncate a <a href="#phonetic_sounds">phonetic sound</a> or a word to fit. If a password of a specific length is needed use the <a href="#advanced_password">advanced password</a> type, and set the truncate value to the length needed.</p>
+                            </section>
+                            <section class="mt-4" id="password_strength">
+                                <h3>Password Strength</h3>
+                                <p>Passwords have a strength from 0 to 100, with 100 being the strongest. Passwords with a strength of 50 and above are the strongest and should give you the best protection. The strength meter indicates strength with the size and color. Smaller widths are weaker, and larger widths are stronger. The color of the strength meter goes from red to purple, and below is a list of colors mapped to their strength and 'crack time'.</p>
+                                <ul class="strength-colors">
+                                    <li class="color_well" style="border-left-color:#ED2C16"><strong>0</strong> less than a minute</li>
+                                    <li class="color_well" style="border-left-color:#EC8720"><strong>10</strong> less than an hour</li>
+                                    <li class="color_well" style="border-left-color:#EAD229"><strong>20</strong> less than a week</li>
+                                    <li class="color_well" style="border-left-color:#B9E632"><strong>30</strong> greater than a year</li>
+                                    <li class="color_well" style="border-left-color:#72E53B"><strong>40</strong> about one thousand years</li>
+                                    <li class="color_well" style="border-left-color:#34E54E"><strong>50</strong> about three hundred thousand years</li>
+                                    <li class="color_well" style="border-left-color:#40E6A8"><strong>60</strong> about three hundred million years</li>
+                                    <li class="color_well" style="border-left-color:#48E8E1"><strong>70</strong> about one hundred billion years</li>
+                                    <li class="color_well" style="border-left-color:#55B9EA"><strong>80</strong> about sixty trillion years</li>
+                                    <li class="color_well" style="border-left-color:#5E89EA"><strong>90</strong> greater than one quadrillion years</li>
+                                    <li class="color_well" style="border-left-color:#846FEA"><strong>100</strong> greater than one quintillion years</li>
+                                </ul>
+                                <p>Password strength and crack time should only be used as a guide. Creating a password that was indicated to be strong does not mean it is uncrackable. Password cracking and other techniques constantly evolve and no password is 100% secure.</p>
+                            </section>
+                            <section class="mt-4" id="separator_types">
+                                <h3>Separator Types</h3>
+                                <dl class="row">
+                                    <dt class="col-sm-3 text-right">None</dt>
+                                    <dd class="col-sm-9">An empty separator</dd>
+                                    <dt class="col-sm-3 text-right">Hyphen</dt>
+                                    <dd class="col-sm-9">-</dd>
+                                    <dt class="col-sm-3 text-right">Space</dt>
+                                    <dd class="col-sm-9">A space</dd>
+                                    <dt class="col-sm-3 text-right">Underscore</dt>
+                                    <dd class="col-sm-9">_</dd>
+                                    <dt class="col-sm-3 text-right">Period</dt>
+                                    <dd class="col-sm-9">.</dd>
+                                    <dt class="col-sm-3 text-right">Number</dt>
+                                    <dd class="col-sm-9">A number from 0-9</dd>
+                                    <dt class="col-sm-3 text-right">Symbol</dt>
+                                    <dd class="col-sm-9">A <a href="#symbol_characters">symbol</a> character</dd>
+                                    <dt class="col-sm-3 text-right">Character</dt>
+                                    <dd class="col-sm-9">An uppercase or lowercase character from A-Z</dd>
+                                    <dt class="col-sm-3 text-right">Emoji</dt>
+                                    <dd class="col-sm-9">A random <a href="#emojis_and_extended">emoji</a></dd>
+                                    <dt class="col-sm-3 text-right">Random</dt>
+                                    <dd class="col-sm-9">A single character generated with <a href="#random_password">random password</a> settings</dd>
+                                </dl>
+                            </section>
+                            <section class="mt-4" id="case_types">
+                                <h3>Case Types</h3>
+                                <p>There are five case types available, however not all options are present with certain password types</p>
+                                <dl class="row">
+                                    <dt class="col-sm-3 text-right">Lowercase</dt>
+                                    <dd class="col-sm-9">All lowercase characters</dd>
+                                    <dt class="col-sm-3 text-right">Uppercase</dt>
+                                    <dd class="col-sm-9">All uppercase characters</dd>
+                                    <dt class="col-sm-3 text-right">Mixed Case</dt>
+                                    <dd class="col-sm-9">A random mix of upper and lowercase characters</dd>
+                                    <dt class="col-sm-3 text-right">Title Case</dt>
+                                    <dd class="col-sm-9">The first character of the word is capitalized, and the rest lowercase</dd>
+                                    <dt class="col-sm-3 text-right">No Change</dt>
+                                    <dd class="col-sm-9">The case is unchanged from the source</dd>
+                                </dl>
+                            </section>
+                            <section class="mt-4" id="ambiguous_characters">
+                                <h3>Ambiguous Characters</h3>
+                                <p>Ambiguous characters are characters that look similar to other characters. The list of ambiguous characters are "I1O0l0"</p>
+                                <p>Avoid ambiguous characters will not use any of those characters. Replace ambiguous will replace the ambiguous characters in this format:</p>
+                                <dl class="row">
+                                    <dt class="col-sm-3 text-right">Capital <code>I</code></dt>
+                                    <dd class="col-sm-9">Number <code>1</code></dd>
+                                    <dt class="col-sm-3 text-right">Capital <code>O</code></dt>
+                                    <dd class="col-sm-9">Number <code>0</code></dd>
+                                    <dt class="col-sm-3 text-right">Lowercase <code>l</code></dt>
+                                    <dd class="col-sm-9">Number <code>1</code></dd>
+                                    <dt class="col-sm-3 text-right">Lowercase <code>o</code></dt>
+                                    <dd class="col-sm-9">Number <code>0</code></dd>
+                                </dl>
+                            </section>
+                            <section class="mt-4" id="symbol_characters">
+                                <h3>Symbol Characters</h3>
+                                <p>These are non-alphanumeric symbols. The symbol characters the app uses are:</p>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">!</li>
+                                    <li class="list-inline-item">@</li>
+                                    <li class="list-inline-item">#</li>
+                                    <li class="list-inline-item">$</li>
+                                    <li class="list-inline-item">%</li>
+                                    <li class="list-inline-item">^</li>
+                                    <li class="list-inline-item">\</li>
+                                    <li class="list-inline-item">&amp;</li>
+                                    <li class="list-inline-item">*</li>
+                                    <li class="list-inline-item">(</li>
+                                    <li class="list-inline-item">)</li>
+                                    <li class="list-inline-item">{</li>
+                                    <li class="list-inline-item">}</li>
+                                    <li class="list-inline-item">[</li>
+                                    <li class="list-inline-item">]</li>
+                                    <li class="list-inline-item">;</li>
+                                    <li class="list-inline-item">:</li>
+                                    <li class="list-inline-item">.</li>
+                                    <li class="list-inline-item">"</li>
+                                    <li class="list-inline-item">&lt;</li>
+                                    <li class="list-inline-item">&gt;</li>
+                                    <li class="list-inline-item">?</li>
+                                    <li class="list-inline-item">/</li>
+                                    <li class="list-inline-item">\</li>
+                                    <li class="list-inline-item">-</li>
+                                    <li class="list-inline-item">_</li>
+                                    <li class="list-inline-item">+</li>
+                                    <li class="list-inline-item">=</li>
+                                    <li class="list-inline-item">|</li>
+                                    <li class="list-inline-item">'</li>
+                                </ul>
+                            </section>
+                            <section class="mt-4" id="phonetic_sounds">
+                                <h3>Phonetic Sounds</h3>
+                                <p>These are 2 to 3 letter single syllable sounds. For example, 'BU','KI','KA','STA','AI'</p>
+                            </section>
+                            <section class="mt-4" id="transform_symbolize">
+                                <h3>Symbolize</h3>
+                                <p>Symbolize changes individual characters into symbols that resemble that character. Setting the percent indicates that approximately that percentage of characters will be replaced. For example, at 50% about half of the characters will be replaced with the symbolized counterpart.</p>
+                                <h4>Example items</h4>
+                                <dl class="row">
+                                    <dt class="col-sm-3 text-right">A</dt>
+                                    <dd class="col-sm-9">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">4</li>
+                                            <li class="list-inline-item">/-\</li>
+                                            <li class="list-inline-item">@</li>
+                                            <li class="list-inline-item">^</li>
+                                            <li class="list-inline-item">/\</li>
+                                        </ul>
+                                    </dd>
+                                    <dt class="col-sm-3 text-right">C</dt>
+                                    <dd class="col-sm-9">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">(</li>
+                                            <li class="list-inline-item">{</li>
+                                            <li class="list-inline-item">[</li>
+                                            <li class="list-inline-item">&gt;</li>
+                                        </ul>
+                                    </dd>
+                                    <dt class="col-sm-3 text-right">L</dt>
+                                    <dd class="col-sm-9">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">|</li>
+                                            <li class="list-inline-item">1</li>
+                                            <li class="list-inline-item">|_</li>
+                                        </ul>
+                                    </dd>
+                                    <dt class="col-sm-3 text-right">X</dt>
+                                    <dd class="col-sm-9">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">&gt;&lt;</li>
+                                            <li class="list-inline-item">}{</li>
+                                            <li class="list-inline-item">)(</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </section>
+                            <section class="mt-4" id="transform_accenter">
+                                <h3>Accenter</h3>
+                                <p>The Accenter changes characters into <a href="#emojis_and_extended">extended characters</a>. It will either be with accents, diacritics and hooks, or characters from other languages that look similar to the ones in the Latin alphabet. Setting the percent indicates that approximately that percentage of characters will be replaced. For example, at 50% about half of the characters will be replaced with the accented counterpart.</p>
+                                <h4>Example items</h4>
+                                <dl class="row">
+                                    <dt class="col-sm-3 text-right">a</dt>
+                                    <dd class="col-sm-9">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">ǟ</li>
+                                            <li class="list-inline-item">ậ</li>
+                                            <li class="list-inline-item">ặ</li>
+                                            <li class="list-inline-item">ɐ</li>
+                                        </ul>
+                                    </dd>
+                                    <dt class="col-sm-3 text-right">C</dt>
+                                    <dd class="col-sm-9">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">Ƈ</li>
+                                            <li class="list-inline-item">Ç</li>
+                                            <li class="list-inline-item">Ḉ</li>
+                                        </ul>
+                                    </dd>
+                                    <dt class="col-sm-3 text-right">l</dt>
+                                    <dd class="col-sm-9">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">ŀ</li>
+                                            <li class="list-inline-item">ł</li>
+                                            <li class="list-inline-item">ḹ</li>
+                                            <li class="list-inline-item">ƚ</li>
+                                        </ul>
+                                    </dd>
+                                    <dt class="col-sm-3 text-right">X</dt>
+                                    <dd class="col-sm-9">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">Ẋ</li>
+                                            <li class="list-inline-item">Ẍ</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </section>
+                            <section class="mt-4" id="emojis_and_extended">
+                                <h3>Emojis and Extended Characters</h3>
+                                <p>Password Factory has support for emojis and extended characters. An extended character is a character that is not in the standard Latin alphabet, plus numbers, and standard symbolic characters. Although emojis and extended characters will create a stronger password, not all systems support using these characters. Always take caution when using emojis or extended characters and if possible test your password against the login system first.</p>
+                            </section>
+                            <section class="mt-4" id="icloud_sync">
+                                <h3>iCloud Sync</h3>
+                                <p>iCloud sync can be enabled in <a href="#preferences">preferences</a>. Enabling sync will sync all preferences and stored password to iCloud. Both preferences and stored passwords will now be available to all devices using iCloud Sync.</p>
+                                <p>When initially activating sync all local preferences will be synced to iCloud. Then when activating on another device, local preferences will be overwritten with preferences stored on iCloud. Then all stored passwords will be merged with any passwords stored in iCloud.</p>
+                            </section>
+                            <section class="mt-4" id="touchbar">
+                                <h3>Touch Bar</h3>
+                                <p>When running Password Factory on Touch Bar equipped Macs a command palette will be displayed. There are two different displays, depending on which function is selected</p>
+                                <div class="m-3 card w-75 mx-auto">
+                                    <img alt="Default Touchbar" class="card-img-top rounded" src="gfx/touchbar.png" />
+                                    <div class="card-footer text-center">
+                                        Default Touchbar
+                                    </div>
+                                </div>
+                                <p>This is the standard Touch Bar. Tapping the zoom button will zoom passwords. Tapping on any of the password type icons will select that password. Then a new password can be generated, or the current one copied to the clipboard</p>
+                                <div class="m-3 card w-75 mx-auto">
+                                    <img alt="Pattern Touchbar" class="card-img-top rounded" src="gfx/touchbar-pattern.png" />
+                                    <div class="card-footer text-center">
+                                        Pattern Touchbar
+                                    </div>
+                                </div>
+                                <p>This will display when typing in the <a href="#pattern_password">pattern field</a>, pressing on a letter will insert that pattern character into the current pattern.</p>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row content mt-5" id="support">
+                <div class="col text-center">
+                        <div class="container">
+                            <p>To contact support send an email to <a href="mailto:support@password-factory.com">support@password-factory.com</a></p>
+                        </div>
+                    <small>&copy;Copyright 2018 <a href="http://password-factory.com" target="_blank">Password Factory</a></small>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

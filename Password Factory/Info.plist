@@ -9,7 +9,7 @@
 	<key>CFBundleHelpBookFolder</key>
 	<string>PasswordFactory.help</string>
 	<key>CFBundleHelpBookName</key>
-	<string>com.cloudthirteen.passwordfactory.help</string>
+	<string>com.cloudthirteen.Password-Factory.help</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>

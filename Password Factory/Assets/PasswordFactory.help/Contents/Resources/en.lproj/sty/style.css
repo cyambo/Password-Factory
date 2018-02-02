@@ -1,0 +1,88 @@
+
+p {
+  font-size: 1.2rem;
+}
+
+
+h2.rotate {
+    margin-top: 150px;
+    transform: rotate(90deg);
+}
+div.strength-gradient {
+    background: linear-gradient(to right, #ED2C16,#EC8320,#EBCE29,#EBCE29,#BFE631,#76E53A,#35E557,#3FE6A4,#48E8E2,#54BBEA,#5F86EA,#846FEA);
+    height: 50px;
+    border-radius: 5px;
+}
+body {
+  padding-top: 60px;
+}
+@media (max-width: 768px) {
+  body {
+    padding-top: 0px;
+  }
+}
+div.content a {
+    color: #3F7A5F;
+}
+.dark-background {
+    background-color: #1B2133;
+}
+div.header-column {
+    background: linear-gradient(to bottom, #2F4044, #2F4044, #FFFFFF, #FFFFFF);
+}
+h2 {
+    color: #C1C6C8;
+}
+h3 {
+    background-color: #6A9099;
+    padding: 15px 30px;
+    border-radius: 5px;
+    color: #000;
+}
+h3.header_image_type {
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position-y: center;
+    background-position-x: 7px;
+}
+h3.header_image_type.advanced {
+    background-image: url(../gfx/type_icons/advanced.png);
+}
+h3.header_image_type.stored {
+    background-image: url(../gfx/type_icons/stored.png);
+}
+h3.header_image_type.pattern {
+    background-image: url(../gfx/type_icons/pattern.png);
+}
+h3.header_image_type.pronounceable {
+    background-image: url(../gfx/type_icons/pronounceable.png);
+}
+h3.header_image_type.passphrase {
+    background-image: url(../gfx/type_icons/passphrase.png);
+}
+h3.header_image_type.random {
+    background-image: url(../gfx/type_icons/random.png);
+}
+h3.header_image_type.preferences {
+    background-image: url(../gfx/gear.png);
+}
+ul.strength-colors {
+    margin: 10px 10px;
+}
+li.color_well {
+    list-style-type: none;
+    border-left: 40px solid red;
+    margin: 2px 0px;
+    font-size: 0.8em;
+}
+li.color_well strong {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    color: white;
+    margin-left: -40px;
+    font-weight: bold;
+}
+dt::after {
+    content: " ⇒ ";
+}
