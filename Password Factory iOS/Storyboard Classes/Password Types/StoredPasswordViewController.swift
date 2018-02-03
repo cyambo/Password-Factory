@@ -29,7 +29,7 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     var ascending = false
 
     override func awakeFromNib() {
-        d.observeDefaults(self, keys: ["maxStoredPasswords", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor", "cloudKitZoneStartTime"])
+        d.observeDefaults(self, keys: ["maxStoredPasswords", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor", "extendedTextColor", "cloudKitZoneStartTime"])
     }
     override func viewDidLoad() {
         super.viewDidLoad()

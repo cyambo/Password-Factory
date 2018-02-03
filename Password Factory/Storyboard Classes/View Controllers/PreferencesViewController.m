@@ -90,7 +90,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
     [self.symbolsColor setColor: [[d stringForKey:@"symbolTextColor"] colorWithHexColorString]];
     [self.numbersColor setColor: [[d stringForKey:@"numberTextColor"] colorWithHexColorString]];
     [self.defaultColor setColor: [[d stringForKey:@"defaultTextColor"] colorWithHexColorString]];
-}
+    [self.extendedColor setColor: [[d stringForKey:@"extendedTextColor"] colorWithHexColorString]];}
 
 
 #pragma mark colors
@@ -114,6 +114,8 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         [d setObject:[self.defaultColor.color hexadecimalValueOfAnNSColor] forKey:@"defaultTextColor"];
     } else if ([sender isEqualTo: self.colorPasswordText]){
         [d setBool:(BOOL)self.colorPasswordText.state forKey:@"colorPasswordText"];
+    } if ([sender isEqualTo:self.extendedColor]) {
+        [d setObject:[self.extendedColor.color hexadecimalValueOfAnNSColor] forKey:@"extendedTextColor"];
     }
 }
 

@@ -103,12 +103,7 @@
         [self updatePasswordField];
     }
     //Updating the password field when the color well changes to enable live color updating
-    if (self.colorPasswordText &&
-        ([keyPath isEqualToString:@"upperTextColor"] ||
-         [keyPath isEqualToString:@"lowerTextColor"] ||
-         [keyPath isEqualToString:@"numberTextColor"] ||
-         [keyPath isEqualToString:@"symbolTextColor"])
-        ) {
+    if (self.colorPasswordText && [keyPath hasSuffix:@"Color"]) {
         [self updatePasswordField];
     }
     if([keyPath isEqualToString:@"userPattern"]) {

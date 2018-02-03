@@ -5,15 +5,17 @@
 	<key>colorPasswordText</key>
 	<true/>
 	<key>upperTextColor</key>
-	<string>4CB547</string>
+	<string>236980</string>
 	<key>lowerTextColor</key>
-	<string>1D451B</string>
+	<string>853CDA</string>
 	<key>symbolTextColor</key>
-	<string>922890</string>
+	<string>DAA93C</string>
 	<key>numberTextColor</key>
-	<string>FF4CFC</string>
+	<string>4A8023</string>
 	<key>defaultTextColor</key>
 	<string>000000</string>
+	<key>extendedTextColor</key>
+	<string>FF4D46</string>
 	<key>clearClipboard</key>
 	<false/>
 	<key>clearClipboardTime</key>

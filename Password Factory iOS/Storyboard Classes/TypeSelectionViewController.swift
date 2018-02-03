@@ -372,7 +372,7 @@ class TypeSelectionViewController: UIViewController, DefaultsManagerDelegate, Co
     
     /// sets observers for the defaults keys we want to monitor
     func setObservers() {
-        let toObserve = ["enableAdvanced", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor"]
+        let toObserve = ["enableAdvanced", "storePasswords", "colorPasswordText", "upperTextColor", "lowerTextColor", "symbolTextColor", "defaultTextColor", "extendedTextColor"]
         d.observeDefaults(self, keys: toObserve)
     }
     

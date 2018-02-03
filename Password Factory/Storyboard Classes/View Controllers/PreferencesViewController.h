@@ -9,7 +9,6 @@
 @import Cocoa;
 #import <MASShortcut/Shortcut.h>
 
-
 @interface PreferencesViewController : NSViewController <NSTextFieldDelegate>
 
 @property (weak) IBOutlet NSButton *colorPasswordText;
@@ -18,6 +17,7 @@
 @property (weak) IBOutlet NSColorWell *numbersColor;
 @property (weak) IBOutlet NSColorWell *symbolsColor;
 @property (weak) IBOutlet NSColorWell *defaultColor;
+@property (weak) IBOutlet NSColorWell *extendedColor;
 
 - (IBAction)changeColor:(id)sender;
 
@@ -52,7 +52,5 @@
 - (IBAction)resetToDefaults:(NSButton *)sender;
 - (IBAction)resetAllDialogs:(NSButton *)sender;
 - (IBAction)eraseRemoteStorage:(NSButton *)sender;
-    
-    
 
 @end

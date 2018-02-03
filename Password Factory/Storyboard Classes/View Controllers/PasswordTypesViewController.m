@@ -38,7 +38,7 @@
     self.c = [PasswordFactoryConstants get];
     self.d = [DefaultsManager get];
     self.didViewAppear = NO;
-    [self.d observeDefaults:self keys:@[@"maxStoredPasswords", @"storePasswords", @"colorPasswordText", @"upperTextColor", @"lowerTextColor", @"symbolTextColor", @"defaultTextColor", @"cloudKitZoneStartTime"]];
+    [self.d observeDefaults:self keys:@[@"maxStoredPasswords", @"storePasswords", @"colorPasswordText", @"upperTextColor", @"lowerTextColor", @"symbolTextColor", @"defaultTextColor", @"extendedTextColor", @"cloudKitZoneStartTime"]];
     return self;
 }
 

@@ -24,6 +24,11 @@ static NSMutableDictionary *passwordTextColors;
     
     PasswordFactory *f = [PasswordFactory get];
     NSString *colorKey = @"defaultTextColor";
+    //set 'default' color to extended text color if colorPasswordText
+    if ([[DefaultsManager get] boolForKey:@"colorPasswordText"]) {
+        colorKey = @"extendedTextColor";
+    }
+    
     if (subsring.length == 1) { //only color strings with length of one, anything greater is an emoji or other long unicode charcacters
         if ([f isCharacterType:PFUpperCaseLetters character:subsring]) { //are we an uppercase character
             colorKey = @"upperTextColor";
