@@ -74,8 +74,8 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         guard let dk = defaultsKey else {
             return
         }
-        wellView.roundCorners(withBorder: false, andRadius: 4)
-        colorWellView.roundCorners(withBorder: false, andRadius: 4)
+        wellView.roundCorners(withBorder: false, andRadius: 5)
+        colorWellView.roundCorners(withBorder: false, andRadius: 5)
         let color = ColorUtilities.color(fromHexString: d.string(forKey: dk)) ?? UIColor.blue
         setWellColor(color)
     }

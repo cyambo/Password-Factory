@@ -30,7 +30,6 @@
 @property (nonatomic, strong) NSTimer *passwordCheckTimer;
 @property (nonatomic, assign) BOOL stored;
 @property (nonatomic, strong) NSString *lastStoredPassword;
-@property (nonatomic, strong) PasswordStorage *storage;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @property (nonatomic, strong) NSRegularExpression *extendedCharacterRegex;
 @end
@@ -50,7 +49,6 @@
         self.currentFontSize = 13;
         [self setObservers];
         self.stored = NO;
-        self.storage = [PasswordStorage get];
         self.c = [PasswordFactoryConstants get];
         NSString *regex = [NSString stringWithFormat:@"([^A-Za-z0-9 %@])",self.c.escapedSymbols];
         NSError *error;
@@ -565,6 +563,7 @@
  */
 -(void)storePassword {
     DefaultsManager *d = [DefaultsManager get];
+    PasswordStorage *s = [PasswordStorage get];
     if ([d boolForKey:@"storePasswords"]) {
         PFPasswordType currType = [self getSelectedPasswordType];
         //don't store anything if we are on the stored type
@@ -574,7 +573,7 @@
             if (![curr isEqualToString:self.lastStoredPassword]) {
                 //all good, so store it
                 self.stored = YES;
-                [self.storage storePassword:curr strength:[self.password getPasswordStrength] type:currType];
+                [s storePassword:curr strength:[self.password getPasswordStrength] type:currType];
                 self.lastStoredPassword = curr;
             }
         }
@@ -586,12 +585,13 @@
  Deletes selected stored password
  */
 -(void)deleteStoredPassword {
+    PasswordStorage *s = [PasswordStorage get];
     PFPasswordType currType = [self getSelectedPasswordType];
     if (currType == PFStoredType) {
         NSUInteger index = self.currentPasswordTypeViewController.storedPasswordTable.selectedRow;
-        [self.storage deleteItemAtIndex:index complete:^{
+        [s deleteItemAtIndex:index complete:^{
             [self.currentPasswordTypeViewController.storedPasswordTable reloadData];
-            NSUInteger count = [self.storage count];
+            NSUInteger count = [s count];
             if (count && index < count) {
                 [self.currentPasswordTypeViewController selectFromStored:index];
             }

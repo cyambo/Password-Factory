@@ -44,7 +44,7 @@ class StepperView: ControlView, PickerViewControllerDelegate {
         controlStepper.wraps = false
         valueLabel.backgroundColor = PFConstants.tintColor
         valueLabel.setTitleColor(UIColor.white, for: .normal)
-        valueLabel.roundCorners()
+        valueLabel.roundCorners(withBorder: false, andRadius: 5)
         
         if let key = defaultsKey {
             controlStepper.value = Double(d.integer(forKey: key))

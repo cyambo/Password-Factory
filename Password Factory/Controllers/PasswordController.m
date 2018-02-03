@@ -16,7 +16,6 @@
 @property (nonatomic, strong) PasswordFactory *factory;
 @property (nonatomic, strong) NSDictionary *viewControllers;
 @property (nonatomic, strong) PasswordFactoryConstants *c;
-@property (nonatomic, strong) PasswordStorage *storage;
 @property (nonatomic, strong) DefaultsManager *defaults;
 @end
 
@@ -45,7 +44,6 @@
     self.passwordStrength = [[PasswordStrength alloc] init];
     self.factory = [PasswordFactory get];
     self.c = [PasswordFactoryConstants get];
-    self.storage = [PasswordStorage get];
     
     self.password = @"";
     return self;
@@ -332,8 +330,8 @@
             break;
         case PFStoredType: //stored
             
-            if ([self.storage count] && [d integerForKey:@"storedPasswordTableSelectedRow"] >=0) {
-                settings[@"storedPassword"] = [self.storage passwordAtIndex:[d integerForKey:@"storedPasswordTableSelectedRow"]].password;
+            if ([[PasswordStorage get] count] && [d integerForKey:@"storedPasswordTableSelectedRow"] >=0) {
+                settings[@"storedPassword"] = [[PasswordStorage get] passwordAtIndex:[d integerForKey:@"storedPasswordTableSelectedRow"]].password;
             } else {
                 settings[@"storedPassword"] = @"";
             }

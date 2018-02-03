@@ -24,7 +24,6 @@
 @property (nonatomic, strong) PasswordFactoryConstants *c;
 @property (nonatomic, strong) DefaultsManager *d;
 @property (nonatomic, strong) NSRegularExpression *findRegex;
-@property (nonatomic, strong) PasswordStorage *storage;
 @property (nonatomic, assign) BOOL didViewAppear;
 @property (nonatomic, assign) NSUInteger previousAccentedCasePercent;
 @property (nonatomic, assign) NSUInteger previousSymbolCasePercent;
@@ -38,7 +37,6 @@
     self.truncateLength = -1;
     self.c = [PasswordFactoryConstants get];
     self.d = [DefaultsManager get];
-    self.storage = [PasswordStorage get];
     self.didViewAppear = NO;
     [self.d observeDefaults:self keys:@[@"maxStoredPasswords", @"storePasswords", @"colorPasswordText", @"upperTextColor", @"lowerTextColor", @"symbolTextColor", @"defaultTextColor", @"cloudKitZoneStartTime"]];
     return self;
@@ -75,7 +73,7 @@
     [self changeLength:nil];
     if (self.storedPasswordTable) {
         //reload the table data because stored passwords may have been updated
-        [self.storage loadSavedData];
+        [[PasswordStorage get] loadSavedData];
         [self.storedPasswordTable reloadData];
         
         //select the first one if we have any data
@@ -108,8 +106,9 @@
  Selects random item from the stored password table
  */
 -(void)selectRandomFromStored {
-    if ([self.storage count]) {
-        uint index = [SecureRandom randomInt:(uint)[self.storage count]];
+    PasswordStorage *s = [PasswordStorage get];
+    if ([s count]) {
+        uint index = [SecureRandom randomInt:(uint)[s count]];
         [self selectFromStored:index];
     } else {
         //nothing in the table so just call the delegate to set the password and strength to nothing
@@ -337,7 +336,7 @@
 }
 #pragma mark Table View
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    int c = (int)[self.storage count];
+    int c = (int)[[PasswordStorage get] count];
     int max = (int)[[DefaultsManager get] integerForKey:@"maxStoredPasswords"];
     if (c > max) {
         return max;
@@ -346,7 +345,7 @@
 }
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSTableCellView *c;
-    Passwords *p = [self.storage passwordAtIndex:row];
+    Passwords *p = [[PasswordStorage get] passwordAtIndex:row];
     
     if ([tableColumn.identifier isEqualToString:@"Type"]) {
         c = [tableView makeViewWithIdentifier:@"PasswordTypeCell" owner:nil];
@@ -375,10 +374,11 @@
     [self callDelegate];
 }
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors {
+    PasswordStorage *s = [PasswordStorage get];
     if (tableView.sortDescriptors.count) {
-        self.storage.sortDescriptor = tableView.sortDescriptors[0];
+        s.sortDescriptor = tableView.sortDescriptors[0];
     } else {
-        self.storage.sortDescriptor = nil;
+        s.sortDescriptor = nil;
     }
     [tableView reloadData];
     [self selectFromStored:0]; //select the first

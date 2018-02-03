@@ -48,7 +48,7 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
             currentIndex = d.integer(forKey: key)
             currentValue = currentValue
         }
-        controlButton.roundCorners()
+        controlButton.roundCorners(withBorder: false, andRadius: 5)
         controlButton.backgroundColor = PFConstants.tintColor
         controlButton.setTitleColor(UIColor.white, for: .normal)
         setButtonText()
