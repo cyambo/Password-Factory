@@ -33,6 +33,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     var isActive: Bool = false
     let controlLabel = UILabel.init() //label of the view
     var currentValue: Any? //current value of the control
+    var inverseEnabled = false;
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -100,6 +101,14 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     }
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
+        if let ek = enabledKey {
+            //check for an initial !, that means it is an inverse enabled
+            if (ek.first == "!") {
+                inverseEnabled = true;
+                enabledKey = String(ek.dropFirst());
+                
+            }
+        }
         if newWindow != nil {
             addToControlGroup()
             setObservers()
@@ -225,9 +234,13 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
     ///
     /// - Parameter enabled: bool for enabled status
     func setEnabled(_ enabled: Bool) {
-        isEnabled = enabled
-        controlLabel.isEnabled = enabled
-        if enabled {
+        var e = enabled;
+        if (inverseEnabled) {
+            e = !e;
+        }
+        isEnabled = e
+        controlLabel.isEnabled = e
+        if e {
             alpha = 1
         } else {
             alpha = 0.5
@@ -251,7 +264,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
             return
         }
         if keyPath == enabledKey {
-            guard let enabled = ch["new"] as? Bool else {
+            guard var enabled = ch["new"] as? Bool else {
                 return
             }
             setEnabled(enabled)
