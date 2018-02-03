@@ -46,14 +46,16 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
             Utilities.setRemoteStore()
         case "resetAllDialogs":
             //reset the dialogs and pop to type selection
-            self.d.resetDialogs()
-            self.navigationController?.popViewController(animated: true)
+            d.resetDialogs()
+            navigationController?.popViewController(animated: true)
         case "resetToDefaults":
             //delete all stored passwords, and restore defaults
             didResetDefaults = true
-            PasswordStorage.get().deleteAllEntities()
+            if (d.bool(forKey: "storeInitialized")) {
+                PasswordStorage.get().deleteAllEntities()
+            }
             DefaultsManager.restoreUserDefaults()
-            self.navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)
         case "homeScreenShortcut":
             //push the home actions controller on 
             let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -62,7 +64,7 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
             Utilities.setRemoteStore()
             if d.bool(forKey: "enableRemoteStore") {
                 didResetDefaults = true
-                self.navigationController?.popViewController(animated: true)
+                navigationController?.popViewController(animated: true)
             }
         case "eraseRemoteStore":
             if (PasswordStorage.get().useRemoteStore) {

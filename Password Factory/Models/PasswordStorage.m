@@ -679,7 +679,6 @@ static bool _disableRemoteFetchChanges = NO;
     //block for changed records either insert or modify a record
     [op setRecordChangedBlock:^(CKRecord * _Nonnull record) {
         [self executeBlock:^{
-            Passwords *search;
             [self passwordWithID:record.recordID.recordName complete:^(Passwords *search) {
                 if (search) {
 #if STORAGE_DEBUG == 1
