@@ -114,7 +114,7 @@ static bool _disableRemoteFetchChanges = NO;
     NSLog(@"‼️--SAVING CONTEXT");
 #endif
     __weak PasswordStorage *weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [self executeBlock:^{
         if (weakSelf.container.viewContext.hasChanges) {
             NSError *error = nil;
             @try {
@@ -141,33 +141,36 @@ static bool _disableRemoteFetchChanges = NO;
                 [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataSaveFailedError];
 #endif
             }
-            
         }
         weakSelf.savingContext = NO;
-    });
+    }];
 }
 
 /**
  Loads saved passwords with sorting
  */
 -(void)loadSavedData {
-    NSFetchRequest *r = [Passwords fetchRequest];
-    if (self.sort) {
-        r.sortDescriptors = @[self.sort];
-    } else {
-        r.sortDescriptors = @[];
-    }
-    [r setFetchBatchSize:20];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:r managedObjectContext:self.container.viewContext sectionNameKeyPath:nil cacheName:nil];
-    self.fetchedResultsController.delegate = self;
-    NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
-    if(error.localizedDescription) {
+    __weak PasswordStorage *weakSelf = self;
+    [self executeBlock:^{
+        NSFetchRequest *r = [Passwords fetchRequest];
+        if (self.sort) {
+            r.sortDescriptors = @[self.sort];
+        } else {
+            r.sortDescriptors = @[];
+        }
+        [r setFetchBatchSize:20];
+        weakSelf.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:r managedObjectContext:weakSelf.container.viewContext sectionNameKeyPath:nil cacheName:nil];
+        weakSelf.fetchedResultsController.delegate = self;
+        NSError *error = nil;
+        [weakSelf.fetchedResultsController performFetch:&error];
+        if(error.localizedDescription) {
 #ifndef IOS
-        AppDelegate *d = [NSApplication sharedApplication].delegate;
-        [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataLoadSavedDataFailedError];
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataLoadSavedDataFailedError];
 #endif
-    }
+        }
+    }];
+
 }
 #pragma mark Store
 /**
@@ -200,26 +203,31 @@ static bool _disableRemoteFetchChanges = NO;
     }
     self.prev = password;
     if (password && password.length) { //don't store 0 length passwords
-        //setup the core data class
-        Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
-        pw.password = password;
-        pw.strength = strength;
-        pw.type = type;
-        pw.length = [password getUnicodeLength];
-        pw.time = time;
-        pw.passwordID = [self getIDFor:pw];
-        if (fromRemote) {
-            pw.synced = YES;
-        } else {
-            pw.synced = NO;
-        }
+        __weak PasswordStorage *weakSelf = self;
         
-        if (self.useRemoteStore && !fromRemote) {
-            [self synchronizeWithRemote];
-        }
-        //save it
-        [self saveContext];
-        [self loadSavedData];
+        [self executeBlock:^{
+            //setup the core data class
+            Passwords *pw = [[Passwords alloc] initWithContext:weakSelf.container.viewContext];
+            pw.password = password;
+            pw.strength = strength;
+            pw.type = type;
+            pw.length = [password getUnicodeLength];
+            pw.time = time;
+            pw.passwordID = [weakSelf getIDFor:pw];
+            if (fromRemote) {
+                pw.synced = YES;
+            } else {
+                pw.synced = NO;
+            }
+            
+            if (weakSelf.useRemoteStore && !fromRemote) {
+                [weakSelf synchronizeWithRemote];
+            }
+            //save it
+            [weakSelf saveContext];
+            [weakSelf loadSavedData];
+        }];
+
     }
 }
 #pragma mark Fetch
@@ -254,22 +262,27 @@ static bool _disableRemoteFetchChanges = NO;
     }
 }
 
-/**
- Gets a password by passwordID
 
- @param passwordID password ID string
- @return password found
+/**
+ Gets a password from an ID
+
+ @param passwordID id to search
+ @param completionHandler completion handler with password value as a parameter
+
  */
--(Passwords *)passwordWithID:(NSString *)passwordID {
-    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
-    [req setPredicate:[NSPredicate predicateWithFormat:@"passwordID == %@",passwordID]];
-    NSError *error = nil;
-    NSArray *results = [self.container.viewContext executeFetchRequest:req error:&error];
-    if (results.count) {
-        return results[0];
-    }
-    return nil;
-    
+-(void)passwordWithID:(NSString *)passwordID complete:(void (^)(Passwords *))completionHandler; {
+    __weak PasswordStorage *weakSelf = self;
+    [self executeBlock:^{
+        NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
+        [req setPredicate:[NSPredicate predicateWithFormat:@"passwordID == %@",passwordID]];
+        NSError *error = nil;
+        NSArray *results = [weakSelf.container.viewContext executeFetchRequest:req error:&error];
+        if (results.count) {
+            completionHandler(results[0]);
+        } else {
+            completionHandler(nil);
+        }
+    }];
 }
 #pragma mark Delete
 
@@ -297,17 +310,17 @@ static bool _disableRemoteFetchChanges = NO;
     [self deletePassword:curr complete:completionHandler];
 }
 
-
 /**
  Deletes a password with a passwordID
 
  @param passwordID password ID
  */
 -(void)deletePasswordWithID:(NSString *)passwordID complete:(void (^)(void))completionHandler{
-    Passwords *password = [self passwordWithID:passwordID];
-    if (password != nil) { //} && password.inserted) {
-        [self deletePassword:password complete:completionHandler];
-    }
+    [self passwordWithID:passwordID complete:^(Passwords *password) {
+        if (password) {
+            [self deletePassword:password complete:completionHandler];
+        }
+    }];
 }
 
 /**
@@ -317,29 +330,33 @@ static bool _disableRemoteFetchChanges = NO;
  */
 -(void)deletePassword:(Passwords *)password complete:(void (^)(void))completionHandler {
     if (password == nil) return;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.container.viewContext deleteObject:password];
-        [self saveContext];
-        [self loadSavedData];
+    __weak PasswordStorage *weakSelf = self;
+    [self executeBlock:^{
+        [weakSelf.container.viewContext deleteObject:password];
+        [weakSelf saveContext];
+        [weakSelf loadSavedData];
         if (completionHandler != nil) {
             completionHandler();
         }
-    });
+    }];
 }
 
 /**
  Deletes everything from the Core Data db
  */
 -(void)deleteAllEntities {
-    NSError *error;
-    [self.container.persistentStoreCoordinator destroyPersistentStoreAtURL:[self getContainerURL] withType:NSSQLiteStoreType options:nil error:&error];
-    if (error.localizedDescription) {
+    __weak PasswordStorage *weakSelf = self;
+    [self executeBlock:^{
+        NSError *error;
+        [weakSelf.container.persistentStoreCoordinator destroyPersistentStoreAtURL:[weakSelf getContainerURL] withType:NSSQLiteStoreType options:nil error:&error];
+        if (error.localizedDescription) {
 #ifndef IOS
-        AppDelegate *d = [NSApplication sharedApplication].delegate;
-        [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteAllFailedError];
+            AppDelegate *d = [NSApplication sharedApplication].delegate;
+            [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataDeleteAllFailedError];
 #endif
-    }
-    [self initializeContainer];
+        }
+        [weakSelf initializeContainer];
+    }];
 }
 
 
@@ -350,29 +367,41 @@ static bool _disableRemoteFetchChanges = NO;
  @param withRemote whether or not to delete remote items also
  */
 -(void)deleteAllBeforeDate:(NSDate *)date withRemote:(BOOL)withRemote {
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Passwords"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"time < %@",date];
-    request.predicate = predicate;
-    NSBatchDeleteRequest *delete = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
-    
-    NSError *error = nil;
-    [self.container.viewContext executeRequest:delete error:&error];
-    if (error.localizedDescription) {
+    __weak PasswordStorage *weakSelf = self;
+    [self executeBlock:^{
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Passwords"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"time < %@",date];
+        request.predicate = predicate;
+        NSBatchDeleteRequest *delete = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
         
-    }
-    if (withRemote) {
-        [self fetchRemoteRecordIDsWith:predicate andCompletion:^(NSArray *records) {
-            if (records.count) {
-                [self deleteRemoteRecordIDs:records completion:^(BOOL success) {
-                    
-                }];
-            }
-        }];
-    }
-    [self loadSavedData];
+        NSError *error = nil;
+        [weakSelf.container.viewContext executeRequest:delete error:&error];
+        if (error.localizedDescription) {
+            
+        }
+        if (withRemote) {
+            [weakSelf fetchRemoteRecordIDsWith:predicate andCompletion:^(NSArray *records) {
+                if (records.count) {
+                    [weakSelf deleteRemoteRecordIDs:records completion:^(BOOL success) {
+                        
+                    }];
+                }
+            }];
+        }
+        [weakSelf loadSavedData];
+    }];
+
 }
 #pragma mark Misc
-
+-(void)executeBlock:(void (^)(void))block {
+    if ([NSThread isMainThread]) {
+        NSLog(@"MAIN THRD");
+        block();
+    } else {
+        NSLog(@"NOT MAIN GTHRED");
+        dispatch_async(dispatch_get_main_queue(), block);
+    }
+}
 /**
  Changes the sort descriptor
  
@@ -571,16 +600,20 @@ static bool _disableRemoteFetchChanges = NO;
  */
 -(void)synchronizeWithRemote {
     if (!PasswordStorage.disableRemoteFetchChanges) {
-        NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
-        [req setPredicate:[NSPredicate predicateWithFormat:@"synced == 0"]];
-        NSError *error = nil;
-        NSArray *results = [self.container.viewContext executeFetchRequest:req error:&error];
-        
-        for(Passwords *p in results) {
-            if (![self.syncInProgress containsObject:p.passwordID]) {
-                [self storeRemote:p];
+        __weak PasswordStorage *weakSelf = self;
+        [self executeBlock:^{
+            NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Passwords"];
+            [req setPredicate:[NSPredicate predicateWithFormat:@"synced == 0"]];
+            NSError *error = nil;
+            NSArray *results = [weakSelf.container.viewContext executeFetchRequest:req error:&error];
+            
+            for(Passwords *p in results) {
+                if (![weakSelf.syncInProgress containsObject:p.passwordID]) {
+                    [weakSelf storeRemote:p];
+                }
             }
-        }
+        }];
+
     }
 }
 
@@ -645,23 +678,28 @@ static bool _disableRemoteFetchChanges = NO;
     
     //block for changed records either insert or modify a record
     [op setRecordChangedBlock:^(CKRecord * _Nonnull record) {
-        
-        Passwords *search;
-        if ((search = [weakSelf passwordWithID:record.recordID.recordName])) {
+        [self executeBlock:^{
+            Passwords *search;
+            [self passwordWithID:record.recordID.recordName complete:^(Passwords *search) {
+                if (search) {
 #if STORAGE_DEBUG == 1
-            NSLog(@"FETCH MODIFY %@",search.password);
+                    NSLog(@"FETCH MODIFY %@",search.password);
 #endif
-        } else {
-            Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
-            pw.password = [record objectForKey:@"password"];
-            pw.strength = [(NSNumber *)[record objectForKey:@"strength"] floatValue];
-            pw.type = [(NSNumber *)[record objectForKey:@"type"] integerValue];
-            pw.length = [(NSNumber *)[record objectForKey:@"length"] integerValue];
-            pw.time = [record objectForKey:@"time"];
-            pw.passwordID = record.recordID.recordName;
-            pw.synced = YES;
-            NSLog(@"FETCH ADD %@",pw.password);
-        }
+                } else {
+                    Passwords *pw = [[Passwords alloc] initWithContext:self.container.viewContext];
+                    pw.password = [record objectForKey:@"password"];
+                    pw.strength = [(NSNumber *)[record objectForKey:@"strength"] floatValue];
+                    pw.type = [(NSNumber *)[record objectForKey:@"type"] integerValue];
+                    pw.length = [(NSNumber *)[record objectForKey:@"length"] integerValue];
+                    pw.time = [record objectForKey:@"time"];
+                    pw.passwordID = record.recordID.recordName;
+                    pw.synced = YES;
+#if STORAGE_DEBUG == 1
+                    NSLog(@"FETCH ADD %@",pw.password);
+#endif
+                }
+            }];
+        }];
     }];
     //block for deleted records, will delete local record
     [op setRecordWithIDWasDeletedBlock:^(CKRecordID * _Nonnull recordID, NSString * _Nonnull recordType) {

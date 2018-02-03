@@ -188,15 +188,21 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
                 }
             }
             
-            typeSelectionViewController?.updatePasswordField(p, strength: s, crackTime: ct)
+            typeSelectionViewController?.updatePasswordField(p, strength: (s/100), crackTime: ct)
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             s.deleteItem(at: UInt(indexPath.row), complete: {
-                tableView.beginUpdates()
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-                tableView.endUpdates()
+                //don't delete the row if we are over max stored
+                //it just means we are in a state where we didn't delete the over
+                //max passwords
+                if (self.s.count() < self.d.integer(forKey: "maxStoredPasswords")) {
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    tableView.endUpdates()
+                }
+
             });
         }
     }
