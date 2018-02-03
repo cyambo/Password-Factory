@@ -61,14 +61,26 @@ static bool _disableRemoteFetchChanges = NO;
 -(void)initializeContainer {
     self.syncInProgress = [[NSMutableArray alloc] init];
     self.savingContext = NO;
+    __weak PasswordStorage *weakSelf = self;
+    [self loadContainer:^(NSPersistentContainer *container) {
+        weakSelf.container = container;
+        [self.d setBool:YES forKey:@"storeInitialized"];
+        [self loadSavedData];
+    }];
+
+    //set to sort with newest on top
+    self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
+}
+-(void)loadContainer:(void (^)(NSPersistentContainer *))completionHandler {
+    NSPersistentContainer *container;
     NSURL *containerURL = [self getContainerURL];
     NSPersistentStoreDescription *description = [[NSPersistentStoreDescription alloc] initWithURL:containerURL];
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"StoredPasswordModel" withExtension:@"momd"];
     NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    self.container = [[NSPersistentContainer alloc] initWithName:@"StoredPasswordModel" managedObjectModel:model];
-    self.container.persistentStoreDescriptions = @[description];
-    [self.container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDescription, NSError * _Nullable error) {
-        self.container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
+    container = [[NSPersistentContainer alloc] initWithName:@"StoredPasswordModel" managedObjectModel:model];
+    container.persistentStoreDescriptions = @[description];
+    [container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDescription, NSError * _Nullable error) {
+        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
         
         if(error) {
 #ifndef IOS
@@ -76,14 +88,10 @@ static bool _disableRemoteFetchChanges = NO;
             [d.alertWindowController displayError:error.localizedDescription code:PFCoreDataLoadError];
 #endif
         }
-        [self loadSavedData];
+        completionHandler(container);
     }];
-
-    //set to sort with newest on top
-    self.sort = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO selector:@selector(compare:)];
-
+    
 }
-
 -(NSURL *)getContainerURL {
 #ifdef IS_MACOS
     NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:SharedDefaultsAppGroup];

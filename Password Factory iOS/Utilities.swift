@@ -295,7 +295,10 @@ class Utilities: NSObject {
             d.setBool(false, forKey: "enableRemoteStore")
             UIApplication.shared.unregisterForRemoteNotifications()
             d.enableRemoteStore(false)
-            PasswordStorage.get().enableRemoteStorage(false)
+            if (d.bool(forKey: "storeInitialized")) {
+                PasswordStorage.get().enableRemoteStorage(false)
+            }
+            
         }
     }
 }

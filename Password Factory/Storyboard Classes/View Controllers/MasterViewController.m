@@ -563,8 +563,8 @@
  */
 -(void)storePassword {
     DefaultsManager *d = [DefaultsManager get];
-    PasswordStorage *s = [PasswordStorage get];
     if ([d boolForKey:@"storePasswords"]) {
+        PasswordStorage *s = [PasswordStorage get];
         PFPasswordType currType = [self getSelectedPasswordType];
         //don't store anything if we are on the stored type
         if (currType != PFStoredType) {

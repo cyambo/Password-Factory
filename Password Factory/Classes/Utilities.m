@@ -98,8 +98,9 @@
         [d setBool:NO forKey:@"enableRemoteStore"];
         [[NSApplication sharedApplication] unregisterForRemoteNotifications];
         [d enableRemoteStore:NO];
-        [[PasswordStorage get] enableRemoteStorage:false];
-        //disable remote
+        if([d boolForKey:@"storeInitialized"]) {
+            [[PasswordStorage get] enableRemoteStorage:false];
+        }
     }
 }
 @end

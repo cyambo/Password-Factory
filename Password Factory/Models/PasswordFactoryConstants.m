@@ -120,7 +120,8 @@
                               @"isMenuApp",
                               @"hideDockIcon",
                               @"addToLoginItems",
-                              @"cloudKitCurrentZoneStartTime"];
+                              @"cloudKitCurrentZoneStartTime",
+                              @"storeInitialized"];
 }
 
 /**

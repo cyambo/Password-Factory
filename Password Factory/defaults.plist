@@ -122,6 +122,8 @@
 	<integer>0</integer>
 	<key>activeControl</key>
 	<false/>
+	<key>storeInitialized</key>
+	<false/>
 	<key>enabledHomeScreenItems</key>
 	<array>
 		<integer>401</integer>
