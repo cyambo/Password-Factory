@@ -193,12 +193,11 @@ class StoredPasswordViewController: PasswordsViewController, UITableViewDelegate
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             s.deleteItem(at: UInt(indexPath.row), complete: {
-                //TODO: completion handler delete here
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.endUpdates()
             });
-
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

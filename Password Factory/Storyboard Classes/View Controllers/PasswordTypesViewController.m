@@ -385,7 +385,9 @@
 }
 - (void)observeValue:(NSString * _Nullable)keyPath change:(NSDictionary * _Nullable)change {
     if (self.storedPasswordTable) {
-        [self.storedPasswordTable reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.storedPasswordTable reloadData];
+        });
     }
 }
 

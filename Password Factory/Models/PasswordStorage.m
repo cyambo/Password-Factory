@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #endif
 
-#define STORAGE_DEBUG 0
+#define STORAGE_DEBUG 1
 
 static bool _disableRemoteFetchChanges = NO;
 @interface PasswordStorage () <DefaultsManagerDelegate>
@@ -295,10 +295,10 @@ static bool _disableRemoteFetchChanges = NO;
 
  @param passwordID password ID
  */
--(void)deletePasswordWithID:(NSString *)passwordID {
+-(void)deletePasswordWithID:(NSString *)passwordID complete:(void (^)(void))completionHandler{
     Passwords *password = [self passwordWithID:passwordID];
-    if (password != nil && password.inserted) {
-        [self deletePassword:password complete:nil];
+    if (password != nil) { //} && password.inserted) {
+        [self deletePassword:password complete:completionHandler];
     }
 }
 
@@ -657,7 +657,7 @@ static bool _disableRemoteFetchChanges = NO;
     }];
     //block for deleted records, will delete local record
     [op setRecordWithIDWasDeletedBlock:^(CKRecordID * _Nonnull recordID, NSString * _Nonnull recordType) {
-        [weakSelf deletePasswordWithID:recordID.recordName];
+        [weakSelf deletePasswordWithID:recordID.recordName complete:nil];
 #if STORAGE_DEBUG == 1
         NSLog(@"FETCH DELETE ID %@",recordID.recordName);
 #endif
@@ -902,8 +902,10 @@ static bool _disableRemoteFetchChanges = NO;
 #if STORAGE_DEBUG == 1
                 NSLog(@"NOTIFY DELETE %@",queryNotification.recordID.recordName);
 #endif
-                [self deletePasswordWithID:queryNotification.recordID.recordName];
-                completionHandler(YES);
+                [self deletePasswordWithID:queryNotification.recordID.recordName complete:^{
+                    completionHandler(YES);
+                }];
+                
             }
         }
     }
