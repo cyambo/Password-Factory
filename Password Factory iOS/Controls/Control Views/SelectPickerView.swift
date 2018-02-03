@@ -241,7 +241,6 @@ class SelectPickerView: ControlView, PickerViewControllerDelegate {
         if ch != currentIndex {
             currentIndex = ch
             updateSelection(index: ch)
-            alertChangeFromiCloud()
         }
 
         

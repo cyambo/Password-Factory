@@ -107,7 +107,6 @@ class TextFieldView: ControlView, UITextFieldDelegate {
         if controlText.text != ch {
             controlText.text = ch
             currentValue = ch
-            alertChangeFromiCloud()
         }
     }
     

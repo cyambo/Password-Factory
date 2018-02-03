@@ -96,7 +96,6 @@ class StepperView: ControlView, PickerViewControllerDelegate {
             controlStepper.value = Double(ch)
             currentValue = ch
             changeStepper()
-            alertChangeFromiCloud()
         }
     }
     /// Called when stepper is changed, will set defaults and label

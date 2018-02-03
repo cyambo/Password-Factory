@@ -76,7 +76,6 @@ class LengthControlView: ControlView {
                 slider.value = Float(ch)
                 currentValue = ch
                 lengthChanged()
-                alertChangeFromiCloud()
             }
         }
     }

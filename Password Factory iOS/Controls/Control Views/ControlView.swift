@@ -264,11 +264,6 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
         
     }
     
-    /// Shows an alert indicating there was a change from iCloud on the currently viewed scren
-    func alertChangeFromiCloud() {
-        guard let pvc = parentViewController else { return }
-        Utilities.showAlert(delegate: self, alertKey: "remoteStoreChangeWarning", parentViewController: pvc, disableAlertHiding: false, onlyContinue: true, source: controlLabel)
-    }
     /// Touch Down action, calls startAction
     ///
     /// - Parameter sender: default sender

@@ -45,7 +45,6 @@ class SwitchView: ControlView {
         if controlSwitch.isOn != ch {
             controlSwitch.isOn = ch
             changeSwitch()
-            alertChangeFromiCloud()
         }
 
     }

@@ -93,7 +93,6 @@ class SelectTypesView: ControlView, UICollectionViewDelegate, UICollectionViewDa
             d.setInteger(ch, forKey: getDefaultsKey())
             currentValue = ch
             delegate?.controlChanged(nil, defaultsKey: getDefaultsKey())
-            alertChangeFromiCloud()
         }
         
         

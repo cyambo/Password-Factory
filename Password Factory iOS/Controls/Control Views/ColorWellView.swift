@@ -51,7 +51,6 @@ class ColorWellView: ControlView, ColorPickerViewControllerDelegate  {
         if ch != currentHexColor {
             setWellColor(color)
             delegate?.controlChanged(wellView, defaultsKey: key)
-            alertChangeFromiCloud()
         }
 
     }
