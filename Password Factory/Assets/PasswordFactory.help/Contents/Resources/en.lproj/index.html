@@ -13,7 +13,7 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-sm dark-background navbar-dark fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
             <a class="navbar-brand" href="#help_top">
                 <img src="gfx/icon.png" alt="Password Factory" style="width:40px" />
             </a>
@@ -62,6 +62,7 @@
                         <div class="dropdown-menu scrollable-menu">
                             <a class="dropdown-item" href="#preferences">Top</a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#preferences_password_display">Password Display</a>
                             <a class="dropdown-item" href="#preferences_global">Global</a>
                             <a class="dropdown-item" href="#preferences_max_password">Max Password Length</a>
                             <a class="dropdown-item" href="#preferences_enable_advanced">Enable Advanced</a>
@@ -69,7 +70,6 @@
                             <a class="dropdown-item" href="#preferences_run_in_menu">Run in Menu</a>
                             <a class="dropdown-item" href="#preferences_login">Add to Login Items</a>
                             <a class="dropdown-item" href="#preferences_icloud">iCloud Sync</a>
-                            <a class="dropdown-item" href="#preferences_password_display">Password Display</a>
                             <a class="dropdown-item" href="#preferences_hotkey">Hotkey</a>
                             <a class="dropdown-item" href="#preferences_clipboard">Clipboard</a>
                             <a class="dropdown-item" href="#preferences_reset">Reset</a>
@@ -90,6 +90,7 @@
                             <a class="dropdown-item" href="#transform_symbolize">Symbolize</a>
                             <a class="dropdown-item" href="#transform_accenter">Accenter</a>
                             <a class="dropdown-item" href="#emojis_and_extended">Emojis and Extended Characters</a>
+                            <a class="dropdown-item" href="#alerts">Warnings and Alerts</a>
                             <a class="dropdown-item" href="#icloud_sync">iCloud Sync</a>
                             <a class="dropdown-item" href="#touchbar">Touch Bar</a>
                         </div>
@@ -101,7 +102,7 @@
             </div>
         </nav>
         <div class="row" id="help_top">
-            <div class="col dark-background border border-top-0 border-left-0 border-right-0">
+            <div class="col">
                 <h1 class="p-3 text-white">Password Factory</h1>
             </div>
         </div>
@@ -424,6 +425,24 @@
                             Preferences Window
                             </div>
                         </div>
+                        <section class="mt-4" id="preferences_password_display">
+                            <h3>Password Display</h3>
+                            <p>The password display section controls how the password is shown in the app. If 'Color Password Text" is checked the characters in the password will be colored. Coloring the password text will enable you to easily distinguish between similar characters. You can change the color of each character type by clicking on the color boxes and selecting a new color.</p>
+                            <dl class="row">
+                                <dt class="col-sm-3 text-right">Text Color</dt>
+                                <dd class="col-sm-9">Color of text when 'Color Password Text' is disabled</dd>
+                                <dt class="col-sm-3 text-right">Uppercase Letters</dt>
+                                <dd class="col-sm-9">A - Z</dd>
+                                <dt class="col-sm-3 text-right">Lowercase Letters</dt>
+                                <dd class="col-sm-9">a - z</dd>
+                                <dt class="col-sm-3 text-right">Numbers</dt>
+                                <dd class="col-sm-9">0 - 9</dd>
+                                <dt class="col-sm-3 text-right"><a href="#symbol_characters">Symbols</a></dt>
+                                <dd class="col-sm-9">Symbols such as $#%^</dd>
+                                <dt class="col-sm-3 text-right"><a href="#emojis_and_extended">Extended Chars</a></dt>
+                                <dd class="col-sm-9">Accented characters and symbols</dd>
+                            </dl>
+                        </section>
                         <section class="mt-4" id="preferences_global">
                             <h3>Global</h3>
                             <p>This section contains all of the global settings for the application.</p>
@@ -443,10 +462,6 @@
                             </p>
                             <h4 id="preferences_icloud">iCloud Sync</h4>
                             <p>Checking iCloud Sync will sync all your passwords and settings to iCloud and will be available to all your macOS and iOS devices running Password Factory. See <a href="#icloud_sync">iCloud Sync</a> for more information.</p>
-                        </section>
-                        <section class="mt-4" id="preferences_password_display">
-                            <h3>Password Display</h3>
-                            <p>The password display section controls how the password is shown in the app. If 'Color Password Text" is checked the characters in the password will be colored. Coloring the password text will enable you to easily distinguish between similar characters. You can change the color of each character type by clicking on the color boxes and selecting a new color. The 'Text Color' item is the color of the text when it is not highlighted, and it also is the color of any character type that is not specified.</p>
                         </section>
                         <section class="mt-4" id="preferences_hotkey">
                             <h3>Generate and Copy Hotkey</h3>
@@ -473,13 +488,7 @@
                         </section>
                         <section class="mt-4" id="preferences_reset">
                             <h3>Reset</h3>
-                            <p>The three reset buttons allow for resetting different parts of the application.</p>
-                            <h4>Reset All Warnings and Dialogs</h4>
-                            <p>Using this will show all hidden warnings and dialogs.</p>
-                            <h4>Reset to Defaults</h4>
-                            <p>Resetting to defaults will reset all preferences to their default values. All stored passwords will be deleted. And if iCloud is enabled, all stored preferences will be reset to default, and all passwords stored in iCloud will be deleted.</p>
-                            <h4>Reset iCloud</h4>
-                            <p>This will reset all iCloud preferences to the default values, and will delete all stored iCloud passwords. If iCloud Sync is enabled, then all local preferences will also be reset.</p>
+                            <p>Clicking 'Reset All <a href="#alerts">Warnings and Dialogs</a> will show all hidden <a href="#alerts">warnings and alerts</a></p>
                         </section>
                     </div>
                 </section>
@@ -696,6 +705,16 @@
                             <section class="mt-4" id="emojis_and_extended">
                                 <h3>Emojis and Extended Characters</h3>
                                 <p>Password Factory has support for emojis and extended characters. An extended character is a character that is not in the standard Latin alphabet, plus numbers, and standard symbolic characters. Although emojis and extended characters will create a stronger password, not all systems support using these characters. Always take caution when using emojis or extended characters and if possible test your password against the login system first.</p>
+                            </section>
+                            <section class="mt-4" id="alerts">
+                                <h3>iCloud Sync</h3>
+                                <div class="m-3 card w-75 mx-auto">
+                                    <img alt="Alert Window" class="card-img-top rounded" src="gfx/alert.png" />
+                                    <div class="card-footer text-center">
+                                        Alert Window
+                                    </div>
+                                </div>
+                                <p>Alerts are shown when there is a warning about the current action, or there is an application error. Clicking 'Cancel' will stop the current action and return the application back to the previous state. 'OK' will continue with the current action, or simply dismiss the window. Some alerts can be hidden, by clicking 'Do not show this message again', that alert will not be shown again.</p>
                             </section>
                             <section class="mt-4" id="icloud_sync">
                                 <h3>iCloud Sync</h3>

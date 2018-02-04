@@ -443,7 +443,7 @@ Gw
             <objects>
                 <viewController storyboardIdentifier="PreferencesViewController" id="2B8-vP-6ly" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="J6I-It-7aA">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="468"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="473"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iuF-b8-EqG">
@@ -1161,7 +1161,7 @@ Gw
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="gSQ-Lb-YNO" firstAttribute="top" secondItem="J6I-It-7aA" secondAttribute="top" constant="5" id="1vR-BU-s0Q"/>
+                            <constraint firstItem="gSQ-Lb-YNO" firstAttribute="top" secondItem="J6I-It-7aA" secondAttribute="top" constant="10" id="1vR-BU-s0Q"/>
                             <constraint firstItem="xp9-V4-dQq" firstAttribute="centerY" secondItem="gTY-3a-D4r" secondAttribute="centerY" id="4IB-ck-he6"/>
                             <constraint firstItem="HuW-cg-qg8" firstAttribute="width" secondItem="4XQ-5D-FU0" secondAttribute="width" id="5aq-UZ-Wdv"/>
                             <constraint firstItem="4XQ-5D-FU0" firstAttribute="width" secondItem="gSQ-Lb-YNO" secondAttribute="width" id="7bv-xI-KWC"/>
@@ -1179,7 +1179,7 @@ Gw
                             <constraint firstItem="iuF-b8-EqG" firstAttribute="width" secondItem="HuW-cg-qg8" secondAttribute="width" id="t3a-YT-Yht"/>
                             <constraint firstItem="zBV-Nn-h3d" firstAttribute="width" secondItem="gSQ-Lb-YNO" secondAttribute="width" id="tBD-pL-z1i"/>
                             <constraint firstItem="iuF-b8-EqG" firstAttribute="top" secondItem="HuW-cg-qg8" secondAttribute="bottom" constant="9" id="v5s-zS-Dyr"/>
-                            <constraint firstItem="4XQ-5D-FU0" firstAttribute="top" secondItem="J6I-It-7aA" secondAttribute="top" constant="5" id="vbu-0M-ZWn"/>
+                            <constraint firstItem="4XQ-5D-FU0" firstAttribute="top" secondItem="J6I-It-7aA" secondAttribute="top" constant="10" id="vbu-0M-ZWn"/>
                             <constraint firstAttribute="bottom" secondItem="zBV-Nn-h3d" secondAttribute="bottom" constant="20" id="wJh-Kx-Hg2"/>
                         </constraints>
                     </view>

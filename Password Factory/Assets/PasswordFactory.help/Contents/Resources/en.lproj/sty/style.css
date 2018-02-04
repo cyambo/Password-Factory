@@ -2,14 +2,19 @@
 p {
   font-size: 1.2rem;
 }
-
 div.strength-gradient {
     background: linear-gradient(to right, #ED2C16,#EC8320,#EBCE29,#EBCE29,#BFE631,#76E53A,#35E557,#3FE6A4,#48E8E2,#54BBEA,#5F86EA,#846FEA);
     height: 50px;
     border-radius: 5px;
 }
 body {
-  padding-top: 60px;
+    padding-top: 60px;
+    background-color: #1B2133;
+    background-image: url(../gfx/icon-transparent.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 70vh;
+    background-attachment: fixed
 }
 
 .card {
@@ -22,11 +27,18 @@ body {
     background-color: #FCFCFD;
     color: #C1C6C8;
 }
+div.content {
+    background-color: #FFF;
+}
+div#support {
+    background-color: transparent;
+}
 div.content a {
     color: #3F7A5F;
 }
-.dark-background {
+nav {
     background-color: #1B2133;
+
 }
 div.row-header {
     background-color: #2F4044;
@@ -123,13 +135,9 @@ li.color_well strong {
     border-radius: 5px;
 }
 div#support {
-    overflow: hidden;
-    background-color: #1B2133;
+
     color: #6A9099;
-    background-image: url(../gfx/icon-transparent.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
+
 
 }
 div.icon-row {
@@ -193,6 +201,10 @@ dt::after {
         height: auto;
         max-height: 220px;
         overflow-x: hidden;
+    }
+    body {
+        background-position-y: 50vh;
+
     }
 
 }

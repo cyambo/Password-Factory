@@ -49,7 +49,7 @@
 	<key>pronounceableCaseTypeIndex</key>
 	<integer>0</integer>
 	<key>userPattern</key>
-	<string>w##</string>
+	<string>##-!!-cC-D-D</string>
 	<key>passphraseSeparatorTypeIndex</key>
 	<integer>1</integer>
 	<key>passphraseCaseTypeIndex</key>
@@ -57,7 +57,7 @@
 	<key>addToLoginItems</key>
 	<false/>
 	<key>displayCrackTime</key>
-	<false/>
+	<true/>
 	<key>selectedPasswordType</key>
 	<integer>401</integer>
 	<key>notificationSound</key>
