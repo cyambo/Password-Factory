@@ -139,7 +139,13 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         }];
 
     } else {
-        [appDelegate.alertWindowController displayAlertWithBlock:NSLocalizedString(@"storedPasswordOffWarning", comment: @"") defaultsKey:@"hideStoredPasswordOffWarning" window:self.view.window closeBlock:^(BOOL cancelled) {
+        NSString *defaultsKey = @"hideStoredPasswordOffWarning";
+        NSString *localizedKey = @"storedPasswordOffWarning";
+        if ([d boolForKey:@"enableRemoteStore"]) {
+            defaultsKey = @"hideStoredPasswordOffWithiCloudWarning";
+            localizedKey = @"storedPasswordOffWithiCloudWarning";
+        }
+        [appDelegate.alertWindowController displayAlertWithBlock:NSLocalizedString(localizedKey, comment: @"") defaultsKey:defaultsKey window:self.view.window closeBlock:^(BOOL cancelled) {
             if(cancelled) {
                 [d setBool:YES forKey:@"storePasswords"];
             } else {

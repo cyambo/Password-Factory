@@ -802,8 +802,6 @@ static bool _disableRemoteFetchChanges = NO;
         if (recordIds.count) {
             //delete remote records,and delete local if iCloud is enabled
             //only deleting local when iCloud is enabled because they are not connected when it is disabled
-            
-            
             [weakSelf deleteRemoteRecordIDs:recordIds completion:completionHandler];
         }
     }];
@@ -817,24 +815,43 @@ static bool _disableRemoteFetchChanges = NO;
  */
 -(void)deleteRemoteRecordIDs:(NSArray *)recordIDs completion:(void (^)(BOOL))completionHandler {
      __weak PasswordStorage *weakSelf = self;
-    CKModifyRecordsOperation *op = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:nil recordIDsToDelete:recordIDs];
-    op.modifyRecordsCompletionBlock = ^(NSArray<CKRecord *> * _Nullable savedRecords, NSArray<CKRecordID *> * _Nullable deletedRecordIDs, NSError * _Nullable operationError) {
-        BOOL success = NO;
-        if (operationError) {
+    int itemsRemaining = (int)recordIDs.count;
+    int j = 0;
+    __block int totalDeletedRecords = 0;
+    __block BOOL success = YES;
+    //breaking down into operations of 20 objects to delete
+    while (itemsRemaining) {
+        NSRange range = NSMakeRange(j, MIN(20,itemsRemaining));
+        NSArray *sub = [recordIDs subarrayWithRange:range];
+        itemsRemaining -= range.length;
+        j += range.length;
+        //creating delete operation
+        CKModifyRecordsOperation *op = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:nil recordIDsToDelete:sub];
+        //set to user initiated so it happens now
+        op.qualityOfService = NSQualityOfServiceUserInteractive;
+        op.modifyRecordsCompletionBlock = ^(NSArray<CKRecord *> * _Nullable savedRecords, NSArray<CKRecordID *> * _Nullable deletedRecordIDs, NSError * _Nullable operationError) {
+            if (operationError) {
+                //any failure in one operation marks it all as a failure
+                success = NO;
 #if STORAGE_DEBUG == 1
-            NSLog(@"DELETE BATCH FAIL %@",operationError.localizedDescription);
+                NSLog(@"DELETE BATCH FAIL %@",operationError.localizedDescription);
 #endif
-        } else {
-            success = YES;
-        }
-        [weakSelf loadSavedData];
-        if (completionHandler != nil) {
-            completionHandler(success);
-            
-        }
-        
-    };
-    [self.cloudKitDatabase addOperation:op];
+            }
+            [weakSelf loadSavedData];
+            totalDeletedRecords += deletedRecordIDs.count;
+#if STORGE_DEBUG == 1
+            NSLog(@"DELETE %d RECORDS",totalDeletedRecords);
+#endif
+            //only call completion handler if we deleted everything
+            if (completionHandler != nil && totalDeletedRecords >= recordIDs.count) {
+#if STORGE_DEBUG == 1
+                NSLog(@"COMPLETED RECCORD DELETE");
+#endif
+                completionHandler(success);
+            }
+        };
+        [self.cloudKitDatabase addOperation:op];
+    }
 }
 /**
  deletes the record subscriptions

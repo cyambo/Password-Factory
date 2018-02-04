@@ -5,9 +5,22 @@
   Created by Cristiana Yambo on 1/20/18.
   Copyright © 2018 Cristiana Yambo. All rights reserved.
 */
+
+"applicationErrorMessage" = "An application error has occurred.\nCode: %ld\nDescription: '%@'\nPlease send an email to\n%@\nwith the code and description";
+"disableRemoteStoreWarning" = "Disabling iCloud will not remove any stored iCloud data, and it will still be available to other devices";
+"enableRemoteStoreWarning" = "All preferences and stored passwords will be stored in iCloud and will allow you to sync this information across devices";
+"eraseRemoteStoreWarning" = "All Passwords and preferences stored in iCloud will be deleted, and will be unavailable to any other devices";
+"extendedCharacterWarning" = "Using emoji or other extended characters may not work with all systems. Please take caution when using this password";
+"remoteStoreChangeWarning" = "A preference change was received from another device through iCloud";
+"resetAllDialogsWarning" = "All previously hidden dialogs will now be shown.";
+"resetToDefaultsWarning" = "All settings will be restored to their defaults, all stored passwords will be deleted, and Password Factory will restart";
+"startAtLoginNotInApplicationsWarning" = "Password Factory must be installed in Applications to add to Login Items";
+"storedPasswordOffWarning" = "Disabling stored passwords will delete all stored passwords";
+"storedPasswordOffWithiCloudWarning" = "Disabling stored passwords will delete all local and iCloud stored passwords";
+"storedPasswordOnWarning" = "All stored passwords are not encrypted, cancel to disable password storage";
+
 "advancedTypeName" = "Advanced";
 "alertTitle" = "Alert";
-"applicationErrorMessage" = "An application error has occurred.\nCode: %ld\nDescription: '%@'\nPlease send an email to\n%@\nwith the code and description";
 "approximateAbout" = "about";
 "approximateEqual" = "";
 "approximateGreaterThan" = "greater than";
@@ -25,15 +38,13 @@
 "characterSeparatorTypeName" = "Character";
 "colorPickerTitle" = "Select %@ Color";
 "disabledTitle" = "Disabled";
-"disableRemoteStoreWarning" = "Disabling iCloud will not remove any stored iCloud data, and it will be available to other devices. To reset iCloud use the 'Reset iCloud Data' feature";
 "doneButton" = "Done";
 "emojiPatternName" = "Emoji";
 "emojiSeparatorTypeName" = "Emoji";
-"enableRemoteStoreWarning" = "All preferences and stored passwords will be stored in iCloud and will allow you to sync this information across devices";
-"eraseRemoteStoreWarning" = "All Passwords and preferences stored in iCloud will be deleted, and will be unavailable to any other devices";
+
 "errorDataLoadFail" = "Failed to load data";
 "exportButton" = "Export";
-"extendedCharacterWarning" = "Using emoji or other extended characters may not work with all systems. Please take caution when using this password.";
+
 "hyphenSeparatorTypeName" = "Hyphen";
 "insertMessage" = "Insert";
 "lengthControlLabel" = "Length";
@@ -69,9 +80,6 @@
 "randomSeparatorTypeName" = "Random";
 "randomTypeName" = "Random";
 "rangePickerLabel" = "Range";
-"remoteStoreChangeWarning" = "A preference change was received from another device through iCloud";
-"resetAllDialogsWarning" = "All previously hidden dialogs will now be shown.";
-"resetToDefaultsWarning" = "All settings will be restored to their defaults, all stored passwords will be deleted, and Password Factory will restart";
 "selectPickerTypeLabel" = "Select %@";
 "selectTitle" = "Select";
 "separatorPickerLabel" = "Separator";
@@ -80,9 +88,6 @@
 "sourcePickerLabel" = "Source";
 "sourcePickerTitle" = "Password Source";
 "spaceSeparatorTypeName" = "Space";
-"startAtLoginNotInApplicationsWarning" = "Password Factory must be installed in Applications to add to Login Items";
-"storedPasswordOffWarning" = "Disabling stored passwords will delete all stored passwords";
-"storedPasswordOnWarning" = "All stored passwords are not encrypted, cancel to disable password storage";
 "storedTypeName" = "Stored";
 "strengthCSVHeader" = "Strength";
 "symbolPatternName" = "Symbol";

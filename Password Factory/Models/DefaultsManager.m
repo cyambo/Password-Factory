@@ -479,6 +479,7 @@ static DefaultsManager *dm = nil;
  @param notification remote notification
  */
 -(void)remoteStoreDidChange:(NSNotification *)notification {
+    NSLog(@"REMOTE CHANGES");
     if (notification.userInfo && notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
         BOOL currentRemoteStore = self.useRemoteStorage;
         //don't re-sync changes back to iCloud

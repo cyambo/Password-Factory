@@ -5,17 +5,17 @@
 	<key>colorPasswordText</key>
 	<true/>
 	<key>upperTextColor</key>
-	<string>236980</string>
+	<string>0A4080</string>
 	<key>lowerTextColor</key>
-	<string>853CDA</string>
+	<string>9511DA</string>
 	<key>symbolTextColor</key>
-	<string>DAA93C</string>
+	<string>DAAC11</string>
 	<key>numberTextColor</key>
-	<string>4A8023</string>
+	<string>1F800A</string>
 	<key>defaultTextColor</key>
 	<string>000000</string>
 	<key>extendedTextColor</key>
-	<string>FF4D46</string>
+	<string>FF3714</string>
 	<key>clearClipboard</key>
 	<false/>
 	<key>clearClipboardTime</key>
@@ -101,6 +101,8 @@
 	<key>hideStoredPasswordOnWarning</key>
 	<false/>
 	<key>hideStoredPasswordOffWarning</key>
+	<false/>
+	<key>hideStoredPasswordOffWithiCloudWarning</key>
 	<false/>
 	<key>hideMenuRestartWarning</key>
 	<false/>

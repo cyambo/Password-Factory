@@ -175,10 +175,10 @@
             //do not call the delegate if sender is nil
             if (sender != nil) {
                 [self.d setBool:YES forKey:@"activeControl"];
-                //magic to call sliderDone when mouse up happens
-                [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sliderDone:) object:sender];
+                //magic to call doneRepeatingAction when mouse up happens
+                [NSObject cancelPreviousPerformRequestsWithTarget:self];
                 NSArray *objectToSend = @[@([sender floatValue]),[self.delegate getPasswordLengthKey:self.passwordType]];
-                [self performSelector: @selector(sliderDone:) withObject: objectToSend afterDelay: 0.0];
+                [self performSelector: @selector(doneRepeatingAction:) withObject: objectToSend afterDelay: 0.0];
                 [self callDelegate];
             }
         }
@@ -191,12 +191,14 @@
 
  @param object array with slider value as first, and key as second
  */
--(void)sliderDone:(NSArray *)object {
+-(void)doneRepeatingAction:(NSArray *)object {
     NSNumber *value = object[0];
     NSString *key = object[1];
+    NSLog(@"SLD TUN %@",value);
     [self.d setBool:NO forKey:@"activeControl"];
     [self.d storeObject:value forKey:key];
 }
+
 /**
  Called when checkboxes are updaed
  
@@ -275,19 +277,28 @@
 - (IBAction)changeAdvancedStepper:(NSStepper *)sender {
     //do not call the delegate if the previous value was the same
     //this is so that when you hit 0 or 100 it doesn't keep repeating
+    
+    [self.d setBool:YES forKey:@"activeControl"];
+    NSString *key;
     if(sender == self.advancedSymbolCasePercentStepper) {
         if (sender.integerValue == self.previousSymbolCasePercent) {
             return;
         } else {
+            key = @"advancedSymbolCasePercent";
             self.previousSymbolCasePercent = sender.integerValue;
         }
     } else if (sender == self.advancedAccentedCasePercentStepper) {
         if (sender.integerValue == self.previousAccentedCasePercent) {
             return;
         } else {
+            key = @"advancedAccentedCasePercent";
             self.previousAccentedCasePercent = sender.integerValue;
         }
     }
+    //magic to call doneRepeatingAction when mouse up happens
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    NSArray *objectToSend = @[@([sender floatValue]),key];
+    [self performSelector: @selector(doneRepeatingAction:) withObject: objectToSend afterDelay: 0.0];
     [self callDelegate];
 }
 
@@ -308,9 +319,9 @@
         if (sender != nil) {
             [self.d setBool:YES forKey:@"activeControl"];
             //magic to call sliderDone when mouse up happens
-            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sliderDone:) object:sender];
+            [NSObject cancelPreviousPerformRequestsWithTarget:self];
             NSArray *objectToSend = @[@([sender floatValue]),@"advancedTruncateAt"];
-            [self performSelector: @selector(sliderDone:) withObject: objectToSend afterDelay: 0.0];
+            [self performSelector: @selector(doneRepeatingAction:) withObject: objectToSend afterDelay: 0.0];
             [self callDelegate];
         }
     }
