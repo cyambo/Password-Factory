@@ -49,9 +49,16 @@
 - (void)viewWillAppear {
     //get the screen size every time to deal with screen size changes
     [self getScreenSize];
-    //set the bg color to white
+    
     [self.view setWantsLayer:YES];
-    [self.view.layer setBackgroundColor:[[NSColor whiteColor] CGColor]];
+    
+    //set the bg color depending on if it is dark mode
+    if ([Utilities isDarkMode]) {
+        [self.view.layer setBackgroundColor:[[NSColor colorWithCalibratedRed:0.11 green:0.11 blue:0.11 alpha:1.0] CGColor]];
+    } else {
+        [self.view.layer setBackgroundColor:[[NSColor whiteColor] CGColor]];
+    }
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -99,7 +106,12 @@
     }
     __block NSMutableAttributedString *s = [[Utilities colorText:password size:whichFont] mutableCopy];
     //set the bg color to use for alternate letters
-    NSColor *bg = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.05];
+    NSColor *bg;
+    if ([Utilities isDarkMode]) {
+        bg = [NSColor colorWithRed:1 green:1 blue:1 alpha:0.05];
+    } else {
+        bg = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.05];
+    }
     //get our font
     NSFont *f = [NSFont fontWithName:ZoomFontName size:whichFont];
     

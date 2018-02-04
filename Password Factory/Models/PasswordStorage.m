@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #endif
 
-#define STORAGE_DEBUG 1
+#define STORAGE_DEBUG 0
 
 static bool _disableRemoteFetchChanges = NO;
 @interface PasswordStorage () <DefaultsManagerDelegate>
@@ -195,7 +195,7 @@ static bool _disableRemoteFetchChanges = NO;
 -(void)storePassword:(NSString *)password strength:(float)strength type:(PFPasswordType)type time:(NSDate *)time fromRemote:(BOOL)fromRemote {
     if (strength > 1.0) {
 #if STORAGE_DEBUG == 1
-        NSLog(@"STRENGTH ERRRR");
+        NSLog(@"STRENGTH ERROR");
 #endif
     }
     if (self.prev != nil && [password isEqualToString:self.prev]) { //getting duplicates from bug in observer on ios, so, just return
@@ -395,10 +395,14 @@ static bool _disableRemoteFetchChanges = NO;
 #pragma mark Misc
 -(void)executeBlock:(void (^)(void))block {
     if ([NSThread isMainThread]) {
-        NSLog(@"MAIN THRD");
+#if STORAGE_DEBUG == 1
+        NSLog(@"⭕️ - MAIN THREAD");
+#endif
         block();
     } else {
-        NSLog(@"NOT MAIN GTHRED");
+#if STORAGE_DEBUG == 1
+        NSLog(@"❌ - NOT MAIN THREAD");
+#endif
         dispatch_async(dispatch_get_main_queue(), block);
     }
 }

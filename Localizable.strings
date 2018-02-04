@@ -56,7 +56,7 @@
 "passwordCopyNotificationTitle" = "Password Copied";
 "passwordCSVHeader" = "Password";
 "passwordSaveError" = "Passwords could not be saved to disk.";
-"pasteboardCopyNotification" = "Password with strength %2.0f copied to clipboard";
+"pasteboardCopyNotification" = "Password '%@' with strength %2.0f copied to clipboard.";
 "pasteboardWriteFail" = "Pasteboard write failed";
 "patternTypeName" = "Pattern";
 "periodSeparatorTypeName" = "Period";

@@ -57,6 +57,7 @@
     //if changed to dark mode update the display
     if([keyPath isEqualToString:@"AppleInterfaceStyle"]) {
         [self initBackgroundColor];
+        [self setTextColor];
         [self setNeedsDisplay];
         return;
     }

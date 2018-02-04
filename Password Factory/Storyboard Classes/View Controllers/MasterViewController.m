@@ -235,7 +235,7 @@
 - (void)displayCopyNotification {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     [notification setTitle:NSLocalizedString(@"passwordCopyNotificationTitle", comment: @"Password Copied")];
-    [notification setInformativeText:[NSString stringWithFormat:NSLocalizedString(@"pasteboardCopyNotification", comment: @"Password with strength %2.0f copied to clipboard."),(self.passwordStrengthLevel.strength * 100) ]];
+    [notification setInformativeText:[NSString stringWithFormat:NSLocalizedString(@"pasteboardCopyNotification", comment: @"Password %@ with strength %2.0f copied to clipboard."),self.passwordField.string,(self.passwordStrengthLevel.strength * 100) ]];
     [notification setDeliveryDate:[NSDate dateWithTimeInterval:0 sinceDate:[NSDate date]]];
     //Set the sound if the user configured it
     if ([[DefaultsManager get] boolForKey:@"globalHotkeyPlaySound"]) {
