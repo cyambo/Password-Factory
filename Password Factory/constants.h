@@ -99,6 +99,8 @@ typedef NS_ENUM(NSInteger, PFErrorCode) {
 #define PFObserverTimeThreshold 80000000
 
 extern NSString * const SupportEmailAddress;
+extern NSString * const macOSHelpURL;
+extern NSString * const iOSHelpURL;
 extern NSString * const SharedDefaultsAppGroup;
 extern NSString * const iCloudContainer;
 extern NSString * const iCloudContainerZone;

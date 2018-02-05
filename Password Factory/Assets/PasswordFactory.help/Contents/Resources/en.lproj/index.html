@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,9 +8,10 @@
     <script src="scrpt/jquery-3.3.1.min.js"></script>
     <script src="scrpt/bootstrap.bundle.js"></script>
     <script src="scrpt/main.js"></script>
+    <link rel="icon" type="image/png" href="gfx/favicon.png" />
+    <meta name="ROBOTS" content="ANCHORS">
     <title>Password Factory Help</title>
 </head>
-
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
@@ -76,7 +77,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appendix</a></a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appendix</a>
                         <div class="dropdown-menu scrollable-menu">
                             <a class="dropdown-item" href="#appendix">Top</a>
                             <div class="dropdown-divider"></div>
@@ -108,7 +109,7 @@
         </div>
         <div class="row content">
             <div class="col">
-                <section id="window_basics">
+                <section id="window_basics"><a name="window_basics"></a>
                     <div class="row row-header p-3">
                         <h2>Window Basics</h2>
                     </div>
@@ -123,7 +124,7 @@
                         <p>The main window consists of three areas, the password viewing area, type selection area, and the controls area.</p>
 
 
-                        <section class="mt-4" id="viewing_area">
+                        <section class="mt-4" id="viewing_area"><a name="viewing_area"></a>
                         <h3>Viewing Area</h3>
                         <div class="m-3 card w-75 mx-auto">
                             <img alt="Password Viewing Area" class="card-img-top rounded" src="gfx/viewing.png"/>
@@ -165,7 +166,7 @@
                             </div>
                         </div>
                         </section>
-                        <section class="mt-4" id="type_selection_area">
+                        <section class="mt-4" id="type_selection_area"><a name="type_selection_area"></a>
                         <h3>Type Selection Area</h3>
                         <div class="m-3 card w-25 mx-auto">
                             <img alt="Type Selection" class="card-img-top rounded" src="gfx/selection.png" />
@@ -175,7 +176,7 @@
                         </div>
                         <p>The type selection area allows for selection of the different password types. Clicking on an item will change the currently selected type. In addition to the four standard password types, two additional types, '<a href="#advanced_password">Advanced</a>' and '<a href="#stored_password">Stored</a>' can be added from the preferences. <a href="#preferences_global">See Preferences - Global</a> for more information.</p>
                         </section>
-                        <section class="mt-4" id="controls_area">
+                        <section class="mt-4" id="controls_area"><a name="controls_area"></a>
                         <h3>Controls Area</h3>
                         <p>The controls area displays the controls for the currently selected password type.</p>
                         </section>
@@ -185,12 +186,12 @@
         </div>
         <div class="row content">
             <div class="col">
-                <section id="password_type">
+                <section id="password_type"><a name="password_type"></a>
                     <div class="row row-header p-3">
                         <h2>Password Types</h2>
                     </div>
                     <div class="container">
-                        <section class="mt-4" id="random_password">
+                        <section class="mt-4" id="random_password"><a name="random_password"></a>
                             <h3 class="random header_image_type">Random Password</h3>
                             <div class="m-3 card w-75 mx-auto">
                                 <img alt="Random Password Controls" class="card-img-top rounded" src="gfx/controls/random-control.png"/>
@@ -214,7 +215,7 @@
                                 <dd class="col-sm-9">Changing the case type will change the case of letters that are used. See <a href="#case_types">Case Types</a> for more information.</dd>
                             </dl>
                         </section>
-                        <section class="mt-4" id="pattern_password">
+                        <section class="mt-4" id="pattern_password"><a name="pattern_password"></a>
                             <h3 class="pattern header_image_type">Pattern</h3>
                             <div class="m-3 card w-75 mx-auto">
                                 <img alt="Pattern Password Controls" class="card-img-top rounded" src="gfx/controls/pattern-control.png"/>
@@ -270,7 +271,7 @@
                             <p>When typing in the pattern field any character not in the pattern list will be used as is. If you want to insert any of the pattern characters directly precede with a '\'.</p>
                             <p>For example the pattern 'cC\C!w' will be a lowercase letter, uppercase letter, C, a symbol, and a word which would give a result like 'kWC!senseless'.</p>
                         </section>
-                        <section class="mt-4" id="pronounceable_password">
+                        <section class="mt-4" id="pronounceable_password"><a name="pronounceable_password"></a>
                             <h3 class="pronounceable header_image_type">Pronounceable</h3>
                             <div class="m-3 card w-75 mx-auto">
                                 <img alt="Pronounceable Password Controls" class="card-img-top rounded" src="gfx/controls/pronounceable-control.png"/>
@@ -281,7 +282,7 @@
                             <p>The pronounceable section will generate a random password by combining <a href="#phonetic_sounds">phonetic sounds</a> to make pronounceable, but gibberish words.</p>
                             <p>The <a href="#password_length">length slider</a> will set the approximate length for the password. The <a href="#separator_types">separator</a> menu will change the separator that is used between words. And the <a href="#case_types">case types</a> menu will set the case type.</p>
                             </section>
-                            <section class="mt-4" id="passphrase_password">
+                            <section class="mt-4" id="passphrase_password"><a name="passphrase_password"></a>
                             <h3 class="passphrase header_image_type">Passphrase</h3>
                             <div class="m-3 card w-75 mx-auto">
                                 <img alt="Passphrase Password Controls" class="card-img-top rounded" src="gfx/controls/passphrase-control.png"/>
@@ -292,7 +293,7 @@
                             <p>The passphrase section will generate a passphrase style password. It will consist of a series of words separated by your chosen separator character.</p>
                             <p>The <a href="#password_length">length slider</a> will set the approximate length for the password. The <a href="#separator_types">separator</a> menu will change the separator that is used between words. And the <a href="#case_types">case types</a> menu will set the case type.</p>
                         </section>
-                        <section class="mt-4" id="advanced_password">
+                        <section class="mt-4" id="advanced_password"><a name="advanced_password"></a>
                             <h3 class="advanced header_image_type">Advanced</h3>
                             <div class="m-3 card w-75 mx-auto">
                                 <img alt="Advanced Password Controls" class="card-img-top rounded" src="gfx/controls/advanced-control.png"/>
@@ -312,7 +313,7 @@
                             <p>To the right is the pattern section. The 'Prefix Pattern' will prepend the password with the pattern entered. The 'Suffix Pattern' will append that pattern to the password. The patterns use the same tokens as the <a href="#pattern_password">pattern</a> password.</p>
                             <p>Below that is the regex section. This section allows for the addition of a single regular expression find and replace within the password. The regular expression allows for captures and other standard regular expression syntax. For a more in depth explanation of regular expressions see <a href="https://www.regular-expressions.info/quickstart.html" target="_blank">this site</a>.</p>
                         </section>
-                        <section class="mt-4" id="stored_password">
+                        <section class="mt-4" id="stored_password"><a name="stored_password"></a>
                             <h3 class="stored header_image_type">Stored</h3>
                             <div class="m-3 card w-75 mx-auto">
                                 <img alt="Stored Password Table" class="card-img-top rounded" src="gfx/controls/stored-control.png"/>
@@ -330,12 +331,12 @@
         </div>
         <div class="row content">
             <div class="col">
-                <section id="controls">
+                <section id="controls"><a name="controls"></a>
                     <div class="row row-header p-3">
                         <h2>Controls</h2>
                     </div>
                     <div class="container">
-                        <section class="mt-4" id="menubar">
+                        <section class="mt-4" id="menubar"><a name="menubar"></a>
                         <h3>Menubar</h3>
                         <div class="m-3 card w-50 mx-auto">
                             <img alt="Menu Window" class="card-img-top rounded" src="gfx/menu-window.png"/>
@@ -345,7 +346,7 @@
                         </div>
                         <p>When <a href="#preferences_run_in_menu">running in the menubar</a> the application uses a more compact interface. The interface functions the same as when it is running normally, however items are rearranged. To select a password type use the control at the top of the window and click the <a href="#type_icons">icon</a> to select, and the type name will show above the password display. The preferences window can be shown by clicking the gear icon on the bottom right.</p>
                         </section>
-                        <section class="mt-4" id="widget">
+                        <section class="mt-4" id="widget"><a name="widget"></a>
                         <h3>Widget</h3>
                         <div class="m-3 card w-50 mx-auto">
                             <img alt="Today Widget" class="card-img-top rounded" src="gfx/widget.png"/>
@@ -362,7 +363,7 @@
                         </div>
                         <p>The widget will generate passwords based upon the configuration of the Password Factory application. Therefore, if the 'Passphrase' type is set, then the widget will generate a 'Passphrase' password using the current settings. The widget can only generate and copy passwords, and if you wish to change the password type go back to the application by clicking the gear and change settings from there.</p>
                         </section>
-                        <section class="mt-4" id="export">
+                        <section class="mt-4" id="export"><a name="export"></a>
                         <h3>Exporting Passwords</h3>
 
                         <div class="m-3 card w-25 mx-auto">
@@ -374,7 +375,7 @@
                         <p>The export function will create a CSV file containing a list of generated passwords. First choose which type to export. Choosing anything other than stored will generate a series of new passwords. Choosing stored will export all stored passwords. The number of passwords to generate is set by filling in the 'Amount to Export'. Additionally the 'Info to Export' options will add the password type and the <a href="#password_strength">strength</a> to the CSV file.</p>
                         <p>Clicking 'Export' will export all the passwords to a file of your choosing. Large numbers of passwords can take an extended period of time to generate.</p>
                         </section>
-                        <section class="mt-4" id="dock_menu">
+                        <section class="mt-4" id="dock_menu"><a name="dock_menu"></a>
                         <h3>Dock Menu</h3>
                         <div class="m-3 card w-25 mx-auto">
                             <img alt="Dock Menu" class="card-img-top rounded" src="gfx/dock.png"/>
@@ -384,7 +385,7 @@
                         </div>
                         <p>Clicking and holding on the dock icon will show the dock menu. Selecting one odf the password types will switch to that password type, generate a new password and copy it to the clipboard.</p>
                         </section>
-                        <section class="mt-4" id="keyboard_commands">
+                        <section class="mt-4" id="keyboard_commands"><a name="keyboard_commands"></a>
                         <h3>Keyboard Commands</h3>
                         <p>Password factory has several key commands for controlling the application</p>
                         <dl class="row">
@@ -414,7 +415,7 @@
         </div>
         <div class="row content">
             <div class="col">
-                <section id="preferences">
+                <section id="preferences"><a name="preferences"></a>
                     <div class="row row-header p-3">
                         <h2>Preferences</h2>
                     </div>
@@ -425,7 +426,7 @@
                             Preferences Window
                             </div>
                         </div>
-                        <section class="mt-4" id="preferences_password_display">
+                        <section class="mt-4" id="preferences_password_display"><a name="preferences_password_display"></a>
                             <h3>Password Display</h3>
                             <p>The password display section controls how the password is shown in the app. If 'Color Password Text" is checked the characters in the password will be colored. Coloring the password text will enable you to easily distinguish between similar characters. You can change the color of each character type by clicking on the color boxes and selecting a new color.</p>
                             <dl class="row">
@@ -443,7 +444,7 @@
                                 <dd class="col-sm-9">Accented characters and symbols</dd>
                             </dl>
                         </section>
-                        <section class="mt-4" id="preferences_global">
+                        <section class="mt-4" id="preferences_global"><a name="preferences_global"></a>
                             <h3>Global</h3>
                             <p>This section contains all of the global settings for the application.</p>
                             <h4 id="preferences_max_password">Max Password Length</h4>
@@ -463,7 +464,7 @@
                             <h4 id="preferences_icloud">iCloud Sync</h4>
                             <p>Checking iCloud Sync will sync all your passwords and settings to iCloud and will be available to all your macOS and iOS devices running Password Factory. See <a href="#icloud_sync">iCloud Sync</a> for more information.</p>
                         </section>
-                        <section class="mt-4" id="preferences_hotkey">
+                        <section class="mt-4" id="preferences_hotkey"><a name="preferences_hotkey"></a>
                             <h3>Generate and Copy Hotkey</h3>
                             <p>The global hotkey will allow you to set a key command to automatically generate a password and copy it to the clipboard.</p>
                             <h4>Setting Global Hotkey</h4>
@@ -482,11 +483,11 @@
                                 <dd class="col-sm-9">If this is checked, a sound will be played whenever the global hotkey is pressed</dd>
                             </dl>
                         </section>
-                        <section class="mt-4" id="preferences_clipboard">
+                        <section class="mt-4" id="preferences_clipboard"><a name="preferences_clipboard"></a>
                             <h3>Clipboard Handling</h3>
                             <p>Checking 'Automatically Clear Clipboard' will clear the clipboard of your password after the 'Clear Time' has passed. If you use a clipboard manager this may not remove the password from your clipboard manager.</p>
                         </section>
-                        <section class="mt-4" id="preferences_reset">
+                        <section class="mt-4" id="preferences_reset"><a name="preferences_reset"></a>
                             <h3>Reset</h3>
                             <p>Clicking 'Reset All <a href="#alerts">Warnings and Dialogs</a> will show all hidden <a href="#alerts">warnings and alerts</a></p>
                         </section>
@@ -496,16 +497,16 @@
             </div>
             <div class="row content">
                 <div class="col">
-                    <section id="appendix">
+                    <section id="appendix"><a name="appendix"></a>
                         <div class="row row-header p-3">
                             <h2>Appendix</h2>
                         </div>
                         <div class="container">
-                            <section class="mt-4" id="password_length">
+                            <section class="mt-4" id="password_length"><a name="password_length"></a>
                                 <h3>Password Length</h3>
                                 <p>The length of the password will always be shown to the bottom right of the password display. Occasionally the password length shown will differ from the slider length. This happens because the algorithm for passphrase and pronounceable passwords uses the length as an approximation. The length can be smaller or larger because it will not truncate a <a href="#phonetic_sounds">phonetic sound</a> or a word to fit. If a password of a specific length is needed use the <a href="#advanced_password">advanced password</a> type, and set the truncate value to the length needed.</p>
                             </section>
-                            <section class="mt-4" id="password_strength">
+                            <section class="mt-4" id="password_strength"><a name="password_strength"></a>
                                 <h3>Password Strength</h3>
                                 <p>Passwords have a strength from 0 to 100, with 100 being the strongest. Passwords with a strength of 50 and above are the strongest and should give you the best protection. The strength meter indicates strength with the size and color. Smaller widths are weaker, and larger widths are stronger. The color of the strength meter goes from red to purple, and below is a list of colors mapped to their strength and 'crack time'.</p>
 
@@ -524,7 +525,7 @@
                                 </ul>
                                 <p>Password strength and crack time should only be used as a guide. Creating a password that was indicated to be strong does not mean it is uncrackable. Password cracking and other techniques constantly evolve and no password is 100% secure.</p>
                             </section>
-                            <section class="mt-4" id="separator_types">
+                            <section class="mt-4" id="separator_types"><a name="separator_types"></a>
                                 <h3>Separator Types</h3>
                                 <dl class="row">
                                     <dt class="col-sm-3 text-right">None</dt>
@@ -549,7 +550,7 @@
                                     <dd class="col-sm-9">A single character generated with <a href="#random_password">random password</a> settings</dd>
                                 </dl>
                             </section>
-                            <section class="mt-4" id="case_types">
+                            <section class="mt-4" id="case_types"><a name="case_types"></a>
                                 <h3>Case Types</h3>
                                 <p>There are five case types available, however not all options are present with certain password types</p>
                                 <dl class="row">
@@ -565,7 +566,7 @@
                                     <dd class="col-sm-9">The case is unchanged from the source</dd>
                                 </dl>
                             </section>
-                            <section class="mt-4" id="ambiguous_characters">
+                            <section class="mt-4" id="ambiguous_characters"><a name="ambiguous_characters"></a>
                                 <h3>Ambiguous Characters</h3>
                                 <p>Ambiguous characters are characters that look similar to other characters. The list of ambiguous characters are "I1O0l0"</p>
                                 <p>Avoid ambiguous characters will not use any of those characters. Replace ambiguous will replace the ambiguous characters in this format:</p>
@@ -580,7 +581,7 @@
                                     <dd class="col-sm-9">Number <code>0</code></dd>
                                 </dl>
                             </section>
-                            <section class="mt-4" id="symbol_characters">
+                            <section class="mt-4" id="symbol_characters"><a name="symbol_characters"></a>
                                 <h3>Symbol Characters</h3>
                                 <p>These are non-alphanumeric symbols. The symbol characters the app uses are:</p>
                                 <ul class="list-inline">
@@ -616,11 +617,11 @@
                                     <li class="list-inline-item">'</li>
                                 </ul>
                             </section>
-                            <section class="mt-4" id="phonetic_sounds">
+                            <section class="mt-4" id="phonetic_sounds"><a name="phonetic_sounds"></a>
                                 <h3>Phonetic Sounds</h3>
                                 <p>These are 2 to 3 letter single syllable sounds. For example, 'BU','KI','KA','STA','AI'</p>
                             </section>
-                            <section class="mt-4" id="transform_symbolize">
+                            <section class="mt-4" id="transform_symbolize"><a name="transform_symbolize"></a>
                                 <h3>Symbolize</h3>
                                 <p>Symbolize changes individual characters into symbols that resemble that character. Setting the percent indicates that approximately that percentage of characters will be replaced. For example, at 50% about half of the characters will be replaced with the symbolized counterpart.</p>
                                 <h4>Example items</h4>
@@ -662,7 +663,7 @@
                                     </dd>
                                 </dl>
                             </section>
-                            <section class="mt-4" id="transform_accenter">
+                            <section class="mt-4" id="transform_accenter"><a name="transform_accenter"></a>
                                 <h3>Accenter</h3>
                                 <p>The Accenter changes characters into <a href="#emojis_and_extended">extended characters</a>. It will either be with accents, diacritics and hooks, or characters from other languages that look similar to the ones in the Latin alphabet. Setting the percent indicates that approximately that percentage of characters will be replaced. For example, at 50% about half of the characters will be replaced with the accented counterpart.</p>
                                 <h4>Example items</h4>
@@ -702,11 +703,11 @@
                                     </dd>
                                 </dl>
                             </section>
-                            <section class="mt-4" id="emojis_and_extended">
+                            <section class="mt-4" id="emojis_and_extended"><a name="emojis_and_extended"></a>
                                 <h3>Emojis and Extended Characters</h3>
                                 <p>Password Factory has support for emojis and extended characters. An extended character is a character that is not in the standard Latin alphabet, plus numbers, and standard symbolic characters. Although emojis and extended characters will create a stronger password, not all systems support using these characters. Always take caution when using emojis or extended characters and if possible test your password against the login system first.</p>
                             </section>
-                            <section class="mt-4" id="alerts">
+                            <section class="mt-4" id="alerts"><a name="alerts"></a>
                                 <h3>iCloud Sync</h3>
                                 <div class="m-3 card w-75 mx-auto">
                                     <img alt="Alert Window" class="card-img-top rounded" src="gfx/alert.png" />
@@ -716,12 +717,12 @@
                                 </div>
                                 <p>Alerts are shown when there is a warning about the current action, or there is an application error. Clicking 'Cancel' will stop the current action and return the application back to the previous state. 'OK' will continue with the current action, or simply dismiss the window. Some alerts can be hidden, by clicking 'Do not show this message again', that alert will not be shown again.</p>
                             </section>
-                            <section class="mt-4" id="icloud_sync">
+                            <section class="mt-4" id="icloud_sync"><a name="icloud_sync"></a>
                                 <h3>iCloud Sync</h3>
                                 <p>iCloud sync can be enabled in <a href="#preferences">preferences</a>. Enabling sync will sync all preferences and stored password to iCloud. Both preferences and stored passwords will now be available to all devices using iCloud Sync.</p>
                                 <p>When initially activating sync all local preferences will be synced to iCloud. Then when activating on another device, local preferences will be overwritten with preferences stored on iCloud. Then all stored passwords will be merged with any passwords stored in iCloud.</p>
                             </section>
-                            <section class="mt-4" id="touchbar">
+                            <section class="mt-4" id="touchbar"><a name="touchbar"></a>
                                 <h3>Touch Bar</h3>
                                 <p>When running Password Factory on Touch Bar equipped Macs a command palette will be displayed. There are two different displays, depending on which function is selected</p>
                                 <div class="m-3 card w-75 mx-auto">

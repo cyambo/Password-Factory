@@ -17,6 +17,9 @@
 #import "MainWindowController.h"
 #import "MenuPopover.h"
 #import "Utilities.h"
+#import "Password_Factory-Swift.h"
+@import SBObjectiveCWrapper;
+
 @interface AppDelegate()
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;
@@ -30,6 +33,7 @@
 @implementation AppDelegate
 
 -(void)applicationWillFinishLaunching:(NSNotification *)aNotification {
+    [Logging setupLogging];
     [Utilities setRemoteStore];
     //set selector for url scheme that is called by the widget to go back to the app
     NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];

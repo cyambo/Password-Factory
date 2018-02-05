@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17B1B69A76E88C967797B892 /* Pods_Password_Factory_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 538DD97A433264E77F2E182F /* Pods_Password_Factory_iOS.framework */; };
-		2849E2FA260664415E66F57F /* libPods-Password FactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C73EC005D993E1634EE5F6D /* libPods-Password FactoryTests.a */; };
+		3393B886D5A958CB8A911049 /* Pods_Password_Factory_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FCFA1CD39A93276E70E436 /* Pods_Password_Factory_Widget.framework */; };
 		4001080D1FD32FB600594304 /* PatternTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001080C1FD32FB600594304 /* PatternTextView.swift */; };
 		400108121FD3323900594304 /* PasswordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400108111FD3323900594304 /* PasswordsViewController.swift */; };
 		400108131FD3338000594304 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 40537D8C1F9419FD00D645B7 /* constants.m */; };
@@ -108,6 +108,8 @@
 		406C388D1B844F9A00F471E7 /* PreferencesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 409585FE1B8112FD00393B99 /* PreferencesButton.m */; };
 		406E8FE11FE30E7400A76765 /* LengthControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E8FE01FE30E7400A76765 /* LengthControlView.swift */; };
 		407B6160200021B80043B073 /* Type Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 407B615F200021B80043B073 /* Type Icons.xcassets */; };
+		407C38FF2027B2D0002CC6E3 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C38FE2027B2D0002CC6E3 /* Logging.swift */; };
+		407C39012027C3A7002CC6E3 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C38FE2027B2D0002CC6E3 /* Logging.swift */; };
 		407DA8D61FCC9A8800B84E66 /* ColorTextPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */; };
 		40855E0A1FBCEEA8005BD8F4 /* StoredPasswordColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E091FBCEEA8005BD8F4 /* StoredPasswordColumn.m */; };
 		40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 40855E0C1FBD1628005BD8F4 /* TypeIcons.m */; };
@@ -187,6 +189,7 @@
 		40DAB5811B843869003F5C3D /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
 		40DCC9D11FC510440041FC23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FB0C251B810F10009193F8 /* Images.xcassets */; };
 		40DFFEE41B811F470047CF90 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DFFEE31B811F470047CF90 /* MainWindow.m */; };
+		40E146992028D0CC00EA9D43 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E146982028D0CC00EA9D43 /* HelpViewController.swift */; };
 		40E4535A1FCBA4FD0075F490 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E453591FCBA4FD0075F490 /* BoxView.m */; };
 		40E580451FDDA2B800AD7DB9 /* SelectPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */; };
 		40E809AB1FD485AB0042AA8A /* DefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB57F1B843734003F5C3D /* DefaultsManager.m */; };
@@ -209,8 +212,8 @@
 		40FB841B1FC5F66A00474B94 /* AlertWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB841A1FC5F66A00474B94 /* AlertWindow.m */; };
 		40FB84221FC5F8AF00474B94 /* AlertWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB84211FC5F8AF00474B94 /* AlertWindowController.m */; };
 		40FB929B1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB929A1FB90F6600BFF50B /* NSString+ReplaceAmbiguous.m */; };
-		808046B8734D94FF0EF2DF1F /* libPods-Password Factory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CBED375496EDD15BD9791D /* libPods-Password Factory.a */; };
-		BDA020FF08F21426109CD901 /* libPods-Password Factory Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2584A870ADD1F053569C82 /* libPods-Password Factory Widget.a */; };
+		7A7D84223C636B470CB1AC74 /* Pods_Password_FactoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB44DC34C9071522ACFF6A0 /* Pods_Password_FactoryTests.framework */; };
+		FEB0F93CACADD9B61D4E7F2F /* Pods_Password_Factory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44F4369D420666709A3CAF4 /* Pods_Password_Factory.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,7 +272,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C73EC005D993E1634EE5F6D /* libPods-Password FactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password FactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CFF864B7651EC39C23C4AF5 /* Pods-Password Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.release.xcconfig"; sourceTree = "<group>"; };
 		4001080C1FD32FB600594304 /* PatternTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternTextView.swift; sourceTree = "<group>"; };
 		400108111FD3323900594304 /* PasswordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordsViewController.swift; sourceTree = "<group>"; };
@@ -354,6 +356,8 @@
 		406E50611B81481B00A170CF /* Password Factory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Password Factory.entitlements"; sourceTree = "<group>"; };
 		406E8FE01FE30E7400A76765 /* LengthControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthControlView.swift; sourceTree = "<group>"; };
 		407B615F200021B80043B073 /* Type Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Type Icons.xcassets"; sourceTree = "<group>"; };
+		407C38FE2027B2D0002CC6E3 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		407C39002027B328002CC6E3 /* Password Factory-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Password Factory-Bridging-Header.h"; sourceTree = "<group>"; };
 		407DA8D41FCC9A8800B84E66 /* ColorTextPreview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorTextPreview.h; sourceTree = "<group>"; };
 		407DA8D51FCC9A8800B84E66 /* ColorTextPreview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorTextPreview.m; sourceTree = "<group>"; };
 		40855E081FBCEEA8005BD8F4 /* StoredPasswordColumn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoredPasswordColumn.h; sourceTree = "<group>"; };
@@ -456,6 +460,7 @@
 		40DAB57F1B843734003F5C3D /* DefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsManager.m; sourceTree = "<group>"; };
 		40DFFEE21B811F470047CF90 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		40DFFEE31B811F470047CF90 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		40E146982028D0CC00EA9D43 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		40E453581FCBA4FD0075F490 /* BoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
 		40E453591FCBA4FD0075F490 /* BoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
 		40E580441FDDA2B800AD7DB9 /* SelectPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPickerView.swift; sourceTree = "<group>"; };
@@ -487,12 +492,13 @@
 		418BAABFFB7F9ECF0EE337E2 /* Pods-Password FactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		538DD97A433264E77F2E182F /* Pods_Password_Factory_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Password_Factory_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66560080A748947594C318DD /* Pods-Password FactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password FactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		6DB44DC34C9071522ACFF6A0 /* Pods_Password_FactoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Password_FactoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C4F6A4B430962E87951074 /* Pods-Password Factory Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget.release.xcconfig"; sourceTree = "<group>"; };
 		892631EA046B5E55043CD308 /* Pods-Password Factory Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory Widget/Pods-Password Factory Widget.debug.xcconfig"; sourceTree = "<group>"; };
-		90CBED375496EDD15BD9791D /* libPods-Password Factory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A248F799EB52943BE4163030 /* Pods-Password Factory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory.debug.xcconfig"; sourceTree = "<group>"; };
+		A44F4369D420666709A3CAF4 /* Pods_Password_Factory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Password_Factory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD1FE6B69285E3345818130 /* Pods-Password Factory iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Factory iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Factory iOS/Pods-Password Factory iOS.release.xcconfig"; sourceTree = "<group>"; };
-		DF2584A870ADD1F053569C82 /* libPods-Password Factory Widget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Password Factory Widget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0FCFA1CD39A93276E70E436 /* Pods_Password_Factory_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Password_Factory_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,7 +515,7 @@
 			files = (
 				4093E29920110D8600D7DAA6 /* CloudKit.framework in Frameworks */,
 				409E13BA1B8258170041541B /* NotificationCenter.framework in Frameworks */,
-				BDA020FF08F21426109CD901 /* libPods-Password Factory Widget.a in Frameworks */,
+				3393B886D5A958CB8A911049 /* Pods_Password_Factory_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,7 +548,7 @@
 			files = (
 				404866812002CDA5008A751F /* CloudKit.framework in Frameworks */,
 				40CC4D881F91B4620093A9B8 /* ServiceManagement.framework in Frameworks */,
-				808046B8734D94FF0EF2DF1F /* libPods-Password Factory.a in Frameworks */,
+				FEB0F93CACADD9B61D4E7F2F /* Pods_Password_Factory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +556,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2849E2FA260664415E66F57F /* libPods-Password FactoryTests.a in Frameworks */,
+				7A7D84223C636B470CB1AC74 /* Pods_Password_FactoryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +571,7 @@
 				40E9D1681FE04BC100FE1A1C /* TypeSelectionViewController.swift */,
 				40974E321FE485B800AC2772 /* PreferencesViewController.swift */,
 				406332601FFF011B00295E5B /* SetHomeScreenActionsViewController.swift */,
+				40E146982028D0CC00EA9D43 /* HelpViewController.swift */,
 			);
 			path = "Storyboard Classes";
 			sourceTree = "<group>";
@@ -924,6 +931,7 @@
 				4001081E1FD3360300594304 /* SecureRandom.m */,
 				402C96411FD4C53B00E2B37E /* ColorUtilities.h */,
 				402C96421FD4C53B00E2B37E /* ColorUtilities.m */,
+				407C38FE2027B2D0002CC6E3 /* Logging.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -939,6 +947,7 @@
 		40FB0C121B810F10009193F8 = {
 			isa = PBXGroup;
 			children = (
+				407C39002027B328002CC6E3 /* Password Factory-Bridging-Header.h */,
 				40A837CB2014115900468E1B /* Localizable.strings */,
 				40FB0C1D1B810F10009193F8 /* Password Factory */,
 				4058DF251F92995800CCB6E7 /* Password Factory Helper */,
@@ -1105,10 +1114,10 @@
 				405118591FD6263F00E3FDFB /* CoreData.framework */,
 				40CC4D871F91B4620093A9B8 /* ServiceManagement.framework */,
 				409E13B91B8258170041541B /* NotificationCenter.framework */,
-				90CBED375496EDD15BD9791D /* libPods-Password Factory.a */,
-				DF2584A870ADD1F053569C82 /* libPods-Password Factory Widget.a */,
 				538DD97A433264E77F2E182F /* Pods_Password_Factory_iOS.framework */,
-				0C73EC005D993E1634EE5F6D /* libPods-Password FactoryTests.a */,
+				A44F4369D420666709A3CAF4 /* Pods_Password_Factory.framework */,
+				E0FCFA1CD39A93276E70E436 /* Pods_Password_Factory_Widget.framework */,
+				6DB44DC34C9071522ACFF6A0 /* Pods_Password_FactoryTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1288,6 +1297,9 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {
@@ -1561,11 +1573,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory iOS/Pods-Password Factory iOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ZXCVBN-framework/ZXCVBN.framework",
+				"${BUILT_PRODUCTS_DIR}/SBObjectiveCWrapper-iOS/SBObjectiveCWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver-iOS/SwiftyBeaver.framework",
+				"${BUILT_PRODUCTS_DIR}/ZXCVBN-iOS/ZXCVBN.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHSVColorPicker/SwiftHSVColorPicker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBObjectiveCWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZXCVBN.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHSVColorPicker.framework",
 			);
@@ -1598,9 +1614,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Password Factory/Pods-Password Factory-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework",
+				"${BUILT_PRODUCTS_DIR}/SBObjectiveCWrapper-macOS/SBObjectiveCWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver-macOS/SwiftyBeaver.framework",
+				"${BUILT_PRODUCTS_DIR}/ZXCVBN-macOS/ZXCVBN.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASShortcut.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBObjectiveCWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZXCVBN.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1613,9 +1638,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Password FactoryTests/Pods-Password FactoryTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework",
+				"${BUILT_PRODUCTS_DIR}/SBObjectiveCWrapper-macOS/SBObjectiveCWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver-macOS/SwiftyBeaver.framework",
+				"${BUILT_PRODUCTS_DIR}/OCMock/OCMock.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASShortcut.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBObjectiveCWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCMock.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1814,12 +1848,14 @@
 				400108151FD333A800594304 /* PasswordFactoryConstants.m in Sources */,
 				40E809AB1FD485AB0042AA8A /* DefaultsManager.m in Sources */,
 				40189F5C1FD46A6D00D87217 /* PassphrasePasswordViewController.swift in Sources */,
+				407C39012027C3A7002CC6E3 /* Logging.swift in Sources */,
 				4054836E1FE9976A00E42EF6 /* StoredPasswordTableViewCell.swift in Sources */,
 				40974E311FE4828400AC2772 /* ColorWellView.swift in Sources */,
 				402C964E1FD5C57C00E2B37E /* PasswordTextView.swift in Sources */,
 				40974E331FE485B800AC2772 /* PreferencesViewController.swift in Sources */,
 				406332611FFF011B00295E5B /* SetHomeScreenActionsViewController.swift in Sources */,
 				400E45DB1FD8828700A3F4F7 /* SelectTypeCollectionViewCell.swift in Sources */,
+				40E146992028D0CC00EA9D43 /* HelpViewController.swift in Sources */,
 				40E809AC1FD4861A0042AA8A /* NSString+UnicodeLength.m in Sources */,
 				400108221FD3360300594304 /* SecureRandom.m in Sources */,
 				40189F601FD46A8F00D87217 /* AdvancedPasswordViewController.swift in Sources */,
@@ -1869,6 +1905,7 @@
 				40D428DE1FBFC8B10024965B /* ModeTextField.m in Sources */,
 				40A0A3CC1FBBCDAC009CEB5E /* Passwords+CoreDataProperties.m in Sources */,
 				40855E0D1FBD1628005BD8F4 /* TypeIcons.m in Sources */,
+				407C38FF2027B2D0002CC6E3 /* Logging.swift in Sources */,
 				4095862F1B8112FD00393B99 /* PreferencesViewController.m in Sources */,
 				4012E5101B9750FA00BAF217 /* NSString+SymbolCase.m in Sources */,
 				4004F1DE1FBB759A0093DA3F /* ZoomViewController.m in Sources */,
@@ -2414,11 +2451,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XWE2VMM384;
 				INFOPLIST_FILE = "Password Factory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2439,6 +2478,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XWE2VMM384;
 				INFOPLIST_FILE = "Password Factory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -2457,6 +2497,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 418BAABFFB7F9ECF0EE337E2 /* Pods-Password FactoryTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -2466,10 +2507,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Password FactoryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cloud13.$(PRODUCT_NAME:rfc1034identifier)";
@@ -2483,6 +2521,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 66560080A748947594C318DD /* Pods-Password FactoryTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;

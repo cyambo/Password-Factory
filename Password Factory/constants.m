@@ -1,6 +1,9 @@
 #import "constants.h"
 
 NSString * const SupportEmailAddress = @"support@password-factory.com";
+NSString * const macOSHelpURL = @"https://password-factory.com/macOS/v3.0/";
+NSString * const iOSHelpURL = @"https://password-factory.com/iOS/v1.0/";
+
 NSString * const SharedDefaultsAppGroup = @"XWE2VMM384.com.cloudthirteen.Password-Factory";
 NSString * const iCloudContainer = @"iCloud.com.password-factory.app";
 NSString * const iCloudContainerZone = @"Passwords";

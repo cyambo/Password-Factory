@@ -21,7 +21,7 @@ class PreferencesButton: UIBarButtonItem {
         setDisplay()
     }
     func setDisplay() {
-        image = StyleKit.imageOfPreferencesButton(strokeColor: UIColor.black)
+        image = StyleKit.imageOfPreferencesButton(iconStroke: UIColor.black)
         title = ""
     }
     

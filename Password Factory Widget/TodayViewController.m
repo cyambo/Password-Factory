@@ -14,6 +14,7 @@
 #import "PasswordController.h"
 #import "PasswordStorage.h"
 #import "Utilities.h"
+@import SBObjectiveCWrapper;
 /**
  Displays a today widget showing a simplified app
  Uses the shared defaults system to get data and configuration from the main app
@@ -143,7 +144,7 @@
     [pasteboard clearContents];
     NSArray *toPasteboard = @[val];
     BOOL ok = [pasteboard writeObjects:toPasteboard];
-    if (!ok) { NSLog(@"Write to pasteboard failed");}
+    if (!ok) { SBLogError(@"Write to pasteboard from widget failed");}
 }
 
 /**

@@ -7,6 +7,7 @@
 //
 
 #import "SecureRandom.h"
+@import SBObjectiveCWrapper;
 
 @implementation SecureRandom
 /**
@@ -29,7 +30,7 @@
             return n;
         }
     } else {
-        NSLog(@"SecRandomCopyBytes failed for some reason");
+        SBLogError(@"SecRandomCopyBytes Failed");
     }
     return 1;
 }

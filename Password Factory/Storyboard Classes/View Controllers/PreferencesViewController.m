@@ -15,6 +15,7 @@
 #import <ServiceManagement/ServiceManagement.h>
 #import "Utilities.h"
 #import "PasswordStorage.h"
+@import SBObjectiveCWrapper;
 NSString *const MASPreferenceKeyShortcut = @"MASPGShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
 
@@ -240,7 +241,7 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut
                      toAction:^{
                          //Loads the app delegate and runs generateAndCopy when the shortcut us pressed
-                         NSLog(@"SHORTCUT PRESSED");
+                         SBLogDebug(@"SHORTCUT PRESSED");
                          AppDelegate *d = [NSApplication sharedApplication].delegate;
                          [d.masterViewController generateAndCopy];
                      }];
@@ -299,17 +300,17 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
             //login item on
             if(!isLoginItem) {
                 if (![self setLoginItem:YES]) {
-                    NSLog(@"SET LOGIN FAILED");
+                    SBLogWarning(@"SET LOGIN FAILED");
                 } else {
-                    NSLog(@"SET LOGIN succeeded!");
+                    SBLogVerbose(@"SET LOGIN succeeded!");
                 }
             }
         } else {
             if(isLoginItem) {
                 if (![self setLoginItem:NO]) {
-                    NSLog(@"UNSET LOGIN FAILED");
+                    SBLogWarning(@"UNSET LOGIN FAILED");
                 } else {
-                    NSLog(@"UNSET LOGIN succeeded!");
+                    SBLogVerbose(@"UNSET LOGIN succeeded!");
                 }
             }
         }
@@ -327,9 +328,9 @@ NSString *const MASPreferenceKeyShortcutEnabled = @"MASPGShortcutEnabled";
         NSURL *url = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"Contents/Library/Password Factory Helper.app" isDirectory:NO];
         // Registering helper app
         if (LSRegisterURL((__bridge CFURLRef)url, true) != noErr) {
-            NSLog(@"LSRegisterURL failed!");
+            SBLogWarning(@"LSRegisterURL failed!");
         } else {
-            NSLog(@"LSRegisterURL succeeded!");
+            SBLogVerbose(@"LSRegisterURL succeeded!");
         }
         return SMLoginItemSetEnabled((__bridge CFStringRef)HelperIdentifier, YES);
 

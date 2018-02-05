@@ -194,7 +194,6 @@
 -(void)doneRepeatingAction:(NSArray *)object {
     NSNumber *value = object[0];
     NSString *key = object[1];
-    NSLog(@"SLD TUN %@",value);
     [self.d setBool:NO forKey:@"activeControl"];
     [self.d storeObject:value forKey:key];
 }

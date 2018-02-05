@@ -20,7 +20,7 @@ class DeleteButton: UIButton {
         setDisplay()
     }
     func setDisplay() {
-        setImage(StyleKit.imageOfDeleteButon, for: .normal)
+        setImage(StyleKit.imageOfDeleteButton(), for: .normal)
         setTitle("", for: .normal)
     }
     

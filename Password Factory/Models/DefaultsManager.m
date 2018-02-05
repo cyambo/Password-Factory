@@ -10,7 +10,7 @@
 #import "DefaultsManager.h"
 #import "constants.h"
 #import "PasswordFactoryConstants.h"
-
+@import SBObjectiveCWrapper;
 static mach_timebase_info_data_t _sTimebaseInfo;
 static BOOL _useSharedDataSource = NO;
 uint64_t  _newTime, _previousTime, _elapsed, _elapsedNano, _threshold;
@@ -220,7 +220,7 @@ static DefaultsManager *dm = nil;
         NSDictionary *kvs = [store dictionaryRepresentation];
         for (NSString *key in [kvs allKeys]) {
             if (prefs[key] == nil && overrideValues[key] == nil) {
-                NSLog(@"DELETED EXTRANEOUS KEY %@",key);
+                SBLogDebug(@"DELETED EXTRANEOUS KEY %@",key);
                 [store removeObjectForKey:key];
             } else if (overrideValues[key] != nil) {
                 [store setObject:overrideValues[key] forKey:key];
@@ -274,7 +274,7 @@ static DefaultsManager *dm = nil;
         cached = [self.standardDefaultsCache objectForKey:key];
     }
     if (object == nil){
-        NSLog(@"FAILED DEFAULTS %@",key);
+        SBLogInfo(@"FAILED DEFAULTS %@",key);
         return cached;
     }
     return object;
@@ -479,7 +479,7 @@ static DefaultsManager *dm = nil;
  @param notification remote notification
  */
 -(void)remoteStoreDidChange:(NSNotification *)notification {
-    NSLog(@"REMOTE CHANGES");
+    SBLogDebug(@"REMOTE CHANGES");
     if (notification.userInfo && notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey]) {
         BOOL currentRemoteStore = self.useRemoteStorage;
         //don't re-sync changes back to iCloud
@@ -489,7 +489,7 @@ static DefaultsManager *dm = nil;
             
             //only sync items that are enabled
             if ([self canSyncKey:item]) {
-                NSLog(@"REMOTE ITEM CHANGE %@",item);
+                SBLogDebug(@"REMOTE ITEM CHANGE %@",item);
                 //get the new value
                 id object = [self.keyStore objectForKey:item];
                 //do not set nil object
