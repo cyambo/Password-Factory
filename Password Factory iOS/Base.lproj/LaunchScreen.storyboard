@@ -38,9 +38,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMM-WL-TQ9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="116" id="ahq-t1-zk7"/>
-                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esu-4H-mYt" userLabel="Strength">
                                         <rect key="frame" x="0.0" y="132" width="375" height="32"/>
@@ -89,6 +86,7 @@
                                     <constraint firstAttribute="bottom" secondItem="3w3-YX-gap" secondAttribute="bottom" id="bmK-pV-oX6"/>
                                     <constraint firstItem="3w3-YX-gap" firstAttribute="leading" secondItem="UUF-Zd-fhm" secondAttribute="leading" id="czV-Hv-S4C"/>
                                     <constraint firstItem="esu-4H-mYt" firstAttribute="leading" secondItem="UUF-Zd-fhm" secondAttribute="leading" id="fIe-SD-FlM"/>
+                                    <constraint firstItem="esu-4H-mYt" firstAttribute="top" secondItem="CMM-WL-TQ9" secondAttribute="bottom" constant="16" id="fmQ-9i-3ja"/>
                                     <constraint firstItem="a9k-P9-7UQ" firstAttribute="trailing" secondItem="3w3-YX-gap" secondAttribute="trailing" id="hgx-AG-Mhi"/>
                                     <constraint firstAttribute="trailing" secondItem="Mjx-zX-Wy9" secondAttribute="trailing" id="hnl-el-mgP"/>
                                     <constraint firstAttribute="bottom" secondItem="dPG-jM-Q0n" secondAttribute="bottom" id="i1u-mj-460"/>
@@ -98,7 +96,6 @@
                                     <constraint firstItem="Fop-dl-6ZX" firstAttribute="top" secondItem="8Nu-Nh-Hg2" secondAttribute="top" id="qcZ-Fa-GyK"/>
                                     <constraint firstItem="esu-4H-mYt" firstAttribute="trailing" secondItem="UUF-Zd-fhm" secondAttribute="trailing" id="s6j-1R-pwl"/>
                                     <constraint firstItem="8Nu-Nh-Hg2" firstAttribute="trailing" secondItem="Fop-dl-6ZX" secondAttribute="trailing" id="sbZ-IM-U80"/>
-                                    <constraint firstItem="esu-4H-mYt" firstAttribute="top" secondItem="CMM-WL-TQ9" secondAttribute="bottom" constant="16" id="ueZ-EW-4ES"/>
                                     <constraint firstItem="CMM-WL-TQ9" firstAttribute="leading" secondItem="UUF-Zd-fhm" secondAttribute="leading" id="w4N-EV-jWq"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="8Nu-Nh-Hg2"/>
@@ -107,6 +104,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UUF-Zd-fhm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="HCT-ew-shr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="CMM-WL-TQ9" secondAttribute="bottom" constant="-96" id="L3J-nw-TNZ"/>
                             <constraint firstAttribute="trailing" secondItem="UUF-Zd-fhm" secondAttribute="trailing" id="NEt-pi-Lkb"/>
                             <constraint firstItem="UUF-Zd-fhm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="aaN-CD-Qm9"/>
                             <constraint firstItem="UUF-Zd-fhm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="d35-u2-YZa"/>
