@@ -115,7 +115,6 @@
         //updating the max password length slider when the max password length value has changed from preferences
         if (self.currentPasswordTypeViewController.passwordLengthSlider) {
             NSSlider *slider = self.currentPasswordTypeViewController.passwordLengthSlider;
-            //TODO: password length
             PFPasswordType type = [self getSelectedPasswordType];
             NSString *key = [NSString stringWithFormat:@"%@PasswordLength",[[self.c getNameForPasswordType:type] lowercaseString]];
             [self updateForMaxPasswordLength:new slider:slider key:key];
@@ -633,6 +632,11 @@
         [self.passwordView addConstraints:h];
         [self.passwordView addConstraints:v];
         [self generatePassword];
+    }
+    if (type == PFStoredType) {
+        [self.generateButton setEnabled:NO];
+    } else {
+        [self.generateButton setEnabled:YES];
     }
     if(self.passwordTypeLabel) {
         [self.passwordTypeLabel setStringValue:[[self.password getNameForPasswordType:type] uppercaseString]];

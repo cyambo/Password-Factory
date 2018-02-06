@@ -123,48 +123,48 @@
                         </div>
                         <p>The main window consists of three areas, the password viewing area, type selection area, and the controls area.</p>
 
-
                         <section class="mt-4" id="viewing_area"><a name="viewing_area"></a>
-                        <h3>Viewing Area</h3>
-                        <div class="m-3 card w-75 mx-auto">
-                            <img alt="Password Viewing Area" class="card-img-top rounded" src="gfx/viewing.png"/>
-                            <div class="card-footer text-center">
-                                Password Viewing Area
+                            <h3>Viewing Area</h3>
+                            <div class="m-3 card w-75 mx-auto">
+                                <img alt="Password Viewing Area" class="card-img-top rounded" src="gfx/viewing.png"/>
+                                <div class="card-footer text-center">
+                                    Password Viewing Area
+                                </div>
                             </div>
-                        </div>
-                        <p>The viewing area consists of three sections, the password view, <a href="#password_strength">strength</a> meter, and the info area. It shows the currently generated password. The password is either shown in black or highlighted. When the password is highlighted each type of character is shown in a different color. See <a href="#preferences_password_display">preferences</a> for more information. The password displayed can be edited and the <a href="#password_strength">strength</a> will automatically update. Using this any password can have the <a href="#password_strength">strength</a> calculated by typing or pasting it into the password display.</p>
-                        <div class="m-3 card w-75 mx-auto">
-                            <div class="card-body strength-gradient"></div>
-                            <div class="card-footer text-center">
-                                Strength Colors - From Weakest to Strongest
+                            <p>The viewing area consists of three sections, the password view, <a href="#password_strength">strength</a> meter, and the info area. It shows the currently generated password. The password is either shown in black or highlighted. When the password is highlighted each type of character is shown in a different color. See <a href="#preferences_password_display">preferences</a> for more information. The password displayed can be edited and the <a href="#password_strength">strength</a> will automatically update. Using this any password can have the <a href="#password_strength">strength</a> calculated by typing or pasting it into the password display.</p>
+                            <div class="m-3 card w-75 mx-auto">
+                                <div class="card-body strength-gradient"></div>
+                                <div class="card-footer text-center">
+                                    Strength Colors - From Weakest to Strongest
+                                </div>
                             </div>
-                        </div>
 
-                        <p>Behind the password field is the <a href="#password_strength">strength</a> meter. The strength meter will fill and indicate the relative strength via colors. Red is the weakest, green is very strong, and purple is super strong. Below is a list of the colors and the approximate '<a href="#password_strength">crack time</a>'.</p>
+                            <p>Behind the password field is the <a href="#password_strength">strength</a> meter. The strength meter will fill and indicate the relative strength via colors. Red is the weakest, green is very strong, and purple is super strong. Below is a list of the colors and the approximate '<a href="#password_strength">crack time</a>'.</p>
 
-                        <p>The <a href="#password_strength">strength</a> level is only a guide, and will not assure your password won't be hacked.</p>
-                        <p>To the right are two buttons, generate will generate a new password, and copy will copy the current password to the clipboard.</p>
-                        <p>Below the password is the info area, which consists of three parts.</p>
+                            <p>The <a href="#password_strength">strength</a> level is only a guide, and will not assure your password won't be hacked.</p>
 
-                        <div class="m-3 card w-75 mx-auto">
-                            <img alt="Zoomed Password" class="card-img-top rounded" src="gfx/zoomed.png"/>
-                            <div class="card-footer text-center">
-                                Zoomed Password
+                            <p>Below the password is the info area, which consists of three parts.</p>
+
+                            <div class="m-3 card w-75 mx-auto">
+                                <img alt="Zoomed Password" class="card-img-top rounded" src="gfx/zoomed.png"/>
+                                <div class="card-footer text-center">
+                                    Zoomed Password
+                                </div>
                             </div>
-                        </div>
 
-                        <p>To the left is the zoom button <img alt="Zoom Icon" src="gfx/zoom.png" class="inline" width="20" />, click on this to display the password in very large type. Clicking anywhere will dismiss the zoomed password window</p>
+                            <p>To the left is the zoom button <img alt="Zoom Icon" src="gfx/zoom.png" class="inline" width="20" />, click on this to display the password in very large type. Clicking anywhere will dismiss the zoomed password window</p>
 
 
-                        <p>To the right is the length of the current password.</p>
+                            <p>To the right is the length of the current password.</p>
 
-                        <p>And below the password is the '<a href="#password_strength">crack time</a>' display. Clicking directly below the password will show or hide the display. Which shows the calculated time it would take to potentially 'crack' the password.</p>
-                        <div class="m-3 card w-25 mx-auto">
-                            <img alt="Crack Time Display" class="card-img-top rounded" src="gfx/crack-time.png"/>
-                            <div class="card-footer text-center">
-                                Crack Time Display
+                            <p>And below the password is the '<a href="#password_strength">crack time</a>' display. Clicking directly below the password will show or hide the display. Which shows the calculated time it would take to potentially 'crack' the password.</p>
+                            <div class="m-3 card w-25 mx-auto">
+                                <img alt="Crack Time Display" class="card-img-top rounded" src="gfx/crack-time.png"/>
+                                <div class="card-footer text-center">
+                                    Crack Time Display
+                                </div>
                             </div>
-                        </div>
+                            <p>At the bottom are two buttons, generate will generate a new password, and copy will copy the current password to the clipboard.</p>
                         </section>
                         <section class="mt-4" id="type_selection_area"><a name="type_selection_area"></a>
                         <h3>Type Selection Area</h3>
@@ -178,6 +178,12 @@
                         </section>
                         <section class="mt-4" id="controls_area"><a name="controls_area"></a>
                         <h3>Controls Area</h3>
+                        <div class="m-3 card w-50 mx-auto">
+                            <img alt="Controls" class="card-img-top rounded" src="gfx/controls.png" />
+                            <div class="card-footer text-center">
+                                Controls Area
+                            </div>
+                        </div>
                         <p>The controls area displays the controls for the currently selected password type.</p>
                         </section>
                     </div>
@@ -306,6 +312,7 @@
                             <p>The source selection is to the upper left, and will set the base for the password. If nothing else is set it will generate a password exactly like the selected source.</p>
                             <p>To the right of the source selection is the truncate slider, setting the truncation value will truncate the password to the selected length.</p>
                             <p>Below the source selection is 'Replace <a href="#ambiguous_characters">Ambiguous</a>'. This will replace any ambiguous characters with one that is less ambiguous.</p>
+                            <p>Next is the <a href="#case_types">case type</a> selection. Changing the case type change the case of all the letters in the password</p>
                             <p>Below that is the transformation section, there are two options 'Symbolize' and 'Accenter'.</p>
                             <p><a href="#transform_symbolize">Symbolize</a> will replace characters with a random symbol representation of the character. For example, an A could be replaced by 4, /-\, @, ^, /\.</p>
                             <p><a href="#transform_accenter">Accenter</a> will replace characters with accented and similar looking extended characters. For example a B could be replaced by ḃ, ɓ ,ḅ , ḇ.</p>
@@ -337,77 +344,77 @@
                     </div>
                     <div class="container">
                         <section class="mt-4" id="menubar"><a name="menubar"></a>
-                        <h3>Menubar</h3>
-                        <div class="m-3 card w-50 mx-auto">
-                            <img alt="Menu Window" class="card-img-top rounded" src="gfx/menu-window.png"/>
-                            <div class="card-footer text-center">
-                                Menu Window
+                            <h3>Menubar</h3>
+                            <div class="m-3 card w-50 mx-auto">
+                                <img alt="Menu Window" class="card-img-top rounded" src="gfx/menu-window.png"/>
+                                <div class="card-footer text-center">
+                                    Menu Window
+                                </div>
                             </div>
-                        </div>
-                        <p>When <a href="#preferences_run_in_menu">running in the menubar</a> the application uses a more compact interface. The interface functions the same as when it is running normally, however items are rearranged. To select a password type use the control at the top of the window and click the <a href="#type_icons">icon</a> to select, and the type name will show above the password display. The preferences window can be shown by clicking the gear icon on the bottom right.</p>
-                        </section>
-                        <section class="mt-4" id="widget"><a name="widget"></a>
-                        <h3>Widget</h3>
-                        <div class="m-3 card w-50 mx-auto">
-                            <img alt="Today Widget" class="card-img-top rounded" src="gfx/widget.png"/>
-                            <div class="card-footer text-center">
-                                Today Widget
+                            <p>When <a href="#preferences_run_in_menu">running in the menubar</a> the application uses a more compact interface. The interface functions the same as when it is running normally, however items are rearranged. To select a password type use the control at the top of the window and click the <a href="#type_icons">icon</a> to select, and the type name will show above the password display. The preferences window can be shown by clicking the gear icon on the bottom right.</p>
+                            </section>
+                            <section class="mt-4" id="widget"><a name="widget"></a>
+                            <h3>Widget</h3>
+                            <div class="m-3 card w-50 mx-auto">
+                                <img alt="Today Widget" class="card-img-top rounded" src="gfx/widget.png"/>
+                                <div class="card-footer text-center">
+                                    Today Widget
+                                </div>
                             </div>
-                        </div>
-                        <p>The widget is enabled via going to the notification center and clicking edit, and then you can add the "Password Factory" widget.</p>
-                        <div class="m-3 card w-50 mx-auto">
-                            <img alt="Adding Widget" class="card-img-top rounded" src="gfx/widget-add.png"/>
-                            <div class="card-footer text-center">
-                                Adding Widget
+                            <p>The widget is enabled via going to the notification center and clicking edit, and then you can add the "Password Factory" widget.</p>
+                            <div class="m-3 card w-50 mx-auto">
+                                <img alt="Adding Widget" class="card-img-top rounded" src="gfx/widget-add.png"/>
+                                <div class="card-footer text-center">
+                                    Adding Widget
+                                </div>
                             </div>
-                        </div>
-                        <p>The widget will generate passwords based upon the configuration of the Password Factory application. Therefore, if the 'Passphrase' type is set, then the widget will generate a 'Passphrase' password using the current settings. The widget can only generate and copy passwords, and if you wish to change the password type go back to the application by clicking the gear and change settings from there.</p>
+                            <p>The widget will generate passwords based upon the configuration of the Password Factory application. Therefore, if the 'Passphrase' type is set, then the widget will generate a 'Passphrase' password using the current settings. The widget can only generate and copy passwords, and if you wish to change the password type go back to the application by clicking the gear and change settings from there.</p>
                         </section>
                         <section class="mt-4" id="export"><a name="export"></a>
-                        <h3>Exporting Passwords</h3>
+                            <h3>Exporting Passwords</h3>
 
-                        <div class="m-3 card w-25 mx-auto">
-                            <img alt="Export Window" class="card-img-top rounded" src="gfx/export.png"/>
-                            <div class="card-footer text-center">
-                                Export Window
+                            <div class="m-3 card w-25 mx-auto">
+                                <img alt="Export Window" class="card-img-top rounded" src="gfx/export.png"/>
+                                <div class="card-footer text-center">
+                                    Export Window
+                                </div>
                             </div>
-                        </div>
-                        <p>The export function will create a CSV file containing a list of generated passwords. First choose which type to export. Choosing anything other than stored will generate a series of new passwords. Choosing stored will export all stored passwords. The number of passwords to generate is set by filling in the 'Amount to Export'. Additionally the 'Info to Export' options will add the password type and the <a href="#password_strength">strength</a> to the CSV file.</p>
-                        <p>Clicking 'Export' will export all the passwords to a file of your choosing. Large numbers of passwords can take an extended period of time to generate.</p>
-                        </section>
-                        <section class="mt-4" id="dock_menu"><a name="dock_menu"></a>
-                        <h3>Dock Menu</h3>
-                        <div class="m-3 card w-25 mx-auto">
-                            <img alt="Dock Menu" class="card-img-top rounded" src="gfx/dock.png"/>
-                            <div class="card-footer text-center">
-                                Dock Menu
+                            <p>The export function will create a CSV file containing a list of generated passwords. First choose which type to export. Choosing anything other than stored will generate a series of new passwords. Choosing stored will export all stored passwords. The number of passwords to generate is set by filling in the 'Amount to Export'. Additionally the 'Info to Export' options will add the password type and the <a href="#password_strength">strength</a> to the CSV file.</p>
+                            <p>Clicking 'Export' will export all the passwords to a file of your choosing. Large numbers of passwords can take an extended period of time to generate.</p>
+                            </section>
+                            <section class="mt-4" id="dock_menu"><a name="dock_menu"></a>
+                            <h3>Dock Menu</h3>
+                            <div class="m-3 card w-25 mx-auto">
+                                <img alt="Dock Menu" class="card-img-top rounded" src="gfx/dock.png"/>
+                                <div class="card-footer text-center">
+                                    Dock Menu
+                                </div>
                             </div>
-                        </div>
-                        <p>Clicking and holding on the dock icon will show the dock menu. Selecting one odf the password types will switch to that password type, generate a new password and copy it to the clipboard.</p>
+                            <p>Clicking and holding on the dock icon will show the dock menu. Selecting one odf the password types will switch to that password type, generate a new password and copy it to the clipboard.</p>
                         </section>
                         <section class="mt-4" id="keyboard_commands"><a name="keyboard_commands"></a>
-                        <h3>Keyboard Commands</h3>
-                        <p>Password factory has several key commands for controlling the application</p>
-                        <dl class="row">
-                            <dt class="col-sm-3 text-right"><kbd>⌘G</kbd></dt>
-                            <dd class="col-sm-9">Generates a new password</dd>
-                            <dt class="col-sm-3 text-right"><kbd>⌘E</kbd></dt>
-                            <dd class="col-sm-9">Opens the <a href="#export">export</a> window</dd>
-                            <dt class="col-sm-3 text-right"><kbd>⌘R</kbd></dt>
-                            <dd class="col-sm-9">Switches to '<a href="#random_password">Random</a>' Type</dd>
-                            <dt class="col-sm-3 text-right"><kbd>⌘T</kbd></dt>
-                            <dd class="col-sm-9">Switches to '<a href="#pattern_password">Pattern</a>' Type</dd>
-                            <dt class="col-sm-3 text-right"><kbd>⌘U</kbd></dt>
-                            <dd class="col-sm-9">Switches to '<a href="#pronounceable_password">Pronounceable</a>' Type</dd>
-                            <dt class="col-sm-3 text-right"><kbd>⌘P</kbd></dt>
-                            <dd class="col-sm-9">Switches to '<a href="#passphrase_password">Passphrase</a>' Type</dd>
-                            <dt class="col-sm-3 text-right"><kbd>⌘D</kbd></dt>
-                            <dd class="col-sm-9">Switches to '<a href="#advanced_password">Advanced</a>' Type</dd>
-                            <dt class="col-sm-3 text-right"><kbd>⌘O</kbd></dt>
-                            <dd class="col-sm-9">Switches to '<a href="#stored_password">Stored</a>' Type</dd>
-                            <dt class="col-sm-3 text-right"><kbd>⌘Delete</kbd></dt>
-                            <dd class="col-sm-9">Deletes the currently selected stored password</dd>
-                        </dl>
+                            <h3>Keyboard Commands</h3>
+                            <p>Password factory has several key commands for controlling the application</p>
+                            <dl class="row">
+                                <dt class="col-sm-3 text-right"><kbd>⌘G</kbd></dt>
+                                <dd class="col-sm-9">Generates a new password</dd>
+                                <dt class="col-sm-3 text-right"><kbd>⌘E</kbd></dt>
+                                <dd class="col-sm-9">Opens the <a href="#export">export</a> window</dd>
+                                <dt class="col-sm-3 text-right"><kbd>⌘R</kbd></dt>
+                                <dd class="col-sm-9">Switches to '<a href="#random_password">Random</a>' Type</dd>
+                                <dt class="col-sm-3 text-right"><kbd>⌘T</kbd></dt>
+                                <dd class="col-sm-9">Switches to '<a href="#pattern_password">Pattern</a>' Type</dd>
+                                <dt class="col-sm-3 text-right"><kbd>⌘U</kbd></dt>
+                                <dd class="col-sm-9">Switches to '<a href="#pronounceable_password">Pronounceable</a>' Type</dd>
+                                <dt class="col-sm-3 text-right"><kbd>⌘P</kbd></dt>
+                                <dd class="col-sm-9">Switches to '<a href="#passphrase_password">Passphrase</a>' Type</dd>
+                                <dt class="col-sm-3 text-right"><kbd>⌘D</kbd></dt>
+                                <dd class="col-sm-9">Switches to '<a href="#advanced_password">Advanced</a>' Type</dd>
+                                <dt class="col-sm-3 text-right"><kbd>⌘O</kbd></dt>
+                                <dd class="col-sm-9">Switches to '<a href="#stored_password">Stored</a>' Type</dd>
+                                <dt class="col-sm-3 text-right"><kbd>⌘Delete</kbd></dt>
+                                <dd class="col-sm-9">Deletes the currently selected stored password</dd>
+                            </dl>
                         </section>
                     </div>
                 </section>
@@ -448,7 +455,7 @@
                             <h3>Global</h3>
                             <p>This section contains all of the global settings for the application.</p>
                             <h4 id="preferences_max_password">Max Password Length</h4>
-                            <p>Settings the max <a href="#password_length">length</a> sets the maximum length of the password sliders. This allows for longer passwords than the default.</p>
+                            <p>Sets the maximum <a href="#password_length">length</a> of the password sliders. This allows for longer passwords than the default.</p>
                             <h4 id="preferences_enable_advanced">Enable Advanced</h4>
                             <p>Checking this will enable the <a href="#advanced_password">advanced</a> password section.</p>
                             <h4 id="preferences_store_passwords">Store Passwords</h4>
@@ -708,7 +715,7 @@
                                 <p>Password Factory has support for emojis and extended characters. An extended character is a character that is not in the standard Latin alphabet, plus numbers, and standard symbolic characters. Although emojis and extended characters will create a stronger password, not all systems support using these characters. Always take caution when using emojis or extended characters and if possible test your password against the login system first.</p>
                             </section>
                             <section class="mt-4" id="alerts"><a name="alerts"></a>
-                                <h3>iCloud Sync</h3>
+                                <h3>Alerts</h3>
                                 <div class="m-3 card w-75 mx-auto">
                                     <img alt="Alert Window" class="card-img-top rounded" src="gfx/alert.png" />
                                     <div class="card-footer text-center">
