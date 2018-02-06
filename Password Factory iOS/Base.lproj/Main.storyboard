@@ -1706,6 +1706,7 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="label" value="Shortcuts"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="defaultsKey" value="homeScreenShortcut"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="enabledKey" value="forceTouchAvailable"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="KGt-Hr-RKx" id="PMO-cB-gft"/>

@@ -30,6 +30,11 @@ class PreferencesViewController: UIViewController, ControlViewDelegate {
         navigationItem.rightBarButtonItem = barButton
         scrollView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
         navigationItem.title = NSLocalizedString("preferencesTitle", comment: "Preferences")
+        var forceTouch = false
+        if (self.traitCollection.forceTouchCapability == .available) {
+            forceTouch = true
+        }
+        d.setBool(forceTouch, forKey: "forceTouchAvailable")
     }
     func controlChanged(_ control: UIControl?, defaultsKey: String) {
         var override : [AnyHashable : Any]?

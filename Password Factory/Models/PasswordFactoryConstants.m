@@ -121,7 +121,8 @@
                               @"hideDockIcon",
                               @"addToLoginItems",
                               @"cloudKitCurrentZoneStartTime",
-                              @"storeInitialized"];
+                              @"storeInitialized",
+                              @"forceTouchAvailable"];
 }
 
 /**

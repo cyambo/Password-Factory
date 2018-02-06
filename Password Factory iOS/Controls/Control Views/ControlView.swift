@@ -264,7 +264,7 @@ class ControlView: UIView, DefaultsManagerDelegate, AlertViewControllerDelegate 
             return
         }
         if keyPath == enabledKey {
-            guard var enabled = ch["new"] as? Bool else {
+            guard let enabled = ch["new"] as? Bool else {
                 return
             }
             setEnabled(enabled)
