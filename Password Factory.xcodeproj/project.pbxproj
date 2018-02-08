@@ -2152,7 +2152,7 @@
 				INFOPLIST_FILE = "Password Factory iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.password-factory.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2191,7 +2191,7 @@
 				INFOPLIST_FILE = "Password Factory iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.Password-Factory-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudthirteen.password-factory.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Password Factory iOS/PasswordFactory-Bridging-Header.h";

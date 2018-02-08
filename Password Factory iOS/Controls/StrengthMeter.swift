@@ -14,13 +14,11 @@ class StrengthMeter: UIView {
     var strength = 1.0
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: ColorUtilities.getStrengthColor(Float(strength)), strength: CGFloat(strength), size: rect.size)
-        
+        StyleKit.drawStrengthMeter(frame: rect, resizing: .stretch, strengthColor: ColorUtilities.getStrengthColor(Float(strength)), strength: CGFloat(strength))
     }
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         updateStrength(s: 0.5)
-        
     }
     override func layoutSubviews() {
         super.layoutSubviews()
