@@ -140,7 +140,6 @@ static DefaultsManager *dm = nil;
             }
         }
     }
-
 }
 
 /**

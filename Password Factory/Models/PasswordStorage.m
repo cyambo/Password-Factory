@@ -361,7 +361,7 @@ static bool _disableRemoteFetchChanges = NO;
 
 
 /**
- Deletes all records in Core Date before specificed date
+ Deletes all records in Core Data before specificed date
 
  @param date date to delete up to
  @param withRemote whether or not to delete remote items also
